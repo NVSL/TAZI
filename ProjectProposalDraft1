@@ -1,0 +1,68 @@
+\documentclass[12pt]{article}
+\usepackage{fullpage}
+\usepackage{natbib}
+
+\begin{document}
+\author{Hannah Chu, Priyanka Kulshreshtha, Michael Gonzalez and Paula Quach}
+\title{Gadgetron Project Proposal}
+\maketitle
+
+\section{Background}
+     \indent
+	Gadgetron focuses on automating the process of building gadgets by allowing users a visual platform on which they 
+	design their desired gadget. It then generates the appropriate code needed to be able to print out the circuit board.  
+ 	It has greatly reduced the limitations, making it possible to design a gadget without having to know much about
+	the process. We would like to take this one step further and provide a way to automatically generate the appropriate
+	code for the the function of the gadget. We believe that this a necessary step to acheive Gadgetron's overall goal. 			Adding this piece will reduce the constraints even further and enable people with very little technical knowledge 
+	to make a working gadget. All a user would need to do is assemble it. 
+	\newline \indent
+	Perhaps the most successful model of this type is the LEGO Mindstorm model. It allows users to program their
+	robot by using the accompanying Intelligence Brick. Although the kit claims to give users full freedom on how to 
+	design their robot, they have a constraint in the form of the I-Brick [3]. No matter what designs they choose, that 
+	block needs to be included. Gadgetron doesn't have any such constraint and truly gives the user the unique 
+	experience of designing a robot according to their preferences. 
+	\newline \indent
+	There has also been a few attempts at creating something similar to our idea. One such system was the visual
+	robot programming for generalizable mobile manipulation tasks project at the University of Washington. Their goal 
+	was to make a product, called RoboFlow, that could replace tradditional coding when it came to programming
+	robots[2]. The difference is usability. The format of Gadgetron' s Code Generation Framework is dedicated towards
+	providing the easiest way to programm robots without having to know much about the process itself. This is 
+	different from RoboFlow, in which you do need to have a basic understanding of harware engineering. Again, 
+	Gadgetron would get rid of this limitation, making the tool more universal.
+
+\section{Project Description}
+	Our project describes the Code Generation Framework that was started by a graduate student Alexander Caughron.
+	Bascally, we aim to extend Gadgetron to be able to automate the process of writing code for our gadget as well. 
+	To do this, we plan to create a visual-based language that will enable users to outline what they want their gadget
+	to do. The program will then generate the necessary code that is compatible with the gadget made using 
+	Gadgetron's web tool. 
+	\newline \indent
+	We aim to make our tool more universal and cater to a larger audience. With our project added to Gadgetron, 
+	it will become easy to use for any age group as it will require very little prior knowledge. We can introduce the 
+	tool, and therefore the process of creating gadgets, at an early age which will motivate students to pursue it
+	in the future. There have been trials using LEGO MindStorm to teach a group of junior high kids about robotics [1]. 
+	With the levels of abstraction that Gadgetron provides, students can start learning about this stuff as early as 
+	in elementary school. It can add to the exisiting cirriculum at lower level schools and include a displine to learn
+	about other than the usual math, science, history, etc. 
+	\newline \indent
+	Gadgetron is already a novel project in that it attempts to automate such a complex process.  Combined
+	with the Code Generation Framework, Gadgetron will become one of the easiest ways to create one's very one
+	gadget. It will aide in teacihng kids about engineering from an early age.  
+
+\section{Challenges}
+Stuff here
+
+\section{Tools and Knowledge to Learn}
+Stuff here
+
+\bibliographystyle{plain}
+\bibliography{gadgetronprop}
+\section {References}
+[1] Practical Report of Programming Experiment Class for Elementary School Children
+\newline
+[2] Visual Robot Programming for Generalizable Mobile Manipulation Task 
+\newline
+[3]  Programming LEGO Mindstorms NXT with visual programming
+\newline
+
+\end{document}
