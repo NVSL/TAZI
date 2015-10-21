@@ -8,46 +8,26 @@
 \maketitle
 
 \section{Research Context and Problem Statement}
-    What is the context for the work you are doing, why should people care about your work, and what is the specific problem you will solve?
-    
-    Gadgetron focuses on automating the process of building gadgets by allowing users a visual platform on which they 
-	design their desired gadget. It then generates the appropriate code needed to be able to print out the circuit board.  
- 	It has greatly reduced the limitations, making it possible to design a gadget without having to know much about
-	the process. We would like to take this one step further and provide a way to automatically generate the appropriate
-	code for the the function of the gadget. We believe that this a necessary step to acheive Gadgetron's overall goal. 			Adding this piece will reduce the constraints even further and enable people with very little technical knowledge 
-	to make a working gadget. All a user would need to do is assemble it.\\[7pt]
-	Perhaps the most successful model of this type is the LEGO Mindstorm model. It allows users to program their
-	robot by using the accompanying Intelligence Brick. Although the kit claims to give users full freedom on how to 
-	design their robot, they have a constraint in the form of the I-Brick [3]. No matter what designs they choose, that 
-	block needs to be included. Gadgetron doesn't have any such constraint and truly gives the user the unique 
+    Our research focuses on automating the process of building gadgets. This process is performed in various steps through a tool-chain. This project is called Gadgetron. Gadgetron's focus at the moment is on the automation of design by allowing users a visual platform to design their desired gadget. It then generates the appropriate files needed to be able to print out the circuit board, a process easily performed by sending the files off to any PCB company. Gadgetron has greatly reduced the limitations, making it possible to design and build a gadget without having to know much about
+	the process especially electrically. The automation of circuit-building both for gadgets and other electronics has been vastly explored in research in regards to rapid prototyping. However, while Gadgetron is part of that number, it will go further than just automation and acceleration of the process in building the hardware side.\\[7pt]
+	We would like to take this automation one step further and provide a way to automatically generate the appropriate code for Gadgetron users to not only build the gadget but also easily control what they build. That way, they would not have to learn an entire programming language in order to make what they want do what they want: they can just use Gadgetron to automate everything to their desire. We believe that this a necessary step to achieve Gadgetron's overall goal. Adding this piece will reduce the constraints even further and enable people with very little technical knowledge to make a working gadget. All a user would need to do is assemble it and even that may be easily taken care of with some out of scope plans to have Gadgetron also generate steps for the user to follow to attach their components to their gadget. Our focus, however, will be on the visual code-generation aspect of Gadgetron.\\[7pt]
+	Perhaps the most successful model of this type is the LEGO Mindstorm model. It allows users to program their robot by using the accompanying Intelligence Brick. Although the kit claims to give users full freedom on how to 
+	design their robot, they have a constraint in the form of the I-Brick [3]. No matter what designs they choose, that block needs to be included. Gadgetron does not have any such constraint and truly gives the user the unique 
 	experience of designing a robot according to their preferences.\\[7pt]
-	There has also been a few attempts at creating something similar to our idea. One such system was the visual
-	robot programming for generalizable mobile manipulation tasks project at the University of Washington. Their goal 
-	was to make a product, called RoboFlow, that could replace tradditional coding when it came to programming
-	robots[2]. The difference is usability. The format of Gadgetron' s Code Generation Framework is dedicated towards
-	providing the easiest way to programm robots without having to know much about the process itself. This is 
-	different from RoboFlow, in which you do need to have a basic understanding of harware engineering. Again, 
-	Gadgetron would get rid of this limitation, making the tool more universal.
-
-\subsection{Project Description}
-	Our project describes the Code Generation Framework that was started by a graduate student Alexander Caughron.
-	Bascally, we aim to extend Gadgetron to be able to automate the process of writing code for our gadget as well. 
-	To do this, we plan to create a visual-based language that will enable users to outline what they want their gadget
-	to do. The program will then generate the necessary code that is compatible with the gadget made using 
-	Gadgetron's web tool.\\[7pt]
-	We aim to make our tool more universal and cater to a larger audience. With our project added to Gadgetron, 
-	it will become easy to use for any age group as it will require very little prior knowledge. We can introduce the 
-	tool, and therefore the process of creating gadgets, at an early age which will motivate students to pursue it
-	in the future. There have been trials using LEGO MindStorm to teach a group of junior high kids about robotics [1]. 
-	With the levels of abstraction that Gadgetron provides, students can start learning about this stuff as early as 
-	in elementary school. It can add to the exisiting cirriculum at lower level schools and include a displine to learn
-	about other than the usual math, science, history, etc.\\[7pt]
-	Gadgetron is already a novel project in that it attempts to automate such a complex process.  Combined
-	with the Code Generation Framework, Gadgetron will become one of the easiest ways to create one's very one
-	gadget. It will aide in teacihng kids about engineering from an early age.  
+	There has also been a few attempts at creating something similar to our idea. One such system was the visual robot programming for generalizable mobile manipulation tasks project at the University of Washington. Their goal 
+	was to make a product, called RoboFlow, that could replace traditional coding when it came to programming robots[2]. The difference is usability. The format of Gadgetron' s Code Generation Framework is dedicated towards
+	providing the easiest way to program robots without having to know much about the process itself. This is different from RoboFlow, in which you do need to have a basic understanding of hardware engineering. Again, Gadgetron would get rid of this limitation, making the tool more universal.
 
 \section{Proposed Solution}
-What is your specific proposed solution to the problem you identified in part 1?
+	Our project describes the Code Generation Framework that was started by a graduate student Alexander Caughron. Basically, we aim to extend Gadgetron to also automate the process of writing code for gadgets it builds as well. 
+	To do this, we plan to create a visual-based language that will enable users to outline what they want their gadget to do. The program will then generate the necessary code that is compatible with the gadget made using 
+	Gadgetron's web tool.\\[7pt]
+	We aim to make our tool more universal and cater to a larger audience. With our project added to Gadgetron, it will become easy to use for any age group as it will require very little prior knowledge. We can introduce the 
+	tool, and therefore the process of creating gadgets, at an early age which will motivate students to pursue it in the future. There have been trials using LEGO MindStorm to teach groups of junior high kids about robotics [1]. 
+	With the levels of abstraction that Gadgetron provides, students can start learning about this stuff as early as in elementary school. It can add to the existing curriculum at lower level schools and include a discipline to learn
+	about other than the usual math, science, history, etc.\\[7pt]
+	Gadgetron is already a novel project in that it attempts to automate such a complex process.  Combined with the Code Generation Framework, Gadgetron will become one of the easiest ways to create one's very one
+	gadget. It will aid in teaching kids about engineering from an early age as well as fully automate the gadget-building process for anyone who would like to build something for themselves. 
 
 \section{Evaluation and Implementation Plan}
 How will you know if your research was successful?  And how will you organize your work to get it done in the time you have?  This section will have two sub-headers: "Evaluation Plan" and "Timeline"
