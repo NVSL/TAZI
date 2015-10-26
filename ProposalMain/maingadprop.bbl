@@ -1,0 +1,34 @@
+\begin{thebibliography}{1}
+
+\bibitem{inkjets}
+Yoshihiro Kawahara, Steve Hodges, Benjamin~S. Cook, Cheng Zhang, and Gregory~D.
+  Abowd.
+\newblock Instant inkjet circuits: Lab-based inkjet printing to support rapid
+  prototyping of ubicomp devices.
+\newblock In {\em Proceedings of the 2013 ACM International Joint Conference on
+  Pervasive and Ubiquitous Computing}, UbiComp '13, pages 363--372, New York,
+  NY, USA, 2013. ACM.
+
+\bibitem{legomindstorms}
+Seung~Han Kim and Jae~Wook Jeon.
+\newblock Programming lego mindstorms nxt with visual programming.
+\newblock In {\em Control, Automation and Systems, 2007. ICCAS '07.
+  International Conference on}, pages 2468--2472, Oct 2007.
+
+\bibitem{shrinky}
+Joanne Lo and Eric Paulos.
+\newblock Shrinkycircuits: Sketching, shrinking, and formgiving for electronic
+  circuits.
+\newblock In {\em Proceedings of the 27th Annual ACM Symposium on User
+  Interface Software and Technology}, UIST '14, pages 291--299, New York, NY,
+  USA, 2014. ACM.
+
+\bibitem{UUistle}
+Teemu Sirki\"{a} and Juha Sorva.
+\newblock Exploring programming misconceptions: An analysis of student mistakes
+  in visual program simulation exercises.
+\newblock In {\em Proceedings of the 12th Koli Calling International Conference
+  on Computing Education Research}, Koli Calling '12, pages 19--28, New York,
+  NY, USA, 2012. ACM.
+
+\end{thebibliography}
