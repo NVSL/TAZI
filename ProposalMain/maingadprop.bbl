@@ -1,4 +1,30 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
+
+\bibitem{cRobots}
+David Cowden, April O'Neill, Erik Opavsky, Dilan Ustek, and Henry~M. Walker.
+\newblock A c-based introductory course using robots.
+\newblock In {\em Proceedings of the 43rd ACM Technical Symposium on Computer
+  Science Education}, SIGCSE '12, pages 27--32, New York, NY, USA, 2012. ACM.
+
+\bibitem{primarySchool}
+G.B. Demo, G.~Marciano, and S.~Siega.
+\newblock Concrete programming: Using small robots in primary schools.
+\newblock In {\em Advanced Learning Technologies, 2008. ICALT '08. Eighth IEEE
+  International Conference on}, pages 301--302, July 2008.
+
+\bibitem{CS1forScientists}
+Zachary Dodds, Ran Libeskind-Hadas, Christine Alvarado, and Geoff Kuenning.
+\newblock Evaluating a breadth-first cs 1 for scientists.
+\newblock In {\em Proceedings of the 39th SIGCSE Technical Symposium on
+  Computer Science Education}, SIGCSE '08, pages 266--270, New York, NY, USA,
+  2008. ACM.
+
+\bibitem{greenfoot}
+Poul Henriksen and Michael K\"{o}lling.
+\newblock Greenfoot: Combining object visualisation with interaction.
+\newblock In {\em Companion to the 19th Annual ACM SIGPLAN Conference on
+  Object-oriented Programming Systems, Languages, and Applications}, OOPSLA
+  '04, pages 73--82, New York, NY, USA, 2004. ACM.
 
 \bibitem{inkjets}
 Yoshihiro Kawahara, Steve Hodges, Benjamin~S. Cook, Cheng Zhang, and Gregory~D.
@@ -15,6 +41,13 @@ Seung~Han Kim and Jae~Wook Jeon.
 \newblock In {\em Control, Automation and Systems, 2007. ICCAS '07.
   International Conference on}, pages 2468--2472, Oct 2007.
 
+\bibitem{legomindstorms2}
+Seung~Han Kim and Jae~Wook Jeon.
+\newblock Using visual programming kit and lego mindstorms: An introduction to
+  embedded system.
+\newblock In {\em Industrial Technology, 2008. ICIT 2008. IEEE International
+  Conference on}, pages 1--6, April 2008.
+
 \bibitem{shrinky}
 Joanne Lo and Eric Paulos.
 \newblock Shrinkycircuits: Sketching, shrinking, and formgiving for electronic
@@ -23,12 +56,40 @@ Joanne Lo and Eric Paulos.
   Interface Software and Technology}, UIST '14, pages 291--299, New York, NY,
   USA, 2014. ACM.
 
-\bibitem{UUistle}
+\bibitem{RobotMotivation}
+Monica~M. McGill.
+\newblock Learning to program with personal robots: Influences on student
+  motivation.
+\newblock {\em Trans. Comput. Educ.}, 12(1):4:1--4:32, March 2012.
+
+\bibitem{elementaryRobots}
+Y.~Ohnishi and S.~Mori.
+\newblock A practical report of programing experiment class for elementary
+  school children.
+\newblock In {\em Advanced Mechatronic Systems (ICAMechS), 2014 International
+  Conference on}, pages 291--294, Aug 2014.
+
+\bibitem{UUhistle}
 Teemu Sirki\"{a} and Juha Sorva.
 \newblock Exploring programming misconceptions: An analysis of student mistakes
   in visual program simulation exercises.
 \newblock In {\em Proceedings of the 12th Koli Calling International Conference
   on Computing Education Research}, Koli Calling '12, pages 19--28, New York,
   NY, USA, 2012. ACM.
+
+\bibitem{Scratch}
+Teemu Sirki\"{a} and Juha Sorva.
+\newblock Exploring programming misconceptions: An analysis of student mistakes
+  in visual program simulation exercises.
+\newblock In {\em Proceedings of the 12th Koli Calling International Conference
+  on Computing Education Research}, Koli Calling '12, pages 19--28, New York,
+  NY, USA, 2012. ACM.
+
+\bibitem{PersonalizingCS1}
+Jay Summet, Deepak Kumar, Keith O'Hara, Daniel Walker, Lijun Ni, Doug Blank,
+  and Tucker Balch.
+\newblock Personalizing cs1 with robots.
+\newblock In {\em Proceedings of the 40th ACM Technical Symposium on Computer
+  Science Education}, SIGCSE '09, pages 433--437, New York, NY, USA, 2009. ACM.
 
 \end{thebibliography}
