@@ -47,6 +47,14 @@ jinja_vars = {"blocklist":[]}
 root = ET2.Element("xml")
 root.set("id", "toolbox")
 root.set("style", "display: none")
+variableBlock = ET.SubElement(root, "category") 
+variableBlock.text = "" 
+variableBlock.set("name", "Variables")  
+variableBlock.set("custom", "VARIABLE")  
+functionBlock = ET.SubElement(root, "category") 
+functionBlock.text = "" 
+functionBlock.set("name", "Functions")
+functionBlock.set("custom", "PROCEDURE")
 
 # Prepare Clang
 # This step has only been tested on the iMac in the NVSL and Michael's
