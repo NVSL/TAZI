@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gadgetlayout version="1.1">
+   <name>Gadget Name</name>
+   <creator />
+   <board x="0" y="0" width="150" height="100" />
+   <option name="faceplate-color" value="clear-nocolor" />
+   <option name="backplate-color" value="clear-nocolor" />
+   <option name="faceplate-etch" value="etch-front" />
+   <option name="backplate-etch" value="etch-back" />
+   <option name="front-standoff-height" value="8" />
+   <option name="back-standoff-height" value="8" />
+   <option name="pcb-thickness" value="1.57" />
+   <option name="faceplate-thickness" value="3.175" />
+   <option name="backplate-thickness" value="3.175" />
+   <option name="cam-target" value="LPKF" />
+   <component progname="caster" type="ball-caster-0.75in">
+      <placedpart refdes="u1_0_caster" x="77" y="13" rotation="0" mirrored="False" />
+   </component>
+   <component progname="brain" type="Adafruit-Pro-Trinket-5V-battery-powered">
+      <placedpart refdes="U1_1_brain" x="125" y="39" rotation="0" mirrored="False" />
+   </component>
+   <component progname="battery" type="battery-9V-vertical">
+      <placedpart refdes="BATT1_2_battery" x="118" y="88" rotation="0" mirrored="False" />
+   </component>
+   <component progname="drive_2" type="dual-motor-kit-narrow-fast">
+      <placedpart refdes="L_3_drive_2" x="82" y="62" rotation="0" mirrored="False" />
+      <placedpart refdes="R_3_drive_2" x="61" y="93" rotation="235" mirrored="False" />
+      <placedpart refdes="DRVR_3_drive_2" x="113" y="17" rotation="0" mirrored="False" />
+      <api class="Motor" include="Motor.h" link-as="dual-motor-kit-narrow-fast" path="lib" progname="drive_2">
+         <arg analogliteral="None" arg="PWMA" digitalliteral="3" order="None" />
+         <arg analogliteral="None" arg="PWMB" digitalliteral="5" order="None" />
+         <arg analogliteral="None" arg="STBY" digitalliteral="4" order="None" />
+         <arg analogliteral="None" arg="AIN1" digitalliteral="6" order="None" />
+         <arg analogliteral="None" arg="AIN2" digitalliteral="8" order="None" />
+         <arg analogliteral="None" arg="BIN1" digitalliteral="9" order="None" />
+         <arg analogliteral="None" arg="BIN2" digitalliteral="10" order="None" />
+      </api>
+   </component>
+</gadgetlayout>

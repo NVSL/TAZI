@@ -1,9 +1,0 @@
-<library>
-	<component name="Buzzer" path="$GADGETRON_CATALOG/piezo-buzzer/lib/Buzzer.h"/>
-	<component name="LED" path="$GADGETRON_CATALOG/LED/lib/LED.h"/>
-	<component name="RGB LED" path="$GADGETRON_CATALOG/RGB_LED/lib/RGBLED.h"/>
-	<component name="LED Array" path="$GADGETRON_CATALOG/LED_Array/lib/LEDArray.h"/>
-	<component name="Button" path="$GADGETRON_CATALOG/tactile-button/lib/MomentaryButton.h"/>
-	<component name="Motor" path="$GADGETRON_CATALOG/DualMotorKit/lib/Motor.h"/>
-	<component name="Distance Sensor" path="$GADGETRON_CATALOG/analog_distance_sensor/lib/DistanceSensor.h"/>
-</library>
