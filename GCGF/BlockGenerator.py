@@ -1,3 +1,6 @@
+__author__ = "Michael Gonzalez"
+__email__ = "mmg005@eng.ucsd.edu"
+
 import xml.etree.ElementTree as ET
 from lxml import etree as ET2
 import argparse
@@ -25,12 +28,12 @@ def determineParamType( param ):
     else:
         print "FunctionParam Error: Could not determine parameter type in determineParamType in BlockGenerator.py"
 	raise
+
 # Setup argument parsing
 parser = argparse.ArgumentParser(description="BlockGenerator.py creates a Blockly IDE for Gadgetron. It parses our existing C++ clase libraries using Clang to generate block categories and blocks. It then uses Jinja to actually create the IDE")
 parser.add_argument("-l", "--library", required=True)
 parser.add_argument("-j", "--jinja", required=True)
 args = parser.parse_args()
-
 
 # Prep Jinja Template
 JINJA_ENVIRONMENT = jinja2.Environment(
@@ -44,7 +47,6 @@ jinja_vars = {"blocklist":[]}
 root = ET2.Element("xml")
 root.set("id", "toolbox")
 root.set("style", "display: none")
-
 
 # Prepare Clang
 # This step has only been tested on the iMac in the NVSL and Michael's
@@ -81,6 +83,7 @@ for component in library:
 	newBlock.set("colour", str(currColor))
 	# Iterate over all the functions in the current class
 	fp = 0
+
 	for func in aClass.functions:
 	    # Create a blockly json definition
 	    # The arrtibutes passed here should be the same accross all blockly json files
@@ -116,13 +119,11 @@ for component in library:
 	    # We need to set the text to something so the tag closes properly
 	    funcxml.text = " "
 	    jinja_vars["blocklist"].append([str(funcjson["id"]), str(json.dumps(funcjson))])
-            #print json.dumps(funcjson)
         #hasSetup = printClassFunctions( aClass)
         #if hasSetup is False:
         #    raise Exception( aClass.name + " has no setup() method!")
 
+# Put the toolbox into the jinja variables
 jinja_vars["toolbox"] = str(ET2.tostring( root ))
-#print type(ET2.tostring(root))
-#print jinja_vars
+# Print the output!
 print template.render(jinja_vars)
-#tree = ET2.ElementTree( root )

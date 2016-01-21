@@ -1,3 +1,6 @@
+__author__ = "Michael Gonzalez"
+__email__ = "mmg005@eng.ucsd.edu"
+
 import xml.etree.ElementTree as ETree
 class Arg:
     def __init__(self, value, name):
