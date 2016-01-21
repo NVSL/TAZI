@@ -91,6 +91,8 @@ for component in library:
 	fp = 0
 
 	for func in aClass.functions:
+	    if func.name == "setup":
+	        continue
 	    # Create a blockly json definition
 	    # The arrtibutes passed here should be the same accross all blockly json files
 	    funcjson = {
