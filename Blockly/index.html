@@ -2,6 +2,14 @@
 	<script src="blockly_compressed.js"></script>
 	<script src="blocks_compressed.js"></script>
 	<script src="msg/js/en.js"></script>
+	<!--script type="text/javascript">
+		var variables_set_json = {{json}};
+		Blockly.Blocks['{{functionName}}'] = {
+		init: function() {
+			this.jsonInit(variables_set_json);
+		}
+	};
+	</script-->
 </head>
 <body>
 	<div>
@@ -11,7 +19,7 @@
   <category name="Loops" colour="120">...</category>
   <category name="Math" colour="230">...</category>
   <Category name="Buzzer" colour="210">
-    <empty/>
+    <block type="poop"/>
   </Category>
   <Category name="LED" colour="210">
     <empty/>
