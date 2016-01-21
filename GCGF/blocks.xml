@@ -1,0 +1,383 @@
+<blocks app="Snap! 4.0, http://snap.berkeley.edu" version="1">
+  <block-definition s="playNote%'frequency'" type="command">
+    <header/>
+    <code/>
+    <inputs>
+      <input type="%n"/>
+    </inputs>
+  </block-definition>
+  <block-definition s="playNote%'frequency'%'noteLength'" type="command">
+    <header/>
+    <code/>
+    <inputs>
+      <input type="%n"/>
+      <input type="%n"/>
+    </inputs>
+  </block-definition>
+  <block-definition s="turnOff" type="command">
+    <header/>
+    <code/>
+    <inputs/>
+  </block-definition>
+  <block-definition s="update" type="command">
+    <header/>
+    <code/>
+    <inputs/>
+  </block-definition>
+  <block-definition s="blink%'on'%'off'" type="command">
+    <header/>
+    <code/>
+    <inputs>
+      <input type="%n"/>
+      <input type="%n"/>
+    </inputs>
+  </block-definition>
+  <block-definition s="blink" type="command">
+    <header/>
+    <code/>
+    <inputs/>
+  </block-definition>
+  <block-definition s="isBlinking" type="predicate">
+    <header/>
+    <code/>
+    <inputs/>
+  </block-definition>
+  <block-definition s="toggle" type="command">
+    <header/>
+    <code/>
+    <inputs/>
+  </block-definition>
+  <block-definition s="turnOn" type="command">
+    <header/>
+    <code/>
+    <inputs/>
+  </block-definition>
+  <block-definition s="turnOff" type="command">
+    <header/>
+    <code/>
+    <inputs/>
+  </block-definition>
+  <block-definition s="setup" type="command">
+    <header/>
+    <code/>
+    <inputs/>
+  </block-definition>
+  <block-definition s="loop" type="command">
+    <header/>
+    <code/>
+    <inputs/>
+  </block-definition>
+  <block-definition s="set%'red'%'green'%'blue'" type="command">
+    <header/>
+    <code/>
+    <inputs>
+      <input type="%n"/>
+      <input type="%n"/>
+      <input type="%n"/>
+    </inputs>
+  </block-definition>
+  <block-definition s="fade%'red'%'green'%'blue'%'step'%'period'" type="command">
+    <header/>
+    <code/>
+    <inputs>
+      <input type="%n"/>
+      <input type="%n"/>
+      <input type="%n"/>
+      <input type="%n"/>
+      <input type="%n"/>
+    </inputs>
+  </block-definition>
+  <block-definition s="setup" type="command">
+    <header/>
+    <code/>
+    <inputs/>
+  </block-definition>
+  <block-definition s="loop" type="command">
+    <header/>
+    <code/>
+    <inputs/>
+  </block-definition>
+  <block-definition s="setup" type="command">
+    <header/>
+    <code/>
+    <inputs/>
+  </block-definition>
+  <block-definition s="clear" type="command">
+    <header/>
+    <code/>
+    <inputs/>
+  </block-definition>
+  <block-definition s="happyFace" type="command">
+    <header/>
+    <code/>
+    <inputs/>
+  </block-definition>
+  <block-definition s="neutralFace" type="command">
+    <header/>
+    <code/>
+    <inputs/>
+  </block-definition>
+  <block-definition s="sadFace" type="command">
+    <header/>
+    <code/>
+    <inputs/>
+  </block-definition>
+  <block-definition s="turnClockwise" type="command">
+    <header/>
+    <code/>
+    <inputs/>
+  </block-definition>
+  <block-definition s="turnCounterClockwise" type="command">
+    <header/>
+    <code/>
+    <inputs/>
+  </block-definition>
+  <block-definition s="printText%'text'" type="command">
+    <header/>
+    <code/>
+    <inputs>
+      <input type="%txt"/>
+    </inputs>
+  </block-definition>
+  <block-definition s="drawPix%'x'%'y'" type="command">
+    <header/>
+    <code/>
+    <inputs>
+      <input type="%n"/>
+      <input type="%n"/>
+    </inputs>
+  </block-definition>
+  <block-definition s="drawLine%'x1'%'y1'%'x2'%'y2'" type="command">
+    <header/>
+    <code/>
+    <inputs>
+      <input type="%n"/>
+      <input type="%n"/>
+      <input type="%n"/>
+      <input type="%n"/>
+    </inputs>
+  </block-definition>
+  <block-definition s="drawRec%'x1'%'y1'%'x2'%'y2'" type="command">
+    <header/>
+    <code/>
+    <inputs>
+      <input type="%n"/>
+      <input type="%n"/>
+      <input type="%n"/>
+      <input type="%n"/>
+    </inputs>
+  </block-definition>
+  <block-definition s="fillRec%'x1'%'y1'%'x2'%'y2'" type="command">
+    <header/>
+    <code/>
+    <inputs>
+      <input type="%n"/>
+      <input type="%n"/>
+      <input type="%n"/>
+      <input type="%n"/>
+    </inputs>
+  </block-definition>
+  <block-definition s="drawCircle%'x'%'y'%'r'" type="command">
+    <header/>
+    <code/>
+    <inputs>
+      <input type="%n"/>
+      <input type="%n"/>
+      <input type="%n"/>
+    </inputs>
+  </block-definition>
+  <block-definition s="blink%'rate'" type="command">
+    <header/>
+    <code/>
+    <inputs>
+      <input type="%n"/>
+    </inputs>
+  </block-definition>
+  <block-definition s="setBrightness%'level'" type="command">
+    <header/>
+    <code/>
+    <inputs>
+      <input type="%n"/>
+    </inputs>
+  </block-definition>
+  <block-definition s="waitForPress" type="command">
+    <header/>
+    <code/>
+    <inputs/>
+  </block-definition>
+  <block-definition s="read" type="reporter">
+    <header/>
+    <code/>
+    <inputs/>
+  </block-definition>
+  <block-definition s="isPressed" type="reporter">
+    <header/>
+    <code/>
+    <inputs/>
+  </block-definition>
+  <block-definition s="isReleased" type="reporter">
+    <header/>
+    <code/>
+    <inputs/>
+  </block-definition>
+  <block-definition s="wasPressed" type="reporter">
+    <header/>
+    <code/>
+    <inputs/>
+  </block-definition>
+  <block-definition s="wasReleased" type="reporter">
+    <header/>
+    <code/>
+    <inputs/>
+  </block-definition>
+  <block-definition s="pressedFor" type="reporter">
+    <header/>
+    <code/>
+    <inputs/>
+  </block-definition>
+  <block-definition s="releasedFor" type="reporter">
+    <header/>
+    <code/>
+    <inputs/>
+  </block-definition>
+  <block-definition s="lastChange" type="reporter">
+    <header/>
+    <code/>
+    <inputs/>
+  </block-definition>
+  <block-definition s="setDB%'ms'" type="command">
+    <header/>
+    <code/>
+    <inputs>
+      <input type="%n"/>
+    </inputs>
+  </block-definition>
+  <block-definition s="setup" type="command">
+    <header/>
+    <code/>
+    <inputs/>
+  </block-definition>
+  <block-definition s="loop" type="command">
+    <header/>
+    <code/>
+    <inputs/>
+  </block-definition>
+  <block-definition s="forward" type="command">
+    <header/>
+    <code/>
+    <inputs/>
+  </block-definition>
+  <block-definition s="forward%'speed'" type="command">
+    <header/>
+    <code/>
+    <inputs>
+      <input type="%n"/>
+    </inputs>
+  </block-definition>
+  <block-definition s="backward" type="command">
+    <header/>
+    <code/>
+    <inputs/>
+  </block-definition>
+  <block-definition s="backward%'speed'" type="command">
+    <header/>
+    <code/>
+    <inputs>
+      <input type="%n"/>
+    </inputs>
+  </block-definition>
+  <block-definition s="spinLeft" type="command">
+    <header/>
+    <code/>
+    <inputs/>
+  </block-definition>
+  <block-definition s="spinLeft%'speed'" type="command">
+    <header/>
+    <code/>
+    <inputs>
+      <input type="%n"/>
+    </inputs>
+  </block-definition>
+  <block-definition s="spinRight" type="command">
+    <header/>
+    <code/>
+    <inputs/>
+  </block-definition>
+  <block-definition s="spinRight%'speed'" type="command">
+    <header/>
+    <code/>
+    <inputs>
+      <input type="%n"/>
+    </inputs>
+  </block-definition>
+  <block-definition s="forwardAndRight" type="command">
+    <header/>
+    <code/>
+    <inputs/>
+  </block-definition>
+  <block-definition s="forwardAndRight%'speed'" type="command">
+    <header/>
+    <code/>
+    <inputs>
+      <input type="%n"/>
+    </inputs>
+  </block-definition>
+  <block-definition s="forwardAndLeft" type="command">
+    <header/>
+    <code/>
+    <inputs/>
+  </block-definition>
+  <block-definition s="forwardAndLeft%'speed'" type="command">
+    <header/>
+    <code/>
+    <inputs>
+      <input type="%n"/>
+    </inputs>
+  </block-definition>
+  <block-definition s="setup" type="command">
+    <header/>
+    <code/>
+    <inputs/>
+  </block-definition>
+  <block-definition s="stop" type="command">
+    <header/>
+    <code/>
+    <inputs/>
+  </block-definition>
+  <block-definition s="brake" type="command">
+    <header/>
+    <code/>
+    <inputs/>
+  </block-definition>
+  <block-definition s="isMoving" type="predicate">
+    <header/>
+    <code/>
+    <inputs/>
+  </block-definition>
+  <block-definition s="swapDirections" type="command">
+    <header/>
+    <code/>
+    <inputs/>
+  </block-definition>
+  <block-definition s="changePolarity" type="command">
+    <header/>
+    <code/>
+    <inputs/>
+  </block-definition>
+  <block-definition s="disable" type="command">
+    <header/>
+    <code/>
+    <inputs/>
+  </block-definition>
+  <block-definition s="setup" type="command">
+    <header/>
+    <code/>
+    <inputs/>
+  </block-definition>
+  <block-definition s="get_distance" type="reporter">
+    <header/>
+    <code/>
+    <inputs/>
+  </block-definition>
+</blocks>
+
