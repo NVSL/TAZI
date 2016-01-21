@@ -5,7 +5,13 @@ import os
 import random
 import platform
 import json
+import jinja2
 from clangTest import *
+
+
+JINJA_ENVIRONMENT = jinja2.Environment(
+    loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
+
 def createBlockName( func ):
     name = func.name
     name[0].title()
@@ -41,19 +47,22 @@ def determineParamType( param ):
 # Arg parse stuff
 parser = argparse.ArgumentParser(description="Generates XML objects that represent each function in our arduino libraries")
 parser.add_argument("-l", "--library", required=True)
+parser.add_argument("-j", "--jinja", required=True)
 args = parser.parse_args()
 # Xml stuff
 libxml = ET.parse( args.library )
 library = libxml.getroot()
+# Prep Jinja Template
+template = JINJA_ENVIRONMENT.get_template(args.jinja)
 # Clang stuff
 clang.cindex.Config.set_library_path('/usr/lib/x86_64-linux-gnu')
 if(platform.platform().split('-')[0].lower() == "darwin"):
     clang.cindex.Config.set_library_path('/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib')
 index = clang.cindex.Index.create()
 # lxml generator stuff
-root = ET2.Element("blocks")
-root.set("app", "Snap! 4.0, http://snap.berkeley.edu") 
-root.set("version", "1") 
+root = ET2.Element("xml")
+root.set("id", "toolbox")
+root.set("style", "display: none")
 def printClassFunctions( aClass ):
     for aFunction in aClass.functions:
     #print aFunction
@@ -70,6 +79,7 @@ def printClassFunctions( aClass ):
 	    if( param[0] is "setup" ):
 	        hasSetup = True
 	return hasSetup
+jinja_vars = {"blocklist":[]}
 for component in library:
     path = component.attrib["path"]
     path = os.path.expandvars( path )
@@ -81,22 +91,23 @@ for component in library:
         # Pick a random color to represent this category
         currColor = random.randrange(0,360)
 	# Start the xml definition for this category
-        newBlock = ET.SubElement(root, "Category") 
-	ET.SubElement(newBlock, "empty")
+        newBlock = ET.SubElement(root, "category") 
 	# Set the name attribute
 	newBlock.set("name", aClass.name)
 	# Set the colour attribute
 	newBlock.set("colour", str(currColor))
-	
+	# Give each function a unique number
+	fp = 0
 	# Iterate over all the functions in the current class
 	for func in aClass.functions:
 	    # Create the standard json definition
 	    funcjson = {
-	            "id":aClass.name+"_"+func.name,
+	            "id":"_"+aClass.name+"_"+func.name + str(fp),
 	            "message0":aClass.name+" "+func.name + " %1",
                     "colour" : currColor,
 	            "tooltip" : "",
 	            "helpUrl": "gadgetron.build" }
+            fp += 1
             args = [{"type":"input_dummy"}]
 	    i = 2 # We want to keep an index to update our message0 attribute later
 	    # Iterate over all the arguments for the current function
@@ -118,10 +129,16 @@ for component in library:
 	    funcxml = ET.SubElement( newBlock, "block")
 	    # Set the type to the id
 	    funcxml.set("type", funcjson["id"] )
+	    # We need to set the text to something so the tag closes properly
+	    funcxml.text = " "
+	    jinja_vars["blocklist"].append([str(funcjson["id"]), str(json.dumps(funcjson))])
             #print json.dumps(funcjson)
         #hasSetup = printClassFunctions( aClass)
         #if hasSetup is False:
         #    raise Exception( aClass.name + " has no setup() method!")
 
-print ET2.tostring( root, pretty_print=True )
+jinja_vars["toolbox"] = str(ET2.tostring( root ))
+#print type(ET2.tostring(root))
+#print jinja_vars
+print template.render(jinja_vars)
 #tree = ET2.ElementTree( root )

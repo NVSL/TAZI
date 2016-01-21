@@ -1,0 +1,27 @@
+<head>
+	<script src="blockly_compressed.js"></script>
+	<script src="blocks_compressed.js"></script>
+	<script src="msg/js/en.js"></script>
+	<script type="text/javascript">
+	{% for block in blocklist %}
+		var {{block[0]}} = {{block[1]}};
+	{% endfor %}
+	{% for block in blocklist %}
+		Blockly.Blocks['{{block[0]}}'] = {
+		init: function() {
+			this.jsonInit({{block[0]}});
+		}
+	};
+	{% endfor %}
+	</script>
+</head>
+<body>
+	<div>
+		<div id="blocklyDiv" style="height: 480px; width: 600px;"></div>
+		{{toolbox}}
+	</div>
+	<script>
+  		var workspace = Blockly.inject('blocklyDiv',
+      		{toolbox: document.getElementById('toolbox')});
+	</script>
+</body>
