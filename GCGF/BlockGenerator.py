@@ -32,6 +32,7 @@ def determineParamType( param ):
 # Setup argument parsing
 parser = argparse.ArgumentParser(description="BlockGenerator.py creates a Blockly IDE for Gadgetron. It parses our existing C++ clase libraries using Clang to generate block categories and blocks. It then uses Jinja to actually create the IDE")
 parser.add_argument("-l", "--library", required=True)
+parser.add_argument("-d", "--default_blocks", required=True)
 parser.add_argument("-j", "--jinja", required=True)
 args = parser.parse_args()
 
@@ -47,14 +48,11 @@ jinja_vars = {"blocklist":[]}
 root = ET2.Element("xml")
 root.set("id", "toolbox")
 root.set("style", "display: none")
-variableBlock = ET.SubElement(root, "category") 
-variableBlock.text = "" 
-variableBlock.set("name", "Variables")  
-variableBlock.set("custom", "VARIABLE")  
-functionBlock = ET.SubElement(root, "category") 
-functionBlock.text = "" 
-functionBlock.set("name", "Functions")
-functionBlock.set("custom", "PROCEDURE")
+# Grab the default categories
+default_block_root = ET2.parse(args.default_blocks)
+# Append each block to our template
+for block in default_block_root.getroot():
+    root.append( block )
 
 # Prepare Clang
 # This step has only been tested on the iMac in the NVSL and Michael's

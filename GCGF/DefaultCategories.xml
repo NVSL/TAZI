@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml>
+   <category name="Variables" custom="VARIABLE" />
+   <category name="Functions" custom="PROCEDURE" />
+   <category name="Control">
+      <block type="controls_if" />
+      <block type="controls_whileUntil" />
+   </category>
+   <category name="Logic">
+      <block type="logic_compare" />
+      <block type="logic_operation" />
+      <block type="logic_boolean" />
+   </category>
+</xml>
