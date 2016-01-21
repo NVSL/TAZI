@@ -1,0 +1,44 @@
+<head>
+	<script src="blockly_compressed.js"></script>
+	<script src="blocks_compressed.js"></script>
+	<script src="msg/js/en.js"></script>
+</head>
+<body>
+	<div>
+		<div id="blocklyDiv" style="height: 480px; width: 600px;"></div>
+		<xml id="toolbox" style="display: none">
+  <category name="Logic" colour="210">...</category>
+  <category name="Loops" colour="120">...</category>
+  <category name="Math" colour="230">...</category>
+  <Category name="Buzzer" colour="210">
+    <empty/>
+  </Category>
+  <Category name="LED" colour="210">
+    <empty/>
+  </Category>
+  <Category name="RGBLED" colour="210">
+    <empty/>
+  </Category>
+  <Category name="LEDArray" colour="210">
+    <empty/>
+  </Category>
+  <Category name="MomentaryButton" colour="210">
+    <empty/>
+  </Category>
+  <Category name="Motor" colour="210">
+    <empty/>
+  </Category>
+  <Category name="DistanceSensor" colour="210">
+    <empty/>
+  </Category>
+
+  <category name="Variables" colour="330" custom="VARIABLE"></category>
+  <category name="Functions" colour="290" custom="PROCEDURE"></category>
+</xml>
+
+	</div>
+	<script>
+  var workspace = Blockly.inject('blocklyDiv',
+      {toolbox: document.getElementById('toolbox')});
+</script>
+</body>
