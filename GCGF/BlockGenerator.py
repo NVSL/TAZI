@@ -9,7 +9,7 @@ import random
 import platform
 import json
 import jinja2
-from clangTest import *
+from ClangBindings import *
 
 # Function Name: determineParamType()
 # Arguments: param - A string representation of a function's parameter
