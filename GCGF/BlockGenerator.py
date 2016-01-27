@@ -96,7 +96,7 @@ for component in library:
 	    # Create a blockly json definition
 	    # The arrtibutes passed here should be the same accross all blockly json files
 	    funcjson = {
-	            "id":"_"+aClass.name+"_"+func.name + str(fp),
+	            "id":"_"+aClass.name+"_"+func.name,
 	            "message0":aClass.name+" "+func.name + " %1",
                     "colour" : currColor,
 	            "tooltip" : "",

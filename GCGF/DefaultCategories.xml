@@ -2,6 +2,11 @@
 <xml>
    <category name="Variables" custom="VARIABLE"> </category>
    <category name="Functions" custom="PROCEDURE"> </category>
+
+  <!--category id="temp" colour="0" name="Temp">
+      <block type="main_loop"> </block>
+      <block type="variable_declarations"> </block>
+  </category-->
    <category id="catLogic" colour="210" name="Logic">
       <block type="controls_if"> </block>
       <block type="logic_compare"> </block>
