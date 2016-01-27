@@ -6,3 +6,5 @@ classbuilder:
 	python ClassGenerator.py -g test.api.gspec 
 clean:
 	rm *.pyc
+display:
+	google-chrome ../Blockly/index.html
