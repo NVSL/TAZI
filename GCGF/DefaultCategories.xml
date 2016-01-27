@@ -7,6 +7,10 @@
       <block type="main_loop"> </block>
       <block type="variable_declarations"> </block>
   </category-->
+  <category id="arduino" colour="210" name="Time Control">
+      <block type="delay"> </block>
+      <block type="millis"> </block>
+  </category>
    <category id="catLogic" colour="210" name="Logic">
       <block type="controls_if"> </block>
       <block type="logic_compare"> </block>
