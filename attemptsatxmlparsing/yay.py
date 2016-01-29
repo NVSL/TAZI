@@ -19,8 +19,7 @@ root = tree.getroot()
 def recurseMake(node, spaces, astNode, astList):
 	tag = node.tag.split("}")[1]
 	if tag == "block":
-                newNode = ASTNode(tag, 0)
-                astList.append(newNode)
+                whatToPrint = node.attrib["type"]
 	elif tag == "field":
 		whatToPrint = node.attrib["name"] + " " +  node.text
 	elif tag == "value":
@@ -42,7 +41,7 @@ def recurseMake(node, spaces, astNode, astList):
 
 # Recursively print the tree, with proper indentation
 def recursePrint(node, spaces):
-	tag = node.tag.split("}")[1]
+	#tag = node.tag.split("}")[1]
 	if tag == "block":
 		whatToPrint = node.attrib["type"]
 	elif tag == "field":

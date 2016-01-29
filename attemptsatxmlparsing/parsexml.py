@@ -1,7 +1,7 @@
 import xml.etree.ElementTree as ET
 #import sys
 
-treeR = raw_input("Which file would you like to read? ").lower()
+treeR = raw_input("Which file would you like to read? ")
 
 tree = ET.parse(treeR)
 
