@@ -19,9 +19,11 @@ root = tree.getroot()
 def recurseMake(node, spaces, astNode, astList):
 	tag = node.tag.split("}")[1]
 	if tag == "block":
-                whatToPrint = node.attrib["type"]
+                typeB = node.attrib["type"]
+                whatToPrint = #map.get(typeB)
 	elif tag == "field":
-		whatToPrint = node.attrib["name"] + " " +  node.text
+                typeOp = node.attrib["name"]
+		whatToPrint = #map.get(typeOp) " " +  node.text
 	elif tag == "value":
 		whatToPrint = node.attrib["name"]
 	elif tag == "shadow":
