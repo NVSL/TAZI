@@ -1,29 +1,18 @@
 import xml.etree.ElementTree as ET
 
-#define classes
-class AST():
-    def __init__(self, root):
-        self.root = root #root is ASTNode OR should we have a list instead?
-
-class ASTNode():
-    def __init__(self, name, depth, children):
-        self.name = name
-        self.depth = depth          #depth/how much to indent later
-        self.children = children    #list of children nodes to access
-
 tree = ET.parse("other.xml")
 root = tree.getroot()
 
 # Recursively go through tree, creating ast
 # pass in ast vs astNode?
-def recurseMake(node, spaces, astNode, astList):
+def recurseMake(node, spaces):
 	tag = node.tag.split("}")[1]
 	if tag == "block":
                 typeB = node.attrib["type"]
-                whatToPrint = #map.get(typeB)
+                whatToPrint = typeB             #map.get(typeB)
 	elif tag == "field":
                 typeOp = node.attrib["name"]
-		whatToPrint = #map.get(typeOp) " " +  node.text
+		whatToPrint = typeOp            #map.get(typeOp) " " +  node.text
 	elif tag == "value":
 		whatToPrint = node.attrib["name"]
 	elif tag == "shadow":
@@ -43,7 +32,7 @@ def recurseMake(node, spaces, astNode, astList):
 
 # Recursively print the tree, with proper indentation
 def recursePrint(node, spaces):
-	#tag = node.tag.split("}")[1]
+	tag = node.tag.split("}")[1]
 	if tag == "block":
 		whatToPrint = node.attrib["type"]
 	elif tag == "field":
