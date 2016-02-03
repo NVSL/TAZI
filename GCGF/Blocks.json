@@ -1,0 +1,104 @@
+{
+    "Buzzer": {
+        "colour": 273, 
+        "nextStatement": null, 
+        "tooltip": "", 
+        "message0": "Buzzer turnOff %1", 
+        "previousStatement": null, 
+        "args0": [
+            {
+                "type": "input_dummy"
+            }
+        ], 
+        "helpUrl": "gadgetron.build", 
+        "id": "turnOff"
+    }, 
+    "LED": {
+        "colour": 150, 
+        "nextStatement": null, 
+        "tooltip": "", 
+        "message0": "LED loop %1", 
+        "previousStatement": null, 
+        "args0": [
+            {
+                "type": "input_dummy"
+            }
+        ], 
+        "helpUrl": "gadgetron.build", 
+        "id": "loop"
+    }, 
+    "DistanceSensor": {
+        "colour": 322, 
+        "tooltip": "", 
+        "message0": "DistanceSensor get_distance %1", 
+        "args0": [
+            {
+                "type": "input_dummy"
+            }
+        ], 
+        "output": null, 
+        "helpUrl": "gadgetron.build", 
+        "id": "get_distance"
+    }, 
+    "RGBLED": {
+        "colour": 49, 
+        "nextStatement": null, 
+        "tooltip": "", 
+        "message0": "RGBLED loop %1", 
+        "previousStatement": null, 
+        "args0": [
+            {
+                "type": "input_dummy"
+            }
+        ], 
+        "helpUrl": "gadgetron.build", 
+        "id": "loop"
+    }, 
+    "MomentaryButton": {
+        "colour": 258, 
+        "nextStatement": null, 
+        "tooltip": "", 
+        "message0": "MomentaryButton loop %1", 
+        "previousStatement": null, 
+        "args0": [
+            {
+                "type": "input_dummy"
+            }
+        ], 
+        "helpUrl": "gadgetron.build", 
+        "id": "loop"
+    }, 
+    "Motor": {
+        "colour": 337, 
+        "nextStatement": null, 
+        "tooltip": "", 
+        "message0": "Motor disable %1", 
+        "previousStatement": null, 
+        "args0": [
+            {
+                "type": "input_dummy"
+            }
+        ], 
+        "helpUrl": "gadgetron.build", 
+        "id": "disable"
+    }, 
+    "LEDArray": {
+        "colour": 62, 
+        "nextStatement": null, 
+        "tooltip": "", 
+        "message0": "LEDArray setBrightness %1 with level %2", 
+        "previousStatement": null, 
+        "args0": [
+            {
+                "type": "input_dummy"
+            }, 
+            {
+                "type": "input_value", 
+                "name": "level", 
+                "check": "Number"
+            }
+        ], 
+        "helpUrl": "gadgetron.build", 
+        "id": "setBrightness"
+    }
+}
