@@ -1,0 +1,33 @@
+<gadgetlayout version="1.1">
+ <name>undefined</name>
+    <creator>undefined</creator>
+    <board x="-75" y="-50" width="150" height="100"></board>
+        <option name="faceplate-color" value="clear-nocolor"></option>
+	    <option name="backplate-color" value="clear-nocolor"></option>
+	        <option name="faceplate-etch" value="etch-front"></option>
+		    <option name="backplate-etch" value="etch-back"></option>
+		        <option name="front-standoff-height" value="8"></option>
+			    <option name="back-standoff-height" value="8"></option>
+			        <option name="pcb-thickness" value="1.57"></option>
+				    <option name="faceplate-thickness" value="3.175"></option>
+				        <option name="backplate-thickness" value="3.175"></option>
+					    <option name="cam-target" value="LPKF"></option>
+					        
+	    <component progname="brain" type="Adafruit-Pro-Trinket-3.3V">
+	    <placedpart refdes="U1" x="-1.842167854309082" y="-13.660430908203125" rotation="0" mirrored="False"></placedpart>
+	    </component>
+							    
+	    <component progname="drive" type="dual-motor-kit-knobby">
+	    <placedpart refdes="L" x="80.9295768737793" y="-17.52212142944336" rotation="0" mirrored="False"></placedpart>
+	    <placedpart refdes="R" x="-77.93306732177734" y="-18.15927505493164" rotation="0" mirrored="False"></placedpart>
+	    <placedpart refdes="DRVR" x="1.0802106857299805" y="-33.85851001739502" rotation="0" mirrored="False"></placedpart>
+	    </component>
+													        
+	    <component progname="led" type="LED-10mm-green">
+	    <placedpart refdes="LED1" x="42" y="32" rotation="0" mirrored="False"></placedpart>
+	    </component>
+																    
+	    <component progname="led_2" type="LED-10mm-green">
+	   <placedpart refdes="LED1" x="-49" y="27" rotation="0" mirrored="False"></placedpart>
+           </component>
+ </gadgetlayout>

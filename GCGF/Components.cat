@@ -1,0 +1,3556 @@
+<?xml version="1.0"?>
+<catalog>
+  <component keyname="Adafruit-7seg-backpack-red">
+    <name>Adafruit 0.56in 4-Digit 7-Segment Display w/I2C Backpack</name>
+    <QA tested="false"/>
+    <bobspec device-name="ADAFRUIT-7SEG-BACKPACK">
+      <connector name="CN1"/>
+      <downloadURL protocol="svn">https://github.com/adafruit/Adafruit-LED-Backpacks</downloadURL>
+      <brdfile upside-down="TRUE">ext/Adafruit-LED-Backpacks/trunk/Adafruit 7seg backpack.brd</brdfile>
+      <schfile>ext/Adafruit-LED-Backpacks/trunk/Adafruit 7seg backpack.sch</schfile>
+    </bobspec>
+    <instancename>display</instancename>
+    <API>
+      <arduino>
+        <downloadURL protocol="svn" rename="Adafruit_LEDBackpack">https://github.com/adafruit/Adafruit-LED-Backpack-Library</downloadURL>
+        <libdirectory link-as="Adafruit_LEDBackpack" path="ext/Adafruit_LEDBackpack/trunk"/>
+        <include file="Adafruit_LEDBackpack.h"/>
+        <include file="Adafruit_GFX.h"/>
+        <required file="Wire.h"/>
+        <class name="Adafruit_7segment">
+      </class>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface type="I2CInterface" name="I2C_bus" role="slave" sda="SDA" scl="SCL"/>
+        <interface type="PowerInterface" name="VDD" net="VDD" input="True" voltage="5" current="300"/>
+        <interface type="GroundInterface" name="GND" net="GND" input="True"/>
+      </interfaces>
+    </electrical>
+    <eagledevice library="BOBs" device-name="ADAFRUIT-7SEG-BACKPACK" variant="-BOB"/>
+    <part price="9.95" updated="2014-08-21" part-number="878" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/878</documentationURL>
+    <longname>Adafruit 0.56in 4-Digit 7-Segment Display w/I2C Backpack - Red</longname>
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/Adafruit-7seg-backpack/Models/red-Adafruit-7seg-backpack.2D.svg" refdes="u1"/>
+    </placedparts>
+    <homedirectory>../Adafruit-7seg-backpack</homedirectory>
+    <schematic filename="eagle/Adafruit-7seg-backpack-red.device.auto.sch"/>
+  </component>
+  <component keyname="Adafruit-7seg-backpack-yellow">
+    <name>Adafruit 0.56in 4-Digit 7-Segment Display w/I2C Backpack</name>
+    <QA tested="false"/>
+    <bobspec device-name="ADAFRUIT-7SEG-BACKPACK">
+      <connector name="CN1"/>
+      <downloadURL protocol="svn">https://github.com/adafruit/Adafruit-LED-Backpacks</downloadURL>
+      <brdfile upside-down="TRUE">ext/Adafruit-LED-Backpacks/trunk/Adafruit 7seg backpack.brd</brdfile>
+      <schfile>ext/Adafruit-LED-Backpacks/trunk/Adafruit 7seg backpack.sch</schfile>
+    </bobspec>
+    <instancename>display</instancename>
+    <API>
+      <arduino>
+        <downloadURL protocol="svn" rename="Adafruit_LEDBackpack">https://github.com/adafruit/Adafruit-LED-Backpack-Library</downloadURL>
+        <libdirectory link-as="Adafruit_LEDBackpack" path="ext/Adafruit_LEDBackpack/trunk"/>
+        <include file="Adafruit_LEDBackpack.h"/>
+        <include file="Adafruit_GFX.h"/>
+        <required file="Wire.h"/>
+        <class name="Adafruit_7segment">
+      </class>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface type="I2CInterface" name="I2C_bus" role="slave" sda="SDA" scl="SCL"/>
+        <interface type="PowerInterface" name="VDD" net="VDD" input="True" voltage="5" current="300"/>
+        <interface type="GroundInterface" name="GND" net="GND" input="True"/>
+      </interfaces>
+    </electrical>
+    <eagledevice library="BOBs" device-name="ADAFRUIT-7SEG-BACKPACK" variant="-BOB"/>
+    <part price="9.95" updated="2014-08-21" part-number="879" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/879</documentationURL>
+    <longname>Adafruit 0.56in 4-Digit 7-Segment Display w/I2C Backpack - Yellow</longname>
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/Adafruit-7seg-backpack/Models/yellow-Adafruit-7seg-backpack.2D.svg" refdes="u1"/>
+    </placedparts>
+    <homedirectory>../Adafruit-7seg-backpack</homedirectory>
+    <schematic filename="eagle/Adafruit-7seg-backpack-yellow.device.auto.sch"/>
+  </component>
+  <component keyname="Adafruit-7seg-backpack-green">
+    <name>Adafruit 0.56in 4-Digit 7-Segment Display w/I2C Backpack</name>
+    <QA tested="false"/>
+    <bobspec device-name="ADAFRUIT-7SEG-BACKPACK">
+      <connector name="CN1"/>
+      <downloadURL protocol="svn">https://github.com/adafruit/Adafruit-LED-Backpacks</downloadURL>
+      <brdfile upside-down="TRUE">ext/Adafruit-LED-Backpacks/trunk/Adafruit 7seg backpack.brd</brdfile>
+      <schfile>ext/Adafruit-LED-Backpacks/trunk/Adafruit 7seg backpack.sch</schfile>
+    </bobspec>
+    <instancename>display</instancename>
+    <API>
+      <arduino>
+        <downloadURL protocol="svn" rename="Adafruit_LEDBackpack">https://github.com/adafruit/Adafruit-LED-Backpack-Library</downloadURL>
+        <libdirectory link-as="Adafruit_LEDBackpack" path="ext/Adafruit_LEDBackpack/trunk"/>
+        <include file="Adafruit_LEDBackpack.h"/>
+        <include file="Adafruit_GFX.h"/>
+        <required file="Wire.h"/>
+        <class name="Adafruit_7segment">
+      </class>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface type="I2CInterface" name="I2C_bus" role="slave" sda="SDA" scl="SCL"/>
+        <interface type="PowerInterface" name="VDD" net="VDD" input="True" voltage="5" current="300"/>
+        <interface type="GroundInterface" name="GND" net="GND" input="True"/>
+      </interfaces>
+    </electrical>
+    <eagledevice library="BOBs" device-name="ADAFRUIT-7SEG-BACKPACK" variant="-BOB"/>
+    <part price="9.95" updated="2014-08-21" part-number="880" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/880</documentationURL>
+    <longname>Adafruit 0.56in 4-Digit 7-Segment Display w/I2C Backpack - Green</longname>
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/Adafruit-7seg-backpack/Models/green-Adafruit-7seg-backpack.2D.svg" refdes="u1"/>
+    </placedparts>
+    <homedirectory>../Adafruit-7seg-backpack</homedirectory>
+    <schematic filename="eagle/Adafruit-7seg-backpack-green.device.auto.sch"/>
+  </component>
+  <component keyname="Adafruit-7seg-backpack-blue">
+    <name>Adafruit 0.56in 4-Digit 7-Segment Display w/I2C Backpack</name>
+    <QA tested="false"/>
+    <bobspec device-name="ADAFRUIT-7SEG-BACKPACK">
+      <connector name="CN1"/>
+      <downloadURL protocol="svn">https://github.com/adafruit/Adafruit-LED-Backpacks</downloadURL>
+      <brdfile upside-down="TRUE">ext/Adafruit-LED-Backpacks/trunk/Adafruit 7seg backpack.brd</brdfile>
+      <schfile>ext/Adafruit-LED-Backpacks/trunk/Adafruit 7seg backpack.sch</schfile>
+    </bobspec>
+    <instancename>display</instancename>
+    <API>
+      <arduino>
+        <downloadURL protocol="svn" rename="Adafruit_LEDBackpack">https://github.com/adafruit/Adafruit-LED-Backpack-Library</downloadURL>
+        <libdirectory link-as="Adafruit_LEDBackpack" path="ext/Adafruit_LEDBackpack/trunk"/>
+        <include file="Adafruit_LEDBackpack.h"/>
+        <include file="Adafruit_GFX.h"/>
+        <required file="Wire.h"/>
+        <class name="Adafruit_7segment">
+      </class>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface type="I2CInterface" name="I2C_bus" role="slave" sda="SDA" scl="SCL"/>
+        <interface type="PowerInterface" name="VDD" net="VDD" input="True" voltage="5" current="300"/>
+        <interface type="GroundInterface" name="GND" net="GND" input="True"/>
+      </interfaces>
+    </electrical>
+    <eagledevice library="BOBs" device-name="ADAFRUIT-7SEG-BACKPACK" variant="-BOB"/>
+    <part price="11.95" updated="2014-08-21" part-number="881" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/881</documentationURL>
+    <longname>Adafruit 0.56in 4-Digit 7-Segment Display w/I2C Backpack - Blue</longname>
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/Adafruit-7seg-backpack/Models/blue-Adafruit-7seg-backpack.2D.svg" refdes="u1"/>
+    </placedparts>
+    <homedirectory>../Adafruit-7seg-backpack</homedirectory>
+    <schematic filename="eagle/Adafruit-7seg-backpack-blue.device.auto.sch"/>
+  </component>
+  <component keyname="Adafruit-7seg-backpack-white">
+    <name>Adafruit 0.56in 4-Digit 7-Segment Display w/I2C Backpack</name>
+    <QA tested="false"/>
+    <bobspec device-name="ADAFRUIT-7SEG-BACKPACK">
+      <connector name="CN1"/>
+      <downloadURL protocol="svn">https://github.com/adafruit/Adafruit-LED-Backpacks</downloadURL>
+      <brdfile upside-down="TRUE">ext/Adafruit-LED-Backpacks/trunk/Adafruit 7seg backpack.brd</brdfile>
+      <schfile>ext/Adafruit-LED-Backpacks/trunk/Adafruit 7seg backpack.sch</schfile>
+    </bobspec>
+    <instancename>display</instancename>
+    <API>
+      <arduino>
+        <downloadURL protocol="svn" rename="Adafruit_LEDBackpack">https://github.com/adafruit/Adafruit-LED-Backpack-Library</downloadURL>
+        <libdirectory link-as="Adafruit_LEDBackpack" path="ext/Adafruit_LEDBackpack/trunk"/>
+        <include file="Adafruit_LEDBackpack.h"/>
+        <include file="Adafruit_GFX.h"/>
+        <required file="Wire.h"/>
+        <class name="Adafruit_7segment">
+      </class>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface type="I2CInterface" name="I2C_bus" role="slave" sda="SDA" scl="SCL"/>
+        <interface type="PowerInterface" name="VDD" net="VDD" input="True" voltage="5" current="300"/>
+        <interface type="GroundInterface" name="GND" net="GND" input="True"/>
+      </interfaces>
+    </electrical>
+    <eagledevice library="BOBs" device-name="ADAFRUIT-7SEG-BACKPACK" variant="-BOB"/>
+    <part price="10.95" updated="2014-08-21" part-number="1002" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/1002</documentationURL>
+    <longname>Adafruit 0.56in 4-Digit 7-Segment Display w/I2C Backpack - White</longname>
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/Adafruit-7seg-backpack/Models/white-Adafruit-7seg-backpack.2D.svg" refdes="u1"/>
+    </placedparts>
+    <homedirectory>../Adafruit-7seg-backpack</homedirectory>
+    <schematic filename="eagle/Adafruit-7seg-backpack-white.device.auto.sch"/>
+  </component>
+  <component keyname="Adafruit-Bluefruit-LE-nRF8001">
+    <name>Bluefruit LE - Bluetooth Low Energy (BLE 4.0) - nRF8001 Breakout</name>
+    <QA tested="false"/>
+    <bobspec device-name="ADAFRUIT_BLUEFRUIT-LE-NRF8001">
+      <connector name="JP1"/>
+      <downloadURL protocol="svn">https://github.com/adafruit/Adafruit-Bluefruit-LE-nRF8001-PCB</downloadURL>
+      <brdfile>ext/Adafruit Bluefruit LE nRF8001.brd</brdfile>
+      <schfile>ext/Adafruit Bluefruit LE nRF8001.sch</schfile>
+    </bobspec>
+    <instancename>bluetooth</instancename>
+    <electrical>
+      <interfaces>
+        <interface type="PowerInterface" name="VIN" net="VIN" input="True" voltage="5" current="20"/>
+        <interface type="GroundInterface" name="GND" net="GND" input="True"/>
+        <interface type="SPIInterface" name="SPI_bus" role="slave" miso="MISO" mosi="MOSI_5V" sck="SCK_5V"/>
+        <interface type="DigitalWireInterface" name="REQ" net="REQN_5V" input="True"/>
+        <interface type="DigitalWireInterface" name="RST" net="RESET_5V" input="True"/>
+        <interface type="DigitalWireInterface" name="RDY" net="RDYN" input="True"/>
+      </interfaces>
+    </electrical>
+    <longname>Bluefruit LE - Bluetooth Low Energy (BLE 4.0) - nRF8001 Breakout</longname>
+    <part part-number="1697" price="19.95" updated="2014-09-26" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/1697</documentationURL>
+    <eagledevice library="BOBs" device-name="ADAFRUIT_BLUEFRUIT-LE-NRF8001" variant="-BOB"/>
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/Adafruit-Bluefruit-LE-nRF8001/Models/Adafruit-Bluefruit-LE-nRF8001.2D.svg" refdes="U1"/>
+    </placedparts>
+    <homedirectory>../Adafruit-Bluefruit-LE-nRF8001</homedirectory>
+    <schematic filename="eagle/Adafruit-Bluefruit-LE-nRF8001.device.auto.sch"/>
+  </component>
+  <component keyname="Adafruit-FONA">
+    <name>Adafruit FONA - Mini Cellular GSM Breakout uFL Version</name>
+    <QA tested="false"/>
+    <instancename>cellular</instancename>
+    <API>
+      <arduino>
+        <downloadURL protocol="svn" rename="Adafruit-FONA-Library">https://github.com/adafruit/Adafruit_FONA_Library</downloadURL>
+        <libdirectory link-as="Adafruit_FONA" path="ext"/>
+        <include file="Adafruit_FONA.h"/>
+        <include file="SoftwareSerialFactory.cpp"/>
+        <required file="SoftwareSerial.h"/>
+        <class name="Adafruit_FONA">
+          <!--<prerun>SoftwareSerial Foo(...);</prerun>-->
+          <arg type="pointer" factory="make_software_serial" class="SoftwareSerial">
+            <arg type="SerialInterface" net="RX"/>
+            <arg type="SerialInterface" net="TX"/>
+          </arg>
+          <arg type="DigitalWireInterface" net="RESET"/>
+          <!--<construct>Fona %(name)s(Foo, %(RESET)s)</construct>
+	<postrun>someinit();</postrun>
+	<setup>%(name)s.init();</setup>-->
+        </class>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface type="PowerInterface" name="VIO" net="VIO" input="True" voltage="5" current="0"/>
+        <interface type="PowerInterface" name="5V" net="5V" input="True" voltage="5" current="200"/>
+        <interface type="GroundInterface" name="GND" net="GND" output="True"/>
+        <interface type="DigitalWireInterface" name="KEY" net="KEY" input="True"/>
+        <interface type="DigitalWireInterface" name="PS" net="PS" output="True"/>
+        <interface type="DigitalWireInterface" name="NS" net="NS" output="True"/>
+        <interface type="DigitalWireInterface" name="RESET" net="RESET" input="True"/>
+        <interface type="SerialInterface" name="Serial" tx="TX" rx="RX"/>
+        <interface type="DigitalWireInterface" name="RI" net="RI" output="True"/>
+      </interfaces>
+    </electrical>
+    <part part-number="1946" price="39.95" updated="2014-09-21" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/1946</documentationURL>
+    <longname>Adafruit FONA - Mini Cellular GSM Breakout uFL Version</longname>
+    <eagledevice library="BOBs" device-name="GSM-FONA-ADAFRUIT1946" variant="-BOB"/>
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/Adafruit-Fona/Models/Adafruit-Fona.2D.svg" refdes="u1"/>
+    </placedparts>
+    <homedirectory>../Adafruit-Fona</homedirectory>
+    <schematic filename="eagle/Adafruit-FONA.device.auto.sch"/>
+  </component>
+  <component keyname="Adafruit-FONA-upsidedown">
+    <name>Adafruit FONA - Mini Cellular GSM Breakout uFL Version</name>
+    <QA tested="false"/>
+    <instancename>cellular</instancename>
+    <API>
+      <arduino>
+        <downloadURL protocol="svn" rename="Adafruit-FONA-Library">https://github.com/adafruit/Adafruit_FONA_Library</downloadURL>
+        <libdirectory link-as="Adafruit_FONA" path="ext"/>
+        <include file="Adafruit_FONA.h"/>
+        <include file="SoftwareSerialFactory.cpp"/>
+        <required file="SoftwareSerial.h"/>
+        <class name="Adafruit_FONA">
+          <!--<prerun>SoftwareSerial Foo(...);</prerun>-->
+          <arg type="pointer" factory="make_software_serial" class="SoftwareSerial">
+            <arg type="SerialInterface" net="RX"/>
+            <arg type="SerialInterface" net="TX"/>
+          </arg>
+          <arg type="DigitalWireInterface" net="RESET"/>
+          <!--<construct>Fona %(name)s(Foo, %(RESET)s)</construct>
+	<postrun>someinit();</postrun>
+	<setup>%(name)s.init();</setup>-->
+        </class>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface type="PowerInterface" name="VIO" net="VIO" input="True" voltage="5" current="0"/>
+        <interface type="PowerInterface" name="5V" net="5V" input="True" voltage="5" current="200"/>
+        <interface type="GroundInterface" name="GND" net="GND" output="True"/>
+        <interface type="DigitalWireInterface" name="KEY" net="KEY" input="True"/>
+        <interface type="DigitalWireInterface" name="PS" net="PS" output="True"/>
+        <interface type="DigitalWireInterface" name="NS" net="NS" output="True"/>
+        <interface type="DigitalWireInterface" name="RESET" net="RESET" input="True"/>
+        <interface type="SerialInterface" name="Serial" tx="TX" rx="RX"/>
+        <interface type="DigitalWireInterface" name="RI" net="RI" output="True"/>
+      </interfaces>
+    </electrical>
+    <part part-number="1946" price="39.95" updated="2014-09-21" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/1946</documentationURL>
+    <longname>Adafruit FONA - Mini Cellular GSM Breakout uFL Version (Installed Upside Down)</longname>
+    <eagledevice library="BOBs" device-name="GSM-FONA-ADAFRUIT1946" variant="-UPSIDEDOWN-BOB"/>
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/Adafruit-Fona/Models/Adafruit-Fona-upsidedown.2D.svg" refdes="u1"/>
+    </placedparts>
+    <homedirectory>../Adafruit-Fona</homedirectory>
+    <schematic filename="eagle/Adafruit-FONA-upsidedown.device.auto.sch"/>
+  </component>
+  <component keyname="Adafruit-FONA">
+    <name>Adafruit FONA - Mini Cellular GSM Breakout uFL Version</name>
+    <QA tested="false"/>
+    <instancename>cellular</instancename>
+    <API>
+      <arduino>
+        <downloadURL protocol="svn" rename="Adafruit-FONA-Library">https://github.com/adafruit/Adafruit_FONA_Library</downloadURL>
+        <libdirectory link-as="Adafruit_FONA" path="ext"/>
+        <include file="Adafruit_FONA.h"/>
+        <include file="SoftwareSerialFactory.cpp"/>
+        <required file="SoftwareSerial.h"/>
+        <class name="Adafruit_FONA">
+          <!--<prerun>SoftwareSerial Foo(...);</prerun>-->
+          <arg type="pointer" factory="make_software_serial" class="SoftwareSerial">
+            <arg type="SerialInterface" net="RX"/>
+            <arg type="SerialInterface" net="TX"/>
+          </arg>
+          <arg type="DigitalWireInterface" net="RESET"/>
+          <!--<construct>Fona %(name)s(Foo, %(RESET)s)</construct>
+	<postrun>someinit();</postrun>
+	<setup>%(name)s.init();</setup>-->
+        </class>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface type="PowerInterface" name="VIO" net="VIO" input="True" voltage="5" current="0"/>
+        <interface type="PowerInterface" name="5V" net="5V" input="True" voltage="5" current="200"/>
+        <interface type="GroundInterface" name="GND" net="GND" output="True"/>
+        <interface type="DigitalWireInterface" name="KEY" net="KEY" input="True"/>
+        <interface type="DigitalWireInterface" name="PS" net="PS" output="True"/>
+        <interface type="DigitalWireInterface" name="NS" net="NS" output="True"/>
+        <interface type="DigitalWireInterface" name="RESET" net="RESET" input="True"/>
+        <interface type="SerialInterface" name="Serial" tx="TX" rx="RX"/>
+        <interface type="DigitalWireInterface" name="RI" net="RI" output="True"/>
+      </interfaces>
+    </electrical>
+    <part part-number="1946" price="39.95" updated="2014-09-21" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/1946</documentationURL>
+    <longname>Adafruit FONA - Mini Cellular GSM Breakout uFL Version</longname>
+    <eagledevice library="BOBs" device-name="GSM-FONA-ADAFRUIT1946" variant="-BOB"/>
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/Adafruit-Fona/Models/Adafruit-Fona.2D.svg" refdes="u1"/>
+    </placedparts>
+    <homedirectory>../Adafruit-Fona</homedirectory>
+    <schematic filename="eagle/Adafruit-FONA.device.auto.sch"/>
+  </component>
+  <component keyname="Adafruit-FONA-upsidedown">
+    <name>Adafruit FONA - Mini Cellular GSM Breakout uFL Version</name>
+    <QA tested="false"/>
+    <instancename>cellular</instancename>
+    <API>
+      <arduino>
+        <downloadURL protocol="svn" rename="Adafruit-FONA-Library">https://github.com/adafruit/Adafruit_FONA_Library</downloadURL>
+        <libdirectory link-as="Adafruit_FONA" path="ext"/>
+        <include file="Adafruit_FONA.h"/>
+        <include file="SoftwareSerialFactory.cpp"/>
+        <required file="SoftwareSerial.h"/>
+        <class name="Adafruit_FONA">
+          <!--<prerun>SoftwareSerial Foo(...);</prerun>-->
+          <arg type="pointer" factory="make_software_serial" class="SoftwareSerial">
+            <arg type="SerialInterface" net="RX"/>
+            <arg type="SerialInterface" net="TX"/>
+          </arg>
+          <arg type="DigitalWireInterface" net="RESET"/>
+          <!--<construct>Fona %(name)s(Foo, %(RESET)s)</construct>
+	<postrun>someinit();</postrun>
+	<setup>%(name)s.init();</setup>-->
+        </class>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface type="PowerInterface" name="VIO" net="VIO" input="True" voltage="5" current="0"/>
+        <interface type="PowerInterface" name="5V" net="5V" input="True" voltage="5" current="200"/>
+        <interface type="GroundInterface" name="GND" net="GND" output="True"/>
+        <interface type="DigitalWireInterface" name="KEY" net="KEY" input="True"/>
+        <interface type="DigitalWireInterface" name="PS" net="PS" output="True"/>
+        <interface type="DigitalWireInterface" name="NS" net="NS" output="True"/>
+        <interface type="DigitalWireInterface" name="RESET" net="RESET" input="True"/>
+        <interface type="SerialInterface" name="Serial" tx="TX" rx="RX"/>
+        <interface type="DigitalWireInterface" name="RI" net="RI" output="True"/>
+      </interfaces>
+    </electrical>
+    <part part-number="1946" price="39.95" updated="2014-09-21" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/1946</documentationURL>
+    <longname>Adafruit FONA - Mini Cellular GSM Breakout uFL Version (Installed Upside Down)</longname>
+    <eagledevice library="BOBs" device-name="GSM-FONA-ADAFRUIT1946" variant="-UPSIDEDOWN-BOB"/>
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/Adafruit-Fona/Models/Adafruit-Fona-upsidedown.2D.svg" refdes="u1"/>
+    </placedparts>
+    <homedirectory>../Adafruit-Fona</homedirectory>
+    <schematic filename="eagle/Adafruit-FONA-upsidedown.device.auto.sch"/>
+  </component>
+  <component keyname="Adafruit-8x8-1.2in-led-array-red">
+    <name>Adafruit Small 1.2" 8x8 LED Matrix w/I2C Backpack</name>
+    <QA tested="false"/>
+    <bobspec device-name="ADAFRUIT-1.2in-8x8-LED-BACKPACK">
+      <connector name="CN1"/>
+      <downloadURL protocol="svn">https://github.com/adafruit/Adafruit-LED-Backpacks</downloadURL>
+      <brdfile upside-down="TRUE">ext/Adafruit-LED-Backpacks/trunk/Adafruit 1.2inch 8x8 backpack.brd</brdfile>
+      <schfile>ext/Adafruit-LED-Backpacks/trunk/Adafruit 1.2inch 8x8 backpack.sch</schfile>
+    </bobspec>
+    <instancename>display</instancename>
+    <API>
+      <arduino>
+        <downloadURL protocol="svn" rename="Adafruit_LEDBackpack">https://github.com/adafruit/Adafruit-LED-Backpack-Library</downloadURL>
+        <libdirectory link-as="Adafruit_LEDBackpack" path="ext/Adafruit_LEDBackpack/trunk"/>
+        <include file="Adafruit_LEDBackpack.h"/>
+        <include file="Adafruit_GFX.h"/>
+        <required file="Wire.h"/>
+        <class name="Adafruit_8x8LED">
+      </class>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface type="I2CInterface" name="I2C_bus" role="slave" sda="SDA" scl="SCL"/>
+        <interface type="PowerInterface" name="VDD" net="VDD" input="True" voltage="5" current="300"/>
+        <interface type="GroundInterface" name="GND" net="GND" input="True"/>
+      </interfaces>
+    </electrical>
+    <eagledevice library="BOBs" device-name="ADAFRUIT-1.2IN-8X8-LED-BACKPACK" variant="-BOB"/>
+    <part price="9.95" updated="2015-09-11" part-number="1049" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/1049</documentationURL>
+    <longname>Adafruit 1.2in 8x8 LED Array w/I2C Backpack - red</longname>
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/Adafruit-8x8LEDArray/Models/8x8_LED_Matrix__red.svg" refdes="u1"/>
+    </placedparts>
+    <homedirectory>../Adafruit-8x8LEDArray</homedirectory>
+    <schematic filename="eagle/Adafruit-8x8-1.2in-led-array-red.device.auto.sch"/>
+  </component>
+  <component keyname="Adafruit-8x8-1.2in-led-array-white">
+    <name>Adafruit Small 1.2" 8x8 LED Matrix w/I2C Backpack</name>
+    <QA tested="false"/>
+    <bobspec device-name="ADAFRUIT-1.2in-8x8-LED-BACKPACK">
+      <connector name="CN1"/>
+      <downloadURL protocol="svn">https://github.com/adafruit/Adafruit-LED-Backpacks</downloadURL>
+      <brdfile upside-down="TRUE">ext/Adafruit-LED-Backpacks/trunk/Adafruit 1.2inch 8x8 backpack.brd</brdfile>
+      <schfile>ext/Adafruit-LED-Backpacks/trunk/Adafruit 1.2inch 8x8 backpack.sch</schfile>
+    </bobspec>
+    <instancename>display</instancename>
+    <API>
+      <arduino>
+        <downloadURL protocol="svn" rename="Adafruit_LEDBackpack">https://github.com/adafruit/Adafruit-LED-Backpack-Library</downloadURL>
+        <libdirectory link-as="Adafruit_LEDBackpack" path="ext/Adafruit_LEDBackpack/trunk"/>
+        <include file="Adafruit_LEDBackpack.h"/>
+        <include file="Adafruit_GFX.h"/>
+        <required file="Wire.h"/>
+        <class name="Adafruit_8x8LED">
+      </class>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface type="I2CInterface" name="I2C_bus" role="slave" sda="SDA" scl="SCL"/>
+        <interface type="PowerInterface" name="VDD" net="VDD" input="True" voltage="5" current="300"/>
+        <interface type="GroundInterface" name="GND" net="GND" input="True"/>
+      </interfaces>
+    </electrical>
+    <eagledevice library="BOBs" device-name="ADAFRUIT-1.2IN-8X8-LED-BACKPACK" variant="-BOB"/>
+    <part price="13.50" updated="2015-09-11" part-number="1614" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/1614</documentationURL>
+    <longname>Adafruit 1.2in 8x8 LED Array w/I2C Backpack - white</longname>
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/Adafruit-8x8LEDArray/Models/8x8_LED_Matrix__white.svg" refdes="u1"/>
+    </placedparts>
+    <homedirectory>../Adafruit-8x8LEDArray</homedirectory>
+    <schematic filename="eagle/Adafruit-8x8-1.2in-led-array-white.device.auto.sch"/>
+  </component>
+  <component keyname="Adafruit-8x8-1.2in-led-array-yellow">
+    <name>Adafruit Small 1.2" 8x8 LED Matrix w/I2C Backpack</name>
+    <QA tested="false"/>
+    <bobspec device-name="ADAFRUIT-1.2in-8x8-LED-BACKPACK">
+      <connector name="CN1"/>
+      <downloadURL protocol="svn">https://github.com/adafruit/Adafruit-LED-Backpacks</downloadURL>
+      <brdfile upside-down="TRUE">ext/Adafruit-LED-Backpacks/trunk/Adafruit 1.2inch 8x8 backpack.brd</brdfile>
+      <schfile>ext/Adafruit-LED-Backpacks/trunk/Adafruit 1.2inch 8x8 backpack.sch</schfile>
+    </bobspec>
+    <instancename>display</instancename>
+    <API>
+      <arduino>
+        <downloadURL protocol="svn" rename="Adafruit_LEDBackpack">https://github.com/adafruit/Adafruit-LED-Backpack-Library</downloadURL>
+        <libdirectory link-as="Adafruit_LEDBackpack" path="ext/Adafruit_LEDBackpack/trunk"/>
+        <include file="Adafruit_LEDBackpack.h"/>
+        <include file="Adafruit_GFX.h"/>
+        <required file="Wire.h"/>
+        <class name="Adafruit_8x8LED">
+      </class>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface type="I2CInterface" name="I2C_bus" role="slave" sda="SDA" scl="SCL"/>
+        <interface type="PowerInterface" name="VDD" net="VDD" input="True" voltage="5" current="300"/>
+        <interface type="GroundInterface" name="GND" net="GND" input="True"/>
+      </interfaces>
+    </electrical>
+    <eagledevice library="BOBs" device-name="ADAFRUIT-1.2IN-8X8-LED-BACKPACK" variant="-BOB"/>
+    <part price="10.50" updated="2015-09-11" part-number="1050" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/1050</documentationURL>
+    <longname>Adafruit 1.2in 8x8 LED Array w/I2C Backpack - yellow</longname>
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/Adafruit-8x8LEDArray/Models/8x8_LED_Matrix__yellow.svg" refdes="u1"/>
+    </placedparts>
+    <homedirectory>../Adafruit-8x8LEDArray</homedirectory>
+    <schematic filename="eagle/Adafruit-8x8-1.2in-led-array-yellow.device.auto.sch"/>
+  </component>
+  <component keyname="Adafruit-8x8-1.2in-led-array-green">
+    <name>Adafruit Small 1.2" 8x8 LED Matrix w/I2C Backpack</name>
+    <QA tested="false"/>
+    <bobspec device-name="ADAFRUIT-1.2in-8x8-LED-BACKPACK">
+      <connector name="CN1"/>
+      <downloadURL protocol="svn">https://github.com/adafruit/Adafruit-LED-Backpacks</downloadURL>
+      <brdfile upside-down="TRUE">ext/Adafruit-LED-Backpacks/trunk/Adafruit 1.2inch 8x8 backpack.brd</brdfile>
+      <schfile>ext/Adafruit-LED-Backpacks/trunk/Adafruit 1.2inch 8x8 backpack.sch</schfile>
+    </bobspec>
+    <instancename>display</instancename>
+    <API>
+      <arduino>
+        <downloadURL protocol="svn" rename="Adafruit_LEDBackpack">https://github.com/adafruit/Adafruit-LED-Backpack-Library</downloadURL>
+        <libdirectory link-as="Adafruit_LEDBackpack" path="ext/Adafruit_LEDBackpack/trunk"/>
+        <include file="Adafruit_LEDBackpack.h"/>
+        <include file="Adafruit_GFX.h"/>
+        <required file="Wire.h"/>
+        <class name="Adafruit_8x8LED">
+      </class>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface type="I2CInterface" name="I2C_bus" role="slave" sda="SDA" scl="SCL"/>
+        <interface type="PowerInterface" name="VDD" net="VDD" input="True" voltage="5" current="300"/>
+        <interface type="GroundInterface" name="GND" net="GND" input="True"/>
+      </interfaces>
+    </electrical>
+    <eagledevice library="BOBs" device-name="ADAFRUIT-1.2IN-8X8-LED-BACKPACK" variant="-BOB"/>
+    <part price="10.95" updated="2015-09-11" part-number="1051" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/1051</documentationURL>
+    <longname>Adafruit 1.2in 8x8 LED Array w/I2C Backpack - green</longname>
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/Adafruit-8x8LEDArray/Models/8x8_LED_Matrix__Green.svg" refdes="u1"/>
+    </placedparts>
+    <homedirectory>../Adafruit-8x8LEDArray</homedirectory>
+    <schematic filename="eagle/Adafruit-8x8-1.2in-led-array-green.device.auto.sch"/>
+  </component>
+  <component keyname="Adafruit-8x8-1.2in-led-array-blue">
+    <name>Adafruit Small 1.2" 8x8 LED Matrix w/I2C Backpack</name>
+    <QA tested="false"/>
+    <bobspec device-name="ADAFRUIT-1.2in-8x8-LED-BACKPACK">
+      <connector name="CN1"/>
+      <downloadURL protocol="svn">https://github.com/adafruit/Adafruit-LED-Backpacks</downloadURL>
+      <brdfile upside-down="TRUE">ext/Adafruit-LED-Backpacks/trunk/Adafruit 1.2inch 8x8 backpack.brd</brdfile>
+      <schfile>ext/Adafruit-LED-Backpacks/trunk/Adafruit 1.2inch 8x8 backpack.sch</schfile>
+    </bobspec>
+    <instancename>display</instancename>
+    <API>
+      <arduino>
+        <downloadURL protocol="svn" rename="Adafruit_LEDBackpack">https://github.com/adafruit/Adafruit-LED-Backpack-Library</downloadURL>
+        <libdirectory link-as="Adafruit_LEDBackpack" path="ext/Adafruit_LEDBackpack/trunk"/>
+        <include file="Adafruit_LEDBackpack.h"/>
+        <include file="Adafruit_GFX.h"/>
+        <required file="Wire.h"/>
+        <class name="Adafruit_8x8LED">
+      </class>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface type="I2CInterface" name="I2C_bus" role="slave" sda="SDA" scl="SCL"/>
+        <interface type="PowerInterface" name="VDD" net="VDD" input="True" voltage="5" current="300"/>
+        <interface type="GroundInterface" name="GND" net="GND" input="True"/>
+      </interfaces>
+    </electrical>
+    <eagledevice library="BOBs" device-name="ADAFRUIT-1.2IN-8X8-LED-BACKPACK" variant="-BOB"/>
+    <part price="11.95" updated="2015-09-11" part-number="1052" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/1052</documentationURL>
+    <longname>Adafruit 1.2in 8x8 LED Array w/I2C Backpack - blue</longname>
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/Adafruit-8x8LEDArray/Models/8x8_LED_Matrix__blue.svg" refdes="u1"/>
+    </placedparts>
+    <homedirectory>../Adafruit-8x8LEDArray</homedirectory>
+    <schematic filename="eagle/Adafruit-8x8-1.2in-led-array-blue.device.auto.sch"/>
+  </component>
+  <component keyname="Adafruit-LSM9DS0">
+    <name>Adafruit-LSM9DS0</name>
+    <QA tested="false"/>
+    <bobspec device-name="ADAFRUIT-LSM9DS0">
+      <connector name="JP4"/>
+      <connector name="JP2"/>
+      <downloadURL protocol="git">https://github.com/adafruit/Adafruit-LSM9DS0-PCB</downloadURL>
+      <brdfile>ext/Adafruit-LSM9DS0-PCB/Adafruit LSM9DS0 PCB.brd</brdfile>
+      <schfile>ext/Adafruit-LSM9DS0-PCB/Adafruit LSM9DS0 PCB.sch</schfile>
+    </bobspec>
+    <instancename>display</instancename>
+    <API>
+      <arduino>
+        <libdirectory link-as="IMU.h" path="lib" example=""/>
+        <include file="IMU.h"/>
+        <required file="SPI.h"/>
+        <required file="Wire.h"/>
+        <class name="IMU">
+        </class>
+      </arduino>
+    </API>
+    <instancename>brain</instancename>
+    <electrical>
+      <control default="True"/>
+      <interfaces>
+        <interface type="I2CInterface" name="I2C_bus" role="slave" sda="SDA_5V" scl="SCL_5V"/>
+        <interface type="PowerInterface" name="VIN" net="VIN" input="True" voltage="5" current="300"/>
+        <interface type="GroundInterface" name="GND" net="GND" output="True"/>
+      </interfaces>
+    </electrical>
+    <part price="24.95" updated="2015-7-16" part-number="2021" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/2021</documentationURL>
+    <longname>Adafruit-LSM9DS0</longname>
+    <eagledevice library="BOBs" device-name="ADAFRUIT-LSM9DS0" variant="-BOB"/>
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/Adafruit-LSM9DS0/Models/BOBs-ADAFRUIT-LSM9DS0.svg" refdes="u1"/>
+    </placedparts>
+    <homedirectory>../Adafruit-LSM9DS0</homedirectory>
+    <schematic filename="eagle/Adafruit-LSM9DS0.device.auto.sch"/>
+  </component>
+  <component keyname="Adafruit-MAX31855-breakout-board">
+    <name>Thermocouple Amplifier MAX31855 breakout board (MAX6675 upgrade)</name>
+    <QA tested="false" completed="false"/>
+    <bobspec device-name="ADAFRUIT-MAX31855-BREAKOUT-BOARD">
+      <connector name="JP1"/>
+      <downloadURL protocol="svn">https://github.com/adafruit/Adafruit-MAX31855-breakout-board</downloadURL>
+      <brdfile>ext/Adafruit-MAX31855-breakout-board/trunk/Adafruit_MAX31855 v2.brd</brdfile>
+      <schfile>ext/Adafruit-MAX31855-breakout-board/trunk/Adafruit_MAX31855 v2.sch</schfile>
+    </bobspec>
+    <instancename>thermocouple</instancename>
+    <API>
+      <arduino>
+        <downloadURL protocol="svn" rename="Adafruit_MAX31855">https://github.com/adafruit/Adafruit-MAX31855-library</downloadURL>
+        <!--<include file="Adafruit_LEDBackpack.h"/>
+      <include file="Adafruit_GFX.h"/>
+      <class name="Adafruit_7segment"/>-->
+        <libdirectory link-as="Adafruit_MAX31855" path="ext/Adafruit-MAX31855-library-master"/>
+        <include file="Adafruit_MAX31855.h"/>
+        <!-- <construct>LED %(name)s(%(CONTROL)s)</construct>
+      find("construct").text % namemap;-->
+        <class name="Adafruit_MAX31855">
+          <!-- it has two constructors -->
+          <arg type="SPIInterface" net="SCLK"/>
+          <arg type="SPIInterface" net="CS"/>
+          <arg type="SPIInterface" net="MISO"/>
+        </class>
+      </arduino>
+    </API>
+    <part price="14.95" updated="2014-08-21" part-number="269" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/269</documentationURL>
+    <longname>Thermocouple Amplifier MAX31855 breakout board (MAX6675 upgrade)</longname>
+    <eagledevice library="BOBs" device-name="ADAFRUIT-MAX31855-BREAKOUT-BOARD" variant="-BOB"/>
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/Adafruit-MAX31855-breakout-board/Models/Adafruit-MAX31855-breakout-board.2D.svg" art-height="48.6" refdes="u1"/>
+    </placedparts>
+    <homedirectory>../Adafruit-MAX31855-breakout-board</homedirectory>
+    <schematic filename="eagle/Adafruit-MAX31855-breakout-board.device.auto.sch"/>
+  </component>
+  <component keyname="Adafruit-Pro-Trinket-3.3V">
+    <name>Adafruit Pro Trinket - 3.3V 12MHz</name>
+    <QA tested="false"/>
+    <bobspec device-name="ADAFRUIT-PRO-TRINKET-3.3V">
+      <connector name="JP1"/>
+      <connector name="JP4"/>
+      <connector name="JP2"/>
+      <connector name="FTDI"/>
+      <downloadURL protocol="svn">https://github.com/adafruit/Adafruit-Pro-Trinket-PCBs</downloadURL>
+      <brdfile>ext/Adafruit-Pro-Trinket-PCBs-master/Adafruit Pro Trinket 3v3.brd</brdfile>
+      <schfile>ext/Adafruit-Pro-Trinket-PCBs-master/Adafruit Pro Trinket 3v3.sch</schfile>
+    </bobspec>
+    <instancename>brain</instancename>
+    <electrical>
+      <control default="True"/>
+      <interfaces>
+        <interface type="DigitalWireInterface" name="D0_d" net="RXD1" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D1_d" net="TXD1" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D3_d" net="D3" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D4_d" net="D4" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D5_d" net="D5" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D6_d" net="D6" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D8_d" net="D8" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D9_d" net="D9" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D10_d" net="D10" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D11_d" net="D11" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D12_d" net="D12" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D13_d" net="D13" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D14_d" net="A0" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D15_d" net="A1" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D16_d" net="A2" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D17_d" net="A3" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D18_d" net="A4" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D19_d" net="A5" input="True" output="True"/>
+        <interface type="AnalogInterface" name="A0_a" net="A0" input="True" output="True"/>
+        <interface type="AnalogInterface" name="A1_a" net="A1" input="True" output="True"/>
+        <interface type="AnalogInterface" name="A2_a" net="A2" input="True" output="True"/>
+        <interface type="AnalogInterface" name="A3_a" net="A3" input="True" output="True"/>
+        <interface type="AnalogInterface" name="A4_a" net="A4" input="True" output="True"/>
+        <interface type="AnalogInterface" name="A5_a" net="A5" input="True" output="True"/>
+        <interface type="AnalogInterface" name="A6_a" net="A6" input="True"/>
+        <interface type="AnalogInterface" name="A7_a" net="A7" input="True"/>
+        <interface type="PWMInterface" name="D3_pwm" net="D3" output="True"/>
+        <interface type="PWMInterface" name="D5_pwm" net="D5" output="True"/>
+        <interface type="PWMInterface" name="D6_pwm" net="D6" output="True"/>
+        <interface type="PWMInterface" name="D9_pwm" net="D9" output="True"/>
+        <interface type="PWMInterface" name="D10_pwm" net="D10" output="True"/>
+        <interface type="I2CInterface" name="I2C_bus" role="master" sda="A4" scl="A5"/>
+        <interface type="SPIInterface" name="SPI_bus" role="master" miso="D12" mosi="D11" sck="D13"/>
+        <interface type="SerialInterface" name="serial_port" tx="TXD1" rx="RXD1"/>
+        <interface type="PowerInterface" name="+3.3V_out" net="+3V3" output="True" voltage="3.3" current="300"/>
+        <interface type="PowerInterface" name="+5V_USB" net="VBUS1" output="True" voltage="5" current="500"/>
+        <interface type="GroundInterface" name="GND" net="GND" output="True"/>
+        <interface type="GroundInterface" name="GND1" net="GND1" output="True"/>
+        <interface type="GroundInterface" name="GND2" net="GND2" output="True"/>
+      </interfaces>
+    </electrical>
+    <part price="9.95" updated="2014-11-11" part-number="2010" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/2010</documentationURL>
+    <longname>Adafruit Pro Trinket - 3.3V 12Mhz</longname>
+    <eagledevice library="BOBs" device-name="ADAFRUIT-PRO-TRINKET-3.3V" variant="-BOB"/>
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/Adafruit-Pro-Trinket-3.3V/Models/Adafruit-Pro-Trinket-3.3V.2D.svg" refdes="U1"/>
+    </placedparts>
+    <homedirectory>../Adafruit-Pro-Trinket-3.3V</homedirectory>
+    <schematic filename="eagle/Adafruit-Pro-Trinket-3.3V.device.auto.sch"/>
+  </component>
+  <component keyname="Adafruit-Pro-Trinket-5V-plug-powered">
+    <name>Adafruit Pro Trinket - 5V 16MHz</name>
+    <QA tested="false"/>
+    <bobspec device-name="ADAFRUIT-PRO-TRINKET-5V">
+      <connector name="JP1"/>
+      <connector name="JP4"/>
+      <connector name="JP2"/>
+      <connector name="FTDI"/>
+      <downloadURL protocol="svn">https://github.com/adafruit/Adafruit-Pro-Trinket-PCBs</downloadURL>
+      <brdfile>ext/Adafruit-Pro-Trinket-PCBs-master/Adafruit Pro Trinket 5v0.brd</brdfile>
+      <schfile>ext/Adafruit-Pro-Trinket-PCBs-master/Adafruit Pro Trinket 5v0.sch</schfile>
+    </bobspec>
+    <API control="True">
+      <pin net="RXD1" digitalliteral="0"/>
+      <pin net="TXD1" digitalliteral="1"/>
+      <pin net="D2" digitalliteral="2"/>
+      <pin net="D3" digitalliteral="3"/>
+      <pin net="D4" digitalliteral="4"/>
+      <pin net="D5" digitalliteral="5"/>
+      <pin net="D6" digitalliteral="6"/>
+      <pin net="D7" digitalliteral="7"/>
+      <pin net="D8" digitalliteral="8"/>
+      <pin net="D9" digitalliteral="9"/>
+      <pin net="D10" digitalliteral="10"/>
+      <pin net="D11" digitalliteral="11"/>
+      <pin net="D12" digitalliteral="12"/>
+      <pin net="D13" digitalliteral="13"/>
+      <pin net="D14" digitalliteral="14"/>
+      <pin net="D15" digitalliteral="15"/>
+      <pin net="D16" digitalliteral="16"/>
+      <pin net="D17" digitalliteral="17"/>
+      <pin net="D18" digitalliteral="18"/>
+      <pin net="D19" digitalliteral="19"/>
+      <pin net="A0" analogliteral="A0"/>
+      <pin net="A1" analogliteral="A1"/>
+      <pin net="A2" analogliteral="A2"/>
+      <pin net="A3" analogliteral="A3"/>
+      <pin net="A4" analogliteral="A4"/>
+      <pin net="A5" analogliteral="A5"/>
+      <pin net="A6" analogliteral="A6"/>
+      <pin net="A7" analogliteral="A7"/>
+    </API>
+    <instancename>brain</instancename>
+    <part price="9.95" updated="2014-11-11" part-number="2000" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/2000</documentationURL>
+    <eagledevice library="BOBs" device-name="ADAFRUIT-PRO-TRINKET-5V" variant="-BOB"/>
+    <longname>Adafruit Pro Trinket - 5V 16Mhz (Plug powered)</longname>
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/Adafruit-Pro-Trinket-5V/Models/Adafruit-Pro-Trinket-5V.2D.svg" refdes="U1"/>
+    </placedparts>
+    <electrical>
+      <control default="True"/>
+      <interfaces>
+        <interface type="DigitalWireInterface" name="D3_d" net="D3" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D4_d" net="D4" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D5_d" net="D5" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D6_d" net="D6" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D8_d" net="D8" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D9_d" net="D9" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D10_d" net="D10" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D11_d" net="D11" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D12_d" net="D12" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D13_d" net="D13" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D14_d" net="A0" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D15_d" net="A1" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D16_d" net="A2" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D17_d" net="A3" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D18_d" net="A4" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D19_d" net="A5" input="True" output="True"/>
+        <interface type="AnalogWireInterface" name="A0_a" net="A0" input="True" output="True"/>
+        <interface type="AnalogWireInterface" name="A1_a" net="A1" input="True" output="True"/>
+        <interface type="AnalogWireInterface" name="A2_a" net="A2" input="True" output="True"/>
+        <interface type="AnalogWireInterface" name="A3_a" net="A3" input="True" output="True"/>
+        <interface type="AnalogWireInterface" name="A4_a" net="A4" input="True" output="True"/>
+        <interface type="AnalogWireInterface" name="A5_a" net="A5" input="True" output="True"/>
+        <interface type="AnalogWireInterface" name="A6_a" net="A6" input="True"/>
+        <interface type="AnalogWireInterface" name="A7_a" net="A7" input="True"/>
+        <interface type="PWMInterface" name="D3_pwm" net="D3" output="True" voltage="5" current="30"/>
+        <interface type="PWMInterface" name="D5_pwm" net="D5" output="True" voltage="5" current="30"/>
+        <interface type="PWMInterface" name="D6_pwm" net="D6" output="True" voltage="5" current="30"/>
+        <interface type="PWMInterface" name="D9_pwm" net="D9" output="True" voltage="5" current="30"/>
+        <interface type="PWMInterface" name="D10_pwm" net="D10" output="True" voltage="5" current="30"/>
+        <interface type="I2CInterface" name="I2C_bus" role="master" sda="A4" scl="A5"/>
+        <interface type="SPIInterface" name="SPI_bus" role="master" miso="D12" mosi="D11" sck="D13"/>
+        <interface type="SerialInterface" name="serial_port" tx="TXD1" rx="RXD1"/>
+        <interface type="PowerInterface" name="+5V_out" net="+5V" output="True" voltage="5" current="300"/>
+        <!--interface type="PowerInterface" name="+5V_USB" net="VBUS1" output="True" voltage="5" current="500"/-->
+        <interface type="GroundInterface" name="GND" net="GND" output="True"/>
+        <interface type="GroundInterface" name="GND1" net="GND1" output="True"/>
+        <interface type="GroundInterface" name="GND2" net="GND2" output="True"/>
+      </interfaces>
+    </electrical>
+    <homedirectory>../Adafruit-Pro-Trinket-5V</homedirectory>
+    <schematic filename="eagle/Adafruit-Pro-Trinket-5V-plug-powered.device.auto.sch"/>
+  </component>
+  <component keyname="Adafruit-Pro-Trinket-5V-battery-powered">
+    <name>Adafruit Pro Trinket - 5V 16MHz</name>
+    <QA tested="false"/>
+    <bobspec device-name="ADAFRUIT-PRO-TRINKET-5V">
+      <connector name="JP1"/>
+      <connector name="JP4"/>
+      <connector name="JP2"/>
+      <connector name="FTDI"/>
+      <downloadURL protocol="svn">https://github.com/adafruit/Adafruit-Pro-Trinket-PCBs</downloadURL>
+      <brdfile>ext/Adafruit-Pro-Trinket-PCBs-master/Adafruit Pro Trinket 5v0.brd</brdfile>
+      <schfile>ext/Adafruit-Pro-Trinket-PCBs-master/Adafruit Pro Trinket 5v0.sch</schfile>
+    </bobspec>
+    <API control="True">
+      <pin net="RXD1" digitalliteral="0"/>
+      <pin net="TXD1" digitalliteral="1"/>
+      <pin net="D2" digitalliteral="2"/>
+      <pin net="D3" digitalliteral="3"/>
+      <pin net="D4" digitalliteral="4"/>
+      <pin net="D5" digitalliteral="5"/>
+      <pin net="D6" digitalliteral="6"/>
+      <pin net="D7" digitalliteral="7"/>
+      <pin net="D8" digitalliteral="8"/>
+      <pin net="D9" digitalliteral="9"/>
+      <pin net="D10" digitalliteral="10"/>
+      <pin net="D11" digitalliteral="11"/>
+      <pin net="D12" digitalliteral="12"/>
+      <pin net="D13" digitalliteral="13"/>
+      <pin net="D14" digitalliteral="14"/>
+      <pin net="D15" digitalliteral="15"/>
+      <pin net="D16" digitalliteral="16"/>
+      <pin net="D17" digitalliteral="17"/>
+      <pin net="D18" digitalliteral="18"/>
+      <pin net="D19" digitalliteral="19"/>
+      <pin net="A0" analogliteral="A0"/>
+      <pin net="A1" analogliteral="A1"/>
+      <pin net="A2" analogliteral="A2"/>
+      <pin net="A3" analogliteral="A3"/>
+      <pin net="A4" analogliteral="A4"/>
+      <pin net="A5" analogliteral="A5"/>
+      <pin net="A6" analogliteral="A6"/>
+      <pin net="A7" analogliteral="A7"/>
+    </API>
+    <instancename>brain</instancename>
+    <part price="9.95" updated="2014-11-11" part-number="2000" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/2000</documentationURL>
+    <eagledevice library="BOBs" device-name="ADAFRUIT-PRO-TRINKET-5V" variant="-BOB"/>
+    <longname>Adafruit Pro Trinket - 5V 16Mhz (battery powered)</longname>
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/Adafruit-Pro-Trinket-5V/Models/Adafruit-Pro-Trinket-5V.2D.svg" refdes="U1"/>
+    </placedparts>
+    <electrical>
+      <control default="True"/>
+      <interfaces>
+        <interface type="DigitalWireInterface" name="D3_d" net="D3" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D4_d" net="D4" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D5_d" net="D5" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D6_d" net="D6" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D8_d" net="D8" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D9_d" net="D9" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D10_d" net="D10" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D11_d" net="D11" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D12_d" net="D12" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D13_d" net="D13" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D14_d" net="A0" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D15_d" net="A1" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D16_d" net="A2" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D17_d" net="A3" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D18_d" net="A4" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D19_d" net="A5" input="True" output="True"/>
+        <interface type="AnalogWireInterface" name="A0_a" net="A0" input="True" output="True"/>
+        <interface type="AnalogWireInterface" name="A1_a" net="A1" input="True" output="True"/>
+        <interface type="AnalogWireInterface" name="A2_a" net="A2" input="True" output="True"/>
+        <interface type="AnalogWireInterface" name="A3_a" net="A3" input="True" output="True"/>
+        <interface type="AnalogWireInterface" name="A4_a" net="A4" input="True" output="True"/>
+        <interface type="AnalogWireInterface" name="A5_a" net="A5" input="True" output="True"/>
+        <interface type="AnalogWireInterface" name="A6_a" net="A6" input="True"/>
+        <interface type="AnalogWireInterface" name="A7_a" net="A7" input="True"/>
+        <interface type="PWMInterface" name="D3_pwm" net="D3" output="True" voltage="5" current="30"/>
+        <interface type="PWMInterface" name="D5_pwm" net="D5" output="True" voltage="5" current="30"/>
+        <interface type="PWMInterface" name="D6_pwm" net="D6" output="True" voltage="5" current="30"/>
+        <interface type="PWMInterface" name="D9_pwm" net="D9" output="True" voltage="5" current="30"/>
+        <interface type="PWMInterface" name="D10_pwm" net="D10" output="True" voltage="5" current="30"/>
+        <interface type="I2CInterface" name="I2C_bus" role="master" sda="A4" scl="A5"/>
+        <interface type="SPIInterface" name="SPI_bus" role="master" miso="D12" mosi="D11" sck="D13"/>
+        <interface type="SerialInterface" name="serial_port" tx="TXD1" rx="RXD1"/>
+        <interface type="PowerInterface" name="+VBat" net="VBAT" input="True" voltage="9" current="1500"/>
+        <interface type="PowerInterface" name="+5V_out" net="+5V" output="True" voltage="5" current="300"/>
+        <!--interface type="PowerInterface" name="+5V_USB" net="VBUS1" output="True" voltage="5" current="500"/-->
+        <interface type="GroundInterface" name="GND" net="GND" output="True"/>
+        <interface type="GroundInterface" name="GND1" net="GND1" output="True"/>
+        <interface type="GroundInterface" name="GND2" net="GND2" output="True"/>
+      </interfaces>
+    </electrical>
+    <homedirectory>../Adafruit-Pro-Trinket-5V</homedirectory>
+    <schematic filename="eagle/Adafruit-Pro-Trinket-5V-battery-powered.device.auto.sch"/>
+  </component>
+  <component keyname="Adafruit-Pro-Trinket-5V-battery-powered-autoplaced">
+    <name>Adafruit Pro Trinket - 5V 16MHz</name>
+    <QA tested="false"/>
+    <bobspec device-name="ADAFRUIT-PRO-TRINKET-5V">
+      <connector name="JP1"/>
+      <connector name="JP4"/>
+      <connector name="JP2"/>
+      <connector name="FTDI"/>
+      <downloadURL protocol="svn">https://github.com/adafruit/Adafruit-Pro-Trinket-PCBs</downloadURL>
+      <brdfile>ext/Adafruit-Pro-Trinket-PCBs-master/Adafruit Pro Trinket 5v0.brd</brdfile>
+      <schfile>ext/Adafruit-Pro-Trinket-PCBs-master/Adafruit Pro Trinket 5v0.sch</schfile>
+    </bobspec>
+    <API control="True">
+      <pin net="RXD1" digitalliteral="0"/>
+      <pin net="TXD1" digitalliteral="1"/>
+      <pin net="D2" digitalliteral="2"/>
+      <pin net="D3" digitalliteral="3"/>
+      <pin net="D4" digitalliteral="4"/>
+      <pin net="D5" digitalliteral="5"/>
+      <pin net="D6" digitalliteral="6"/>
+      <pin net="D7" digitalliteral="7"/>
+      <pin net="D8" digitalliteral="8"/>
+      <pin net="D9" digitalliteral="9"/>
+      <pin net="D10" digitalliteral="10"/>
+      <pin net="D11" digitalliteral="11"/>
+      <pin net="D12" digitalliteral="12"/>
+      <pin net="D13" digitalliteral="13"/>
+      <pin net="D14" digitalliteral="14"/>
+      <pin net="D15" digitalliteral="15"/>
+      <pin net="D16" digitalliteral="16"/>
+      <pin net="D17" digitalliteral="17"/>
+      <pin net="D18" digitalliteral="18"/>
+      <pin net="D19" digitalliteral="19"/>
+      <pin net="A0" analogliteral="A0"/>
+      <pin net="A1" analogliteral="A1"/>
+      <pin net="A2" analogliteral="A2"/>
+      <pin net="A3" analogliteral="A3"/>
+      <pin net="A4" analogliteral="A4"/>
+      <pin net="A5" analogliteral="A5"/>
+      <pin net="A6" analogliteral="A6"/>
+      <pin net="A7" analogliteral="A7"/>
+    </API>
+    <instancename>brain</instancename>
+    <part price="9.95" updated="2014-11-11" part-number="2000" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/2000</documentationURL>
+    <eagledevice library="BOBs" device-name="ADAFRUIT-PRO-TRINKET-5V" variant="-BOB"/>
+    <longname>Adafruit Pro Trinket - 5V 16Mhz (battery powered, auto-placed)</longname>
+    <electrical>
+      <control default="True"/>
+      <interfaces>
+        <interface type="DigitalWireInterface" name="D3_d" net="D3" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D4_d" net="D4" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D5_d" net="D5" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D6_d" net="D6" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D8_d" net="D8" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D9_d" net="D9" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D10_d" net="D10" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D11_d" net="D11" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D12_d" net="D12" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D13_d" net="D13" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D14_d" net="A0" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D15_d" net="A1" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D16_d" net="A2" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D17_d" net="A3" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D18_d" net="A4" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D19_d" net="A5" input="True" output="True"/>
+        <interface type="AnalogWireInterface" name="A0_a" net="A0" input="True" output="True"/>
+        <interface type="AnalogWireInterface" name="A1_a" net="A1" input="True" output="True"/>
+        <interface type="AnalogWireInterface" name="A2_a" net="A2" input="True" output="True"/>
+        <interface type="AnalogWireInterface" name="A3_a" net="A3" input="True" output="True"/>
+        <interface type="AnalogWireInterface" name="A4_a" net="A4" input="True" output="True"/>
+        <interface type="AnalogWireInterface" name="A5_a" net="A5" input="True" output="True"/>
+        <interface type="AnalogWireInterface" name="A6_a" net="A6" input="True"/>
+        <interface type="AnalogWireInterface" name="A7_a" net="A7" input="True"/>
+        <interface type="PWMInterface" name="D3_pwm" net="D3" output="True" voltage="5" current="30"/>
+        <interface type="PWMInterface" name="D5_pwm" net="D5" output="True" voltage="5" current="30"/>
+        <interface type="PWMInterface" name="D6_pwm" net="D6" output="True" voltage="5" current="30"/>
+        <interface type="PWMInterface" name="D9_pwm" net="D9" output="True" voltage="5" current="30"/>
+        <interface type="PWMInterface" name="D10_pwm" net="D10" output="True" voltage="5" current="30"/>
+        <interface type="I2CInterface" name="I2C_bus" role="master" sda="A4" scl="A5"/>
+        <interface type="SPIInterface" name="SPI_bus" role="master" miso="D12" mosi="D11" sck="D13"/>
+        <interface type="SerialInterface" name="serial_port" tx="TXD1" rx="RXD1"/>
+        <interface type="PowerInterface" name="+VBat" net="VBAT" input="True" voltage="9" current="1500"/>
+        <interface type="PowerInterface" name="+5V_out" net="+5V" output="True" voltage="5" current="300"/>
+        <!--interface type="PowerInterface" name="+5V_USB" net="VBUS1" output="True" voltage="5" current="500"/-->
+        <interface type="GroundInterface" name="GND" net="GND" output="True"/>
+        <interface type="GroundInterface" name="GND1" net="GND1" output="True"/>
+        <interface type="GroundInterface" name="GND2" net="GND2" output="True"/>
+      </interfaces>
+    </electrical>
+    <homedirectory>../Adafruit-Pro-Trinket-5V</homedirectory>
+    <schematic filename="eagle/Adafruit-Pro-Trinket-5V-battery-powered-autoplaced.device.auto.sch"/>
+  </component>
+  <component keyname="adafruit-trellis">
+    <name>Adafruit Trellis Monochrome Driver PCB for 4x4 Keypad and 3mm LEDs</name>
+    <QA tested="false"/>
+    <instancename>trellis</instancename>
+    <API>
+      <arduino>
+        <libdirectory link-as="Adafruit_Trellis" path="ext/Adafruit_Trellis_Library/trunk"/>
+        <include file="Adafruit_Trellis.h"/>
+        <!-- <construct>LED %(name)s(%(CONTROL)s)</construct>
+      find("construct").text % namemap;-->
+        <class name="Adafruit_Trellis">
+          <!-- arg is void -->
+        </class>
+      </arduino>
+    </API>
+    <bobspec device-name="ADAFRUIT-4X4-TRELLIS">
+      <connector name="SW1"/>
+      <downloadURL protocol="svn">https://github.com/adafruit/Adafruit_Trellis</downloadURL>
+      <brdfile>ext/Adafruit_Trellis/trunk/Adafruit Trellis 4x4 3mm HT16K33.brd</brdfile>
+      <schfile>ext/Adafruit_Trellis/trunk/Adafruit Trellis 4x4 3mm HT16K33.sch</schfile>
+    </bobspec>
+    <electrical>
+      <interfaces>
+        <interface type="I2CInterface" name="I2C_bus" role="slave" sda="SDA" scl="SCL"/>
+        <interface type="PowerInterface" name="VDD" net="5Vxo" input="True" voltage="5" current="300"/>
+        <interface type="GroundInterface" name="GND" net="GND" input="True"/>
+        <interface type="DigitalWireInterface" name="INT" net="INT" input="True"/>
+      </interfaces>
+    </electrical>
+    <longname>Adafruit Trellis Monochrome Driver PCB for 4x4 Keypad and 3mm LEDs</longname>
+    <part part-number="1616" price="9.95" updated="2014-09-19" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/1616</documentationURL>
+    <eagledevice library="BOBs" device-name="ADAFRUIT-4X4-TRELLIS" variant="-BOB"/>
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/Adafruit-Trellis/Models/Adafruit-trellis.2D.svg" refdes="u1"/>
+    </placedparts>
+    <otherparts>
+      <part supplier="mcmastercarr" pn="92005A019 or other length" qty="4"/>
+      <!-- for mounting holes -->
+      <part supplier="mcmastercarr" pn="95836A103 in for black screws or other length" qty="4"/>
+      <!-- for mounting holes -->
+      <part supplier="mcmastercarr" pn="90695A025" qty="4"/>
+      <!-- for mounting holes -->
+      <part supplier="Adafruit" pn="3mm LEDs" qty="16"/>
+      <part supplier="Adafruit" pn="50mm stranded hookup wire" qty="4"/>
+    </otherparts>
+    <homedirectory>../Adafruit-Trellis</homedirectory>
+    <schematic filename="eagle/adafruit-trellis.device.auto.sch"/>
+  </component>
+  <component keyname="Adafruit-Trinket-3.3V">
+    <name>Adafruit Trinket - Mini Microcontroller - 3.3V Logic</name>
+    <QA tested="false"/>
+    <bobspec device-name="ADAFRUIT-TRINKET-3.3V">
+      <connector name="JP1"/>
+      <connector name="JP2"/>
+      <connector name="CN4"/>
+      <connector name="CN3"/>
+      <downloadURL protocol="svn">https://github.com/adafruit/Adafruit-Trinket-PCB</downloadURL>
+      <brdfile>ext/Adafruit-Trinket-PCB/trunk/Adafruit Trinket 3.3V.brd</brdfile>
+      <schfile>ext/Adafruit-Trinket-PCB/trunk/Adafruit Trinket 3.3V.sch</schfile>
+    </bobspec>
+    <instancename>brain</instancename>
+    <API control="True">
+      <pin net="B0" digitalliteral="0"/>
+      <pin net="B1" digitalliteral="1"/>
+      <pin net="B2" digitalliteral="2" analogliteral="1"/>
+      <pin net="B3" digitalliteral="3" analogliteral="3"/>
+      <pin net="B4" digitalliteral="4" analogliteral="2"/>
+    </API>
+    <electrical>
+      <control default="True"/>
+      <interfaces>
+        <interface type="DigitalWireInterface" name="D0_d" net="B0" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D1_d" net="B1" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D2_d" net="B2" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D3_d" net="B3" input="True" output="True"/>
+        <interface type="I2CInterface" name="I2C_bus" role="master" sda="B0" scl="B2"/>
+        <interface type="PWMInterface" name="D0_pwm" net="B0" output="True"/>
+        <interface type="PWMInterface" name="D1_pwm" net="B1" output="True"/>
+        <interface type="AnalogInterface" name="A2_a" net="B2" input="True"/>
+        <interface type="AnalogInterface" name="A3_a" net="B3" input="True"/>
+        <interface type="AnalogInterface" name="A4_a" net="B4" input="True"/>
+        <interface type="SPIInterface" name="SPI_bus" role="master" miso="B1" mosi="B0" sck="B2"/>
+        <interface type="PowerInterface" name="+3V3_out" net="+3V3" output="True" voltage="3.3" current="300"/>
+        <interface type="GroundInterface" name="GND" net="GND" output="True"/>
+        <interface type="GroundInterface" name="GND1" net="GND1" output="True"/>
+        <interface type="GroundInterface" name="GND2" net="GND2" output="True"/>
+      </interfaces>
+    </electrical>
+    <part price="7.95" updated="2014-08-21" part-number="1500" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/1500</documentationURL>
+    <longname>Adafruit Trinket - Mini Microcontroller - 3.3V Logic</longname>
+    <eagledevice library="BOBs" device-name="ADAFRUIT-TRINKET-3.3V" variant="-BOB"/>
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/Adafruit-Trinket-3.3V/Models/Adafruit-Trinket-3.3V.2D.svg" refdes="U1"/>
+    </placedparts>
+    <homedirectory>../Adafruit-Trinket-3.3V</homedirectory>
+    <schematic filename="eagle/Adafruit-Trinket-3.3V.device.auto.sch"/>
+  </component>
+  <component keyname="Adafruit-Trinket-5V">
+    <name>Adafruit Trinket - Mini Microcontroller - 5V Logic</name>
+    <QA tested="false"/>
+    <bobspec device-name="ADAFRUIT-TRINKET-5V">
+      <connector name="CN4"/>
+      <connector name="CN3"/>
+      <connector name="JP1"/>
+      <connector name="JP2"/>
+      <downloadURL protocol="svn">https://github.com/adafruit/Adafruit-Trinket-PCB</downloadURL>
+      <brdfile>ext/Adafruit-Trinket-PCB/trunk/Adafruit Trinket 5V.brd</brdfile>
+      <schfile>ext/Adafruit-Trinket-PCB/trunk/Adafruit Trinket 5V.sch</schfile>
+    </bobspec>
+    <instancename>brain</instancename>
+    <API control="True">
+      <pin net="B0" digitalliteral="0"/>
+      <pin net="B1" digitalliteral="1"/>
+      <pin net="B2" digitalliteral="2" analogliteral="1"/>
+      <pin net="B3" digitalliteral="3" analogliteral="3"/>
+      <pin net="B4" digitalliteral="4" analogliteral="2"/>
+    </API>
+    <schematic filename="eagle/Adafruit-Trinket-5V.sch"/>
+    <electrical>
+      <control default="True"/>
+      <interfaces>
+        <interface type="DigitalWireInterface" name="D0_d" net="B0" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D1_d" net="B1" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D2_d" net="B2" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D3_d" net="B3" input="True" output="True"/>
+        <interface type="I2CInterface" name="I2C_bus" role="master" sda="B0" scl="B2"/>
+        <interface type="PWMInterface" name="D0_pwm" net="B0" output="True"/>
+        <interface type="PWMInterface" name="D1_pwm" net="B1" output="True"/>
+        <interface type="AnalogWireInterface" name="A2_a" net="B2" input="True"/>
+        <interface type="AnalogWireInterface" name="A3_a" net="B3" input="True"/>
+        <interface type="AnalogWireInterface" name="A4_a" net="B4" input="True"/>
+        <interface type="SPIInterface" name="SPI_bus" role="master" miso="B1" mosi="B0" sck="B2"/>
+        <interface type="PowerInterface" name="+5V_out" net="+5V" output="True" input="True" voltage="5" current="300"/>
+        <interface type="GroundInterface" name="GND" net="GND" output="True"/>
+        <interface type="GroundInterface" name="GND1" net="GND1" output="True"/>
+        <interface type="GroundInterface" name="GND2" net="GND2" output="True"/>
+      </interfaces>
+    </electrical>
+    <part price="7.95" updated="2014-08-21" part-number="1501" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/1501</documentationURL>
+    <longname>Adafruit Trinket - Mini Microcontroller - 5V Logic</longname>
+    <eagledevice library="BOBs" device-name="ADAFRUIT-TRINKET-5V" variant="-BOB"/>
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/Adafruit-Trinket-5V/Models/Adafruit-Trinket-5V.2D.svg" refdes="U1"/>
+    </placedparts>
+    <homedirectory>../Adafruit-Trinket-5V</homedirectory>
+  </component>
+  <component keyname="Adafruit-rotary-encoder">
+    <name>Rotary Encoder + Extras</name>
+    <QA tested="false"/>
+    <instancename>knob</instancename>
+    <API>
+      <!-- Software API specifcation section -->
+      <arduino>
+        <!-- stuff for arduino -->
+        <libdirectory link-as="RotaryEncoder" path="lib"/>
+        <!-- this specifies the library used to access the component.  mkArduinoSketchBook.py uses this information to create a link from a the lib directory (located in the same folder as the gcom file) to 'RotaryEncoder' inside the Gadgetron sketch book, which is used by the Arduino IDE -->
+        <include file="RotaryEncoder.h"/>
+        <!-- this is the header file that the tools should include to access the component -->
+        <class name="RotaryEncoder">
+          <!-- this is the name of the class to intaniate to access the component. -->
+          <!-- this section of the gcom file is not yet complete.  We need a way at to specify the the arguments to the class constructor -->
+          <arg type="DigitalWireInterface" net="A"/>
+          <arg type="DigitalWireInterface" net="B"/>
+          <arg type="DigitalWireInterface" net="SENSE"/>
+        </class>
+      </arduino>
+    </API>
+    <electrical>
+      <!-- this block specifies the electrical interface for the component. -->
+      <interfaces>
+        <!-- a component can have several interfaces -->
+        <!-- Each of these specifies an interface type and  a logical name.  The 'net' attribute is specific to the DigitalWireInterface and gives the name of the corresponding wire in the schematic (see below).  "output" specifies that this is an output of this component (I.e., an input to the microcontroller) -->
+        <interface type="DigitalWireInterface" name="SENSE_d" net="SENSE" output="True"/>
+        <interface type="DigitalWireInterface" name="A_d" net="A" output="True"/>
+        <interface type="DigitalWireInterface" name="B_d" net="B" output="True"/>
+        <!-- This is the ground net -->
+        <interface type="GroundInterface" name="GND" net="GND" output="True"/>
+      </interfaces>
+    </electrical>
+    <!-- where to get this component from.  How much it costs, etc. -->
+    <part part-number="377" price="4.50" updated="2014-08-21" supplier="Adafruit"/>
+    <!-- more information about the component, e.g. from the manufacturer -->
+    <documentationURL>http://adafru.it/377</documentationURL>
+    <!-- long name that will be displayed to the user -->
+    <longname>Rotary Encoder + Extras</longname>
+    <!-- which Eagle device is this?  This one is in Components.lbr, with the given device name.  There can also be a "variant" attribute that specifies which variant of the eagle part to use. If there are no variants, it defaults to the empty string -->
+    <eagledevice library="Components" device-name="ROTARY-ENCODER-W/BUTTON-ADAFRUIT377" variant=""/>
+    <!-- This specifies the schematic file for this component. -->
+    <schematic filename="eagle/Adafruit-rotary-encoder.sch"/>
+    <!-- A list the parts of the component that can be placed by the user. The tool chain currently supports only one of them. -->
+    <placedparts>
+      <!-- one placable part.  "label" is a name that will be display to the user.  model2D is the 2D model for this placed part.  Note that it's 2D.svg not pre2D.svg.  refdes is the reference designator that correpsonds to this part in the eagle schematic. -->
+      <placedpart label="" model2D="ComponentArt/Adafruit-rotary-encoder/Models/Adafruit-rotary-encoder.2D.svg" refdes="U1"/>
+    </placedparts>
+    <homedirectory>../Adafruit-rotary-encoder</homedirectory>
+  </component>
+  <component keyname="Arduino_Micro_Rev03j">
+    <name>Arduino Micro with Headers - 5V 16MHz</name>
+    <QA tested="false"/>
+    <bobspec device-name="ARDUINO_MICRO_REV03J">
+      <connector name="J5"/>
+      <connector name="J6"/>
+      <downloadURL protocol="zip">http://arduino.cc/en/uploads/Main/arduino-micro-reference-design.zip</downloadURL>
+      <brdfile>ext/arduino-micro-reference-design/Arduino_Micro_Rev03j.brd</brdfile>
+      <schfile>ext/arduino-micro-reference-design/Arduino_Micro_Rev03j.sch</schfile>
+    </bobspec>
+    <instancename>brain</instancename>
+    <schematic filename="eagle/Arduino_micro.sch"/>
+    <API control="True">
+      <pin net="D0" digitalliteral="0"/>
+      <pin net="D1" digitalliteral="1"/>
+      <pin net="D2" digitalliteral="2"/>
+      <pin net="D3" digitalliteral="3"/>
+      <pin net="D4" digitalliteral="4"/>
+      <pin net="D5" digitalliteral="5"/>
+      <pin net="D6" digitalliteral="6"/>
+      <pin net="D7" digitalliteral="7"/>
+      <pin net="D8" digitalliteral="8"/>
+      <pin net="D9" digitalliteral="9"/>
+      <pin net="D10" digitalliteral="10"/>
+      <pin net="D11" digitalliteral="11"/>
+      <pin net="D12" digitalliteral="12"/>
+      <pin net="D13" digitalliteral="13"/>
+      <pin net="A0" analogliteral="A0"/>
+      <pin net="A1" analogliteral="A1"/>
+      <pin net="A2" analogliteral="A2"/>
+      <pin net="A3" analogliteral="A3"/>
+      <pin net="A4" analogliteral="A4"/>
+      <pin net="A5" analogliteral="A5"/>
+    </API>
+    <electrical>
+      <control default="True"/>
+      <interfaces>
+        <interface type="DigitalWireInterface" sw_access="0" name="D0" net="D0" input="True" output="True"/>
+        <interface type="DigitalWireInterface" sw_access="1" name="D1" net="D1" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D2_d" net="D2" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D3_d" net="D3" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D4_d" net="D4" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D5_d" net="D5" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D6_d" net="D6" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D7_d" net="D7" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D8_d" net="D8" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D9_d" net="D9" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D10_d" net="D10" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D11_d" net="D11" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D12_d" net="D12" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="D13_d" net="D13" input="True" output="True"/>
+        <interface type="PWMInterface" name="D4_pwm" net="D4" output="True" voltage="5" current="30"/>
+        <interface type="PWMInterface" name="D5_pwm" net="D5" output="True" voltage="5" current="30"/>
+        <interface type="PWMInterface" name="D6_pwm" net="D6" output="True" voltage="5" current="30"/>
+        <interface type="PWMInterface" name="D9_pwm" net="D9" output="True" voltage="5" current="30"/>
+        <interface type="PWMInterface" name="D10_pwm" net="D10" output="True" voltage="5" current="30"/>
+        <interface type="PWMInterface" name="D11_pwm" net="D11" output="True" voltage="5" current="30"/>
+        <interface type="PWMInterface" name="D12_pwm" net="D12" output="True" voltage="5" current="30"/>
+        <interface type="PWMInterface" name="D13_pwm" net="D113" output="True" voltage="5" current="30"/>
+        <interface type="DigitalWireInterface" name="A0_d" net="A0" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="A1_d" net="A1" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="A2_d" net="A2" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="A3_d" net="A3" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="A4_d" net="A4" input="True" output="True"/>
+        <interface type="DigitalWireInterface" name="A5_d" net="A5" input="True" output="True"/>
+        <interface type="AnalogWireInterface" name="A0_a" net="A0" input="True"/>
+        <interface type="AnalogWireInterface" name="A1_a" net="A1" input="True"/>
+        <interface type="AnalogWireInterface" name="A2_a" net="A2" input="True"/>
+        <interface type="AnalogWireInterface" name="A3_a" net="A3" input="True"/>
+        <interface type="AnalogWireInterface" name="A4_a" net="A4" input="True"/>
+        <interface type="AnalogWireInterface" name="A5_a" net="A5" input="True"/>
+        <interface type="SerialInterface" name="serial_port" tx="D1" rx="D0"/>
+        <interface type="I2CInterface" name="I2C_bus" role="master" sda="D2" scl="D3"/>
+        <interface type="SPIInterface" name="SPI_bus" role="master" miso="MISO" mosi="MOSI" sck="SCK"/>
+        <interface type="PowerInterface" name="+5V" net="+5V" output="True" input="True" voltage="5" current="300"/>
+        <interface type="PowerInterface" name="+3V3_out" net="+3V3" output="True" voltage="3.3" current="50"/>
+        <interface type="GroundInterface" name="GND" net="GND" output="True"/>
+      </interfaces>
+    </electrical>
+    <eagledevice library="BOBs" device-name="ARDUINO_MICRO_REV03J" variant="-BOB"/>
+    <part price="24.95" updated="2014-08-21" part-number="1086" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/1086</documentationURL>
+    <longname>Arduino Micro with Headers - 5V 16MHz - (ATmega32u4 - assembled)</longname>
+    <descriptor name="Assembled" value="yes"/>
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/Arduino_Micro_Rev03j/Models/Arduino_Micro_Rev03.2D.svg" refdes="U1"/>
+    </placedparts>
+    <homedirectory>../Arduino_Micro_Rev03j</homedirectory>
+  </component>
+  <component keyname="analog_distance_sensor">
+    <name>Analog_Distance_Sensor</name>
+    <QA tested="false"/>
+    <instancename>distanceSensor</instancename>
+    <API>
+      <arduino>
+        <libdirectory link-as="DistanceSensor" path="lib"/>
+        <include file="DistanceSensor.h"/>
+        <class name="DistanceSensor">
+          <arg net="VCC" type="AnalogWireInterface"/>
+        </class>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface input="True" name="CONTROL" net="VCC" type="PowerInterface" voltage="5" current="12"/>
+        <interface name="GND" net="GND" output="True" type="GroundInterface"/>
+        <interface input="True" name="A" net="A" type="AnalogWireInterface"/>
+      </interfaces>
+    </electrical>
+    <eagledevice device-name="ANALOG_DISTANCE_SENSOR" library="Components" variant=""/>
+    <part part-number="2450" price="7.95" updated="2015-08-11" supplier="Pololu"/>
+    <documentationURL>https://www.pololu.com/product/2450</documentationURL>
+    <longname>Analog_Distance_Sensor</longname>
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/analog_distance_sensor/Models/Components-ANALOG_DISTANCE_SENSOR.svg" refdes="dist1"/>
+    </placedparts>
+    <homedirectory>../analog_distance_sensor</homedirectory>
+    <schematic filename="eagle/analog_distance_sensor.device.auto.sch"/>
+  </component>
+  <component keyname="ball-caster-0.75in">
+    <name>Ball Caster</name>
+    <QA tested="false"/>
+    <longname>Ball Caster</longname>
+    <instancename>caster</instancename>
+    <eagledevice library="Components" device-name="CASTER" variant="ADAFRUIT-3/4IN"/>
+    <part part-number="1200" price="4.95" quantity="1" updated="2015-07-01" supplier="Adafruit"/>
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/Caster/Models/ADAFRUIT-34in-CASTER.2D.svg" refdes="u1"/>
+    </placedparts>
+    <homedirectory>../Caster</homedirectory>
+    <schematic filename="eagle/ball-caster-0.75in.device.auto.sch"/>
+  </component>
+  <component keyname="ball-caster-0.375in">
+    <name>Ball Caster</name>
+    <QA tested="false"/>
+    <longname>Ball Caster</longname>
+    <instancename>caster</instancename>
+    <eagledevice library="Components" device-name="CASTER" variant="POLOLU-3/8IN"/>
+    <part part-number="8908" price="2.95" quantity="1" updated="2015-07-05" supplier="Sparkfun"/>
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/Caster/Models/POLOLU-38in-CASTER.2D.svg" refdes="u1"/>
+    </placedparts>
+    <homedirectory>../Caster</homedirectory>
+    <schematic filename="eagle/ball-caster-0.375in.device.auto.sch"/>
+  </component>
+  <component keyname="dual-motor-kit-narrow-slow">
+    <name>Dual Motor Kit</name>
+    <QA tested="false"/>
+    <instancename>drive</instancename>
+    <longname>Two Motors and the Electronics to Control Them</longname>
+    <API>
+      <arduino>
+        <libdirectory link-as="Motor" path="lib"/>
+        <include file="Motor.h"/>
+        <class name="Motor">
+          <arg net="STBY" type="DigitalWireInterface"/>
+          <arg net="PWMA" type="PWMInterface"/>
+          <arg net="AIN1" type="DigitalWireInterface"/>
+          <arg net="AIN2" type="DigitalWireInterface"/>
+          <arg net="PWMB" type="PWMInterface"/>
+          <arg net="BIN1" type="DigitalWireInterface"/>
+          <arg net="BIN2" type="DigitalWireInterface"/>
+        </class>
+        <example>
+${var_name}.spinLeft();
+delay(1000);
+${var_name}.spinRight();
+delay(1000);
+      </example>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface current="0" input="True" name="VCC" net="VCC" type="PowerInterface" voltage="5"/>
+        <interface current="1500" input="True" name="VM" net="VM" type="PowerInterface" voltage="9"/>
+        <interface current="5" input="True" name="STBY" net="STBY" type="DigitalWireInterface" voltage="5"/>
+        <interface current="5" input="True" name="AIN1" net="AIN1" type="DigitalWireInterface" voltage="5"/>
+        <interface current="5" input="True" name="AIN2" net="AIN2" type="DigitalWireInterface" voltage="5"/>
+        <interface current="5" input="True" name="BIN1" net="BIN1" type="DigitalWireInterface" voltage="5"/>
+        <interface current="5" input="True" name="BIN2" net="BIN2" type="DigitalWireInterface" voltage="5"/>
+        <interface current="1500" name="GND" net="GND" output="True" type="GroundInterface"/>
+        <interface current="1500" name="GND1" net="GND2" output="True" type="GroundInterface"/>
+        <interface current="1500" name="GND2" net="GND2" output="True" type="GroundInterface"/>
+        <interface current="5" input="True" name="PWMA" net="PWMA" type="PWMInterface" voltage="5"/>
+        <interface current="5" input="True" name="PWMB" net="PWMB" type="PWMInterface" voltage="5"/>
+      </interfaces>
+    </electrical>
+    <part name="Motor Driver" part-number="9457" price="8.95" quantity="1" updated="2015-06-21" supplier="Sparkfun"/>
+    <!--supplier name="Solarbotics" part-number="GM2" price="5.75" quantity="1" updated="2015-02-08"/-->
+    <!--supplier name="Solarbotics" part-number="GM2" price="5.75" quantity="1" updated="2015-02-08"/-->
+    <part part-number="GM2" price="3.95" quantity="1" updated="2015-02-08" supplier="Solarbotics"/>
+    <part part-number="GM2" price="3.95" quantity="1" updated="2015-02-08" supplier="Solarbotics"/>
+    <part name="Motor Brackets" part-number="602" price="1.50" quantityReq="2" quantity="1" updated="2015-11-12" supplier="Pololu"/>
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/DualMotorKit/../Medium_Wheel/Models/Medium_Wheel_L.2D.svg" refdes="L"/>
+      <placedpart label="" model2D="ComponentArt/DualMotorKit/../Medium_Wheel/Models/Medium_Wheel.2D.svg" refdes="R"/>
+      <placedpart label="" model2D="ComponentArt/DualMotorKit/../Sparkfun_Dual_Motor_Controller/Models/SF-DUAL-MOTOR-DRIVER.2D.svg" refdes="DRVR"/>
+    </placedparts>
+    <schematic filename="eagle/DualMotorKit.sch"/>
+    <homedirectory>../DualMotorKit</homedirectory>
+  </component>
+  <component keyname="dual-motor-kit-narrow-fast">
+    <name>Dual Motor Kit</name>
+    <QA tested="false"/>
+    <instancename>drive</instancename>
+    <longname>Two Motors and the Electronics to Control Them</longname>
+    <API>
+      <arduino>
+        <libdirectory link-as="Motor" path="lib"/>
+        <include file="Motor.h"/>
+        <class name="Motor">
+          <arg net="STBY" type="DigitalWireInterface"/>
+          <arg net="PWMA" type="PWMInterface"/>
+          <arg net="AIN1" type="DigitalWireInterface"/>
+          <arg net="AIN2" type="DigitalWireInterface"/>
+          <arg net="PWMB" type="PWMInterface"/>
+          <arg net="BIN1" type="DigitalWireInterface"/>
+          <arg net="BIN2" type="DigitalWireInterface"/>
+        </class>
+        <example>
+${var_name}.spinLeft();
+delay(1000);
+${var_name}.spinRight();
+delay(1000);
+      </example>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface current="0" input="True" name="VCC" net="VCC" type="PowerInterface" voltage="5"/>
+        <interface current="1500" input="True" name="VM" net="VM" type="PowerInterface" voltage="9"/>
+        <interface current="5" input="True" name="STBY" net="STBY" type="DigitalWireInterface" voltage="5"/>
+        <interface current="5" input="True" name="AIN1" net="AIN1" type="DigitalWireInterface" voltage="5"/>
+        <interface current="5" input="True" name="AIN2" net="AIN2" type="DigitalWireInterface" voltage="5"/>
+        <interface current="5" input="True" name="BIN1" net="BIN1" type="DigitalWireInterface" voltage="5"/>
+        <interface current="5" input="True" name="BIN2" net="BIN2" type="DigitalWireInterface" voltage="5"/>
+        <interface current="1500" name="GND" net="GND" output="True" type="GroundInterface"/>
+        <interface current="1500" name="GND1" net="GND2" output="True" type="GroundInterface"/>
+        <interface current="1500" name="GND2" net="GND2" output="True" type="GroundInterface"/>
+        <interface current="5" input="True" name="PWMA" net="PWMA" type="PWMInterface" voltage="5"/>
+        <interface current="5" input="True" name="PWMB" net="PWMB" type="PWMInterface" voltage="5"/>
+      </interfaces>
+    </electrical>
+    <part name="Motor Driver" part-number="9457" price="8.95" quantity="1" updated="2015-06-21" supplier="Sparkfun"/>
+    <!--supplier name="Solarbotics" part-number="GM2" price="5.75" quantity="1" updated="2015-02-08"/-->
+    <!--supplier name="Solarbotics" part-number="GM2" price="5.75" quantity="1" updated="2015-02-08"/-->
+    <part part-number="GM2" price="3.95" quantity="1" updated="2015-02-08" supplier="Solarbotics"/>
+    <part part-number="GM2" price="3.95" quantity="1" updated="2015-02-08" supplier="Solarbotics"/>
+    <part name="Motor Brackets" part-number="602" price="1.50" quantityReq="2" quantity="1" updated="2015-11-12" supplier="Pololu"/>
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/DualMotorKit/../Medium_Wheel/Models/Medium_Wheel_L.2D.svg" refdes="L"/>
+      <placedpart label="" model2D="ComponentArt/DualMotorKit/../Medium_Wheel/Models/Medium_Wheel.2D.svg" refdes="R"/>
+      <placedpart label="" model2D="ComponentArt/DualMotorKit/../Sparkfun_Dual_Motor_Controller/Models/SF-DUAL-MOTOR-DRIVER.2D.svg" refdes="DRVR"/>
+    </placedparts>
+    <schematic filename="eagle/DualMotorKit.sch"/>
+    <homedirectory>../DualMotorKit</homedirectory>
+  </component>
+  <component keyname="dual-motor-kit-knobby">
+    <name>Dual Motor Kit</name>
+    <QA tested="false"/>
+    <instancename>drive</instancename>
+    <longname>Two Motors and the Electronics to Control Them</longname>
+    <API>
+      <arduino>
+        <libdirectory link-as="Motor" path="lib"/>
+        <include file="Motor.h"/>
+        <class name="Motor">
+          <arg net="STBY" type="DigitalWireInterface"/>
+          <arg net="PWMA" type="PWMInterface"/>
+          <arg net="AIN1" type="DigitalWireInterface"/>
+          <arg net="AIN2" type="DigitalWireInterface"/>
+          <arg net="PWMB" type="PWMInterface"/>
+          <arg net="BIN1" type="DigitalWireInterface"/>
+          <arg net="BIN2" type="DigitalWireInterface"/>
+        </class>
+        <example>
+${var_name}.spinLeft();
+delay(1000);
+${var_name}.spinRight();
+delay(1000);
+      </example>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface current="0" input="True" name="VCC" net="VCC" type="PowerInterface" voltage="5"/>
+        <interface current="1500" input="True" name="VM" net="VM" type="PowerInterface" voltage="9"/>
+        <interface current="5" input="True" name="STBY" net="STBY" type="DigitalWireInterface" voltage="5"/>
+        <interface current="5" input="True" name="AIN1" net="AIN1" type="DigitalWireInterface" voltage="5"/>
+        <interface current="5" input="True" name="AIN2" net="AIN2" type="DigitalWireInterface" voltage="5"/>
+        <interface current="5" input="True" name="BIN1" net="BIN1" type="DigitalWireInterface" voltage="5"/>
+        <interface current="5" input="True" name="BIN2" net="BIN2" type="DigitalWireInterface" voltage="5"/>
+        <interface current="1500" name="GND" net="GND" output="True" type="GroundInterface"/>
+        <interface current="1500" name="GND1" net="GND2" output="True" type="GroundInterface"/>
+        <interface current="1500" name="GND2" net="GND2" output="True" type="GroundInterface"/>
+        <interface current="5" input="True" name="PWMA" net="PWMA" type="PWMInterface" voltage="5"/>
+        <interface current="5" input="True" name="PWMB" net="PWMB" type="PWMInterface" voltage="5"/>
+      </interfaces>
+    </electrical>
+    <part name="Motor Driver" part-number="9457" price="8.95" quantity="1" updated="2015-06-21" supplier="Sparkfun"/>
+    <part name="Motors" part-number="13258" price="3.95" quantity="1" updated="2015-09-09" supplier="Sparkfun"/>
+    <part name="Wheels" part-number="13259" price="2.95" quantity="1" updated="2015-09-09" supplier="Sparkfun"/>
+    <part name="Motor Brackets" part-number="602" price="1.50" quantityReq="2" quantity="1" updated="2015-11-12" supplier="Pololu"/>
+    <!--supplier name="Solarbotics" part-number="gmb28" price="1.50" quantity="1" updated="2015-09-09"/-->
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/DualMotorKit/../Medium_Wheel/Models/Knobby_Wheel_L.2D.svg" refdes="L"/>
+      <placedpart label="" model2D="ComponentArt/DualMotorKit/../Medium_Wheel/Models/Knobby_Wheel.2D.svg" refdes="R"/>
+      <placedpart label="" model2D="ComponentArt/DualMotorKit/../Sparkfun_Dual_Motor_Controller/Models/SF-DUAL-MOTOR-DRIVER.2D.svg" refdes="DRVR"/>
+    </placedparts>
+    <schematic filename="eagle/DualMotorKitKnobby.sch"/>
+    <homedirectory>../DualMotorKit</homedirectory>
+  </component>
+  <component keyname="embedded-artists-eink-display-V110">
+    <QA tested="false"/>
+    <name>eink-display</name>
+    <eagledevice device-name="EINK-2.7IN-EMBEDDEDARTISTS" library="BOBs" variant="-BOB"/>
+    <instancename>display</instancename>
+    <API>
+      <arduino>
+        <libdirectory link-as="EPD_V110_G1" path="ext/gratis-master/Sketches/libraries/EPD_V110_G1"/>
+        <include file="EPD_V110_G1.h"/>
+        <required file="SPI.h"/>
+        <class name="EPD_Class">
+          <arg type="const" const="EPD_2_7"/>
+          <arg type="DigitalWireInterface" net="PWR"/>
+          <arg type="DigitalWireInterface" net="BORDERCTRL"/>
+          <arg type="DigitalWireInterface" net="DISCHARGE"/>
+          <arg type="PWMInterface" net="PWM"/>
+          <arg type="DigitalWireInterface" net="RESET"/>
+          <arg type="DigitalWireInterface" net="BUSY"/>
+          <arg type="DigitalWireInterface" net="SSEL"/>
+        </class>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface input="True" name="GND" net="GND" type="GroundInterface"/>
+        <interface current="20" input="True" name="3V3" net="3V3" type="PowerInterface" voltage="3.3"/>
+        <interface miso="MISO" mosi="MOSI" name="SPI_bus" role="slave" sck="SCK" type="SPIInterface"/>
+        <interface input="True" name="SSEL" net="SSEL" type="DigitalWireInterface"/>
+        <interface input="True" name="BUSY" net="BUSY" type="DigitalWireInterface"/>
+        <interface input="True" name="BORDERCTRL" net="BORDERCTRL" type="DigitalWireInterface"/>
+        <interface name="I2C_bus" role="slave" scl="SCL" sda="SDA" type="I2CInterface"/>
+        <interface input="True" name="RESET" net="RESET" type="DigitalWireInterface"/>
+        <interface input="True" name="PWR" net="PWR" type="DigitalWireInterface"/>
+        <interface input="True" name="DISCHARGE" net="DISCHARGE" type="DigitalWireInterface"/>
+        <interface input="True" name="PWM" net="PWM" type="PWMInterface"/>
+      </interfaces>
+    </electrical>
+    <longname>2.7in E-Paper Display</longname>
+    <documentationURL>http://www.embeddedartists.com/products/displays/lcd_27_epaper.php</documentationURL>
+    <part part-number="EA-LCD-009" price="37.2" updated="2014-09-21" supplier="Embedded Artists"/>
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/EmbeddedArtists-2.7in-EInk-Display/Models/EmbeddedArtists-2.7in-EInk-Display.2D.svg" refdes="u1"/>
+    </placedparts>
+    <homedirectory>../EmbeddedArtists-2.7in-EInk-Display</homedirectory>
+    <schematic filename="eagle/embedded-artists-eink-display-V110.device.auto.sch"/>
+  </component>
+  <component keyname="Trinket_TH">
+    <name>Gadgetron Through Hole Trinket</name>
+    <QA tested="false"/>
+    <instancename>brain</instancename>
+    <bobspec device-name="TRINKET_TH">
+      <connector name="J3"/>
+      <connector name="J4"/>
+      <brdfile>hw/Trinket_TH-revA/Trinket TH.brd</brdfile>
+      <schfile>hw/Trinket_TH-revA/Trinket TH.sch</schfile>
+    </bobspec>
+    <API control="True">
+      <pin net="B0" digitalliteral="0"/>
+      <pin net="B1" digitalliteral="1"/>
+      <pin net="B2" digitalliteral="2" analogliteral="1"/>
+      <pin net="B3" digitalliteral="3" analogliteral="3"/>
+      <pin net="B4" digitalliteral="4" analogliteral="2"/>
+    </API>
+    <electrical>
+      <control default="True"/>
+      <interfaces>
+        <interface input="True" name="D0_d" net="B0" output="True" type="DigitalWireInterface"/>
+        <interface input="True" name="D1_d" net="B1" output="True" type="DigitalWireInterface"/>
+        <interface input="True" name="D2_d" net="B2" output="True" type="DigitalWireInterface"/>
+        <interface input="True" name="D3_d" net="B3" output="True" type="DigitalWireInterface"/>
+        <interface name="I2C_bus" role="master" scl="B2" sda="B0" type="I2CInterface"/>
+        <interface name="D0_pwm" net="B0" output="True" type="PWMInterface"/>
+        <interface name="D1_pwm" net="B1" output="True" type="PWMInterface"/>
+        <interface input="True" name="A2_a" net="B2" type="AnalogInterface"/>
+        <interface input="True" name="A3_a" net="B3" type="AnalogInterface"/>
+        <interface input="True" name="A4_a" net="B4" type="AnalogInterface"/>
+        <interface miso="B1" mosi="B0" name="SPI_bus" role="master" sck="B2" type="SPIInterface"/>
+        <interface current="300" name="+5V_out" net="VCC" output="True" type="PowerInterface" voltage="5"/>
+        <interface name="GND" net="GND" output="True" type="GroundInterface"/>
+      </interfaces>
+    </electrical>
+    <eagledevice device-name="TRINKET_TH" library="BOBs" variant="-BOB"/>
+    <part price="10.00" updated="2014-09-12" supplier="Gadgetron"/>
+    <longname>Gadgetron Through Hole Trinket</longname>
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/Gadgetron-Trinket/Models/Trinket_TH-revA.2D.svg" refdes="u1"/>
+    </placedparts>
+    <homedirectory>../Gadgetron-Trinket</homedirectory>
+    <schematic filename="eagle/Trinket_TH.device.auto.sch"/>
+  </component>
+  <component keyname="Jennifers_Moisture_Sensor">
+    <name>Moisture Sensor</name>
+    <QA tested="false"/>
+    <instancename>moisture</instancename>
+    <electrical>
+      <interfaces>
+        <interface type="AnalogWireInterface" name="SENSE_a" net="SENSE" output="True"/>
+        <interface type="PowerInterface" name="VDD" net="VDD" input="True" voltage="5" current="1"/>
+        <interface type="GroundInterface" name="GND" net="GND" output="True"/>
+      </interfaces>
+    </electrical>
+    <schematic filename="eagle/Jennifers_Moisture_Sensor.sch"/>
+    <longname>Jennifer's Moisture Sensor Test</longname>
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/Jennifers_Moisture_Sensor/Models/Jennifers_Moisture_Sensor.2D.svg" refdes="J1"/>
+    </placedparts>
+    <homedirectory>../Jennifers_Moisture_Sensor</homedirectory>
+  </component>
+  <component keyname="LED-5mm-bright-red">
+    <name>LED</name>
+    <QA tested="false"/>
+    <instancename>led</instancename>
+    <API>
+      <arduino>
+        <libdirectory link-as="LED" path="lib" example="example.mako"/>
+        <example>
+${var_name}.turnOn();
+delay(1000);
+${var_name}.turnOff();
+delay(1000);
+        </example>
+        <include file="LED.h"/>
+        <class name="LED">
+          <arg net="CONTROL" type="DigitalWireInterface"/>
+        </class>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface input="True" name="CONTROL_d" net="CONTROL" type="DigitalWireInterface"/>
+        <interface name="GND" net="GND" output="True" type="GroundInterface"/>
+      </interfaces>
+    </electrical>
+    <!-- variant suffix="covered">
+        <longname>Covered 5mm LED</longname>
+        <schematic filename="eagle/LED_5mm_covered.sch"/>
+        <eagledevice device-name="LED" library="Components" variant="5MM-COVERED"/>
+        <variant suffix="red">
+          <supplier name="Adafruit" part-number="297" price="8" quantity="25" updated="2014-08-21"/>
+          <documentationURL>http://adafru.it/297</documentationURL>
+          <placedparts>
+            <placedpart label="LED" model2D="Models/red-5mm-covered-LED.2D.svg" refdes="LED1" art-height="15.58" art-width="15.30" art-minxy="-7.79543972 -7.58845472"/>
+          </placedparts>
+        </variant>
+      </variant -->
+    <longname>Super Bright 5mm LED</longname>
+    <schematic filename="eagle/LED_5mm.sch"/>
+    <eagledevice device-name="LED" library="Components" variant="5MM"/>
+    <part part-number="297" price="8" quantity="25" updated="2014-08-21" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/297</documentationURL>
+    <placedparts>
+      <placedpart label="LED" model2D="ComponentArt/LED/Models/red-5mm-LED.2D.svg" refdes="LED1"/>
+    </placedparts>
+    <homedirectory>../LED</homedirectory>
+  </component>
+  <component keyname="LED-5mm-bright-green">
+    <name>LED</name>
+    <QA tested="false"/>
+    <instancename>led</instancename>
+    <API>
+      <arduino>
+        <libdirectory link-as="LED" path="lib" example="example.mako"/>
+        <example>
+${var_name}.turnOn();
+delay(1000);
+${var_name}.turnOff();
+delay(1000);
+        </example>
+        <include file="LED.h"/>
+        <class name="LED">
+          <arg net="CONTROL" type="DigitalWireInterface"/>
+        </class>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface input="True" name="CONTROL_d" net="CONTROL" type="DigitalWireInterface"/>
+        <interface name="GND" net="GND" output="True" type="GroundInterface"/>
+      </interfaces>
+    </electrical>
+    <!-- variant suffix="covered">
+        <longname>Covered 5mm LED</longname>
+        <schematic filename="eagle/LED_5mm_covered.sch"/>
+        <eagledevice device-name="LED" library="Components" variant="5MM-COVERED"/>
+        <variant suffix="red">
+          <supplier name="Adafruit" part-number="297" price="8" quantity="25" updated="2014-08-21"/>
+          <documentationURL>http://adafru.it/297</documentationURL>
+          <placedparts>
+            <placedpart label="LED" model2D="Models/red-5mm-covered-LED.2D.svg" refdes="LED1" art-height="15.58" art-width="15.30" art-minxy="-7.79543972 -7.58845472"/>
+          </placedparts>
+        </variant>
+      </variant -->
+    <longname>Super Bright 5mm LED</longname>
+    <schematic filename="eagle/LED_5mm.sch"/>
+    <eagledevice device-name="LED" library="Components" variant="5MM"/>
+    <part part-number="300" price="8" quantity="25" updated="2014-08-21" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/300</documentationURL>
+    <placedparts>
+      <placedpart label="LED" model2D="ComponentArt/LED/Models/green-5mm-LED.2D.svg" refdes="LED1"/>
+    </placedparts>
+    <homedirectory>../LED</homedirectory>
+  </component>
+  <component keyname="LED-5mm-bright-blue">
+    <name>LED</name>
+    <QA tested="false"/>
+    <instancename>led</instancename>
+    <API>
+      <arduino>
+        <libdirectory link-as="LED" path="lib" example="example.mako"/>
+        <example>
+${var_name}.turnOn();
+delay(1000);
+${var_name}.turnOff();
+delay(1000);
+        </example>
+        <include file="LED.h"/>
+        <class name="LED">
+          <arg net="CONTROL" type="DigitalWireInterface"/>
+        </class>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface input="True" name="CONTROL_d" net="CONTROL" type="DigitalWireInterface"/>
+        <interface name="GND" net="GND" output="True" type="GroundInterface"/>
+      </interfaces>
+    </electrical>
+    <!-- variant suffix="covered">
+        <longname>Covered 5mm LED</longname>
+        <schematic filename="eagle/LED_5mm_covered.sch"/>
+        <eagledevice device-name="LED" library="Components" variant="5MM-COVERED"/>
+        <variant suffix="red">
+          <supplier name="Adafruit" part-number="297" price="8" quantity="25" updated="2014-08-21"/>
+          <documentationURL>http://adafru.it/297</documentationURL>
+          <placedparts>
+            <placedpart label="LED" model2D="Models/red-5mm-covered-LED.2D.svg" refdes="LED1" art-height="15.58" art-width="15.30" art-minxy="-7.79543972 -7.58845472"/>
+          </placedparts>
+        </variant>
+      </variant -->
+    <longname>Super Bright 5mm LED</longname>
+    <schematic filename="eagle/LED_5mm.sch"/>
+    <eagledevice device-name="LED" library="Components" variant="5MM"/>
+    <part part-number="301" price="8" quantity="25" updated="2014-08-21" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/301</documentationURL>
+    <placedparts>
+      <placedpart label="LED" model2D="ComponentArt/LED/Models/blue-5mm-LED.2D.svg" refdes="LED1"/>
+    </placedparts>
+    <homedirectory>../LED</homedirectory>
+  </component>
+  <component keyname="LED-5mm-bright-white">
+    <name>LED</name>
+    <QA tested="false"/>
+    <instancename>led</instancename>
+    <API>
+      <arduino>
+        <libdirectory link-as="LED" path="lib" example="example.mako"/>
+        <example>
+${var_name}.turnOn();
+delay(1000);
+${var_name}.turnOff();
+delay(1000);
+        </example>
+        <include file="LED.h"/>
+        <class name="LED">
+          <arg net="CONTROL" type="DigitalWireInterface"/>
+        </class>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface input="True" name="CONTROL_d" net="CONTROL" type="DigitalWireInterface"/>
+        <interface name="GND" net="GND" output="True" type="GroundInterface"/>
+      </interfaces>
+    </electrical>
+    <!-- variant suffix="covered">
+        <longname>Covered 5mm LED</longname>
+        <schematic filename="eagle/LED_5mm_covered.sch"/>
+        <eagledevice device-name="LED" library="Components" variant="5MM-COVERED"/>
+        <variant suffix="red">
+          <supplier name="Adafruit" part-number="297" price="8" quantity="25" updated="2014-08-21"/>
+          <documentationURL>http://adafru.it/297</documentationURL>
+          <placedparts>
+            <placedpart label="LED" model2D="Models/red-5mm-covered-LED.2D.svg" refdes="LED1" art-height="15.58" art-width="15.30" art-minxy="-7.79543972 -7.58845472"/>
+          </placedparts>
+        </variant>
+      </variant -->
+    <longname>Super Bright 5mm LED</longname>
+    <schematic filename="eagle/LED_5mm.sch"/>
+    <eagledevice device-name="LED" library="Components" variant="5MM"/>
+    <part part-number="754" price="8" quantity="25" updated="2014-08-21" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/754</documentationURL>
+    <placedparts>
+      <placedpart label="LED" model2D="ComponentArt/LED/Models/white-5mm-LED.2D.svg" refdes="LED1"/>
+    </placedparts>
+    <homedirectory>../LED</homedirectory>
+  </component>
+  <component keyname="LED-5mm-bright-blacklight">
+    <name>LED</name>
+    <QA tested="false"/>
+    <instancename>led</instancename>
+    <API>
+      <arduino>
+        <libdirectory link-as="LED" path="lib" example="example.mako"/>
+        <example>
+${var_name}.turnOn();
+delay(1000);
+${var_name}.turnOff();
+delay(1000);
+        </example>
+        <include file="LED.h"/>
+        <class name="LED">
+          <arg net="CONTROL" type="DigitalWireInterface"/>
+        </class>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface input="True" name="CONTROL_d" net="CONTROL" type="DigitalWireInterface"/>
+        <interface name="GND" net="GND" output="True" type="GroundInterface"/>
+      </interfaces>
+    </electrical>
+    <!-- variant suffix="covered">
+        <longname>Covered 5mm LED</longname>
+        <schematic filename="eagle/LED_5mm_covered.sch"/>
+        <eagledevice device-name="LED" library="Components" variant="5MM-COVERED"/>
+        <variant suffix="red">
+          <supplier name="Adafruit" part-number="297" price="8" quantity="25" updated="2014-08-21"/>
+          <documentationURL>http://adafru.it/297</documentationURL>
+          <placedparts>
+            <placedpart label="LED" model2D="Models/red-5mm-covered-LED.2D.svg" refdes="LED1" art-height="15.58" art-width="15.30" art-minxy="-7.79543972 -7.58845472"/>
+          </placedparts>
+        </variant>
+      </variant -->
+    <longname>Super Bright 5mm LED</longname>
+    <schematic filename="eagle/LED_5mm.sch"/>
+    <eagledevice device-name="LED" library="Components" variant="5MM"/>
+    <part part-number="1793" price="4.95" quantity="10" updated="2014-08-21" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/1793</documentationURL>
+    <placedparts>
+      <placedpart label="LED" model2D="ComponentArt/LED/Models/blacklight-5mm-LED.2D.svg" refdes="LED1"/>
+    </placedparts>
+    <homedirectory>../LED</homedirectory>
+  </component>
+  <component keyname="LED-5mm-bright-ir">
+    <name>LED</name>
+    <QA tested="false"/>
+    <instancename>led</instancename>
+    <API>
+      <arduino>
+        <libdirectory link-as="LED" path="lib" example="example.mako"/>
+        <example>
+${var_name}.turnOn();
+delay(1000);
+${var_name}.turnOff();
+delay(1000);
+        </example>
+        <include file="LED.h"/>
+        <class name="LED">
+          <arg net="CONTROL" type="DigitalWireInterface"/>
+        </class>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface input="True" name="CONTROL_d" net="CONTROL" type="DigitalWireInterface"/>
+        <interface name="GND" net="GND" output="True" type="GroundInterface"/>
+      </interfaces>
+    </electrical>
+    <!-- variant suffix="covered">
+        <longname>Covered 5mm LED</longname>
+        <schematic filename="eagle/LED_5mm_covered.sch"/>
+        <eagledevice device-name="LED" library="Components" variant="5MM-COVERED"/>
+        <variant suffix="red">
+          <supplier name="Adafruit" part-number="297" price="8" quantity="25" updated="2014-08-21"/>
+          <documentationURL>http://adafru.it/297</documentationURL>
+          <placedparts>
+            <placedpart label="LED" model2D="Models/red-5mm-covered-LED.2D.svg" refdes="LED1" art-height="15.58" art-width="15.30" art-minxy="-7.79543972 -7.58845472"/>
+          </placedparts>
+        </variant>
+      </variant -->
+    <longname>Super Bright 5mm LED</longname>
+    <schematic filename="eagle/LED_5mm.sch"/>
+    <eagledevice device-name="LED" library="Components" variant="5MM"/>
+    <part part-number="388" price="7.95" quantity="25" updated="2014-08-21" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/387</documentationURL>
+    <placedparts>
+      <placedpart label="LED" model2D="ComponentArt/LED/Models/ir-5mm-LED.2D.svg" refdes="LED1"/>
+    </placedparts>
+    <homedirectory>../LED</homedirectory>
+  </component>
+  <component keyname="LED-5mm-diffuse-red">
+    <name>LED</name>
+    <QA tested="false"/>
+    <instancename>led</instancename>
+    <API>
+      <arduino>
+        <libdirectory link-as="LED" path="lib" example="example.mako"/>
+        <example>
+${var_name}.turnOn();
+delay(1000);
+${var_name}.turnOff();
+delay(1000);
+        </example>
+        <include file="LED.h"/>
+        <class name="LED">
+          <arg net="CONTROL" type="DigitalWireInterface"/>
+        </class>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface input="True" name="CONTROL_d" net="CONTROL" type="DigitalWireInterface"/>
+        <interface name="GND" net="GND" output="True" type="GroundInterface"/>
+      </interfaces>
+    </electrical>
+    <!-- variant suffix="covered">
+        <longname>Covered 5mm LED</longname>
+        <schematic filename="eagle/LED_5mm_covered.sch"/>
+        <eagledevice device-name="LED" library="Components" variant="5MM-COVERED"/>
+        <variant suffix="red">
+          <supplier name="Adafruit" part-number="297" price="8" quantity="25" updated="2014-08-21"/>
+          <documentationURL>http://adafru.it/297</documentationURL>
+          <placedparts>
+            <placedpart label="LED" model2D="Models/red-5mm-covered-LED.2D.svg" refdes="LED1" art-height="15.58" art-width="15.30" art-minxy="-7.79543972 -7.58845472"/>
+          </placedparts>
+        </variant>
+      </variant -->
+    <schematic filename="eagle/LED_5mm.sch"/>
+    <longname>Diffuse 5mm LED</longname>
+    <eagledevice device-name="LED" library="Components" variant="5MM"/>
+    <descriptor name="Color" value="red"/>
+    <part part-number="299" price="4.00" quantity="25" updated="2014-08-21" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/299</documentationURL>
+    <placedparts>
+      <placedpart label="LED" model2D="ComponentArt/LED/Models/red-5mm-LED.2D.svg" refdes="LED1"/>
+    </placedparts>
+    <homedirectory>../LED</homedirectory>
+  </component>
+  <component keyname="LED-5mm-diffuse-green">
+    <name>LED</name>
+    <QA tested="false"/>
+    <instancename>led</instancename>
+    <API>
+      <arduino>
+        <libdirectory link-as="LED" path="lib" example="example.mako"/>
+        <example>
+${var_name}.turnOn();
+delay(1000);
+${var_name}.turnOff();
+delay(1000);
+        </example>
+        <include file="LED.h"/>
+        <class name="LED">
+          <arg net="CONTROL" type="DigitalWireInterface"/>
+        </class>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface input="True" name="CONTROL_d" net="CONTROL" type="DigitalWireInterface"/>
+        <interface name="GND" net="GND" output="True" type="GroundInterface"/>
+      </interfaces>
+    </electrical>
+    <!-- variant suffix="covered">
+        <longname>Covered 5mm LED</longname>
+        <schematic filename="eagle/LED_5mm_covered.sch"/>
+        <eagledevice device-name="LED" library="Components" variant="5MM-COVERED"/>
+        <variant suffix="red">
+          <supplier name="Adafruit" part-number="297" price="8" quantity="25" updated="2014-08-21"/>
+          <documentationURL>http://adafru.it/297</documentationURL>
+          <placedparts>
+            <placedpart label="LED" model2D="Models/red-5mm-covered-LED.2D.svg" refdes="LED1" art-height="15.58" art-width="15.30" art-minxy="-7.79543972 -7.58845472"/>
+          </placedparts>
+        </variant>
+      </variant -->
+    <schematic filename="eagle/LED_5mm.sch"/>
+    <longname>Diffuse 5mm LED</longname>
+    <eagledevice device-name="LED" library="Components" variant="5MM"/>
+    <descriptor name="Color" value="green"/>
+    <part part-number="298" price="4.00" quantity="25" updated="2014-08-21" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/298</documentationURL>
+    <placedparts>
+      <placedpart label="LED" model2D="ComponentArt/LED/Models/green-5mm-LED.2D.svg" refdes="LED1"/>
+    </placedparts>
+    <homedirectory>../LED</homedirectory>
+  </component>
+  <component keyname="LED-10mm-white">
+    <name>LED</name>
+    <QA tested="false"/>
+    <instancename>led</instancename>
+    <API>
+      <arduino>
+        <libdirectory link-as="LED" path="lib" example="example.mako"/>
+        <example>
+${var_name}.turnOn();
+delay(1000);
+${var_name}.turnOff();
+delay(1000);
+        </example>
+        <include file="LED.h"/>
+        <class name="LED">
+          <arg net="CONTROL" type="DigitalWireInterface"/>
+        </class>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface input="True" name="CONTROL_d" net="CONTROL" type="DigitalWireInterface"/>
+        <interface name="GND" net="GND" output="True" type="GroundInterface"/>
+      </interfaces>
+    </electrical>
+    <longname>Diffused 10mm LED</longname>
+    <schematic filename="eagle/LED_10mm.sch"/>
+    <eagledevice device-name="LED" library="Components" variant="10MM"/>
+    <part part-number="846" price="11.95" quantity="25" updated="2014-08-21" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/846</documentationURL>
+    <placedparts>
+      <placedpart label="LED" model2D="ComponentArt/LED/Models/white-10mm-LED.2D.svg" refdes="LED1"/>
+    </placedparts>
+    <homedirectory>../LED</homedirectory>
+  </component>
+  <component keyname="LED-10mm-green">
+    <name>LED</name>
+    <QA tested="false"/>
+    <instancename>led</instancename>
+    <API>
+      <arduino>
+        <libdirectory link-as="LED" path="lib" example="example.mako"/>
+        <example>
+${var_name}.turnOn();
+delay(1000);
+${var_name}.turnOff();
+delay(1000);
+        </example>
+        <include file="LED.h"/>
+        <class name="LED">
+          <arg net="CONTROL" type="DigitalWireInterface"/>
+        </class>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface input="True" name="CONTROL_d" net="CONTROL" type="DigitalWireInterface"/>
+        <interface name="GND" net="GND" output="True" type="GroundInterface"/>
+      </interfaces>
+    </electrical>
+    <longname>Diffused 10mm LED</longname>
+    <schematic filename="eagle/LED_10mm.sch"/>
+    <eagledevice device-name="LED" library="Components" variant="10MM"/>
+    <part part-number="844" price="9.95" quantity="25" updated="2014-08-21" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/844</documentationURL>
+    <placedparts>
+      <placedpart label="LED" model2D="ComponentArt/LED/Models/green-10mm-LED.2D.svg" refdes="LED1"/>
+    </placedparts>
+    <homedirectory>../LED</homedirectory>
+  </component>
+  <component keyname="LED-10mm-blue">
+    <name>LED</name>
+    <QA tested="false"/>
+    <instancename>led</instancename>
+    <API>
+      <arduino>
+        <libdirectory link-as="LED" path="lib" example="example.mako"/>
+        <example>
+${var_name}.turnOn();
+delay(1000);
+${var_name}.turnOff();
+delay(1000);
+        </example>
+        <include file="LED.h"/>
+        <class name="LED">
+          <arg net="CONTROL" type="DigitalWireInterface"/>
+        </class>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface input="True" name="CONTROL_d" net="CONTROL" type="DigitalWireInterface"/>
+        <interface name="GND" net="GND" output="True" type="GroundInterface"/>
+      </interfaces>
+    </electrical>
+    <longname>Diffused 10mm LED</longname>
+    <schematic filename="eagle/LED_10mm.sch"/>
+    <eagledevice device-name="LED" library="Components" variant="10MM"/>
+    <part part-number="847" price="9.95" quantity="25" updated="2014-08-21" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/847</documentationURL>
+    <placedparts>
+      <placedpart label="LED" model2D="ComponentArt/LED/Models/blue-10mm-LED.2D.svg" refdes="LED1"/>
+    </placedparts>
+    <homedirectory>../LED</homedirectory>
+  </component>
+  <component keyname="LED-10mm-red">
+    <name>LED</name>
+    <QA tested="false"/>
+    <instancename>led</instancename>
+    <API>
+      <arduino>
+        <libdirectory link-as="LED" path="lib" example="example.mako"/>
+        <example>
+${var_name}.turnOn();
+delay(1000);
+${var_name}.turnOff();
+delay(1000);
+        </example>
+        <include file="LED.h"/>
+        <class name="LED">
+          <arg net="CONTROL" type="DigitalWireInterface"/>
+        </class>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface input="True" name="CONTROL_d" net="CONTROL" type="DigitalWireInterface"/>
+        <interface name="GND" net="GND" output="True" type="GroundInterface"/>
+      </interfaces>
+    </electrical>
+    <longname>Diffused 10mm LED</longname>
+    <schematic filename="eagle/LED_10mm.sch"/>
+    <eagledevice device-name="LED" library="Components" variant="10MM"/>
+    <part part-number="845" price="9.95" quantity="25" updated="2014-08-21" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/845</documentationURL>
+    <placedparts>
+      <placedpart label="LED" model2D="ComponentArt/LED/Models/red-10mm-LED.2D.svg" refdes="LED1"/>
+    </placedparts>
+    <homedirectory>../LED</homedirectory>
+  </component>
+  <component keyname="LED-3mm-red">
+    <name>LED</name>
+    <QA tested="false"/>
+    <instancename>led</instancename>
+    <API>
+      <arduino>
+        <libdirectory link-as="LED" path="lib" example="example.mako"/>
+        <example>
+${var_name}.turnOn();
+delay(1000);
+${var_name}.turnOff();
+delay(1000);
+        </example>
+        <include file="LED.h"/>
+        <class name="LED">
+          <arg net="CONTROL" type="DigitalWireInterface"/>
+        </class>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface input="True" name="CONTROL_d" net="CONTROL" type="DigitalWireInterface"/>
+        <interface name="GND" net="GND" output="True" type="GroundInterface"/>
+      </interfaces>
+    </electrical>
+    <longname>Diffuse 3mm LED</longname>
+    <schematic filename="eagle/LED_3mm.sch"/>
+    <eagledevice device-name="LED" library="Components" variant="3MM"/>
+    <part part-number="777" price="4.95" quantity="25" updated="2014-08-21" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/777</documentationURL>
+    <placedparts>
+      <placedpart label="LED" model2D="ComponentArt/LED/Models/red-3mm-LED.2D.svg" refdes="LED1"/>
+    </placedparts>
+    <homedirectory>../LED</homedirectory>
+  </component>
+  <component keyname="LED-3mm-green">
+    <name>LED</name>
+    <QA tested="false"/>
+    <instancename>led</instancename>
+    <API>
+      <arduino>
+        <libdirectory link-as="LED" path="lib" example="example.mako"/>
+        <example>
+${var_name}.turnOn();
+delay(1000);
+${var_name}.turnOff();
+delay(1000);
+        </example>
+        <include file="LED.h"/>
+        <class name="LED">
+          <arg net="CONTROL" type="DigitalWireInterface"/>
+        </class>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface input="True" name="CONTROL_d" net="CONTROL" type="DigitalWireInterface"/>
+        <interface name="GND" net="GND" output="True" type="GroundInterface"/>
+      </interfaces>
+    </electrical>
+    <longname>Diffuse 3mm LED</longname>
+    <schematic filename="eagle/LED_3mm.sch"/>
+    <eagledevice device-name="LED" library="Components" variant="3MM"/>
+    <part part-number="779" price="4.95" quantity="25" updated="2014-08-21" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/779</documentationURL>
+    <placedparts>
+      <placedpart label="LED" model2D="ComponentArt/LED/Models/green-3mm-LED.2D.svg" refdes="LED1"/>
+    </placedparts>
+    <homedirectory>../LED</homedirectory>
+  </component>
+  <component keyname="LED-3mm-white">
+    <name>LED</name>
+    <QA tested="false"/>
+    <instancename>led</instancename>
+    <API>
+      <arduino>
+        <libdirectory link-as="LED" path="lib" example="example.mako"/>
+        <example>
+${var_name}.turnOn();
+delay(1000);
+${var_name}.turnOff();
+delay(1000);
+        </example>
+        <include file="LED.h"/>
+        <class name="LED">
+          <arg net="CONTROL" type="DigitalWireInterface"/>
+        </class>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface input="True" name="CONTROL_d" net="CONTROL" type="DigitalWireInterface"/>
+        <interface name="GND" net="GND" output="True" type="GroundInterface"/>
+      </interfaces>
+    </electrical>
+    <longname>Diffuse 3mm LED</longname>
+    <schematic filename="eagle/LED_3mm.sch"/>
+    <eagledevice device-name="LED" library="Components" variant="3MM"/>
+    <part part-number="778" price="4.95" quantity="25" updated="2014-08-21" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/778</documentationURL>
+    <placedparts>
+      <placedpart label="LED" model2D="ComponentArt/LED/Models/white-3mm-LED.2D.svg" refdes="LED1"/>
+    </placedparts>
+    <homedirectory>../LED</homedirectory>
+  </component>
+  <component keyname="LED-3mm-blue">
+    <name>LED</name>
+    <QA tested="false"/>
+    <instancename>led</instancename>
+    <API>
+      <arduino>
+        <libdirectory link-as="LED" path="lib" example="example.mako"/>
+        <example>
+${var_name}.turnOn();
+delay(1000);
+${var_name}.turnOff();
+delay(1000);
+        </example>
+        <include file="LED.h"/>
+        <class name="LED">
+          <arg net="CONTROL" type="DigitalWireInterface"/>
+        </class>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface input="True" name="CONTROL_d" net="CONTROL" type="DigitalWireInterface"/>
+        <interface name="GND" net="GND" output="True" type="GroundInterface"/>
+      </interfaces>
+    </electrical>
+    <longname>Diffuse 3mm LED</longname>
+    <schematic filename="eagle/LED_3mm.sch"/>
+    <eagledevice device-name="LED" library="Components" variant="3MM"/>
+    <part part-number="780" price="4.95" quantity="25" updated="2014-08-21" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/780</documentationURL>
+    <placedparts>
+      <placedpart label="LED" model2D="ComponentArt/LED/Models/blue-3mm-LED.2D.svg" refdes="LED1"/>
+    </placedparts>
+    <homedirectory>../LED</homedirectory>
+  </component>
+  <component keyname="Solarbotics_GM2_Wheel-LH">
+    <name>Medium Wheel</name>
+    <QA tested="false"/>
+    <instancename>wheel</instancename>
+    <longname>The gear motor 2 (GM2) from Solarbotics with a 70mm wheel</longname>
+    <part part-number="GM2" price="12.00" quantity="1" updated="2015-02-8" supplier="Solarbotics"/>
+    <documentationURL>https://solarbotics.com/product/gmpw_deal/</documentationURL>
+    <electrical>
+      <interfaces>
+        <interface current="100" input="True" name="M1" neg="NEG" pos="POS" type="MotorInterface" voltage="6"/>
+      </interfaces>
+    </electrical>
+    <schematic filename="eagle/Medium_Wheel_L.sch"/>
+    <placedparts>
+      <placedpart art-height="67.1" art-minxy="-49.23790741 -36.48490715" art-width="52.8" label="Wheel" model2D="ComponentArt/Medium_Wheel/Models/Medium_Wheel_L.2D.svg" refdes="A1"/>
+    </placedparts>
+    <homedirectory>../Medium_Wheel</homedirectory>
+  </component>
+  <component keyname="Solarbotics_GM2_Wheel">
+    <name>Medium Wheel</name>
+    <QA tested="false"/>
+    <instancename>wheel</instancename>
+    <longname>The gear motor 2 (GM2) from Solarbotics with a 70mm wheel</longname>
+    <part part-number="GM2" price="12.00" quantity="1" updated="2015-02-8" supplier="Solarbotics"/>
+    <documentationURL>https://solarbotics.com/product/gmpw_deal/</documentationURL>
+    <electrical>
+      <interfaces>
+        <interface current="100" input="True" name="M1" neg="NEG" pos="POS" type="MotorInterface" voltage="6"/>
+      </interfaces>
+    </electrical>
+    <schematic filename="eagle/Medium_Wheel.sch"/>
+    <placedparts>
+      <placedpart art-height="67.1" art-minxy="-2.48858643 -36.13244247" art-width="52.8" label="Wheel" model2D="ComponentArt/Medium_Wheel/Models/Medium_Wheel.2D.svg" refdes="A1"/>
+    </placedparts>
+    <homedirectory>../Medium_Wheel</homedirectory>
+  </component>
+  <component keyname="micro-gripper">
+    <name>Pincer</name>
+    <QA tested="false"/>
+    <instancename>Pincer</instancename>
+    <API>
+      <arduino>
+        <libdirectory link-as="Pincer" path="lib"/>
+        <include file="Pincer.h"/>
+        <required file="Servo.h"/>
+        <class name="Pincer">
+          <arg type="DigitalWireInterface" net="VCC"/>
+        </class>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface name="DATA" net="DATA" type="PWMInterface"/>
+        <interface current="500" name="VCC" net="VCC" type="PowerInterface" input="True" voltage="9"/>
+        <interface name="GND" net="GND" type="GroundInterface" output="True"/>
+      </interfaces>
+    </electrical>
+    <eagledevice library="Components" device-name="MICRO_GRIPPER" variant=""/>
+    <part part-number="13176" price="5.95" updated="2015-11-12" name="Micro Gripper Kit" supplier="SparkFun"/>
+    <part part-number="25500" price="5.85" updated="2015-11-12" name="Micro Servo" supplier="SolarBotics"/>
+    <documentationURL>https://www.sparkfun.com/products/13176</documentationURL>
+    <longname>pincer</longname>
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/micro-gripper/Models/Components-MICRO_GRIPPER.svg" refdes="u1"/>
+    </placedparts>
+    <homedirectory>../micro-gripper</homedirectory>
+    <schematic filename="eagle/micro-gripper.device.auto.sch"/>
+  </component>
+  <component keyname="pen-holder">
+    <name>Pen Holder</name>
+    <QA tested="false"/>
+    <longname>Pen Holder</longname>
+    <instancename>penholder</instancename>
+    <eagledevice library="Components" device-name="PENHOLDER" variant=""/>
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/Pen_Holder/Models/PENHOLDER.2D.svg" refdes="u1"/>
+    </placedparts>
+    <homedirectory>../Pen_Holder</homedirectory>
+    <schematic filename="eagle/pen-holder.device.auto.sch"/>
+  </component>
+  <component keyname="Moisture_Sensor">
+    <name>Moisture Sensor</name>
+    <QA tested="false"/>
+    <instancename>moisture</instancename>
+    <longname>Attachment point for moisture sensor, using 3.5mm screw terminal.</longname>
+    <schematic filename="eagle/Moisture_Sensor.sch"/>
+    <eagledevice library="Components" device-name="MOISTURE_SENSOR" variant="-3.5MM"/>
+    <placedparts>
+      <placedpart label="Moisture Sensor Terminal" model2D="ComponentArt/Moisture_Sensor/Models/Moisture_Sensor.2D.svg" refdes="U1"/>
+    </placedparts>
+    <electrical>
+      <interfaces>
+        <interface type="PowerInterface" name="VDD" net="VDD" input="True" voltage="5" current="1"/>
+        <interface type="AnalogWireInterface" name="SENSE_a" net="SENSE" output="True"/>
+        <interface type="GroundInterface" name="GND" net="GND" output="True"/>
+      </interfaces>
+    </electrical>
+    <homedirectory>../Moisture_Sensor</homedirectory>
+  </component>
+  <component keyname="adafruit-pir-sensor">
+    <name>Motion Sensor</name>
+    <QA tested="false"/>
+    <instancename>motion</instancename>
+    <longname>PIR (motion) Sensor</longname>
+    <part part-number="189" price="9.95" updated="2015-02-24" supplier="Adafruit"/>
+    <documentationURL>http://www.adafruit.com/product/189</documentationURL>
+    <eagledevice library="Components" device-name="PIR_SENSOR" variant=""/>
+    <placedparts>
+      <placedpart label="Motion Sensor" model2D="ComponentArt/Motion_Sensor/Models/Motion_Sensor.2D.svg" refdes="U1"/>
+    </placedparts>
+    <electrical>
+      <interfaces>
+        <interface type="GroundInterface" name="GND" net="GND" output="True"/>
+        <interface type="PowerInterface" name="5V" net="5V" input="True" voltage="5" current="10"/>
+        <interface type="DigitalWireInterface" name="OUT" net="OUT" output="True"/>
+      </interfaces>
+    </electrical>
+    <homedirectory>../Motion_Sensor</homedirectory>
+    <schematic filename="eagle/adafruit-pir-sensor.device.auto.sch"/>
+  </component>
+  <component keyname="RGB-LED-5mm">
+    <name>5mm RGB LED</name>
+    <QA tested="false"/>
+    <longname>5mm RGB LED</longname>
+    <instancename>led</instancename>
+    <schematic filename="eagle/RGBLED.sch"/>
+    <part part-number="302" price="19.95" quantity="25" updated="2014-11-16" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/302</documentationURL>
+    <API>
+      <arduino>
+        <libdirectory link-as="RGBLED" path="lib" example="example.mako"/>
+        <include file="RGBLED.h"/>
+        <class name="RGBLED">
+          <arg type="PWMInterface" net="CONTROL_RED"/>
+          <arg type="PWMInterface" net="CONTROL_GREEN"/>
+          <arg type="PWMInterface" net="CONTROL_BLUE"/>
+        </class>
+        <example>
+${var_name}.set(0, 0, 0);
+delay(100);
+${var_name}.set(256, 0, 0);
+delay(100);
+${var_name}.set(256, 256, 0);
+delay(100);
+${var_name}.set(256, 256, 256);
+delay(100);
+${var_name}.set(0, 0, 0);
+delay(100);
+        </example>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface type="PWMInterface" name="CONTROL_red" net="CONTROL_RED" input="True" voltage="5" current="15"/>
+        <interface type="PWMInterface" name="CONTROL_green" net="CONTROL_GREEN" input="True" voltage="5" current="15"/>
+        <interface type="PWMInterface" name="CONTROL_blue" net="CONTROL_BLUE" input="True" voltage="5" current="15"/>
+        <interface type="PowerInterface" name="VCC" net="VCC5V" voltage="5" current="45" input="True"/>
+      </interfaces>
+    </electrical>
+    <placedparts>
+      <placedpart label="LED" model2D="ComponentArt/RGB_LED/Models/RGBLED.2D.svg" refdes="LED1"/>
+    </placedparts>
+    <homedirectory>../RGB_LED</homedirectory>
+  </component>
+  <component keyname="Servo-Continuous-top">
+    <name>Servo</name>
+    <QA tested="false"/>
+    <instancename>Servo</instancename>
+    <!--API>
+    <arduino>
+      <libdirectory link-as="Servo" path="lib"/>
+      <include file="Servo.h"/>
+      <class name="Buzzer">
+        <arg type="DigitalWireInterface" net="1"/>
+      </class>
+    </arduino>
+  </API-->
+    <electrical>
+      <interfaces>
+        <interface name="DATA" net="DATA" type="PWMInterface"/>
+        <interface name="GND" net="GND" output="True" type="GroundInterface"/>
+        <interface current="500" name="VCC" net="VCC" input="True" type="PowerInterface" voltage="9"/>
+      </interfaces>
+    </electrical>
+    <eagledevice library="Components" device-name="SERVO" variant=""/>
+    <part part-number="9065" price="8.95" updated="2015-07-15" supplier="Sparkfun"/>
+    <documentationURL>http://adafru.it/9065</documentationURL>
+    <longname>Servo</longname>
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/Servo/Models/Servo.svg" refdes="u1"/>
+    </placedparts>
+    <homedirectory>../Servo</homedirectory>
+    <schematic filename="eagle/Servo-Continuous-top.device.auto.sch"/>
+  </component>
+  <component keyname="Servo-Continuous-side">
+    <name>Servo</name>
+    <QA tested="false"/>
+    <instancename>Servo</instancename>
+    <!--API>
+    <arduino>
+      <libdirectory link-as="Servo" path="lib"/>
+      <include file="Servo.h"/>
+      <class name="Buzzer">
+        <arg type="DigitalWireInterface" net="1"/>
+      </class>
+    </arduino>
+  </API-->
+    <electrical>
+      <interfaces>
+        <interface name="DATA" net="DATA" type="PWMInterface"/>
+        <interface name="GND" net="GND" output="True" type="GroundInterface"/>
+        <interface current="500" name="VCC" net="VCC" input="True" type="PowerInterface" voltage="9"/>
+      </interfaces>
+    </electrical>
+    <eagledevice library="Components" device-name="SERVO" variant="SIDE"/>
+    <part part-number="9065" price="8.95" updated="2015-07-15" supplier="Sparkfun"/>
+    <documentationURL>http://adafru.it/9065</documentationURL>
+    <longname>Servo From the Side</longname>
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/Servo/Models/Components-SIDE_SERVO.svg" refdes="u1"/>
+    </placedparts>
+    <homedirectory>../Servo</homedirectory>
+    <schematic filename="eagle/Servo-Continuous-side.device.auto.sch"/>
+  </component>
+  <component keyname="Servo-Normal-side">
+    <name>Servo</name>
+    <QA tested="false"/>
+    <instancename>Servo</instancename>
+    <!--API>
+    <arduino>
+      <libdirectory link-as="Servo" path="lib"/>
+      <include file="Servo.h"/>
+      <class name="Buzzer">
+        <arg type="DigitalWireInterface" net="1"/>
+      </class>
+    </arduino>
+  </API-->
+    <electrical>
+      <interfaces>
+        <interface name="DATA" net="DATA" type="PWMInterface"/>
+        <interface name="GND" net="GND" output="True" type="GroundInterface"/>
+        <interface current="500" name="VCC" net="VCC" input="True" type="PowerInterface" voltage="9"/>
+      </interfaces>
+    </electrical>
+    <eagledevice library="Components" device-name="SERVO" variant="MICROSIDE"/>
+    <part part-number="9065" price="8.95" updated="2015-08-14" supplier="Sparkfun"/>
+    <documentationURL>http://adafru.it/9065</documentationURL>
+    <longname>Servo From the Side</longname>
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/Servo/Models/Components-SERVO_MICRO_SIDE.svg" refdes="u1"/>
+    </placedparts>
+    <homedirectory>../Servo</homedirectory>
+    <schematic filename="eagle/Servo-Normal-side.device.auto.sch"/>
+  </component>
+  <component keyname="SF-DUAL-MOTOR-DRIVER">
+    <name>SF Dual Motor Driver</name>
+    <QA tested="false"/>
+    <longname>Sparkfun Dual Motor Driver 2A</longname>
+    <instancename>driver</instancename>
+    <schematic filename="eagle/SF-Dual-Motor-Driver.sch"/>
+    <part part-number="9457" price="8.95" quantity="1" updated="2015-06-21" supplier="Sparkfun"/>
+    <documentationURL>https://www.sparkfun.com/products/9457</documentationURL>
+    <eagledevice device-name="SPARKFUN_DUAL_MOTOR_DRIVER" library="BOBs" variant="-BOB"/>
+    <bobspec device-name="SPARKFUN_DUAL_MOTOR_DRIVER">
+      <connector name="JP1"/>
+      <connector name="JP2"/>
+      <brdfile>eagle/TB6612FNGBreakoutv11.brd</brdfile>
+      <schfile>eagle/TB6612FNGBreakoutv11.sch</schfile>
+    </bobspec>
+    <electrical>
+      <interfaces>
+        <interface current="10" input="True" name="VCC" net="VCC" type="PowerInterface" voltage="5"/>
+        <interface current="1500" input="True" name="VM" net="VM" type="PowerInterface" voltage="9"/>
+        <interface current="5" input="True" name="STBY" net="STBY" type="DigitalWireInterface" voltage="5"/>
+        <interface current="5" input="True" name="AIN1" net="AIN1" type="DigitalWireInterface" voltage="5"/>
+        <interface current="5" input="True" name="AIN2" net="AIN2" type="DigitalWireInterface" voltage="5"/>
+        <interface current="5" input="True" name="BIN1" net="BIN1" type="DigitalWireInterface" voltage="5"/>
+        <interface current="5" input="True" name="BIN2" net="BIN2" type="DigitalWireInterface" voltage="5"/>
+        <interface current="1500" name="GND" net="GND" output="True" type="GroundInterface"/>
+        <interface current="1500" name="GND1" net="GND2" output="True" type="GroundInterface"/>
+        <interface current="1500" name="GND2" net="GND2" output="True" type="GroundInterface"/>
+        <interface current="1500" name="MotorA" neg="A02" output="True" pos="A01" type="MotorInterface" voltage="9"/>
+        <interface current="15000" name="MotorB" neg="B02" output="True" pos="B01" type="MotorInterface" voltage="9"/>
+        <interface current="5" input="True" name="PWMA" net="PWMA" type="PWMInterface" voltage="5"/>
+        <interface current="5" input="True" name="PWMB" net="PWMB" type="PWMInterface" voltage="5"/>
+      </interfaces>
+    </electrical>
+    <placedparts>
+      <placedpart label="LED" model2D="ComponentArt/Sparkfun_Dual_Motor_Controller/Models/SF-DUAL-MOTOR-DRIVER.2D.svg" refdes="U1"/>
+    </placedparts>
+    <homedirectory>../Sparkfun_Dual_Motor_Controller</homedirectory>
+  </component>
+  <component keyname="barrel-power-connector">
+    <name>Barrel power connector</name>
+    <QA tested="false"/>
+    <electrical>
+      <interfaces>
+        <interface current="5000" name="+5V_out" net="TIP" output="True" type="PowerInterface" voltage="5"/>
+        <interface name="GND" net="RING" output="True" type="GroundInterface"/>
+      </interfaces>
+    </electrical>
+    <instancename>power</instancename>
+    <longname>Barrel power connector</longname>
+    <eagledevice device-name="2.1MMJACK" library="Components" variant="THM"/>
+    <part part-number="373" price="0.95" quantity="1" updated="2014-09-17" supplier="Adafruit"/>
+    <placedparts>
+      <placedpart art-minxy="-17.375 -9.01620865" art-width="17.34" label="" model2D="ComponentArt/barrel-power-connector/Models/barrel-power-connector.2D.svg" refdes="u1"/>
+    </placedparts>
+    <homedirectory>../barrel-power-connector</homedirectory>
+    <schematic filename="eagle/barrel-power-connector.device.auto.sch"/>
+  </component>
+  <component keyname="battery-9V-vertical">
+    <QA tested="false"/>
+    <name>Battery</name>
+    <instancename>battery</instancename>
+    <electrical>
+      <interfaces>
+        <interface current="10000" name="+9V_out" net="POS" output="True" type="PowerInterface" voltage="9"/>
+        <interface name="GND" net="NEG" output="True" type="GroundInterface"/>
+      </interfaces>
+    </electrical>
+    <!-- <variant suffix="test"> -->
+    <!--   <longname>9-Volt Battery Vertical</longname> -->
+    <!--   <supplier name="Digikey" part-number="36-968-ND" price="1.12" quantity="1" updated="2015-07-14"/> -->
+    <!--   <documentationurl>http://www.digikey.com/product-detail/en/968/36-968-ND/151577</documentationurl> -->
+    <!--   <schematic filename="eagle/battery-9V-vertical.sch"/> -->
+    <!--   <placedparts> -->
+    <!-- 	<placedpart label="battery" refdes="BATT1"/> -->
+    <!--   </placedparts> -->
+    <!-- </variant> -->
+    <longname>9-Volt Battery Vertical</longname>
+    <part part-number="36-968-ND" price="1.12" quantity="1" updated="2015-07-14" supplier="Digikey"/>
+    <documentationurl>http://www.digikey.com/product-detail/en/968/36-968-ND/151577</documentationurl>
+    <schematic filename="eagle/battery-9V-vertical.sch"/>
+    <placedparts>
+      <placedpart label="battery" model2D="ComponentArt/battery/Models/Components-BATTERY_9V_KEYSTONE_968.svg" refdes="BATT1"/>
+    </placedparts>
+    <homedirectory>../battery</homedirectory>
+  </component>
+  <component keyname="battery-9V-flat">
+    <QA tested="false"/>
+    <name>Battery</name>
+    <instancename>battery</instancename>
+    <electrical>
+      <interfaces>
+        <interface current="10000" name="+9V_out" net="POS" output="True" type="PowerInterface" voltage="9"/>
+        <interface name="GND" net="NEG" output="True" type="GroundInterface"/>
+      </interfaces>
+    </electrical>
+    <!-- <variant suffix="test"> -->
+    <!--   <longname>9-Volt Battery Vertical</longname> -->
+    <!--   <supplier name="Digikey" part-number="36-968-ND" price="1.12" quantity="1" updated="2015-07-14"/> -->
+    <!--   <documentationurl>http://www.digikey.com/product-detail/en/968/36-968-ND/151577</documentationurl> -->
+    <!--   <schematic filename="eagle/battery-9V-vertical.sch"/> -->
+    <!--   <placedparts> -->
+    <!-- 	<placedpart label="battery" refdes="BATT1"/> -->
+    <!--   </placedparts> -->
+    <!-- </variant> -->
+    <longname>9-Volt Battery Flat</longname>
+    <part part-number="BSPCM-ND" price="0.28" quantity="1" updated="2015-07-14" supplier="Digikey"/>
+    <part part-number="BSPCF-ND" price="0.28" quantity="1" updated="2015-07-14" supplier="Digikey"/>
+    <documentationurl>http://www.digikey.com/product-detail/en/BSPCM/BSPCM-ND/32036</documentationurl>
+    <schematic filename="eagle/battery-9V-flat.sch"/>
+    <placedparts>
+      <placedpart label="battery" refdes="BATT1" model2D="ComponentArt/battery/Models/Components-BATTERY_9V_FLAT.donotedit.svg"/>
+    </placedparts>
+    <homedirectory>../battery</homedirectory>
+  </component>
+  <component keyname="battery-9V-double-flat">
+    <QA tested="false"/>
+    <name>Battery</name>
+    <instancename>battery</instancename>
+    <electrical>
+      <interfaces>
+        <interface current="10000" name="+9V_out" net="POS" output="True" type="PowerInterface" voltage="9"/>
+        <interface name="GND" net="NEG" output="True" type="GroundInterface"/>
+      </interfaces>
+    </electrical>
+    <!-- <variant suffix="test"> -->
+    <!--   <longname>9-Volt Battery Vertical</longname> -->
+    <!--   <supplier name="Digikey" part-number="36-968-ND" price="1.12" quantity="1" updated="2015-07-14"/> -->
+    <!--   <documentationurl>http://www.digikey.com/product-detail/en/968/36-968-ND/151577</documentationurl> -->
+    <!--   <schematic filename="eagle/battery-9V-vertical.sch"/> -->
+    <!--   <placedparts> -->
+    <!-- 	<placedpart label="battery" refdes="BATT1"/> -->
+    <!--   </placedparts> -->
+    <!-- </variant> -->
+    <longname>2 9-Volt Batteries (Flat)</longname>
+    <part part-number="BSPCM-ND" price="0.28" quantity="2" updated="2015-07-14" supplier="Digikey"/>
+    <part part-number="BSPCF-ND" price="0.28" quantity="2" updated="2015-07-14" supplier="Digikey"/>
+    <documentationurl>http://www.digikey.com/product-detail/en/BSPCM/BSPCM-ND/32036</documentationurl>
+    <schematic filename="eagle/battery-9V-double-flat.sch"/>
+    <placedparts>
+      <placedpart label="battery" refdes="BATT1" model2D="ComponentArt/battery/Models/Components-BATTERY_9V_FLAT.donotedit.svg"/>
+      <placedpart label="battery" refdes="BATT2" model2D="ComponentArt/battery/Models/Components-BATTERY_9V_FLAT.donotedit.svg"/>
+    </placedparts>
+    <homedirectory>../battery</homedirectory>
+  </component>
+  <component keyname="battery-9V-flat-autoplaced">
+    <QA tested="false"/>
+    <name>Battery</name>
+    <instancename>battery</instancename>
+    <electrical>
+      <interfaces>
+        <interface current="10000" name="+9V_out" net="POS" output="True" type="PowerInterface" voltage="9"/>
+        <interface name="GND" net="NEG" output="True" type="GroundInterface"/>
+      </interfaces>
+    </electrical>
+    <!-- <variant suffix="test"> -->
+    <!--   <longname>9-Volt Battery Vertical</longname> -->
+    <!--   <supplier name="Digikey" part-number="36-968-ND" price="1.12" quantity="1" updated="2015-07-14"/> -->
+    <!--   <documentationurl>http://www.digikey.com/product-detail/en/968/36-968-ND/151577</documentationurl> -->
+    <!--   <schematic filename="eagle/battery-9V-vertical.sch"/> -->
+    <!--   <placedparts> -->
+    <!-- 	<placedpart label="battery" refdes="BATT1"/> -->
+    <!--   </placedparts> -->
+    <!-- </variant> -->
+    <longname>9-Volt Battery Flat (autoplaced) </longname>
+    <part part-number="BSPCM-ND" price="0.28" quantity="1" updated="2015-07-14" supplier="Digikey"/>
+    <part part-number="BSPCF-ND" price="0.28" quantity="1" updated="2015-07-14" supplier="Digikey"/>
+    <documentationurl>http://www.digikey.com/product-detail/en/BSPCM/BSPCM-ND/32036</documentationurl>
+    <schematic filename="eagle/battery-9V-flat.sch"/>
+    <homedirectory>../battery</homedirectory>
+  </component>
+  <component keyname="battery-lipo-2500mAh">
+    <QA tested="false"/>
+    <name>Battery</name>
+    <instancename>battery</instancename>
+    <longname>Lithium Ion Polymer Battery - 3.7v 2500mAh</longname>
+    <part part-number="328" price="14.95" updated="2014-09-20" supplier="Adafruit"/>
+    <eagledevice library="Components" device-name="BATTERY-LIPO-CABLED" variant="-2500MAH"/>
+    <documentationURL>http://adafru.it/328</documentationURL>
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/battery/Models/lipo-battery-2500mAh.2D.svg" refdes="b1"/>
+    </placedparts>
+    <homedirectory>../battery</homedirectory>
+    <schematic filename="eagle/battery-lipo-2500mAh.device.auto.sch"/>
+  </component>
+  <component keyname="battery-lipo-1200mAh">
+    <QA tested="false"/>
+    <name>Battery</name>
+    <instancename>battery</instancename>
+    <longname>Lithium Ion Polymer Battery - 3.7v 1200mAh</longname>
+    <part part-number="258" price="9.95" updated="2014-09-20" supplier="Adafruit"/>
+    <eagledevice library="Components" device-name="BATTERY-LIPO-CABLED" variant="-1200MAH"/>
+    <documentationURL>http://adafru.it/258</documentationURL>
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/battery/Models/lipo-battery-1200mAh.2D.svg" refdes="b1"/>
+    </placedparts>
+    <homedirectory>../battery</homedirectory>
+    <schematic filename="eagle/battery-lipo-1200mAh.device.auto.sch"/>
+  </component>
+  <component keyname="battery-lipo-150mAh">
+    <QA tested="false"/>
+    <name>Battery</name>
+    <instancename>battery</instancename>
+    <longname>Lithium Ion Polymer Battery - 3.7v 150mAh</longname>
+    <part part-number="1317" price="5.95" updated="2014-09-20" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/1317</documentationURL>
+    <eagledevice library="Components" device-name="BATTERY-LIPO-CABLED" variant="-150MAH"/>
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/battery/Models/lipo-battery-150mAh.2D.svg" refdes="b1"/>
+    </placedparts>
+    <homedirectory>../battery</homedirectory>
+    <schematic filename="eagle/battery-lipo-150mAh.device.auto.sch"/>
+  </component>
+  <component keyname="battery-lipo-100mAh">
+    <QA tested="false"/>
+    <name>Battery</name>
+    <instancename>battery</instancename>
+    <longname>Lithium Ion Polymer Battery - 3.7v 100mAh</longname>
+    <part part-number="1570" price="5.95" updated="2014-09-20" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/1570</documentationURL>
+    <eagledevice library="Components" device-name="BATTERY-LIPO-CABLED" variant="-100MAH"/>
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/battery/Models/lipo-battery-100mAh.2D.svg" refdes="b1"/>
+    </placedparts>
+    <homedirectory>../battery</homedirectory>
+    <schematic filename="eagle/battery-lipo-100mAh.device.auto.sch"/>
+  </component>
+  <component keyname="battery-lipo-500mAh">
+    <QA tested="false"/>
+    <name>Battery</name>
+    <instancename>battery</instancename>
+    <longname>Lithium Ion Polymer Battery - 3.7v 500mAh</longname>
+    <part part-number="1578" price="7.95" updated="2014-09-20" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/1578</documentationURL>
+    <eagledevice library="Components" device-name="BATTERY-LIPO-CABLED" variant="-500MAH"/>
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/battery/Models/lipo-battery-500mAh.2D.svg" refdes="b1"/>
+    </placedparts>
+    <homedirectory>../battery</homedirectory>
+    <schematic filename="eagle/battery-lipo-500mAh.device.auto.sch"/>
+  </component>
+  <component keyname="battery-lipo-2000mAh">
+    <QA tested="false"/>
+    <name>Battery</name>
+    <instancename>battery</instancename>
+    <longname>Lithium Ion Battery - 3.7v 2000mAh</longname>
+    <part part-number="2011" price="12.50" updated="2014-09-20" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/2011</documentationURL>
+    <eagledevice library="Components" device-name="BATTERY-LIPO-CABLED" variant="-2000MAH"/>
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/battery/Models/lipo-battery-2000mAh.2D.svg" refdes="b1"/>
+    </placedparts>
+    <homedirectory>../battery</homedirectory>
+    <schematic filename="eagle/battery-lipo-2000mAh.device.auto.sch"/>
+  </component>
+  <component keyname="chronodot-RTC">
+    <name>ChronoDot - Ultra-precise Real Time Clock</name>
+    <QA tested="false"/>
+    <electrical>
+      <interfaces>
+        <interface type="I2CInterface" name="I2C_bus" role="slave" sda="SDA" scl="SCL"/>
+        <interface type="PowerInterface" name="VCC" net="VCC" input="True" voltage="5" current="0"/>
+        <interface type="GroundInterface" name="GND" net="GND" input="True"/>
+      </interfaces>
+    </electrical>
+    <instancename>clock</instancename>
+    <API>
+      <arduino>
+        <documentationURL>http://docs.macetech.com/doku.php/chronodot_v2.0</documentationURL>
+        <downloadURL protocol="svn">https://github.com/mizraith/RTClib</downloadURL>
+        <libdirectory path="ext/RTCLib/trunk/" link-as="RTCLib"/>
+        <include file="RTC_DS3231.h"/>
+        <required file="Wire.h"/>
+        <class name="RTC_DS3231"/>
+      </arduino>
+    </API>
+    <eagledevice library="BOBs" device-name="RTC-CHRONODOT-ADAFRUIT255" variant="-BOB"/>
+    <part part-number="255" price="17.50" updated="2014-08-21" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/255</documentationURL>
+    <longname>ChronoDot - Ultra-precise Real Time Clock</longname>
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/chronodot-RTC/Models/chronodot-RTC.2D.svg" refdes="u1"/>
+    </placedparts>
+    <homedirectory>../chronodot-RTC</homedirectory>
+    <schematic filename="eagle/chronodot-RTC.device.auto.sch"/>
+  </component>
+  <component keyname="mounting-hole-plated-screw">
+    <name>Mounting Hole</name>
+    <QA tested="false"/>
+    <longname>Mounting hole for M2.5 screw</longname>
+    <eagledevice library="Components" device-name="MOUNTINGHOLE" variant="FP-M2.5-PLATED"/>
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/mounting-hole/Models/M2.5-mounting-platedhole-screw.2D.svg" refdes="u1"/>
+    </placedparts>
+    <otherparts>
+      <part supplier="mcmastercarr" pn="95836A253 in black or other length" qty="1"/>
+      <!-- for mounting holes -->
+      <part supplier="mcmastercarr" pn="92005A061 or other length" qty="1"/>
+      <!-- for mounting holes -->
+    </otherparts>
+    <homedirectory>../mounting-hole</homedirectory>
+    <schematic filename="eagle/mounting-hole-plated-screw.device.auto.sch"/>
+  </component>
+  <component keyname="mounting-hole-plated-empty">
+    <name>Mounting Hole</name>
+    <QA tested="false"/>
+    <longname>Mounting hole for M2.5 screw</longname>
+    <eagledevice library="Components" device-name="MOUNTINGHOLE" variant="FP-M2.5-PLATED"/>
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/mounting-hole/Models/M2.5-mounting-platedhole.2D.svg" refdes="u1"/>
+    </placedparts>
+    <homedirectory>../mounting-hole</homedirectory>
+    <schematic filename="eagle/mounting-hole-plated-empty.device.auto.sch"/>
+  </component>
+  <component keyname="mounting-hole-unplated-screw">
+    <name>Mounting Hole</name>
+    <QA tested="false"/>
+    <longname>Mounting hole for M2.5 screw</longname>
+    <eagledevice library="Components" device-name="MOUNTINGHOLE" variant="FP-M2.5-UNPLATED"/>
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/mounting-hole/Models/M2.5-mounting-unplatedhole-screw.2D.svg" refdes="u1"/>
+    </placedparts>
+    <otherparts>
+      <part supplier="mcmastercarr" pn="95836A253 in black or other length" qty="2"/>
+      <!-- for mounting holes. -->
+      <part supplier="mcmastercarr" pn="92005A061 or other length" qty="2"/>
+      <!-- for mounting holes -->
+      <part supplier="mcmastercarr" pn="95947A110 or other length" qty="1"/>
+      <!-- standoff double female. -->
+      <part supplier="mcmastercarr" pn="98952A204 or other length" qty="1"/>
+      <!-- standoff male-female. -->
+    </otherparts>
+    <homedirectory>../mounting-hole</homedirectory>
+    <schematic filename="eagle/mounting-hole-unplated-screw.device.auto.sch"/>
+  </component>
+  <component keyname="mounting-hole-unplated-empty">
+    <name>Mounting Hole</name>
+    <QA tested="false"/>
+    <longname>Mounting hole for M2.5 screw</longname>
+    <eagledevice library="Components" device-name="MOUNTINGHOLE" variant="FP-M2.5-UNPLATED"/>
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/mounting-hole/Models/M2.5-mounting-unplatedhole.2D.svg" refdes="u1"/>
+    </placedparts>
+    <homedirectory>../mounting-hole</homedirectory>
+    <schematic filename="eagle/mounting-hole-unplated-empty.device.auto.sch"/>
+  </component>
+  <component keyname="piezo-buzzer">
+    <name>Buzzer</name>
+    <QA tested="false"/>
+    <instancename>buzzer</instancename>
+    <API>
+      <arduino>
+        <libdirectory link-as="Buzzer" path="lib"/>
+        <include file="Buzzer.h"/>
+        <class name="Buzzer">
+          <arg type="DigitalWireInterface" net="1"/>
+        </class>
+        <example>
+${var_name}.turnOn();
+delay(300);
+${var_name}.turnOff();
+delay(300);
+${var_name}.turnOn();
+delay(300);
+${var_name}.turnOff();
+delay(300);
+${var_name}.turnOn();
+delay(300);
+${var_name}.turnOff();
+delay(300);
+        </example>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface input="True" name="CONTROL" net="1" type="DigitalWireInterface"/>
+        <interface name="GND" net="2" output="True" type="GroundInterface"/>
+      </interfaces>
+    </electrical>
+    <eagledevice library="Components" device-name="BUZZER" variant="PTH"/>
+    <part part-number="1536" price="0.95" updated="2014-08-21" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/1536</documentationURL>
+    <longname>Buzzer</longname>
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/piezo-buzzer/Models/BUZZER-12MM.2D.svg" refdes="u1"/>
+    </placedparts>
+    <homedirectory>../piezo-buzzer</homedirectory>
+    <schematic filename="eagle/piezo-buzzer.device.auto.sch"/>
+  </component>
+  <component keyname="snowglobe">
+    <name>Snow globe</name>
+    <QA tested="false"/>
+    <part price="1" updated="na" part-number="???" supplier="Michael's"/>
+    <longname>Snow globe</longname>
+    <eagledevice library="Components" device-name="SNOWGLOBE" variant=""/>
+    <placedparts>
+      <placedpart art-width="96.81" art-height="98.5" art-minxy="-49.28626633 -48.36308289" label="" model2D="ComponentArt/snowglobe/Models/snowglobe.2D.svg" refdes="u1"/>
+    </placedparts>
+    <homedirectory>../snowglobe</homedirectory>
+    <schematic filename="eagle/snowglobe.device.auto.sch"/>
+  </component>
+  <component keyname="sparkfun-serial-16x2-LCD">
+    <name>Serial Enabled 16x2 LCD - White on Black 5V</name>
+    <QA tested="false"/>
+    <instancename>display</instancename>
+    <API>
+      <arduino>
+        <downloadURL protocol="svn" rename="SparkfunSerLCD">https://github.com/nemith/serLCD</downloadURL>
+        <libdirectory link-as="SparkFun16x2SerLCD" path="ext/lib"/>
+        <include file="serLCD.h"/>
+        <class name="serLCD">
+          <arg net="CONTROL"/>
+        </class>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface type="SerialInterface" name="serial_port" tx="GND" rx="RX"/>
+        <interface type="GroundInterface" name="GND" net="GND" output="True"/>
+        <interface type="PowerInterface" name="+5V" net="+5V" input="True" voltage="5" current="300"/>
+      </interfaces>
+    </electrical>
+    <eagledevice library="BOBs" device-name="SPARKFUN-SERIAL-16X2-LCD" variant="-BOB"/>
+    <longname>Serial Enabled 16x2 LCD - White on Black 5V</longname>
+    <part part-number="9395" price="24.95" updated="2014-10-23" supplier="Sparkfun"/>
+    <documentationURL>https://www.sparkfun.com/products/9395</documentationURL>
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/sparkfun-serial-16x2-LCD/Models/sparkfun-serial-16x2-LCD.2D.svg" refdes="u1"/>
+    </placedparts>
+    <homedirectory>../sparkfun-serial-16x2-LCD</homedirectory>
+    <schematic filename="eagle/sparkfun-serial-16x2-LCD.device.auto.sch"/>
+  </component>
+  <component keyname="bump-switch-micro-right">
+    <QA tested="false"/>
+    <API>
+      <arduino>
+        <libdirectory link-as="MomentaryButton" path="lib"/>
+        <include file="MomentaryButton.h"/>
+        <class name="MomentaryButton">
+          <arg type="DigitalWireInterface" net="SENSE"/>
+        </class>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface type="DigitalWireInterface" name="SENSE_d" net="SENSE" output="True"/>
+        <interface type="GroundInterface" name="GND" net="GND" output="True"/>
+      </interfaces>
+    </electrical>
+    <name>Bump Switch</name>
+    <instancename>bump</instancename>
+    <longname>Micro Bump Switch</longname>
+    <documentationURL>http://industrial.panasonic.com/www-data/pdf/ATB0000/ATB0000CE4.pdf</documentationURL>
+    <schematic filename="eagle/micro-bump-switch-right.sch"/>
+    <part part-number="P10862S-ND" price="0.48" quantity="1" updated="2015-07-13" supplier="Digikey"/>
+    <placedparts>
+      <placedpart label="switch" refdes="U$2" model2D="ComponentArt/tactile-button/Models/Components-BUMP_SWITCH_PANASONIC_ESE11SH1C.donotedit.svg"/>
+    </placedparts>
+    <homedirectory>../tactile-button</homedirectory>
+  </component>
+  <component keyname="bump-switch-micro-left">
+    <QA tested="false"/>
+    <API>
+      <arduino>
+        <libdirectory link-as="MomentaryButton" path="lib"/>
+        <include file="MomentaryButton.h"/>
+        <class name="MomentaryButton">
+          <arg type="DigitalWireInterface" net="SENSE"/>
+        </class>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface type="DigitalWireInterface" name="SENSE_d" net="SENSE" output="True"/>
+        <interface type="GroundInterface" name="GND" net="GND" output="True"/>
+      </interfaces>
+    </electrical>
+    <name>Bump Switch</name>
+    <instancename>bump</instancename>
+    <longname>Micro Bump Switch</longname>
+    <documentationURL>http://industrial.panasonic.com/www-data/pdf/ATB0000/ATB0000CE4.pdf</documentationURL>
+    <schematic filename="eagle/micro-bump-switch-left.sch"/>
+    <part part-number="P10863S-ND" price="0.48" quantity="1" updated="2015-07-13" supplier="Digikey"/>
+    <placedparts>
+      <placedpart label="switch" refdes="U$2" model2D="ComponentArt/tactile-button/Models/Components-BUMP_SWITCH_PANASONIC_ESE11SH1C.donotedit.svg"/>
+    </placedparts>
+    <homedirectory>../tactile-button</homedirectory>
+  </component>
+  <component keyname="bump-switch-medium-right">
+    <QA tested="false"/>
+    <API>
+      <arduino>
+        <libdirectory link-as="MomentaryButton" path="lib"/>
+        <include file="MomentaryButton.h"/>
+        <class name="MomentaryButton">
+          <arg type="DigitalWireInterface" net="SENSE"/>
+        </class>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface type="DigitalWireInterface" name="SENSE_d" net="SENSE" output="True"/>
+        <interface type="GroundInterface" name="GND" net="GND" output="True"/>
+      </interfaces>
+    </electrical>
+    <name>Bump Switch</name>
+    <instancename>bump</instancename>
+    <longname>Medium Bump Switch</longname>
+    <documentationURL>http://www.components.omron.com/components/web/PDFLIB.nsf/0/5673FC48B47CDC9C85257201007DD56F/$file/D2F_1113.pdf</documentationURL>
+    <schematic filename="eagle/medium-bump-switch-right.sch"/>
+    <part part-number="SW842-ND" price="2.27" quantity="1" updated="2015-07-13" supplier="Digikey"/>
+    <placedparts>
+      <placedpart label="switch" model2D="ComponentArt/tactile-button/Models/Components-BUMP_SWITCH_OMRON_D2FLA1.svg" refdes="U$2"/>
+    </placedparts>
+    <homedirectory>../tactile-button</homedirectory>
+  </component>
+  <component keyname="bump-switch-medium-left">
+    <QA tested="false"/>
+    <API>
+      <arduino>
+        <libdirectory link-as="MomentaryButton" path="lib"/>
+        <include file="MomentaryButton.h"/>
+        <class name="MomentaryButton">
+          <arg type="DigitalWireInterface" net="SENSE"/>
+        </class>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface type="DigitalWireInterface" name="SENSE_d" net="SENSE" output="True"/>
+        <interface type="GroundInterface" name="GND" net="GND" output="True"/>
+      </interfaces>
+    </electrical>
+    <name>Bump Switch</name>
+    <instancename>bump</instancename>
+    <longname>Medium Bump Switch</longname>
+    <documentationURL>http://www.components.omron.com/components/web/PDFLIB.nsf/0/5673FC48B47CDC9C85257201007DD56F/$file/D2F_1113.pdf</documentationURL>
+    <schematic filename="eagle/medium-bump-switch-left.sch"/>
+    <part part-number="SW843-ND" price="2.27" quantity="1" updated="2015-07-13" supplier="Digikey"/>
+    <placedparts>
+      <placedpart label="switch" model2D="ComponentArt/tactile-button/Models/Components-BUMP_SWITCH_OMRON_D2FLA.svg" refdes="U$2"/>
+    </placedparts>
+    <homedirectory>../tactile-button</homedirectory>
+  </component>
+  <component keyname="tactile-button-round-red">
+    <QA tested="false"/>
+    <API>
+      <arduino>
+        <libdirectory link-as="MomentaryButton" path="lib"/>
+        <include file="MomentaryButton.h"/>
+        <class name="MomentaryButton">
+          <arg type="DigitalWireInterface" net="SENSE"/>
+        </class>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface type="DigitalWireInterface" name="SENSE_d" net="SENSE" output="True"/>
+        <interface type="GroundInterface" name="GND" net="GND" output="True"/>
+      </interfaces>
+    </electrical>
+    <name>Colorful Round Tactile Button Switch</name>
+    <instancename>button</instancename>
+    <longname>Round Button</longname>
+    <schematic filename="eagle/round-tactile-button.sch"/>
+    <eagledevice library="Components" device-name="BUTTON-TACTILE" variant="-ROUND"/>
+    <part part-number="1009" price="5.95" quantity="15" updated="2014-08-21" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/1009</documentationURL>
+    <descriptor name="Shape" value="Round"/>
+    <descriptor name="Size" value="12mm"/>
+    <descriptor name="Color" value="Red"/>
+    <placedparts>
+      <placedpart label="button" model2D="ComponentArt/tactile-button/Models/red-round-button.2D.svg" art-width="13.88" refdes="B1"/>
+    </placedparts>
+    <homedirectory>../tactile-button</homedirectory>
+  </component>
+  <component keyname="tactile-button-round-yellow">
+    <QA tested="false"/>
+    <API>
+      <arduino>
+        <libdirectory link-as="MomentaryButton" path="lib"/>
+        <include file="MomentaryButton.h"/>
+        <class name="MomentaryButton">
+          <arg type="DigitalWireInterface" net="SENSE"/>
+        </class>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface type="DigitalWireInterface" name="SENSE_d" net="SENSE" output="True"/>
+        <interface type="GroundInterface" name="GND" net="GND" output="True"/>
+      </interfaces>
+    </electrical>
+    <name>Colorful Round Tactile Button Switch</name>
+    <instancename>button</instancename>
+    <longname>Round Button</longname>
+    <schematic filename="eagle/round-tactile-button.sch"/>
+    <eagledevice library="Components" device-name="BUTTON-TACTILE" variant="-ROUND"/>
+    <part part-number="1009" price="5.95" quantity="15" updated="2014-08-21" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/1009</documentationURL>
+    <descriptor name="Shape" value="Round"/>
+    <descriptor name="Size" value="12mm"/>
+    <descriptor name="Color" value="Yellow"/>
+    <placedparts>
+      <placedpart label="button" model2D="ComponentArt/tactile-button/Models/yellow-round-button.2D.svg" art-width="13.88" refdes="B1"/>
+    </placedparts>
+    <homedirectory>../tactile-button</homedirectory>
+  </component>
+  <component keyname="tactile-button-round-blue">
+    <QA tested="false"/>
+    <API>
+      <arduino>
+        <libdirectory link-as="MomentaryButton" path="lib"/>
+        <include file="MomentaryButton.h"/>
+        <class name="MomentaryButton">
+          <arg type="DigitalWireInterface" net="SENSE"/>
+        </class>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface type="DigitalWireInterface" name="SENSE_d" net="SENSE" output="True"/>
+        <interface type="GroundInterface" name="GND" net="GND" output="True"/>
+      </interfaces>
+    </electrical>
+    <name>Colorful Round Tactile Button Switch</name>
+    <instancename>button</instancename>
+    <longname>Round Button</longname>
+    <schematic filename="eagle/round-tactile-button.sch"/>
+    <eagledevice library="Components" device-name="BUTTON-TACTILE" variant="-ROUND"/>
+    <part part-number="1009" price="5.95" quantity="15" updated="2014-08-21" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/1009</documentationURL>
+    <descriptor name="Shape" value="Round"/>
+    <descriptor name="Size" value="12mm"/>
+    <descriptor name="Color" value="Blue"/>
+    <placedparts>
+      <placedpart label="button" model2D="ComponentArt/tactile-button/Models/blue-round-button.2D.svg" art-width="13.88" refdes="B1"/>
+    </placedparts>
+    <homedirectory>../tactile-button</homedirectory>
+  </component>
+  <component keyname="tactile-button-round-gray">
+    <QA tested="false"/>
+    <API>
+      <arduino>
+        <libdirectory link-as="MomentaryButton" path="lib"/>
+        <include file="MomentaryButton.h"/>
+        <class name="MomentaryButton">
+          <arg type="DigitalWireInterface" net="SENSE"/>
+        </class>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface type="DigitalWireInterface" name="SENSE_d" net="SENSE" output="True"/>
+        <interface type="GroundInterface" name="GND" net="GND" output="True"/>
+      </interfaces>
+    </electrical>
+    <name>Colorful Round Tactile Button Switch</name>
+    <instancename>button</instancename>
+    <longname>Round Button</longname>
+    <schematic filename="eagle/round-tactile-button.sch"/>
+    <eagledevice library="Components" device-name="BUTTON-TACTILE" variant="-ROUND"/>
+    <part part-number="1009" price="5.95" quantity="15" updated="2014-08-21" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/1009</documentationURL>
+    <descriptor name="Shape" value="Round"/>
+    <descriptor name="Size" value="12mm"/>
+    <descriptor name="Color" value="Gray"/>
+    <placedparts>
+      <placedpart label="button" model2D="ComponentArt/tactile-button/Models/gray-round-button.2D.svg" art-width="13.88" refdes="B1"/>
+    </placedparts>
+    <homedirectory>../tactile-button</homedirectory>
+  </component>
+  <component keyname="tactile-button-round-green">
+    <QA tested="false"/>
+    <API>
+      <arduino>
+        <libdirectory link-as="MomentaryButton" path="lib"/>
+        <include file="MomentaryButton.h"/>
+        <class name="MomentaryButton">
+          <arg type="DigitalWireInterface" net="SENSE"/>
+        </class>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface type="DigitalWireInterface" name="SENSE_d" net="SENSE" output="True"/>
+        <interface type="GroundInterface" name="GND" net="GND" output="True"/>
+      </interfaces>
+    </electrical>
+    <name>Colorful Round Tactile Button Switch</name>
+    <instancename>button</instancename>
+    <longname>Round Button</longname>
+    <schematic filename="eagle/round-tactile-button.sch"/>
+    <eagledevice library="Components" device-name="BUTTON-TACTILE" variant="-ROUND"/>
+    <part part-number="1009" price="5.95" quantity="15" updated="2014-08-21" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/1009</documentationURL>
+    <descriptor name="Shape" value="Round"/>
+    <descriptor name="Size" value="12mm"/>
+    <descriptor name="Color" value="Green"/>
+    <placedparts>
+      <placedpart label="button" model2D="ComponentArt/tactile-button/Models/green-round-button.2D.svg" art-width="13.88" refdes="B1"/>
+    </placedparts>
+    <homedirectory>../tactile-button</homedirectory>
+  </component>
+  <component keyname="tactile-button-square-red">
+    <QA tested="false"/>
+    <API>
+      <arduino>
+        <libdirectory link-as="MomentaryButton" path="lib"/>
+        <include file="MomentaryButton.h"/>
+        <class name="MomentaryButton">
+          <arg type="DigitalWireInterface" net="SENSE"/>
+        </class>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface type="DigitalWireInterface" name="SENSE_d" net="SENSE" output="True"/>
+        <interface type="GroundInterface" name="GND" net="GND" output="True"/>
+      </interfaces>
+    </electrical>
+    <name>Colorful Round Tactile Button Switch</name>
+    <instancename>button</instancename>
+    <longname>Square Button</longname>
+    <schematic filename="eagle/square-tactile-button.sch"/>
+    <eagledevice library="Components" device-name="BUTTON-TACTILE" variant="-SQUARE"/>
+    <part part-number="1010" price="5.95" quantity="15" updated="2014-08-21" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/1010</documentationURL>
+    <descriptor name="Shape" value="Square"/>
+    <descriptor name="Size" value="12mm"/>
+    <placedparts>
+      <placedpart label="button" model2D="ComponentArt/tactile-button/Models/red-square-button.2D.svg" art-height="11.9" art-width="11.9" art-minxy="-5.93 -5.96" refdes="B1"/>
+    </placedparts>
+    <homedirectory>../tactile-button</homedirectory>
+  </component>
+  <component keyname="tactile-button-square-yellow">
+    <QA tested="false"/>
+    <API>
+      <arduino>
+        <libdirectory link-as="MomentaryButton" path="lib"/>
+        <include file="MomentaryButton.h"/>
+        <class name="MomentaryButton">
+          <arg type="DigitalWireInterface" net="SENSE"/>
+        </class>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface type="DigitalWireInterface" name="SENSE_d" net="SENSE" output="True"/>
+        <interface type="GroundInterface" name="GND" net="GND" output="True"/>
+      </interfaces>
+    </electrical>
+    <name>Colorful Round Tactile Button Switch</name>
+    <instancename>button</instancename>
+    <longname>Square Button</longname>
+    <schematic filename="eagle/square-tactile-button.sch"/>
+    <eagledevice library="Components" device-name="BUTTON-TACTILE" variant="-SQUARE"/>
+    <part part-number="1010" price="5.95" quantity="15" updated="2014-08-21" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/1010</documentationURL>
+    <descriptor name="Shape" value="Square"/>
+    <descriptor name="Size" value="12mm"/>
+    <placedparts>
+      <placedpart label="button" model2D="ComponentArt/tactile-button/Models/yellow-square-button.2D.svg" art-height="11.9" art-width="11.9" art-minxy="-5.93 -5.96" refdes="B1"/>
+    </placedparts>
+    <homedirectory>../tactile-button</homedirectory>
+  </component>
+  <component keyname="tactile-button-square-blue">
+    <QA tested="false"/>
+    <API>
+      <arduino>
+        <libdirectory link-as="MomentaryButton" path="lib"/>
+        <include file="MomentaryButton.h"/>
+        <class name="MomentaryButton">
+          <arg type="DigitalWireInterface" net="SENSE"/>
+        </class>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface type="DigitalWireInterface" name="SENSE_d" net="SENSE" output="True"/>
+        <interface type="GroundInterface" name="GND" net="GND" output="True"/>
+      </interfaces>
+    </electrical>
+    <name>Colorful Round Tactile Button Switch</name>
+    <instancename>button</instancename>
+    <longname>Square Button</longname>
+    <schematic filename="eagle/square-tactile-button.sch"/>
+    <eagledevice library="Components" device-name="BUTTON-TACTILE" variant="-SQUARE"/>
+    <part part-number="1010" price="5.95" quantity="15" updated="2014-08-21" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/1010</documentationURL>
+    <descriptor name="Shape" value="Square"/>
+    <descriptor name="Size" value="12mm"/>
+    <placedparts>
+      <placedpart label="button" model2D="ComponentArt/tactile-button/Models/blue-square-button.2D.svg" art-height="11.9" art-width="11.9" art-minxy="-5.93 -5.96" refdes="B1"/>
+    </placedparts>
+    <homedirectory>../tactile-button</homedirectory>
+  </component>
+  <component keyname="tactile-button-square-gray">
+    <QA tested="false"/>
+    <API>
+      <arduino>
+        <libdirectory link-as="MomentaryButton" path="lib"/>
+        <include file="MomentaryButton.h"/>
+        <class name="MomentaryButton">
+          <arg type="DigitalWireInterface" net="SENSE"/>
+        </class>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface type="DigitalWireInterface" name="SENSE_d" net="SENSE" output="True"/>
+        <interface type="GroundInterface" name="GND" net="GND" output="True"/>
+      </interfaces>
+    </electrical>
+    <name>Colorful Round Tactile Button Switch</name>
+    <instancename>button</instancename>
+    <longname>Square Button</longname>
+    <schematic filename="eagle/square-tactile-button.sch"/>
+    <eagledevice library="Components" device-name="BUTTON-TACTILE" variant="-SQUARE"/>
+    <part part-number="1010" price="5.95" quantity="15" updated="2014-08-21" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/1010</documentationURL>
+    <descriptor name="Shape" value="Square"/>
+    <descriptor name="Size" value="12mm"/>
+    <placedparts>
+      <placedpart label="button" model2D="ComponentArt/tactile-button/Models/gray-square-button.2D.svg" art-height="11.9" art-width="11.9" art-minxy="-5.93 -5.96" refdes="B1"/>
+    </placedparts>
+    <homedirectory>../tactile-button</homedirectory>
+  </component>
+  <component keyname="tactile-button-square-green">
+    <QA tested="false"/>
+    <API>
+      <arduino>
+        <libdirectory link-as="MomentaryButton" path="lib"/>
+        <include file="MomentaryButton.h"/>
+        <class name="MomentaryButton">
+          <arg type="DigitalWireInterface" net="SENSE"/>
+        </class>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface type="DigitalWireInterface" name="SENSE_d" net="SENSE" output="True"/>
+        <interface type="GroundInterface" name="GND" net="GND" output="True"/>
+      </interfaces>
+    </electrical>
+    <name>Colorful Round Tactile Button Switch</name>
+    <instancename>button</instancename>
+    <longname>Square Button</longname>
+    <schematic filename="eagle/square-tactile-button.sch"/>
+    <eagledevice library="Components" device-name="BUTTON-TACTILE" variant="-SQUARE"/>
+    <part part-number="1010" price="5.95" quantity="15" updated="2014-08-21" supplier="Adafruit"/>
+    <documentationURL>http://adafru.it/1010</documentationURL>
+    <descriptor name="Shape" value="Square"/>
+    <descriptor name="Size" value="12mm"/>
+    <placedparts>
+      <placedpart label="button" model2D="ComponentArt/tactile-button/Models/green-square-button.2D.svg" art-height="11.9" art-width="11.9" art-minxy="-5.93 -5.96" refdes="B1"/>
+    </placedparts>
+    <homedirectory>../tactile-button</homedirectory>
+  </component>
+  <component keyname="tactile-button-tall-small">
+    <QA tested="false"/>
+    <API>
+      <arduino>
+        <libdirectory link-as="MomentaryButton" path="lib"/>
+        <include file="MomentaryButton.h"/>
+        <class name="MomentaryButton">
+          <arg type="DigitalWireInterface" net="SENSE"/>
+        </class>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface type="DigitalWireInterface" name="SENSE_d" net="SENSE" output="True"/>
+        <interface type="GroundInterface" name="GND" net="GND" output="True"/>
+      </interfaces>
+    </electrical>
+    <name>Colorful Round Tactile Button Switch</name>
+    <instancename>button</instancename>
+    <longname>Small Button</longname>
+    <schematic filename="eagle/tall-small-tactile-button.sch"/>
+    <part part-number="1490" price="2.50" quantity="10" updated="2014-08-21" supplier="Adafruit"/>
+    <eagledevice library="Components" device-name="BUTTON-TACTILE" variant="-TALL-SMALL"/>
+    <documentationURL>http://adafru.it/1490</documentationURL>
+    <descriptor name="Height" value="Tall"/>
+    <placedparts>
+      <placedpart label="button" model2D="ComponentArt/tactile-button/Models/tall-black-button.2D.svg" art-width="6.6" art-minxy="-3.298 -3.289" refdes="B1"/>
+    </placedparts>
+    <homedirectory>../tactile-button</homedirectory>
+  </component>
+  <component keyname="temperature-sensor">
+    <name>Temperature Sensor - TMP36</name>
+    <QA tested="false"/>
+    <instancename>thermometer</instancename>
+    <API>
+      <arduino>
+        <libdirectory link-as="Thermometer" path="lib"/>
+        <include file="Thermometer.h"/>
+        <class name="TMP36">
+          <arg type="AnalogWireInterface" net="SENSE"/>
+        </class>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface type="AnalogWireInterface" name="A" net="SENSE" input="True"/>
+        <interface type="PowerInterface" name="VDD" net="VDD" input="True" voltage="5" current="1"/>
+        <interface type="GroundInterface" name="GND" net="GND" output="True"/>
+      </interfaces>
+    </electrical>
+    <schematic filename="eagle/temperature-sensor-TMP36.sch"/>
+    <longname>Temperature Sensor - TMP36</longname>
+    <part part-number="10988" price="1.50" updated="2014-10-22" supplier="Sparkfun"/>
+    <documentationURL>https://www.sparkfun.com/products/10988</documentationURL>
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/temperature-sensor/Models/tmp36.2D.svg" art-width="4.02" art-minxy="-2.01 -2.60" refdes="U1"/>
+    </placedparts>
+    <homedirectory>../temperature-sensor</homedirectory>
+  </component>
+  <component keyname="vibrating-motor">
+    <name>VibratingMotor</name>
+    <QA tested="false"/>
+    <instancename>VibratingMotor</instancename>
+    <API>
+      <arduino>
+        <libdirectory link-as="VibratingMotor" path="lib"/>
+        <include file="VibratingMotor.h"/>
+        <class name="VibratingMotor">
+          <arg type="DigitalWireInterface" net="VCC"/>
+        </class>
+      </arduino>
+    </API>
+    <electrical>
+      <interfaces>
+        <interface name="CONTROL" net="VCC" type="DigitalWireInterface" input="True"/>
+        <interface name="GND" net="GND" type="GroundInterface" output="True"/>
+      </interfaces>
+    </electrical>
+    <eagledevice library="Components" device-name="VIBRATING_MOTOR" variant=""/>
+    <part part-number="ROB-08449" price="4.95" updated="2015-07-15" supplier="SparkFun"/>
+    <documentationURL>https://www.sparkfun.com/products/8449</documentationURL>
+    <longname>VibratingMotor</longname>
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/vibrating-motor/Models/Components-VIBRATING_MOTOR.svg" refdes="u1"/>
+    </placedparts>
+    <homedirectory>../vibrating-motor</homedirectory>
+    <schematic filename="eagle/vibrating-motor.device.auto.sch"/>
+  </component>
+  <component keyname="Catapult Motor">
+    <name>Catapult</name>
+    <QA tested="false"/>
+    <instancename>catapult</instancename>
+    <longname>Motor with Attached Catapult Components</longname>
+    <part part-number="??" price="?" quantity="1" updated="2015-08-27" supplier="??"/>
+    <!-- <documentationURL>https://solarbotics.com/product/gmpw_deal/</documentationURL> -->
+    <electrical>
+      <interfaces>
+        <interface current="500" input="True" name="M1" neg="-" pos="+" type="MotorInterface" voltage="9"/>
+      </interfaces>
+    </electrical>
+    <eagledevice library="Components" device-name="CATAPULT" variant=""/>
+    <!-- <schematic filename="eagle/Motor.sch"/> -->
+    <placedparts>
+      <placedpart label="catapult" model2D="ComponentArt/catapult/Models/Components-CATAPULT.svg" refdes="A1"/>
+    </placedparts>
+    <homedirectory>../catapult</homedirectory>
+    <schematic filename="eagle/Catapult Motor.device.auto.sch"/>
+  </component>
+  <component keyname="pen-holder">
+    <name>Pen Holder</name>
+    <QA tested="false"/>
+    <longname>Pen Holder</longname>
+    <instancename>penholder</instancename>
+    <eagledevice library="Components" device-name="PENHOLDER" variant=""/>
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/Pen_Holder/Models/PENHOLDER.2D.svg" refdes="u1"/>
+    </placedparts>
+    <homedirectory>../Pen_Holder</homedirectory>
+    <schematic filename="eagle/pen-holder.device.auto.sch"/>
+  </component>
+  <component keyname="pin-leg">
+    <name>Pin Leg</name>
+    <QA tested="false"/>
+    <instancename>Pin Leg</instancename>
+    <eagledevice library="Components" device-name="PIN_LEG" variant=""/>
+    <otherparts>
+      <part supplier="TODO" pn="TODO" qty="1" price="0.5" updated="2015-10-22" name="TODO"/>
+      <!-- pin -->
+    </otherparts>
+    <documentationURL>https://www.TODO.com</documentationURL>
+    <longname>Pin Leg for Robot</longname>
+    <placedparts>
+      <placedpart label="" model2D="ComponentArt/pin_leg/Models/pin_leg.svg" refdes="u1"/>
+    </placedparts>
+    <homedirectory>../pin_leg</homedirectory>
+    <schematic filename="eagle/pin-leg.device.auto.sch"/>
+  </component>
+</catalog>
