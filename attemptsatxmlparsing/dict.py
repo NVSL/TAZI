@@ -7,6 +7,7 @@ def recursePrint(node, spaces):
     if tag == "block":
         typeB = node.attrib["type"]
         if typeB in cmap:
+            tag = ""
             whatToPrint = cmap[typeB]
         else:
             whatToPrint = typeB
@@ -35,10 +36,8 @@ treeR = raw_input("Which file would you like to read? ")
 tree = ET.parse(treeR)
 root = tree.getroot()
 
-print "Testing out Map: "
+#creating maps
+print "Testing out Maps: "
 cmap = {"controls_if" : "if()", "math_arithmetic" : "math()", "_LEDArray_happyFace" : "happyFace()"}
-
-print cmap["controls_if"]
-print cmap
 
 recursePrint(root, "")
