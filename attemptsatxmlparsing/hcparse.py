@@ -91,7 +91,7 @@ def getBlock(node):
 
 	if (blockType == "main_loop"):
 		# Should be a "next" block
-		return "while (1)\n{" + recurseParseCheck(list(node)) + "\n}"
+		return "loop()\n{" + recurseParseCheck(list(node)) + "\n}"
 
 	if (blockType == "variable_declarations"):
 		return recurseParseCheck(list(node))
