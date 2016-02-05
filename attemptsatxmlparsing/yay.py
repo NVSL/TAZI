@@ -62,48 +62,8 @@ def getBlock(node):
     if (blockType == "variable_declarations"):
         return recurseParseCheck(list(node))
 
-    if (blockType == "variables_set"):
-        # First child is the field, contains name of the variable
-        varName = getField(list(node)[0])
-        if (len(list(node)) < 2):
-            raise BlocklyError("Field " + varName + " does not have a value!")
-            return ""
-        varType = getType(list(list(node)[1])[0])
-        varValue = getField(list(list(list(node)[1])[0])[0])
-        nextBlock = ""
-        # Now deal with possible "next" block
-        if (len(list(node)) == 3):
-            nextBlock = recurseParse(list(node)[2])
-        return varType + " " + varName + " = " + varValue + ";" + nextBlock
-
-    if (blockType == "controls_if"):
-        # First child is the boolean part
-        booleanPart = recurseParse(list(list(node)[0])[0])
-        # Second child is the statement part
-        statementPart = recurseParse(list(node)[1])
-        return "if (" + booleanPart + ")\n{\n" + statementPart + "\n}"
-
-    if (blockType == "logic_compare"):
-        # 3 children: operator, value A, value B
-        operator = getOp(list(node)[0])
-        if (len(list(node)) != 3):
-            raise BlocklyError("Logic compare with operator '" + operator + "' requires 2 values to compare!")
-            return ""
-        valueA = recurseParse(list(list(node)[1])[0])
-        valueB = recurseParse(list(list(node)[2])[0])
-        return valueA + " " + operator + " " + valueB
-
-    if (blockType == "math_arithmetic"):
-        # 3 children: operator, value A, value B
-        operator = getOp(list(node)[0])
-        if (len(list(node)) != 3):
-            raise BlocklyError("Math block with operator '" + operator + "' requires 2 values to compute!")
-            return ""
-        valueA = recurseParse(list(list(node)[1])[-1])
-        valueB = recurseParse(list(list(node)[2])[-1])
-        if (operator == "pow"):
-            return "pow(" + valueA + ", " + valueB + ")"
-        return valueA + " " + operator + " " + valueB
+    if blockType in funcGet.keys():
+        return funcGet[blockType](node)
 
     if (blockType == "math_number"):
         return getField(list(node)[0])
@@ -168,6 +128,58 @@ opDict = {
 }
 def getOp(node):
     return opDict[node.text]
+
+# Function Get dictionary
+
+def setVar(node):
+    # First child is the field, contains name of the variable
+    varName = getField(list(node)[0])
+    if (len(list(node)) < 2):
+        raise BlocklyError("Field " + varName + " does not have a value!")
+        return ""
+    varType = getType(list(list(node)[1])[0])
+    varValue = getField(list(list(list(node)[1])[0])[0])
+    nextBlock = ""
+    # Now deal with possible "next" block
+    if (len(list(node)) == 3):
+        nextBlock = recurseParse(list(node)[2])
+    return varType + " " + varName + " = " + varValue + ";" + nextBlock
+
+def ifBlock(node):
+    # First child is the boolean part
+    booleanPart = recurseParse(list(list(node)[0])[0])
+    # Second child is the statement part
+    statementPart = recurseParse(list(node)[1])
+    return "if (" + booleanPart + ") {\n" + statementPart + "\n}"
+
+def compLog(node):
+    # 3 children: operator, value A, value B
+    operator = getOp(list(node)[0])
+    if (len(list(node)) != 3):
+        raise BlocklyError("Logic compare with operator '" + operator + "' requires 2 values to compare!")
+        return ""
+    valueA = recurseParse(list(list(node)[1])[0])
+    valueB = recurseParse(list(list(node)[2])[0])
+    return valueA + " " + operator + " " + valueB
+
+def mathMetic(node):
+    # 3 children: operator, value A, value B
+    operator = getOp(list(node)[0])
+    if (len(list(node)) != 3):
+        raise BlocklyError("Math block with operator '" + operator + "' requires 2 values to compute!")
+        return ""
+    valueA = recurseParse(list(list(node)[1])[-1])
+    valueB = recurseParse(list(list(node)[2])[-1])
+    if (operator == "pow"):
+        return "pow(" + valueA + ", " + valueB + ")"
+    return valueA + " " + operator + " " + valueB
+
+funcGet = {
+    "variables_set": setVar,
+    "controls_if": ifBlock,
+    "logic_compare": compLog,
+    "math_arithmetic": mathMetic
+}
 
 
 # main
