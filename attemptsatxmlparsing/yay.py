@@ -71,7 +71,6 @@ def getBlock(node):
     if (blockType == "variables_get"):
         return getField(list(node)[0])
 
-
     # Remainder block types that aren't built in, so it must be custom
     if (len(blockType.split("_")) < 3):
         raise BlocklyError("Block " + blockType + " is malformatted!")
@@ -130,7 +129,6 @@ def getOp(node):
     return opDict[node.text]
 
 # Function Get dictionary
-
 def setVar(node):
     # First child is the field, contains name of the variable
     varName = getField(list(node)[0])
@@ -174,11 +172,19 @@ def mathMetic(node):
         return "pow(" + valueA + ", " + valueB + ")"
     return valueA + " " + operator + " " + valueB
 
+#this is incomplete
+'''def whileUnt(node):
+    retString = "while("
+    if (list(node)[0]).text == "UNTIL"):
+        retString += "!"
+'''
+
 funcGet = {
     "variables_set": setVar,
     "controls_if": ifBlock,
     "logic_compare": compLog,
-    "math_arithmetic": mathMetic
+    "math_arithmetic": mathMetic,
+    #"controls_whileUntil": whileUnt
 }
 
 
