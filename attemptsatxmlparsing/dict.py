@@ -38,6 +38,8 @@ root = tree.getroot()
 
 #creating maps
 print "Testing out Maps: "
-cmap = {"controls_if" : "if()", "math_arithmetic" : "math()", "_LEDArray_happyFace" : "happyFace()"}
+cmap = {"controls_if" : "if(", "math_arithmetic" : "math()", "_LEDArray_happyFace" : "happyFace()"}
+
+
 
 recursePrint(root, "")
