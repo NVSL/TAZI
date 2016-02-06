@@ -1,0 +1,92 @@
+<xml>
+   <block y="72" x="88" type="variable_declarations" />
+   <block y="69" x="333" type="main_loop">
+      <next>
+         <block type="controls_whileUntil">
+            <field name="MODE">WHILE</field>
+            <value name="BOOL">
+               <block type="logic_compare">
+                  <field name="OP">EQ</field>
+                  <value name="A">
+                     <block type="variables_get">
+                        <field name="VAR">x</field>
+                     </block>
+                  </value>
+                  <value name="B">
+                     <block type="math_number">
+                        <field name="NUM">1</field>
+                     </block>
+                  </value>
+               </block>
+            </value>
+            <statement name="DO">
+               <block type="_Motor_forward">
+                  <value name="speed">
+                     <block type="math_number">
+                        <field name="NUM">225</field>
+                     </block>
+                  </value>
+                  <next>
+                     <block type="_LEDArray_happyFace">
+                        <next>
+                           <block type="controls_if">
+                              <value name="IF0">
+                                 <block type="_MomentaryButton_isPressed" />
+                              </value>
+                              <statement name="DO0">
+                                 <block type="_Motor_stop">
+                                    <next>
+                                       <block type="_LEDArray_sadFace">
+                                          <next>
+                                             <block type="variables_set">
+                                                <field name="VAR">x</field>
+                                                <value name="VALUE">
+                                                   <block type="math_number">
+                                                      <field name="NUM">0</field>
+                                                   </block>
+                                                </value>
+                                             </block>
+                                          </next>
+                                       </block>
+                                    </next>
+                                 </block>
+                              </statement>
+                           </block>
+                        </next>
+                     </block>
+                  </next>
+               </block>
+            </statement>
+            <next>
+               <block type="_LED_turnOn">
+                  <next>
+                     <block type="delay">
+                        <value name="NAME">
+                           <block type="math_number">
+                              <field name="NUM">15</field>
+                           </block>
+                        </value>
+                        <next>
+                           <block type="_LED_blink">
+                              <next>
+                                 <block type="delay">
+                                    <value name="NAME">
+                                       <block type="math_number">
+                                          <field name="NUM">700</field>
+                                       </block>
+                                    </value>
+                                    <next>
+                                       <block type="_LED_turnOff" />
+                                    </next>
+                                 </block>
+                              </next>
+                           </block>
+                        </next>
+                     </block>
+                  </next>
+               </block>
+            </next>
+         </block>
+      </next>
+   </block>
+</xml>
