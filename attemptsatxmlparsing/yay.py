@@ -4,7 +4,6 @@ inp = raw_input("Filename: ")
 tree = ET.parse(inp)
 root = tree.getroot()
 
-
 # There should be some degree of error checking
 class BlocklyError(Exception):
     def __init__(self, value):
@@ -172,19 +171,30 @@ def mathMetic(node):
         return "pow(" + valueA + ", " + valueB + ")"
     return valueA + " " + operator + " " + valueB
 
-#this is incomplete
-'''def whileUnt(node):
+#while loop
+def whileUnt(node):
     retString = "while("
-    if (list(node)[0]).text == "UNTIL"):
-        retString += "!"
-'''
+    if (list(node)[0]).text == "UNTIL":
+        retString += "!("
+
+    condit = recurseParse(list(list(node)[1])[0])
+    retString += condit
+
+    if (list(node)[0]).text == "UNTIL":
+        retString += ")"
+
+    retString += ") {\n"
+
+    statement = recurseParse(list(node)[2])
+
+    return retString + statement + "\n}"
 
 funcGet = {
     "variables_set": setVar,
     "controls_if": ifBlock,
     "logic_compare": compLog,
     "math_arithmetic": mathMetic,
-    #"controls_whileUntil": whileUnt
+    "controls_whileUntil": whileUnt
 }
 
 
