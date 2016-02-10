@@ -26,6 +26,8 @@ def recurseParse(node):
             if (child.attrib["type"] == "main_loop" 
                     or child.attrib["type"] == "variable_declarations"):
                 overallResult += "\n" + recurseParse(child)
+            else:
+                overallResult += "\n" + recurseParse(child)
         return overallResult
 
     elif tag == "block":
@@ -95,7 +97,6 @@ def getBlock(node):
     else:
         return instance + "." + method + "(" + arguments + ");" + recurseParse(list(node)[-1])
 
-
 # Typing dictionary
 typeDict = {
     "math_number": "double",
@@ -128,6 +129,8 @@ def getOp(node):
     return opDict[node.text]
 
 # Function Get dictionary
+
+#set variable
 def setVar(node):
     # First child is the field, contains name of the variable
     varName = getField(list(node)[0])
@@ -142,6 +145,7 @@ def setVar(node):
         nextBlock = recurseParse(list(node)[2])
     return varType + " " + varName + " = " + varValue + ";" + nextBlock
 
+#if statement
 def ifBlock(node):
     # First child is the boolean part
     booleanPart = recurseParse(list(list(node)[0])[0])
@@ -149,6 +153,7 @@ def ifBlock(node):
     statementPart = recurseParse(list(node)[1])
     return "if (" + booleanPart + ") {\n" + statementPart + "\n}"
 
+#logic compare
 def compLog(node):
     # 3 children: operator, value A, value B
     operator = getOp(list(node)[0])
@@ -159,6 +164,7 @@ def compLog(node):
     valueB = recurseParse(list(list(node)[2])[0])
     return valueA + " " + operator + " " + valueB
 
+#math arithmetic
 def mathMetic(node):
     # 3 children: operator, value A, value B
     operator = getOp(list(node)[0])
@@ -187,14 +193,27 @@ def whileUnt(node):
 
     statement = recurseParse(list(node)[2])
 
-    return retString + statement + "\n}"
+    retString += statement + "\n}\n"
+
+    return retString + recurseParseCheck(list(node)[3])
+
+#delay
+def delay(node):
+    retString = "delay("
+
+    varValue = getField(list(list(list(node)[0])[0])[0])
+
+    retString += varValue + ");"
+
+    return retString
 
 funcGet = {
     "variables_set": setVar,
     "controls_if": ifBlock,
     "logic_compare": compLog,
     "math_arithmetic": mathMetic,
-    "controls_whileUntil": whileUnt
+    "controls_whileUntil": whileUnt,
+    "delay": delay
 }
 
 
