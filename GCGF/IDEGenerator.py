@@ -3,6 +3,8 @@ from GspecParser import GspecParser
 import os
 import copy
 from StringIO import StringIO
+import jinja2
+
 
 
 
@@ -10,6 +12,22 @@ class IDEGenerator:
     # Default constructor
     def __init__(self):
         self.components = None
+        self.JINJA_ENVIRONMENT = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
+        self.jinja_vars = {"blocklist":[]}
+        
+    def setJinjaTemplate(self, template):
+        self.JINJA_ENVIRONMENT.get_template(template)
+        
+    # Loads default blocks xml to build the Blockly toolbox
+    def loadDefaultBlocks( self, blocksXml ):
+        self.categoriesXML = ET.Element("xml")
+        self.categoriesXML.attrib["id"] = "toolbox"
+        self.categoriesXML.attrib["style"] = "display: none"
+        # Grab the default categories
+        default_block_root = ET.parse(blocksXml)
+        #Append each block to our template
+        for block in default_block_root.getroot():
+            self.categoriesXML.append( block )
     # Loads the block json into the object
     def loadBlockDefinitions( self, blockJson ):
         # Type checking
@@ -18,6 +36,7 @@ class IDEGenerator:
             # Is it a file?
             if os.path.isfile( blockJson):
                 stream = open(blockJson)
+            # Otherwise, treat it like a string
             else:
                 stream = StringIO( blockJson )
             self.blocks = json.load(stream)
@@ -34,6 +53,7 @@ class IDEGenerator:
         gspecParser = GspecParser()
         gspecParser.setCatalog(catalog)
         self.components = gspecParser.getComps(gspec)
+        
     def createBlockSubset(self):
         self.blockCategories = {}
         for component in self.components.keys():
@@ -45,6 +65,7 @@ class IDEGenerator:
                     block["id"] = "_" + component.lower() + str(i) + "_" + block["id"]
                     localBlocks[ block["id"] ] = block
                 self.blockCategories[ component + " " + str(i) ] = localBlocks
+                
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(description="IDEGenerator.py creates a Blockly IDE for Gadgetron. It uses Jinja to create the IDE")
