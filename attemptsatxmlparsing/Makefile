@@ -1,2 +1,2 @@
 run:
-	python yay.py
+	python yay.py -x MichaelsTest.xml

@@ -1,6 +1,14 @@
 import xml.etree.ElementTree as ET
+import argparse
 
-inp = raw_input("Filename: ")
+parser = argparse.ArgumentParser()
+parser.add_argument("-x", "--xml", required=False)
+args = parser.parse_args()
+inp = None
+if args.xml is not None:
+    inp = args.xml
+else:
+    inp = raw_input("Filename: ")
 tree = ET.parse(inp)
 root = tree.getroot()
 
