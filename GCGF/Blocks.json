@@ -1,104 +1,1017 @@
 {
-    "Buzzer": {
-        "colour": 273, 
-        "nextStatement": null, 
-        "tooltip": "", 
-        "message0": "Buzzer turnOff %1", 
-        "previousStatement": null, 
-        "args0": [
-            {
-                "type": "input_dummy"
-            }
-        ], 
-        "helpUrl": "gadgetron.build", 
-        "id": "turnOff"
-    }, 
-    "LED": {
-        "colour": 150, 
-        "nextStatement": null, 
-        "tooltip": "", 
-        "message0": "LED loop %1", 
-        "previousStatement": null, 
-        "args0": [
-            {
-                "type": "input_dummy"
-            }
-        ], 
-        "helpUrl": "gadgetron.build", 
-        "id": "loop"
-    }, 
-    "DistanceSensor": {
-        "colour": 322, 
-        "tooltip": "", 
-        "message0": "DistanceSensor get_distance %1", 
-        "args0": [
-            {
-                "type": "input_dummy"
-            }
-        ], 
-        "output": null, 
-        "helpUrl": "gadgetron.build", 
-        "id": "get_distance"
-    }, 
-    "RGBLED": {
-        "colour": 49, 
-        "nextStatement": null, 
-        "tooltip": "", 
-        "message0": "RGBLED loop %1", 
-        "previousStatement": null, 
-        "args0": [
-            {
-                "type": "input_dummy"
-            }
-        ], 
-        "helpUrl": "gadgetron.build", 
-        "id": "loop"
-    }, 
-    "MomentaryButton": {
-        "colour": 258, 
-        "nextStatement": null, 
-        "tooltip": "", 
-        "message0": "MomentaryButton loop %1", 
-        "previousStatement": null, 
-        "args0": [
-            {
-                "type": "input_dummy"
-            }
-        ], 
-        "helpUrl": "gadgetron.build", 
-        "id": "loop"
-    }, 
-    "Motor": {
-        "colour": 337, 
-        "nextStatement": null, 
-        "tooltip": "", 
-        "message0": "Motor disable %1", 
-        "previousStatement": null, 
-        "args0": [
-            {
-                "type": "input_dummy"
-            }
-        ], 
-        "helpUrl": "gadgetron.build", 
-        "id": "disable"
-    }, 
-    "LEDArray": {
-        "colour": 62, 
-        "nextStatement": null, 
-        "tooltip": "", 
-        "message0": "LEDArray setBrightness %1 with level %2", 
-        "previousStatement": null, 
-        "args0": [
-            {
-                "type": "input_dummy"
-            }, 
-            {
-                "type": "input_value", 
-                "name": "level", 
-                "check": "Number"
-            }
-        ], 
-        "helpUrl": "gadgetron.build", 
-        "id": "setBrightness"
-    }
+    "Buzzer": [
+        {
+            "colour": 342, 
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "Buzzer playNote %1 with frequency %2", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }, 
+                {
+                    "type": "input_value", 
+                    "name": "frequency", 
+                    "check": "Number"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "playNote"
+        }, 
+        {
+            "colour": 342, 
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "Buzzer playNote %1 with frequency %2 with noteLength %3", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }, 
+                {
+                    "type": "input_value", 
+                    "name": "frequency", 
+                    "check": "Number"
+                }, 
+                {
+                    "type": "input_value", 
+                    "name": "noteLength", 
+                    "check": "Number"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "playNote"
+        }, 
+        {
+            "colour": 342, 
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "Buzzer turnOff %1", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "turnOff"
+        }
+    ], 
+    "LED": [
+        {
+            "colour": 326, 
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "LED update %1", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "update"
+        }, 
+        {
+            "colour": 326, 
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "LED blink %1 with on %2 with off %3", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }, 
+                {
+                    "type": "input_value", 
+                    "name": "on", 
+                    "check": "Number"
+                }, 
+                {
+                    "type": "input_value", 
+                    "name": "off", 
+                    "check": "Number"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "blink"
+        }, 
+        {
+            "colour": 326, 
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "LED blink %1", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "blink"
+        }, 
+        {
+            "colour": 326, 
+            "tooltip": "", 
+            "message0": "LED isBlinking %1", 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }
+            ], 
+            "output": null, 
+            "helpUrl": "gadgetron.build", 
+            "id": "isBlinking"
+        }, 
+        {
+            "colour": 326, 
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "LED toggle %1", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "toggle"
+        }, 
+        {
+            "colour": 326, 
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "LED turnOn %1", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "turnOn"
+        }, 
+        {
+            "colour": 326, 
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "LED turnOff %1", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "turnOff"
+        }, 
+        {
+            "colour": 326, 
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "LED loop %1", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "loop"
+        }
+    ], 
+    "DistanceSensor": [
+        {
+            "colour": 26, 
+            "tooltip": "", 
+            "message0": "DistanceSensor get_distance %1", 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }
+            ], 
+            "output": null, 
+            "helpUrl": "gadgetron.build", 
+            "id": "get_distance"
+        }
+    ], 
+    "RGBLED": [
+        {
+            "colour": 282, 
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "RGBLED set %1 with red %2 with green %3 with blue %4", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }, 
+                {
+                    "type": "input_value", 
+                    "name": "red", 
+                    "check": "Number"
+                }, 
+                {
+                    "type": "input_value", 
+                    "name": "green", 
+                    "check": "Number"
+                }, 
+                {
+                    "type": "input_value", 
+                    "name": "blue", 
+                    "check": "Number"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "set"
+        }, 
+        {
+            "colour": 282, 
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "RGBLED fade %1 with red %2 with green %3 with blue %4 with step %5 with period %6", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }, 
+                {
+                    "type": "input_value", 
+                    "name": "red", 
+                    "check": "Number"
+                }, 
+                {
+                    "type": "input_value", 
+                    "name": "green", 
+                    "check": "Number"
+                }, 
+                {
+                    "type": "input_value", 
+                    "name": "blue", 
+                    "check": "Number"
+                }, 
+                {
+                    "type": "input_value", 
+                    "name": "step", 
+                    "check": "Number"
+                }, 
+                {
+                    "type": "input_value", 
+                    "name": "period", 
+                    "check": "Number"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "fade"
+        }, 
+        {
+            "colour": 282, 
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "RGBLED loop %1", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "loop"
+        }
+    ], 
+    "MomentaryButton": [
+        {
+            "colour": 38, 
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "MomentaryButton waitForPress %1", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "waitForPress"
+        }, 
+        {
+            "colour": 38, 
+            "tooltip": "", 
+            "message0": "MomentaryButton read %1", 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }
+            ], 
+            "output": null, 
+            "helpUrl": "gadgetron.build", 
+            "id": "read"
+        }, 
+        {
+            "colour": 38, 
+            "tooltip": "", 
+            "message0": "MomentaryButton isPressed %1", 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }
+            ], 
+            "output": null, 
+            "helpUrl": "gadgetron.build", 
+            "id": "isPressed"
+        }, 
+        {
+            "colour": 38, 
+            "tooltip": "", 
+            "message0": "MomentaryButton isReleased %1", 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }
+            ], 
+            "output": null, 
+            "helpUrl": "gadgetron.build", 
+            "id": "isReleased"
+        }, 
+        {
+            "colour": 38, 
+            "tooltip": "", 
+            "message0": "MomentaryButton wasPressed %1", 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }
+            ], 
+            "output": null, 
+            "helpUrl": "gadgetron.build", 
+            "id": "wasPressed"
+        }, 
+        {
+            "colour": 38, 
+            "tooltip": "", 
+            "message0": "MomentaryButton wasReleased %1", 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }
+            ], 
+            "output": null, 
+            "helpUrl": "gadgetron.build", 
+            "id": "wasReleased"
+        }, 
+        {
+            "colour": 38, 
+            "tooltip": "", 
+            "message0": "MomentaryButton pressedFor %1", 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }
+            ], 
+            "output": null, 
+            "helpUrl": "gadgetron.build", 
+            "id": "pressedFor"
+        }, 
+        {
+            "colour": 38, 
+            "tooltip": "", 
+            "message0": "MomentaryButton releasedFor %1", 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }
+            ], 
+            "output": null, 
+            "helpUrl": "gadgetron.build", 
+            "id": "releasedFor"
+        }, 
+        {
+            "colour": 38, 
+            "tooltip": "", 
+            "message0": "MomentaryButton lastChange %1", 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }
+            ], 
+            "output": null, 
+            "helpUrl": "gadgetron.build", 
+            "id": "lastChange"
+        }, 
+        {
+            "colour": 38, 
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "MomentaryButton setDB %1 with ms %2", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }, 
+                {
+                    "type": "input_value", 
+                    "name": "ms", 
+                    "check": "Number"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "setDB"
+        }, 
+        {
+            "colour": 38, 
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "MomentaryButton loop %1", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "loop"
+        }
+    ], 
+    "Motor": [
+        {
+            "colour": 274, 
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "Motor forward %1", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "forward"
+        }, 
+        {
+            "colour": 274, 
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "Motor forward %1 with speed %2", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }, 
+                {
+                    "type": "input_value", 
+                    "name": "speed", 
+                    "check": "Number"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "forward"
+        }, 
+        {
+            "colour": 274, 
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "Motor backward %1", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "backward"
+        }, 
+        {
+            "colour": 274, 
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "Motor backward %1 with speed %2", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }, 
+                {
+                    "type": "input_value", 
+                    "name": "speed", 
+                    "check": "Number"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "backward"
+        }, 
+        {
+            "colour": 274, 
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "Motor spinLeft %1", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "spinLeft"
+        }, 
+        {
+            "colour": 274, 
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "Motor spinLeft %1 with speed %2", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }, 
+                {
+                    "type": "input_value", 
+                    "name": "speed", 
+                    "check": "Number"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "spinLeft"
+        }, 
+        {
+            "colour": 274, 
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "Motor spinRight %1", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "spinRight"
+        }, 
+        {
+            "colour": 274, 
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "Motor spinRight %1 with speed %2", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }, 
+                {
+                    "type": "input_value", 
+                    "name": "speed", 
+                    "check": "Number"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "spinRight"
+        }, 
+        {
+            "colour": 274, 
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "Motor forwardAndRight %1", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "forwardAndRight"
+        }, 
+        {
+            "colour": 274, 
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "Motor forwardAndRight %1 with speed %2", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }, 
+                {
+                    "type": "input_value", 
+                    "name": "speed", 
+                    "check": "Number"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "forwardAndRight"
+        }, 
+        {
+            "colour": 274, 
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "Motor forwardAndLeft %1", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "forwardAndLeft"
+        }, 
+        {
+            "colour": 274, 
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "Motor forwardAndLeft %1 with speed %2", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }, 
+                {
+                    "type": "input_value", 
+                    "name": "speed", 
+                    "check": "Number"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "forwardAndLeft"
+        }, 
+        {
+            "colour": 274, 
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "Motor stop %1", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "stop"
+        }, 
+        {
+            "colour": 274, 
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "Motor brake %1", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "brake"
+        }, 
+        {
+            "colour": 274, 
+            "tooltip": "", 
+            "message0": "Motor isMoving %1", 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }
+            ], 
+            "output": null, 
+            "helpUrl": "gadgetron.build", 
+            "id": "isMoving"
+        }, 
+        {
+            "colour": 274, 
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "Motor swapDirections %1", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "swapDirections"
+        }, 
+        {
+            "colour": 274, 
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "Motor changePolarity %1", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "changePolarity"
+        }, 
+        {
+            "colour": 274, 
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "Motor disable %1", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "disable"
+        }
+    ], 
+    "LEDArray": [
+        {
+            "colour": 98, 
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "LEDArray clear %1", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "clear"
+        }, 
+        {
+            "colour": 98, 
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "LEDArray happyFace %1", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "happyFace"
+        }, 
+        {
+            "colour": 98, 
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "LEDArray neutralFace %1", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "neutralFace"
+        }, 
+        {
+            "colour": 98, 
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "LEDArray sadFace %1", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "sadFace"
+        }, 
+        {
+            "colour": 98, 
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "LEDArray turnClockwise %1", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "turnClockwise"
+        }, 
+        {
+            "colour": 98, 
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "LEDArray turnCounterClockwise %1", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "turnCounterClockwise"
+        }, 
+        {
+            "colour": 98, 
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "LEDArray printText %1 with text %2", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }, 
+                {
+                    "type": "input_value", 
+                    "name": "text", 
+                    "check": "String"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "printText"
+        }, 
+        {
+            "colour": 98, 
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "LEDArray drawPix %1 with x %2 with y %3", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }, 
+                {
+                    "type": "input_value", 
+                    "name": "x", 
+                    "check": "Number"
+                }, 
+                {
+                    "type": "input_value", 
+                    "name": "y", 
+                    "check": "Number"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "drawPix"
+        }, 
+        {
+            "colour": 98, 
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "LEDArray drawLine %1 with x1 %2 with y1 %3 with x2 %4 with y2 %5", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }, 
+                {
+                    "type": "input_value", 
+                    "name": "x1", 
+                    "check": "Number"
+                }, 
+                {
+                    "type": "input_value", 
+                    "name": "y1", 
+                    "check": "Number"
+                }, 
+                {
+                    "type": "input_value", 
+                    "name": "x2", 
+                    "check": "Number"
+                }, 
+                {
+                    "type": "input_value", 
+                    "name": "y2", 
+                    "check": "Number"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "drawLine"
+        }, 
+        {
+            "colour": 98, 
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "LEDArray drawRec %1 with x1 %2 with y1 %3 with x2 %4 with y2 %5", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }, 
+                {
+                    "type": "input_value", 
+                    "name": "x1", 
+                    "check": "Number"
+                }, 
+                {
+                    "type": "input_value", 
+                    "name": "y1", 
+                    "check": "Number"
+                }, 
+                {
+                    "type": "input_value", 
+                    "name": "x2", 
+                    "check": "Number"
+                }, 
+                {
+                    "type": "input_value", 
+                    "name": "y2", 
+                    "check": "Number"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "drawRec"
+        }, 
+        {
+            "colour": 98, 
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "LEDArray fillRec %1 with x1 %2 with y1 %3 with x2 %4 with y2 %5", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }, 
+                {
+                    "type": "input_value", 
+                    "name": "x1", 
+                    "check": "Number"
+                }, 
+                {
+                    "type": "input_value", 
+                    "name": "y1", 
+                    "check": "Number"
+                }, 
+                {
+                    "type": "input_value", 
+                    "name": "x2", 
+                    "check": "Number"
+                }, 
+                {
+                    "type": "input_value", 
+                    "name": "y2", 
+                    "check": "Number"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "fillRec"
+        }, 
+        {
+            "colour": 98, 
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "LEDArray drawCircle %1 with x %2 with y %3 with r %4", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }, 
+                {
+                    "type": "input_value", 
+                    "name": "x", 
+                    "check": "Number"
+                }, 
+                {
+                    "type": "input_value", 
+                    "name": "y", 
+                    "check": "Number"
+                }, 
+                {
+                    "type": "input_value", 
+                    "name": "r", 
+                    "check": "Number"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "drawCircle"
+        }, 
+        {
+            "colour": 98, 
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "LEDArray blink %1 with rate %2", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }, 
+                {
+                    "type": "input_value", 
+                    "name": "rate", 
+                    "check": "Number"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "blink"
+        }, 
+        {
+            "colour": 98, 
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "LEDArray setBrightness %1 with level %2", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }, 
+                {
+                    "type": "input_value", 
+                    "name": "level", 
+                    "check": "Number"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "setBrightness"
+        }
+    ]
 }
