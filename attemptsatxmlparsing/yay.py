@@ -100,7 +100,7 @@ def getBlock(node,depth):
 
     arguments = ""
     for i in range(len(list(node)) - hasNext):
-        arguments += " " + recurseParse(list(node)[i])
+        arguments += " " + recurseParse(list(node)[i],depth)
         arguments = arguments.strip().replace(" ", ", ")
     if (hasNext == 0):
         return (spaces * depth ) + instance + "." + method + "(" + arguments + ");"
@@ -197,7 +197,7 @@ def whileUnt(node, depth):
     if (list(node)[0]).text == "UNTIL":
         retString += "!("
 
-    condit = recurseParse(list(list(node)[1])[0])
+    condit = recurseParse(list(list(node)[1])[0],depth)
     retString += condit
 
     if (list(node)[0]).text == "UNTIL":
