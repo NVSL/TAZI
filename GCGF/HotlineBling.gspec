@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gadgetlayout version="1.1">
+   <name>1-800 Hotline Bling</name>
+   <creator />
+   <board x="0" y="0" width="138" height="100" />
+   <option name="faceplate-color" value="clear-nocolor" />
+   <option name="backplate-color" value="clear-nocolor" />
+   <option name="faceplate-etch" value="etch-front" />
+   <option name="backplate-etch" value="etch-back" />
+   <option name="front-standoff-height" value="8" />
+   <option name="back-standoff-height" value="8" />
+   <option name="pcb-thickness" value="1.57" />
+   <option name="faceplate-thickness" value="3.175" />
+   <option name="backplate-thickness" value="3.175" />
+   <option name="cam-target" value="LPKF" />
+   <component progname="brain" type="Adafruit-Pro-Trinket-5V-battery-powered" deletable="false">
+      <placedpart refdes="U1" x="14" y="5" rotation="0" mirrored="False" />
+   </component>
+   <component progname="battery" type="battery-9V-vertical" deletable="false">
+      <placedpart refdes="BATT1" x="126" y="18" rotation="270" mirrored="False" />
+   </component>
+   <component progname="drive" type="dual-motor-kit-knobby">
+      <placedpart refdes="L" x="-6" y="68" rotation="180" mirrored="False" />
+      <placedpart refdes="R" x="143" y="67" rotation="180" mirrored="False" />
+   </component>
+   <component progname="buzzer" type="piezo-buzzer">
+      <placedpart refdes="u1" x="39" y="50" rotation="0" mirrored="False" />
+   </component>
+   <component progname="display" type="Adafruit-8x8-1.2in-led-array-red">
+      <placedpart refdes="u1" x="68" y="23" rotation="270" mirrored="False" />
+   </component>
+   <component progname="button" type="tactile-button-square-gray">
+      <placedpart refdes="B1" x="105" y="49" rotation="0" mirrored="False" />
+   </component>
+   <component progname="penholder" type="pen-holder">
+      <placedpart refdes="u1" x="68" y="68" rotation="180" mirrored="False" />
+   </component>
+   <component progname="led" type="LED-5mm-bright-red">
+      <placedpart refdes="LED1" x="30" y="8" rotation="0" mirrored="False" />
+   </component>
+   <component progname="led_2" type="LED-5mm-bright-green">
+      <placedpart refdes="LED1" x="43" y="8" rotation="0" mirrored="False" />
+   </component>
+   <component progname="led_3" type="LED-5mm-bright-blue">
+      <placedpart refdes="LED1" x="95" y="7" rotation="0" mirrored="False" />
+   </component>
+   <component progname="led_4" type="LED-5mm-bright-white">
+      <placedpart refdes="LED1" x="109" y="7" rotation="0" mirrored="False" />
+   </component>
+   <component progname="caster" type="ball-caster-0.75in">
+      <placedpart refdes="u1" x="68" y="13" rotation="0" mirrored="False" />
+   </component>
+</gadgetlayout>
