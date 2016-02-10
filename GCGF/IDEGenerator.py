@@ -1,6 +1,7 @@
 import json
 from GspecParser import GspecParser
 import os
+import copy
 from StringIO import StringIO
 
 
@@ -34,10 +35,16 @@ class IDEGenerator:
         gspecParser.setCatalog(catalog)
         self.components = gspecParser.getComps(gspec)
     def createBlockSubset(self):
+        self.blockCategories = {}
         for component in self.components.keys():
-            for i in range( 0, self.components[component] ):
-                jsonElem = self.blocks[component]
-                print json.dumps( jsonElem, indent=4)
+            for i in range( 1, self.components[component] + 1 ):
+                # The blocks for just this component will be called localBlocks
+                localBlocks = {}
+                jsonElem = copy.deepcopy(self.blocks[component])
+                for block in jsonElem:
+                    block["id"] = "_" + component.lower() + str(i) + "_" + block["id"]
+                    localBlocks[ block["id"] ] = block
+                self.blockCategories[ component + " " + str(i) ] = localBlocks
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(description="IDEGenerator.py creates a Blockly IDE for Gadgetron. It uses Jinja to create the IDE")
@@ -49,3 +56,5 @@ if __name__ == "__main__":
     generator.loadBlockDefinitions( args.json )
     generator.loadGspec( args.gspec, args.catalog )
     generator.createBlockSubset()
+    for key in generator.blockCategories.keys():
+        print key, json.dumps(generator.blockCategories[key], indent=4)
