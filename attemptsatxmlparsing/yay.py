@@ -1,8 +1,18 @@
 import xml.etree.ElementTree as ET
+import argparse
 
-inp = raw_input("Filename: ")
+parser = argparse.ArgumentParser()
+parser.add_argument("-x", "--xml", required=False)
+args = parser.parse_args()
+inp = None
+if args.xml is not None:
+    inp = args.xml
+else:
+    inp = raw_input("Filename: ")
 tree = ET.parse(inp)
 root = tree.getroot()
+
+spaces = "  "
 
 # There should be some degree of error checking
 class BlocklyError(Exception):
@@ -13,7 +23,7 @@ class BlocklyError(Exception):
 
 
 # Recurse through the xml to translate
-def recurseParse(node):
+def recurseParse(node, depth):
     tag = node.tag.split("}")
     if (len(tag) > 1):
         tag = tag[1]
@@ -25,17 +35,17 @@ def recurseParse(node):
         for child in node:
             if (child.attrib["type"] == "main_loop" 
                     or child.attrib["type"] == "variable_declarations"):
-                overallResult += "\n" + recurseParse(child)
+                overallResult += "\n" + recurseParse(child, depth)
             else:
-                overallResult += "\n" + recurseParse(child)
+                overallResult += "\n" + recurseParse(child, depth)
         return overallResult
 
     elif tag == "block":
-        return getBlock(node)
+        return getBlock(node,depth)
     elif tag == "next":
-        return "\n" + recurseParse(list(node)[0])
+        return "\n" + recurseParse(list(node)[0], depth)
     elif tag == "statement":
-        return recurseParseCheck(list(node))
+        return recurseParseCheck(list(node), depth)
     elif tag == "shadow":
         return getField(list(node)[0])
     else:
@@ -44,27 +54,27 @@ def recurseParse(node):
 
 # Safety net for checking if there is a next block
 #shouldn't the if statement check if it's equal to 0?
-def recurseParseCheck(nodeList):
+def recurseParseCheck(nodeList, depth):
     if (len(nodeList) != 1):
         return ""
     else:
-        return recurseParse(nodeList[0])
+        return recurseParse(nodeList[0], depth)
 
 
 # Sub functions
 
-def getBlock(node):
+def getBlock(node,depth):
     blockType = node.attrib["type"]
 
     if (blockType == "main_loop"):
         # Should be a "next" block
-        return "void loop () {" + recurseParseCheck(list(node)) + "\n}"
+        return "void loop () {" + recurseParseCheck(list(node), depth+1) + "\n}"
 
     if (blockType == "variable_declarations"):
-        return recurseParseCheck(list(node))
+        return recurseParseCheck(list(node), depth)
 
     if blockType in funcGet.keys():
-        return funcGet[blockType](node)
+        return funcGet[blockType](node,depth)
 
     if (blockType == "math_number"):
         return getField(list(node)[0])
@@ -90,12 +100,12 @@ def getBlock(node):
 
     arguments = ""
     for i in range(len(list(node)) - hasNext):
-        arguments += " " + recurseParse(list(node)[i])
+        arguments += " " + recurseParse(list(node)[i],depth)
         arguments = arguments.strip().replace(" ", ", ")
     if (hasNext == 0):
-        return instance + "." + method + "(" + arguments + ");"
+        return (spaces * depth ) + instance + "." + method + "(" + arguments + ");"
     else:
-        return instance + "." + method + "(" + arguments + ");" + recurseParse(list(node)[-1])
+        return (spaces * depth ) + instance + "." + method + "(" + arguments + ");" + recurseParse(list(node)[-1], depth)
 
 # Typing dictionary
 typeDict = {
@@ -131,7 +141,7 @@ def getOp(node):
 # Function Get dictionary
 
 #set variable
-def setVar(node):
+def setVar(node, depth):
     # First child is the field, contains name of the variable
     varName = getField(list(node)[0])
     if (len(list(node)) < 2):
@@ -142,48 +152,52 @@ def setVar(node):
     nextBlock = ""
     # Now deal with possible "next" block
     if (len(list(node)) == 3):
-        nextBlock = recurseParse(list(node)[2])
-    return varType + " " + varName + " = " + varValue + ";" + nextBlock
+        nextBlock = recurseParse(list(node)[2], depth)
+    return (spaces * depth )  + varType + " " + varName + " = " + varValue + ";" + nextBlock
 
 #if statement
-def ifBlock(node):
+def ifBlock(node, depth):
     # First child is the boolean part
-    booleanPart = recurseParse(list(list(node)[0])[0])
+    booleanPart = recurseParse(list(list(node)[0])[0], 0)
     # Second child is the statement part
-    statementPart = recurseParse(list(node)[1])
-    return "if (" + booleanPart + ") {\n" + statementPart + "\n}"
+    statementPart = recurseParse(list(node)[1], depth+1)
+    returnStr = (spaces*depth) + "if(" + booleanPart + ") {\n"
+    statements = statementPart.split('\n')
+    for statement in statements:
+        returnStr = returnStr + (spaces*(depth+1)) + statement.strip() + "\n"
+    return returnStr + spaces*depth + "}"
 
 #logic compare
-def compLog(node):
+def compLog(node,depth):
     # 3 children: operator, value A, value B
     operator = getOp(list(node)[0])
     if (len(list(node)) != 3):
         raise BlocklyError("Logic compare with operator '" + operator + "' requires 2 values to compare!")
         return ""
-    valueA = recurseParse(list(list(node)[1])[0])
-    valueB = recurseParse(list(list(node)[2])[0])
+    valueA = recurseParse(list(list(node)[1])[0],depth)
+    valueB = recurseParse(list(list(node)[2])[0],depth)
     return valueA + " " + operator + " " + valueB
 
 #math arithmetic
-def mathMetic(node):
+def mathMetic(node,depth):
     # 3 children: operator, value A, value B
     operator = getOp(list(node)[0])
     if (len(list(node)) != 3):
         raise BlocklyError("Math block with operator '" + operator + "' requires 2 values to compute!")
         return ""
-    valueA = recurseParse(list(list(node)[1])[-1])
-    valueB = recurseParse(list(list(node)[2])[-1])
+    valueA = recurseParse(list(list(node)[1])[-1],depth)
+    valueB = recurseParse(list(list(node)[2])[-1],depth)
     if (operator == "pow"):
         return "pow(" + valueA + ", " + valueB + ")"
     return valueA + " " + operator + " " + valueB
 
 #while loop
-def whileUnt(node):
-    retString = "while("
+def whileUnt(node, depth):
+    retString = (spaces * depth) + "while("
     if (list(node)[0]).text == "UNTIL":
         retString += "!("
 
-    condit = recurseParse(list(list(node)[1])[0])
+    condit = recurseParse(list(list(node)[1])[0],depth)
     retString += condit
 
     if (list(node)[0]).text == "UNTIL":
@@ -191,15 +205,15 @@ def whileUnt(node):
 
     retString += ") {\n"
 
-    statement = recurseParse(list(node)[2])
+    statement = recurseParse(list(node)[2], depth+1)
 
-    retString += statement + "\n}\n"
+    retString += statement + "\n"+(spaces*depth)+"}\n"
 
-    return retString + recurseParseCheck(list(node)[3])
+    return retString + recurseParseCheck(list(node)[3], depth)
 
 #delay
-def delay(node):
-    retString = "delay("
+def delay(node,depth):
+    retString = (spaces*depth)+"delay("
 
     varValue = getField(list(list(list(node)[0])[0])[0])
 
@@ -219,7 +233,7 @@ funcGet = {
 
 # main
 try:
-    print(recurseParse(root))
+    print(recurseParse(root,0))
 except BlocklyError as e:
     print("Error: " + e.value)
 
