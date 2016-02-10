@@ -193,7 +193,7 @@ def whileUnt(node):
 
     statement = recurseParse(list(node)[2])
 
-    retString += statement + "\n}"
+    retString += statement + "\n}\n"
 
     return retString + recurseParseCheck(list(node)[3])
 
