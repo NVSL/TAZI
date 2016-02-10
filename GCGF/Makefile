@@ -1,4 +1,4 @@
-GSPEC = Chase.gspec
+GSPEC = PessimistPrime.gspec
 
 ide:
 	python IDEGenerator.py -j Blocks.json -g $(GSPEC) -c Components.cat -d DefaultCategories.xml -x index.jinja > ../Blockly/index.html

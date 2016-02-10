@@ -98,7 +98,7 @@ for component in library:
             else:
 	        funcjson["output"] = None
 	    
-        blocksJSON[aClass.name].append(funcjson)
+            blocksJSON[aClass.name].append(funcjson)
 
         #hasSetup = printClassFunctions( aClass)
         #if hasSetup is False:
