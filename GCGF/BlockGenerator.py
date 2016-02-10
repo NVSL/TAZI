@@ -68,6 +68,10 @@ index = clang.cindex.Index.create()
 # the C++ class files. This grabs the root of that xml file
 libxml = ET.parse( args.library )
 library = libxml.getroot()
+
+# The JSON repsentation of the blocks we're going to dump
+blocksJSON = {}
+
 # Then iterate over each component in library
 for component in library:
     # Grab the real class file's location
@@ -96,7 +100,7 @@ for component in library:
 	    # Create a blockly json definition
 	    # The attributes passed here should be the same across all blockly json files
 	    funcjson = {
-	            "id":"_"+aClass.name+"_"+func.name,
+	            "id":func.name,
 	            "message0":aClass.name+" "+func.name + " %1",
                     "colour" : currColor,
 	            "tooltip" : "",
@@ -127,11 +131,14 @@ for component in library:
 	    # We need to set the text to something so the tag closes properly
 	    funcxml.text = " "
 	    jinja_vars["blocklist"].append([str(funcjson["id"]), str(json.dumps(funcjson))])
+            blocksJSON[aClass.name] = funcjson
+
         #hasSetup = printClassFunctions( aClass)
         #if hasSetup is False:
         #    raise Exception( aClass.name + " has no setup() method!")
 
 # Put the toolbox into the jinja variables
 jinja_vars["toolbox"] = str(ET2.tostring( root ))
+print json.dumps(blocksJSON, indent = 4 )
 # Print the output!
-print template.render(jinja_vars)
+#print template.render(jinja_vars)
