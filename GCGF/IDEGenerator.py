@@ -6,8 +6,10 @@ from StringIO import StringIO
 
 
 class IDEGenerator:
+    # Default constructor
     def __init__(self):
         self.components = None
+    # Loads the block json into the object
     def loadBlockDefinitions( self, blockJson ):
         # Type checking
         if type (blockJson) == str:
@@ -25,6 +27,8 @@ class IDEGenerator:
             print "Unknown type: ", type(blockJson)
             raise "Unknown type passed to loadBlockDefinitions"
 
+    # Loads the gspec into the object using Priyanka's gspec parser
+    # Saves the gspec, doesn't return anything
     def loadGspec( self, gspec, catalog ):
         gspecParser = GspecParser()
         gspecParser.setCatalog(catalog)
