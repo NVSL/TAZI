@@ -10,18 +10,14 @@ class GspecParser:
          compStr = component.get('keyname')
          instanceName = None
          for child in component:
-			# Check if the component has an API tag
+         # Check if the component has an API tag
             if child.tag == 'API':
-	            componentsDict[compStr] = compStr.lower()
-	            print 'API FOUND FOR ABOVE ELEMENT ', compStr
-            if child.tag.lower() == 'instancename':
-			    instanceName = child.text.lower()
-		# Set the value to be close to the class name
-         if instanceName is not None:
-		     componentsDict[compStr] = instanceName
-	    # Remove any pro-trinkets
-         if instanceName == "brain":
-             del componentsDict[compStr]
+	        for node in child:
+		    if node.tag.lower() == 'arduino':
+		        for n in node:
+			    if n.tag.lower() == 'class':
+	                        componentsDict[compStr] = n.attrib["name"]
+	                        print 'API FOUND FOR ABOVE ELEMENT ', n.attrib["name"]
       return componentsDict
 
    def getComps(self, compFile, componentsDict): 
