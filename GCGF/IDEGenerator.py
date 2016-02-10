@@ -60,8 +60,12 @@ class IDEGenerator:
         
     def createBlockSubset(self):
         self.blockCategories = {}
-        totalNumberOfCategories = 0
+        # We want to store a function scope index for each component attached 
+        # to our gadget to help create a unique color
         componentIdx = 1.0
+        # We need to determine the total number of categories to help make the
+        # unique colors
+        totalNumberOfCategories = 0
         for k in self.components.keys():
             totalNumberOfCategories = totalNumberOfCategories + self.components[k]
         for component in self.components.keys():
