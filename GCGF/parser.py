@@ -1,6 +1,6 @@
 import xml.etree.ElementTree
 
-class gspecParse: 
+class GspecParser: 
 
    def initializeList(self):
       base = xml.etree.ElementTree.parse('Components.cat').getroot()
@@ -33,5 +33,6 @@ class gspecParse:
 	       print 'FOUND IN BOTH ', node.attrib["type"]
 
     
-gp = gspecParse()
-gp.getComps("gspec.xml", gp.initializeList())  
+if __name__ == "__main__":
+    gp = GspecParser()
+    gp.getComps("gspec.xml", gp.initializeList())  
