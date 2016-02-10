@@ -1,7 +1,7 @@
 GSPEC = gspec.xml
 
 ide:
-    python IDEGenerator.py -j Blocks.json -g $(GSPEC) -c Components.cat -d DefaultCategories.xml -x index.jina > ../Blockly/index.html
+	python IDEGenerator.py -j Blocks.json -g $(GSPEC) -c Components.cat -d DefaultCategories.xml -x index.jinja > ../Blockly/index.html
 json:
 	python BlockGenerator.py -l ComponentsLibrary.xml -d DefaultCategories.xml > Blocks.json
 build:
