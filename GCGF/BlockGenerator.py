@@ -93,6 +93,7 @@ for component in library:
 	newBlock.set("colour", str(currColor))
 	# Iterate over all the functions in the current class
 	fp = 0
+        blocksJSON[aClass.name] = []
 
 	for func in aClass.functions:
 	    if func.name == "setup":
@@ -131,7 +132,7 @@ for component in library:
 	    # We need to set the text to something so the tag closes properly
 	    funcxml.text = " "
 	    jinja_vars["blocklist"].append([str(funcjson["id"]), str(json.dumps(funcjson))])
-            blocksJSON[aClass.name] = funcjson
+            blocksJSON[aClass.name].append(funcjson)
 
         #hasSetup = printClassFunctions( aClass)
         #if hasSetup is False:
