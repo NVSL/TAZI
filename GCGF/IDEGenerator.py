@@ -1,3 +1,6 @@
+__author__ = "Michael Gonzalez"
+__email__ = "mmg005@eng.ucsd.edu"
+
 import json
 import xml.etree.ElementTree as ET
 from GspecParser import GspecParser

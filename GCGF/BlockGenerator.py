@@ -5,10 +5,8 @@ import xml.etree.ElementTree as ET
 from lxml import etree as ET2
 import argparse
 import os
-import random
 import platform
 import json
-import jinja2
 from ClangBindings import *
 
 # Function Name: determineParamType()
@@ -33,26 +31,8 @@ def determineParamType( param ):
 parser = argparse.ArgumentParser(description="BlockGenerator.py creates a Blockly IDE for Gadgetron. It parses our existing C++ class libraries using Clang to generate block categories and blocks. It then uses Jinja to actually create the IDE")
 parser.add_argument("-l", "--library", required=True)
 parser.add_argument("-d", "--default_blocks", required=True)
-parser.add_argument("-j", "--jinja", required=True)
 args = parser.parse_args()
 
-# Prep Jinja Template
-JINJA_ENVIRONMENT = jinja2.Environment(
-    loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
-template = JINJA_ENVIRONMENT.get_template(args.jinja)
-# This variable is used later in the script to pass variables to the template
-jinja_vars = {"blocklist":[]}
-
-# Prepare lxml 
-# This script uses lxml to build the Blockly toolbox
-root = ET2.Element("xml")
-root.set("id", "toolbox")
-root.set("style", "display: none")
-# Grab the default categories
-default_block_root = ET2.parse(args.default_blocks)
-# Append each block to our template
-for block in default_block_root.getroot():
-    root.append( block )
 
 # Prepare Clang
 # This step has only been tested on the iMac in the NVSL and Michael's
@@ -83,14 +63,7 @@ for component in library:
 
     # Iterate over all classes
     for aClass in classes:
-        # Pick a random color to represent this class's category
-        currColor = random.randrange(0,360)
-	# Start the xml definition for this category's toolbox representation
-        newBlock = ET.SubElement(root, "category") 
-	# Set the category's name attribute
-	newBlock.set("name", aClass.name)
-	# Set the category's colour attribute
-	newBlock.set("colour", str(currColor))
+        
 	# Iterate over all the functions in the current class
 	fp = 0
         blocksJSON[aClass.name] = []
@@ -103,7 +76,6 @@ for component in library:
 	    funcjson = {
 	            "id":func.name,
 	            "message0":aClass.name+" "+func.name + " %1",
-                    "colour" : currColor,
 	            "tooltip" : "",
 	            "helpUrl": "gadgetron.build" }
             args = [{"type":"input_dummy"}]
@@ -125,21 +97,13 @@ for component in library:
 	        funcjson["nextStatement"] = None
             else:
 	        funcjson["output"] = None
-	    # Create an xml block to represent this function
-	    funcxml = ET.SubElement( newBlock, "block")
-	    # Set the type to the id
-	    funcxml.set("type", funcjson["id"] )
-	    # We need to set the text to something so the tag closes properly
-	    funcxml.text = " "
-	    jinja_vars["blocklist"].append([str(funcjson["id"]), str(json.dumps(funcjson))])
-            blocksJSON[aClass.name].append(funcjson)
+	    
+        blocksJSON[aClass.name].append(funcjson)
 
         #hasSetup = printClassFunctions( aClass)
         #if hasSetup is False:
         #    raise Exception( aClass.name + " has no setup() method!")
 
-# Put the toolbox into the jinja variables
-jinja_vars["toolbox"] = str(ET2.tostring( root ))
+
 print json.dumps(blocksJSON, indent = 4 )
-# Print the output!
-#print template.render(jinja_vars)
+
