@@ -195,7 +195,7 @@ def whileUnt(node):
 
     retString += statement + "\n}"
 
-    return retString #+ recurseParseCheck(list(node)[3])
+    return retString + recurseParseCheck(list(node)[3])
 
 #delay
 def delay(node):
