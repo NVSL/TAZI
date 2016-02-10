@@ -100,19 +100,35 @@ class IDEGenerator:
         return self.template.render(self.jinja_vars)
                 
 if __name__ == "__main__":
+
+    # Default file locations
+    jsonFile = "Blocks.json"
+    catalog = "Components.cat"
+    jinjaFile = "index.jinja"
+    blocksXml = "DefaultCategories.xml"
+    # Arg parse stuff
     import argparse
     parser = argparse.ArgumentParser(description="IDEGenerator.py creates a Blockly IDE for Gadgetron. It uses Jinja to create the IDE")
-    parser.add_argument("-j", "--json", required=True)
-    parser.add_argument("-c", "--catalog", required=True)
+    parser.add_argument("-j", "--json", required=False)
+    parser.add_argument("-c", "--catalog", required=False)
     parser.add_argument("-g", "--gspec", required=True)
-    parser.add_argument("-d", "--default_blocks", required=True)
-    parser.add_argument("-x", "--jinja", required=True)
+    parser.add_argument("-d", "--default_blocks", required=False)
+    parser.add_argument("-x", "--jinja", required=False)
     args = parser.parse_args()
+    if args.jinja is not None:
+        jinjaFile = args.jinja
+    if args.json is not None:
+        jsonFile = args.json
+    if args.default_blocks is not None:
+        blocksXml = args.default_blocks
+    if args.catalog is not None:
+        catalog = args.catalog
+
     generator = IDEGenerator()
-    generator.setJinjaTemplate( args.jinja )
-    generator.loadBlockDefinitions( args.json )
-    generator.loadDefaultBlocks( args.default_blocks )
-    generator.loadGspec( args.gspec, args.catalog )
+    generator.setJinjaTemplate( jinjaFile )
+    generator.loadBlockDefinitions( jsonFile )
+    generator.loadDefaultBlocks( blocksXml )
+    generator.loadGspec( args.gspec, catalog )
     generator.createBlockSubset()
     #for key in generator.blockCategories.keys():
     #    print key, json.dumps(generator.blockCategories[key], indent=4)
