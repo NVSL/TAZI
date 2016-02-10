@@ -1,2 +1,2 @@
 run:
-	python yay.py -x MichaelsTest.xml
+	python yay.py -x newBlocks.xml

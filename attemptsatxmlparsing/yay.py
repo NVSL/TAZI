@@ -152,7 +152,7 @@ def setVar(node, depth):
     nextBlock = ""
     # Now deal with possible "next" block
     if (len(list(node)) == 3):
-        nextBlock = recurseParse(list(node)[2])
+        nextBlock = recurseParse(list(node)[2], depth)
     return (spaces * depth )  + varType + " " + varName + " = " + varValue + ";" + nextBlock
 
 #if statement
@@ -161,7 +161,11 @@ def ifBlock(node, depth):
     booleanPart = recurseParse(list(list(node)[0])[0], 0)
     # Second child is the statement part
     statementPart = recurseParse(list(node)[1], depth+1)
-    return (spaces * depth ) + "if (" + booleanPart + ") {\n" + (spaces*(depth+1)) + statementPart + "\n" + spaces*depth + "}"
+    returnStr = (spaces*depth) + "if(" + booleanPart + ") {\n"
+    statements = statementPart.split('\n')
+    for statement in statements:
+        returnStr = returnStr + (spaces*(depth+1)) + statement.strip() + "\n"
+    return returnStr + spaces*depth + "}"
 
 #logic compare
 def compLog(node,depth):
@@ -170,8 +174,8 @@ def compLog(node,depth):
     if (len(list(node)) != 3):
         raise BlocklyError("Logic compare with operator '" + operator + "' requires 2 values to compare!")
         return ""
-    valueA = recurseParse(list(list(node)[1])[0])
-    valueB = recurseParse(list(list(node)[2])[0])
+    valueA = recurseParse(list(list(node)[1])[0],depth)
+    valueB = recurseParse(list(list(node)[2])[0],depth)
     return valueA + " " + operator + " " + valueB
 
 #math arithmetic
@@ -181,8 +185,8 @@ def mathMetic(node,depth):
     if (len(list(node)) != 3):
         raise BlocklyError("Math block with operator '" + operator + "' requires 2 values to compute!")
         return ""
-    valueA = recurseParse(list(list(node)[1])[-1])
-    valueB = recurseParse(list(list(node)[2])[-1])
+    valueA = recurseParse(list(list(node)[1])[-1],depth)
+    valueB = recurseParse(list(list(node)[2])[-1],depth)
     if (operator == "pow"):
         return "pow(" + valueA + ", " + valueB + ")"
     return valueA + " " + operator + " " + valueB
