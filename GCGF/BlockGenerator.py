@@ -69,7 +69,8 @@ for component in library:
         blocksJSON[aClass.name] = []
 
 	for func in aClass.functions:
-	    if func.name == "setup":
+	    skippedFunctions = [ "setup", "update", "loop" ]
+	    if func.name in skippedFunctions:
 	        continue
 	    # Create a blockly json definition
 	    # The attributes passed here should be the same across all blockly json files

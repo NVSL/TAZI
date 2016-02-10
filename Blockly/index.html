@@ -6,80 +6,132 @@
 	<script src="msg/js/en.js"></script>
 	<script type="text/javascript">
 	
-		var _led1_update = {"colour": "120", "nextStatement": null, "tooltip": "", "message0": "LED update %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "_led1_update"};
+		var _led1_blink = {"colour": "45", "nextStatement": null, "tooltip": "", "message0": "LED blink %1 with on %2 with off %3", "previousStatement": null, "args0": [{"type": "input_dummy"}, {"type": "input_value", "name": "on", "check": "Number"}, {"type": "input_value", "name": "off", "check": "Number"}], "helpUrl": "gadgetron.build", "id": "_led1_blink"};
 	
-		var _led1_blink = {"colour": "120", "nextStatement": null, "tooltip": "", "message0": "LED blink %1 with on %2 with off %3", "previousStatement": null, "args0": [{"type": "input_dummy"}, {"type": "input_value", "name": "on", "check": "Number"}, {"type": "input_value", "name": "off", "check": "Number"}], "helpUrl": "gadgetron.build", "id": "_led1_blink"};
+		var _led1_blink = {"colour": "45", "nextStatement": null, "tooltip": "", "message0": "LED blink %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "_led1_blink"};
 	
-		var _led1_blink = {"colour": "120", "nextStatement": null, "tooltip": "", "message0": "LED blink %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "_led1_blink"};
+		var _led1_isBlinking = {"colour": "45", "tooltip": "", "message0": "LED isBlinking %1", "args0": [{"type": "input_dummy"}], "output": null, "helpUrl": "gadgetron.build", "id": "_led1_isBlinking"};
 	
-		var _led1_isBlinking = {"colour": "120", "tooltip": "", "message0": "LED isBlinking %1", "args0": [{"type": "input_dummy"}], "output": null, "helpUrl": "gadgetron.build", "id": "_led1_isBlinking"};
+		var _led1_toggle = {"colour": "45", "nextStatement": null, "tooltip": "", "message0": "LED toggle %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "_led1_toggle"};
 	
-		var _led1_toggle = {"colour": "120", "nextStatement": null, "tooltip": "", "message0": "LED toggle %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "_led1_toggle"};
+		var _led1_turnOn = {"colour": "45", "nextStatement": null, "tooltip": "", "message0": "LED turnOn %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "_led1_turnOn"};
 	
-		var _led1_turnOn = {"colour": "120", "nextStatement": null, "tooltip": "", "message0": "LED turnOn %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "_led1_turnOn"};
+		var _led1_turnOff = {"colour": "45", "nextStatement": null, "tooltip": "", "message0": "LED turnOff %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "_led1_turnOff"};
 	
-		var _led1_turnOff = {"colour": "120", "nextStatement": null, "tooltip": "", "message0": "LED turnOff %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "_led1_turnOff"};
+		var _led2_blink = {"colour": "90", "nextStatement": null, "tooltip": "", "message0": "LED blink %1 with on %2 with off %3", "previousStatement": null, "args0": [{"type": "input_dummy"}, {"type": "input_value", "name": "on", "check": "Number"}, {"type": "input_value", "name": "off", "check": "Number"}], "helpUrl": "gadgetron.build", "id": "_led2_blink"};
 	
-		var _led1_loop = {"colour": "120", "nextStatement": null, "tooltip": "", "message0": "LED loop %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "_led1_loop"};
+		var _led2_blink = {"colour": "90", "nextStatement": null, "tooltip": "", "message0": "LED blink %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "_led2_blink"};
 	
-		var _led2_update = {"colour": "240", "nextStatement": null, "tooltip": "", "message0": "LED update %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "_led2_update"};
+		var _led2_isBlinking = {"colour": "90", "tooltip": "", "message0": "LED isBlinking %1", "args0": [{"type": "input_dummy"}], "output": null, "helpUrl": "gadgetron.build", "id": "_led2_isBlinking"};
 	
-		var _led2_blink = {"colour": "240", "nextStatement": null, "tooltip": "", "message0": "LED blink %1 with on %2 with off %3", "previousStatement": null, "args0": [{"type": "input_dummy"}, {"type": "input_value", "name": "on", "check": "Number"}, {"type": "input_value", "name": "off", "check": "Number"}], "helpUrl": "gadgetron.build", "id": "_led2_blink"};
+		var _led2_toggle = {"colour": "90", "nextStatement": null, "tooltip": "", "message0": "LED toggle %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "_led2_toggle"};
 	
-		var _led2_blink = {"colour": "240", "nextStatement": null, "tooltip": "", "message0": "LED blink %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "_led2_blink"};
+		var _led2_turnOn = {"colour": "90", "nextStatement": null, "tooltip": "", "message0": "LED turnOn %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "_led2_turnOn"};
 	
-		var _led2_isBlinking = {"colour": "240", "tooltip": "", "message0": "LED isBlinking %1", "args0": [{"type": "input_dummy"}], "output": null, "helpUrl": "gadgetron.build", "id": "_led2_isBlinking"};
+		var _led2_turnOff = {"colour": "90", "nextStatement": null, "tooltip": "", "message0": "LED turnOff %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "_led2_turnOff"};
 	
-		var _led2_toggle = {"colour": "240", "nextStatement": null, "tooltip": "", "message0": "LED toggle %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "_led2_toggle"};
+		var _led3_blink = {"colour": "135", "nextStatement": null, "tooltip": "", "message0": "LED blink %1 with on %2 with off %3", "previousStatement": null, "args0": [{"type": "input_dummy"}, {"type": "input_value", "name": "on", "check": "Number"}, {"type": "input_value", "name": "off", "check": "Number"}], "helpUrl": "gadgetron.build", "id": "_led3_blink"};
 	
-		var _led2_turnOn = {"colour": "240", "nextStatement": null, "tooltip": "", "message0": "LED turnOn %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "_led2_turnOn"};
+		var _led3_blink = {"colour": "135", "nextStatement": null, "tooltip": "", "message0": "LED blink %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "_led3_blink"};
 	
-		var _led2_turnOff = {"colour": "240", "nextStatement": null, "tooltip": "", "message0": "LED turnOff %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "_led2_turnOff"};
+		var _led3_isBlinking = {"colour": "135", "tooltip": "", "message0": "LED isBlinking %1", "args0": [{"type": "input_dummy"}], "output": null, "helpUrl": "gadgetron.build", "id": "_led3_isBlinking"};
 	
-		var _led2_loop = {"colour": "240", "nextStatement": null, "tooltip": "", "message0": "LED loop %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "_led2_loop"};
+		var _led3_toggle = {"colour": "135", "nextStatement": null, "tooltip": "", "message0": "LED toggle %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "_led3_toggle"};
 	
-		var _motor1_forward = {"colour": "360", "nextStatement": null, "tooltip": "", "message0": "Motor forward %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "_motor1_forward"};
+		var _led3_turnOn = {"colour": "135", "nextStatement": null, "tooltip": "", "message0": "LED turnOn %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "_led3_turnOn"};
 	
-		var _motor1_forward = {"colour": "360", "nextStatement": null, "tooltip": "", "message0": "Motor forward %1 with speed %2", "previousStatement": null, "args0": [{"type": "input_dummy"}, {"type": "input_value", "name": "speed", "check": "Number"}], "helpUrl": "gadgetron.build", "id": "_motor1_forward"};
+		var _led3_turnOff = {"colour": "135", "nextStatement": null, "tooltip": "", "message0": "LED turnOff %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "_led3_turnOff"};
 	
-		var _motor1_backward = {"colour": "360", "nextStatement": null, "tooltip": "", "message0": "Motor backward %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "_motor1_backward"};
+		var _distancesensor1_get_distance = {"colour": "180", "tooltip": "", "message0": "DistanceSensor get_distance %1", "args0": [{"type": "input_dummy"}], "output": null, "helpUrl": "gadgetron.build", "id": "_distancesensor1_get_distance"};
 	
-		var _motor1_backward = {"colour": "360", "nextStatement": null, "tooltip": "", "message0": "Motor backward %1 with speed %2", "previousStatement": null, "args0": [{"type": "input_dummy"}, {"type": "input_value", "name": "speed", "check": "Number"}], "helpUrl": "gadgetron.build", "id": "_motor1_backward"};
+		var _ledarray1_clear = {"colour": "225", "nextStatement": null, "tooltip": "", "message0": "LEDArray clear %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "_ledarray1_clear"};
 	
-		var _motor1_spinLeft = {"colour": "360", "nextStatement": null, "tooltip": "", "message0": "Motor spinLeft %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "_motor1_spinLeft"};
+		var _ledarray1_happyFace = {"colour": "225", "nextStatement": null, "tooltip": "", "message0": "LEDArray happyFace %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "_ledarray1_happyFace"};
 	
-		var _motor1_spinLeft = {"colour": "360", "nextStatement": null, "tooltip": "", "message0": "Motor spinLeft %1 with speed %2", "previousStatement": null, "args0": [{"type": "input_dummy"}, {"type": "input_value", "name": "speed", "check": "Number"}], "helpUrl": "gadgetron.build", "id": "_motor1_spinLeft"};
+		var _ledarray1_neutralFace = {"colour": "225", "nextStatement": null, "tooltip": "", "message0": "LEDArray neutralFace %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "_ledarray1_neutralFace"};
 	
-		var _motor1_spinRight = {"colour": "360", "nextStatement": null, "tooltip": "", "message0": "Motor spinRight %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "_motor1_spinRight"};
+		var _ledarray1_sadFace = {"colour": "225", "nextStatement": null, "tooltip": "", "message0": "LEDArray sadFace %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "_ledarray1_sadFace"};
 	
-		var _motor1_spinRight = {"colour": "360", "nextStatement": null, "tooltip": "", "message0": "Motor spinRight %1 with speed %2", "previousStatement": null, "args0": [{"type": "input_dummy"}, {"type": "input_value", "name": "speed", "check": "Number"}], "helpUrl": "gadgetron.build", "id": "_motor1_spinRight"};
+		var _ledarray1_turnClockwise = {"colour": "225", "nextStatement": null, "tooltip": "", "message0": "LEDArray turnClockwise %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "_ledarray1_turnClockwise"};
 	
-		var _motor1_forwardAndRight = {"colour": "360", "nextStatement": null, "tooltip": "", "message0": "Motor forwardAndRight %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "_motor1_forwardAndRight"};
+		var _ledarray1_turnCounterClockwise = {"colour": "225", "nextStatement": null, "tooltip": "", "message0": "LEDArray turnCounterClockwise %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "_ledarray1_turnCounterClockwise"};
 	
-		var _motor1_forwardAndRight = {"colour": "360", "nextStatement": null, "tooltip": "", "message0": "Motor forwardAndRight %1 with speed %2", "previousStatement": null, "args0": [{"type": "input_dummy"}, {"type": "input_value", "name": "speed", "check": "Number"}], "helpUrl": "gadgetron.build", "id": "_motor1_forwardAndRight"};
+		var _ledarray1_printText = {"colour": "225", "nextStatement": null, "tooltip": "", "message0": "LEDArray printText %1 with text %2", "previousStatement": null, "args0": [{"type": "input_dummy"}, {"type": "input_value", "name": "text", "check": "String"}], "helpUrl": "gadgetron.build", "id": "_ledarray1_printText"};
 	
-		var _motor1_forwardAndLeft = {"colour": "360", "nextStatement": null, "tooltip": "", "message0": "Motor forwardAndLeft %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "_motor1_forwardAndLeft"};
+		var _ledarray1_drawPix = {"colour": "225", "nextStatement": null, "tooltip": "", "message0": "LEDArray drawPix %1 with x %2 with y %3", "previousStatement": null, "args0": [{"type": "input_dummy"}, {"type": "input_value", "name": "x", "check": "Number"}, {"type": "input_value", "name": "y", "check": "Number"}], "helpUrl": "gadgetron.build", "id": "_ledarray1_drawPix"};
 	
-		var _motor1_forwardAndLeft = {"colour": "360", "nextStatement": null, "tooltip": "", "message0": "Motor forwardAndLeft %1 with speed %2", "previousStatement": null, "args0": [{"type": "input_dummy"}, {"type": "input_value", "name": "speed", "check": "Number"}], "helpUrl": "gadgetron.build", "id": "_motor1_forwardAndLeft"};
+		var _ledarray1_drawLine = {"colour": "225", "nextStatement": null, "tooltip": "", "message0": "LEDArray drawLine %1 with x1 %2 with y1 %3 with x2 %4 with y2 %5", "previousStatement": null, "args0": [{"type": "input_dummy"}, {"type": "input_value", "name": "x1", "check": "Number"}, {"type": "input_value", "name": "y1", "check": "Number"}, {"type": "input_value", "name": "x2", "check": "Number"}, {"type": "input_value", "name": "y2", "check": "Number"}], "helpUrl": "gadgetron.build", "id": "_ledarray1_drawLine"};
 	
-		var _motor1_stop = {"colour": "360", "nextStatement": null, "tooltip": "", "message0": "Motor stop %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "_motor1_stop"};
+		var _ledarray1_drawRec = {"colour": "225", "nextStatement": null, "tooltip": "", "message0": "LEDArray drawRec %1 with x1 %2 with y1 %3 with x2 %4 with y2 %5", "previousStatement": null, "args0": [{"type": "input_dummy"}, {"type": "input_value", "name": "x1", "check": "Number"}, {"type": "input_value", "name": "y1", "check": "Number"}, {"type": "input_value", "name": "x2", "check": "Number"}, {"type": "input_value", "name": "y2", "check": "Number"}], "helpUrl": "gadgetron.build", "id": "_ledarray1_drawRec"};
 	
-		var _motor1_brake = {"colour": "360", "nextStatement": null, "tooltip": "", "message0": "Motor brake %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "_motor1_brake"};
+		var _ledarray1_fillRec = {"colour": "225", "nextStatement": null, "tooltip": "", "message0": "LEDArray fillRec %1 with x1 %2 with y1 %3 with x2 %4 with y2 %5", "previousStatement": null, "args0": [{"type": "input_dummy"}, {"type": "input_value", "name": "x1", "check": "Number"}, {"type": "input_value", "name": "y1", "check": "Number"}, {"type": "input_value", "name": "x2", "check": "Number"}, {"type": "input_value", "name": "y2", "check": "Number"}], "helpUrl": "gadgetron.build", "id": "_ledarray1_fillRec"};
 	
-		var _motor1_isMoving = {"colour": "360", "tooltip": "", "message0": "Motor isMoving %1", "args0": [{"type": "input_dummy"}], "output": null, "helpUrl": "gadgetron.build", "id": "_motor1_isMoving"};
+		var _ledarray1_drawCircle = {"colour": "225", "nextStatement": null, "tooltip": "", "message0": "LEDArray drawCircle %1 with x %2 with y %3 with r %4", "previousStatement": null, "args0": [{"type": "input_dummy"}, {"type": "input_value", "name": "x", "check": "Number"}, {"type": "input_value", "name": "y", "check": "Number"}, {"type": "input_value", "name": "r", "check": "Number"}], "helpUrl": "gadgetron.build", "id": "_ledarray1_drawCircle"};
 	
-		var _motor1_swapDirections = {"colour": "360", "nextStatement": null, "tooltip": "", "message0": "Motor swapDirections %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "_motor1_swapDirections"};
+		var _ledarray1_blink = {"colour": "225", "nextStatement": null, "tooltip": "", "message0": "LEDArray blink %1 with rate %2", "previousStatement": null, "args0": [{"type": "input_dummy"}, {"type": "input_value", "name": "rate", "check": "Number"}], "helpUrl": "gadgetron.build", "id": "_ledarray1_blink"};
 	
-		var _motor1_changePolarity = {"colour": "360", "nextStatement": null, "tooltip": "", "message0": "Motor changePolarity %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "_motor1_changePolarity"};
+		var _ledarray1_setBrightness = {"colour": "225", "nextStatement": null, "tooltip": "", "message0": "LEDArray setBrightness %1 with level %2", "previousStatement": null, "args0": [{"type": "input_dummy"}, {"type": "input_value", "name": "level", "check": "Number"}], "helpUrl": "gadgetron.build", "id": "_ledarray1_setBrightness"};
 	
-		var _motor1_disable = {"colour": "360", "nextStatement": null, "tooltip": "", "message0": "Motor disable %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "_motor1_disable"};
+		var _momentarybutton1_waitForPress = {"colour": "270", "nextStatement": null, "tooltip": "", "message0": "MomentaryButton waitForPress %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "_momentarybutton1_waitForPress"};
 	
+		var _momentarybutton1_read = {"colour": "270", "tooltip": "", "message0": "MomentaryButton read %1", "args0": [{"type": "input_dummy"}], "output": null, "helpUrl": "gadgetron.build", "id": "_momentarybutton1_read"};
 	
-		Blockly.Blocks['_led1_update'] = {
-		init: function() {
-			this.jsonInit(_led1_update);
-		}
-	};
+		var _momentarybutton1_isPressed = {"colour": "270", "tooltip": "", "message0": "MomentaryButton isPressed %1", "args0": [{"type": "input_dummy"}], "output": null, "helpUrl": "gadgetron.build", "id": "_momentarybutton1_isPressed"};
+	
+		var _momentarybutton1_isReleased = {"colour": "270", "tooltip": "", "message0": "MomentaryButton isReleased %1", "args0": [{"type": "input_dummy"}], "output": null, "helpUrl": "gadgetron.build", "id": "_momentarybutton1_isReleased"};
+	
+		var _momentarybutton1_wasPressed = {"colour": "270", "tooltip": "", "message0": "MomentaryButton wasPressed %1", "args0": [{"type": "input_dummy"}], "output": null, "helpUrl": "gadgetron.build", "id": "_momentarybutton1_wasPressed"};
+	
+		var _momentarybutton1_wasReleased = {"colour": "270", "tooltip": "", "message0": "MomentaryButton wasReleased %1", "args0": [{"type": "input_dummy"}], "output": null, "helpUrl": "gadgetron.build", "id": "_momentarybutton1_wasReleased"};
+	
+		var _momentarybutton1_pressedFor = {"colour": "270", "tooltip": "", "message0": "MomentaryButton pressedFor %1", "args0": [{"type": "input_dummy"}], "output": null, "helpUrl": "gadgetron.build", "id": "_momentarybutton1_pressedFor"};
+	
+		var _momentarybutton1_releasedFor = {"colour": "270", "tooltip": "", "message0": "MomentaryButton releasedFor %1", "args0": [{"type": "input_dummy"}], "output": null, "helpUrl": "gadgetron.build", "id": "_momentarybutton1_releasedFor"};
+	
+		var _momentarybutton1_lastChange = {"colour": "270", "tooltip": "", "message0": "MomentaryButton lastChange %1", "args0": [{"type": "input_dummy"}], "output": null, "helpUrl": "gadgetron.build", "id": "_momentarybutton1_lastChange"};
+	
+		var _momentarybutton1_setDB = {"colour": "270", "nextStatement": null, "tooltip": "", "message0": "MomentaryButton setDB %1 with ms %2", "previousStatement": null, "args0": [{"type": "input_dummy"}, {"type": "input_value", "name": "ms", "check": "Number"}], "helpUrl": "gadgetron.build", "id": "_momentarybutton1_setDB"};
+	
+		var _motor1_forward = {"colour": "315", "nextStatement": null, "tooltip": "", "message0": "Motor forward %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "_motor1_forward"};
+	
+		var _motor1_forward = {"colour": "315", "nextStatement": null, "tooltip": "", "message0": "Motor forward %1 with speed %2", "previousStatement": null, "args0": [{"type": "input_dummy"}, {"type": "input_value", "name": "speed", "check": "Number"}], "helpUrl": "gadgetron.build", "id": "_motor1_forward"};
+	
+		var _motor1_backward = {"colour": "315", "nextStatement": null, "tooltip": "", "message0": "Motor backward %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "_motor1_backward"};
+	
+		var _motor1_backward = {"colour": "315", "nextStatement": null, "tooltip": "", "message0": "Motor backward %1 with speed %2", "previousStatement": null, "args0": [{"type": "input_dummy"}, {"type": "input_value", "name": "speed", "check": "Number"}], "helpUrl": "gadgetron.build", "id": "_motor1_backward"};
+	
+		var _motor1_spinLeft = {"colour": "315", "nextStatement": null, "tooltip": "", "message0": "Motor spinLeft %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "_motor1_spinLeft"};
+	
+		var _motor1_spinLeft = {"colour": "315", "nextStatement": null, "tooltip": "", "message0": "Motor spinLeft %1 with speed %2", "previousStatement": null, "args0": [{"type": "input_dummy"}, {"type": "input_value", "name": "speed", "check": "Number"}], "helpUrl": "gadgetron.build", "id": "_motor1_spinLeft"};
+	
+		var _motor1_spinRight = {"colour": "315", "nextStatement": null, "tooltip": "", "message0": "Motor spinRight %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "_motor1_spinRight"};
+	
+		var _motor1_spinRight = {"colour": "315", "nextStatement": null, "tooltip": "", "message0": "Motor spinRight %1 with speed %2", "previousStatement": null, "args0": [{"type": "input_dummy"}, {"type": "input_value", "name": "speed", "check": "Number"}], "helpUrl": "gadgetron.build", "id": "_motor1_spinRight"};
+	
+		var _motor1_forwardAndRight = {"colour": "315", "nextStatement": null, "tooltip": "", "message0": "Motor forwardAndRight %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "_motor1_forwardAndRight"};
+	
+		var _motor1_forwardAndRight = {"colour": "315", "nextStatement": null, "tooltip": "", "message0": "Motor forwardAndRight %1 with speed %2", "previousStatement": null, "args0": [{"type": "input_dummy"}, {"type": "input_value", "name": "speed", "check": "Number"}], "helpUrl": "gadgetron.build", "id": "_motor1_forwardAndRight"};
+	
+		var _motor1_forwardAndLeft = {"colour": "315", "nextStatement": null, "tooltip": "", "message0": "Motor forwardAndLeft %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "_motor1_forwardAndLeft"};
+	
+		var _motor1_forwardAndLeft = {"colour": "315", "nextStatement": null, "tooltip": "", "message0": "Motor forwardAndLeft %1 with speed %2", "previousStatement": null, "args0": [{"type": "input_dummy"}, {"type": "input_value", "name": "speed", "check": "Number"}], "helpUrl": "gadgetron.build", "id": "_motor1_forwardAndLeft"};
+	
+		var _motor1_stop = {"colour": "315", "nextStatement": null, "tooltip": "", "message0": "Motor stop %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "_motor1_stop"};
+	
+		var _motor1_brake = {"colour": "315", "nextStatement": null, "tooltip": "", "message0": "Motor brake %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "_motor1_brake"};
+	
+		var _motor1_isMoving = {"colour": "315", "tooltip": "", "message0": "Motor isMoving %1", "args0": [{"type": "input_dummy"}], "output": null, "helpUrl": "gadgetron.build", "id": "_motor1_isMoving"};
+	
+		var _motor1_swapDirections = {"colour": "315", "nextStatement": null, "tooltip": "", "message0": "Motor swapDirections %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "_motor1_swapDirections"};
+	
+		var _motor1_changePolarity = {"colour": "315", "nextStatement": null, "tooltip": "", "message0": "Motor changePolarity %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "_motor1_changePolarity"};
+	
+		var _motor1_disable = {"colour": "315", "nextStatement": null, "tooltip": "", "message0": "Motor disable %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "_motor1_disable"};
+	
+		var _rgbled1_set = {"colour": "360", "nextStatement": null, "tooltip": "", "message0": "RGBLED set %1 with red %2 with green %3 with blue %4", "previousStatement": null, "args0": [{"type": "input_dummy"}, {"type": "input_value", "name": "red", "check": "Number"}, {"type": "input_value", "name": "green", "check": "Number"}, {"type": "input_value", "name": "blue", "check": "Number"}], "helpUrl": "gadgetron.build", "id": "_rgbled1_set"};
+	
+		var _rgbled1_fade = {"colour": "360", "nextStatement": null, "tooltip": "", "message0": "RGBLED fade %1 with red %2 with green %3 with blue %4 with step %5 with period %6", "previousStatement": null, "args0": [{"type": "input_dummy"}, {"type": "input_value", "name": "red", "check": "Number"}, {"type": "input_value", "name": "green", "check": "Number"}, {"type": "input_value", "name": "blue", "check": "Number"}, {"type": "input_value", "name": "step", "check": "Number"}, {"type": "input_value", "name": "period", "check": "Number"}], "helpUrl": "gadgetron.build", "id": "_rgbled1_fade"};
+	
 	
 		Blockly.Blocks['_led1_blink'] = {
 		init: function() {
@@ -114,18 +166,6 @@
 		Blockly.Blocks['_led1_turnOff'] = {
 		init: function() {
 			this.jsonInit(_led1_turnOff);
-		}
-	};
-	
-		Blockly.Blocks['_led1_loop'] = {
-		init: function() {
-			this.jsonInit(_led1_loop);
-		}
-	};
-	
-		Blockly.Blocks['_led2_update'] = {
-		init: function() {
-			this.jsonInit(_led2_update);
 		}
 	};
 	
@@ -165,9 +205,189 @@
 		}
 	};
 	
-		Blockly.Blocks['_led2_loop'] = {
+		Blockly.Blocks['_led3_blink'] = {
 		init: function() {
-			this.jsonInit(_led2_loop);
+			this.jsonInit(_led3_blink);
+		}
+	};
+	
+		Blockly.Blocks['_led3_blink'] = {
+		init: function() {
+			this.jsonInit(_led3_blink);
+		}
+	};
+	
+		Blockly.Blocks['_led3_isBlinking'] = {
+		init: function() {
+			this.jsonInit(_led3_isBlinking);
+		}
+	};
+	
+		Blockly.Blocks['_led3_toggle'] = {
+		init: function() {
+			this.jsonInit(_led3_toggle);
+		}
+	};
+	
+		Blockly.Blocks['_led3_turnOn'] = {
+		init: function() {
+			this.jsonInit(_led3_turnOn);
+		}
+	};
+	
+		Blockly.Blocks['_led3_turnOff'] = {
+		init: function() {
+			this.jsonInit(_led3_turnOff);
+		}
+	};
+	
+		Blockly.Blocks['_distancesensor1_get_distance'] = {
+		init: function() {
+			this.jsonInit(_distancesensor1_get_distance);
+		}
+	};
+	
+		Blockly.Blocks['_ledarray1_clear'] = {
+		init: function() {
+			this.jsonInit(_ledarray1_clear);
+		}
+	};
+	
+		Blockly.Blocks['_ledarray1_happyFace'] = {
+		init: function() {
+			this.jsonInit(_ledarray1_happyFace);
+		}
+	};
+	
+		Blockly.Blocks['_ledarray1_neutralFace'] = {
+		init: function() {
+			this.jsonInit(_ledarray1_neutralFace);
+		}
+	};
+	
+		Blockly.Blocks['_ledarray1_sadFace'] = {
+		init: function() {
+			this.jsonInit(_ledarray1_sadFace);
+		}
+	};
+	
+		Blockly.Blocks['_ledarray1_turnClockwise'] = {
+		init: function() {
+			this.jsonInit(_ledarray1_turnClockwise);
+		}
+	};
+	
+		Blockly.Blocks['_ledarray1_turnCounterClockwise'] = {
+		init: function() {
+			this.jsonInit(_ledarray1_turnCounterClockwise);
+		}
+	};
+	
+		Blockly.Blocks['_ledarray1_printText'] = {
+		init: function() {
+			this.jsonInit(_ledarray1_printText);
+		}
+	};
+	
+		Blockly.Blocks['_ledarray1_drawPix'] = {
+		init: function() {
+			this.jsonInit(_ledarray1_drawPix);
+		}
+	};
+	
+		Blockly.Blocks['_ledarray1_drawLine'] = {
+		init: function() {
+			this.jsonInit(_ledarray1_drawLine);
+		}
+	};
+	
+		Blockly.Blocks['_ledarray1_drawRec'] = {
+		init: function() {
+			this.jsonInit(_ledarray1_drawRec);
+		}
+	};
+	
+		Blockly.Blocks['_ledarray1_fillRec'] = {
+		init: function() {
+			this.jsonInit(_ledarray1_fillRec);
+		}
+	};
+	
+		Blockly.Blocks['_ledarray1_drawCircle'] = {
+		init: function() {
+			this.jsonInit(_ledarray1_drawCircle);
+		}
+	};
+	
+		Blockly.Blocks['_ledarray1_blink'] = {
+		init: function() {
+			this.jsonInit(_ledarray1_blink);
+		}
+	};
+	
+		Blockly.Blocks['_ledarray1_setBrightness'] = {
+		init: function() {
+			this.jsonInit(_ledarray1_setBrightness);
+		}
+	};
+	
+		Blockly.Blocks['_momentarybutton1_waitForPress'] = {
+		init: function() {
+			this.jsonInit(_momentarybutton1_waitForPress);
+		}
+	};
+	
+		Blockly.Blocks['_momentarybutton1_read'] = {
+		init: function() {
+			this.jsonInit(_momentarybutton1_read);
+		}
+	};
+	
+		Blockly.Blocks['_momentarybutton1_isPressed'] = {
+		init: function() {
+			this.jsonInit(_momentarybutton1_isPressed);
+		}
+	};
+	
+		Blockly.Blocks['_momentarybutton1_isReleased'] = {
+		init: function() {
+			this.jsonInit(_momentarybutton1_isReleased);
+		}
+	};
+	
+		Blockly.Blocks['_momentarybutton1_wasPressed'] = {
+		init: function() {
+			this.jsonInit(_momentarybutton1_wasPressed);
+		}
+	};
+	
+		Blockly.Blocks['_momentarybutton1_wasReleased'] = {
+		init: function() {
+			this.jsonInit(_momentarybutton1_wasReleased);
+		}
+	};
+	
+		Blockly.Blocks['_momentarybutton1_pressedFor'] = {
+		init: function() {
+			this.jsonInit(_momentarybutton1_pressedFor);
+		}
+	};
+	
+		Blockly.Blocks['_momentarybutton1_releasedFor'] = {
+		init: function() {
+			this.jsonInit(_momentarybutton1_releasedFor);
+		}
+	};
+	
+		Blockly.Blocks['_momentarybutton1_lastChange'] = {
+		init: function() {
+			this.jsonInit(_momentarybutton1_lastChange);
+		}
+	};
+	
+		Blockly.Blocks['_momentarybutton1_setDB'] = {
+		init: function() {
+			this.jsonInit(_momentarybutton1_setDB);
 		}
 	};
 	
@@ -276,6 +496,18 @@
 		Blockly.Blocks['_motor1_disable'] = {
 		init: function() {
 			this.jsonInit(_motor1_disable);
+		}
+	};
+	
+		Blockly.Blocks['_rgbled1_set'] = {
+		init: function() {
+			this.jsonInit(_rgbled1_set);
+		}
+	};
+	
+		Blockly.Blocks['_rgbled1_fade'] = {
+		init: function() {
+			this.jsonInit(_rgbled1_fade);
 		}
 	};
 	
@@ -511,7 +743,7 @@
 
   
   <sep> </sep>
-<category colour="120" name="LED 1"><block type="_led1_update"> </block><block type="_led1_blink"> </block><block type="_led1_blink"> </block><block type="_led1_isBlinking"> </block><block type="_led1_toggle"> </block><block type="_led1_turnOn"> </block><block type="_led1_turnOff"> </block><block type="_led1_loop"> </block></category><category colour="240" name="LED 2"><block type="_led2_update"> </block><block type="_led2_blink"> </block><block type="_led2_blink"> </block><block type="_led2_isBlinking"> </block><block type="_led2_toggle"> </block><block type="_led2_turnOn"> </block><block type="_led2_turnOff"> </block><block type="_led2_loop"> </block></category><category colour="360" name="Motor 1"><block type="_motor1_forward"> </block><block type="_motor1_forward"> </block><block type="_motor1_backward"> </block><block type="_motor1_backward"> </block><block type="_motor1_spinLeft"> </block><block type="_motor1_spinLeft"> </block><block type="_motor1_spinRight"> </block><block type="_motor1_spinRight"> </block><block type="_motor1_forwardAndRight"> </block><block type="_motor1_forwardAndRight"> </block><block type="_motor1_forwardAndLeft"> </block><block type="_motor1_forwardAndLeft"> </block><block type="_motor1_stop"> </block><block type="_motor1_brake"> </block><block type="_motor1_isMoving"> </block><block type="_motor1_swapDirections"> </block><block type="_motor1_changePolarity"> </block><block type="_motor1_disable"> </block></category></xml>
+<category colour="45" name="LED 1"><block type="_led1_blink"> </block><block type="_led1_blink"> </block><block type="_led1_isBlinking"> </block><block type="_led1_toggle"> </block><block type="_led1_turnOn"> </block><block type="_led1_turnOff"> </block></category><category colour="90" name="LED 2"><block type="_led2_blink"> </block><block type="_led2_blink"> </block><block type="_led2_isBlinking"> </block><block type="_led2_toggle"> </block><block type="_led2_turnOn"> </block><block type="_led2_turnOff"> </block></category><category colour="135" name="LED 3"><block type="_led3_blink"> </block><block type="_led3_blink"> </block><block type="_led3_isBlinking"> </block><block type="_led3_toggle"> </block><block type="_led3_turnOn"> </block><block type="_led3_turnOff"> </block></category><category colour="180" name="DistanceSensor 1"><block type="_distancesensor1_get_distance"> </block></category><category colour="225" name="LEDArray 1"><block type="_ledarray1_clear"> </block><block type="_ledarray1_happyFace"> </block><block type="_ledarray1_neutralFace"> </block><block type="_ledarray1_sadFace"> </block><block type="_ledarray1_turnClockwise"> </block><block type="_ledarray1_turnCounterClockwise"> </block><block type="_ledarray1_printText"> </block><block type="_ledarray1_drawPix"> </block><block type="_ledarray1_drawLine"> </block><block type="_ledarray1_drawRec"> </block><block type="_ledarray1_fillRec"> </block><block type="_ledarray1_drawCircle"> </block><block type="_ledarray1_blink"> </block><block type="_ledarray1_setBrightness"> </block></category><category colour="270" name="MomentaryButton 1"><block type="_momentarybutton1_waitForPress"> </block><block type="_momentarybutton1_read"> </block><block type="_momentarybutton1_isPressed"> </block><block type="_momentarybutton1_isReleased"> </block><block type="_momentarybutton1_wasPressed"> </block><block type="_momentarybutton1_wasReleased"> </block><block type="_momentarybutton1_pressedFor"> </block><block type="_momentarybutton1_releasedFor"> </block><block type="_momentarybutton1_lastChange"> </block><block type="_momentarybutton1_setDB"> </block></category><category colour="315" name="Motor 1"><block type="_motor1_forward"> </block><block type="_motor1_forward"> </block><block type="_motor1_backward"> </block><block type="_motor1_backward"> </block><block type="_motor1_spinLeft"> </block><block type="_motor1_spinLeft"> </block><block type="_motor1_spinRight"> </block><block type="_motor1_spinRight"> </block><block type="_motor1_forwardAndRight"> </block><block type="_motor1_forwardAndRight"> </block><block type="_motor1_forwardAndLeft"> </block><block type="_motor1_forwardAndLeft"> </block><block type="_motor1_stop"> </block><block type="_motor1_brake"> </block><block type="_motor1_isMoving"> </block><block type="_motor1_swapDirections"> </block><block type="_motor1_changePolarity"> </block><block type="_motor1_disable"> </block></category><category colour="360" name="RGBLED 1"><block type="_rgbled1_set"> </block><block type="_rgbled1_fade"> </block></category></xml>
 	</div>
 	<script>
   		var workspace = Blockly.inject('blocklyDiv',

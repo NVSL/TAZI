@@ -59,19 +59,6 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "LED update %1", 
-            "previousStatement": null, 
-            "args0": [
-                {
-                    "type": "input_dummy"
-                }
-            ], 
-            "helpUrl": "gadgetron.build", 
-            "id": "update"
-        }, 
-        {
-            "nextStatement": null, 
-            "tooltip": "", 
             "message0": "LED blink %1 with on %2 with off %3", 
             "previousStatement": null, 
             "args0": [
@@ -155,19 +142,6 @@
             ], 
             "helpUrl": "gadgetron.build", 
             "id": "turnOff"
-        }, 
-        {
-            "nextStatement": null, 
-            "tooltip": "", 
-            "message0": "LED loop %1", 
-            "previousStatement": null, 
-            "args0": [
-                {
-                    "type": "input_dummy"
-                }
-            ], 
-            "helpUrl": "gadgetron.build", 
-            "id": "loop"
         }
     ], 
     "DistanceSensor": [
@@ -250,19 +224,6 @@
             ], 
             "helpUrl": "gadgetron.build", 
             "id": "fade"
-        }, 
-        {
-            "nextStatement": null, 
-            "tooltip": "", 
-            "message0": "RGBLED loop %1", 
-            "previousStatement": null, 
-            "args0": [
-                {
-                    "type": "input_dummy"
-                }
-            ], 
-            "helpUrl": "gadgetron.build", 
-            "id": "loop"
         }
     ], 
     "MomentaryButton": [
@@ -392,19 +353,6 @@
             ], 
             "helpUrl": "gadgetron.build", 
             "id": "setDB"
-        }, 
-        {
-            "nextStatement": null, 
-            "tooltip": "", 
-            "message0": "MomentaryButton loop %1", 
-            "previousStatement": null, 
-            "args0": [
-                {
-                    "type": "input_dummy"
-                }
-            ], 
-            "helpUrl": "gadgetron.build", 
-            "id": "loop"
         }
     ], 
     "Motor": [
