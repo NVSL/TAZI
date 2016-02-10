@@ -30,7 +30,7 @@ def determineParamType( param ):
 	raise
 
 # Setup argument parsing
-parser = argparse.ArgumentParser(description="BlockGenerator.py creates a Blockly IDE for Gadgetron. It parses our existing C++ clase libraries using Clang to generate block categories and blocks. It then uses Jinja to actually create the IDE")
+parser = argparse.ArgumentParser(description="BlockGenerator.py creates a Blockly IDE for Gadgetron. It parses our existing C++ class libraries using Clang to generate block categories and blocks. It then uses Jinja to actually create the IDE")
 parser.add_argument("-l", "--library", required=True)
 parser.add_argument("-d", "--default_blocks", required=True)
 parser.add_argument("-j", "--jinja", required=True)
@@ -94,7 +94,7 @@ for component in library:
 	    if func.name == "setup":
 	        continue
 	    # Create a blockly json definition
-	    # The arrtibutes passed here should be the same accross all blockly json files
+	    # The attributes passed here should be the same across all blockly json files
 	    funcjson = {
 	            "id":"_"+aClass.name+"_"+func.name,
 	            "message0":aClass.name+" "+func.name + " %1",
