@@ -49,6 +49,8 @@ def recurseParse(node, depth):
         return recurseParseCheck(list(node), depth)
     elif tag == "shadow":
         return getField(list(node)[0])
+    elif tag == "value":
+        return getBlock(list(node)[0], depth)
     else:
         return ""
 
@@ -82,6 +84,9 @@ def getBlock(node,depth):
 
     if (blockType == "variables_get"):
         return getField(list(node)[0])
+
+    if (blockType == "math_constant"):
+        return getConst(list(node)[0])
 
     return genericBlockGet(node,depth)
    
@@ -143,6 +148,13 @@ opDict = {
 }
 def getOp(node):
     return opDict[node.text]
+
+#constant dictionary
+constDict = {
+    "PI": "3.14159265358979323846"
+}
+def getConst(node):
+    return constDict[node.text]
 
 # Function Get dictionary
 
