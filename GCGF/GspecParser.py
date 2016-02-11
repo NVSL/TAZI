@@ -40,6 +40,8 @@ class GspecParser:
               gspec = ET.parse(compFile).getroot()
           else:
               gspec = ET.fromstring(compFile).getroot()
+      elif type( compFile ) is unicode:
+          gspec = ET.fromstring(compFile)
       finallist =[]
       finalDict = dict()
       #Parsing the gspec (made in Jet)

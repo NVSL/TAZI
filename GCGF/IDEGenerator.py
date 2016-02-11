@@ -2,6 +2,7 @@ __author__ = "Michael Gonzalez"
 __email__ = "mmg005@eng.ucsd.edu"
 
 import json
+import unicodedata
 import xml.etree.ElementTree as ET
 from GspecParser import GspecParser
 import os
@@ -29,6 +30,8 @@ class IDEGenerator:
         self.categoriesXML.attrib["style"] = "display: none"
         # Grab the default categories
         default_block_root = ET.parse(blocksXml)
+	if type(blocksXml) is unicode: 
+	    default_block_root = ET.fromstring(blocksXml)
         #Append each block to our template
         for block in default_block_root.getroot():
             self.categoriesXML.append( block )
@@ -60,12 +63,9 @@ class IDEGenerator:
         
     def createBlockSubset(self):
         self.blockCategories = {}
-        # We want to store a function scope index for each component attached 
-        # to our gadget to help create a unique color
-        componentIdx = 1.0
-        # We need to determine the total number of categories to help make the
-        # unique colors
         totalNumberOfCategories = 0
+        componentIdx = 1.0
+	print self.components
         for k in self.components.keys():
             totalNumberOfCategories = totalNumberOfCategories + self.components[k]
         for component in self.components.keys():
@@ -86,10 +86,12 @@ class IDEGenerator:
                 categoryNode.attrib["colour"] = color
                 
                 # Iterate over each block in our copy so we can make a unique instance
+		print json.dumps(self.blocks[component])
                 jsonElem = copy.deepcopy(self.blocks[component])
+		print json.dumps(jsonElem)
                 for block in jsonElem:
                     block["id"] = "_" + component.lower() + str(i) + "_" + block["id"]
-                    id = block["id"]
+                    id = block["id"].encode('ascii', 'ignore')
                     block["colour"] = color
                     # Add the new block to its proper category
                     blockNode = ET.SubElement(categoryNode, "block")
@@ -99,6 +101,7 @@ class IDEGenerator:
                     self.jinja_vars["blocklist"].append( [ id, str(json.dumps(block)) ] )
                 self.blockCategories[ name ] = localBlocks
         self.jinja_vars["toolbox"] = str(ET.tostring( self.categoriesXML ))
+	#print self.jinja_vars["toolbox"]
     
     def renderIDE(self):
         return self.template.render(self.jinja_vars)
@@ -137,4 +140,4 @@ if __name__ == "__main__":
     #for key in generator.blockCategories.keys():
     #    print key, json.dumps(generator.blockCategories[key], indent=4)
     #print ET.tostring(generator.categoriesXML )
-    print generator.renderIDE()
+    print generator.renderIDE().encode('ascii','ignore')
