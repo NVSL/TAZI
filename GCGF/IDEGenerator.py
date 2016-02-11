@@ -65,7 +65,6 @@ class IDEGenerator:
         self.blockCategories = {}
         totalNumberOfCategories = 0
         componentIdx = 1.0
-	print self.components
         for k in self.components.keys():
             totalNumberOfCategories = totalNumberOfCategories + self.components[k]
         for component in self.components.keys():
@@ -86,9 +85,7 @@ class IDEGenerator:
                 categoryNode.attrib["colour"] = color
                 
                 # Iterate over each block in our copy so we can make a unique instance
-		print json.dumps(self.blocks[component])
                 jsonElem = copy.deepcopy(self.blocks[component])
-		print json.dumps(jsonElem)
                 for block in jsonElem:
                     block["id"] = "_" + component.lower() + str(i) + "_" + block["id"]
                     id = block["id"].encode('ascii', 'ignore')
