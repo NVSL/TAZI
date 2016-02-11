@@ -1,11 +1,16 @@
-GSPEC = PessimistPrime.gspec
+GSPEC = Gspecs/PessimistPrime.gspec
+RESOURCES = Resources
+CATALOG = $(GADGETRON_CATALOG)/Components.cat
+CATEGORIESXML = $(RESOURCES)/DefaultCategories.xml
+BLOCKSJSON = $(RESOURCES)/Blocks.json
+JINJAFILE = $(RESOURCES)/index.jinja
 
 ide:
-	python IDEGenerator.py -j Blocks.json -g $(GSPEC) -c Components.cat -d DefaultCategories.xml -x index.jinja > ../Blockly/index.html
+	cp IDEGenerator.py IDEGenerator/
+	cp GspecParser.py IDEGenerator/
+	python IDEGenerator.py -j $(BLOCKSJSON) -g $(GSPEC) -c $(CATALOG) -d $(CATEGORIESXML) -x $(JINJAFILE) > ../Blockly/index.html
 json:
-	python BlockGenerator.py -l ComponentsLibrary.xml -d DefaultCategories.xml > Blocks.json
-build:
-	python BlockGenerator.py -l ComponentsLibrary.xml -j index.jinja -d DefaultCategories.xml > ../Blockly/index.html
+	python BlockGenerator.py -l ComponentsLibrary.xml > $(BLOCKSJSON)
 testclang:
 	python ClangBindings.py clangtest.h 
 classbuilder:

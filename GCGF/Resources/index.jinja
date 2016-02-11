@@ -1,9 +1,9 @@
 <head>
 	<title>TAZI - A blockly extention for Gadgetron</title>
-	<script src="blockly_compressed.js"></script>
-	<script src="blocks_compressed.js"></script>
-	<script src="custom_blocks.js"></script>
-	<script src="msg/js/en.js"></script>
+	<script src="{{resDir}}blockly_compressed.js"></script>
+	<script src="{{resDir}}blocks_compressed.js"></script>
+	<script src="{{resDir}}custom_blocks.js"></script>
+	<script src="{{resDir}}msg/js/en.js"></script>
 	<script type="text/javascript">
 	{% for block in blocklist %}
 		var {{block[0]}} = {{block[1]}};
@@ -40,7 +40,7 @@
 	<div width="100%" height="100%">
 	
 	<div class = "outer", style="width:20%; height:10%; float:left;">
-		<img src="GtronImage.png" alt="Gtron Logo" style="width:150px;height:50px;">		
+		<img src="{{resDir}}GtronImage.png" alt="Gtron Logo" style="width:150px;height:50px;">		
 	</div>
 	
 	<div class = "outer", style = "margin-left:20%; width: 70%; height: 10%">
