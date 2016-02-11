@@ -1,6 +1,7 @@
 import xml.etree.ElementTree as ET
 import argparse
 
+#Can run with arguments for filename input OR requests filename input
 parser = argparse.ArgumentParser()
 parser.add_argument("-x", "--xml", required=False)
 args = parser.parse_args()
@@ -82,6 +83,10 @@ def getBlock(node,depth):
     if (blockType == "variables_get"):
         return getField(list(node)[0])
 
+    return genericBlockGet(node,depth)
+   
+def genericBlockGet(node,depth):
+    blockType = node.attrib["type"]
     # Remainder block types that aren't built in, so it must be custom
     if (len(blockType.split("_")) < 3):
         raise BlocklyError("Block " + blockType + " is malformatted!")
@@ -106,6 +111,7 @@ def getBlock(node,depth):
         return (spaces * depth ) + instance + "." + method + "(" + arguments + ");"
     else:
         return (spaces * depth ) + instance + "." + method + "(" + arguments + ");" + recurseParse(list(node)[-1], depth)
+
 
 # Typing dictionary
 typeDict = {
@@ -159,6 +165,10 @@ def setVar(node, depth):
 def ifBlock(node, depth):
     # First child is the boolean part
     booleanPart = recurseParse(list(list(node)[0])[0], 0)
+    
+    #attempt to strip ;
+    booleanPart = booleanPart.strip().replace(";", "")
+
     # Second child is the statement part
     statementPart = recurseParse(list(node)[1], depth+1)
     returnStr = (spaces*depth) + "if(" + booleanPart + ") {\n"
