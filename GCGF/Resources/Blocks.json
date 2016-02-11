@@ -620,6 +620,185 @@
             "id": "disable"
         }
     ], 
+    "Pincer": [
+        {
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "Pincer toggle %1", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "toggle"
+        }, 
+        {
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "Pincer open %1", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "open"
+        }, 
+        {
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "Pincer open %1 with angle %2", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }, 
+                {
+                    "type": "input_value", 
+                    "name": "angle", 
+                    "check": "Number"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "open"
+        }, 
+        {
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "Pincer close %1", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "close"
+        }, 
+        {
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "Pincer onAndOff %1 with time %2 with times %3", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }, 
+                {
+                    "type": "input_value", 
+                    "name": "time", 
+                    "check": "Number"
+                }, 
+                {
+                    "type": "input_value", 
+                    "name": "times", 
+                    "check": "Number"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "onAndOff"
+        }, 
+        {
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "Pincer changeState %1", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "changeState"
+        }, 
+        {
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "Pincer setOpen %1 with angle %2", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }, 
+                {
+                    "type": "input_value", 
+                    "name": "angle", 
+                    "check": "Number"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "setOpen"
+        }, 
+        {
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "Pincer setClose %1 with angle %2", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }, 
+                {
+                    "type": "input_value", 
+                    "name": "angle", 
+                    "check": "Number"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "setClose"
+        }, 
+        {
+            "tooltip": "", 
+            "message0": "Pincer isOpen %1", 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }
+            ], 
+            "output": null, 
+            "helpUrl": "gadgetron.build", 
+            "id": "isOpen"
+        }, 
+        {
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "Pincer setMin %1 with min %2", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }, 
+                {
+                    "type": "input_value", 
+                    "name": "min", 
+                    "check": "Number"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "setMin"
+        }, 
+        {
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "Pincer setMax %1 with max %2", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }, 
+                {
+                    "type": "input_value", 
+                    "name": "max", 
+                    "check": "Number"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "setMax"
+        }
+    ], 
     "LEDArray": [
         {
             "nextStatement": null, 
