@@ -79,11 +79,11 @@ def getBlock(node,depth):
     if blockType in funcGet.keys():
         return funcGet[blockType](node,depth)
 
-    if (blockType == "math_number"):
+    if (blockType == "math_number" or blockType == "variables_get"):
         return getField(list(node)[0])
 
-    if (blockType == "variables_get"):
-        return getField(list(node)[0])
+    if (blockType == "text"):
+        return "\"" + getField(list(node)[0]) + "\""
 
     if (blockType == "math_constant"):
         return getConst(list(node)[0])
@@ -108,9 +108,11 @@ def genericBlockGet(node,depth):
     arguments = ""
     for i in range(len(list(node)) - hasNext(node)):
         arguments += " " + recurseParse(list(node)[i], 0)
-        arguments = arguments.strip().replace(" ", ", ")
         #strip semi-colon from args (temp fix?)
         arguments = arguments.strip().replace(";", "");
+
+    if(method != "printText"):
+        arguments = arguments.strip().replace(" ", ", ")
 
     blockSt = instance + "." + method + "(" + arguments + ");"
     return blockNext(node, depth, blockSt)
@@ -125,6 +127,8 @@ def blockNext(node, depth, nodeStr):
 
 #iterate through the children; may have a "next"
 def hasNext(node):
+    if len(list(node)) == 0:
+        return 0
     if (list(node)[-1].tag == "next"):
         return 1
     return 0
@@ -152,11 +156,14 @@ opDict = {
     "AND": "&&",
     "OR": "||",
     "PLUS": "+",
+    "ADD": "+",
     "MINUS": "-",
     "MULTIPLY": "*",
     "DIVIDE": "/",
     "POWER": "pow",
-    "ROOT": "sqrt"
+    "ROOT": "sqrt",
+    "BREAK": "break;",
+    "CONTINUE": "continue;"
 }
 def getOp(node):
     return opDict[node.text]
@@ -260,12 +267,19 @@ def whileUnt(node, depth):
 
     retString += (spaces*depth) + statement + "\n"+(spaces*depth)+"}\n"
 
-    return blockNext(node, depth, retString) #+ recurseParseCheck(list(node)[3], depth)
+    return blockNext(node, depth, retString)
+
+#negate
+def negate(node, depth):
+    retString = "!("
+
+    inner = recurseParse(list(list(node)[0])[0], 0)
+    return blockNext(node, depth, (retString + inner + ")"))
 
 #repeat for specified num of times
 def repeatControl(node, depth):
     retString = "for(int count = 0; i < "
-    count = getField(list(list(list(node)[0])[0])[0])
+    count = recurseParse(list(node)[0], 0)
     retString += count + "; i++) {\n"
 
     statement = recurseParse(list(node)[1], depth+1)
@@ -280,7 +294,7 @@ def forloop(node, depth):
 
     #from
     val = getField(list(node)[0])
-    fromVal = getField(list(list(list(node)[1])[0])[0])
+    fromVal = recurseParse(list(node)[1], 0)
 
     retString += "int " + val + " = " + fromVal
 
@@ -308,6 +322,15 @@ def delay(node,depth):
 
     return blockNext(node, depth, retString)
 
+#millis
+def millis(node, depth):
+    return blockNext(node, depth, "millis();")
+
+#controls_flow_statements
+def flowcontrols(node, depth):
+    flow = getOp(list(node)[0])
+    return blockNext(node, depth, flow)
+
 funcGet = {
     "variables_set": setVar,
     "controls_if": ifBlock,
@@ -318,7 +341,10 @@ funcGet = {
     "controls_whileUntil": whileUnt,
     "controls_repeat_ext": repeatControl,
     "controls_for": forloop,
-    "delay": delay
+    "delay": delay,
+    "millis": millis,
+    "logic_negate": negate,
+    "controls_flow_statements": flowcontrols
 }
 
 
