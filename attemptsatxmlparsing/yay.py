@@ -104,19 +104,30 @@ def genericBlockGet(node,depth):
         return instance + "." + method + "();"
 
     # Iterate through the rest of the children; the last one may be a "next"
-    hasNext = 0
-    if (list(node)[-1].tag == "next"):
-        hasNext = 1
 
     arguments = ""
-    for i in range(len(list(node)) - hasNext):
+    for i in range(len(list(node)) - hasNext(node)):
         arguments += " " + recurseParse(list(node)[i],depth)
         arguments = arguments.strip().replace(" ", ", ")
-    if (hasNext == 0):
-        return (spaces * depth ) + instance + "." + method + "(" + arguments + ");"
-    else:
-        return (spaces * depth ) + instance + "." + method + "(" + arguments + ");" + recurseParse(list(node)[-1], depth)
+        #strip semi-colon from args (temp fix?)
+        arguments = arguments.strip().replace(";", "");
 
+    blockSt = instance + "." + method + "(" + arguments + ");"
+    return blockNext(node, depth, blockSt)
+
+def blockNext(node, depth, nodeStr):
+    thisNex = hasNext(node)
+
+    if (thisNex == 0):
+        return (spaces * depth) + nodeStr
+    else:
+        return (spaces * depth) + nodeStr + recurseParse(list(node)[-1], depth)
+
+#iterate through the children; may have a "next"
+def hasNext(node):
+    if (list(node)[-1].tag == "next"):
+        return 1
+    return 0
 
 # Typing dictionary
 typeDict = {
@@ -171,7 +182,9 @@ def setVar(node, depth):
     # Now deal with possible "next" block
     if (len(list(node)) == 3):
         nextBlock = recurseParse(list(node)[2], depth)
-    return (spaces * depth )  + varType + " " + varName + " = " + varValue + ";" + nextBlock
+
+    totString = varType + " " + varName + " = " + varValue + ";" + nextBlock
+    return blockNext(node, depth, totString)
 
 #if statement
 def ifBlock(node, depth):
@@ -187,7 +200,8 @@ def ifBlock(node, depth):
     statements = statementPart.split('\n')
     for statement in statements:
         returnStr = returnStr + (spaces*(depth+1)) + statement.strip() + "\n"
-    return returnStr + spaces*depth + "}"
+
+    return blockNext(node, depth, (returnStr + spaces*depth + "}"))
 
 #logic compare
 def compLog(node,depth):
@@ -198,7 +212,8 @@ def compLog(node,depth):
         return ""
     valueA = recurseParse(list(list(node)[1])[0],depth)
     valueB = recurseParse(list(list(node)[2])[0],depth)
-    return valueA + " " + operator + " " + valueB
+
+    return blockNext(node, depth, (valueA + " " + operator + " " + valueB))
 
 #math arithmetic
 def mathMetic(node,depth):
@@ -211,11 +226,12 @@ def mathMetic(node,depth):
     valueB = recurseParse(list(list(node)[2])[-1],depth)
     if (operator == "pow"):
         return "pow(" + valueA + ", " + valueB + ")"
-    return valueA + " " + operator + " " + valueB
+
+    return blockNext(node, depth, (valueA + " " + operator + " " + valueB))
 
 #while loop
 def whileUnt(node, depth):
-    retString = (spaces * depth) + "while("
+    retString = "while("
     if (list(node)[0]).text == "UNTIL":
         retString += "!("
 
@@ -229,19 +245,31 @@ def whileUnt(node, depth):
 
     statement = recurseParse(list(node)[2], depth+1)
 
-    retString += statement + "\n"+(spaces*depth)+"}\n"
+    retString += (spaces*depth) + statement + "\n"+(spaces*depth)+"}\n"
 
-    return retString + recurseParseCheck(list(node)[3], depth)
+    return blockNext(node, depth, retString) #+ recurseParseCheck(list(node)[3], depth)
+
+#repeat for specified num of times
+def repeatControl(node, depth):
+    retString = "for(int count = 0; i < "
+    count = getField(list(list(list(node)[0])[0])[0])
+    retString += count + "; i++) {\n"
+
+    statement = recurseParse(list(node)[2], depth+1)
+
+    retString += (spaces*depth) + statement + "\n" + (spaces*depth) + "}\n"
+
+    return blockNext(node, depth, retString)
 
 #delay
 def delay(node,depth):
-    retString = (spaces*depth)+"delay("
+    retString = "delay("
 
     varValue = getField(list(list(list(node)[0])[0])[0])
 
     retString += varValue + ");"
 
-    return retString
+    return blockNext(node, depth, retString)
 
 funcGet = {
     "variables_set": setVar,
@@ -249,6 +277,7 @@ funcGet = {
     "logic_compare": compLog,
     "math_arithmetic": mathMetic,
     "controls_whileUntil": whileUnt,
+    "controls_repeat_ext": repeatControl,
     "delay": delay
 }
 
