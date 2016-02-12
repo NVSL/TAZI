@@ -79,11 +79,11 @@ def getBlock(node,depth):
     if blockType in funcGet.keys():
         return funcGet[blockType](node,depth)
 
-    if (blockType == "math_number"):
+    if (blockType == "math_number" or blockType == "variables_get"):
         return getField(list(node)[0])
 
-    if (blockType == "variables_get"):
-        return getField(list(node)[0])
+    if (blockType == "text"):
+        return "\"" + getField(list(node)[0]) + "\""
 
     if (blockType == "math_constant"):
         return getConst(list(node)[0])
@@ -104,19 +104,34 @@ def genericBlockGet(node,depth):
         return instance + "." + method + "();"
 
     # Iterate through the rest of the children; the last one may be a "next"
-    hasNext = 0
-    if (list(node)[-1].tag == "next"):
-        hasNext = 1
 
     arguments = ""
-    for i in range(len(list(node)) - hasNext):
-        arguments += " " + recurseParse(list(node)[i],depth)
-        arguments = arguments.strip().replace(" ", ", ")
-    if (hasNext == 0):
-        return (spaces * depth ) + instance + "." + method + "(" + arguments + ");"
-    else:
-        return (spaces * depth ) + instance + "." + method + "(" + arguments + ");" + recurseParse(list(node)[-1], depth)
+    for i in range(len(list(node)) - hasNext(node)):
+        arguments += " " + recurseParse(list(node)[i], 0)
+        #strip semi-colon from args (temp fix?)
+        arguments = arguments.strip().replace(";", "");
 
+    if(method != "printText"):
+        arguments = arguments.strip().replace(" ", ", ")
+
+    blockSt = instance + "." + method + "(" + arguments + ");"
+    return blockNext(node, depth, blockSt)
+
+def blockNext(node, depth, nodeStr):
+    thisNex = hasNext(node)
+
+    if (thisNex == 0):
+        return (spaces * depth) + nodeStr
+    else:
+        return (spaces * depth) + nodeStr + recurseParse(list(node)[-1], depth)
+
+#iterate through the children; may have a "next"
+def hasNext(node):
+    if len(list(node)) == 0:
+        return 0
+    if (list(node)[-1].tag == "next"):
+        return 1
+    return 0
 
 # Typing dictionary
 typeDict = {
@@ -141,10 +156,14 @@ opDict = {
     "AND": "&&",
     "OR": "||",
     "PLUS": "+",
+    "ADD": "+",
     "MINUS": "-",
     "MULTIPLY": "*",
     "DIVIDE": "/",
-    "POWER": "pow"
+    "POWER": "pow",
+    "ROOT": "sqrt",
+    "BREAK": "break;",
+    "CONTINUE": "continue;"
 }
 def getOp(node):
     return opDict[node.text]
@@ -171,7 +190,9 @@ def setVar(node, depth):
     # Now deal with possible "next" block
     if (len(list(node)) == 3):
         nextBlock = recurseParse(list(node)[2], depth)
-    return (spaces * depth )  + varType + " " + varName + " = " + varValue + ";" + nextBlock
+
+    totString = varType + " " + varName + " = " + varValue + ";" + nextBlock
+    return blockNext(node, depth, totString)
 
 #if statement
 def ifBlock(node, depth):
@@ -183,11 +204,14 @@ def ifBlock(node, depth):
 
     # Second child is the statement part
     statementPart = recurseParse(list(node)[1], depth+1)
-    returnStr = (spaces*depth) + "if(" + booleanPart + ") {\n"
+    returnStr = "if(" + booleanPart + ") {\n"
     statements = statementPart.split('\n')
     for statement in statements:
         returnStr = returnStr + (spaces*(depth+1)) + statement.strip() + "\n"
-    return returnStr + spaces*depth + "}"
+
+    totString = returnStr + (spaces*depth) + "}"
+
+    return blockNext(node, depth, totString)
 
 #logic compare
 def compLog(node,depth):
@@ -198,7 +222,8 @@ def compLog(node,depth):
         return ""
     valueA = recurseParse(list(list(node)[1])[0],depth)
     valueB = recurseParse(list(list(node)[2])[0],depth)
-    return valueA + " " + operator + " " + valueB
+
+    return blockNext(node, depth, (valueA + " " + operator + " " + valueB))
 
 #math arithmetic
 def mathMetic(node,depth):
@@ -210,16 +235,27 @@ def mathMetic(node,depth):
     valueA = recurseParse(list(list(node)[1])[-1],depth)
     valueB = recurseParse(list(list(node)[2])[-1],depth)
     if (operator == "pow"):
-        return "pow(" + valueA + ", " + valueB + ")"
-    return valueA + " " + operator + " " + valueB
+        return blockNext(node, depth, ("pow(" + valueA + ", " + valueB + ")"))
+
+    return blockNext(node, depth, (valueA + " " + operator + " " + valueB))
+
+#math single
+def mathSingle(node, depth):
+    operator = getOp(list(node)[0])
+
+    valueOn = recurseParse(list(list(node)[1])[0], depth)
+    if operator == "sqrt":
+        return blockNext(node, depth, (operator + "(" + valueOn + ")"))
+
+    return blockNext(node, depth, (operator + valueOn))
 
 #while loop
 def whileUnt(node, depth):
-    retString = (spaces * depth) + "while("
+    retString = "while("
     if (list(node)[0]).text == "UNTIL":
         retString += "!("
 
-    condit = recurseParse(list(list(node)[1])[0],depth)
+    condit = recurseParse(list(list(node)[1])[0], 0)
     retString += condit
 
     if (list(node)[0]).text == "UNTIL":
@@ -229,27 +265,86 @@ def whileUnt(node, depth):
 
     statement = recurseParse(list(node)[2], depth+1)
 
-    retString += statement + "\n"+(spaces*depth)+"}\n"
+    retString += (spaces*depth) + statement + "\n"+(spaces*depth)+"}\n"
 
-    return retString + recurseParseCheck(list(node)[3], depth)
+    return blockNext(node, depth, retString)
+
+#negate
+def negate(node, depth):
+    retString = "!("
+
+    inner = recurseParse(list(list(node)[0])[0], 0)
+    return blockNext(node, depth, (retString + inner + ")"))
+
+#repeat for specified num of times
+def repeatControl(node, depth):
+    retString = "for(int count = 0; i < "
+    count = recurseParse(list(node)[0], 0)
+    retString += count + "; i++) {\n"
+
+    statement = recurseParse(list(node)[1], depth+1)
+
+    retString += (spaces*depth) + statement + "\n" + (spaces*depth) + "}\n"
+
+    return blockNext(node, depth, retString)
+
+#for loop
+def forloop(node, depth):
+    retString = "for("
+
+    #from
+    val = getField(list(node)[0])
+    fromVal = recurseParse(list(node)[1], 0)
+
+    retString += "int " + val + " = " + fromVal
+
+    #to
+    toVal = getField(list(list(list(node)[2])[0])[0])
+
+    #increment
+    incr = getField(list(list(list(node)[3])[0])[0])
+
+    retString += "; " + val + "<= " + toVal + "; " + val + "+= " + incr + ") {\n"
+
+    statement = recurseParse(list(node)[4], depth+1)
+
+    retString += statement + "\n" + (spaces*depth) + "}\n"
+
+    return blockNext(node, depth, retString)
 
 #delay
 def delay(node,depth):
-    retString = (spaces*depth)+"delay("
+    retString = "delay("
 
     varValue = getField(list(list(list(node)[0])[0])[0])
 
     retString += varValue + ");"
 
-    return retString
+    return blockNext(node, depth, retString)
+
+#millis
+def millis(node, depth):
+    return blockNext(node, depth, "millis();")
+
+#controls_flow_statements
+def flowcontrols(node, depth):
+    flow = getOp(list(node)[0])
+    return blockNext(node, depth, flow)
 
 funcGet = {
     "variables_set": setVar,
     "controls_if": ifBlock,
     "logic_compare": compLog,
+    "logic_operation": compLog,
     "math_arithmetic": mathMetic,
+    "math_single": mathSingle,
     "controls_whileUntil": whileUnt,
-    "delay": delay
+    "controls_repeat_ext": repeatControl,
+    "controls_for": forloop,
+    "delay": delay,
+    "millis": millis,
+    "logic_negate": negate,
+    "controls_flow_statements": flowcontrols
 }
 
 
