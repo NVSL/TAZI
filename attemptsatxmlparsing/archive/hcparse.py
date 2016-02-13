@@ -1,6 +1,6 @@
 import xml.etree.ElementTree as ET
 
-tree = ET.parse("newBlocks.xml")
+tree = ET.parse("testBlocks.xml")
 root = tree.getroot()
 
 
