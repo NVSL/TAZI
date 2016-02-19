@@ -95,12 +95,12 @@ def getBlock(node,depth):
 def genericBlockGet(node,depth):
     blockType = node.attrib["type"]
     # Remainder block types that aren't built in, so it must be custom
-    if (len(blockType.split("_")) < 3):
+    if (len(blockType.split("$")) < 3):
         raise BlocklyError("Block " + blockType + " is malformatted!")
         return ""
 
-    instance = blockType.split("_")[1]
-    method = blockType.split("_")[2]
+    instance = blockType.split("$")[1]
+    method = blockType.split("$")[2]
 
     if (len(list(node)) == 0):
         return blockNext(node, depth, instance + "." + method + "()")

@@ -30,7 +30,6 @@ def determineParamType( param ):
 # Setup argument parsing
 parser = argparse.ArgumentParser(description="BlockGenerator.py creates a Blockly IDE for Gadgetron. It parses our existing C++ class libraries using Clang to generate block categories and blocks. It then uses Jinja to actually create the IDE")
 parser.add_argument("-l", "--library", required=True)
-parser.add_argument("-d", "--default_blocks", required=True)
 args = parser.parse_args()
 
 

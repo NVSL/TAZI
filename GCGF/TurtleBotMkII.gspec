@@ -1,0 +1,46 @@
+<gadgetlayout version="1.1">
+   <name>TurtleBotMkII</name>
+   <creator>Michael G.</creator>
+   <board x="0" y="0" width="150" height="120" />
+   <option name="faceplate-color" value="clear-nocolor" />
+   <option name="backplate-color" value="clear-nocolor" />
+   <option name="faceplate-etch" value="etch-front" />
+   <option name="backplate-etch" value="etch-back" />
+   <option name="front-standoff-height" value="8" />
+   <option name="back-standoff-height" value="8" />
+   <option name="pcb-thickness" value="1.57" />
+   <option name="faceplate-thickness" value="3.175" />
+   <option name="backplate-thickness" value="3.175" />
+   <option name="cam-target" value="LPKF" />
+   <component progname="drive" type="dual-motor-kit" deletable="false">
+      <placedpart refdes="L" x="75" y="-5" rotation="270" mirrored="False" />
+      <placedpart refdes="R" x="75" y="125" rotation="270" mirrored="False" />
+   </component>
+   <component progname="caster" type="ball-caster-0.75in">
+      <placedpart refdes="u1" x="137" y="59" rotation="270" mirrored="False" />
+   </component>
+   <component progname="button" type="tactile-button-square-gray">
+      <placedpart refdes="B1" x="30" y="60" rotation="0" mirrored="False" />
+   </component>
+   <component progname="Servo" type="Servo-Normal-side">
+      <placedpart refdes="u1" x="17" y="49" rotation="90" mirrored="False" />
+   </component>
+   <component progname="brain" type="Adafruit-Pro-Trinket-5V-battery-powered">
+      <placedpart refdes="U1" x="106" y="17" rotation="270" mirrored="False" />
+   </component>
+   <component progname="Servo_2" type="Servo-Continuous-top">
+      <placedpart refdes="u1" x="138" y="97" rotation="180" mirrored="False" />
+   </component>
+   <component progname="brain_2" type="Adafruit-LSM9DS0">
+      <placedpart refdes="u1" x="73" y="76" rotation="270" mirrored="False" />
+   </component>
+   <component progname="battery" type="battery-9V-vertical">
+      <placedpart refdes="BATT1" x="110" y="58" rotation="270" mirrored="False" />
+   </component>
+   <component progname="led" type="LED-5mm-diffuse-red">
+      <placedpart refdes="LED1" x="93" y="87" rotation="0" mirrored="False" />
+   </component>
+   <component progname="power" type="barrel-power-connector">
+      <placedpart refdes="u1" x="18" y="115" rotation="0" mirrored="False" />
+   </component>
+</gadgetlayout>
