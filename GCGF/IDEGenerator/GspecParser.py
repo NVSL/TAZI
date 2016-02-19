@@ -62,8 +62,22 @@ class GspecParser:
 
     
 if __name__ == "__main__":
+
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-g", "--gspec", required=True)
+    args = parser.parse_args()
     gp = GspecParser()
-    gp.setCatalog( "Components.cat" )
-    dict = gp.getComps("gspec.xml") 
+    catalog = "$GADGETRON_CATALOG/Components.cat"
+    gp.setCatalog( os.path.expandvars(catalog) )
+    dict = gp.getComps("./"+args.gspec) 
     for key in dict.keys():
         print key, dict[key]
+    def findArdTag( node ): return node.find('API').find('arduino')
+    def findClassName( node ): return node.find('class').attrib["name"]
+    apiParts = [ findArdTag(p) for p in gp.catalogTree if p.find('API') is not None ]
+    myClasses = [ p for p in apiParts if p is not None and findClassName(p) in dict ]
+    classDict = {}
+    for c in myClasses: classDict[ findClassName(c) ] = c
+    print classDict
+    

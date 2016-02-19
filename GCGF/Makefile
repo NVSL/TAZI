@@ -1,4 +1,5 @@
 GSPEC = Gspecs/PessimistPrime.gspec
+APIGSPEC = Gspecs/test.api.gspec
 RESOURCES = Resources
 CATALOG = $(GADGETRON_CATALOG)/Components.cat
 CATEGORIESXML = $(RESOURCES)/DefaultCategories.xml
@@ -13,8 +14,8 @@ json:
 	python BlockGenerator.py -l ComponentsLibrary.xml > $(BLOCKSJSON)
 testclang:
 	python ClangBindings.py clangtest.h 
-classbuilder:
-	python ClassGenerator.py -g test.api.gspec 
+class:
+	python ClassGenerator.py -g $(APIGSPEC) 
 clean:
 	rm *.pyc
 display:
