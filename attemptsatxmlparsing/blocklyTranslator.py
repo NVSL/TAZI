@@ -103,20 +103,11 @@ def genericBlockGet(node,depth):
     method = blockType.split("_")[2]
 
     if (len(list(node)) == 0):
-        return instance + "." + method + "();"
+        return blockNext(node, depth, instance + "." + method + "()")
 
-    # Iterate through the rest of the children; the last one may be a "next"
+    arguments = getArgs(node, method)
 
-    arguments = ""
-    for i in range(len(list(node)) - hasNext(node)):
-        arguments += " " + recurseParse(list(node)[i], 0)
-        #strip semi-colon from args (temp fix?)
-        arguments = arguments.strip().replace(";", "");
-
-    if(method != "printText"):
-        arguments = arguments.strip().replace(" ", ", ")
-
-    blockSt = instance + "." + method + "(" + arguments + ");"
+    blockSt = instance + "." + method + "(" + arguments + ")"
     return blockNext(node, depth, blockSt)
 
 def blockNext(node, depth, nodeStr):
@@ -134,6 +125,16 @@ def hasNext(node):
     if (list(node)[-1].tag == "next"):
         return 1
     return 0
+
+def getArgs(node, method="default"):
+    arguments = ""
+
+    for i in range(len(list(node)) - hasNext(node)):
+        if(arguments != ""):
+            arguments += ", "
+        arguments += recurseParse(list(node)[i], 0)
+
+    return arguments
 
 # Typing dictionary
 typeDict = {
@@ -188,30 +189,20 @@ def setVar(node, depth):
         return ""
     varType = getType(list(list(node)[1])[0])
     varValue = getField(list(list(list(node)[1])[0])[0])
-    nextBlock = ""
-    # Now deal with possible "next" block
-    if (len(list(node)) == 3):
-        nextBlock = recurseParse(list(node)[2], depth)
 
-    totString = varType + " " + varName + " = " + varValue + ";" + nextBlock
+    totString = varType + " " + varName + " = " + varValue + ";"
     return blockNext(node, depth, totString)
 
 #if statement
 def ifBlock(node, depth):
     # First child is the boolean part
-    booleanPart = recurseParse(list(list(node)[0])[0], 0)
+    booleanPart = getArgs(list(node)[0])
     
-    #attempt to strip ;
-    booleanPart = booleanPart.strip().replace(";", "")
-
     # Second child is the statement part
     statementPart = recurseParse(list(node)[1], depth+1)
     returnStr = "if(" + booleanPart + ") {\n"
-    statements = statementPart.split('\n')
-    for statement in statements:
-        returnStr = returnStr + (spaces*(depth+1)) + statement.strip() + "\n"
 
-    totString = returnStr + (spaces*depth) + "}"
+    totString = returnStr + statementPart + "\n" + (spaces*depth) + "}"
 
     return blockNext(node, depth, totString)
 
@@ -257,7 +248,7 @@ def whileUnt(node, depth):
     if (list(node)[0]).text == "UNTIL":
         retString += "!("
 
-    condit = recurseParse(list(list(node)[1])[0], 0)
+    condit = getArgs(list(node)[1])
     retString += condit
 
     if (list(node)[0]).text == "UNTIL":
@@ -265,9 +256,9 @@ def whileUnt(node, depth):
 
     retString += ") {\n"
 
-    statement = recurseParse(list(node)[2], depth+1)
+    statement = recurseParse(list(node)[2], depth + 1)
 
-    retString += (spaces*depth) + statement + "\n"+(spaces*depth)+"}\n"
+    retString += statement + "\n" + (spaces*depth) + "}"
 
     return blockNext(node, depth, retString)
 
@@ -318,15 +309,15 @@ def forloop(node, depth):
 def delay(node,depth):
     retString = "delay("
 
-    varValue = getField(list(list(list(node)[0])[0])[0])
+    varValue = getArgs(list(node)[0])
 
-    retString += varValue + ");"
+    retString += varValue + ")"
 
     return blockNext(node, depth, retString)
 
 #millis
 def millis(node, depth):
-    return blockNext(node, depth, "millis();")
+    return blockNext(node, depth, "millis()")
 
 #controls_flow_statements
 def flowcontrols(node, depth):
