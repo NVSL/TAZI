@@ -87,7 +87,7 @@ class IDEGenerator:
                 # Iterate over each block in our copy so we can make a unique instance
                 jsonElem = copy.deepcopy(self.blocks[component])
                 for block in jsonElem:
-                    block["id"] = "_" + component.lower() + str(i) + "_" + block["id"]
+                    block["id"] = "$" + component.lower() + str(i) + "$" + block["id"]
                     id = block["id"].encode('ascii', 'ignore')
                     block["colour"] = color
                     # Add the new block to its proper category
