@@ -16,7 +16,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "playNote0"
+            "id": "playNote"
         }, 
         {
             "nextStatement": null, 
@@ -39,7 +39,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "playNote1"
+            "id": "playNote"
         }, 
         {
             "nextStatement": null, 
@@ -52,7 +52,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "turnOff2"
+            "id": "turnOff"
         }
     ], 
     "LED": [
@@ -77,7 +77,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "blink0"
+            "id": "blink"
         }, 
         {
             "nextStatement": null, 
@@ -90,7 +90,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "blink1"
+            "id": "blink"
         }, 
         {
             "tooltip": "", 
@@ -102,7 +102,7 @@
             ], 
             "output": null, 
             "helpUrl": "gadgetron.build", 
-            "id": "isBlinking2"
+            "id": "isBlinking"
         }, 
         {
             "nextStatement": null, 
@@ -115,7 +115,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "toggle3"
+            "id": "toggle"
         }, 
         {
             "nextStatement": null, 
@@ -128,7 +128,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "turnOn4"
+            "id": "turnOn"
         }, 
         {
             "nextStatement": null, 
@@ -141,7 +141,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "turnOff5"
+            "id": "turnOff"
         }
     ], 
     "DistanceSensor": [
@@ -155,7 +155,7 @@
             ], 
             "output": null, 
             "helpUrl": "gadgetron.build", 
-            "id": "get_distance0"
+            "id": "get_distance"
         }
     ], 
     "RGBLED": [
@@ -185,7 +185,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "set0"
+            "id": "set"
         }, 
         {
             "nextStatement": null, 
@@ -223,7 +223,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "fade1"
+            "id": "fade"
         }
     ], 
     "MomentaryButton": [
@@ -238,7 +238,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "waitForPress0"
+            "id": "waitForPress"
         }, 
         {
             "tooltip": "", 
@@ -250,7 +250,7 @@
             ], 
             "output": null, 
             "helpUrl": "gadgetron.build", 
-            "id": "read1"
+            "id": "read"
         }, 
         {
             "tooltip": "", 
@@ -262,7 +262,7 @@
             ], 
             "output": null, 
             "helpUrl": "gadgetron.build", 
-            "id": "isPressed2"
+            "id": "isPressed"
         }, 
         {
             "tooltip": "", 
@@ -274,7 +274,7 @@
             ], 
             "output": null, 
             "helpUrl": "gadgetron.build", 
-            "id": "isReleased3"
+            "id": "isReleased"
         }, 
         {
             "tooltip": "", 
@@ -286,7 +286,7 @@
             ], 
             "output": null, 
             "helpUrl": "gadgetron.build", 
-            "id": "wasPressed4"
+            "id": "wasPressed"
         }, 
         {
             "tooltip": "", 
@@ -298,7 +298,7 @@
             ], 
             "output": null, 
             "helpUrl": "gadgetron.build", 
-            "id": "wasReleased5"
+            "id": "wasReleased"
         }, 
         {
             "tooltip": "", 
@@ -310,7 +310,7 @@
             ], 
             "output": null, 
             "helpUrl": "gadgetron.build", 
-            "id": "pressedFor6"
+            "id": "pressedFor"
         }, 
         {
             "tooltip": "", 
@@ -322,7 +322,7 @@
             ], 
             "output": null, 
             "helpUrl": "gadgetron.build", 
-            "id": "releasedFor7"
+            "id": "releasedFor"
         }, 
         {
             "tooltip": "", 
@@ -334,7 +334,7 @@
             ], 
             "output": null, 
             "helpUrl": "gadgetron.build", 
-            "id": "lastChange8"
+            "id": "lastChange"
         }, 
         {
             "nextStatement": null, 
@@ -352,7 +352,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "setDB9"
+            "id": "setDB"
         }
     ], 
     "Motor": [
@@ -367,7 +367,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "forward0"
+            "id": "forward"
         }, 
         {
             "nextStatement": null, 
@@ -385,7 +385,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "forward1"
+            "id": "forward"
         }, 
         {
             "nextStatement": null, 
@@ -398,7 +398,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "backward2"
+            "id": "backward"
         }, 
         {
             "nextStatement": null, 
@@ -416,7 +416,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "backward3"
+            "id": "backward"
         }, 
         {
             "nextStatement": null, 
@@ -429,7 +429,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "spinLeft4"
+            "id": "spinLeft"
         }, 
         {
             "nextStatement": null, 
@@ -447,7 +447,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "spinLeft5"
+            "id": "spinLeft"
         }, 
         {
             "nextStatement": null, 
@@ -460,7 +460,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "spinRight6"
+            "id": "spinRight"
         }, 
         {
             "nextStatement": null, 
@@ -478,7 +478,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "spinRight7"
+            "id": "spinRight"
         }, 
         {
             "nextStatement": null, 
@@ -491,7 +491,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "forwardAndRight8"
+            "id": "forwardAndRight"
         }, 
         {
             "nextStatement": null, 
@@ -509,7 +509,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "forwardAndRight9"
+            "id": "forwardAndRight"
         }, 
         {
             "nextStatement": null, 
@@ -522,7 +522,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "forwardAndLeft10"
+            "id": "forwardAndLeft"
         }, 
         {
             "nextStatement": null, 
@@ -540,7 +540,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "forwardAndLeft11"
+            "id": "forwardAndLeft"
         }, 
         {
             "nextStatement": null, 
@@ -553,7 +553,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "stop12"
+            "id": "stop"
         }, 
         {
             "nextStatement": null, 
@@ -566,7 +566,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "brake13"
+            "id": "brake"
         }, 
         {
             "tooltip": "", 
@@ -578,7 +578,7 @@
             ], 
             "output": null, 
             "helpUrl": "gadgetron.build", 
-            "id": "isMoving14"
+            "id": "isMoving"
         }, 
         {
             "nextStatement": null, 
@@ -591,7 +591,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "swapDirections15"
+            "id": "swapDirections"
         }, 
         {
             "nextStatement": null, 
@@ -604,7 +604,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "changePolarity16"
+            "id": "changePolarity"
         }, 
         {
             "nextStatement": null, 
@@ -617,7 +617,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "disable17"
+            "id": "disable"
         }
     ], 
     "Pincer": [
@@ -632,7 +632,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "toggle0"
+            "id": "toggle"
         }, 
         {
             "nextStatement": null, 
@@ -645,7 +645,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "open1"
+            "id": "open"
         }, 
         {
             "nextStatement": null, 
@@ -663,7 +663,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "open2"
+            "id": "open"
         }, 
         {
             "nextStatement": null, 
@@ -676,7 +676,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "close3"
+            "id": "close"
         }, 
         {
             "nextStatement": null, 
@@ -699,7 +699,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "onAndOff4"
+            "id": "onAndOff"
         }, 
         {
             "nextStatement": null, 
@@ -712,7 +712,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "changeState5"
+            "id": "changeState"
         }, 
         {
             "nextStatement": null, 
@@ -730,7 +730,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "setOpen6"
+            "id": "setOpen"
         }, 
         {
             "nextStatement": null, 
@@ -748,7 +748,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "setClose7"
+            "id": "setClose"
         }, 
         {
             "tooltip": "", 
@@ -760,7 +760,7 @@
             ], 
             "output": null, 
             "helpUrl": "gadgetron.build", 
-            "id": "isOpen8"
+            "id": "isOpen"
         }, 
         {
             "nextStatement": null, 
@@ -778,7 +778,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "setMin9"
+            "id": "setMin"
         }, 
         {
             "nextStatement": null, 
@@ -796,7 +796,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "setMax10"
+            "id": "setMax"
         }
     ], 
     "LEDArray": [
@@ -811,7 +811,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "clear0"
+            "id": "clear"
         }, 
         {
             "nextStatement": null, 
@@ -824,7 +824,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "happyFace1"
+            "id": "happyFace"
         }, 
         {
             "nextStatement": null, 
@@ -837,7 +837,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "neutralFace2"
+            "id": "neutralFace"
         }, 
         {
             "nextStatement": null, 
@@ -850,7 +850,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "sadFace3"
+            "id": "sadFace"
         }, 
         {
             "nextStatement": null, 
@@ -863,7 +863,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "turnClockwise4"
+            "id": "turnClockwise"
         }, 
         {
             "nextStatement": null, 
@@ -876,7 +876,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "turnCounterClockwise5"
+            "id": "turnCounterClockwise"
         }, 
         {
             "nextStatement": null, 
@@ -894,7 +894,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "printText6"
+            "id": "printText"
         }, 
         {
             "nextStatement": null, 
@@ -917,7 +917,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "drawPix7"
+            "id": "drawPix"
         }, 
         {
             "nextStatement": null, 
@@ -950,7 +950,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "drawLine8"
+            "id": "drawLine"
         }, 
         {
             "nextStatement": null, 
@@ -983,7 +983,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "drawRec9"
+            "id": "drawRec"
         }, 
         {
             "nextStatement": null, 
@@ -1016,7 +1016,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "fillRec10"
+            "id": "fillRec"
         }, 
         {
             "nextStatement": null, 
@@ -1044,7 +1044,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "drawCircle11"
+            "id": "drawCircle"
         }, 
         {
             "nextStatement": null, 
@@ -1062,7 +1062,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "blink12"
+            "id": "blink"
         }, 
         {
             "nextStatement": null, 
@@ -1080,7 +1080,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "setBrightness13"
+            "id": "setBrightness"
         }
     ]
 }
