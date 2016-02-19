@@ -2,6 +2,7 @@ __author__ = "Michael Gonzalez"
 __email__ = "mmg005@eng.ucsd.edu"
 
 import xml.etree.ElementTree as ETree
+import functools
 class Arg:
     def __init__(self, value, name):
         self.value = value
@@ -14,6 +15,14 @@ class CObj:
 class ClassGenerator:
     objects = []
     libraries = []
+    objInstances = []
+
+    def getSetupFunction(self):
+        def concatLines(acc, line): return acc + "   " + line + ".setup();\n"
+	return functools.reduce( concatLines, self.objInstances, "void setup() {\n" ) + "}"
+    def getLibraries(self):
+        def concatLib( acc, elem): return acc + '#include "' + elem + '"\n'
+	return functools.reduce( concatLib, self.libraries, "" )
     def getConstants(self):
         retStrings = []
 	for obj in self.objects:
@@ -21,15 +30,16 @@ class ClassGenerator:
 	        currStr = "#define " + arg.name + " " + str(arg.value)
 	        retStrings.append(currStr)
 	return retStrings
-    def getObjects(self):
+    def getObjectDeclarations(self):
         retStrings = []
 	countMap = {}
 	for obj in self.objects:
 	    countMap[ obj.objType ] = 1
 	for obj in self.objects:
 	    argC = 0
-	    currStr = obj.objType + " " + str.lower( obj.objType )
-	    currStr = currStr + str( countMap[ obj.objType ] ) + "("
+	    instanceName = str.lower(obj.objType) + str(countMap[ obj.objType ])
+	    self.objInstances.append(instanceName)
+	    currStr = obj.objType + " " + instanceName + "("
 	    for arg in obj.args :
 		if argC is not 0:
 		    currStr = currStr + ", "
@@ -63,6 +73,9 @@ if __name__ == "__main__":
     api = ETree.parse(args.gspec).getroot()
     generator = ClassGenerator()
     generator.parseApiGspec(api)
-    strings = generator.getObjects()
-    for string in strings:
+    print generator.getLibraries()
+    for string in generator.getConstants():
         print string
+    for string in generator.getObjectDeclarations():
+        print string
+    print generator.getSetupFunction()
