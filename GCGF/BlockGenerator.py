@@ -74,7 +74,7 @@ for component in library:
 	    # Create a blockly json definition
 	    # The attributes passed here should be the same across all blockly json files
 	    funcjson = {
-	            "id":func.name,
+	            "id":func.name + str(fp),
 	            "message0":aClass.name+" "+func.name + " %1",
 	            "tooltip" : "",
 	            "helpUrl": "gadgetron.build" }
