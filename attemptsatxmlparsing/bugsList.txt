@@ -135,4 +135,54 @@ Traceback (most recent call last):
     return typeDict[node.attrib["type"]]
 KeyError: 'math_single'
 $$$-------------------------------------------------------------
-
+3.gg. tests/MathTests/round2Nums.xml
+Traceback (most recent call last):
+  File "./blocklyTranslator.py", line 346, in <module>
+    print(recurseParse(root,0))
+  File "./blocklyTranslator.py", line 41, in recurseParse
+    overallResult += "\n" + recurseParse(child, depth)
+  File "./blocklyTranslator.py", line 47, in recurseParse
+    return getBlock(node,depth)
+  File "./blocklyTranslator.py", line 79, in getBlock
+    return recurseParseCheck(list(node), depth)
+  File "./blocklyTranslator.py", line 66, in recurseParseCheck
+    return recurseParse(nodeList[0], depth)
+  File "./blocklyTranslator.py", line 49, in recurseParse
+    return "\n" + recurseParse(list(node)[0], depth)
+  File "./blocklyTranslator.py", line 47, in recurseParse
+    return getBlock(node,depth)
+  File "./blocklyTranslator.py", line 82, in getBlock
+    return funcGet[blockType](node,depth)
+  File "./blocklyTranslator.py", line 190, in setVar
+    varType = getType(list(list(node)[1])[0])
+  File "./blocklyTranslator.py", line 145, in getType
+    return typeDict[node.attrib["type"]]
+KeyError: 'math_round'
+$$$-------------------------------------------------------
+3. kk. tests/MathTests/rand2Nums.xml
+Traceback (most recent call last):
+  File "./blocklyTranslator.py", line 346, in <module>
+    print(recurseParse(root,0))
+  File "./blocklyTranslator.py", line 41, in recurseParse
+    overallResult += "\n" + recurseParse(child, depth)
+  File "./blocklyTranslator.py", line 47, in recurseParse
+    return getBlock(node,depth)
+  File "./blocklyTranslator.py", line 79, in getBlock
+    return recurseParseCheck(list(node), depth)
+  File "./blocklyTranslator.py", line 66, in recurseParseCheck
+    return recurseParse(nodeList[0], depth)
+  File "./blocklyTranslator.py", line 49, in recurseParse
+    return "\n" + recurseParse(list(node)[0], depth)
+  File "./blocklyTranslator.py", line 47, in recurseParse
+    return getBlock(node,depth)
+  File "./blocklyTranslator.py", line 82, in getBlock
+    return funcGet[blockType](node,depth)
+  File "./blocklyTranslator.py", line 190, in setVar
+    varType = getType(list(list(node)[1])[0])
+  File "./blocklyTranslator.py", line 145, in getType
+    return typeDict[node.attrib["type"]]
+KeyError: 'math_random_int'
+$$$------------------------------------------------------------------
+4. a. tests/customBlocks/Buzzer2Nums.xml
+Error: Block _Buzzer_playNote is malformatted!
+$$$---------------------------------------------------------------
