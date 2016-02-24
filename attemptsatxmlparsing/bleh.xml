@@ -1,0 +1,1 @@
+<xml><block type="variable_declarations" x="88" y="72"></block><block type="main_loop" x="333" y="69"><next><block type="controls_if"><value name="IF0"><block type="$momentarybutton1$isPressed2"></block></value><statement name="DO0"><block type="$ledarray1$clear0"></block></statement></block></next></block></xml>
