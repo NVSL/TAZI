@@ -68,7 +68,7 @@ if __name__ == "__main__":
     parser.add_argument("-g", "--gspec", required=True)
     args = parser.parse_args()
     gp = GspecParser()
-    catalog = "$GADGETRON_CATALOG/Components.cat"
+    catalog = "$GADGETRON_CATALOG/Components.xml"
     gp.setCatalog( os.path.expandvars(catalog) )
     dict = gp.getComps("./"+args.gspec) 
     for key in dict.keys():

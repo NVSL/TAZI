@@ -36,11 +36,7 @@ def recurseParse(node, depth):
     if tag == "xml":
         overallResult = ""
         for child in node:
-            if (child.attrib["type"] == "main_loop" 
-                    or child.attrib["type"] == "variable_declarations"):
-                overallResult += "\n" + recurseParse(child, depth)
-            else:
-                overallResult += "\n" + recurseParse(child, depth)
+           overallResult += "\n" + recurseParse(child, depth)
         return overallResult
 
     elif tag == "block":

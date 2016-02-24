@@ -109,7 +109,7 @@ if __name__ == "__main__":
 
     # Default file locations
     jsonFile = "Blocks.json"
-    catalog = "Components.cat"
+    catalog = "Components.xml"
     jinjaFile = "index.jinja"
     blocksXml = "DefaultCategories.xml"
     # Arg parse stuff

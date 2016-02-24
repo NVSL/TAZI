@@ -32,6 +32,18 @@ Blockly.Blocks['delay'] = {
   }
 };
 
+Blockly.Blocks['main'] = {
+  init: function() {
+    this.appendStatementInput("variable_declarations")
+        .appendField("Setup");
+    this.appendStatementInput("main_loop")
+        .appendField("Loop forever and ever");
+    this.setColour(105);
+    this.setTooltip('Make sure you put all your blocks in here!');
+    this.setHelpUrl('http://www.gadgetron.build/');
+  }
+};
+
 Blockly.Blocks['millis'] = {
   init: function() {
     this.appendDummyInput()
