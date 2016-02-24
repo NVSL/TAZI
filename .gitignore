@@ -5,4 +5,14 @@
 *.swp
 *.pyc
 *~
-update.gtron-log.txt
+*.pyc
+\#*
+*b\#?
+*s\#?
+*l\#?
+*~
+*log.txt
+*gtron.txt
+*gtron.log
+.\#*
+.egg-info

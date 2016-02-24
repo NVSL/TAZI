@@ -1,7 +1,7 @@
 GSPEC = Gspecs/PessimistPrime.gspec
 APIGSPEC = Gspecs/test.api.gspec
 RESOURCES = Resources
-CATALOG = $(GADGETRON_CATALOG)/Components.cat
+CATALOG = $(GADGETRON_CATALOG)/Components.xml
 CATEGORIESXML = $(RESOURCES)/DefaultCategories.xml
 BLOCKSJSON = $(RESOURCES)/Blocks.json
 JINJAFILE = $(RESOURCES)/index.jinja
