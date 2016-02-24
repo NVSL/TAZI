@@ -85,6 +85,11 @@ def getBlock(node,depth):
 
     if (blockType == "math_constant"):
         return getConst(list(node)[0])
+    if( blockType =="main"): 
+        blocks = [ b.find("block") for b in node.findall("statement") ]
+	lines = ""
+	for b in blocks: lines += (recurseParse( b, depth )) + '\n'
+        return lines
 
     return genericBlockGet(node,depth)
    
@@ -342,4 +347,5 @@ try:
     print(recurseParse(root,0))
 except BlocklyError as e:
     print("Error: " + e.value)
+    raise
 
