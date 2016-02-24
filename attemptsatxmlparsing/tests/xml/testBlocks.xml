@@ -20,23 +20,23 @@
                </block>
             </value>
             <statement name="DO">
-               <block type="_Motor_forward">
+               <block type="$Motor$forward">
                   <value name="speed">
                      <block type="math_number">
                         <field name="NUM">225</field>
                      </block>
                   </value>
                   <next>
-                     <block type="_LEDArray_happyFace">
+                     <block type="$LEDArray$happyFace">
                         <next>
                            <block type="controls_if">
                               <value name="IF0">
-                                 <block type="_MomentaryButton_isPressed" />
+                                 <block type="$MomentaryButton$isPressed" />
                               </value>
                               <statement name="DO0">
-                                 <block type="_Motor_stop">
+                                 <block type="$Motor$stop">
                                     <next>
-                                       <block type="_LEDArray_sadFace">
+                                       <block type="$LEDArray$sadFace">
                                           <next>
                                              <block type="variables_set">
                                                 <field name="VAR">x</field>
@@ -58,7 +58,7 @@
                </block>
             </statement>
             <next>
-               <block type="_LED_turnOn">
+               <block type="$LED$turnOn">
                   <next>
                      <block type="delay">
                         <value name="NAME">
@@ -67,7 +67,7 @@
                            </block>
                         </value>
                         <next>
-                           <block type="_LED_blink">
+                           <block type="$LED$blink">
                               <next>
                                  <block type="delay">
                                     <value name="NAME">
@@ -76,7 +76,7 @@
                                        </block>
                                     </value>
                                     <next>
-                                       <block type="_LED_turnOff" />
+                                       <block type="$LED$turnOff" />
                                     </next>
                                  </block>
                               </next>
