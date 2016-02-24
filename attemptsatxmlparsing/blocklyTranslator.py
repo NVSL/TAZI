@@ -86,9 +86,13 @@ def getBlock(node,depth):
     if (blockType == "math_constant"):
         return getConst(list(node)[0])
     if( blockType =="main"): 
-        blocks = [ b.find("block") for b in node.findall("statement") ]
+        def refactorStatementToBlock( s ):
+	    s.tag = "block"
+	    s.attrib["type"] = s.attrib["name"]
+	    return s
 	lines = ""
-	for b in blocks: lines += (recurseParse( b, depth )) + '\n'
+	for b in map( refactorStatementToBlock, node.findall("statement" )):
+	    lines += recurseParse( b, depth ) + '\n'
         return lines
 
     return genericBlockGet(node,depth)
