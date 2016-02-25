@@ -88,6 +88,11 @@ class IDEGenerator:
                 jsonElem = copy.deepcopy(self.blocks[component])
                 uid = 0
                 for block in jsonElem:
+		    # Set the name that will be displayed on this block
+		    # to have the same number as this component instance
+		    message0 = block["message0"].split(' ')
+		    message0[0] += str(i)
+		    block["message0"] = " ".join(message0)
                     block["id"] = "$" + component.lower() + str(i) + "$" + block["id"]
                     id = block["id"].encode('ascii', 'ignore')
                     block["colour"] = color
