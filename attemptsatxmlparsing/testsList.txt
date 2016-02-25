@@ -1,0 +1,8 @@
+1. Variable declarations
+    a. Just  declaration
+	double var = 1;
+	void loop () {      //Not sure if we want this there for readability
+	}
+    b. Using that declaration
+
+2. 

@@ -86,18 +86,23 @@ class IDEGenerator:
                 
                 # Iterate over each block in our copy so we can make a unique instance
                 jsonElem = copy.deepcopy(self.blocks[component])
-		uid = 0
+                uid = 0
                 for block in jsonElem:
+		    # Set the name that will be displayed on this block
+		    # to have the same number as this component instance
+		    message0 = block["message0"].split(' ')
+		    message0[0] += str(i)
+		    block["message0"] = " ".join(message0)
                     block["id"] = "$" + component.lower() + str(i) + "$" + block["id"]
                     id = block["id"].encode('ascii', 'ignore')
                     block["colour"] = color
                     # Add the new block to its proper category
                     blockNode = ET.SubElement(categoryNode, "block")
-                    blockNode.attrib["type"] = id
+                    blockNode.attrib["type"] = id + "$" + str(uid)
                     blockNode.text = " "
                     localBlocks[ block["id"] ] = block
-                    self.jinja_vars["blocklist"].append( [ id, str(json.dumps(block)) ] )
-		    uid += 1
+                    self.jinja_vars["blocklist"].append( [ id + "$" + str(uid), str(json.dumps(block)) ] )
+                    uid += 1
                 self.blockCategories[ name ] = localBlocks
         self.jinja_vars["toolbox"] = str(ET.tostring( self.categoriesXML ))
 	#print self.jinja_vars["toolbox"]

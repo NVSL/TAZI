@@ -36,11 +36,7 @@ def recurseParse(node, depth):
     if tag == "xml":
         overallResult = ""
         for child in node:
-            if (child.attrib["type"] == "main_loop" 
-                    or child.attrib["type"] == "variable_declarations"):
-                overallResult += "\n" + recurseParse(child, depth)
-            else:
-                overallResult += "\n" + recurseParse(child, depth)
+           overallResult += "\n" + recurseParse(child, depth)
         return overallResult
 
     elif tag == "block":
@@ -89,6 +85,15 @@ def getBlock(node,depth):
 
     if (blockType == "math_constant"):
         return getConst(list(node)[0])
+    if( blockType =="main"): 
+        def refactorStatementToBlock( s ):
+	    s.tag = "block"
+	    s.attrib["type"] = s.attrib["name"]
+	    return s
+	lines = ""
+	for b in map( refactorStatementToBlock, node.findall("statement" )):
+	    lines += recurseParse( b, depth ) + '\n'
+        return lines
 
     return genericBlockGet(node,depth)
    
@@ -346,4 +351,5 @@ try:
     print(recurseParse(root,0))
 except BlocklyError as e:
     print("Error: " + e.value)
+    raise
 

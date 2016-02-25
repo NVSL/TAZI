@@ -21,6 +21,7 @@ Blockly.Blocks['main_loop'] = {
 Blockly.Blocks['delay'] = {
   init: function() {
     this.appendValueInput("NAME")
+		.setCheck("Number")
         .appendField("Pause for ");
     this.appendDummyInput()
         .appendField("milliseconds");
@@ -32,11 +33,23 @@ Blockly.Blocks['delay'] = {
   }
 };
 
+Blockly.Blocks['main'] = {
+  init: function() {
+    this.appendStatementInput("variable_declarations")
+        .appendField("Setup");
+    this.appendStatementInput("main_loop")
+        .appendField("Loop forever and ever");
+    this.setColour(105);
+    this.setTooltip('Make sure you put all your blocks in here!');
+    this.setHelpUrl('http://www.gadgetron.build/');
+  }
+};
+
 Blockly.Blocks['millis'] = {
   init: function() {
     this.appendDummyInput()
         .appendField("Time in milliseconds");
-    this.setOutput(true);
+    this.setOutput(true, "Number");
     this.setColour(210);
     this.setTooltip('The length of time since the program has started in milliseconds');
     this.setHelpUrl('http://www.gadgetron.build/');

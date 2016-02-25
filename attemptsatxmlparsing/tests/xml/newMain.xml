@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml>
+   <block type="main" x="88" y="72">
+      <statement name="variable_declarations">
+         <block type="variables_set">
+            <field name="VAR">foo</field>
+            <value name="VALUE">
+               <block type="text">
+                  <field name="TEXT">bar</field>
+               </block>
+            </value>
+         </block>
+      </statement>
+      <statement name="main_loop">
+         <block type="controls_if">
+            <value name="IF0">
+               <block type="$momentarybutton1$isPressed" />
+            </value>
+            <statement name="DO0">
+               <block type="$ledarray1$clear" />
+            </statement>
+         </block>
+      </statement>
+   </block>
+</xml>

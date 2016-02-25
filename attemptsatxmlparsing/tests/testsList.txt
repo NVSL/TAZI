@@ -1,0 +1,159 @@
+1. Variable 
+    a. Just  declaration
+	double var = 1;
+	void loop () {      //Not sure if we want this there for readability
+	}
+    b. Initialized to text.
+	string item = Hello;
+	void loop () {
+	}
+    c. Special value pi
+    d. Special value e
+    e. special value ?
+    f. special value sqrt(2)
+    g. special value sqrt(1/2)
+
+2. Logic
+   a. Numbers with equal sign
+      ERROR
+   b. Numbers with notequal sign
+      ERROR
+   c. Numbers with lessthan sign
+   d. Numbers with lessthanequl sign
+   e. Numbers with greatethan sign
+   e. Numbers with greatethanequal sign
+   f. One Variable with equal sign 
+      ERROR
+   g. One Variable with notequal sign
+   h. One Varaible with lessthan sign
+   i. One Variable with lessthanequl sign
+   j. One Varaible with greatethan sign
+   k. Two Variable with equal sign 
+   l. Two Variable with notequal sign
+   m. Two Varaible with lessthan sign
+   n. Two Variable with lessthanequl sign
+   o. Two Varaible with greatethan sign
+   p. Two Varaible with greatethanequal sign
+   q. Two Varaible with greatethanequal sign
+   r. Null with equals
+   s. Null with notequals
+   t. Null with lessthan
+   u. Null with lessthanequal
+   v. Null with greaterthan
+   w. NUll with greaterthanequal
+
+   aa. And (true, true)
+      ERROR
+   bb. And (true, false)
+   cc. And (false, true)
+   dd. And (fasle, false)
+   ee. Or (true, true)
+       ERROR
+   ff. Or (true, false)
+   gg. Or (false, true)
+   hh. Or (fasle, false)
+   ii. And(true, not true)
+   jj. And(true, not false)
+   kk. And(true, not true)
+   ll. And(true, not false)
+   mm. Or (true, not true)
+   nn. Or (true, not false)
+   oo. Or (false, not true)
+   pp. Or (false, not false)
+   qq. And(null, false)
+   rr. And(null, true)
+   ss. Or(null, true)
+   tt. Or(null, false)
+
+3. Math
+   a. Addition with two numbers
+       ERROR
+   b. Addition with var and number
+   c. addition with two vars
+   d. Subtraction with two numbers
+   e. Subtraction with one var and one number
+   f. Subtraction with two vars
+   g .Power with two numbers
+   h. Power with one var, one number
+   i. Power with two vars 
+   j. mod with two numbers
+   k. mod with one var, one number
+   l. mod with two vars
+   m. Square root with number
+      ERROR
+   n. Square root with variable
+   o. Num is even
+   p. Var is even
+   q. Num is odd
+   r. Var is odd
+   s. Num is prime
+   t. Var is prime
+   u. Num is whole
+   v. var is whole
+   w. num is positive
+   x. var is positive
+   y. num is negative
+   z. var is positive
+  aa. num is divisible with num
+  bb. var is dividible with mun
+  cc. num is divisible with var
+  dd. var is dividible with var
+  ee. change with num
+  ff. change with var
+  gg. round up with num   
+  	ERROR
+  hh. round down with num      
+  ii. round up with var
+  jj. round down with var
+  kk. random with 2 nums
+  	ERROR
+  ll. random with 1 num, 1 var
+  mm. random with 2 vars
+  nn. random fraction
+
+4. Buzzer
+  a. with 2 nums
+  	ERROR
+  b. with 2 vars
+  c. with 1 num and 1 var
+
+8. Distance Sensor
+    a. get_distance
+
+5. LED
+   a. LED update
+   b. LED blink
+   c. LED blink
+   d. LED isBlinking
+   e. LED toggle
+   f. LED turnon
+   g. LED turnoff
+   h. LED loop
+
+6.Momentary Button
+   a. waitForPress
+   b. read
+   c. isPressed
+   d. isReleased
+   e. wasPressed
+   f. wasReleased
+   g. pressedFor
+   h. releasedFor
+   i. lastchange
+   j. setDB with ms
+   k. loop
+
+7. Motor
+   a. forward with speed
+   b. backward with speed
+   c. spinLeft with speed
+   d. spinRight with speed
+   e. forwardAndRight
+   f. forwardAndLeft
+   g. stop
+   h. brake
+   i. isMoving
+   j. swapDirections
+   k. changePolarity
+
+    

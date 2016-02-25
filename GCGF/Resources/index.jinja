@@ -29,7 +29,7 @@
 <body>
         <script>
 	    window.onload = function() { 
-		var xmlString = "<xml><block type=\"variable_declarations\" x=\"88\" y=\"72\"></block><block type=\"main_loop\" x=\"333\" y=\"69\"></block></xml>";
+		var xmlString = "<xml><block type=\"main\" x=\"88\" y=\"72\"></block><!--block type=\"main_loop\" x=\"333\" y=\"69\"></block--></xml>";
 		var workspace = Blockly.getMainWorkspace();
 		var xml = Blockly.Xml.textToDom(xmlString);     
 		console.log(workspace);
