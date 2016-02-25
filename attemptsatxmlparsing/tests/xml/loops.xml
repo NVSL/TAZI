@@ -14,13 +14,13 @@
                      <block type="logic_operation">
                         <field name="OP">AND</field>
                         <value name="A">
-                           <block type="_MomentaryButton_wasPressed" />
+                           <block type="$MomentaryButton$wasPressed" />
                         </value>
                         <value name="B">
                            <block type="logic_compare">
                               <field name="OP">GT</field>
                               <value name="A">
-                                 <block type="_DistanceSensor_get_distance" />
+                                 <block type="$DistanceSensor$get_distance" />
                               </value>
                               <value name="B">
                                  <block type="math_number">
@@ -32,13 +32,13 @@
                      </block>
                   </value>
                   <statement name="DO0">
-                     <block type="_LED_turnOn">
+                     <block type="$LED$turnOn">
                         <next>
-                           <block type="_LEDArray_sadFace">
+                           <block type="$LEDArray$sadFace">
                               <next>
-                                 <block type="_Motor_forward">
+                                 <block type="$Motor$forward">
                                     <value name="speed">
-                                       <block type="_DistanceSensor_get_distance" />
+                                       <block type="$DistanceSensor$get_distance" />
                                     </value>
                                  </block>
                               </next>
@@ -67,9 +67,9 @@
                      </shadow>
                   </value>
                   <statement name="DO">
-                     <block type="_Buzzer_playNote">
+                     <block type="$Buzzer$playNote">
                         <value name="frequency">
-                           <block type="_DistanceSensor_get_distance" />
+                           <block type="$DistanceSensor$get_distance" />
                         </value>
                         <value name="noteLength">
                            <block type="math_single">
