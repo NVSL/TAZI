@@ -59,6 +59,8 @@ class ClassGenerator:
 	        args = []
 	        for arg in node:
 	            currentArg = Arg( arg.attrib["digitalliteral"], arg.attrib["arg"] )
+		    if currentArg.value == "None": 
+		        currentArg.value = arg.attrib["analogliteral"] 
 		    args.append( currentArg )
 	        currentObj.setArgs( args )
 	        self.objects.append( currentObj )
