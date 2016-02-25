@@ -40,9 +40,9 @@
 							</block>
 						</value>
 						<statement name="DO0">
-							<block type="_LEDArray_happyFace">
+							<block type="$LEDArray$happyFace">
 								<next>
-									<block type="_LEDArray_turnClockwise" />
+									<block type="$LEDArray$turnClockwise" />
 								</next>
 							</block>
 						</statement>

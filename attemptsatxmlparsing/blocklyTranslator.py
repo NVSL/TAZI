@@ -85,7 +85,7 @@ def getBlock(node,depth):
 
     if (blockType == "math_constant"):
         return getConst(list(node)[0])
-    if( blockType =="main"): 
+    if (blockType == "main"): 
         def refactorStatementToBlock( s ):
 	    s.tag = "block"
 	    s.attrib["type"] = s.attrib["name"]
@@ -147,7 +147,11 @@ typeDict = {
     "text": "string"
 }
 def getType(node):
-    return typeDict[node.attrib["type"]]
+    if (typeDict.get(node.attrib["type"]) != None):
+        return typeDict[node.attrib["type"]]
+    else:
+        #edit this later to actually get the correct type for a block
+        return "int"
 
 
 def getField(node):
@@ -192,24 +196,65 @@ def setVar(node, depth):
     if (len(list(node)) < 2):
         raise BlocklyError("Field " + varName + " does not have a value!")
         return ""
-    varType = getType(list(list(node)[1])[0])
-    varValue = getField(list(list(list(node)[1])[0])[0])
+
+    #if((list(node)[1]).tag.split("}"))
+    if((list(list(node)[1])[0]).tag == "block"):
+        varType = getType((list(list(node)[1])[0]))
+        varValue = recurseParse(list(node)[1], 0)
+    else:
+        varType = getType(list(list(node)[1])[0])
+        varValue = getField(list(list(list(node)[1])[0])[0])
 
     totString = varType + " " + varName + " = " + varValue + ";"
     return blockNext(node, depth, totString)
 
 #if statement
 def ifBlock(node, depth):
-    # First child is the boolean part
-    booleanPart = getArgs(list(node)[0])
-    
+    numElsIfs = 0
+    numElses = 0
+
+    # First child is either boolean or contains extra piece info
+    fchildNode = list(node)[0]
+    if (fchildNode.tag == "mutation"):
+        if (fchildNode.attrib.get("elseif") != None):
+            numElsIfs = int(fchildNode.attrib["elseif"])
+        if (fchildNode.attrib.get("else") != None):
+            numElses = 1
+        booleanPart = getArgs(list(node)[1])
+        statementPart = recurseParse(list(node)[2], depth+1)
+    else:
+        booleanPart = getArgs(list(node)[0])
+        statementPart = recurseParse(list(node)[1], depth+1)
+
     # Second child is the statement part
-    statementPart = recurseParse(list(node)[1], depth+1)
-    returnStr = "if(" + booleanPart + ") {\n"
+    returnStr = "\n" + (spaces*depth) + "if(" + booleanPart + ") {\n"
 
     totString = returnStr + statementPart + "\n" + (spaces*depth) + "}"
 
+    if (numElsIfs >= 1):
+        totString += elseifBlock(node, numElsIfs, depth)
+
+    if (numElses == 1):
+        totString += " else {\n" + recurseParse(list(node)[-1], depth + 1) + "\n" + (spaces*depth) + "}"
+
     return blockNext(node, depth, totString)
+
+#else if statements
+def elseifBlock(node, numTimes, depth):
+    elseifOpenString = "\n" + (spaces*depth) + "else if("
+    elseString = ""
+
+    for i in range(3, 3 + (numTimes * 2)):
+        if (((list(node)[i]).attrib["name"])[:2] == "IF"):
+            elseString += elseifOpenString
+            booleanPart = getArgs(list(node)[i])
+            elseString += booleanPart + ") {\n" + recurseParse((list(node)[i + 1]), depth + 1) + "\n" + (spaces*depth) + "}"
+
+    return elseString
+
+#else statement
+def elseBlock(node, depth):
+    elseString = "else {\n" + (spaces*depth) + "}"
 
 #logic compare
 def compLog(node,depth):
