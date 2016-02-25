@@ -5,10 +5,10 @@
          <block type="controls_whileUntil">
             <field name="MODE">UNTIL</field>
             <value name="BOOL">
-               <block type="_MomentaryButton_isPressed" />
+               <block type="$MomentaryButton$isPressed" />
             </value>
             <statement name="DO">
-               <block type="_RGBLED_set">
+               <block type="$RGBLED$set">
                   <value name="red">
                      <block type="math_number">
                         <field name="NUM">43</field>
@@ -34,13 +34,13 @@
                                  <block type="logic_operation">
                                     <field name="OP">AND</field>
                                     <value name="A">
-                                       <block type="_MomentaryButton_wasPressed" />
+                                       <block type="$MomentaryButton$wasPressed" />
                                     </value>
                                     <value name="B">
                                        <block type="logic_compare">
                                           <field name="OP">LT</field>
                                           <value name="A">
-                                             <block type="_DistanceSensor_get_distance" />
+                                             <block type="$DistanceSensor$get_distance" />
                                           </value>
                                           <value name="B">
                                              <block type="math_number">
@@ -55,17 +55,17 @@
                                  <block type="logic_operation">
                                     <field name="OP">OR</field>
                                     <value name="A">
-                                       <block type="_MomentaryButton_wasReleased" />
+                                       <block type="$MomentaryButton$wasReleased" />
                                     </value>
                                     <value name="B">
-                                       <block type="_MomentaryButton_isReleased" />
+                                       <block type="$MomentaryButton$isReleased" />
                                     </value>
                                  </block>
                               </value>
                            </block>
                         </value>
                         <statement name="DO">
-                           <block type="_Buzzer_playNote">
+                           <block type="$Buzzer$playNote">
                               <value name="frequency">
                                  <block type="math_constant">
                                     <field name="CONSTANT">PI</field>
@@ -93,7 +93,7 @@
                                  </block>
                               </value>
                               <next>
-                                 <block type="_Motor_forward">
+                                 <block type="$Motor$forward">
                                     <value name="speed">
                                        <block type="math_number">
                                           <field name="NUM">255</field>
@@ -106,7 +106,7 @@
                                              <block type="logic_compare">
                                                 <field name="OP">NEQ</field>
                                                 <value name="A">
-                                                   <block type="_MomentaryButton_pressedFor" />
+                                                   <block type="$MomentaryButton$pressedFor" />
                                                 </value>
                                                 <value name="B">
                                                    <block type="math_arithmetic">
@@ -132,7 +132,7 @@
                                              </block>
                                           </value>
                                           <statement name="DO0">
-                                             <block type="_LEDArray_happyFace">
+                                             <block type="$LEDArray$happyFace">
                                                 <next>
                                                    <block type="delay">
                                                       <value name="NAME">
@@ -179,28 +179,28 @@
                                                    </block>
                                                 </value>
                                                 <value name="B">
-                                                   <block type="_MomentaryButton_isPressed" />
+                                                   <block type="$MomentaryButton$isPressed" />
                                                 </value>
                                              </block>
                                           </value>
                                           <statement name="DO1">
-                                             <block type="_Buzzer_turnOff" />
+                                             <block type="$Buzzer$turnOff" />
                                           </statement>
                                           <value name="IF2">
-                                             <block type="_LED_isBlinking" />
+                                             <block type="$LED$isBlinking" />
                                           </value>
                                           <statement name="DO2">
-                                             <block type="_LEDArray_sadFace" />
+                                             <block type="$LEDArray$sadFace" />
                                           </statement>
                                           <statement name="ELSE">
-                                             <block type="_Motor_forward">
+                                             <block type="$Motor$forward">
                                                 <value name="speed">
                                                    <block type="math_number">
                                                       <field name="NUM">10</field>
                                                    </block>
                                                 </value>
                                                 <next>
-                                                   <block type="_LEDArray_turnCounterClockwise" />
+                                                   <block type="$LEDArray$turnCounterClockwise" />
                                                 </next>
                                              </block>
                                           </statement>
