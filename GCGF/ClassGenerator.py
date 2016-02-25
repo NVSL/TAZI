@@ -8,8 +8,12 @@ class Arg:
         self.value = value
 	self.name = name
 class CObj:
+    countMap = {}
     def __init__(self, objType):
         self.objType = objType
+        if objType not in CObj.countMap: CObj.countMap[objType] = 1
+        else: CObj.countMap[objType] += 1
+	self.name = str.lower(objType) + str(CObj.countMap[objType])
     def setArgs(self, args):
         self.args = args
 class ClassGenerator:
@@ -27,23 +31,20 @@ class ClassGenerator:
         retStrings = []
 	for obj in self.objects:
 	    for arg in obj.args:
-	        currStr = "#define " + arg.name + " " + str(arg.value)
+	        currStr = "#define " + str.upper(obj.name) + "_" + arg.name + " " + str(arg.value)
 	        retStrings.append(currStr)
 	return retStrings
     def getObjectDeclarations(self):
         retStrings = []
-	countMap = {}
-	for obj in self.objects:
-	    countMap[ obj.objType ] = 1
 	for obj in self.objects:
 	    argC = 0
-	    instanceName = str.lower(obj.objType) + str(countMap[ obj.objType ])
+	    instanceName = str.lower(obj.name)
 	    self.objInstances.append(instanceName)
 	    currStr = obj.objType + " " + instanceName + "("
 	    for arg in obj.args :
 		if argC is not 0:
 		    currStr = currStr + ", "
-	        currStr = currStr + str( arg.name )
+	        currStr = currStr + str.upper(obj.name) + "_" + str( arg.name )
 		argC = argC + 1
 	    currStr = currStr + ");"
 	    retStrings.append(currStr)
