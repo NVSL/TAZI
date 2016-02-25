@@ -22,7 +22,7 @@ class ClassGenerator:
 	return functools.reduce( concatLines, self.objInstances, "void setup() {\n" ) + "}"
     def getLibraries(self):
         def concatLib( acc, elem): return acc + '#include "' + elem + '"\n'
-	return functools.reduce( concatLib, self.libraries, "" )
+	return functools.reduce( concatLib, set(self.libraries), "" )
     def getConstants(self):
         retStrings = []
 	for obj in self.objects:

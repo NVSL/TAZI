@@ -1,5 +1,5 @@
 GSPEC = Gspecs/Wall-E.gspec
-APIGSPEC = Gspecs/test.api.gspec
+APIGSPEC = Gspecs/Wall-E.api.gspec
 RESOURCES = Resources
 CATALOG = $(GADGETRON_CATALOG)/Components.xml
 CATEGORIESXML = $(RESOURCES)/DefaultCategories.xml
