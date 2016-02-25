@@ -1,4 +1,4 @@
-GSPEC = Gspecs/PessimistPrime.gspec
+GSPEC = Gspecs/Wall-E.gspec
 APIGSPEC = Gspecs/test.api.gspec
 RESOURCES = Resources
 CATALOG = $(GADGETRON_CATALOG)/Components.xml

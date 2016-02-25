@@ -34,6 +34,7 @@ class GspecParser:
 
    def getComps(self, compFile):
       componentsDict = self.initializeList()
+      #print componentsDict
       gspec = None
       if type( compFile) is str:
           if os.path.isfile( compFile):

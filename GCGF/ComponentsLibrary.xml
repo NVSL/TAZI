@@ -6,5 +6,6 @@
 	<component name="Button" path="$GADGETRON_COMPONENT_LIB/tactile-button/lib/MomentaryButton.h"/>
 	<component name="Motor" path="$GADGETRON_COMPONENT_LIB/DualMotorKit/lib/Motor.h"/>
 	<component name="Distance Sensor" path="$GADGETRON_COMPONENT_LIB/analog_distance_sensor/lib/DistanceSensor.h"/>
+	<component name="Servo" path="$GADGETRON_COMPONENT_LIB/Servo/lib/ServoMotor.h"/>
 	<component name="Pincer" path="$GADGETRON_COMPONENT_LIB/micro-gripper/lib/Pincer.h"/>
 </library>

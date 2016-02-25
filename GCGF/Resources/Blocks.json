@@ -226,6 +226,26 @@
             "id": "fade"
         }
     ], 
+    "ServoMotor": [
+        {
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "ServoMotor rotate %1 with degrees %2", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }, 
+                {
+                    "type": "input_value", 
+                    "name": "degrees", 
+                    "check": "Number"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "rotate"
+        }
+    ], 
     "MomentaryButton": [
         {
             "nextStatement": null, 

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gadgetlayout version="1.1">
+   <name>Wall-E</name>
+   <creator />
+   <board x="0" y="0" width="120" height="100" />
+   <option name="faceplate-color" value="clear-nocolor" />
+   <option name="backplate-color" value="clear-nocolor" />
+   <option name="faceplate-etch" value="etch-front" />
+   <option name="backplate-etch" value="etch-back" />
+   <option name="front-standoff-height" value="8" />
+   <option name="back-standoff-height" value="8" />
+   <option name="pcb-thickness" value="1.57" />
+   <option name="faceplate-thickness" value="3.175" />
+   <option name="backplate-thickness" value="3.175" />
+   <option name="cam-target" value="LPKF" />
+   <component progname="brain" type="Adafruit-Pro-Trinket-5V-battery-powered" deletable="false">
+      <placedpart refdes="U1" x="5" y="62" rotation="270" mirrored="False" />
+   </component>
+   <component progname="battery" type="battery-9V-vertical" deletable="false">
+      <placedpart refdes="BATT1" x="102" y="64" rotation="0" mirrored="False" />
+   </component>
+   <component progname="drive" type="dual-motor-kit-knobby">
+      <placedpart refdes="L" x="-19" y="89" rotation="180" mirrored="False" />
+      <placedpart refdes="R" x="139" y="88" rotation="180" mirrored="False" />
+   </component>
+   <component progname="Servo" type="servo-normal-side">
+      <placedpart refdes="u1" x="94" y="39" rotation="270" mirrored="False" />
+   </component>
+   <component progname="distanceSensor" type="analog_distance_sensor">
+      <placedpart refdes="dist1" x="37" y="13" rotation="190" mirrored="False" />
+   </component>
+   <component progname="button" type="tactile-button-square-blue">
+      <placedpart refdes="B1" x="65" y="65" rotation="0" mirrored="False" />
+   </component>
+   <component progname="caster" type="ball-caster-0.75in">
+      <placedpart refdes="u1" x="61" y="25" rotation="0" mirrored="False" />
+   </component>
+   <component progname="led" type="LED-5mm-bright-red">
+      <placedpart refdes="LED1" x="45" y="96" rotation="0" mirrored="False" />
+   </component>
+   <component progname="led_2" type="LED-5mm-bright-green">
+      <placedpart refdes="LED1" x="67" y="96" rotation="0" mirrored="False" />
+   </component>
+   <component progname="led_3" type="LED-5mm-bright-blue">
+      <placedpart refdes="LED1" x="56" y="96" rotation="0" mirrored="False" />
+   </component>
+</gadgetlayout>
