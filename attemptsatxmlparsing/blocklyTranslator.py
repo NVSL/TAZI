@@ -5,15 +5,23 @@ import argparse
 
 #Can run with arguments for filename input OR requests filename input
 parser = argparse.ArgumentParser()
-parser.add_argument("-x", "--xml", required=False)
+parser.add_argument("-x", "--xml", required=False, help="Specify xml file through command line")
+parser.add_argument("-d", action="store_true", help="Debug mode")
 args = parser.parse_args()
 inp = None
 if args.xml is not None:
     inp = args.xml
 else:
     inp = raw_input("Filename: ")
+
+DEBUG = 0
+if args.d:
+    DEBUG = 1
+
+
 tree = ET.parse(inp)
 root = tree.getroot()
+
 
 spaces = "  "
 
@@ -33,6 +41,9 @@ def recurseParse(node, depth):
     else:
         tag = node.tag
 
+    if DEBUG:
+        print("Current tag: " + tag)
+
     if tag == "xml":
         overallResult = ""
         funcsFirst = ""
@@ -40,18 +51,18 @@ def recurseParse(node, depth):
         for child in node:
             if ((child.attrib).get("type") != None and ((child.attrib["type"] == "procedures_defnoreturn")
                 or (child.attrib["type"] == "procedures_defreturn"))):
-                funcsFirst += "\n" + recurseParse(child, depth)
+                funcsFirst += ";\n" + recurseParse(child, depth)
 
         for child in node:
             if ((child.attrib).get("type") != None and (child.attrib["type"] == "main")):
-                overallResult += "\n" + recurseParse(child, depth)
+                overallResult += ";\n" + recurseParse(child, depth)
 
         return funcsFirst + overallResult
 
     elif tag == "block":
         return getBlock(node,depth)
     elif tag == "next":
-        return "\n" + recurseParse(list(node)[0], depth)
+        return ";\n" + recurseParse(list(node)[0], depth)
     elif tag == "statement":
         return recurseParseCheck(list(node), depth)
     elif tag == "shadow":
@@ -81,10 +92,10 @@ def getBlock(node,depth):
 
     if (blockType == "main_loop"):
         # Should be a "next" block
-        return "void loop () {" + recurseParseCheck(list(node), depth+1) + "\n}"
+        return "void loop () {" + recurseParseCheck(list(node), depth+1) + ";\n}"
 
     if (blockType == "variable_declarations"):
-        return "void setup () {\n" + recurseParseCheck(list(node), depth + 1) + "\n}\n"
+        return "void setup () {;\n" + recurseParseCheck(list(node), depth + 1) + ";\n};\n"
 
     if blockType in funcGet.keys():
         return funcGet[blockType](node,depth)
@@ -104,7 +115,7 @@ def getBlock(node,depth):
 	    return s
 	lines = ""
 	for b in map( refactorStatementToBlock, node.findall("statement" )):
-	    lines += recurseParse( b, depth ) + '\n'
+	    lines += recurseParse( b, depth ) + ';\n'
         return lines
 
     return genericBlockGet(node,depth)
@@ -241,34 +252,34 @@ def ifBlock(node, depth):
         statementPart = recurseParse(list(node)[1], depth+1)
 
     # Second child is the statement part
-    returnStr = "\n" + (spaces*depth) + "if(" + booleanPart + ") {\n"
+    returnStr = ";\n" + (spaces*depth) + "if(" + booleanPart + ") {;\n"
 
-    totString = returnStr + statementPart + "\n" + (spaces*depth) + "}"
+    totString = returnStr + statementPart + ";\n" + (spaces*depth) + "}"
 
     if (numElsIfs >= 1):
         totString += elseifBlock(node, numElsIfs, depth)
 
     if (numElses == 1):
-        totString += " else {\n" + recurseParse(list(node)[-1], depth + 1) + "\n" + (spaces*depth) + "}"
+        totString += " else {;\n" + recurseParse(list(node)[-1], depth + 1) + ";\n" + (spaces*depth) + "}"
 
     return blockNext(node, depth, totString)
 
 #else if statements
 def elseifBlock(node, numTimes, depth):
-    elseifOpenString = "\n" + (spaces*depth) + "else if("
+    elseifOpenString = ";\n" + (spaces*depth) + "else if("
     elseString = ""
 
     for i in range(3, 3 + (numTimes * 2)):
         if (((list(node)[i]).attrib["name"])[:2] == "IF"):
             elseString += elseifOpenString
             booleanPart = getArgs(list(node)[i])
-            elseString += booleanPart + ") {\n" + recurseParse((list(node)[i + 1]), depth + 1) + "\n" + (spaces*depth) + "}"
+            elseString += booleanPart + ") {;\n" + recurseParse((list(node)[i + 1]), depth + 1) + ";\n" + (spaces*depth) + "}"
 
     return elseString
 
 #else statement
 def elseBlock(node, depth):
-    elseString = "else {\n" + (spaces*depth) + "}"
+    elseString = "else {;\n" + (spaces*depth) + "}"
 
 #logic compare
 def compLog(node,depth):
@@ -333,11 +344,11 @@ def whileUnt(node, depth):
     if (list(node)[0]).text == "UNTIL":
         retString += ")"
 
-    retString += ") {\n"
+    retString += ") {;\n"
 
     statement = recurseParse(list(node)[2], depth + 1)
 
-    retString += statement + "\n" + (spaces*depth) + "}"
+    retString += statement + ";\n" + (spaces*depth) + "}"
 
     return blockNext(node, depth, retString)
 
@@ -350,19 +361,19 @@ def negate(node, depth):
 
 #repeat for specified num of times
 def repeatControl(node, depth):
-    retString = "\n" + (spaces*depth) + "for(int count = 0; i < "
+    retString = ";\n" + (spaces*depth) + "for(int count = 0; i < "
     count = recurseParse(list(node)[0], 0)
-    retString += count + "; i++) {\n"
+    retString += count + "; i++) {;\n"
 
     statement = recurseParse(list(node)[1], depth+1)
 
-    retString += statement + "\n" + (spaces*depth) + "}\n"
+    retString += statement + ";\n" + (spaces*depth) + "};\n"
 
     return blockNext(node, depth, retString)
 
 #for loop
 def forloop(node, depth):
-    retString = "\n" + (spaces*depth) + "for("
+    retString = ";\n" + (spaces*depth) + "for("
 
     #from
     val = getField(list(node)[0])
@@ -376,11 +387,11 @@ def forloop(node, depth):
     #increment
     incr = getField(list(list(list(node)[3])[0])[0])
 
-    retString += "; " + val + "<= " + toVal + "; " + val + "+= " + incr + ") {\n"
+    retString += "; " + val + "<= " + toVal + "; " + val + "+= " + incr + ") {;\n"
 
     statement = recurseParse(list(node)[4], depth+1)
 
-    retString += statement + "\n" + (spaces*depth) + "}\n"
+    retString += statement + ";\n" + (spaces*depth) + "};\n"
 
     return blockNext(node, depth, retString)
 
@@ -421,16 +432,16 @@ def funcCreation(node, depth):
                 params += getType(arg) + " " + (arg.attrib["name"])
                 paramNum += 1
         if (child.tag == "comment"):
-            comment += child.text + "\n" + (spaces*depth) + "*/\n"
+            comment += child.text + ";\n" + (spaces*depth) + "*/;\n"
         if (child.tag == "field"):
             funcName = str.replace(child.text, " ", "")
         if (child.tag == "statement"):
-            funcBody = recurseParse(list(child)[0], depth + 1) + "\n"
+            funcBody = recurseParse(list(child)[0], depth + 1) + ";\n"
         if (child.tag == "value"):
             retType = getType(list(child)[0])
-            funcRet = (spaces*(depth + 1)) + "return " + recurseParse(list(child)[0], 0) + ";\n"
+            funcRet = (spaces*(depth + 1)) + "return " + recurseParse(list(child)[0], 0) + ";;\n"
 
-    total = comment + retType + " " + funcName + "(" + params + ") {\n" + funcBody + funcRet + (spaces*depth) + "}\n"
+    total = comment + retType + " " + funcName + "(" + params + ") {;\n" + funcBody + funcRet + (spaces*depth) + "};\n"
 
     madeFuncNames[funcName] = paramNum
     return blockNext(node, depth, total)
@@ -460,12 +471,12 @@ def callMethod(node, depth):
 
 #make an if-return for function creation
 def ifRet(node, depth):
-    mainStr = "\n" + (spaces*depth) + "if("
+    mainStr = ";\n" + (spaces*depth) + "if("
 
     boolPart = getArgs(list(node)[1])
     funcRet = (spaces*(depth + 1)) + "return " + recurseParse(list(list(node)[2])[0], 0) + ";"
 
-    mainStr += boolPart + ") {\n" + funcRet + "\n" + (spaces*depth) + "}\n"
+    mainStr += boolPart + ") {;\n" + funcRet + ";\n" + (spaces*depth) + "};\n"
 
     return blockNext(node, depth, mainStr)
 
@@ -496,6 +507,8 @@ madeFuncNames = {
 
 # main
 try:
+    if DEBUG:
+        print("--- RUNNING IN DEBUG MODE ---")
     print(recurseParse(root,0))
 except BlocklyError as e:
     print("Error: " + e.value)
