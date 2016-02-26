@@ -388,10 +388,11 @@ def funcCreation(node, depth):
 
     for child in node:
         if (child.tag == "mutation"):
-            if(params != ""):
-                params += ", "
-            params += getType(child) + " " + (list(child)[0]).attrib["name"]
-            paramNum += 1
+            for arg in child:
+                if(params != ""):
+                    params += ", "
+                params += getType(arg) + " " + (arg.attrib["name"])
+                paramNum += 1
         if (child.tag == "comment"):
             comment += child.text + "\n" + (spaces*depth) + "*/\n"
         if (child.tag == "field"):
@@ -409,10 +410,25 @@ def funcCreation(node, depth):
 
 def callMethod(node, depth):
     methodName = str.replace((list(node)[0]).attrib["name"], " ", "")
+    arguments = ""
+    argNums = 0
 
     #check dictionary for params to pull
-    call = methodName + "()"
-    return blockNext(node, depth, call)
+    call = methodName + "("
+
+    if (madeFuncNames[methodName] > 0):
+        for arg in list(node)[0]:
+            argNums += 1
+
+        for child in node:
+            if (child.tag == "value"):
+                if(arguments != ""):
+                    arguments += ", "
+                arguments += recurseParse(child, 0)
+        
+        call += arguments
+
+    return blockNext(node, depth, call + ")")
 
 funcGet = {
     "variables_set": setVar,
