@@ -35,9 +35,18 @@ def recurseParse(node, depth):
 
     if tag == "xml":
         overallResult = ""
+        funcsFirst = ""
+        mainBod = ""
         for child in node:
-           overallResult += "\n" + recurseParse(child, depth)
-        return overallResult
+            if ((child.attrib).get("type") != None and ((child.attrib["type"] == "procedures_defnoreturn")
+                or (child.attrib["type"] == "procedures_defreturn"))):
+                funcsFirst += "\n" + recurseParse(child, depth)
+
+        for child in node:
+            if ((child.attrib).get("type") != None and (child.attrib["type"] == "main")):
+                overallResult += "\n" + recurseParse(child, depth)
+
+        return funcsFirst + overallResult
 
     elif tag == "block":
         return getBlock(node,depth)
@@ -72,7 +81,7 @@ def getBlock(node,depth):
         return "void loop () {" + recurseParseCheck(list(node), depth+1) + "\n}"
 
     if (blockType == "variable_declarations"):
-        return recurseParseCheck(list(node), depth)
+        return "void setup () {\n" + recurseParseCheck(list(node), depth + 1) + "\n}\n"
 
     if blockType in funcGet.keys():
         return funcGet[blockType](node,depth)
