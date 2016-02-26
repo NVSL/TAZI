@@ -147,8 +147,14 @@ typeDict = {
     "text": "string"
 }
 def getType(node):
-    if (typeDict.get(node.attrib["type"]) != None):
+    print("\n\nHEY HEY\n" + node.tag + ": ")
+    print((node.attrib).get("type"))
+
+
+    if ((node.attrib).get("type") != None and typeDict.get(node.attrib["type"]) != None):
         return typeDict[node.attrib["type"]]
+    #else if (node.tag == "block"):
+        #
     else:
         #edit this later to actually get the correct type for a block
         return "int"
@@ -321,19 +327,19 @@ def negate(node, depth):
 
 #repeat for specified num of times
 def repeatControl(node, depth):
-    retString = "for(int count = 0; i < "
+    retString = "\n" + (spaces*depth) + "for(int count = 0; i < "
     count = recurseParse(list(node)[0], 0)
     retString += count + "; i++) {\n"
 
     statement = recurseParse(list(node)[1], depth+1)
 
-    retString += (spaces*depth) + statement + "\n" + (spaces*depth) + "}\n"
+    retString += statement + "\n" + (spaces*depth) + "}\n"
 
     return blockNext(node, depth, retString)
 
 #for loop
 def forloop(node, depth):
-    retString = "for("
+    retString = "\n" + (spaces*depth) + "for("
 
     #from
     val = getField(list(node)[0])
@@ -374,6 +380,44 @@ def flowcontrols(node, depth):
     flow = getOp(list(node)[0])
     return blockNext(node, depth, flow)
 
+#Function creation
+def funcCreation(node, depth):
+    params = ""
+    paramNum = 0
+    comment = "/* "
+    funcName = ""
+    funcBody = ""
+    retType = "void"
+    funcRet = ""
+
+    for child in node:
+        if (child.tag == "mutation"):
+            if(params != ""):
+                params += ", "
+            params += getType(child) + " " + (list(child)[0]).attrib["name"]
+            paramNum += 1
+        if (child.tag == "comment"):
+            comment += child.text + "\n" + (spaces*depth) + "*/\n"
+        if (child.tag == "field"):
+            funcName = str.replace(child.text, " ", "")
+        if (child.tag == "statement"):
+            funcBody = recurseParse(list(child)[0], depth + 1) + "\n"
+        if (child.tag == "value"):
+            retType = getType(list(child)[0])
+            funcRet = (spaces*(depth + 1)) + "return " + recurseParse(list(child)[0], 0) + ";\n"
+
+    total = comment + retType + " " + funcName + "(" + params + ") {\n" + funcBody + funcRet + (spaces*depth) + "}\n"
+
+    madeFuncNames[funcName] = paramNum
+    return blockNext(node, depth, total)
+
+def callMethod(node, depth):
+    methodName = str.replace((list(node)[0]).attrib["name"], " ", "")
+
+    #check dictionary for params to pull
+    call = methodName + "()"
+    return blockNext(node, depth, call)
+
 funcGet = {
     "variables_set": setVar,
     "controls_if": ifBlock,
@@ -387,9 +431,15 @@ funcGet = {
     "delay": delay,
     "millis": millis,
     "logic_negate": negate,
-    "controls_flow_statements": flowcontrols
+    "controls_flow_statements": flowcontrols,
+    "procedures_defreturn": funcCreation,
+    "procedures_defnoreturn": funcCreation,
+    "procedures_callreturn": callMethod,
+    "procedures_callnoreturn": callMethod
 }
 
+madeFuncNames = {
+}
 
 # main
 try:
