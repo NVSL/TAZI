@@ -147,10 +147,6 @@ typeDict = {
     "text": "string"
 }
 def getType(node):
-    print("\n\nHEY HEY\n" + node.tag + ": ")
-    print((node.attrib).get("type"))
-
-
     if ((node.attrib).get("type") != None and typeDict.get(node.attrib["type"]) != None):
         return typeDict[node.attrib["type"]]
     #else if (node.tag == "block"):
