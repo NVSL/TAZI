@@ -10,7 +10,7 @@
                      <block type="logic_compare">
                         <field name="OP">EQ</field>
                         <value name="A">
-                           <block type="_DistanceSensor_get_distance" />
+                           <block type="$DistanceSensor$get_distance" />
                         </value>
                         <value name="B">
                            <block type="math_arithmetic">
@@ -36,7 +36,7 @@
                </block>
             </value>
             <statement name="DO">
-               <block type="_RGBLED_fade">
+               <block type="$RGBLED$fade">
                   <value name="red">
                      <block type="math_number">
                         <field name="NUM">0</field>
@@ -61,7 +61,7 @@
                      </block>
                   </value>
                   <next>
-                     <block type="_LEDArray_drawLine">
+                     <block type="$LEDArray$drawLine">
                         <value name="x1">
                            <block type="math_number">
                               <field name="NUM">0</field>
@@ -73,13 +73,13 @@
                            </block>
                         </value>
                         <value name="x2">
-                           <block type="_DistanceSensor_get_distance" />
+                           <block type="$DistanceSensor$get_distance" />
                         </value>
                         <value name="y2">
                            <block type="millis" />
                         </value>
                         <next>
-                           <block type="_LEDArray_printText">
+                           <block type="$LEDArray$printText">
                               <value name="text">
                                  <block type="text">
                                     <field name="TEXT">This is text printing</field>

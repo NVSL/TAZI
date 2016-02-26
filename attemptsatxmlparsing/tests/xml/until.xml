@@ -20,14 +20,14 @@
 					</block>
 				</value>
 				<statement name="DO">
-					<block type="_LED_blink" />
+					<block type="$LED$blink" />
 				</statement>
 				<next>
-					<block type="_LED_toggle">
+					<block type="$LED$toggle">
 						<next>
-							<block type="_LEDArray_happyFace">
+							<block type="$LEDArray$happyFace">
 								<next>
-									<block type="_Motor_forward">
+									<block type="$Motor$forward">
 										<value name="speed">
 											<block type="math_constant">
 												<field name="CONSTANT">PI</field>
