@@ -25,7 +25,7 @@ class ClassGenerator:
         def concatLines(acc, line): return acc + "   " + line + ".setup();\n"
 	return functools.reduce( concatLines, self.objInstances, "void setup() {\n" ) + "}"
     def getLibraries(self):
-        def concatLib( acc, elem): return acc + '#include "' + elem + '"\n'
+        def concatLib( acc, elem): return acc + '#include <' + elem + '>\n'
 	return functools.reduce( concatLib, set(self.libraries), "" )
     def getConstants(self):
         retStrings = []
@@ -79,6 +79,8 @@ if __name__ == "__main__":
     print generator.getLibraries()
     for string in generator.getConstants():
         print string
+    print
     for string in generator.getObjectDeclarations():
         print string
+    print
     print generator.getSetupFunction()
