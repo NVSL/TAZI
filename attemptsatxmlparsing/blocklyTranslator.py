@@ -55,9 +55,13 @@ def recurseParse(node, depth):
     elif tag == "statement":
         return recurseParseCheck(list(node), depth)
     elif tag == "shadow":
-        return getField(list(node)[0])
+        return recurseParseCheck(list(node)[0], depth)
+        #return getField(list(node)[0])
     elif tag == "value":
-        return getBlock(list(node)[0], depth)
+        return recurseParseCheck(list(node)[0], depth)
+        #return getBlock(list(node)[0], depth)
+    elif tag == "field":
+        return getField(node)
     else:
         return ""
 
@@ -69,7 +73,6 @@ def recurseParseCheck(nodeList, depth):
         return ""
     else:
         return recurseParse(nodeList[0], depth)
-
 
 # Sub functions
 
@@ -279,6 +282,21 @@ def compLog(node,depth):
 
     return blockNext(node, depth, (valueA + " " + operator + " " + valueB))
 
+#math property
+def mathProp(node, depth):
+    test = list(node)[1].text
+
+    numToCheck = recurseParse(list(node)[2], 0)
+    if (test == "EVEN"):
+        modNum = 0
+    else:
+        modNum = 1
+    #even, odd, prime, whole, positive, negative, divisible by
+
+    total = numToCheck + "%2 == " + str(modNum)
+
+    return blockNext(node, depth, total)
+
 #math arithmetic
 def mathMetic(node,depth):
     # 3 children: operator, value A, value B
@@ -417,6 +435,7 @@ def funcCreation(node, depth):
     madeFuncNames[funcName] = paramNum
     return blockNext(node, depth, total)
 
+#call the method with correct arguments as stored by function dictionary
 def callMethod(node, depth):
     methodName = str.replace((list(node)[0]).attrib["name"], " ", "")
     arguments = ""
@@ -439,11 +458,23 @@ def callMethod(node, depth):
 
     return blockNext(node, depth, call + ")")
 
+#make an if-return for function creation
+def ifRet(node, depth):
+    mainStr = "\n" + (spaces*depth) + "if("
+
+    boolPart = getArgs(list(node)[1])
+    funcRet = (spaces*(depth + 1)) + "return " + recurseParse(list(list(node)[2])[0], 0) + ";"
+
+    mainStr += boolPart + ") {\n" + funcRet + "\n" + (spaces*depth) + "}\n"
+
+    return blockNext(node, depth, mainStr)
+
 funcGet = {
     "variables_set": setVar,
     "controls_if": ifBlock,
     "logic_compare": compLog,
     "logic_operation": compLog,
+    "math_number_property": mathProp,
     "math_arithmetic": mathMetic,
     "math_single": mathSingle,
     "controls_whileUntil": whileUnt,
@@ -455,6 +486,7 @@ funcGet = {
     "controls_flow_statements": flowcontrols,
     "procedures_defreturn": funcCreation,
     "procedures_defnoreturn": funcCreation,
+    "procedures_ifreturn": ifRet,
     "procedures_callreturn": callMethod,
     "procedures_callnoreturn": callMethod
 }
