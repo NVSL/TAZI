@@ -26,6 +26,15 @@ class TestBlocklyTranslator(unittest.TestCase):
 					outFile.write(stdoutVal + "\n--------------")
 					outFile.write("\n--- stderr ---")
 					outFile.write(stderrVal + "\n--------------\n\n")
+				#with open("testOutputs/cCode.c", "a") as outFile2:
+				#	outFile2.write(stdoutVal)
+				#	result = gcc outFile
+				#	if result != 0:
+				#		print "FAIL TEST\n"
+				#	else 
+				#		print "PASS TEST\n"
+
+					
 
 	def test_VarTests(self):
 		print("\n=== Running var tests ===")

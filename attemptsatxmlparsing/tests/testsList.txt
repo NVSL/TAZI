@@ -1,12 +1,6 @@
 1. Variable 
     a. Just  declaration
-	double var = 1;
-	void loop () {      //Not sure if we want this there for readability
-	}
     b. Initialized to text.
-	string item = Hello;
-	void loop () {
-	}
     c. Special value pi
     d. Special value e
     e. special value ?
@@ -15,15 +9,12 @@
 
 2. Logic
    a. Numbers with equal sign
-      ERROR
    b. Numbers with notequal sign
-      ERROR
    c. Numbers with lessthan sign
    d. Numbers with lessthanequl sign
    e. Numbers with greatethan sign
    e. Numbers with greatethanequal sign
    f. One Variable with equal sign 
-      ERROR
    g. One Variable with notequal sign
    h. One Varaible with lessthan sign
    i. One Variable with lessthanequl sign
@@ -43,12 +34,10 @@
    w. NUll with greaterthanequal
 
    aa. And (true, true)
-      ERROR
    bb. And (true, false)
    cc. And (false, true)
    dd. And (fasle, false)
    ee. Or (true, true)
-       ERROR
    ff. Or (true, false)
    gg. Or (false, true)
    hh. Or (fasle, false)
@@ -67,7 +56,6 @@
 
 3. Math
    a. Addition with two numbers
-       ERROR
    b. Addition with var and number
    c. addition with two vars
    d. Subtraction with two numbers
@@ -80,7 +68,6 @@
    k. mod with one var, one number
    l. mod with two vars
    m. Square root with number
-      ERROR
    n. Square root with variable
    o. Num is even
    p. Var is even
@@ -113,7 +100,6 @@
 
 4. Buzzer
   a. with 2 nums
-  	ERROR
   b. with 2 vars
   c. with 1 num and 1 var
 

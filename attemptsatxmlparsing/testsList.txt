@@ -1,8 +1,92 @@
-1. Variable declarations
-    a. Just  declaration
-	double var = 1;
-	void loop () {      //Not sure if we want this there for readability
-	}
-    b. Using that declaration
-
-2. 
+ 1. Variable 
+    a. Just  declaration ...Done
+    b. Initialized to text ...Done
+    c. Special value pi ...Done
+    d. Special value e ...Done
+    e. special value ? ...Done
+    f. special value sqrt(2) ...Done
+    g. special value sqrt(1/2) ...Done
+2. Logic
+   a. Numbers with equal sign
+   b. Numbers with notequal sign
+   c. Numbers with lessthan sign
+   d. Numbers with lessthanequl sign
+   e. Numbers with greatethan sign
+   e. Numbers with greatethanequal sign
+   f. One Variable with equal sign 
+   g. One Variable with notequal sign
+   h. One Varaible with lessthan sign
+   i. One Variable with lessthanequl sign
+   j. One Varaible with greatethan sign
+   k. Two Variable with equal sign 
+   l. Two Variable with notequal sign
+   m. Two Varaible with lessthan sign
+   n. Two Variable with lessthanequl sign
+   o. Two Varaible with greatethan sign
+   p. Two Varaible with greatethanequal sign
+   q. Two Varaible with greatethanequal sign
+   r. Null with equals
+   s. Null with notequals
+   t. Null with lessthan
+   u. Null with lessthanequal
+   v. Null with greaterthan
+   w. NUll with greaterthanequal
+   aa. And (true, true)
+   bb. And (true, false)
+   cc. And (false, true)
+   dd. And (fasle, false)
+   ee. Or (true, true)
+   ff. Or (true, false)
+   gg. Or (false, true)
+   hh. Or (fasle, false)
+   ii. And(true, not true)
+   jj. And(true, not false)
+   kk. And(true, not true)
+   ll. And(true, not false)
+   mm. Or (true, not true)
+   nn. Or (true, not false)
+   oo. Or (false, not true)
+   pp. Or (false, not false)
+   qq. And(null, false)
+   rr. And(null, true)
+   ss. Or(null, true)
+   tt. Or(null, false)
+3. Math
+   a. Addition with two numbers
+   b. Addition with var and number
+   c. addition with two vars
+   d. Subtraction with two numbers
+   e. Subtraction with one var and one number
+   f. Subtraction with two vars
+   g .Power with two numbers
+   h. Power with one var, one number
+   i. Power with two vars 
+   j. mod with two numbers
+   k. mod with one var, one number
+   l. mod with two vars
+   m. Square root with number
+   n. Square root with variable
+   o. Num is even
+   p. Var is even
+   q. Num is odd
+   r. Var is odd
+   s. Num is prime
+   t. Var is prime
+   u. Num is whole
+   v. var is whole
+   w. num is positive
+   x. var is positive
+   y. num is negative
+   z. var is positive
+  aa. num is divisible with num
+  bb. var is dividible with mun
+  cc. num is divisible with var
+  dd. var is dividible with var
+  ee. change with nume
+  ff. change with var
+  gg. round with num
+  hh. round with var
+  ii. random with 2 nums
+  jj. random with 1 num, 1 var
+  kk. random with 2 vars
+  ll. random fraction
