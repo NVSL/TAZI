@@ -54,7 +54,7 @@ def recurseParse(node, depth):
                 funcsFirst += ";\n" + recurseParse(child, depth)
 
         for child in node:
-            #if ((child.attrib).get("type") != None and (child.attrib["type"] == "main")):
+            if ((child.attrib).get("type") != None and (child.attrib["type"] == "main")):
                 overallResult += ";\n" + recurseParse(child, depth)
 
         return overallResult #funcsFirst + overallResult
@@ -64,12 +64,12 @@ def recurseParse(node, depth):
     elif tag == "next":
         return ";\n" + recurseParse(list(node)[0], depth)
     elif tag == "statement":
-        return recurseParseCheck(list(node), depth)
+        return recurseParse(list(node)[0], depth)
     elif tag == "shadow":
-        return recurseParseCheck(list(node)[0], depth)
+        return recurseParse(list(node)[0], depth)
         #return getField(list(node)[0])
     elif tag == "value":
-        return recurseParseCheck(list(node)[0], depth)
+        return recurseParse(list(node)[0], depth)
         #return getBlock(list(node)[0], depth)
     elif tag == "field":
         return getField(node)
@@ -330,8 +330,12 @@ def mathMetic(node,depth):
     if (len(list(node)) != 3):
         raise BlocklyError("Math block with operator '" + operator + "' requires 2 values to compute!")
         return ""
+    #valueA = recurseParse(list(list(node)[1])[-1],depth)
+    #valueB = recurseParse(list(list(node)[2])[-1],depth)
+
     valueA = recurseParse(list(list(node)[1])[-1],depth)
     valueB = recurseParse(list(list(node)[2])[-1],depth)
+
     if (operator == "pow"):
         return blockNext(node, depth, ("pow(" + valueA + ", " + valueB + ")"))
 
@@ -497,7 +501,7 @@ def ifRet(node, depth):
     return blockNext(node, depth, mainStr)
 
 def funcCheckGet(blockType, node, depth):
-    if ((list(node)[0]).tag == "next"):
+    if (len(list(node)) > 0 and (list(node)[0]).tag == "next"):
         return blockNext(node, depth, "")
     
     return funcGet[blockType](node, depth)
