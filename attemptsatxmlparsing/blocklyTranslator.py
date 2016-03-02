@@ -57,19 +57,19 @@ def recurseParse(node, depth):
             if ((child.attrib).get("type") != None and (child.attrib["type"] == "main")):
                 overallResult += ";\n" + recurseParse(child, depth)
 
-        return funcsFirst + overallResult
+        return overallResult #funcsFirst + overallResult
 
     elif tag == "block":
         return getBlock(node,depth)
     elif tag == "next":
         return ";\n" + recurseParse(list(node)[0], depth)
     elif tag == "statement":
-        return recurseParseCheck(list(node), depth)
+        return recurseParse(list(node)[0], depth)
     elif tag == "shadow":
-        return recurseParseCheck(list(node)[0], depth)
+        return recurseParse(list(node)[0], depth)
         #return getField(list(node)[0])
     elif tag == "value":
-        return recurseParseCheck(list(node)[0], depth)
+        return recurseParse(list(node)[0], depth)
         #return getBlock(list(node)[0], depth)
     elif tag == "field":
         return getField(node)
@@ -98,7 +98,7 @@ def getBlock(node,depth):
         return "void setup () {;\n" + recurseParseCheck(list(node), depth + 1) + ";\n};\n"
 
     if blockType in funcGet.keys():
-        return funcGet[blockType](node,depth)
+        return funcCheckGet(blockType, node, depth) #funcGet[blockType](node,depth)
 
     if (blockType == "math_number" or blockType == "variables_get"):
         return getField(list(node)[0])
@@ -108,6 +108,7 @@ def getBlock(node,depth):
 
     if (blockType == "math_constant"):
         return getConst(list(node)[0])
+
     if (blockType == "main"): 
         def refactorStatementToBlock( s ):
 	    s.tag = "block"
@@ -210,7 +211,7 @@ constDict = {
     "PI": "3.14159265358979323846"
 }
 def getConst(node):
-    return constDict[node.text]
+    return constDict[getField(node)]
 
 # Function Get dictionary
 
@@ -223,20 +224,27 @@ def setVar(node, depth):
         return ""
 
     #if((list(node)[1]).tag.split("}"))
+    varType = getType(list(list(node)[1])[0])
+
     if((list(list(node)[1])[0]).tag == "block"):
-        varType = getType((list(list(node)[1])[0]))
-        varValue = recurseParse(list(node)[1], 0)
+        varValue = recurseParse(list(list(node)[1])[0], 0)
     else:
-        varType = getType(list(list(node)[1])[0])
         varValue = getField(list(list(list(node)[1])[0])[0])
 
-    totString = varType + " " + varName + " = " + varValue + ";"
+    totString = varType + " " + varName + " = " + varValue# + ";"
     return blockNext(node, depth, totString)
 
 #if statement
 def ifBlock(node, depth):
     numElsIfs = 0
     numElses = 0
+    booleanPart = ""
+    statementPart = ""
+    ifBChild = 0
+
+    for child in node:
+        if(child.tag == "statement" or child.tag == "value"):
+            ifBChild += 1
 
     # First child is either boolean or contains extra piece info
     fchildNode = list(node)[0]
@@ -245,9 +253,16 @@ def ifBlock(node, depth):
             numElsIfs = int(fchildNode.attrib["elseif"])
         if (fchildNode.attrib.get("else") != None):
             numElses = 1
+
+        if (ifBChild < (2*(1 + numElsIfs) + numElses)):
+            raise BlocklyError("If-Statement requires a condition and statements!")
+
         booleanPart = getArgs(list(node)[1])
         statementPart = recurseParse(list(node)[2], depth+1)
     else:
+        if (ifBChild < 2):
+            raise BlocklyError("If-Statement requires a condition and statements!")
+
         booleanPart = getArgs(list(node)[0])
         statementPart = recurseParse(list(node)[1], depth+1)
 
@@ -315,8 +330,12 @@ def mathMetic(node,depth):
     if (len(list(node)) != 3):
         raise BlocklyError("Math block with operator '" + operator + "' requires 2 values to compute!")
         return ""
+    #valueA = recurseParse(list(list(node)[1])[-1],depth)
+    #valueB = recurseParse(list(list(node)[2])[-1],depth)
+
     valueA = recurseParse(list(list(node)[1])[-1],depth)
     valueB = recurseParse(list(list(node)[2])[-1],depth)
+
     if (operator == "pow"):
         return blockNext(node, depth, ("pow(" + valueA + ", " + valueB + ")"))
 
@@ -344,7 +363,7 @@ def whileUnt(node, depth):
     if (list(node)[0]).text == "UNTIL":
         retString += ")"
 
-    retString += ") {;\n"
+    retString += ") {\n"
 
     statement = recurseParse(list(node)[2], depth + 1)
 
@@ -455,6 +474,7 @@ def callMethod(node, depth):
     #check dictionary for params to pull
     call = methodName + "("
 
+    #PQ TODO FIX THIS
     if (madeFuncNames[methodName] > 0):
         for arg in list(node)[0]:
             argNums += 1
@@ -479,6 +499,12 @@ def ifRet(node, depth):
     mainStr += boolPart + ") {;\n" + funcRet + ";\n" + (spaces*depth) + "};\n"
 
     return blockNext(node, depth, mainStr)
+
+def funcCheckGet(blockType, node, depth):
+    if (len(list(node)) > 0 and (list(node)[0]).tag == "next"):
+        return blockNext(node, depth, "")
+    
+    return funcGet[blockType](node, depth)
 
 funcGet = {
     "variables_set": setVar,

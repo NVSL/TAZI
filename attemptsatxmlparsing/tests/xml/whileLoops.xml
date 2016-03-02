@@ -5,10 +5,10 @@
          <block type="controls_whileUntil">
             <field name="MODE">UNTIL</field>
             <value name="BOOL">
-               <block type="_MomentaryButton_isPressed" />
+               <block type="$MomentaryButton$isPressed" />
             </value>
             <statement name="DO">
-               <block type="_RGBLED_set">
+               <block type="$RGBLED$set">
                   <value name="red">
                      <block type="math_number">
                         <field name="NUM">43</field>
@@ -34,13 +34,13 @@
                                  <block type="logic_operation">
                                     <field name="OP">AND</field>
                                     <value name="A">
-                                       <block type="_MomentaryButton_wasPressed" />
+                                       <block type="$MomentaryButton$wasPressed" />
                                     </value>
                                     <value name="B">
                                        <block type="logic_compare">
                                           <field name="OP">LT</field>
                                           <value name="A">
-                                             <block type="_DistanceSensor_get_distance" />
+                                             <block type="$DistanceSensor$get_distance" />
                                           </value>
                                           <value name="B">
                                              <block type="math_number">
@@ -55,17 +55,17 @@
                                  <block type="logic_operation">
                                     <field name="OP">OR</field>
                                     <value name="A">
-                                       <block type="_MomentaryButton_wasReleased" />
+                                       <block type="$MomentaryButton$wasReleased" />
                                     </value>
                                     <value name="B">
-                                       <block type="_MomentaryButton_isReleased" />
+                                       <block type="$MomentaryButton$isReleased" />
                                     </value>
                                  </block>
                               </value>
                            </block>
                         </value>
                         <statement name="DO">
-                           <block type="_Buzzer_playNote">
+                           <block type="$Buzzer$playNote">
                               <value name="frequency">
                                  <block type="math_constant">
                                     <field name="CONSTANT">PI</field>
@@ -93,14 +93,14 @@
                                  </block>
                               </value>
                               <next>
-                                 <block type="_Motor_forward">
+                                 <block type="$Motor$forward">
                                     <value name="speed">
                                        <block type="math_number">
                                           <field name="NUM">255</field>
                                        </block>
                                     </value>
                                     <next>
-                                       <block type="_LEDArray_happyFace">
+                                       <block type="$LEDArray$happyFace">
                                           <next>
                                              <block type="delay">
                                                 <value name="NAME">
