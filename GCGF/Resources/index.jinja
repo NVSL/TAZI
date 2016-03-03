@@ -27,16 +27,7 @@
 	
 </head>
 <body>
-        <script>
-	    window.onload = function() { 
-		var xmlString = "<xml><block type=\"main\" x=\"88\" y=\"72\"></block><!--block type=\"main_loop\" x=\"333\" y=\"69\"></block--></xml>";
-		var workspace = Blockly.getMainWorkspace();
-		var xml = Blockly.Xml.textToDom(xmlString);     
-		console.log(workspace);
-		console.log(xml);       	
-		Blockly.Xml.domToWorkspace( workspace, xml);
-	    } ;
-	</script>
+    <script src="{{resDir}}BlocksIO.js"></script>
 	<div width="100%" height="100%">
 	
 	<div class = "outer", style="width:20%; height:10%; float:left;">
