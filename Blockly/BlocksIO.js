@@ -17,9 +17,11 @@ function readXMLFromFile(evt) {
         var r = new FileReader();
         r.onload = function (e) {
             var contents = e.target.result;
+            var workspace = Blockly.getMainWorkspace();
             console.log(contents);
+	    workspace.clear()
+            loadXML(contents);
         }
-        loadXML(contents);
         r.readAsText(f);
     } 
     else { alert("Failed to load file"); }

@@ -42,6 +42,7 @@ Blockly.Blocks['main'] = {
     this.setColour(105);
     this.setTooltip('Make sure you put all your blocks in here!');
     this.setHelpUrl('http://www.gadgetron.build/');
+    this.setDeletable(false)
   }
 };
 
