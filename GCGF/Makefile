@@ -3,10 +3,13 @@ RESOURCES = Resources
 OUTPUT = Output/
 
 GSPEC = HotlineBling
-APIGSPEC = RotorBuzzer
+APIGSPEC = Chase
+ARDUINO = /home/michael/Downloads/arduino-1.6.4/arduino
 
 GSPEC_FILE = $(GSPEC_DIR)$(GSPEC).gspec
 APIGSPEC_FILE = $(GSPEC_DIR)$(APIGSPEC).api.gspec
+GADGET_DIR = $(OUTPUT)$(APIGSPEC)
+GADGET_INO = $(GADGET_DIR)/$(APIGSPEC).ino
 
 CATALOG = $(GADGETRON_CATALOG)/Components.xml
 CATEGORIESXML = $(RESOURCES)/DefaultCategories.xml
@@ -23,7 +26,9 @@ json:
 testclang:
 	python ClangBindings.py clangtest.h 
 class:
-	python ClassGenerator.py -g $(APIGSPEC_FILE) > $(OUTPUT)$(APIGSPEC).cpp  
+	mkdir -p $(GADGET_DIR)
+	python ClassGenerator.py -g $(APIGSPEC_FILE) > $(GADGET_INO)
+	$(ARDUINO) --verify $(GADGET_INO)
 clean:
 	rm *.pyc
 display:
