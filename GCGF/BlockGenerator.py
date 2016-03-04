@@ -67,9 +67,15 @@ for component in library:
 	fp = 0
         blocksJSON[aClass.name] = []
 
+
+	# We want to verify that all our classes have a setup function
+	hasSetup = False
 	for func in aClass.functions:
+	    # Although we want to skip setup and the following functions for 
+	    # generating our json
 	    skippedFunctions = [ "setup", "update", "loop" ]
 	    if func.name in skippedFunctions:
+	        if func.name == "setup": hasSetup = True
 	        continue
 	    # Create a blockly json definition
 	    # The attributes passed here should be the same across all blockly json files
@@ -100,9 +106,7 @@ for component in library:
 	    
             blocksJSON[aClass.name].append(funcjson)
 
-        #hasSetup = printClassFunctions( aClass)
-        #if hasSetup is False:
-        #    raise Exception( aClass.name + " has no setup() method!")
+        if hasSetup is False: raise Exception( aClass.name + " has no setup() method!")
 
 
 print json.dumps(blocksJSON, indent = 4 )
