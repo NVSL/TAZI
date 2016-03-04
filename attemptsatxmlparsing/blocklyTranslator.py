@@ -112,6 +112,9 @@ def getBlock(node,depth):
     if (blockType == "math_constant"):
         return getConst(list(node)[0])
 
+    if (blockType == "logic_null"):
+        return "0"
+
     if (blockType == "main"): 
         def refactorStatementToBlock( s ):
 	    s.tag = "block"
