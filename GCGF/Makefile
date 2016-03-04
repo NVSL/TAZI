@@ -1,6 +1,13 @@
-GSPEC = Gspecs/Wall-E.gspec
-APIGSPEC = Gspecs/HotlineBling.api.gspec
+GSPEC_DIR = Gspecs/
 RESOURCES = Resources
+OUTPUT = Output/
+
+GSPEC = Wall-E
+APIGSPEC = Swag
+
+GSPEC_FILE = $(GSPEC_DIR)$(GSPEC).gspec
+APIGSPEC_FILE = $(GSPEC_DIR)$(APIGSPEC).api.gspec
+
 CATALOG = $(GADGETRON_CATALOG)/Components.xml
 CATEGORIESXML = $(RESOURCES)/DefaultCategories.xml
 BLOCKSJSON = $(RESOURCES)/Blocks.json
@@ -9,13 +16,13 @@ JINJAFILE = $(RESOURCES)/index.jinja
 ide:
 	cp IDEGenerator.py IDEGenerator/
 	cp GspecParser.py IDEGenerator/
-	python IDEGenerator.py -j $(BLOCKSJSON) -g $(GSPEC) -c $(CATALOG) -d $(CATEGORIESXML) -x $(JINJAFILE) > ../Blockly/index.html
+	python IDEGenerator.py -j $(BLOCKSJSON) -g $(GSPEC_FILE) -c $(CATALOG) -d $(CATEGORIESXML) -x $(JINJAFILE) > ../Blockly/index.html
 json:
 	python BlockGenerator.py -l ComponentsLibrary.xml > $(BLOCKSJSON)
 testclang:
 	python ClangBindings.py clangtest.h 
 class:
-	python ClassGenerator.py -g $(APIGSPEC) 
+	python ClassGenerator.py -g $(APIGSPEC_FILE) > $(OUTPUT)$(APIGSPEC).cpp  
 clean:
 	rm *.pyc
 display:

@@ -102,3 +102,6 @@ if __name__ == "__main__":
     print
     print createComment("Setup Function")
     print generator.getSetupFunction()
+    print
+    print createComment("Empty Loop Function")
+    print "void loop() {}"
