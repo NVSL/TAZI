@@ -6,7 +6,8 @@ GSPEC = HotlineBling
 APIGSPEC = Chase
 APIGSPECS = $(wildcard Gspecs/*.api.gspec)
 INOS = $(APIGSPECS:Gspecs/%.api.gspec=%.ino)
-ARDUINO = /home/michael/Downloads/arduino-1.6.4/arduino
+#ARDUINO = /home/michael/Downloads/arduino-1.6.4/arduino
+ARDUINO = arduino
 
 GSPEC_FILE = $(GSPEC_DIR)$(GSPEC).gspec
 APIGSPEC_FILE = $(GSPEC_DIR)$(APIGSPEC).api.gspec
@@ -18,6 +19,7 @@ CATEGORIESXML = $(RESOURCES)/DefaultCategories.xml
 BLACKLIST = $(RESOURCES)/BlackListedFunctions.xml
 BLOCKSJSON = $(RESOURCES)/Blocks.json
 JINJAFILE = $(RESOURCES)/index.jinja
+INOGENERATOR = InoGenerator.py
 .PRECIOUS: $(GSPEC_DIR)%.api.gspec
 
 ide:
@@ -31,7 +33,7 @@ testclang:
 inos: $(INOS)
 class:
 	mkdir -p $(GADGET_DIR)
-	python ClassGenerator.py -g $(APIGSPEC_FILE) > $(GADGET_INO)
+	python $(INOGENERATOR) -g $(APIGSPEC_FILE) > $(GADGET_INO)
 	$(ARDUINO) --verify $(GADGET_INO)
 clean:
 	rm *.pyc
@@ -39,7 +41,7 @@ display:
 	google-chrome ../Blockly/index.html
 %.ino : $(GSPEC_DIR)%.api.gspec
 	mkdir -p $(OUTPUT)$*
-	python ClassGenerator.py -g $< > $(OUTPUT)$*/$@
+	python $(INOGENERATOR) -g $< > $(OUTPUT)$*/$@
 	$(ARDUINO) --verify $(OUTPUT)$*/$@
 $(GSPEC_DIR)%.api.gspec : $(GSPEC_DIR)%.gspec
 	make -C $(GSPEC_DIR) $*.api.gspec
