@@ -3,10 +3,17 @@ __email__ = "mmg005@eng.ucsd.edu"
 
 import xml.etree.ElementTree as ETree
 import functools
-def createComment( comment, dash="-"):
+nl = "\n"
+def a( string ): return nl+string
+def createComment( comment, dash="-", l="/", r="/"):
     dashes = (40-len(comment)/2)*dash
     if len(comment) % 2 == 0: comment+=dash
-    return "/** " + dashes + "" + comment + "" + dashes + " **/" 
+    return l+"** " + dashes + "" + comment + "" + dashes + " **"+r 
+def createSectionHeader( comment ):
+    rv = createComment("", dash="=", r="\\")
+    rv += a(createComment(comment, l="|", r="|"))
+    rv += a(createComment("", dash="=", l="\\"))
+    return nl + rv + nl
 class Arg:
     def __init__(self, value, name):
         self.value = value
@@ -85,49 +92,26 @@ class ClassGenerator:
 	        self.objects.append( currentObj )
 	        self.libraries.append( node.attrib["include"])
     def getClass(self):
-	nl = "\n"
-        def a( string ): return nl+string
 	#def createComment( string ): return self.createComment(string)
-        rv = createComment(" Robot Name ", dash="#") 
-        rv += a(createComment("*"*len(self.name), dash="~"))
-        rv += a(createComment("*"*len(self.name), dash="~"))
-        rv += a(createComment(self.name, dash="="))
-        rv += a(createComment("*"*len(self.name), dash="~"))
-        rv += a(createComment("*"*len(self.name), dash="~"))
-        rv += a(createComment("{"*(len(self.name)/2) +"^_^"+ "}"*(len(self.name)/2), dash="#")) 
-        rv += nl
-        rv += nl
-        rv += nl
-        rv += nl
-        rv += a(createComment("", dash="="))
-        rv += a(createComment("Libraries"))
-        rv += a(createComment("", dash="="))
-        rv += nl
+        rv = createComment(" Robot Name ", dash="#", r="\\") 
+        rv += a(createComment("*"*len(self.name), dash="~", l="|", r="|"))
+        rv += a(createComment("/"+" "*(len(self.name))+"\\", dash="~", l="|", r="|"))
+        rv += a(createComment("{ "+self.name+" }", dash="=", l="|", r="|"))
+        rv += a(createComment("\\"+" "*(len(self.name))+"/", dash="~", l="|", r="|"))
+        rv += a(createComment("*"*len(self.name), dash="~", l="|", r="|"))
+        rv += a(createComment("["*(len(self.name)/2) +"^_^"+ "]"*(len(self.name)/2), dash="#", l="\\")) 
+        rv += nl * 2
+        rv += a(createSectionHeader("Libraries"))
         rv += a(self.getLibraries())
-        rv += a(createComment("", dash="="))
-        rv += a(createComment("Pin Constants"))
-        rv += a(createComment("", dash="="))
-        rv += nl
+        rv += a(createSectionHeader("Pin Constants"))
         for string in self.getConstants():
             rv += a(string)
-        rv += nl
-        rv += a(createComment("", dash="="))
-        rv += a(createComment("Object Declarations"))
-        rv += a(createComment("", dash="="))
-        rv += nl
+        rv += a(createSectionHeader("Object Declarations"))
         for string in self.getObjectDeclarations():
             rv += a(string)
-        rv += nl
-        rv += a(createComment("", dash="="))
-        rv += a(createComment("Setup Function"))
-        rv += a(createComment("", dash="="))
-        rv += nl
+        rv += a(createSectionHeader("Setup Function"))
         rv += a(self.getSetupFunction())
-        rv += nl
-        rv += a(createComment("", dash="="))
-        rv += a(createComment("Loop Function"))
-        rv += a(createComment("", dash="="))
-        rv += nl
+        rv += a(createSectionHeader("Loop Function"))
         rv += a(self.getLoopFunction())
 	return rv
 
