@@ -819,6 +819,75 @@
             "id": "setMax"
         }
     ], 
+    "RotaryEncoder": [
+        {
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "RotaryEncoder poll %1", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "poll"
+        }, 
+        {
+            "tooltip": "", 
+            "message0": "RotaryEncoder getCurrentPos %1", 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }
+            ], 
+            "output": null, 
+            "helpUrl": "gadgetron.build", 
+            "id": "getCurrentPos"
+        }, 
+        {
+            "nextStatement": null, 
+            "tooltip": "", 
+            "message0": "RotaryEncoder setMaxPos %1 with max %2", 
+            "previousStatement": null, 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }, 
+                {
+                    "type": "input_value", 
+                    "name": "max", 
+                    "check": "Number"
+                }
+            ], 
+            "helpUrl": "gadgetron.build", 
+            "id": "setMaxPos"
+        }, 
+        {
+            "tooltip": "", 
+            "message0": "RotaryEncoder isPressed %1", 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }
+            ], 
+            "output": null, 
+            "helpUrl": "gadgetron.build", 
+            "id": "isPressed"
+        }, 
+        {
+            "tooltip": "", 
+            "message0": "RotaryEncoder wasPressed %1", 
+            "args0": [
+                {
+                    "type": "input_dummy"
+                }
+            ], 
+            "output": null, 
+            "helpUrl": "gadgetron.build", 
+            "id": "wasPressed"
+        }
+    ], 
     "LEDArray": [
         {
             "nextStatement": null, 

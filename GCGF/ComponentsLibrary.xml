@@ -8,4 +8,5 @@
 	<component name="Distance Sensor" path="$GADGETRON_COMPONENT_LIB/analog_distance_sensor/lib/DistanceSensor.h"/>
 	<component name="Servo" path="$GADGETRON_COMPONENT_LIB/Servo/lib/ServoMotor.h"/>
 	<component name="Pincer" path="$GADGETRON_COMPONENT_LIB/micro-gripper/lib/Pincer.h"/>
+	<component name="RotaryEncoder" path="$GADGETRON_COMPONENT_LIB/Adafruit-rotary-encoder/lib/RotaryEncoder.h"/>
 </library>

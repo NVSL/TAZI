@@ -2,8 +2,8 @@ GSPEC_DIR = Gspecs/
 RESOURCES = Resources
 OUTPUT = Output/
 
-GSPEC = Wall-E
-APIGSPEC = Swag
+GSPEC = RotorBuzzer
+APIGSPEC = RotorBuzzer
 
 GSPEC_FILE = $(GSPEC_DIR)$(GSPEC).gspec
 APIGSPEC_FILE = $(GSPEC_DIR)$(APIGSPEC).api.gspec
