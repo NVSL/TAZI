@@ -5,8 +5,8 @@ import xml.etree.ElementTree as ETree
 import functools
 def createComment( comment, dash="-"):
     dashes = (40-len(comment)/2)*dash
-    if len(dashes) % 2 == 1: dashes+=dash
-    return "/** " + dashes + " " + comment + " " + dashes + " **/" 
+    if len(comment) % 2 == 0: comment+=dash
+    return "/** " + dashes + "" + comment + "" + dashes + " **/" 
 class Arg:
     def __init__(self, value, name):
         self.value = value
@@ -88,28 +88,46 @@ class ClassGenerator:
 	nl = "\n"
         def a( string ): return nl+string
 	#def createComment( string ): return self.createComment(string)
-        rv = createComment("Robot Name") 
-        rv += a(createComment("|"*len(self.name), dash="~"))
-        rv += a(createComment("|"*len(self.name), dash="~"))
+        rv = createComment(" Robot Name ", dash="#") 
+        rv += a(createComment("*"*len(self.name), dash="~"))
+        rv += a(createComment("*"*len(self.name), dash="~"))
         rv += a(createComment(self.name, dash="="))
-        rv += a(createComment("|"*len(self.name), dash="~"))
-        rv += a(createComment("|"*len(self.name), dash="~"))
-        rv += a(createComment("\\"*(len(self.name)/2) +"_"+ "/"*(len(self.name)/2))) 
+        rv += a(createComment("*"*len(self.name), dash="~"))
+        rv += a(createComment("*"*len(self.name), dash="~"))
+        rv += a(createComment("{"*(len(self.name)/2) +"^_^"+ "}"*(len(self.name)/2), dash="#")) 
         rv += nl
+        rv += nl
+        rv += nl
+        rv += nl
+        rv += a(createComment("", dash="="))
         rv += a(createComment("Libraries"))
+        rv += a(createComment("", dash="="))
+        rv += nl
         rv += a(self.getLibraries())
+        rv += a(createComment("", dash="="))
         rv += a(createComment("Pin Constants"))
+        rv += a(createComment("", dash="="))
+        rv += nl
         for string in self.getConstants():
             rv += a(string)
         rv += nl
+        rv += a(createComment("", dash="="))
         rv += a(createComment("Object Declarations"))
+        rv += a(createComment("", dash="="))
+        rv += nl
         for string in self.getObjectDeclarations():
             rv += a(string)
         rv += nl
+        rv += a(createComment("", dash="="))
         rv += a(createComment("Setup Function"))
+        rv += a(createComment("", dash="="))
+        rv += nl
         rv += a(self.getSetupFunction())
         rv += nl
+        rv += a(createComment("", dash="="))
         rv += a(createComment("Loop Function"))
+        rv += a(createComment("", dash="="))
+        rv += nl
         rv += a(self.getLoopFunction())
 	return rv
 
