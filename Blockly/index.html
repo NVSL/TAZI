@@ -6,108 +6,84 @@
 	<script src="msg/js/en.js"></script>
 	<script type="text/javascript">
 	
-		var $servomotor1$rotate$0 = {"colour": "51", "nextStatement": null, "tooltip": "", "message0": "ServoMotor1 rotate %1 with degrees %2", "previousStatement": null, "args0": [{"type": "input_dummy"}, {"type": "input_value", "name": "degrees", "check": "Number"}], "helpUrl": "gadgetron.build", "id": "$servomotor1$rotate"};
+		var $distancesensor1$get_distance$0 = {"colour": "45", "tooltip": "", "message0": "DistanceSensor 1 get distance %1", "args0": [{"type": "input_dummy"}], "output": null, "helpUrl": "gadgetron.build", "id": "$distancesensor1$get_distance"};
 	
-		var $distancesensor1$get_distance$0 = {"colour": "102", "tooltip": "", "message0": "DistanceSensor1 get_distance %1", "args0": [{"type": "input_dummy"}], "output": null, "helpUrl": "gadgetron.build", "id": "$distancesensor1$get_distance"};
+		var $distancesensor2$get_distance$0 = {"colour": "90", "tooltip": "", "message0": "DistanceSensor 2 get distance %1", "args0": [{"type": "input_dummy"}], "output": null, "helpUrl": "gadgetron.build", "id": "$distancesensor2$get_distance"};
 	
-		var $led1$blink$0 = {"colour": "154", "nextStatement": null, "tooltip": "", "message0": "LED1 blink %1 with on %2 with off %3", "previousStatement": null, "args0": [{"type": "input_dummy"}, {"type": "input_value", "name": "on", "check": "Number"}, {"type": "input_value", "name": "off", "check": "Number"}], "helpUrl": "gadgetron.build", "id": "$led1$blink"};
+		var $led1$toggle$0 = {"colour": "135", "nextStatement": null, "tooltip": "", "message0": "LED 1 toggle %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "$led1$toggle"};
 	
-		var $led1$blink$1 = {"colour": "154", "nextStatement": null, "tooltip": "", "message0": "LED1 blink %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "$led1$blink"};
+		var $led1$turnOn$1 = {"colour": "135", "nextStatement": null, "tooltip": "", "message0": "LED 1 turn on %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "$led1$turnOn"};
 	
-		var $led1$isBlinking$2 = {"colour": "154", "tooltip": "", "message0": "LED1 isBlinking %1", "args0": [{"type": "input_dummy"}], "output": null, "helpUrl": "gadgetron.build", "id": "$led1$isBlinking"};
+		var $led1$turnOff$2 = {"colour": "135", "nextStatement": null, "tooltip": "", "message0": "LED 1 turn off %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "$led1$turnOff"};
 	
-		var $led1$toggle$3 = {"colour": "154", "nextStatement": null, "tooltip": "", "message0": "LED1 toggle %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "$led1$toggle"};
+		var $led2$toggle$0 = {"colour": "180", "nextStatement": null, "tooltip": "", "message0": "LED 2 toggle %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "$led2$toggle"};
 	
-		var $led1$turnOn$4 = {"colour": "154", "nextStatement": null, "tooltip": "", "message0": "LED1 turnOn %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "$led1$turnOn"};
+		var $led2$turnOn$1 = {"colour": "180", "nextStatement": null, "tooltip": "", "message0": "LED 2 turn on %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "$led2$turnOn"};
 	
-		var $led1$turnOff$5 = {"colour": "154", "nextStatement": null, "tooltip": "", "message0": "LED1 turnOff %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "$led1$turnOff"};
+		var $led2$turnOff$2 = {"colour": "180", "nextStatement": null, "tooltip": "", "message0": "LED 2 turn off %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "$led2$turnOff"};
 	
-		var $led2$blink$0 = {"colour": "205", "nextStatement": null, "tooltip": "", "message0": "LED2 blink %1 with on %2 with off %3", "previousStatement": null, "args0": [{"type": "input_dummy"}, {"type": "input_value", "name": "on", "check": "Number"}, {"type": "input_value", "name": "off", "check": "Number"}], "helpUrl": "gadgetron.build", "id": "$led2$blink"};
+		var $led3$toggle$0 = {"colour": "225", "nextStatement": null, "tooltip": "", "message0": "LED 3 toggle %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "$led3$toggle"};
 	
-		var $led2$blink$1 = {"colour": "205", "nextStatement": null, "tooltip": "", "message0": "LED2 blink %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "$led2$blink"};
+		var $led3$turnOn$1 = {"colour": "225", "nextStatement": null, "tooltip": "", "message0": "LED 3 turn on %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "$led3$turnOn"};
 	
-		var $led2$isBlinking$2 = {"colour": "205", "tooltip": "", "message0": "LED2 isBlinking %1", "args0": [{"type": "input_dummy"}], "output": null, "helpUrl": "gadgetron.build", "id": "$led2$isBlinking"};
+		var $led3$turnOff$2 = {"colour": "225", "nextStatement": null, "tooltip": "", "message0": "LED 3 turn off %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "$led3$turnOff"};
 	
-		var $led2$toggle$3 = {"colour": "205", "nextStatement": null, "tooltip": "", "message0": "LED2 toggle %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "$led2$toggle"};
+		var $motor1$forward$0 = {"colour": "270", "nextStatement": null, "tooltip": "", "message0": "Motor 1 forward %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "$motor1$forward"};
 	
-		var $led2$turnOn$4 = {"colour": "205", "nextStatement": null, "tooltip": "", "message0": "LED2 turnOn %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "$led2$turnOn"};
+		var $motor1$forward$1 = {"colour": "270", "nextStatement": null, "tooltip": "", "message0": "Motor 1 forward %1 with speed %2", "previousStatement": null, "args0": [{"type": "input_dummy"}, {"type": "input_value", "name": "speed", "check": "Number"}], "helpUrl": "gadgetron.build", "id": "$motor1$forward"};
 	
-		var $led2$turnOff$5 = {"colour": "205", "nextStatement": null, "tooltip": "", "message0": "LED2 turnOff %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "$led2$turnOff"};
+		var $motor1$backward$2 = {"colour": "270", "nextStatement": null, "tooltip": "", "message0": "Motor 1 backward %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "$motor1$backward"};
 	
-		var $led3$blink$0 = {"colour": "257", "nextStatement": null, "tooltip": "", "message0": "LED3 blink %1 with on %2 with off %3", "previousStatement": null, "args0": [{"type": "input_dummy"}, {"type": "input_value", "name": "on", "check": "Number"}, {"type": "input_value", "name": "off", "check": "Number"}], "helpUrl": "gadgetron.build", "id": "$led3$blink"};
+		var $motor1$backward$3 = {"colour": "270", "nextStatement": null, "tooltip": "", "message0": "Motor 1 backward %1 with speed %2", "previousStatement": null, "args0": [{"type": "input_dummy"}, {"type": "input_value", "name": "speed", "check": "Number"}], "helpUrl": "gadgetron.build", "id": "$motor1$backward"};
 	
-		var $led3$blink$1 = {"colour": "257", "nextStatement": null, "tooltip": "", "message0": "LED3 blink %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "$led3$blink"};
+		var $motor1$spinLeft$4 = {"colour": "270", "nextStatement": null, "tooltip": "", "message0": "Motor 1 spin left %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "$motor1$spinLeft"};
 	
-		var $led3$isBlinking$2 = {"colour": "257", "tooltip": "", "message0": "LED3 isBlinking %1", "args0": [{"type": "input_dummy"}], "output": null, "helpUrl": "gadgetron.build", "id": "$led3$isBlinking"};
+		var $motor1$spinLeft$5 = {"colour": "270", "nextStatement": null, "tooltip": "", "message0": "Motor 1 spin left %1 with speed %2", "previousStatement": null, "args0": [{"type": "input_dummy"}, {"type": "input_value", "name": "speed", "check": "Number"}], "helpUrl": "gadgetron.build", "id": "$motor1$spinLeft"};
 	
-		var $led3$toggle$3 = {"colour": "257", "nextStatement": null, "tooltip": "", "message0": "LED3 toggle %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "$led3$toggle"};
+		var $motor1$spinRight$6 = {"colour": "270", "nextStatement": null, "tooltip": "", "message0": "Motor 1 spin right %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "$motor1$spinRight"};
 	
-		var $led3$turnOn$4 = {"colour": "257", "nextStatement": null, "tooltip": "", "message0": "LED3 turnOn %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "$led3$turnOn"};
+		var $motor1$spinRight$7 = {"colour": "270", "nextStatement": null, "tooltip": "", "message0": "Motor 1 spin right %1 with speed %2", "previousStatement": null, "args0": [{"type": "input_dummy"}, {"type": "input_value", "name": "speed", "check": "Number"}], "helpUrl": "gadgetron.build", "id": "$motor1$spinRight"};
 	
-		var $led3$turnOff$5 = {"colour": "257", "nextStatement": null, "tooltip": "", "message0": "LED3 turnOff %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "$led3$turnOff"};
+		var $motor1$forwardAndRight$8 = {"colour": "270", "nextStatement": null, "tooltip": "", "message0": "Motor 1 forward and right %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "$motor1$forwardAndRight"};
 	
-		var $motor1$forward$0 = {"colour": "308", "nextStatement": null, "tooltip": "", "message0": "Motor1 forward %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "$motor1$forward"};
+		var $motor1$forwardAndRight$9 = {"colour": "270", "nextStatement": null, "tooltip": "", "message0": "Motor 1 forward and right %1 with speed %2", "previousStatement": null, "args0": [{"type": "input_dummy"}, {"type": "input_value", "name": "speed", "check": "Number"}], "helpUrl": "gadgetron.build", "id": "$motor1$forwardAndRight"};
 	
-		var $motor1$forward$1 = {"colour": "308", "nextStatement": null, "tooltip": "", "message0": "Motor1 forward %1 with speed %2", "previousStatement": null, "args0": [{"type": "input_dummy"}, {"type": "input_value", "name": "speed", "check": "Number"}], "helpUrl": "gadgetron.build", "id": "$motor1$forward"};
+		var $motor1$forwardAndLeft$10 = {"colour": "270", "nextStatement": null, "tooltip": "", "message0": "Motor 1 forward and left %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "$motor1$forwardAndLeft"};
 	
-		var $motor1$backward$2 = {"colour": "308", "nextStatement": null, "tooltip": "", "message0": "Motor1 backward %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "$motor1$backward"};
+		var $motor1$forwardAndLeft$11 = {"colour": "270", "nextStatement": null, "tooltip": "", "message0": "Motor 1 forward and left %1 with speed %2", "previousStatement": null, "args0": [{"type": "input_dummy"}, {"type": "input_value", "name": "speed", "check": "Number"}], "helpUrl": "gadgetron.build", "id": "$motor1$forwardAndLeft"};
 	
-		var $motor1$backward$3 = {"colour": "308", "nextStatement": null, "tooltip": "", "message0": "Motor1 backward %1 with speed %2", "previousStatement": null, "args0": [{"type": "input_dummy"}, {"type": "input_value", "name": "speed", "check": "Number"}], "helpUrl": "gadgetron.build", "id": "$motor1$backward"};
+		var $motor1$stop$12 = {"colour": "270", "nextStatement": null, "tooltip": "", "message0": "Motor 1 stop %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "$motor1$stop"};
 	
-		var $motor1$spinLeft$4 = {"colour": "308", "nextStatement": null, "tooltip": "", "message0": "Motor1 spinLeft %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "$motor1$spinLeft"};
+		var $motor1$brake$13 = {"colour": "270", "nextStatement": null, "tooltip": "", "message0": "Motor 1 brake %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "$motor1$brake"};
 	
-		var $motor1$spinLeft$5 = {"colour": "308", "nextStatement": null, "tooltip": "", "message0": "Motor1 spinLeft %1 with speed %2", "previousStatement": null, "args0": [{"type": "input_dummy"}, {"type": "input_value", "name": "speed", "check": "Number"}], "helpUrl": "gadgetron.build", "id": "$motor1$spinLeft"};
+		var $motor1$isMoving$14 = {"colour": "270", "tooltip": "", "message0": "Motor 1 is moving %1", "args0": [{"type": "input_dummy"}], "output": null, "helpUrl": "gadgetron.build", "id": "$motor1$isMoving"};
 	
-		var $motor1$spinRight$6 = {"colour": "308", "nextStatement": null, "tooltip": "", "message0": "Motor1 spinRight %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "$motor1$spinRight"};
+		var $motor1$swapDirections$15 = {"colour": "270", "nextStatement": null, "tooltip": "", "message0": "Motor 1 swap directions %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "$motor1$swapDirections"};
 	
-		var $motor1$spinRight$7 = {"colour": "308", "nextStatement": null, "tooltip": "", "message0": "Motor1 spinRight %1 with speed %2", "previousStatement": null, "args0": [{"type": "input_dummy"}, {"type": "input_value", "name": "speed", "check": "Number"}], "helpUrl": "gadgetron.build", "id": "$motor1$spinRight"};
+		var $motor1$changePolarity$16 = {"colour": "270", "nextStatement": null, "tooltip": "", "message0": "Motor 1 change polarity %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "$motor1$changePolarity"};
 	
-		var $motor1$forwardAndRight$8 = {"colour": "308", "nextStatement": null, "tooltip": "", "message0": "Motor1 forwardAndRight %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "$motor1$forwardAndRight"};
+		var $motor1$disable$17 = {"colour": "270", "nextStatement": null, "tooltip": "", "message0": "Motor 1 disable %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "$motor1$disable"};
 	
-		var $motor1$forwardAndRight$9 = {"colour": "308", "nextStatement": null, "tooltip": "", "message0": "Motor1 forwardAndRight %1 with speed %2", "previousStatement": null, "args0": [{"type": "input_dummy"}, {"type": "input_value", "name": "speed", "check": "Number"}], "helpUrl": "gadgetron.build", "id": "$motor1$forwardAndRight"};
+		var $momentarybutton1$waitUntilPressed$0 = {"colour": "315", "nextStatement": null, "tooltip": "", "message0": "MomentaryButton 1 wait until pressed %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "$momentarybutton1$waitUntilPressed"};
 	
-		var $motor1$forwardAndLeft$10 = {"colour": "308", "nextStatement": null, "tooltip": "", "message0": "Motor1 forwardAndLeft %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "$motor1$forwardAndLeft"};
+		var $momentarybutton1$isPressed$1 = {"colour": "315", "tooltip": "", "message0": "MomentaryButton 1 is pressed %1", "args0": [{"type": "input_dummy"}], "output": null, "helpUrl": "gadgetron.build", "id": "$momentarybutton1$isPressed"};
 	
-		var $motor1$forwardAndLeft$11 = {"colour": "308", "nextStatement": null, "tooltip": "", "message0": "Motor1 forwardAndLeft %1 with speed %2", "previousStatement": null, "args0": [{"type": "input_dummy"}, {"type": "input_value", "name": "speed", "check": "Number"}], "helpUrl": "gadgetron.build", "id": "$motor1$forwardAndLeft"};
+		var $momentarybutton1$isReleased$2 = {"colour": "315", "tooltip": "", "message0": "MomentaryButton 1 is released %1", "args0": [{"type": "input_dummy"}], "output": null, "helpUrl": "gadgetron.build", "id": "$momentarybutton1$isReleased"};
 	
-		var $motor1$stop$12 = {"colour": "308", "nextStatement": null, "tooltip": "", "message0": "Motor1 stop %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "$motor1$stop"};
+		var $momentarybutton1$wasPressed$3 = {"colour": "315", "tooltip": "", "message0": "MomentaryButton 1 was pressed %1", "args0": [{"type": "input_dummy"}], "output": null, "helpUrl": "gadgetron.build", "id": "$momentarybutton1$wasPressed"};
 	
-		var $motor1$brake$13 = {"colour": "308", "nextStatement": null, "tooltip": "", "message0": "Motor1 brake %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "$motor1$brake"};
+		var $momentarybutton1$wasReleased$4 = {"colour": "315", "tooltip": "", "message0": "MomentaryButton 1 was released %1", "args0": [{"type": "input_dummy"}], "output": null, "helpUrl": "gadgetron.build", "id": "$momentarybutton1$wasReleased"};
 	
-		var $motor1$isMoving$14 = {"colour": "308", "tooltip": "", "message0": "Motor1 isMoving %1", "args0": [{"type": "input_dummy"}], "output": null, "helpUrl": "gadgetron.build", "id": "$motor1$isMoving"};
+		var $momentarybutton2$waitUntilPressed$0 = {"colour": "360", "nextStatement": null, "tooltip": "", "message0": "MomentaryButton 2 wait until pressed %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "$momentarybutton2$waitUntilPressed"};
 	
-		var $motor1$swapDirections$15 = {"colour": "308", "nextStatement": null, "tooltip": "", "message0": "Motor1 swapDirections %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "$motor1$swapDirections"};
+		var $momentarybutton2$isPressed$1 = {"colour": "360", "tooltip": "", "message0": "MomentaryButton 2 is pressed %1", "args0": [{"type": "input_dummy"}], "output": null, "helpUrl": "gadgetron.build", "id": "$momentarybutton2$isPressed"};
 	
-		var $motor1$changePolarity$16 = {"colour": "308", "nextStatement": null, "tooltip": "", "message0": "Motor1 changePolarity %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "$motor1$changePolarity"};
+		var $momentarybutton2$isReleased$2 = {"colour": "360", "tooltip": "", "message0": "MomentaryButton 2 is released %1", "args0": [{"type": "input_dummy"}], "output": null, "helpUrl": "gadgetron.build", "id": "$momentarybutton2$isReleased"};
 	
-		var $motor1$disable$17 = {"colour": "308", "nextStatement": null, "tooltip": "", "message0": "Motor1 disable %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "$motor1$disable"};
+		var $momentarybutton2$wasPressed$3 = {"colour": "360", "tooltip": "", "message0": "MomentaryButton 2 was pressed %1", "args0": [{"type": "input_dummy"}], "output": null, "helpUrl": "gadgetron.build", "id": "$momentarybutton2$wasPressed"};
 	
-		var $momentarybutton1$waitForPress$0 = {"colour": "360", "nextStatement": null, "tooltip": "", "message0": "MomentaryButton1 waitForPress %1", "previousStatement": null, "args0": [{"type": "input_dummy"}], "helpUrl": "gadgetron.build", "id": "$momentarybutton1$waitForPress"};
+		var $momentarybutton2$wasReleased$4 = {"colour": "360", "tooltip": "", "message0": "MomentaryButton 2 was released %1", "args0": [{"type": "input_dummy"}], "output": null, "helpUrl": "gadgetron.build", "id": "$momentarybutton2$wasReleased"};
 	
-		var $momentarybutton1$read$1 = {"colour": "360", "tooltip": "", "message0": "MomentaryButton1 read %1", "args0": [{"type": "input_dummy"}], "output": null, "helpUrl": "gadgetron.build", "id": "$momentarybutton1$read"};
-	
-		var $momentarybutton1$isPressed$2 = {"colour": "360", "tooltip": "", "message0": "MomentaryButton1 isPressed %1", "args0": [{"type": "input_dummy"}], "output": null, "helpUrl": "gadgetron.build", "id": "$momentarybutton1$isPressed"};
-	
-		var $momentarybutton1$isReleased$3 = {"colour": "360", "tooltip": "", "message0": "MomentaryButton1 isReleased %1", "args0": [{"type": "input_dummy"}], "output": null, "helpUrl": "gadgetron.build", "id": "$momentarybutton1$isReleased"};
-	
-		var $momentarybutton1$wasPressed$4 = {"colour": "360", "tooltip": "", "message0": "MomentaryButton1 wasPressed %1", "args0": [{"type": "input_dummy"}], "output": null, "helpUrl": "gadgetron.build", "id": "$momentarybutton1$wasPressed"};
-	
-		var $momentarybutton1$wasReleased$5 = {"colour": "360", "tooltip": "", "message0": "MomentaryButton1 wasReleased %1", "args0": [{"type": "input_dummy"}], "output": null, "helpUrl": "gadgetron.build", "id": "$momentarybutton1$wasReleased"};
-	
-		var $momentarybutton1$pressedFor$6 = {"colour": "360", "tooltip": "", "message0": "MomentaryButton1 pressedFor %1", "args0": [{"type": "input_dummy"}], "output": null, "helpUrl": "gadgetron.build", "id": "$momentarybutton1$pressedFor"};
-	
-		var $momentarybutton1$releasedFor$7 = {"colour": "360", "tooltip": "", "message0": "MomentaryButton1 releasedFor %1", "args0": [{"type": "input_dummy"}], "output": null, "helpUrl": "gadgetron.build", "id": "$momentarybutton1$releasedFor"};
-	
-		var $momentarybutton1$lastChange$8 = {"colour": "360", "tooltip": "", "message0": "MomentaryButton1 lastChange %1", "args0": [{"type": "input_dummy"}], "output": null, "helpUrl": "gadgetron.build", "id": "$momentarybutton1$lastChange"};
-	
-		var $momentarybutton1$setDB$9 = {"colour": "360", "nextStatement": null, "tooltip": "", "message0": "MomentaryButton1 setDB %1 with ms %2", "previousStatement": null, "args0": [{"type": "input_dummy"}, {"type": "input_value", "name": "ms", "check": "Number"}], "helpUrl": "gadgetron.build", "id": "$momentarybutton1$setDB"};
-	
-	
-		Blockly.Blocks['$servomotor1$rotate$0'] = {
-		init: function() {
-			this.jsonInit($servomotor1$rotate$0);
-		}
-	};
 	
 		Blockly.Blocks['$distancesensor1$get_distance$0'] = {
 		init: function() {
@@ -115,111 +91,63 @@
 		}
 	};
 	
-		Blockly.Blocks['$led1$blink$0'] = {
+		Blockly.Blocks['$distancesensor2$get_distance$0'] = {
 		init: function() {
-			this.jsonInit($led1$blink$0);
+			this.jsonInit($distancesensor2$get_distance$0);
 		}
 	};
 	
-		Blockly.Blocks['$led1$blink$1'] = {
+		Blockly.Blocks['$led1$toggle$0'] = {
 		init: function() {
-			this.jsonInit($led1$blink$1);
+			this.jsonInit($led1$toggle$0);
 		}
 	};
 	
-		Blockly.Blocks['$led1$isBlinking$2'] = {
+		Blockly.Blocks['$led1$turnOn$1'] = {
 		init: function() {
-			this.jsonInit($led1$isBlinking$2);
+			this.jsonInit($led1$turnOn$1);
 		}
 	};
 	
-		Blockly.Blocks['$led1$toggle$3'] = {
+		Blockly.Blocks['$led1$turnOff$2'] = {
 		init: function() {
-			this.jsonInit($led1$toggle$3);
+			this.jsonInit($led1$turnOff$2);
 		}
 	};
 	
-		Blockly.Blocks['$led1$turnOn$4'] = {
+		Blockly.Blocks['$led2$toggle$0'] = {
 		init: function() {
-			this.jsonInit($led1$turnOn$4);
+			this.jsonInit($led2$toggle$0);
 		}
 	};
 	
-		Blockly.Blocks['$led1$turnOff$5'] = {
+		Blockly.Blocks['$led2$turnOn$1'] = {
 		init: function() {
-			this.jsonInit($led1$turnOff$5);
+			this.jsonInit($led2$turnOn$1);
 		}
 	};
 	
-		Blockly.Blocks['$led2$blink$0'] = {
+		Blockly.Blocks['$led2$turnOff$2'] = {
 		init: function() {
-			this.jsonInit($led2$blink$0);
+			this.jsonInit($led2$turnOff$2);
 		}
 	};
 	
-		Blockly.Blocks['$led2$blink$1'] = {
+		Blockly.Blocks['$led3$toggle$0'] = {
 		init: function() {
-			this.jsonInit($led2$blink$1);
+			this.jsonInit($led3$toggle$0);
 		}
 	};
 	
-		Blockly.Blocks['$led2$isBlinking$2'] = {
+		Blockly.Blocks['$led3$turnOn$1'] = {
 		init: function() {
-			this.jsonInit($led2$isBlinking$2);
+			this.jsonInit($led3$turnOn$1);
 		}
 	};
 	
-		Blockly.Blocks['$led2$toggle$3'] = {
+		Blockly.Blocks['$led3$turnOff$2'] = {
 		init: function() {
-			this.jsonInit($led2$toggle$3);
-		}
-	};
-	
-		Blockly.Blocks['$led2$turnOn$4'] = {
-		init: function() {
-			this.jsonInit($led2$turnOn$4);
-		}
-	};
-	
-		Blockly.Blocks['$led2$turnOff$5'] = {
-		init: function() {
-			this.jsonInit($led2$turnOff$5);
-		}
-	};
-	
-		Blockly.Blocks['$led3$blink$0'] = {
-		init: function() {
-			this.jsonInit($led3$blink$0);
-		}
-	};
-	
-		Blockly.Blocks['$led3$blink$1'] = {
-		init: function() {
-			this.jsonInit($led3$blink$1);
-		}
-	};
-	
-		Blockly.Blocks['$led3$isBlinking$2'] = {
-		init: function() {
-			this.jsonInit($led3$isBlinking$2);
-		}
-	};
-	
-		Blockly.Blocks['$led3$toggle$3'] = {
-		init: function() {
-			this.jsonInit($led3$toggle$3);
-		}
-	};
-	
-		Blockly.Blocks['$led3$turnOn$4'] = {
-		init: function() {
-			this.jsonInit($led3$turnOn$4);
-		}
-	};
-	
-		Blockly.Blocks['$led3$turnOff$5'] = {
-		init: function() {
-			this.jsonInit($led3$turnOff$5);
+			this.jsonInit($led3$turnOff$2);
 		}
 	};
 	
@@ -331,63 +259,63 @@
 		}
 	};
 	
-		Blockly.Blocks['$momentarybutton1$waitForPress$0'] = {
+		Blockly.Blocks['$momentarybutton1$waitUntilPressed$0'] = {
 		init: function() {
-			this.jsonInit($momentarybutton1$waitForPress$0);
+			this.jsonInit($momentarybutton1$waitUntilPressed$0);
 		}
 	};
 	
-		Blockly.Blocks['$momentarybutton1$read$1'] = {
+		Blockly.Blocks['$momentarybutton1$isPressed$1'] = {
 		init: function() {
-			this.jsonInit($momentarybutton1$read$1);
+			this.jsonInit($momentarybutton1$isPressed$1);
 		}
 	};
 	
-		Blockly.Blocks['$momentarybutton1$isPressed$2'] = {
+		Blockly.Blocks['$momentarybutton1$isReleased$2'] = {
 		init: function() {
-			this.jsonInit($momentarybutton1$isPressed$2);
+			this.jsonInit($momentarybutton1$isReleased$2);
 		}
 	};
 	
-		Blockly.Blocks['$momentarybutton1$isReleased$3'] = {
+		Blockly.Blocks['$momentarybutton1$wasPressed$3'] = {
 		init: function() {
-			this.jsonInit($momentarybutton1$isReleased$3);
+			this.jsonInit($momentarybutton1$wasPressed$3);
 		}
 	};
 	
-		Blockly.Blocks['$momentarybutton1$wasPressed$4'] = {
+		Blockly.Blocks['$momentarybutton1$wasReleased$4'] = {
 		init: function() {
-			this.jsonInit($momentarybutton1$wasPressed$4);
+			this.jsonInit($momentarybutton1$wasReleased$4);
 		}
 	};
 	
-		Blockly.Blocks['$momentarybutton1$wasReleased$5'] = {
+		Blockly.Blocks['$momentarybutton2$waitUntilPressed$0'] = {
 		init: function() {
-			this.jsonInit($momentarybutton1$wasReleased$5);
+			this.jsonInit($momentarybutton2$waitUntilPressed$0);
 		}
 	};
 	
-		Blockly.Blocks['$momentarybutton1$pressedFor$6'] = {
+		Blockly.Blocks['$momentarybutton2$isPressed$1'] = {
 		init: function() {
-			this.jsonInit($momentarybutton1$pressedFor$6);
+			this.jsonInit($momentarybutton2$isPressed$1);
 		}
 	};
 	
-		Blockly.Blocks['$momentarybutton1$releasedFor$7'] = {
+		Blockly.Blocks['$momentarybutton2$isReleased$2'] = {
 		init: function() {
-			this.jsonInit($momentarybutton1$releasedFor$7);
+			this.jsonInit($momentarybutton2$isReleased$2);
 		}
 	};
 	
-		Blockly.Blocks['$momentarybutton1$lastChange$8'] = {
+		Blockly.Blocks['$momentarybutton2$wasPressed$3'] = {
 		init: function() {
-			this.jsonInit($momentarybutton1$lastChange$8);
+			this.jsonInit($momentarybutton2$wasPressed$3);
 		}
 	};
 	
-		Blockly.Blocks['$momentarybutton1$setDB$9'] = {
+		Blockly.Blocks['$momentarybutton2$wasReleased$4'] = {
 		init: function() {
-			this.jsonInit($momentarybutton1$setDB$9);
+			this.jsonInit($momentarybutton2$wasReleased$4);
 		}
 	};
 	
@@ -483,27 +411,7 @@
       </block>
       
       <block type="math_constant"> </block>
-      <block type="math_number_property">
-        <value name="NUMBER_TO_CHECK">
-          <shadow type="math_number">
-            <field name="NUM">0</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="math_change">
-        <value name="DELTA">
-          <shadow type="math_number">
-            <field name="NUM">1</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="math_round">
-        <value name="NUM">
-          <shadow type="math_number">
-            <field name="NUM">3.1</field>
-          </shadow>
-        </value>
-      </block>
+      
       
       <block type="math_modulo">
         <value name="DIVIDEND">
@@ -613,7 +521,7 @@
 
   
   <sep> </sep>
-<category colour="51" name="ServoMotor 1"><block type="$servomotor1$rotate$0"> </block></category><category colour="102" name="DistanceSensor 1"><block type="$distancesensor1$get_distance$0"> </block></category><category colour="154" name="LED 1"><block type="$led1$blink$0"> </block><block type="$led1$blink$1"> </block><block type="$led1$isBlinking$2"> </block><block type="$led1$toggle$3"> </block><block type="$led1$turnOn$4"> </block><block type="$led1$turnOff$5"> </block></category><category colour="205" name="LED 2"><block type="$led2$blink$0"> </block><block type="$led2$blink$1"> </block><block type="$led2$isBlinking$2"> </block><block type="$led2$toggle$3"> </block><block type="$led2$turnOn$4"> </block><block type="$led2$turnOff$5"> </block></category><category colour="257" name="LED 3"><block type="$led3$blink$0"> </block><block type="$led3$blink$1"> </block><block type="$led3$isBlinking$2"> </block><block type="$led3$toggle$3"> </block><block type="$led3$turnOn$4"> </block><block type="$led3$turnOff$5"> </block></category><category colour="308" name="Motor 1"><block type="$motor1$forward$0"> </block><block type="$motor1$forward$1"> </block><block type="$motor1$backward$2"> </block><block type="$motor1$backward$3"> </block><block type="$motor1$spinLeft$4"> </block><block type="$motor1$spinLeft$5"> </block><block type="$motor1$spinRight$6"> </block><block type="$motor1$spinRight$7"> </block><block type="$motor1$forwardAndRight$8"> </block><block type="$motor1$forwardAndRight$9"> </block><block type="$motor1$forwardAndLeft$10"> </block><block type="$motor1$forwardAndLeft$11"> </block><block type="$motor1$stop$12"> </block><block type="$motor1$brake$13"> </block><block type="$motor1$isMoving$14"> </block><block type="$motor1$swapDirections$15"> </block><block type="$motor1$changePolarity$16"> </block><block type="$motor1$disable$17"> </block></category><category colour="360" name="MomentaryButton 1"><block type="$momentarybutton1$waitForPress$0"> </block><block type="$momentarybutton1$read$1"> </block><block type="$momentarybutton1$isPressed$2"> </block><block type="$momentarybutton1$isReleased$3"> </block><block type="$momentarybutton1$wasPressed$4"> </block><block type="$momentarybutton1$wasReleased$5"> </block><block type="$momentarybutton1$pressedFor$6"> </block><block type="$momentarybutton1$releasedFor$7"> </block><block type="$momentarybutton1$lastChange$8"> </block><block type="$momentarybutton1$setDB$9"> </block></category></xml>
+<category colour="45" name="DistanceSensor 1"><block type="$distancesensor1$get_distance$0"> </block></category><category colour="90" name="DistanceSensor 2"><block type="$distancesensor2$get_distance$0"> </block></category><category colour="135" name="LED 1"><block type="$led1$toggle$0"> </block><block type="$led1$turnOn$1"> </block><block type="$led1$turnOff$2"> </block></category><category colour="180" name="LED 2"><block type="$led2$toggle$0"> </block><block type="$led2$turnOn$1"> </block><block type="$led2$turnOff$2"> </block></category><category colour="225" name="LED 3"><block type="$led3$toggle$0"> </block><block type="$led3$turnOn$1"> </block><block type="$led3$turnOff$2"> </block></category><category colour="270" name="Motor 1"><block type="$motor1$forward$0"> </block><block type="$motor1$forward$1"> </block><block type="$motor1$backward$2"> </block><block type="$motor1$backward$3"> </block><block type="$motor1$spinLeft$4"> </block><block type="$motor1$spinLeft$5"> </block><block type="$motor1$spinRight$6"> </block><block type="$motor1$spinRight$7"> </block><block type="$motor1$forwardAndRight$8"> </block><block type="$motor1$forwardAndRight$9"> </block><block type="$motor1$forwardAndLeft$10"> </block><block type="$motor1$forwardAndLeft$11"> </block><block type="$motor1$stop$12"> </block><block type="$motor1$brake$13"> </block><block type="$motor1$isMoving$14"> </block><block type="$motor1$swapDirections$15"> </block><block type="$motor1$changePolarity$16"> </block><block type="$motor1$disable$17"> </block></category><category colour="315" name="MomentaryButton 1"><block type="$momentarybutton1$waitUntilPressed$0"> </block><block type="$momentarybutton1$isPressed$1"> </block><block type="$momentarybutton1$isReleased$2"> </block><block type="$momentarybutton1$wasPressed$3"> </block><block type="$momentarybutton1$wasReleased$4"> </block></category><category colour="360" name="MomentaryButton 2"><block type="$momentarybutton2$waitUntilPressed$0"> </block><block type="$momentarybutton2$isPressed$1"> </block><block type="$momentarybutton2$isReleased$2"> </block><block type="$momentarybutton2$wasPressed$3"> </block><block type="$momentarybutton2$wasReleased$4"> </block></category></xml>
 	</div>
 	<script>
   		var workspace = Blockly.inject('blocklyDiv',

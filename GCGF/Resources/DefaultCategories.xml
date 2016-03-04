@@ -78,7 +78,7 @@
         </value>
       </block-->
       <block type="math_constant"> </block>
-      <block type="math_number_property">
+      <!--block type="math_number_property">
         <value name="NUMBER_TO_CHECK">
           <shadow type="math_number">
             <field name="NUM">0</field>
@@ -98,7 +98,7 @@
             <field name="NUM">3.1</field>
           </shadow>
         </value>
-      </block>
+      </block-->
       <!--block type="math_on_list"> </block-->
       <block type="math_modulo">
         <value name="DIVIDEND">
