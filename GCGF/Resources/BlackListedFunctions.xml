@@ -1,0 +1,12 @@
+<functions>
+    <function name="loop" />
+    <function name="setup" />
+    <function name="update" />
+    <function name="poll" />
+    <function name="isBlinking" class="LED" />
+    <function name="read" class="MomentaryButton" />
+    <function name="pressedFor" class="MomentaryButton" />
+    <function name="releasedFor" class="MomentaryButton" />
+    <function name="lastChange" class="MomentaryButton" />
+    <function name="setDB" class="MomentaryButton" />
+</functions>

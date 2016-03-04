@@ -93,18 +93,6 @@
             "id": "blink"
         }, 
         {
-            "tooltip": "", 
-            "message0": "LED is blinking %1", 
-            "args0": [
-                {
-                    "type": "input_dummy"
-                }
-            ], 
-            "output": null, 
-            "helpUrl": "gadgetron.build", 
-            "id": "isBlinking"
-        }, 
-        {
             "nextStatement": null, 
             "tooltip": "", 
             "message0": "LED toggle %1", 
@@ -250,7 +238,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "MomentaryButton wait for press %1", 
+            "message0": "MomentaryButton wait until pressed %1", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -258,19 +246,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "waitForPress"
-        }, 
-        {
-            "tooltip": "", 
-            "message0": "MomentaryButton read %1", 
-            "args0": [
-                {
-                    "type": "input_dummy"
-                }
-            ], 
-            "output": null, 
-            "helpUrl": "gadgetron.build", 
-            "id": "read"
+            "id": "waitUntilPressed"
         }, 
         {
             "tooltip": "", 
@@ -319,60 +295,6 @@
             "output": null, 
             "helpUrl": "gadgetron.build", 
             "id": "wasReleased"
-        }, 
-        {
-            "tooltip": "", 
-            "message0": "MomentaryButton pressed for %1", 
-            "args0": [
-                {
-                    "type": "input_dummy"
-                }
-            ], 
-            "output": null, 
-            "helpUrl": "gadgetron.build", 
-            "id": "pressedFor"
-        }, 
-        {
-            "tooltip": "", 
-            "message0": "MomentaryButton released for %1", 
-            "args0": [
-                {
-                    "type": "input_dummy"
-                }
-            ], 
-            "output": null, 
-            "helpUrl": "gadgetron.build", 
-            "id": "releasedFor"
-        }, 
-        {
-            "tooltip": "", 
-            "message0": "MomentaryButton last change %1", 
-            "args0": [
-                {
-                    "type": "input_dummy"
-                }
-            ], 
-            "output": null, 
-            "helpUrl": "gadgetron.build", 
-            "id": "lastChange"
-        }, 
-        {
-            "nextStatement": null, 
-            "tooltip": "", 
-            "message0": "MomentaryButton set d b %1 with ms %2", 
-            "previousStatement": null, 
-            "args0": [
-                {
-                    "type": "input_dummy"
-                }, 
-                {
-                    "type": "input_value", 
-                    "name": "ms", 
-                    "check": "Number"
-                }
-            ], 
-            "helpUrl": "gadgetron.build", 
-            "id": "setDB"
         }
     ], 
     "Motor": [
