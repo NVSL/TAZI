@@ -3,14 +3,10 @@
 import unittest
 import subprocess
 import re
+import sys
 
 
 class TestBlocklyTranslator(unittest.TestCase):
-
-	def test_Metatest(self):
-		self.assertEqual("test", "test")
-		self.assertTrue("you" > "me")
-		self.assertFalse("yay" == "tests")
 
 #	def test_FileXmlToCpp(self):
 #		print("\n=== Running xml file tests ===")
@@ -35,95 +31,79 @@ class TestBlocklyTranslator(unittest.TestCase):
 #					if result == 0:
 #						print "PASS TEST"
 
-					
+
+	def setUp(self):
+		self.failedTests = []
+		self.maxDiff = None
+
+	def tearDown(self):
+		self.assertEqual([], self.failedTests)
+
+	def helper(self, file, testDir, outputFile, cDir):
+		sys.stdout.write("Translating " + file + "...")
+		proc = subprocess.Popen(["python", "blocklyTranslator.py", "-x", testDir + file], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+		stdoutVal, stderrVal = proc.communicate()
+		# Check if there is any stderr output
+		try:
+			self.assertEqual(stderrVal, "")
+			print("ok")
+		except AssertionError, e:
+			self.failedTests.append(file + " translated with error")
+			print("FAIL")
+			return
+
+		with open(outputFile, "a") as outFile:
+			outFile.write("=== " + file + " ===\n--- stdout ---\n")
+			outFile.write(stdoutVal + "\n--------------")
+			outFile.write("\n--- stderr ---")
+			outFile.write(stderrVal + "\n--------------\n\n")
+		filename = (file.split(".")) [0];
+		cfile = cDir + filename + "_cCode.c";
+		sys.stdout.write("Compiling " + cfile + "...")
+		with open(cfile, "w") as outFile2:
+			outFile2.write(stdoutVal)
+			outFile2.close();
+			exitCode = subprocess.call(["gcc", "-fsyntax-only", cfile])
+			# Check that exit code is 0
+			try:
+				self.assertEqual(exitCode, 0)
+				print("ok")
+			except AssertionError, e:
+				self.failedTests.append(file + " did not pass C++ syntax check")
+				print("FAIL")
 
 	def test_VarTests(self):
 		print("\n=== Running var tests ===")
 		subprocess.call(["rm", "-f", "testOutputs/varTestOutput"])
+		subprocess.call(["mkdir", "cCode/varFiles/"])
 		varFiles = subprocess.Popen(["ls", "tests/varTests/"], stdout=subprocess.PIPE).communicate()[0].split("\n")
 		for varFile in varFiles:
 			if re.match(r".*\.xml", varFile):
-				print("Testing " + varFile + "...")
-				proc = subprocess.Popen(["python", "blocklyTranslator.py", "-x", "tests/varTests/" + varFile], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-				stdoutVal, stderrVal = proc.communicate()
-				with open("testOutputs/varTestOutput", "a") as outFile:
-					outFile.write("=== " + varFile + " ===\n--- stdout ---\n")
-					outFile.write(stdoutVal + "\n--------------")
-					outFile.write("\n--- stderr ---")
-					outFile.write(stderrVal + "\n--------------\n\n")
-				varFile = (varFile.split(".")) [0];
-				file = "cCode/varFiles/" + varFile + "_cCode.c";
-				with open(file, "w") as outFile2:
-					outFile2.write(stdoutVal)
-					outFile2.close()
-					#result = subprocess.Popen(["gcc", "-fsyntax-only", file])
-					exitCode = subprocess.call(["gcc", "-fsyntax-only", file])
-					#result = subprocess.Popen(["echo $?"]).communicate()[0];
-					#result.wait()
-					if exitCode != 0:
-						print "FAIL TEST"
-					else:
-						print "PASS TEST"
+				self.helper(varFile, "tests/varTests/", "testOutputs/varTestOutput", "cCode/varFiles/")
 
 	def test_mathTests(self):
 		print("\n=== Running math tests ===")
 		subprocess.call(["rm", "-f", "testOutputs/mathTestOutput"])
+		subprocess.call(["mkdir", "cCode/mathFiles/"])
 		mathFiles = subprocess.Popen(["ls", "tests/MathTests/"], stdout=subprocess.PIPE).communicate()[0].split("\n")
 		for mathFile in mathFiles:
 			if re.match(r".*\.xml", mathFile):
-				print("Testing " + mathFile + "...")
-				proc = subprocess.Popen(["python", "blocklyTranslator.py", "-x", "tests/MathTests/" + mathFile], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-				stdoutVal, stderrVal = proc.communicate()
-				with open("testOutputs/mathTestOutput", "a") as outFile:
-					outFile.write("=== " + mathFile + " ===\n--- stdout ---\n")
-					outFile.write(stdoutVal + "\n--------------")
-					outFile.write("\n--- stderr ---")
-					outFile.write(stderrVal + "\n--------------\n\n")
-				mathFile = (mathFile.split(".")) [0];
-				file = "cCode/mathFiles/" + varFile + "_cCode.c";
-				with open(file, "w") as outFile2:
-					outFile2.write(stdoutVal)
-					outFile2.close()
-					#result = subprocess.Popen(["gcc", "-fsyntax-only", file])
-					exitCode = subprocess.call(["gcc", "-fsyntax-only", file])
-					#result = subprocess.Popen(["echo $?"]).communicate()[0];
-					#result.wait()
-					if exitCode != 0:
-						print "FAIL TEST"
-					else:
-						print "PASS TEST"
+				self.helper(mathFile, "tests/MathTests/", "testOutputs/mathTestOutput", "cCode/mathFiles/")
 
 
 	def test_logicTests(self):
 		print("\n=== Running logic tests ===")
 		subprocess.call(["rm", "-f", "testOutputs/logicTestOutput"])
+		subprocess.call(["mkdir", "cCode/logicFiles/"])
 		LogicFiles = subprocess.Popen(["ls", "tests/LogicTests/"], stdout=subprocess.PIPE).communicate()[0].split("\n")
 		for logicFile in LogicFiles:
 			if re.match(r".*\.xml", logicFile):
-				print("Testing " + logicFile + "...")
-				proc = subprocess.Popen(["python", "blocklyTranslator.py", "-x", "tests/LogicTests/" + logicFile], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-				stdoutVal, stderrVal = proc.communicate()
-				with open("testOutputs/logicTestOutput", "a") as outFile:
-					outFile.write("=== " + logicFile + " ===\n--- stdout ---\n")
-					outFile.write(stdoutVal + "\n--------------")
-					outFile.write("\n--- stderr ---")
-					outFile.write(stderrVal + "\n--------------\n\n")
-				logicFile = (logicFile.split(".")) [0];
-				file = "cCode/logicFiles/" + logicFile + "_cCode.c";
-				with open(file, "w") as outFile2:
-					outFile2.write(stdoutVal)
-					outFile2.close();
-					#result = subprocess.Popen(["gcc", "-fsyntax-only", file])
-					exitCode = subprocess.call(["gcc", "-fsyntax-only", file])
-					#stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-					#result = subprocess.Popen(["echo $?"]).communicate()[0];
-					#result.wait()
-					if exitCode != 0:
-						print "FAIL TEST"
-					else:
-						print "PASS TEST"
+				self.helper(logicFile, "tests/LogicTests/", "testOutputs/logicTestOutput", "cCode/logicFiles/")
+
 
 
 if __name__ == "__main__":
 	subprocess.call(["mkdir", "testOutputs"])
+	subprocess.call(["rm", "-rf", "cCode"])
+	subprocess.call(["mkdir", "cCode"])
 	unittest.main()
