@@ -3,7 +3,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "Buzzer playNote %1 with frequency %2", 
+            "message0": "Buzzer play note %1 with frequency %2", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -21,7 +21,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "Buzzer playNote %1 with frequency %2 with noteLength %3", 
+            "message0": "Buzzer play note %1 with frequency %2 with noteLength %3", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -44,7 +44,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "Buzzer turnOff %1", 
+            "message0": "Buzzer turn off %1", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -94,7 +94,7 @@
         }, 
         {
             "tooltip": "", 
-            "message0": "LED isBlinking %1", 
+            "message0": "LED is blinking %1", 
             "args0": [
                 {
                     "type": "input_dummy"
@@ -120,7 +120,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "LED turnOn %1", 
+            "message0": "LED turn on %1", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -133,7 +133,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "LED turnOff %1", 
+            "message0": "LED turn off %1", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -147,7 +147,7 @@
     "DistanceSensor": [
         {
             "tooltip": "", 
-            "message0": "DistanceSensor get_distance %1", 
+            "message0": "DistanceSensor get distance %1", 
             "args0": [
                 {
                     "type": "input_dummy"
@@ -250,7 +250,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "MomentaryButton waitForPress %1", 
+            "message0": "MomentaryButton wait for press %1", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -274,7 +274,7 @@
         }, 
         {
             "tooltip": "", 
-            "message0": "MomentaryButton isPressed %1", 
+            "message0": "MomentaryButton is pressed %1", 
             "args0": [
                 {
                     "type": "input_dummy"
@@ -286,7 +286,7 @@
         }, 
         {
             "tooltip": "", 
-            "message0": "MomentaryButton isReleased %1", 
+            "message0": "MomentaryButton is released %1", 
             "args0": [
                 {
                     "type": "input_dummy"
@@ -298,7 +298,7 @@
         }, 
         {
             "tooltip": "", 
-            "message0": "MomentaryButton wasPressed %1", 
+            "message0": "MomentaryButton was pressed %1", 
             "args0": [
                 {
                     "type": "input_dummy"
@@ -310,7 +310,7 @@
         }, 
         {
             "tooltip": "", 
-            "message0": "MomentaryButton wasReleased %1", 
+            "message0": "MomentaryButton was released %1", 
             "args0": [
                 {
                     "type": "input_dummy"
@@ -322,7 +322,7 @@
         }, 
         {
             "tooltip": "", 
-            "message0": "MomentaryButton pressedFor %1", 
+            "message0": "MomentaryButton pressed for %1", 
             "args0": [
                 {
                     "type": "input_dummy"
@@ -334,7 +334,7 @@
         }, 
         {
             "tooltip": "", 
-            "message0": "MomentaryButton releasedFor %1", 
+            "message0": "MomentaryButton released for %1", 
             "args0": [
                 {
                     "type": "input_dummy"
@@ -346,7 +346,7 @@
         }, 
         {
             "tooltip": "", 
-            "message0": "MomentaryButton lastChange %1", 
+            "message0": "MomentaryButton last change %1", 
             "args0": [
                 {
                     "type": "input_dummy"
@@ -359,7 +359,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "MomentaryButton setDB %1 with ms %2", 
+            "message0": "MomentaryButton set d b %1 with ms %2", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -441,7 +441,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "Motor spinLeft %1", 
+            "message0": "Motor spin left %1", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -454,7 +454,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "Motor spinLeft %1 with speed %2", 
+            "message0": "Motor spin left %1 with speed %2", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -472,7 +472,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "Motor spinRight %1", 
+            "message0": "Motor spin right %1", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -485,7 +485,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "Motor spinRight %1 with speed %2", 
+            "message0": "Motor spin right %1 with speed %2", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -503,7 +503,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "Motor forwardAndRight %1", 
+            "message0": "Motor forward and right %1", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -516,7 +516,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "Motor forwardAndRight %1 with speed %2", 
+            "message0": "Motor forward and right %1 with speed %2", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -534,7 +534,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "Motor forwardAndLeft %1", 
+            "message0": "Motor forward and left %1", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -547,7 +547,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "Motor forwardAndLeft %1 with speed %2", 
+            "message0": "Motor forward and left %1 with speed %2", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -590,7 +590,7 @@
         }, 
         {
             "tooltip": "", 
-            "message0": "Motor isMoving %1", 
+            "message0": "Motor is moving %1", 
             "args0": [
                 {
                     "type": "input_dummy"
@@ -603,7 +603,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "Motor swapDirections %1", 
+            "message0": "Motor swap directions %1", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -616,7 +616,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "Motor changePolarity %1", 
+            "message0": "Motor change polarity %1", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -701,7 +701,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "Pincer onAndOff %1 with time %2 with times %3", 
+            "message0": "Pincer on and off %1 with time %2 with times %3", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -724,7 +724,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "Pincer changeState %1", 
+            "message0": "Pincer change state %1", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -737,7 +737,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "Pincer setOpen %1 with angle %2", 
+            "message0": "Pincer set open %1 with angle %2", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -755,7 +755,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "Pincer setClose %1 with angle %2", 
+            "message0": "Pincer set close %1 with angle %2", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -772,7 +772,7 @@
         }, 
         {
             "tooltip": "", 
-            "message0": "Pincer isOpen %1", 
+            "message0": "Pincer is open %1", 
             "args0": [
                 {
                     "type": "input_dummy"
@@ -785,7 +785,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "Pincer setMin %1 with min %2", 
+            "message0": "Pincer set min %1 with min %2", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -803,7 +803,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "Pincer setMax %1 with max %2", 
+            "message0": "Pincer set maximum %1 with max %2", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -822,7 +822,7 @@
     "RotaryEncoder": [
         {
             "tooltip": "", 
-            "message0": "RotaryEncoder getCurrentPos %1", 
+            "message0": "RotaryEncoder get current position %1", 
             "args0": [
                 {
                     "type": "input_dummy"
@@ -835,7 +835,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "RotaryEncoder setMaxPos %1 with max %2", 
+            "message0": "RotaryEncoder set maximum position %1 with max %2", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -852,7 +852,7 @@
         }, 
         {
             "tooltip": "", 
-            "message0": "RotaryEncoder isPressed %1", 
+            "message0": "RotaryEncoder is pressed %1", 
             "args0": [
                 {
                     "type": "input_dummy"
@@ -864,7 +864,7 @@
         }, 
         {
             "tooltip": "", 
-            "message0": "RotaryEncoder wasPressed %1", 
+            "message0": "RotaryEncoder was pressed %1", 
             "args0": [
                 {
                     "type": "input_dummy"
@@ -892,7 +892,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "LEDArray happyFace %1", 
+            "message0": "LEDArray happy face %1", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -905,7 +905,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "LEDArray neutralFace %1", 
+            "message0": "LEDArray neutral face %1", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -918,7 +918,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "LEDArray sadFace %1", 
+            "message0": "LEDArray sad face %1", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -931,7 +931,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "LEDArray turnClockwise %1", 
+            "message0": "LEDArray turn clockwise %1", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -944,7 +944,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "LEDArray turnCounterClockwise %1", 
+            "message0": "LEDArray turn counter clockwise %1", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -957,7 +957,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "LEDArray printText %1 with text %2", 
+            "message0": "LEDArray print text %1 with text %2", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -975,7 +975,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "LEDArray drawPix %1 with x %2 with y %3", 
+            "message0": "LEDArray draw pix %1 with x %2 with y %3", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -998,7 +998,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "LEDArray drawLine %1 with x1 %2 with y1 %3 with x2 %4 with y2 %5", 
+            "message0": "LEDArray draw line %1 with x1 %2 with y1 %3 with x2 %4 with y2 %5", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -1031,7 +1031,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "LEDArray drawRec %1 with x1 %2 with y1 %3 with x2 %4 with y2 %5", 
+            "message0": "LEDArray draw rec %1 with x1 %2 with y1 %3 with x2 %4 with y2 %5", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -1064,7 +1064,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "LEDArray fillRec %1 with x1 %2 with y1 %3 with x2 %4 with y2 %5", 
+            "message0": "LEDArray fill rec %1 with x1 %2 with y1 %3 with x2 %4 with y2 %5", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -1097,7 +1097,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "LEDArray drawCircle %1 with x %2 with y %3 with r %4", 
+            "message0": "LEDArray draw circle %1 with x %2 with y %3 with r %4", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -1143,7 +1143,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "LEDArray setBrightness %1 with level %2", 
+            "message0": "LEDArray set brightness %1 with level %2", 
             "previousStatement": null, 
             "args0": [
                 {

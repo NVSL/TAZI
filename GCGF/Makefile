@@ -2,7 +2,7 @@ GSPEC_DIR = Gspecs/
 RESOURCES = Resources
 OUTPUT = Output/
 
-GSPEC = RotorBuzzer
+GSPEC = Chase
 APIGSPEC = RotorBuzzer
 
 GSPEC_FILE = $(GSPEC_DIR)$(GSPEC).gspec

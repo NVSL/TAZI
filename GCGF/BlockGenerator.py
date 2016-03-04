@@ -9,6 +9,21 @@ import platform
 import json
 from ClangBindings import *
 
+
+
+def cleanFunctionName( func ):
+    acc = [] 
+    expandWords = { "pos" : "position", "max" : "maximum" }
+    for w in func.split("_"):
+        s0 = 0
+        idxs = [ i for i, c in enumerate(w) if c.isupper() ]
+	for i in idxs + [ len(w) ]:
+	    acc.append( w[s0:i].lower() )
+	    s0 = i
+    for i in xrange(len(acc)): 
+        if acc[i] in expandWords: acc[i] = expandWords[acc[i]] 
+    return " ".join(acc)
+
 # Function Name: determineParamType()
 # Arguments: param - A string representation of a function's parameter
 # Returns: The string which blockly uses to constrain block input types
@@ -81,7 +96,7 @@ for component in library:
 	    # The attributes passed here should be the same across all blockly json files
 	    funcjson = {
 	            "id":func.name,
-	            "message0":aClass.name+" "+func.name + " %1",
+	            "message0":aClass.name+" "+ cleanFunctionName(func.name) + " %1",
 	            "tooltip" : "",
 	            "helpUrl": "gadgetron.build" }
             args = [{"type":"input_dummy"}]
