@@ -25,8 +25,10 @@ class ClassGenerator:
     objects = []
     libraries = []
     objInstances = []
-    name = []
+    name = "" 
 
+    def __init__( self, api):
+        self.parseApiGspec(api)
     def getSetupFunction(self):
         def concatLines(acc, line): return acc + "   " + line + ".setup();\n"
 	return functools.reduce( concatLines, self.objInstances, "void setup() {\n" ) + "}"
@@ -77,7 +79,29 @@ class ClassGenerator:
 	        currentObj.setArgs( args )
 	        self.objects.append( currentObj )
 	        self.libraries.append( node.attrib["include"])
-
+    def getClass(self):
+	nl = "\n"
+        def a( string ): return nl+string
+	#def createComment( string ): return self.createComment(string)
+        rv = createComment("Robot Name") 
+        rv += a(createComment(self.name))
+        rv += nl
+        rv += a(createComment("Libraries"))
+        rv += a(self.getLibraries())
+        rv += a(createComment("Pin Constants"))
+        for string in self.getConstants():
+            rv += a(string)
+        rv += nl
+        rv += a(createComment("Object Declarations"))
+        for string in self.getObjectDeclarations():
+            rv += a(string)
+        rv += nl
+        rv += a(createComment("Setup Function"))
+        rv += a(self.getSetupFunction())
+        rv += nl
+        rv += a(createComment("Empty Loop Function"))
+        rv += a("void loop() {}")
+	return rv
 
 if __name__ == "__main__":
     import argparse
@@ -85,23 +109,7 @@ if __name__ == "__main__":
     argparser.add_argument("-g", "--gspec", required=True)
     args = argparser.parse_args()
     api = ETree.parse(args.gspec).getroot()
-    generator = ClassGenerator()
-    generator.parseApiGspec(api)
-    print createComment("Robot Name") 
-    print createComment(generator.name)
-    print
-    print createComment("Libraries")
-    print generator.getLibraries()
-    print createComment("Pin Constants")
-    for string in generator.getConstants():
-        print string
-    print
-    print createComment("Object Declarations")
-    for string in generator.getObjectDeclarations():
-        print string
-    print
-    print createComment("Setup Function")
-    print generator.getSetupFunction()
-    print
-    print createComment("Empty Loop Function")
-    print "void loop() {}"
+    generator = ClassGenerator(api)
+    print generator.getClass()
+
+    
