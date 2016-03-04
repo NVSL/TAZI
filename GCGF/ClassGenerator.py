@@ -4,8 +4,10 @@ __email__ = "mmg005@eng.ucsd.edu"
 import xml.etree.ElementTree as ETree
 import functools
 def createComment( comment ):
-    dashes = 10*"-"
-    return "/** " + dashes + " " + comment + " " + dashes + "**/" 
+    dash = "-"
+    dashes = (35-len(comment)/2)*dash
+    if len(dashes) % 2 == 1: dashes+=dash
+    return "/** " + dashes + " " + comment + " " + dashes + " **/" 
 class Arg:
     def __init__(self, value, name):
         self.value = value
@@ -23,6 +25,7 @@ class ClassGenerator:
     objects = []
     libraries = []
     objInstances = []
+    name = []
 
     def getSetupFunction(self):
         def concatLines(acc, line): return acc + "   " + line + ".setup();\n"
@@ -54,6 +57,7 @@ class ClassGenerator:
         return retStrings
     def parseApiGspec(self, root):
         for component in root:
+	    if component.tag == "name": self.name = component.text
 	    if component.tag != "component":
 	        continue
 	    for node in component:
@@ -83,6 +87,9 @@ if __name__ == "__main__":
     api = ETree.parse(args.gspec).getroot()
     generator = ClassGenerator()
     generator.parseApiGspec(api)
+    print createComment("Robot Name") 
+    print createComment(generator.name)
+    print
     print createComment("Libraries")
     print generator.getLibraries()
     print createComment("Pin Constants")
