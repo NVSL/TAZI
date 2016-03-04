@@ -73,7 +73,7 @@ for component in library:
 	for func in aClass.functions:
 	    # Although we want to skip setup and the following functions for 
 	    # generating our json
-	    skippedFunctions = [ "setup", "update", "loop" ]
+	    skippedFunctions = [ "setup", "update", "loop", "poll" ]
 	    if func.name in skippedFunctions:
 	        if func.name == "setup": hasSetup = True
 	        continue

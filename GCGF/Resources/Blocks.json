@@ -821,19 +821,6 @@
     ], 
     "RotaryEncoder": [
         {
-            "nextStatement": null, 
-            "tooltip": "", 
-            "message0": "RotaryEncoder poll %1", 
-            "previousStatement": null, 
-            "args0": [
-                {
-                    "type": "input_dummy"
-                }
-            ], 
-            "helpUrl": "gadgetron.build", 
-            "id": "poll"
-        }, 
-        {
             "tooltip": "", 
             "message0": "RotaryEncoder getCurrentPos %1", 
             "args0": [

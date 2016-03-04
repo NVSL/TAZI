@@ -25,6 +25,7 @@ class ClassGenerator:
     objects = []
     libraries = []
     objInstances = []
+    loopBody = []
     name = "" 
 
     def __init__( self, api):
@@ -32,6 +33,9 @@ class ClassGenerator:
     def getSetupFunction(self):
         def concatLines(acc, line): return acc + "   " + line + ".setup();\n"
 	return functools.reduce( concatLines, self.objInstances, "void setup() {\n" ) + "}"
+    def getLoopFunction(self):
+        def concatLines(acc, line): return acc + "   " + line + "\n"
+	return functools.reduce( concatLines, self.loopBody, "void loop() {\n" ) + "}"
     def getLibraries(self):
         def concatLib( acc, elem): return acc + '#include <' + elem + '>\n'
 	return functools.reduce( concatLib, set(self.libraries), "" )
@@ -66,6 +70,8 @@ class ClassGenerator:
 	        if node.tag != "api":
 		    continue
                 currentObj = CObj( node.attrib["class"] )
+		if "polls" in node.attrib.keys():
+		    self.loopBody.append( currentObj.name + ".poll();" )
 	        args = []
 		# Handle all the arguments for the object
 	        for arg in node.findall("arg"):
@@ -99,8 +105,8 @@ class ClassGenerator:
         rv += a(createComment("Setup Function"))
         rv += a(self.getSetupFunction())
         rv += nl
-        rv += a(createComment("Empty Loop Function"))
-        rv += a("void loop() {}")
+        rv += a(createComment("Loop Function"))
+        rv += a(self.getLoopFunction())
 	return rv
 
 if __name__ == "__main__":
