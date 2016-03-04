@@ -6,6 +6,11 @@
     e. special value Ratio ...Removed
     f. special value sqrt(2) ...Removed
     g. special value sqrt(1/2) ...Removed
+    h. null test
+    i. true
+    j. false
+    k. not true
+    l. not false
 2. Logic  (Used if loop and a variable assignment statement inside)
    a. Numbers with equal sign  ..DONE
    b. Numbers with notequal sign ..DONE
@@ -31,26 +36,13 @@
    u. Null with lessthanequal ..DONE
    v. Null with greaterthan ..DONE
    w. NUll with greaterthanequal ..DONE
-   aa. And (true, true)
-   bb. And (true, false)
-   cc. And (false, true)
-   dd. And (fasle, false)
-   ee. Or (true, true)
-   ff. Or (true, false)
-   gg. Or (false, true)
-   hh. Or (fasle, false)
-   ii. And(true, not true)
-   jj. And(true, not false)
-   kk. And(true, not true)
-   ll. And(true, not false)
-   mm. Or (true, not true)
-   nn. Or (true, not false)
-   oo. Or (false, not true)
-   pp. Or (false, not false)
-   qq. And(null, false)
-   rr. And(null, true)
-   ss. Or(null, true)
-   tt. Or(null, false)
+   aa. And with 2 vals...DONE
+   bb. And with one var one val...DONE
+   cc. And with two vars...DONE
+   ee. Or with 2 vals...DONE
+   ff. Or with one var one val...DONE
+   gg. Or with two vars...DONE 
+   
 3. Math
    a. Addition with two numbers
    b. Addition with var and number
