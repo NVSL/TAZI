@@ -3,9 +3,8 @@ __email__ = "mmg005@eng.ucsd.edu"
 
 import xml.etree.ElementTree as ETree
 import functools
-def createComment( comment ):
-    dash = "-"
-    dashes = (35-len(comment)/2)*dash
+def createComment( comment, dash="-"):
+    dashes = (40-len(comment)/2)*dash
     if len(dashes) % 2 == 1: dashes+=dash
     return "/** " + dashes + " " + comment + " " + dashes + " **/" 
 class Arg:
@@ -90,7 +89,12 @@ class ClassGenerator:
         def a( string ): return nl+string
 	#def createComment( string ): return self.createComment(string)
         rv = createComment("Robot Name") 
-        rv += a(createComment(self.name))
+        rv += a(createComment("|"*len(self.name), dash="~"))
+        rv += a(createComment("|"*len(self.name), dash="~"))
+        rv += a(createComment(self.name, dash="="))
+        rv += a(createComment("|"*len(self.name), dash="~"))
+        rv += a(createComment("|"*len(self.name), dash="~"))
+        rv += a(createComment("\\"*(len(self.name)/2) +"_"+ "/"*(len(self.name)/2))) 
         rv += nl
         rv += a(createComment("Libraries"))
         rv += a(self.getLibraries())

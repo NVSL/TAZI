@@ -4,6 +4,8 @@ OUTPUT = Output/
 
 GSPEC = HotlineBling
 APIGSPEC = Chase
+APIGSPECS = $(wildcard Gspecs/*.api.gspec)
+INOS = $(APIGSPECS:Gspecs/%.api.gspec=%.ino)
 ARDUINO = /home/michael/Downloads/arduino-1.6.4/arduino
 
 GSPEC_FILE = $(GSPEC_DIR)$(GSPEC).gspec
@@ -25,6 +27,7 @@ json:
 	python BlockGenerator.py -l ComponentsLibrary.xml -b $(BLACKLIST) > $(BLOCKSJSON)
 testclang:
 	python ClangBindings.py clangtest.h 
+inos: $(INOS)
 class:
 	mkdir -p $(GADGET_DIR)
 	python ClassGenerator.py -g $(APIGSPEC_FILE) > $(GADGET_INO)
@@ -33,3 +36,7 @@ clean:
 	rm *.pyc
 display:
 	google-chrome ../Blockly/index.html
+%.ino : $(GSPEC_DIR)%.api.gspec
+	mkdir -p $(OUTPUT)$*
+	python ClassGenerator.py -g $< > $(OUTPUT)$*/$@
+	$(ARDUINO) --verify $(OUTPUT)$*/$@
