@@ -1,0 +1,43 @@
+<gadgetlayout version="1.1">
+   <name>FROND</name>
+   <creator>Americans for RobotFROND Organization</creator>
+   <board x="0" y="0" width="150" height="120"/>
+   <option name="faceplate-color" value="clear-nocolor"/>
+   <option name="backplate-color" value="clear-nocolor"/>
+   <option name="faceplate-etch" value="etch-front"/>
+   <option name="backplate-etch" value="etch-back"/>
+   <option name="front-standoff-height" value="8"/>
+   <option name="back-standoff-height" value="8"/>
+   <option name="pcb-thickness" value="1.57"/>
+   <option name="faceplate-thickness" value="3.175"/>
+   <option name="backplate-thickness" value="3.175"/>
+   <option name="cam-target" value="LPKF"/>
+   <component progname="brain" type="Adafruit-Pro-Trinket-5V-battery-powered" deletable="false">
+      <placedpart refdes="U1_0_brain" x="104" y="73" rotation="270" mirrored="False"/>
+   </component>
+   <component progname="battery" type="battery-9V-vertical" deletable="false">
+      <placedpart refdes="BATT1_1_battery" x="75" y="69" rotation="0" mirrored="False"/>
+   </component>
+   <component progname="caster" type="ball-caster-0.75in">
+      <placedpart refdes="u1_2_caster" x="75" y="106" rotation="0" mirrored="False"/>
+   </component>
+   <component progname="penholder" type="pen-holder">
+      <placedpart refdes="u1_3_penholder" x="75" y="16" rotation="0" mirrored="False"/>
+   </component>
+   <component progname="buzzer" type="piezo-buzzer">
+      <placedpart refdes="u1_4_buzzer" x="114" y="106" rotation="0" mirrored="False"/>
+   <api class="Buzzer" include="Buzzer.h" link-as="piezo-buzzer" path="lib" progname="buzzer"><required_files/><arg analogliteral="None" arg="1" digitalliteral="4" order="None"/></api></component>
+   <component progname="bump" type="bump-switch-medium-right">
+      <placedpart refdes="U$2_5_bump" x="18.2" y="64.72" rotation="310" mirrored="False"/>
+   <api class="MomentaryButton" include="MomentaryButton.h" link-as="bump-switch-medium-right" path="lib" progname="bump"><required_files><file name="PinChangeInt.h"/></required_files><arg analogliteral="None" arg="SENSE" digitalliteral="6" order="None"/></api></component>
+   <component progname="button" type="tactile-button-square-green">
+      <placedpart refdes="B1_6_button" x="135" y="106" rotation="0" mirrored="False"/>
+   <api class="MomentaryButton" include="MomentaryButton.h" link-as="tactile-button-square-green" path="lib" progname="button"><required_files><file name="PinChangeInt.h"/></required_files><arg analogliteral="None" arg="SENSE" digitalliteral="8" order="None"/></api></component>
+   <component progname="display_2" type="Adafruit-8x8-1.2in-led-array-green">
+      <placedpart refdes="u1_7_display_2" x="27" y="98" rotation="0" mirrored="False"/>
+   <api class="LEDArray" include="LEDArray.h" link-as="Adafruit-8x8-1.2in-led-array-green" path="ext/Adafruit_LEDBackpack/trunk" progname="display_2"><required_files><file name="Adafruit_LEDBackpack.h"/><file name="Adafruit_GFX.h"/><file name="Wire.h"/></required_files><arg analogliteral="A4" arg="SDA" digitalliteral="None" order="None"/><arg analogliteral="A5" arg="SCL" digitalliteral="None" order="None"/></api></component>
+   <component progname="drive" type="dual-motor-kit-narrow-fast">
+      <placedpart refdes="L_8_drive" x="-2" y="12" rotation="180" mirrored="False"/>
+      <placedpart refdes="R_8_drive" x="152" y="12" rotation="180" mirrored="False"/>
+   <api class="Motor" include="Motor.h" link-as="dual-motor-kit-narrow-fast" path="lib" progname="drive"><required_files/><arg analogliteral="None" arg="PWMA" digitalliteral="3" order="None"/><arg analogliteral="None" arg="PWMB" digitalliteral="5" order="None"/><arg analogliteral="None" arg="STBY" digitalliteral="9" order="None"/><arg analogliteral="None" arg="AIN1" digitalliteral="10" order="None"/><arg analogliteral="None" arg="AIN2" digitalliteral="11" order="None"/><arg analogliteral="None" arg="BIN1" digitalliteral="12" order="None"/><arg analogliteral="None" arg="BIN2" digitalliteral="13" order="None"/></api></component>
+</gadgetlayout>

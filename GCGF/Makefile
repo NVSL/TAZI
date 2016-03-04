@@ -18,6 +18,7 @@ CATEGORIESXML = $(RESOURCES)/DefaultCategories.xml
 BLACKLIST = $(RESOURCES)/BlackListedFunctions.xml
 BLOCKSJSON = $(RESOURCES)/Blocks.json
 JINJAFILE = $(RESOURCES)/index.jinja
+.PRECIOUS: $(GSPEC_DIR)%.api.gspec
 
 ide:
 	cp IDEGenerator.py IDEGenerator/
