@@ -1,50 +1,28 @@
 TEST OUTPUTS: 
-Testing file: tests/varTests/varTestE.xml
-;
-void setup () {;
-  int item = E;;
-};
-;
-
 Testing file: tests/varTests/varTestNum.xml
 ;
-void setup () {;
-  double item = 89;;
-};
+void setup () {
+  double item = 89;
+}
 ;
+void loop () {
+}
 
 Testing file: tests/varTests/varTestPi.xml
 ;
-void setup () {;
-  int item = PI;;
-};
+void setup () {
+  int item = 3.14159265358979323846;
+}
 ;
-
-Testing file: tests/varTests/varTestRatio.xml
-;
-void setup () {;
-  int item = GOLDEN_RATIO;;
-};
-;
-
-Testing file: tests/varTests/varTestSR14.xml
-;
-void setup () {;
-  int item = SQRT2;;
-};
-;
-
-Testing file: tests/varTests/varTestSR2.xml
-;
-void setup () {;
-  int item = SQRT2;;
-};
-;
+void loop () {
+}
 
 Testing file: tests/varTests/varTestString.xml
 ;
-void setup () {;
-  string item = Hello World;;
-};
+void setup () {
+  string item = "Hello World";
+}
 ;
+void loop () {
+}
 

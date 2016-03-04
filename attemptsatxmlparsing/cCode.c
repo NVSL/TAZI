@@ -1,6 +1,8 @@
 ;
-void setup () {;
-  string item = Hello World;;
-};
+void setup () {
+  string item = "Hello World";
+}
 ;
+void loop () {
+}
 
