@@ -13,7 +13,7 @@ from ClangBindings import *
 
 def cleanFunctionName( func ):
     acc = [] 
-    expandWords = { "pos" : "position", "max" : "maximum" }
+    expandWords = { "pos" : "position", "max" : "maximum", "rec" : "rectangle", "pix" : "pixel" }
     for w in func.split("_"):
         s0 = 0
         idxs = [ i for i, c in enumerate(w) if c.isupper() ]
@@ -112,11 +112,13 @@ for component in library:
             fp += 1
 	    # Iterate over all the arguments for the current function
 	    for arg in func.params:
+	        argType = determineParamType(arg[1])
+		preposition = { "String" : "as", "Number":"at","Boolean":"being" } 
 	        argJson = {"type":"input_value",
 		           "name":arg[0],
-			   "check":determineParamType(arg[1])}
-	        funcjson["message0"] = funcjson["message0"] + " with " + arg[0] + " %" + str(i)
-		i = i + 1
+			   "check":argType}
+	        funcjson["message0"] += " with " + arg[0] + " " + preposition[argType] + " %" + str(i)
+		i += 1
 		args.append(argJson)
 	    funcjson["args0"] = args
 	    # Determine the return type of the block

@@ -3,7 +3,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "Buzzer play note %1 with frequency %2", 
+            "message0": "Buzzer play note %1 with frequency at %2", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -21,7 +21,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "Buzzer play note %1 with frequency %2 with noteLength %3", 
+            "message0": "Buzzer play note %1 with frequency at %2 with noteLength at %3", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -114,7 +114,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "RGBLED set %1 with red %2 with green %3 with blue %4", 
+            "message0": "RGBLED set %1 with red at %2 with green at %3 with blue at %4", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -142,7 +142,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "RGBLED fade %1 with red %2 with green %3 with blue %4 with step %5 with period %6", 
+            "message0": "RGBLED fade %1 with red at %2 with green at %3 with blue at %4 with step at %5 with period at %6", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -182,7 +182,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "ServoMotor rotate %1 with degrees %2", 
+            "message0": "ServoMotor rotate %1 with degrees at %2", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -278,7 +278,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "Motor forward %1 with speed %2", 
+            "message0": "Motor forward %1 with speed at %2", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -309,7 +309,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "Motor backward %1 with speed %2", 
+            "message0": "Motor backward %1 with speed at %2", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -340,7 +340,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "Motor spin left %1 with speed %2", 
+            "message0": "Motor spin left %1 with speed at %2", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -371,7 +371,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "Motor spin right %1 with speed %2", 
+            "message0": "Motor spin right %1 with speed at %2", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -402,7 +402,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "Motor forward and right %1 with speed %2", 
+            "message0": "Motor forward and right %1 with speed at %2", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -433,7 +433,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "Motor forward and left %1 with speed %2", 
+            "message0": "Motor forward and left %1 with speed at %2", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -556,7 +556,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "Pincer open %1 with angle %2", 
+            "message0": "Pincer open %1 with angle at %2", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -587,7 +587,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "Pincer on and off %1 with time %2 with times %3", 
+            "message0": "Pincer on and off %1 with time at %2 with times at %3", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -623,7 +623,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "Pincer set open %1 with angle %2", 
+            "message0": "Pincer set open %1 with angle at %2", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -641,7 +641,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "Pincer set close %1 with angle %2", 
+            "message0": "Pincer set close %1 with angle at %2", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -671,7 +671,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "Pincer set min %1 with min %2", 
+            "message0": "Pincer set min %1 with min at %2", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -689,7 +689,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "Pincer set maximum %1 with max %2", 
+            "message0": "Pincer set maximum %1 with max at %2", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -721,7 +721,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "RotaryEncoder set maximum position %1 with max %2", 
+            "message0": "RotaryEncoder set maximum position %1 with max at %2", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -778,7 +778,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "LEDArray happy face %1", 
+            "message0": "LEDArray draw happy face %1", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -786,12 +786,12 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "happyFace"
+            "id": "drawHappyFace"
         }, 
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "LEDArray neutral face %1", 
+            "message0": "LEDArray draw neutral face %1", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -799,12 +799,12 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "neutralFace"
+            "id": "drawNeutralFace"
         }, 
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "LEDArray sad face %1", 
+            "message0": "LEDArray draw sad face %1", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -812,7 +812,7 @@
                 }
             ], 
             "helpUrl": "gadgetron.build", 
-            "id": "sadFace"
+            "id": "drawSadFace"
         }, 
         {
             "nextStatement": null, 
@@ -843,7 +843,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "LEDArray print text %1 with text %2", 
+            "message0": "LEDArray print text %1 with text as %2", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -861,7 +861,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "LEDArray draw pix %1 with x %2 with y %3", 
+            "message0": "LEDArray draw pixel %1 with x at %2 with y at %3", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -884,7 +884,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "LEDArray draw line %1 with x1 %2 with y1 %3 with x2 %4 with y2 %5", 
+            "message0": "LEDArray draw line %1 with x1 at %2 with y1 at %3 with x2 at %4 with y2 at %5", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -917,7 +917,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "LEDArray draw rec %1 with x1 %2 with y1 %3 with x2 %4 with y2 %5", 
+            "message0": "LEDArray draw rectangle %1 with x1 at %2 with y1 at %3 with x2 at %4 with y2 at %5", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -950,7 +950,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "LEDArray fill rec %1 with x1 %2 with y1 %3 with x2 %4 with y2 %5", 
+            "message0": "LEDArray fill rectangle %1 with x1 at %2 with y1 at %3 with x2 at %4 with y2 at %5", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -983,7 +983,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "LEDArray draw circle %1 with x %2 with y %3 with r %4", 
+            "message0": "LEDArray draw circle %1 with x at %2 with y at %3 with r at %4", 
             "previousStatement": null, 
             "args0": [
                 {
@@ -1011,25 +1011,7 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "LEDArray blink %1 with rate %2", 
-            "previousStatement": null, 
-            "args0": [
-                {
-                    "type": "input_dummy"
-                }, 
-                {
-                    "type": "input_value", 
-                    "name": "rate", 
-                    "check": "Number"
-                }
-            ], 
-            "helpUrl": "gadgetron.build", 
-            "id": "blink"
-        }, 
-        {
-            "nextStatement": null, 
-            "tooltip": "", 
-            "message0": "LEDArray set brightness %1 with level %2", 
+            "message0": "LEDArray set brightness %1 with level at %2", 
             "previousStatement": null, 
             "args0": [
                 {

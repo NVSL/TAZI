@@ -70,7 +70,7 @@ class IDEGenerator:
         for component in self.components.keys():
             for i in range( 1, self.components[component] + 1 ):
                 # Some useful aliases
-                name = component + " " + str(i)
+                name = component + " #" + str(i)
                 
                 # We want a new colour for this subset
                 color = str(int((componentIdx / totalNumberOfCategories) * 360))
@@ -91,7 +91,7 @@ class IDEGenerator:
 		    # Set the name that will be displayed on this block
 		    # to have the same number as this component instance
 		    message0 = block["message0"].split(' ')
-		    message0[0] += " "+str(i)
+		    message0[0] += " #"+str(i)
 		    block["message0"] = " ".join(message0)
                     block["id"] = "$" + component.lower() + str(i) + "$" + block["id"]
                     id = block["id"].encode('ascii', 'ignore')
