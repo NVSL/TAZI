@@ -6,7 +6,6 @@ GSPEC = HotlineBling
 APIGSPEC = Chase
 APIGSPECS = $(wildcard Gspecs/*.api.gspec)
 INOS = $(APIGSPECS:Gspecs/%.api.gspec=%.ino)
-#ARDUINO = /home/michael/Downloads/arduino-1.6.4/arduino
 ARDUINO = arduino
 
 GSPEC_FILE = $(GSPEC_DIR)$(GSPEC).gspec
@@ -37,6 +36,8 @@ class:
 	$(ARDUINO) --verify $(GADGET_INO)
 clean:
 	rm *.pyc
+	make -C $(OUTPUT) clean
+	make -C $(GSPEC_DIR) clean
 display:
 	google-chrome ../Blockly/index.html
 %.ino : $(GSPEC_DIR)%.api.gspec
