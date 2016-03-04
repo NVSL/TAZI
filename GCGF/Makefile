@@ -1,5 +1,5 @@
 GSPEC = Gspecs/Wall-E.gspec
-APIGSPEC = Gspecs/Wall-E.api.gspec
+APIGSPEC = Gspecs/HotlineBling.api.gspec
 RESOURCES = Resources
 CATALOG = $(GADGETRON_CATALOG)/Components.xml
 CATEGORIESXML = $(RESOURCES)/DefaultCategories.xml

@@ -3,6 +3,9 @@ __email__ = "mmg005@eng.ucsd.edu"
 
 import xml.etree.ElementTree as ETree
 import functools
+def createComment( comment ):
+    dashes = 10*"-"
+    return "/** " + dashes + " " + comment + " " + dashes + "**/" 
 class Arg:
     def __init__(self, value, name):
         self.value = value
@@ -58,11 +61,15 @@ class ClassGenerator:
 		    continue
                 currentObj = CObj( node.attrib["class"] )
 	        args = []
-	        for arg in node:
+		# Handle all the arguments for the object
+	        for arg in node.findall("arg"):
 	            currentArg = Arg( arg.attrib["digitalliteral"], arg.attrib["arg"] )
 		    if currentArg.value == "None": 
 		        currentArg.value = arg.attrib["analogliteral"] 
 		    args.append( currentArg )
+		# Handle all the extra required libraries
+		for lib in node.find("required_files").findall("file"):
+		    self.libraries.append( lib.attrib["name"] )
 	        currentObj.setArgs( args )
 	        self.objects.append( currentObj )
 	        self.libraries.append( node.attrib["include"])
@@ -76,11 +83,15 @@ if __name__ == "__main__":
     api = ETree.parse(args.gspec).getroot()
     generator = ClassGenerator()
     generator.parseApiGspec(api)
+    print createComment("Libraries")
     print generator.getLibraries()
+    print createComment("Pin Constants")
     for string in generator.getConstants():
         print string
     print
+    print createComment("Object Declarations")
     for string in generator.getObjectDeclarations():
         print string
     print
+    print createComment("Setup Function")
     print generator.getSetupFunction()
