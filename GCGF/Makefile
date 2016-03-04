@@ -39,4 +39,6 @@ display:
 %.ino : $(GSPEC_DIR)%.api.gspec
 	mkdir -p $(OUTPUT)$*
 	python ClassGenerator.py -g $< > $(OUTPUT)$*/$@
-	#$(ARDUINO) --verify $(OUTPUT)$*/$@
+	$(ARDUINO) --verify $(OUTPUT)$*/$@
+$(GSPEC_DIR)%.api.gspec : $(GSPEC_DIR)%.gspec
+	make -C $(GSPEC_DIR) $*.api.gspec

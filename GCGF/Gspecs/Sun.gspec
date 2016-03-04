@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gadgetlayout version="1.1">
+   <name>Sun</name>
+   <creator />
+   <board x="0" y="0" width="160" height="120" />
+   <option name="faceplate-color" value="clear-nocolor" />
+   <option name="backplate-color" value="clear-nocolor" />
+   <option name="faceplate-etch" value="etch-front" />
+   <option name="backplate-etch" value="etch-back" />
+   <option name="front-standoff-height" value="8" />
+   <option name="back-standoff-height" value="8" />
+   <option name="pcb-thickness" value="1.57" />
+   <option name="faceplate-thickness" value="3.175" />
+   <option name="backplate-thickness" value="3.175" />
+   <option name="cam-target" value="LPKF" />
+   <component progname="brain" type="Adafruit-Pro-Trinket-5V-battery-powered" deletable="false">
+      <placedpart refdes="U1" x="62" y="87" rotation="270" mirrored="False" />
+   </component>
+   <component progname="battery" type="battery-9V-vertical" deletable="false">
+      <placedpart refdes="BATT1" x="15" y="56" rotation="0" mirrored="False" />
+   </component>
+   <component progname="drive" type="dual-motor-kit-knobby">
+      <placedpart refdes="L" x="165" y="109" rotation="0" mirrored="False" />
+      <placedpart refdes="R" x="-5" y="109" rotation="0" mirrored="False" />
+   </component>
+   <component progname="drive_2" type="dual-motor-kit-knobby">
+      <placedpart refdes="L" x="165" y="32" rotation="0" mirrored="False" />
+      <placedpart refdes="R" x="-5" y="33" rotation="0" mirrored="False" />
+   </component>
+   <component progname="penholder" type="pen-holder">
+      <placedpart refdes="u1" x="80" y="52" rotation="0" mirrored="False" />
+   </component>
+   <component progname="bump" type="bump-switch-medium-right">
+      <placedpart refdes="U$2" x="51.2" y="114" rotation="0" mirrored="False" />
+   </component>
+   <component progname="button" type="tactile-button-round-red">
+      <placedpart refdes="B1" x="44" y="57" rotation="0" mirrored="False" />
+   </component>
+   <component progname="bump_2" type="bump-switch-medium-right">
+      <placedpart refdes="U$2" x="103.5" y="6" rotation="180" mirrored="False" />
+   </component>
+   <component progname="buzzer" type="piezo-buzzer">
+      <placedpart refdes="u1" x="80" y="105" rotation="0" mirrored="False" />
+   </component>
+</gadgetlayout>
