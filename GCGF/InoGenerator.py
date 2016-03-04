@@ -3,10 +3,7 @@ __email__ = "mmg005@eng.ucsd.edu"
 
 import xml.etree.ElementTree as ETree
 import functools
-def createComment( comment, dash="-"):
-    dashes = (40-len(comment)/2)*dash
-    if len(comment) % 2 == 0: comment+=dash
-    return "/** " + dashes + "" + comment + "" + dashes + " **/" 
+from InoCommenter import *
 class Arg:
     def __init__(self, value, name):
         self.value = value
@@ -26,7 +23,6 @@ class ClassGenerator:
     objInstances = []
     loopBody = []
     name = "" 
-
     def __init__( self, api):
         self.parseApiGspec(api)
     def getSetupFunction(self):
@@ -85,49 +81,19 @@ class ClassGenerator:
 	        self.objects.append( currentObj )
 	        self.libraries.append( node.attrib["include"])
     def getClass(self):
-	nl = "\n"
-        def a( string ): return nl+string
-	#def createComment( string ): return self.createComment(string)
-        rv = createComment(" Robot Name ", dash="#") 
-        rv += a(createComment("*"*len(self.name), dash="~"))
-        rv += a(createComment("*"*len(self.name), dash="~"))
-        rv += a(createComment(self.name, dash="="))
-        rv += a(createComment("*"*len(self.name), dash="~"))
-        rv += a(createComment("*"*len(self.name), dash="~"))
-        rv += a(createComment("{"*(len(self.name)/2) +"^_^"+ "}"*(len(self.name)/2), dash="#")) 
-        rv += nl
-        rv += nl
-        rv += nl
-        rv += nl
-        rv += a(createComment("", dash="="))
-        rv += a(createComment("Libraries"))
-        rv += a(createComment("", dash="="))
-        rv += nl
+        rv = createRobotHeader( self.name )
+        rv += nl * 2
+        rv += a(createSectionHeader("Libraries"))
         rv += a(self.getLibraries())
-        rv += a(createComment("", dash="="))
-        rv += a(createComment("Pin Constants"))
-        rv += a(createComment("", dash="="))
-        rv += nl
+        rv += a(createSectionHeader("Pin Constants"))
         for string in self.getConstants():
             rv += a(string)
-        rv += nl
-        rv += a(createComment("", dash="="))
-        rv += a(createComment("Object Declarations"))
-        rv += a(createComment("", dash="="))
-        rv += nl
+        rv += a(createSectionHeader("Object Declarations"))
         for string in self.getObjectDeclarations():
             rv += a(string)
-        rv += nl
-        rv += a(createComment("", dash="="))
-        rv += a(createComment("Setup Function"))
-        rv += a(createComment("", dash="="))
-        rv += nl
+        rv += a(createSectionHeader("Setup Function", description="The setup() function runs --ONCE-- when the Arduino boots up. As the name implies, it's useful to add code that 'sets up' your Gadget to run correctly."))
         rv += a(self.getSetupFunction())
-        rv += nl
-        rv += a(createComment("", dash="="))
-        rv += a(createComment("Loop Function"))
-        rv += a(createComment("", dash="="))
-        rv += nl
+        rv += a(createSectionHeader("Loop Function", description="The loop() function runs continuously after the setup() function finishes and while the Arduino is running. In other words, this function is called repeatly over and over again when it reaches the end of the function. This function is where the majority of your program's logic should go."  ))
         rv += a(self.getLoopFunction())
 	return rv
 

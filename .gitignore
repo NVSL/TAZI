@@ -17,4 +17,4 @@
 .\#*
 .egg-info
 attemptsatxmlparsing/testOutputs/
-GCGF/Output/*
+GCGF/Output/*/
