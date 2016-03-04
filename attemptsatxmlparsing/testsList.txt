@@ -2,35 +2,35 @@
     a. Just  declaration ...Done
     b. Initialized to text ...Done
     c. Special value pi ...Done
-    d. Special value e ...Done
-    e. special value ? ...Done
-    f. special value sqrt(2) ...Done
-    g. special value sqrt(1/2) ...Done
-2. Logic
-   a. Numbers with equal sign
-   b. Numbers with notequal sign
-   c. Numbers with lessthan sign
-   d. Numbers with lessthanequl sign
-   e. Numbers with greatethan sign
-   e. Numbers with greatethanequal sign
-   f. One Variable with equal sign 
-   g. One Variable with notequal sign
-   h. One Varaible with lessthan sign
-   i. One Variable with lessthanequl sign
-   j. One Varaible with greatethan sign
-   k. Two Variable with equal sign 
-   l. Two Variable with notequal sign
-   m. Two Varaible with lessthan sign
-   n. Two Variable with lessthanequl sign
-   o. Two Varaible with greatethan sign
-   p. Two Varaible with greatethanequal sign
-   q. Two Varaible with greatethanequal sign
-   r. Null with equals
-   s. Null with notequals
-   t. Null with lessthan
-   u. Null with lessthanequal
-   v. Null with greaterthan
-   w. NUll with greaterthanequal
+    d. Special value e ...Removed
+    e. special value Ratio ...Removed
+    f. special value sqrt(2) ...Removed
+    g. special value sqrt(1/2) ...Removed
+2. Logic  (Used if loop and a variable assignment statement inside)
+   a. Numbers with equal sign  ..DONE
+   b. Numbers with notequal sign ..DONE
+   c. Numbers with lessthan sign ..DONE
+   d. Numbers with lessthanequl sign ..DONE
+   e. Numbers with greatethan sign ..DONE
+   e. Numbers with greatethanequal sign...DONE
+   f. One Variable with equal sign  ..DONE
+   g. One Variable with notequal sign ..DONE
+   h. One Varaible with lessthan sign ..DONE
+   i. One Variable with lessthanequl sign ..DONE
+   j. One Varaible with greatethan sign ..DONE
+   k. Two Variable with equal sign  ..DONE
+   l. Two Variable with notequal sign ..DONE
+   m. Two Varaible with lessthan sign ..DONE
+   n. Two Variable with lessthanequl sign ..DONE
+   o. Two Varaible with greatethan sign ..DONE
+   p. Two Varaible with greatethanequal sign ..DONE
+   q. Two Varaible with greatethanequal sign...DONE
+   r. Null with equals ..DONE
+   s. Null with notequals ..DONE
+   t. Null with lessthan ..DONE
+   u. Null with lessthanequal ..DONE
+   v. Null with greaterthan ..DONE
+   w. NUll with greaterthanequal ..DONE
    aa. And (true, true)
    bb. And (true, false)
    cc. And (false, true)

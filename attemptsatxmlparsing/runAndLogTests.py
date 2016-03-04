@@ -12,27 +12,28 @@ class TestBlocklyTranslator(unittest.TestCase):
 		self.assertTrue("you" > "me")
 		self.assertFalse("yay" == "tests")
 
-	def test_FileXmlToCpp(self):
-		print("\n=== Running xml file tests ===")
-		subprocess.call(["rm", "-f", "testOutputs/xmlTestOutput"])
-		xmlFiles = subprocess.Popen(["ls", "tests/xml/"], stdout=subprocess.PIPE).communicate()[0].split("\n")
-		for xmlFile in xmlFiles:
-			if re.match(r".*\.xml", xmlFile):
-				print("Testing " + xmlFile + "...")
-				proc = subprocess.Popen(["python", "blocklyTranslator.py", "-x", "tests/xml/" + xmlFile], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-				stdoutVal, stderrVal = proc.communicate()
-				with open("testOutputs/xmlTestOutput", "a") as outFile:
-					outFile.write("=== " + xmlFile + " ===\n--- stdout ---\n")
-					outFile.write(stdoutVal + "\n--------------")
-					outFile.write("\n--- stderr ---")
-					outFile.write(stderrVal + "\n--------------\n\n")
-				#with open("testOutputs/cCode.c", "a") as outFile2:
-				#	outFile2.write(stdoutVal)
-				#	result = gcc outFile
-				#	if result != 0:
-				#		print "FAIL TEST\n"
-				#	else 
-				#		print "PASS TEST\n"
+#	def test_FileXmlToCpp(self):
+#		print("\n=== Running xml file tests ===")
+#		subprocess.call(["rm", "-f", "testOutputs/xmlTestOutput"])
+#		xmlFiles = subprocess.Popen(["ls", "tests/xml/"], stdout=subprocess.PIPE).communicate()[0].split("\n")
+#		for xmlFile in xmlFiles:
+#			if re.match(r".*\.xml", xmlFile):
+#				print("Testing " + xmlFile + "...")
+#				proc = subprocess.Popen(["python", "blocklyTranslator.py", "-x", "tests/xml/" + xmlFile], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+#				stdoutVal, stderrVal = proc.communicate()
+#				with open("testOutputs/xmlTestOutput", "a") as outFile:
+#					outFile.write("=== " + xmlFile + " ===\n--- stdout ---\n")
+#					outFile.write(stdoutVal + "\n--------------")
+#					outFile.write("\n--- stderr ---")
+#					outFile.write(stderrVal + "\n--------------\n\n")
+#				file = "cCode/" +  xmlFile + "_cCode.c";
+#				with open(file, "w") as outFile2:
+#					outFile2.write(stdoutVal)
+#					result = subprocess.check_call(["gcc", "-fsyntax-only", file])
+#					if result != 0:
+#						print "FAIL TEST"
+#					if result == 0:
+#						print "PASS TEST"
 
 					
 
@@ -50,7 +51,19 @@ class TestBlocklyTranslator(unittest.TestCase):
 					outFile.write(stdoutVal + "\n--------------")
 					outFile.write("\n--- stderr ---")
 					outFile.write(stderrVal + "\n--------------\n\n")
-
+				varFile = (varFile.split(".")) [0];
+				file = "cCode/varFiles/" + varFile + "_cCode.c";
+				with open(file, "w") as outFile2:
+					outFile2.write(stdoutVal)
+					outFile2.close()
+					#result = subprocess.Popen(["gcc", "-fsyntax-only", file])
+					exitCode = subprocess.call(["gcc", "-fsyntax-only", file])
+					#result = subprocess.Popen(["echo $?"]).communicate()[0];
+					#result.wait()
+					if exitCode != 0:
+						print "FAIL TEST"
+					else:
+						print "PASS TEST"
 
 	def test_mathTests(self):
 		print("\n=== Running math tests ===")
@@ -66,6 +79,20 @@ class TestBlocklyTranslator(unittest.TestCase):
 					outFile.write(stdoutVal + "\n--------------")
 					outFile.write("\n--- stderr ---")
 					outFile.write(stderrVal + "\n--------------\n\n")
+				mathFile = (mathFile.split(".")) [0];
+				file = "cCode/mathFiles/" + varFile + "_cCode.c";
+				with open(file, "w") as outFile2:
+					outFile2.write(stdoutVal)
+					outFile2.close()
+					#result = subprocess.Popen(["gcc", "-fsyntax-only", file])
+					exitCode = subprocess.call(["gcc", "-fsyntax-only", file])
+					#result = subprocess.Popen(["echo $?"]).communicate()[0];
+					#result.wait()
+					if exitCode != 0:
+						print "FAIL TEST"
+					else:
+						print "PASS TEST"
+
 
 	def test_logicTests(self):
 		print("\n=== Running logic tests ===")
@@ -81,9 +108,20 @@ class TestBlocklyTranslator(unittest.TestCase):
 					outFile.write(stdoutVal + "\n--------------")
 					outFile.write("\n--- stderr ---")
 					outFile.write(stderrVal + "\n--------------\n\n")
-
-
-
+				logicFile = (logicFile.split(".")) [0];
+				file = "cCode/logicFiles/" + logicFile + "_cCode.c";
+				with open(file, "w") as outFile2:
+					outFile2.write(stdoutVal)
+					outFile2.close();
+					#result = subprocess.Popen(["gcc", "-fsyntax-only", file])
+					exitCode = subprocess.call(["gcc", "-fsyntax-only", file])
+					#stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+					#result = subprocess.Popen(["echo $?"]).communicate()[0];
+					#result.wait()
+					if exitCode != 0:
+						print "FAIL TEST"
+					else:
+						print "PASS TEST"
 
 
 if __name__ == "__main__":
