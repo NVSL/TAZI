@@ -57,6 +57,9 @@ def recurseParse(node, depth):
             if ((child.attrib).get("type") != None and (child.attrib["type"] == "main")):
                 overallResult += ";\n" + recurseParse(child, depth)
 
+        if (("void loop ()" not in overallResult)):
+            overallResult += "void loop () {\n}\n"
+
         return overallResult #funcsFirst + overallResult
 
     elif tag == "block":
@@ -95,7 +98,7 @@ def getBlock(node,depth):
         return "void loop () {" + recurseParseCheck(list(node), depth+1) + ";\n}"
 
     if (blockType == "variable_declarations"):
-        return "void setup () {;\n" + recurseParseCheck(list(node), depth + 1) + ";\n};\n"
+        return "void setup () {\n" + recurseParseCheck(list(node), depth + 1) + ";\n}\n"
 
     if blockType in funcGet.keys():
         return funcCheckGet(blockType, node, depth) #funcGet[blockType](node,depth)
@@ -208,9 +211,13 @@ def getOp(node):
 
 #constant dictionary
 constDict = {
-    "PI": "3.14159265358979323846"
+    "PI": "3.14159265358979323846",
+    "SQRT": "sqrt"
 }
 def getConst(node):
+    if ("SQRT" in getField(node)):
+        return "sqrt(" + getField(node)[4:] + ")"
+
     return constDict[getField(node)]
 
 # Function Get dictionary

@@ -9,6 +9,21 @@ import platform
 import json
 from ClangBindings import *
 
+
+
+def cleanFunctionName( func ):
+    acc = [] 
+    expandWords = { "pos" : "position", "max" : "maximum", "rec" : "rectangle", "pix" : "pixel" }
+    for w in func.split("_"):
+        s0 = 0
+        idxs = [ i for i, c in enumerate(w) if c.isupper() ]
+	for i in idxs + [ len(w) ]:
+	    acc.append( w[s0:i].lower() )
+	    s0 = i
+    for i in xrange(len(acc)): 
+        if acc[i] in expandWords: acc[i] = expandWords[acc[i]] 
+    return " ".join(acc)
+
 # Function Name: determineParamType()
 # Arguments: param - A string representation of a function's parameter
 # Returns: The string which blockly uses to constrain block input types
@@ -30,6 +45,7 @@ def determineParamType( param ):
 # Setup argument parsing
 parser = argparse.ArgumentParser(description="BlockGenerator.py creates a Blockly IDE for Gadgetron. It parses our existing C++ class libraries using Clang to generate block categories and blocks. It then uses Jinja to actually create the IDE")
 parser.add_argument("-l", "--library", required=True)
+parser.add_argument("-b", "--blacklist", required=True)
 args = parser.parse_args()
 
 
@@ -47,6 +63,15 @@ index = clang.cindex.Index.create()
 # the C++ class files. This grabs the root of that xml file
 libxml = ET.parse( args.library )
 library = libxml.getroot()
+
+# The black list contains functions we don't want to show the Blockly users
+blxml = ET.parse( args.blacklist )
+blroot = blxml.getroot()
+blackList = set()
+for f in blroot:
+    key = f.attrib["name"]
+    if "class" in f.attrib.keys(): key = f.attrib["class"] + key
+    blackList.add(key)
 
 # The JSON repsentation of the blocks we're going to dump
 blocksJSON = {}
@@ -67,15 +92,18 @@ for component in library:
 	fp = 0
         blocksJSON[aClass.name] = []
 
+
+	# We want to verify that all our classes have a setup function
+	hasSetup = False
 	for func in aClass.functions:
-	    skippedFunctions = [ "setup", "update", "loop" ]
-	    if func.name in skippedFunctions:
+	    if func.name in blackList or aClass.name+func.name in blackList:
+	        if func.name == "setup": hasSetup = True
 	        continue
 	    # Create a blockly json definition
 	    # The attributes passed here should be the same across all blockly json files
 	    funcjson = {
 	            "id":func.name,
-	            "message0":aClass.name+" "+func.name + " %1",
+	            "message0":aClass.name+" "+ cleanFunctionName(func.name) + " %1",
 	            "tooltip" : "",
 	            "helpUrl": "gadgetron.build" }
             args = [{"type":"input_dummy"}]
@@ -84,11 +112,13 @@ for component in library:
             fp += 1
 	    # Iterate over all the arguments for the current function
 	    for arg in func.params:
+	        argType = determineParamType(arg[1])
+		preposition = { "String" : "as", "Number":"at","Boolean":"being" } 
 	        argJson = {"type":"input_value",
 		           "name":arg[0],
-			   "check":determineParamType(arg[1])}
-	        funcjson["message0"] = funcjson["message0"] + " with " + arg[0] + " %" + str(i)
-		i = i + 1
+			   "check":argType}
+	        funcjson["message0"] += " with " + arg[0] + " " + preposition[argType] + " %" + str(i)
+		i += 1
 		args.append(argJson)
 	    funcjson["args0"] = args
 	    # Determine the return type of the block
@@ -100,9 +130,7 @@ for component in library:
 	    
             blocksJSON[aClass.name].append(funcjson)
 
-        #hasSetup = printClassFunctions( aClass)
-        #if hasSetup is False:
-        #    raise Exception( aClass.name + " has no setup() method!")
+        if hasSetup is False: raise Exception( aClass.name + " has no setup() method!")
 
 
 print json.dumps(blocksJSON, indent = 4 )

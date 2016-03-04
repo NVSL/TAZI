@@ -17,37 +17,27 @@
 	{% endfor %}
 	</script>
 	
-	<style>
+	<!--style>
 	.outer {
 		background-color: #009933;
 		padding: 5px;
 	}
 	h1 {color:blue;}
-	</style>
+	</style-->
 	
 </head>
 <body>
-        <script>
-	    window.onload = function() { 
-		var xmlString = "<xml><block type=\"main\" x=\"88\" y=\"72\"></block><!--block type=\"main_loop\" x=\"333\" y=\"69\"></block--></xml>";
-		var workspace = Blockly.getMainWorkspace();
-		var xml = Blockly.Xml.textToDom(xmlString);     
-		console.log(workspace);
-		console.log(xml);       	
-		Blockly.Xml.domToWorkspace( workspace, xml);
-	    } ;
-	</script>
 	<div width="100%" height="100%">
 	
 	<div class = "outer", style="width:20%; height:10%; float:left;">
-		<img src="{{resDir}}GtronImage.png" alt="Gtron Logo" style="width:150px;height:50px;">		
+		<img src="{{resDir}}GtronImage.png" alt="Gtron Logo" style="width:auto;height:auto;">		
 	</div>
 	
 	<div class = "outer", style = "margin-left:20%; width: 70%; height: 10%">
-		<h1> TAZI </h1>
+		<h1 font-family="sans-serif"> TAZI - A Blockly Programming Environment for Robots</h1>
 	</div>
 	
-	<div id="blocklyDiv" style="height: 80%; width: 90%;"></div>
+	<div id="blocklyDiv" style="height: 85%; width: 100%;"></div>
 		{{toolbox}}
 	</div>
 	<script>
@@ -55,4 +45,6 @@
       		{toolbox: document.getElementById('toolbox')});
 	</script>
 	<button onclick="console.log(Blockly.Xml.workspaceToDom(Blockly.getMainWorkspace()))">Dump XML</button>
+    <input type="file" id="xmlinput" />
+    <script src="{{resDir}}BlocksIO.js"></script>
 </body>
