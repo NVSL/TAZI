@@ -59,42 +59,6 @@
         {
             "nextStatement": null, 
             "tooltip": "", 
-            "message0": "LED blink %1 with on %2 with off %3", 
-            "previousStatement": null, 
-            "args0": [
-                {
-                    "type": "input_dummy"
-                }, 
-                {
-                    "type": "input_value", 
-                    "name": "on", 
-                    "check": "Number"
-                }, 
-                {
-                    "type": "input_value", 
-                    "name": "off", 
-                    "check": "Number"
-                }
-            ], 
-            "helpUrl": "gadgetron.build", 
-            "id": "blink"
-        }, 
-        {
-            "nextStatement": null, 
-            "tooltip": "", 
-            "message0": "LED blink %1", 
-            "previousStatement": null, 
-            "args0": [
-                {
-                    "type": "input_dummy"
-                }
-            ], 
-            "helpUrl": "gadgetron.build", 
-            "id": "blink"
-        }, 
-        {
-            "nextStatement": null, 
-            "tooltip": "", 
             "message0": "LED toggle %1", 
             "previousStatement": null, 
             "args0": [
