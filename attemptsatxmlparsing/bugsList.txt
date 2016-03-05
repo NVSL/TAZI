@@ -1,9 +1,0 @@
-1) varTestE, varTestPI, varTest, varTestRatio,  varTestSQ2, varTestSQ14
-    They are defined as constants in words -> so don't compile
-    But do we even want to have support for such constants?
-    RESOLVED
-2)  varTestString
-    The constant doesn't appear in double qoutes -> doesn't compile
-    RESOLVED
-3) 
-

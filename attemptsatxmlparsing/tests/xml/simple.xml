@@ -1,1 +1,0 @@
-<xml><block type="main" x="88" y="72"><statement name="main_loop"><block type="$led1$blink$1"></block></statement></block></xml>

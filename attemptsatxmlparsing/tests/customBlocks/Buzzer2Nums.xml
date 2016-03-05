@@ -1,1 +1,0 @@
-<xml><block type="variable_declarations" x="88" y="72"></block><block type="main_loop" x="333" y="69"><next><block type="_Buzzer_playNote"><value name="frequency"><block type="math_number"><field name="NUM">20</field></block></value><value name="noteLength"><block type="math_number"><field name="NUM">5</field></block></value></block></next></block></xml>
