@@ -1,0 +1,142 @@
+<xml>
+   <block y="72" x="88" type="variable_declarations" />
+   <block y="69" x="333" type="main_loop">
+      <next>
+         <block type="controls_whileUntil">
+            <field name="MODE">UNTIL</field>
+            <value name="BOOL">
+               <block type="$MomentaryButton$isPressed" />
+            </value>
+            <statement name="DO">
+               <block type="$RGBLED$set">
+                  <value name="red">
+                     <block type="math_number">
+                        <field name="NUM">43</field>
+                     </block>
+                  </value>
+                  <value name="green">
+                     <block type="math_number">
+                        <field name="NUM">225</field>
+                     </block>
+                  </value>
+                  <value name="blue">
+                     <block type="math_number">
+                        <field name="NUM">32</field>
+                     </block>
+                  </value>
+                  <next>
+                     <block type="controls_whileUntil">
+                        <field name="MODE">WHILE</field>
+                        <value name="BOOL">
+                           <block type="logic_operation">
+                              <field name="OP">AND</field>
+                              <value name="A">
+                                 <block type="logic_operation">
+                                    <field name="OP">AND</field>
+                                    <value name="A">
+                                       <block type="$MomentaryButton$wasPressed" />
+                                    </value>
+                                    <value name="B">
+                                       <block type="logic_compare">
+                                          <field name="OP">LT</field>
+                                          <value name="A">
+                                             <block type="$DistanceSensor$get_distance" />
+                                          </value>
+                                          <value name="B">
+                                             <block type="math_number">
+                                                <field name="NUM">13</field>
+                                             </block>
+                                          </value>
+                                       </block>
+                                    </value>
+                                 </block>
+                              </value>
+                              <value name="B">
+                                 <block type="logic_operation">
+                                    <field name="OP">OR</field>
+                                    <value name="A">
+                                       <block type="$MomentaryButton$wasReleased" />
+                                    </value>
+                                    <value name="B">
+                                       <block type="$MomentaryButton$isReleased" />
+                                    </value>
+                                 </block>
+                              </value>
+                           </block>
+                        </value>
+                        <statement name="DO">
+                           <block type="$Buzzer$playNote">
+                              <value name="frequency">
+                                 <block type="math_constant">
+                                    <field name="CONSTANT">PI</field>
+                                 </block>
+                              </value>
+                              <value name="noteLength">
+                                 <block type="math_arithmetic">
+                                    <field name="OP">ADD</field>
+                                    <value name="A">
+                                       <shadow type="math_number">
+                                          <field name="NUM">1</field>
+                                       </shadow>
+                                       <block type="math_number">
+                                          <field name="NUM">3</field>
+                                       </block>
+                                    </value>
+                                    <value name="B">
+                                       <shadow type="math_number">
+                                          <field name="NUM">1</field>
+                                       </shadow>
+                                       <block type="math_number">
+                                          <field name="NUM">45</field>
+                                       </block>
+                                    </value>
+                                 </block>
+                              </value>
+                              <next>
+                                 <block type="$Motor$forward">
+                                    <value name="speed">
+                                       <block type="math_number">
+                                          <field name="NUM">255</field>
+                                       </block>
+                                    </value>
+                                    <next>
+                                       <block type="$LEDArray$happyFace">
+                                          <next>
+                                             <block type="delay">
+                                                <value name="NAME">
+                                                   <block type="math_arithmetic">
+                                                      <field name="OP">ADD</field>
+                                                      <value name="A">
+                                                         <shadow type="math_number">
+                                                            <field name="NUM">1</field>
+                                                         </shadow>
+                                                         <block type="math_number">
+                                                            <field name="NUM">33</field>
+                                                         </block>
+                                                      </value>
+                                                      <value name="B">
+                                                         <shadow type="math_number">
+                                                            <field name="NUM">1</field>
+                                                         </shadow>
+                                                         <block type="math_number">
+                                                            <field name="NUM">22</field>
+                                                         </block>
+                                                      </value>
+                                                   </block>
+                                                </value>
+                                             </block>
+                                          </next>
+                                       </block>
+                                    </next>
+                                 </block>
+                              </next>
+                           </block>
+                        </statement>
+                     </block>
+                  </next>
+               </block>
+            </statement>
+         </block>
+      </next>
+   </block>
+</xml>

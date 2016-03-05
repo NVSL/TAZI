@@ -1,0 +1,9 @@
+<xml>
+	<block y="72" x="88" type="main">
+		<statement name="main_loop">
+			<block type="controls_if">
+				<value name="IF0">
+					<block type="logic_compare">
+						<field name="OP">EQ</field>
+						<value name="A">
+							<block type="math_arithmetic"><field name="OP">ADD</field><value name="A"><shadow type="math_number"><field name="NUM">1</field></shadow></value><value name="B"><shadow type="math_number"><field name="NUM">1</field></shadow></value></block></value><value name="B"><block type="math_number"><field name="NUM">0</field></block></value></block></value><statement name="DO0"><block type="$motor1$forward$0"></block></statement></block></statement></block></xml>

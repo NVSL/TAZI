@@ -1,0 +1,28 @@
+TEST OUTPUTS: 
+Testing file: tests/varTests/varTestNum.xml
+;
+void setup () {
+  double item = 89;
+}
+;
+void loop () {
+}
+
+Testing file: tests/varTests/varTestPi.xml
+;
+void setup () {
+  int item = 3.14159265358979323846;
+}
+;
+void loop () {
+}
+
+Testing file: tests/varTests/varTestString.xml
+;
+void setup () {
+  string item = "Hello World";
+}
+;
+void loop () {
+}
+
