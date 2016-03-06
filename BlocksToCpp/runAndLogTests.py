@@ -43,6 +43,13 @@ class TestBlocklyTranslator(unittest.TestCase):
 		sys.stdout.write("Translating " + file + "...")
 		proc = subprocess.Popen(["python", "blocklyTranslator.py", "-x", testDir + file], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 		stdoutVal, stderrVal = proc.communicate()
+
+		with open(outputFile, "a") as outFile:
+			outFile.write("=== " + file + " ===\n--- stdout ---\n")
+			outFile.write(stdoutVal + "\n--------------")
+			outFile.write("\n--- stderr ---")
+			outFile.write(stderrVal + "\n--------------\n\n")
+
 		# Check if there is any stderr output
 		try:
 			self.assertEqual(stderrVal, "")
@@ -52,11 +59,6 @@ class TestBlocklyTranslator(unittest.TestCase):
 			print("FAIL")
 			return
 
-		with open(outputFile, "a") as outFile:
-			outFile.write("=== " + file + " ===\n--- stdout ---\n")
-			outFile.write(stdoutVal + "\n--------------")
-			outFile.write("\n--- stderr ---")
-			outFile.write(stderrVal + "\n--------------\n\n")
 		filename = (file.split(".")) [0];
 		cfile = cDir + filename + "_cCode.c";
 		sys.stdout.write("Compiling " + cfile + "...")
