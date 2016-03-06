@@ -15,3 +15,6 @@ main:
 	cp $(COPY) javascript_compressed.js $(DEST)
 	cp $(COPY) php_compressed.js $(DEST)
 	cp $(COPY) python_compressed.js $(DEST)
+	cp $(COPY) custom_blocks.js $(DEST)
+	cp $(COPY) BlocksIO.js $(DEST)
+	cp $(COPY) GtronImage.png $(DEST)
