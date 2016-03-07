@@ -1,6 +1,7 @@
 import wsgiref.simple_server
 import webapp2
 import os
+from lxml import etree as ET
 
 INDEX = "static/index.html"
 STATIC = "static/"
@@ -46,8 +47,7 @@ def main ():
 
 if __name__ == "__main__":
     import argparse
-    parser = argparse.ArgumentParser()
-    parser.add_argument("-i", "--html" )
+    parser = argparse.ArgumentParser(description="From a gspec and a component library, compiles a schematic and semi-placed board.")
+    parser.add_argument("-s", metavar="static_files", type=str, nargs="*", default=["static_files.xml"], help="the complete list of static files that will be served by the server")
     args = parser.parse_args()
-    if args.html is not None: INDEX = args.html
     main()
