@@ -1,7 +1,7 @@
 COPY = '-R'
 APPENGINE = appengine/
 DEST = $(APPENGINE)static/
-PROG = main.py
+
 main:
 	cp $(COPY) blocks/ $(DEST)
 	cp $(COPY) core/ $(DEST)
@@ -22,5 +22,6 @@ main:
 	cp $(COPY) BlocksIO.js $(DEST)
 	cp $(COPY) GtronImage.png $(DEST)
 	cp $(COPY) index.html $(DEST)
+	cp $(COPY) Requests.js $(DEST)
 run:
 	make -C $(APPENGINE)

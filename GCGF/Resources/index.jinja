@@ -4,6 +4,8 @@
 	<script src="{{resDir}}blocks_compressed.js"></script>
 	<script src="{{resDir}}custom_blocks.js"></script>
 	<script src="{{resDir}}msg/js/en.js"></script>
+	<script src="{{resDir}}jquery-2.2.1.min.js"></script>
+	<script src="{{resDir}}Requests.js"></script>
 	<script type="text/javascript">
 	{% for block in blocklist %}
 		var {{block[0]}} = {{block[1]}};
@@ -46,7 +48,7 @@
 	</script>
 	<button onclick="console.log(Blockly.Xml.workspaceToDom(Blockly.getMainWorkspace()))">Dump XML</button>
 	<button>Save Program</button>
-	<button>Compile</button>
+	<button onclick="testPost()">Compile</button>
     <input type="file" id="xmlinput" />
     <script src="{{resDir}}BlocksIO.js"></script>
 </body>

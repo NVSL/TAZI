@@ -1,2 +1,2 @@
 run:
-	sudo python main.py
+	python main.py

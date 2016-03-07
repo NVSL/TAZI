@@ -1,6 +1,8 @@
 <static dir="static/" >
     <file path="blockly_compressed.js" />
     <file path="blocks_compressed.js" />
+    <file path="Requests.js" />
+    <file path="jquery-2.2.1.min.js" />
     <file path="custom_blocks.js" />
     <file path="msg/js/en.js" />
     <file path="BlocksIO.js" />

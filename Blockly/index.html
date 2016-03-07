@@ -4,6 +4,8 @@
 	<script src="blocks_compressed.js"></script>
 	<script src="custom_blocks.js"></script>
 	<script src="msg/js/en.js"></script>
+	<script src="jquery-2.2.1.min.js"></script>
+	<script src="Requests.js"></script>
 	<script type="text/javascript">
 	
 		var $buzzer1$playNote$0 = {"colour": "45", "nextStatement": null, "tooltip": "", "message0": "Buzzer #1 play note %1 with frequency at %2", "previousStatement": null, "args0": [{"type": "input_dummy"}, {"type": "input_value", "name": "frequency", "check": "Number"}], "helpUrl": "gadgetron.build", "id": "$buzzer1$playNote"};
@@ -625,7 +627,7 @@
 	</script>
 	<button onclick="console.log(Blockly.Xml.workspaceToDom(Blockly.getMainWorkspace()))">Dump XML</button>
 	<button>Save Program</button>
-	<button>Compile</button>
+	<button onclick="testPost()">Compile</button>
     <input type="file" id="xmlinput" />
     <script src="BlocksIO.js"></script>
 </body>
