@@ -60,7 +60,7 @@ app = webapp2.WSGIApplication([
 ], debug=True)
 
 def main ():
-    port = 8081
+    port = 80
     httpd = wsgiref.simple_server.make_server('', port, app)
     print "Serving HTTP on port "+str(port)+"..."
     httpd.serve_forever()

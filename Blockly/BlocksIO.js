@@ -87,6 +87,12 @@ function writeXMLToFile(fs) {
 
 }
 
+$("button").click(function(){
+    $.post("demo_test.asp", function(data, status){
+        alert("Data: " + data + "\nStatus: " + status);
+    });
+});
+
 window.requestFileSystem(window.TEMPORARY, 1024*1024, writeXMLToFile, errorHandler);
 
 document.getElementById('xmlinput').addEventListener('change', readXMLFromFile, false);
