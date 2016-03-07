@@ -1,0 +1,1 @@
+<xml><block type="main" deletable="false" x="88" y="72"><statement name="main_loop"><block type="$buzzer1$playNote$1"><value name="frequency"><block type="math_number"><field name="NUM">10</field></block></value><value name="noteLength"><block type="math_number"><field name="NUM">25</field></block></value></block></statement></block></xml>

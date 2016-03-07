@@ -1,0 +1,1 @@
+<xml><block type="main" deletable="false" x="88" y="72"><statement name="main_loop"><block type="$motor1$spinLeft$4"></block></statement></block></xml>
