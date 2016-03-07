@@ -13,50 +13,29 @@ GTRON_IMAGE = "GtronImage.png"
 
 def openStaticFile( fn ): return open(STATIC+fn).read()
 
+def createHandler( static_file ):
+    class Handler(webapp2.RequestHandler):
+        def get(self):
+	    static_str = openStaticFile( static_file )
+	    self.response.write( static_str )
+    return Handler
+
+def create_path_pair( static_file ): 
+    return ( "/" + static_file, createHandler( static_file ) )
+
 class IDERequestHandler(webapp2.RequestHandler):
     def get(self):
         index = open(INDEX).read()
         self.response.write(index)
-class BlocklyCompJSHandler(webapp2.RequestHandler):
-    def get(self):
-        index = openStaticFile( BLOCKLY_C )
-        self.response.write(index)
-
-class BlocksCompJSHandler(webapp2.RequestHandler):
-    def get(self):
-        index = openStaticFile( BLOCKS )
-        self.response.write(index)
-
-class CustomBlocksHandler(webapp2.RequestHandler):
-    def get(self):
-        index = openStaticFile( CUSTOM_BLOCKS )
-        self.response.write(index)
-
-class MsgHandler(webapp2.RequestHandler):
-    def get(self):
-        index = openStaticFile( MSGJS )
-        self.response.write(index)
-
-class BlocksIO(webapp2.RequestHandler):
-    def get(self):
-        index = openStaticFile( BLOCKSIO )
-        self.response.write(index)
-
-class GtronImage(webapp2.RequestHandler):
-    def get(self):
-        index = openStaticFile( GTRON_IMAGE )
-        self.response.write(index)
-
-
 
 app = webapp2.WSGIApplication([
     ("/", IDERequestHandler),
-    ("/"+MSGJS, MsgHandler),
-    ("/"+BLOCKS, BlocksCompJSHandler),
-    ("/"+BLOCKSIO, BlocksIO),
-    ("/"+BLOCKLY_C, BlocklyCompJSHandler),
-    ("/"+GTRON_IMAGE, GtronImage),
-    ("/"+CUSTOM_BLOCKS, CustomBlocksHandler),
+    create_path_pair(MSGJS),
+    create_path_pair(BLOCKS),
+    create_path_pair(BLOCKSIO),
+    create_path_pair(BLOCKLY_C),
+    create_path_pair(GTRON_IMAGE),
+    create_path_pair(CUSTOM_BLOCKS),
 ], debug=True)
 
 def main ():
