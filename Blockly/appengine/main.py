@@ -5,12 +5,7 @@ from lxml import etree as ET
 
 INDEX = "static/index.html"
 STATIC = "static/"
-BLOCKLY_C = "blockly_compressed.js"
-BLOCKS = "blocks_compressed.js"
-CUSTOM_BLOCKS = "custom_blocks.js"
-MSGJS = "msg/js/en.js"
-BLOCKSIO = "BlocksIO.js"
-GTRON_IMAGE = "GtronImage.png"
+
 
 def openStaticFile( fn ): return open(STATIC+fn).read()
 
@@ -24,23 +19,19 @@ def createHandler( static_file ):
 def create_path_pair( static_file ): 
     return ( "/" + static_file, createHandler( static_file ) )
 
+def parseStaticFiles( xml_file ):
+    root = ET.parse(xml_file).getroot()
+    static_dir = root["dir"]
+    files = [f["path"] for f in root ]
+    return (static_dir, files)
+    
 class IDERequestHandler(webapp2.RequestHandler):
     def get(self):
         index = open(INDEX).read()
         self.response.write(index)
 
-app = webapp2.WSGIApplication([
-    ("/", IDERequestHandler),
-    create_path_pair(MSGJS),
-    create_path_pair(BLOCKS),
-    create_path_pair(BLOCKSIO),
-    create_path_pair(BLOCKLY_C),
-    create_path_pair(GTRON_IMAGE),
-    create_path_pair(CUSTOM_BLOCKS),
-], debug=True)
-
-def main ():
-    port = 80
+def main (app):
+    port = 8080
     httpd = wsgiref.simple_server.make_server('', port, app)
     print "Serving HTTP on port "+str(port)+"..."
     httpd.serve_forever()
@@ -48,6 +39,11 @@ def main ():
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(description="From a gspec and a component library, compiles a schematic and semi-placed board.")
-    parser.add_argument("-s", metavar="static_files", type=str, nargs="*", default=["static_files.xml"], help="the complete list of static files that will be served by the server")
+    parser.add_argument("-s", "static_files", type=str, nargs="*", default=["static_files.xml"], help="the complete list of static files that will be served by the server")
     args = parser.parse_args()
-    main()
+    STATIC, files = parseStaticFiles( args.static_files )
+    app = webapp2.WSGIApplication([
+        ("/", IDERequestHandler),
+        *[ create_path_pair(f) for f in files ] ]
+    , debug=True)
+    main(app)
