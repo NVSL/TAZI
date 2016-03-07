@@ -21,8 +21,8 @@ def create_path_pair( static_file ):
 
 def parseStaticFiles( xml_file ):
     root = ET.parse(xml_file).getroot()
-    static_dir = root["dir"]
-    files = [f["path"] for f in root ]
+    static_dir = root.attrib["dir"]
+    files = [f.attrib["path"] for f in root ]
     return (static_dir, files)
     
 class IDERequestHandler(webapp2.RequestHandler):
@@ -39,11 +39,8 @@ def main (app):
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(description="From a gspec and a component library, compiles a schematic and semi-placed board.")
-    parser.add_argument("-s", "static_files", type=str, nargs="*", default=["static_files.xml"], help="the complete list of static files that will be served by the server")
+    parser.add_argument("-s", "--static_files", type=str, nargs="*", default="static_files.xml", help="the complete list of static files that will be served by the server")
     args = parser.parse_args()
     STATIC, files = parseStaticFiles( args.static_files )
-    app = webapp2.WSGIApplication([
-        ("/", IDERequestHandler),
-        *[ create_path_pair(f) for f in files ] ]
-    , debug=True)
+    app = webapp2.WSGIApplication([ ("/", IDERequestHandler)] + [ create_path_pair(f) for f in files ]  , debug=True)
     main(app)
