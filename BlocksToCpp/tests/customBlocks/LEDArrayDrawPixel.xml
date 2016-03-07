@@ -1,0 +1,1 @@
+<xml><block type="main" deletable="false" x="88" y="72"><statement name="main_loop"><block type="$ledarray1$drawPix$7"><value name="x"><block type="math_number"><field name="NUM">5</field></block></value><value name="y"><block type="math_number"><field name="NUM">10</field></block></value></block></statement></block></xml>

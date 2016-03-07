@@ -1,0 +1,1 @@
+<xml><block type="main" deletable="false" x="88" y="72"><statement name="main_loop"><block type="$led1$toggle$0"><next><block type="$led2$turnOn$1"><next><block type="$led3$turnOff$2"><next><block type="$led4$toggle$0"></block></next></block></next></block></next></block></statement></block></xml>

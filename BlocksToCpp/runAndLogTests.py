@@ -101,8 +101,24 @@ class TestBlocklyTranslator(unittest.TestCase):
 		for logicFile in LogicFiles:
 			if re.match(r".*\.xml", logicFile):
 				self.helper(logicFile, "tests/LogicTests/", "testOutputs/logicTestOutput", "cCode/logicFiles/")
-
-
+	
+	def test_loopTests(self):
+		print("\n=== Running loop tests ===")
+		subprocess.call(["rm", "-f", "testOutputs/loopTestOutput"])
+		subprocess.call(["mkdir", "cCode/loopFiles/"])
+		LoopFiles = subprocess.Popen(["ls", "tests/loopTests/"], stdout=subprocess.PIPE).communicate()[0].split("\n")
+		for loopFile in LoopFiles:
+			if re.match(r".*\.xml", loopFile):
+				self.helper(loopFile, "tests/loopTests/", "testOutputs/loopTestOutput", "cCode/loopFiles/")
+	
+	def test_randomTests(self):
+		print("\n=== Running random tests ===")
+		subprocess.call(["rm", "-f", "testOutputs/randomTestOutput"])
+		subprocess.call(["mkdir", "cCode/randomFiles/"])
+		RandomFiles = subprocess.Popen(["ls", "tests/randomTests/"], stdout=subprocess.PIPE).communicate()[0].split("\n")
+		for randomFile in RandomFiles:
+			if re.match(r".*\.xml", randomFile):
+				self.helper(randomFile, "tests/randomTests/", "testOutputs/randomTestOutput", "cCode/randomFiles/")
 
 if __name__ == "__main__":
 	subprocess.call(["mkdir", "testOutputs"])

@@ -1,0 +1,1 @@
+<xml><block type="main" deletable="false" x="88" y="72"><statement name="main_loop"><block type="$ledarray1$setBrightness$12"><value name="level"><block type="math_number"><field name="NUM">5</field></block></value></block></statement></block></xml>
