@@ -17,8 +17,10 @@ class IDERequestHandler(webapp2.RequestHandler):
 class CompileRequestHandler(webapp2.RequestHandler):
     def post(self):
         request = dict(self.request.POST)
+	xml = removeNSHack(request["xml"])
         print "I got a compile request!"
-	cpp = compile(StringIO(request['xml']))
+	cpp = compile(StringIO(xml))
+	print cpp
 	self.response.write(cpp)
 class AspTestHandler(webapp2.RequestHandler):
     def post(self):
@@ -26,6 +28,20 @@ class AspTestHandler(webapp2.RequestHandler):
         print "I got an asp test request!"
 	print request
 
+def removeNSHack( xml ):
+    xIdx = 0
+    xCnt = 0
+    qIdx = 0
+    qCnt = 0
+    i = 0
+    for c in xml:
+        if c == "x": xCnt += 1
+        if c == '"': qCnt += 1
+	if c == "x" and xCnt == 2: xIdx = i 
+	if c == '"' and qCnt == 2: qIdx = i 
+	if qCnt >= 2 and xCnt >= 2: return xml[:xIdx] + xml[qIdx+1:]
+	print c, xCnt, qCnt, i
+	i += 1
 # Auto Generated Static Request Handlers
 def openStaticFile( fn ): return open(STATIC+fn).read()
 

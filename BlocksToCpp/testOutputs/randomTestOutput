@@ -1,11 +1,19 @@
 === loop1.xml ===
 --- stdout ---
+;
+void setup () {
+  double item = 0;
+}
+;
+void loop () {  ;
+  for(int i = 1; i<= 10; i+= 1) {;
+    int item = item + 1;
+  };
+;
+};
+
 
 --------------
---- stderr ---Traceback (most recent call last):
-  File "blocklyTranslator.py", line 28, in <module>
-    except BlocklyError as e:
-NameError: name 'BlocklyError' is not defined
-
+--- stderr ---
 --------------
 

@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 
-import xml.etree.ElementTree as ET
+import lxml.etree as ET
+from lxml import objectify
 import argparse
 
-DEBUG = 0
+DEBUG = 1
 #Can run with arguments for filename input OR requests filename input
 
 
@@ -26,7 +27,7 @@ def recurseParse(node, depth):
         tag = node.tag
 
     if DEBUG:
-        print("Current tag: " + tag)
+        print "Current tag: " + tag, "Attributes: " + str(node.attrib)
 
     if tag == "xml":
         overallResult = ""
@@ -105,6 +106,7 @@ def getBlock(node,depth):
 	    s.attrib["type"] = s.attrib["name"]
 	    return s
 	lines = ""
+	print node.tag
 	for b in map( refactorStatementToBlock, node.findall("statement" )):
 	    lines += recurseParse( b, depth ) + ';\n'
         return lines
@@ -525,16 +527,17 @@ funcGet = {
 madeFuncNames = {
 }
 
+
 def run( xml ):
     tree = ET.parse(xml)
     root = tree.getroot()
     try:
         if DEBUG: print("--- RUNNING IN DEBUG MODE ---")
-        print(recurseParse(root,0))
+        return (recurseParse(root,0))
     except BlocklyError as e:
         print("Error: " + e.value)
         raise
-# main
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -549,5 +552,5 @@ if __name__ == "__main__":
 
     if args.d:
         DEBUG = 1
-    run( inp )
+    print run( inp )
 
