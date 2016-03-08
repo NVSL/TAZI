@@ -1,3 +1,3 @@
 function testPost() {
-    $.post("/test", "HI")
+    $.post("/swag", {})
 }
