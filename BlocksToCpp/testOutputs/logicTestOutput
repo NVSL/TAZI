@@ -1,638 +1,330 @@
 === and1Val1Var.xml ===
 --- stdout ---
-Error: Block logic_boolean is malformatted!
 
 --------------
 --- stderr ---Traceback (most recent call last):
-  File "blocklyTranslator.py", line 548, in <module>
-    print(recurseParse(root,0))
-  File "blocklyTranslator.py", line 58, in recurseParse
-    overallResult += ";\n" + recurseParse(child, depth)
-  File "blocklyTranslator.py", line 66, in recurseParse
-    return getBlock(node,depth)
-  File "blocklyTranslator.py", line 125, in getBlock
-    lines += recurseParse( b, depth ) + ';\n'
-  File "blocklyTranslator.py", line 66, in recurseParse
-    return getBlock(node,depth)
-  File "blocklyTranslator.py", line 101, in getBlock
-    return "void setup () {\n" + recurseParseCheck(list(node), depth + 1) + ";\n}\n"
-  File "blocklyTranslator.py", line 89, in recurseParseCheck
-    return recurseParse(nodeList[0], depth)
-  File "blocklyTranslator.py", line 66, in recurseParse
-    return getBlock(node,depth)
-  File "blocklyTranslator.py", line 104, in getBlock
-    return funcCheckGet(blockType, node, depth) #funcGet[blockType](node,depth)
-  File "blocklyTranslator.py", line 517, in funcCheckGet
-    return funcGet[blockType](node, depth)
-  File "blocklyTranslator.py", line 240, in setVar
-    varValue = recurseParse(list(list(node)[1])[0], 0)
-  File "blocklyTranslator.py", line 66, in recurseParse
-    return getBlock(node,depth)
-  File "blocklyTranslator.py", line 128, in getBlock
-    return genericBlockGet(node,depth)
-  File "blocklyTranslator.py", line 134, in genericBlockGet
-    raise BlocklyError("Block " + blockType + " is malformatted!")
-__main__.BlocklyError
+  File "blocklyTranslator.py", line 28, in <module>
+    except BlocklyError as e:
+NameError: name 'BlocklyError' is not defined
 
 --------------
 
 === and2Vals.xml ===
 --- stdout ---
-Error: Block logic_boolean is malformatted!
 
 --------------
 --- stderr ---Traceback (most recent call last):
-  File "blocklyTranslator.py", line 548, in <module>
-    print(recurseParse(root,0))
-  File "blocklyTranslator.py", line 58, in recurseParse
-    overallResult += ";\n" + recurseParse(child, depth)
-  File "blocklyTranslator.py", line 66, in recurseParse
-    return getBlock(node,depth)
-  File "blocklyTranslator.py", line 125, in getBlock
-    lines += recurseParse( b, depth ) + ';\n'
-  File "blocklyTranslator.py", line 66, in recurseParse
-    return getBlock(node,depth)
-  File "blocklyTranslator.py", line 98, in getBlock
-    return "void loop () {" + recurseParseCheck(list(node), depth+1) + ";\n}"
-  File "blocklyTranslator.py", line 89, in recurseParseCheck
-    return recurseParse(nodeList[0], depth)
-  File "blocklyTranslator.py", line 66, in recurseParse
-    return getBlock(node,depth)
-  File "blocklyTranslator.py", line 104, in getBlock
-    return funcCheckGet(blockType, node, depth) #funcGet[blockType](node,depth)
-  File "blocklyTranslator.py", line 517, in funcCheckGet
-    return funcGet[blockType](node, depth)
-  File "blocklyTranslator.py", line 276, in ifBlock
-    booleanPart = getArgs(list(node)[0])
-  File "blocklyTranslator.py", line 170, in getArgs
-    arguments += recurseParse(list(node)[i], 0)
-  File "blocklyTranslator.py", line 66, in recurseParse
-    return getBlock(node,depth)
-  File "blocklyTranslator.py", line 104, in getBlock
-    return funcCheckGet(blockType, node, depth) #funcGet[blockType](node,depth)
-  File "blocklyTranslator.py", line 517, in funcCheckGet
-    return funcGet[blockType](node, depth)
-  File "blocklyTranslator.py", line 316, in compLog
-    valueA = recurseParse(list(list(node)[1])[0],depth)
-  File "blocklyTranslator.py", line 66, in recurseParse
-    return getBlock(node,depth)
-  File "blocklyTranslator.py", line 128, in getBlock
-    return genericBlockGet(node,depth)
-  File "blocklyTranslator.py", line 134, in genericBlockGet
-    raise BlocklyError("Block " + blockType + " is malformatted!")
-__main__.BlocklyError
+  File "blocklyTranslator.py", line 28, in <module>
+    except BlocklyError as e:
+NameError: name 'BlocklyError' is not defined
 
 --------------
 
 === and2Var.xml ===
 --- stdout ---
-Error: Block logic_boolean is malformatted!
 
 --------------
 --- stderr ---Traceback (most recent call last):
-  File "blocklyTranslator.py", line 548, in <module>
-    print(recurseParse(root,0))
-  File "blocklyTranslator.py", line 58, in recurseParse
-    overallResult += ";\n" + recurseParse(child, depth)
-  File "blocklyTranslator.py", line 66, in recurseParse
-    return getBlock(node,depth)
-  File "blocklyTranslator.py", line 125, in getBlock
-    lines += recurseParse( b, depth ) + ';\n'
-  File "blocklyTranslator.py", line 66, in recurseParse
-    return getBlock(node,depth)
-  File "blocklyTranslator.py", line 101, in getBlock
-    return "void setup () {\n" + recurseParseCheck(list(node), depth + 1) + ";\n}\n"
-  File "blocklyTranslator.py", line 89, in recurseParseCheck
-    return recurseParse(nodeList[0], depth)
-  File "blocklyTranslator.py", line 66, in recurseParse
-    return getBlock(node,depth)
-  File "blocklyTranslator.py", line 104, in getBlock
-    return funcCheckGet(blockType, node, depth) #funcGet[blockType](node,depth)
-  File "blocklyTranslator.py", line 517, in funcCheckGet
-    return funcGet[blockType](node, depth)
-  File "blocklyTranslator.py", line 240, in setVar
-    varValue = recurseParse(list(list(node)[1])[0], 0)
-  File "blocklyTranslator.py", line 66, in recurseParse
-    return getBlock(node,depth)
-  File "blocklyTranslator.py", line 128, in getBlock
-    return genericBlockGet(node,depth)
-  File "blocklyTranslator.py", line 134, in genericBlockGet
-    raise BlocklyError("Block " + blockType + " is malformatted!")
-__main__.BlocklyError
+  File "blocklyTranslator.py", line 28, in <module>
+    except BlocklyError as e:
+NameError: name 'BlocklyError' is not defined
 
 --------------
 
 === EqualWNums.xml ===
 --- stdout ---
-;
-void loop () {  ;
-  if(76 == 76) {;
-    double item = 0;
-  };
-};
-
 
 --------------
---- stderr ---
+--- stderr ---Traceback (most recent call last):
+  File "blocklyTranslator.py", line 28, in <module>
+    except BlocklyError as e:
+NameError: name 'BlocklyError' is not defined
+
 --------------
 
 === EqualWNumVar.xml ===
 --- stdout ---
-;
-void setup () {
-  double index = 89;
-}
-;
-void loop () {  ;
-  if(index == 76) {;
-    double item = 0;
-  };
-};
-
 
 --------------
---- stderr ---
+--- stderr ---Traceback (most recent call last):
+  File "blocklyTranslator.py", line 28, in <module>
+    except BlocklyError as e:
+NameError: name 'BlocklyError' is not defined
+
 --------------
 
 === EqualWVar.xml ===
 --- stdout ---
-;
-void setup () {
-  double index = 89;
-  double index2 = 76;
-}
-;
-void loop () {  ;
-  if(index == index2) {;
-    double item = 0;
-  };
-};
-
 
 --------------
---- stderr ---
+--- stderr ---Traceback (most recent call last):
+  File "blocklyTranslator.py", line 28, in <module>
+    except BlocklyError as e:
+NameError: name 'BlocklyError' is not defined
+
 --------------
 
 === GreaterThanEqualWNums.xml ===
 --- stdout ---
-;
-void loop () {  ;
-  if(76 >= 76) {;
-    double item = 0;
-  };
-};
-
 
 --------------
---- stderr ---
+--- stderr ---Traceback (most recent call last):
+  File "blocklyTranslator.py", line 28, in <module>
+    except BlocklyError as e:
+NameError: name 'BlocklyError' is not defined
+
 --------------
 
 === GreaterThanEqualWNumVar.xml ===
 --- stdout ---
-;
-void setup () {
-  double index = 89;
-}
-;
-void loop () {  ;
-  if(index >= 76) {;
-    double item = 0;
-  };
-};
-
 
 --------------
---- stderr ---
+--- stderr ---Traceback (most recent call last):
+  File "blocklyTranslator.py", line 28, in <module>
+    except BlocklyError as e:
+NameError: name 'BlocklyError' is not defined
+
 --------------
 
 === GreaterThanEqualWVar.xml ===
 --- stdout ---
-;
-void setup () {
-  double index = 89;
-  double index2 = 76;
-}
-;
-void loop () {  ;
-  if(index >= index2) {;
-    double item = 0;
-  };
-};
-
 
 --------------
---- stderr ---
+--- stderr ---Traceback (most recent call last):
+  File "blocklyTranslator.py", line 28, in <module>
+    except BlocklyError as e:
+NameError: name 'BlocklyError' is not defined
+
 --------------
 
 === GreaterThanWNums.xml ===
 --- stdout ---
-;
-void loop () {  ;
-  if(76 > 76) {;
-    double item = 0;
-  };
-};
-
 
 --------------
---- stderr ---
+--- stderr ---Traceback (most recent call last):
+  File "blocklyTranslator.py", line 28, in <module>
+    except BlocklyError as e:
+NameError: name 'BlocklyError' is not defined
+
 --------------
 
 === GreaterThanWNumVar.xml ===
 --- stdout ---
-;
-void setup () {
-  double index = 89;
-}
-;
-void loop () {  ;
-  if(index > 76) {;
-    double item = 0;
-  };
-};
-
 
 --------------
---- stderr ---
+--- stderr ---Traceback (most recent call last):
+  File "blocklyTranslator.py", line 28, in <module>
+    except BlocklyError as e:
+NameError: name 'BlocklyError' is not defined
+
 --------------
 
 === GreaterThanWVar.xml ===
 --- stdout ---
-;
-void setup () {
-  double index = 89;
-  double index2 = 76;
-}
-;
-void loop () {  ;
-  if(index > index2) {;
-    double item = 0;
-  };
-};
-
 
 --------------
---- stderr ---
+--- stderr ---Traceback (most recent call last):
+  File "blocklyTranslator.py", line 28, in <module>
+    except BlocklyError as e:
+NameError: name 'BlocklyError' is not defined
+
 --------------
 
 === LessThanEqualWNums.xml ===
 --- stdout ---
-;
-void loop () {  ;
-  if(76 <= 76) {;
-    double item = 0;
-  };
-};
-
 
 --------------
---- stderr ---
+--- stderr ---Traceback (most recent call last):
+  File "blocklyTranslator.py", line 28, in <module>
+    except BlocklyError as e:
+NameError: name 'BlocklyError' is not defined
+
 --------------
 
 === LessThanEqualWNumVar.xml ===
 --- stdout ---
-;
-void setup () {
-  double index = 89;
-}
-;
-void loop () {  ;
-  if(index <= 76) {;
-    double item = 0;
-  };
-};
-
 
 --------------
---- stderr ---
+--- stderr ---Traceback (most recent call last):
+  File "blocklyTranslator.py", line 28, in <module>
+    except BlocklyError as e:
+NameError: name 'BlocklyError' is not defined
+
 --------------
 
 === LessThanEqualWVar.xml ===
 --- stdout ---
-;
-void setup () {
-  double index = 89;
-  double index2 = 76;
-}
-;
-void loop () {  ;
-  if(index <= index2) {;
-    double item = 0;
-  };
-};
-
 
 --------------
---- stderr ---
+--- stderr ---Traceback (most recent call last):
+  File "blocklyTranslator.py", line 28, in <module>
+    except BlocklyError as e:
+NameError: name 'BlocklyError' is not defined
+
 --------------
 
 === LessThanWNums.xml ===
 --- stdout ---
-;
-void loop () {  ;
-  if(76 < 76) {;
-    double item = 0;
-  };
-};
-
 
 --------------
---- stderr ---
+--- stderr ---Traceback (most recent call last):
+  File "blocklyTranslator.py", line 28, in <module>
+    except BlocklyError as e:
+NameError: name 'BlocklyError' is not defined
+
 --------------
 
 === LessThanWNumVar.xml ===
 --- stdout ---
-;
-void setup () {
-  double index = 89;
-}
-;
-void loop () {  ;
-  if(index < 76) {;
-    double item = 0;
-  };
-};
-
 
 --------------
---- stderr ---
+--- stderr ---Traceback (most recent call last):
+  File "blocklyTranslator.py", line 28, in <module>
+    except BlocklyError as e:
+NameError: name 'BlocklyError' is not defined
+
 --------------
 
 === LessThanWVar.xml ===
 --- stdout ---
-;
-void setup () {
-  double index = 89;
-  double index2 = 76;
-}
-;
-void loop () {  ;
-  if(index < index2) {;
-    double item = 0;
-  };
-};
-
 
 --------------
---- stderr ---
+--- stderr ---Traceback (most recent call last):
+  File "blocklyTranslator.py", line 28, in <module>
+    except BlocklyError as e:
+NameError: name 'BlocklyError' is not defined
+
 --------------
 
 === NotEqualWNums.xml ===
 --- stdout ---
-;
-void loop () {  ;
-  if(76 != 76) {;
-    double item = 0;
-  };
-};
-
 
 --------------
---- stderr ---
+--- stderr ---Traceback (most recent call last):
+  File "blocklyTranslator.py", line 28, in <module>
+    except BlocklyError as e:
+NameError: name 'BlocklyError' is not defined
+
 --------------
 
 === NotEqualWNumVar.xml ===
 --- stdout ---
-;
-void setup () {
-  double index = 89;
-}
-;
-void loop () {  ;
-  if(index != 76) {;
-    double item = 0;
-  };
-};
-
 
 --------------
---- stderr ---
+--- stderr ---Traceback (most recent call last):
+  File "blocklyTranslator.py", line 28, in <module>
+    except BlocklyError as e:
+NameError: name 'BlocklyError' is not defined
+
 --------------
 
 === NotEqualWVar.xml ===
 --- stdout ---
-;
-void setup () {
-  double index = 89;
-  double index2 = 76;
-}
-;
-void loop () {  ;
-  if(index != index2) {;
-    double item = 0;
-  };
-};
-
 
 --------------
---- stderr ---
+--- stderr ---Traceback (most recent call last):
+  File "blocklyTranslator.py", line 28, in <module>
+    except BlocklyError as e:
+NameError: name 'BlocklyError' is not defined
+
 --------------
 
 === nullEquals.xml ===
 --- stdout ---
-;
-void loop () {  ;
-  if(10 == 0) {;
-    double item = 0;
-  };
-};
-
 
 --------------
---- stderr ---
+--- stderr ---Traceback (most recent call last):
+  File "blocklyTranslator.py", line 28, in <module>
+    except BlocklyError as e:
+NameError: name 'BlocklyError' is not defined
+
 --------------
 
 === nullGreaterThanEqual.xml ===
 --- stdout ---
-;
-void loop () {  ;
-  if(10 >= 0) {;
-    double item = 0;
-  };
-};
-
 
 --------------
---- stderr ---
+--- stderr ---Traceback (most recent call last):
+  File "blocklyTranslator.py", line 28, in <module>
+    except BlocklyError as e:
+NameError: name 'BlocklyError' is not defined
+
 --------------
 
 === nullGreaterThan.xml ===
 --- stdout ---
-;
-void loop () {  ;
-  if(10 > 0) {;
-    double item = 0;
-  };
-};
-
 
 --------------
---- stderr ---
+--- stderr ---Traceback (most recent call last):
+  File "blocklyTranslator.py", line 28, in <module>
+    except BlocklyError as e:
+NameError: name 'BlocklyError' is not defined
+
 --------------
 
 === nullLessThanEqual.xml ===
 --- stdout ---
-;
-void loop () {  ;
-  if(10 <= 0) {;
-    double item = 0;
-  };
-};
-
 
 --------------
---- stderr ---
+--- stderr ---Traceback (most recent call last):
+  File "blocklyTranslator.py", line 28, in <module>
+    except BlocklyError as e:
+NameError: name 'BlocklyError' is not defined
+
 --------------
 
 === nullLessThan.xml ===
 --- stdout ---
-;
-void loop () {  ;
-  if(10 < 0) {;
-    double item = 0;
-  };
-};
-
 
 --------------
---- stderr ---
+--- stderr ---Traceback (most recent call last):
+  File "blocklyTranslator.py", line 28, in <module>
+    except BlocklyError as e:
+NameError: name 'BlocklyError' is not defined
+
 --------------
 
 === nullNotEquals.xml ===
 --- stdout ---
-;
-void loop () {  ;
-  if(10 != 0) {;
-    double item = 0;
-  };
-};
-
 
 --------------
---- stderr ---
+--- stderr ---Traceback (most recent call last):
+  File "blocklyTranslator.py", line 28, in <module>
+    except BlocklyError as e:
+NameError: name 'BlocklyError' is not defined
+
 --------------
 
 === or1Val1Var.xml ===
 --- stdout ---
-Error: Block logic_boolean is malformatted!
 
 --------------
 --- stderr ---Traceback (most recent call last):
-  File "blocklyTranslator.py", line 548, in <module>
-    print(recurseParse(root,0))
-  File "blocklyTranslator.py", line 58, in recurseParse
-    overallResult += ";\n" + recurseParse(child, depth)
-  File "blocklyTranslator.py", line 66, in recurseParse
-    return getBlock(node,depth)
-  File "blocklyTranslator.py", line 125, in getBlock
-    lines += recurseParse( b, depth ) + ';\n'
-  File "blocklyTranslator.py", line 66, in recurseParse
-    return getBlock(node,depth)
-  File "blocklyTranslator.py", line 101, in getBlock
-    return "void setup () {\n" + recurseParseCheck(list(node), depth + 1) + ";\n}\n"
-  File "blocklyTranslator.py", line 89, in recurseParseCheck
-    return recurseParse(nodeList[0], depth)
-  File "blocklyTranslator.py", line 66, in recurseParse
-    return getBlock(node,depth)
-  File "blocklyTranslator.py", line 104, in getBlock
-    return funcCheckGet(blockType, node, depth) #funcGet[blockType](node,depth)
-  File "blocklyTranslator.py", line 517, in funcCheckGet
-    return funcGet[blockType](node, depth)
-  File "blocklyTranslator.py", line 240, in setVar
-    varValue = recurseParse(list(list(node)[1])[0], 0)
-  File "blocklyTranslator.py", line 66, in recurseParse
-    return getBlock(node,depth)
-  File "blocklyTranslator.py", line 128, in getBlock
-    return genericBlockGet(node,depth)
-  File "blocklyTranslator.py", line 134, in genericBlockGet
-    raise BlocklyError("Block " + blockType + " is malformatted!")
-__main__.BlocklyError
+  File "blocklyTranslator.py", line 28, in <module>
+    except BlocklyError as e:
+NameError: name 'BlocklyError' is not defined
 
 --------------
 
 === or2Vals.xml ===
 --- stdout ---
-Error: Block logic_boolean is malformatted!
 
 --------------
 --- stderr ---Traceback (most recent call last):
-  File "blocklyTranslator.py", line 548, in <module>
-    print(recurseParse(root,0))
-  File "blocklyTranslator.py", line 58, in recurseParse
-    overallResult += ";\n" + recurseParse(child, depth)
-  File "blocklyTranslator.py", line 66, in recurseParse
-    return getBlock(node,depth)
-  File "blocklyTranslator.py", line 125, in getBlock
-    lines += recurseParse( b, depth ) + ';\n'
-  File "blocklyTranslator.py", line 66, in recurseParse
-    return getBlock(node,depth)
-  File "blocklyTranslator.py", line 98, in getBlock
-    return "void loop () {" + recurseParseCheck(list(node), depth+1) + ";\n}"
-  File "blocklyTranslator.py", line 89, in recurseParseCheck
-    return recurseParse(nodeList[0], depth)
-  File "blocklyTranslator.py", line 66, in recurseParse
-    return getBlock(node,depth)
-  File "blocklyTranslator.py", line 104, in getBlock
-    return funcCheckGet(blockType, node, depth) #funcGet[blockType](node,depth)
-  File "blocklyTranslator.py", line 517, in funcCheckGet
-    return funcGet[blockType](node, depth)
-  File "blocklyTranslator.py", line 276, in ifBlock
-    booleanPart = getArgs(list(node)[0])
-  File "blocklyTranslator.py", line 170, in getArgs
-    arguments += recurseParse(list(node)[i], 0)
-  File "blocklyTranslator.py", line 66, in recurseParse
-    return getBlock(node,depth)
-  File "blocklyTranslator.py", line 104, in getBlock
-    return funcCheckGet(blockType, node, depth) #funcGet[blockType](node,depth)
-  File "blocklyTranslator.py", line 517, in funcCheckGet
-    return funcGet[blockType](node, depth)
-  File "blocklyTranslator.py", line 316, in compLog
-    valueA = recurseParse(list(list(node)[1])[0],depth)
-  File "blocklyTranslator.py", line 66, in recurseParse
-    return getBlock(node,depth)
-  File "blocklyTranslator.py", line 128, in getBlock
-    return genericBlockGet(node,depth)
-  File "blocklyTranslator.py", line 134, in genericBlockGet
-    raise BlocklyError("Block " + blockType + " is malformatted!")
-__main__.BlocklyError
+  File "blocklyTranslator.py", line 28, in <module>
+    except BlocklyError as e:
+NameError: name 'BlocklyError' is not defined
 
 --------------
 
 === or2Var.xml ===
 --- stdout ---
-Error: Block logic_boolean is malformatted!
 
 --------------
 --- stderr ---Traceback (most recent call last):
-  File "blocklyTranslator.py", line 548, in <module>
-    print(recurseParse(root,0))
-  File "blocklyTranslator.py", line 58, in recurseParse
-    overallResult += ";\n" + recurseParse(child, depth)
-  File "blocklyTranslator.py", line 66, in recurseParse
-    return getBlock(node,depth)
-  File "blocklyTranslator.py", line 125, in getBlock
-    lines += recurseParse( b, depth ) + ';\n'
-  File "blocklyTranslator.py", line 66, in recurseParse
-    return getBlock(node,depth)
-  File "blocklyTranslator.py", line 101, in getBlock
-    return "void setup () {\n" + recurseParseCheck(list(node), depth + 1) + ";\n}\n"
-  File "blocklyTranslator.py", line 89, in recurseParseCheck
-    return recurseParse(nodeList[0], depth)
-  File "blocklyTranslator.py", line 66, in recurseParse
-    return getBlock(node,depth)
-  File "blocklyTranslator.py", line 104, in getBlock
-    return funcCheckGet(blockType, node, depth) #funcGet[blockType](node,depth)
-  File "blocklyTranslator.py", line 517, in funcCheckGet
-    return funcGet[blockType](node, depth)
-  File "blocklyTranslator.py", line 240, in setVar
-    varValue = recurseParse(list(list(node)[1])[0], 0)
-  File "blocklyTranslator.py", line 66, in recurseParse
-    return getBlock(node,depth)
-  File "blocklyTranslator.py", line 128, in getBlock
-    return genericBlockGet(node,depth)
-  File "blocklyTranslator.py", line 134, in genericBlockGet
-    raise BlocklyError("Block " + blockType + " is malformatted!")
-__main__.BlocklyError
+  File "blocklyTranslator.py", line 28, in <module>
+    except BlocklyError as e:
+NameError: name 'BlocklyError' is not defined
 
 --------------
 

@@ -1,4 +1,6 @@
 function testPost() {
     var xml = getXML();
-    $.post("/compile",  xml , function(data) {});
+    $.post("/compile",  { "xml" : xml } , function(data) {
+        console.log(data);
+    });
 }

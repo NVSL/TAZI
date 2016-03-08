@@ -3,24 +3,8 @@
 import xml.etree.ElementTree as ET
 import argparse
 
-#Can run with arguments for filename input OR requests filename input
-parser = argparse.ArgumentParser()
-parser.add_argument("-x", "--xml", required=False, help="Specify xml file through command line")
-parser.add_argument("-d", action="store_true", help="Debug mode")
-args = parser.parse_args()
-inp = None
-if args.xml is not None:
-    inp = args.xml
-else:
-    inp = raw_input("Filename: ")
-
 DEBUG = 0
-if args.d:
-    DEBUG = 1
-
-
-tree = ET.parse(inp)
-root = tree.getroot()
+#Can run with arguments for filename input OR requests filename input
 
 
 spaces = "  "
@@ -541,12 +525,29 @@ funcGet = {
 madeFuncNames = {
 }
 
+def run( xml ):
+    tree = ET.parse(xml)
+    root = tree.getroot()
+    try:
+        if DEBUG: print("--- RUNNING IN DEBUG MODE ---")
+        print(recurseParse(root,0))
+    except BlocklyError as e:
+        print("Error: " + e.value)
+        raise
 # main
-try:
-    if DEBUG:
-        print("--- RUNNING IN DEBUG MODE ---")
-    print(recurseParse(root,0))
-except BlocklyError as e:
-    print("Error: " + e.value)
-    raise
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-x", "--xml", required=False, help="Specify xml file through command line")
+    parser.add_argument("-d", action="store_true", help="Debug mode")
+    args = parser.parse_args()
+    inp = None
+    if args.xml is not None:
+        inp = args.xml
+    else:
+        inp = raw_input("Filename: ")
+
+    if args.d:
+        DEBUG = 1
+    run( inp )
 

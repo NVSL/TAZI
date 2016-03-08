@@ -1,6 +1,8 @@
 import wsgiref.simple_server
 import webapp2
+from StringIO import StringIO
 import os
+from BlocksToCpp.blocklyTranslator import run as compile
 from lxml import etree as ET
 
 INDEX = "static/index.html"
@@ -16,8 +18,8 @@ class CompileRequestHandler(webapp2.RequestHandler):
     def post(self):
         request = dict(self.request.POST)
         print "I got a compile request!"
-	print request
-	self.response.write("hi")
+	cpp = compile(StringIO(request['xml']))
+	self.response.write(cpp)
 class AspTestHandler(webapp2.RequestHandler):
     def post(self):
         request = dict(self.request.POST)

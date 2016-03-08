@@ -1,228 +1,88 @@
 === varTestBoolF.xml ===
 --- stdout ---
-Error: Block logic_boolean is malformatted!
 
 --------------
 --- stderr ---Traceback (most recent call last):
-  File "blocklyTranslator.py", line 548, in <module>
-    print(recurseParse(root,0))
-  File "blocklyTranslator.py", line 58, in recurseParse
-    overallResult += ";\n" + recurseParse(child, depth)
-  File "blocklyTranslator.py", line 66, in recurseParse
-    return getBlock(node,depth)
-  File "blocklyTranslator.py", line 125, in getBlock
-    lines += recurseParse( b, depth ) + ';\n'
-  File "blocklyTranslator.py", line 66, in recurseParse
-    return getBlock(node,depth)
-  File "blocklyTranslator.py", line 101, in getBlock
-    return "void setup () {\n" + recurseParseCheck(list(node), depth + 1) + ";\n}\n"
-  File "blocklyTranslator.py", line 89, in recurseParseCheck
-    return recurseParse(nodeList[0], depth)
-  File "blocklyTranslator.py", line 66, in recurseParse
-    return getBlock(node,depth)
-  File "blocklyTranslator.py", line 104, in getBlock
-    return funcCheckGet(blockType, node, depth) #funcGet[blockType](node,depth)
-  File "blocklyTranslator.py", line 517, in funcCheckGet
-    return funcGet[blockType](node, depth)
-  File "blocklyTranslator.py", line 240, in setVar
-    varValue = recurseParse(list(list(node)[1])[0], 0)
-  File "blocklyTranslator.py", line 66, in recurseParse
-    return getBlock(node,depth)
-  File "blocklyTranslator.py", line 128, in getBlock
-    return genericBlockGet(node,depth)
-  File "blocklyTranslator.py", line 134, in genericBlockGet
-    raise BlocklyError("Block " + blockType + " is malformatted!")
-__main__.BlocklyError
+  File "blocklyTranslator.py", line 28, in <module>
+    except BlocklyError as e:
+NameError: name 'BlocklyError' is not defined
 
 --------------
 
 === varTestBoolNull.xml ===
 --- stdout ---
-;
-void setup () {
-  int item = 0;
-}
-;
-void loop () {
-}
-
 
 --------------
---- stderr ---
+--- stderr ---Traceback (most recent call last):
+  File "blocklyTranslator.py", line 28, in <module>
+    except BlocklyError as e:
+NameError: name 'BlocklyError' is not defined
+
 --------------
 
 === varTestBoolT.xml ===
 --- stdout ---
-Error: Block logic_boolean is malformatted!
 
 --------------
 --- stderr ---Traceback (most recent call last):
-  File "blocklyTranslator.py", line 548, in <module>
-    print(recurseParse(root,0))
-  File "blocklyTranslator.py", line 58, in recurseParse
-    overallResult += ";\n" + recurseParse(child, depth)
-  File "blocklyTranslator.py", line 66, in recurseParse
-    return getBlock(node,depth)
-  File "blocklyTranslator.py", line 125, in getBlock
-    lines += recurseParse( b, depth ) + ';\n'
-  File "blocklyTranslator.py", line 66, in recurseParse
-    return getBlock(node,depth)
-  File "blocklyTranslator.py", line 101, in getBlock
-    return "void setup () {\n" + recurseParseCheck(list(node), depth + 1) + ";\n}\n"
-  File "blocklyTranslator.py", line 89, in recurseParseCheck
-    return recurseParse(nodeList[0], depth)
-  File "blocklyTranslator.py", line 66, in recurseParse
-    return getBlock(node,depth)
-  File "blocklyTranslator.py", line 104, in getBlock
-    return funcCheckGet(blockType, node, depth) #funcGet[blockType](node,depth)
-  File "blocklyTranslator.py", line 517, in funcCheckGet
-    return funcGet[blockType](node, depth)
-  File "blocklyTranslator.py", line 240, in setVar
-    varValue = recurseParse(list(list(node)[1])[0], 0)
-  File "blocklyTranslator.py", line 66, in recurseParse
-    return getBlock(node,depth)
-  File "blocklyTranslator.py", line 128, in getBlock
-    return genericBlockGet(node,depth)
-  File "blocklyTranslator.py", line 134, in genericBlockGet
-    raise BlocklyError("Block " + blockType + " is malformatted!")
-__main__.BlocklyError
+  File "blocklyTranslator.py", line 28, in <module>
+    except BlocklyError as e:
+NameError: name 'BlocklyError' is not defined
 
 --------------
 
 === varTestNotF.xml ===
 --- stdout ---
-Error: Block logic_boolean is malformatted!
 
 --------------
 --- stderr ---Traceback (most recent call last):
-  File "blocklyTranslator.py", line 548, in <module>
-    print(recurseParse(root,0))
-  File "blocklyTranslator.py", line 58, in recurseParse
-    overallResult += ";\n" + recurseParse(child, depth)
-  File "blocklyTranslator.py", line 66, in recurseParse
-    return getBlock(node,depth)
-  File "blocklyTranslator.py", line 125, in getBlock
-    lines += recurseParse( b, depth ) + ';\n'
-  File "blocklyTranslator.py", line 66, in recurseParse
-    return getBlock(node,depth)
-  File "blocklyTranslator.py", line 101, in getBlock
-    return "void setup () {\n" + recurseParseCheck(list(node), depth + 1) + ";\n}\n"
-  File "blocklyTranslator.py", line 89, in recurseParseCheck
-    return recurseParse(nodeList[0], depth)
-  File "blocklyTranslator.py", line 66, in recurseParse
-    return getBlock(node,depth)
-  File "blocklyTranslator.py", line 104, in getBlock
-    return funcCheckGet(blockType, node, depth) #funcGet[blockType](node,depth)
-  File "blocklyTranslator.py", line 517, in funcCheckGet
-    return funcGet[blockType](node, depth)
-  File "blocklyTranslator.py", line 240, in setVar
-    varValue = recurseParse(list(list(node)[1])[0], 0)
-  File "blocklyTranslator.py", line 66, in recurseParse
-    return getBlock(node,depth)
-  File "blocklyTranslator.py", line 104, in getBlock
-    return funcCheckGet(blockType, node, depth) #funcGet[blockType](node,depth)
-  File "blocklyTranslator.py", line 517, in funcCheckGet
-    return funcGet[blockType](node, depth)
-  File "blocklyTranslator.py", line 388, in negate
-    inner = recurseParse(list(list(node)[0])[0], 0)
-  File "blocklyTranslator.py", line 66, in recurseParse
-    return getBlock(node,depth)
-  File "blocklyTranslator.py", line 128, in getBlock
-    return genericBlockGet(node,depth)
-  File "blocklyTranslator.py", line 134, in genericBlockGet
-    raise BlocklyError("Block " + blockType + " is malformatted!")
-__main__.BlocklyError
+  File "blocklyTranslator.py", line 28, in <module>
+    except BlocklyError as e:
+NameError: name 'BlocklyError' is not defined
 
 --------------
 
 === varTestNotT.xml ===
 --- stdout ---
-Error: Block logic_boolean is malformatted!
 
 --------------
 --- stderr ---Traceback (most recent call last):
-  File "blocklyTranslator.py", line 548, in <module>
-    print(recurseParse(root,0))
-  File "blocklyTranslator.py", line 58, in recurseParse
-    overallResult += ";\n" + recurseParse(child, depth)
-  File "blocklyTranslator.py", line 66, in recurseParse
-    return getBlock(node,depth)
-  File "blocklyTranslator.py", line 125, in getBlock
-    lines += recurseParse( b, depth ) + ';\n'
-  File "blocklyTranslator.py", line 66, in recurseParse
-    return getBlock(node,depth)
-  File "blocklyTranslator.py", line 101, in getBlock
-    return "void setup () {\n" + recurseParseCheck(list(node), depth + 1) + ";\n}\n"
-  File "blocklyTranslator.py", line 89, in recurseParseCheck
-    return recurseParse(nodeList[0], depth)
-  File "blocklyTranslator.py", line 66, in recurseParse
-    return getBlock(node,depth)
-  File "blocklyTranslator.py", line 104, in getBlock
-    return funcCheckGet(blockType, node, depth) #funcGet[blockType](node,depth)
-  File "blocklyTranslator.py", line 517, in funcCheckGet
-    return funcGet[blockType](node, depth)
-  File "blocklyTranslator.py", line 240, in setVar
-    varValue = recurseParse(list(list(node)[1])[0], 0)
-  File "blocklyTranslator.py", line 66, in recurseParse
-    return getBlock(node,depth)
-  File "blocklyTranslator.py", line 104, in getBlock
-    return funcCheckGet(blockType, node, depth) #funcGet[blockType](node,depth)
-  File "blocklyTranslator.py", line 517, in funcCheckGet
-    return funcGet[blockType](node, depth)
-  File "blocklyTranslator.py", line 388, in negate
-    inner = recurseParse(list(list(node)[0])[0], 0)
-  File "blocklyTranslator.py", line 66, in recurseParse
-    return getBlock(node,depth)
-  File "blocklyTranslator.py", line 128, in getBlock
-    return genericBlockGet(node,depth)
-  File "blocklyTranslator.py", line 134, in genericBlockGet
-    raise BlocklyError("Block " + blockType + " is malformatted!")
-__main__.BlocklyError
+  File "blocklyTranslator.py", line 28, in <module>
+    except BlocklyError as e:
+NameError: name 'BlocklyError' is not defined
 
 --------------
 
 === varTestNum.xml ===
 --- stdout ---
-;
-void setup () {
-  double item = 89;
-}
-;
-void loop () {
-}
-
 
 --------------
---- stderr ---
+--- stderr ---Traceback (most recent call last):
+  File "blocklyTranslator.py", line 28, in <module>
+    except BlocklyError as e:
+NameError: name 'BlocklyError' is not defined
+
 --------------
 
 === varTestPi.xml ===
 --- stdout ---
-;
-void setup () {
-  int item = 3.14159265358979323846;
-}
-;
-void loop () {
-}
-
 
 --------------
---- stderr ---
+--- stderr ---Traceback (most recent call last):
+  File "blocklyTranslator.py", line 28, in <module>
+    except BlocklyError as e:
+NameError: name 'BlocklyError' is not defined
+
 --------------
 
 === varTestString.xml ===
 --- stdout ---
-;
-void setup () {
-  string item = "Hello World";
-}
-;
-void loop () {
-}
-
 
 --------------
---- stderr ---
+--- stderr ---Traceback (most recent call last):
+  File "blocklyTranslator.py", line 28, in <module>
+    except BlocklyError as e:
+NameError: name 'BlocklyError' is not defined
+
 --------------
 

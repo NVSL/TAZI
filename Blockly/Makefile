@@ -24,5 +24,6 @@ main:
 	cp $(COPY) GtronImage.png $(DEST)
 	cp $(COPY) index.html $(DEST)
 	cp $(COPY) Requests.js $(DEST)
+	cp $(COPY) ../BlocksToCpp $(APPENGINE)
 run:
 	make -C $(APPENGINE)
