@@ -4,7 +4,7 @@ import lxml.etree as ET
 from lxml import objectify
 import argparse
 
-DEBUG = 1
+DEBUG = 0
 #Can run with arguments for filename input OR requests filename input
 
 

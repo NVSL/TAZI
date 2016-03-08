@@ -40,7 +40,7 @@ def removeNSHack( xml ):
 	if c == "x" and xCnt == 2: xIdx = i 
 	if c == '"' and qCnt == 2: qIdx = i 
 	if qCnt >= 2 and xCnt >= 2: return xml[:xIdx] + xml[qIdx+1:]
-	print c, xCnt, qCnt, i
+	#print c, xCnt, qCnt, i
 	i += 1
 # Auto Generated Static Request Handlers
 def openStaticFile( fn ): return open(STATIC+fn).read()
