@@ -1,3 +1,4 @@
 function testPost() {
-    $.post("/swag", {})
+    var xml = getXML();
+    $.post("/compile",  xml , function(data) {});
 }

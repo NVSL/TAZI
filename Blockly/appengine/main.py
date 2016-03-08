@@ -12,10 +12,10 @@ class IDERequestHandler(webapp2.RequestHandler):
         index = open(INDEX).read()
         self.response.write(index)
 
-class TestRequestHandler(webapp2.RequestHandler):
+class CompileRequestHandler(webapp2.RequestHandler):
     def post(self):
         request = dict(self.request.POST)
-        print "I got a test request!"
+        print "I got a compile request!"
 	print request
 	self.response.write("hi")
 class AspTestHandler(webapp2.RequestHandler):
@@ -58,7 +58,7 @@ if __name__ == "__main__":
     STATIC, files = parseStaticFiles( args.static_files )
     app = webapp2.WSGIApplication([ 
         ("/", IDERequestHandler),
-	("/swag", TestRequestHandler),
+	("/compile", CompileRequestHandler),
 	("/demo_test.asp", AspTestHandler),
 	] + [ create_path_pair(f) for f in files ]  , debug=True)
     main(app)

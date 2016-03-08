@@ -46,7 +46,7 @@
   		var workspace = Blockly.inject('blocklyDiv',
       		{toolbox: document.getElementById('toolbox')});
 	</script>
-	<button onclick="console.log(Blockly.Xml.workspaceToDom(Blockly.getMainWorkspace()))">Dump XML</button>
+	<button onclick="console.log(getXML())">Dump XML</button>
 	<button>Save Program</button>
 	<button onclick="testPost()">Compile</button>
     <input type="file" id="xmlinput" />

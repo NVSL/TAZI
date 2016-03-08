@@ -2,6 +2,7 @@ COPY = '-R'
 APPENGINE = appengine/
 DEST = $(APPENGINE)static/
 
+all:	main run
 main:
 	cp $(COPY) blocks/ $(DEST)
 	cp $(COPY) core/ $(DEST)
