@@ -10,6 +10,8 @@ DEBUG = 0
 
 spaces = "  "
 
+delimitter = ";"
+
 # There should be some degree of error checking
 class BlocklyError(Exception):
     def __init__(self, value):
@@ -40,7 +42,7 @@ def recurseParse(node, depth):
 
         for child in node:
             if ((child.attrib).get("type") != None and (child.attrib["type"] == "main")):
-                overallResult += ";\n" + recurseParse(child, depth)
+                overallResult += recurseParse(child, depth)
 
         if (("void loop ()" not in overallResult)):
             overallResult += "void loop () {\n}\n"
@@ -108,7 +110,7 @@ def getBlock(node,depth):
 	lines = ""
 	print node.tag
 	for b in map( refactorStatementToBlock, node.findall("statement" )):
-	    lines += recurseParse( b, depth ) + ';\n'
+	    lines += recurseParse( b, depth ) + delimitter+ '\n'
         return lines
 
     return genericBlockGet(node,depth)
@@ -537,6 +539,13 @@ def run( xml ):
     except BlocklyError as e:
         print("Error: " + e.value)
         raise
+
+def getSplitDefinitions( xml ):
+    import string
+    global delimitter
+    delimitter = "57"
+    xml_str = run(xml)
+    return string.split(xml_str, delimitter)
 
 
 if __name__ == "__main__":
