@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
-import lxml.etree as ET
-from lxml import objectify
+import xml.etree.ElementTree as ET
 import argparse
 
 DEBUG = 0

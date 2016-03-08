@@ -2,8 +2,8 @@ import wsgiref.simple_server
 import webapp2
 from StringIO import StringIO
 import os
-from BlocksToCpp.blocklyTranslator import getSplitDefinitions as compile
-from lxml import etree as ET
+from BlocksToCpp.blocklyTranslator import run as compile
+import xml.etree.ElementTree as ET
 
 INDEX = "static/index.html"
 STATIC = "static/"
@@ -20,10 +20,11 @@ class CompileRequestHandler(webapp2.RequestHandler):
 	xml = removeNSHack(request["xml"])
         print "I got a compile request!"
 	cpp = compile(StringIO(xml))
-	strs = (cpp[1].split("\n"))
-	print 
-	print (cpp[1]) 
-	for i in range(2, len(strs)-1): print strs[i]
+	print cpp
+	#strs = (cpp[1].split("\n"))
+	#print 
+	#print (cpp[1]) 
+	#for i in range(2, len(strs)-1): print strs[i]
 	self.response.write(cpp)
 class AspTestHandler(webapp2.RequestHandler):
     def post(self):
