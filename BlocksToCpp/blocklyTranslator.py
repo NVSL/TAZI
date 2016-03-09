@@ -273,7 +273,7 @@ def ifBlock(node, depth):
         statementPart = recurseParse(list(node)[1], depth+1)
 
     # Second child is the statement part
-    returnStr = ";\n" + (spaces*depth) + "if(" + booleanPart + ") {;\n"
+    returnStr = ";\n" + (spaces*depth) + "if(" + booleanPart + ") {\n"
 
     totString = returnStr + statementPart + ";\n" + (spaces*depth) + "}"
 
@@ -281,20 +281,20 @@ def ifBlock(node, depth):
         totString += elseifBlock(node, numElsIfs, depth)
 
     if (numElses == 1):
-        totString += " else {;\n" + recurseParse(list(node)[-1], depth + 1) + ";\n" + (spaces*depth) + "}"
+        totString += " else {\n" + recurseParse(list(node)[-1], depth + 1) + ";\n" + (spaces*depth) + "}"
 
     return blockNext(node, depth, totString)
 
 #else if statements
 def elseifBlock(node, numTimes, depth):
-    elseifOpenString = ";\n" + (spaces*depth) + "else if("
+    elseifOpenString = "\n" + (spaces*depth) + "else if("
     elseString = ""
 
     for i in range(3, 3 + (numTimes * 2)):
         if (((list(node)[i]).attrib["name"])[:2] == "IF"):
             elseString += elseifOpenString
             booleanPart = getArgs(list(node)[i])
-            elseString += booleanPart + ") {;\n" + recurseParse((list(node)[i + 1]), depth + 1) + ";\n" + (spaces*depth) + "}"
+            elseString += booleanPart + ") {\n" + recurseParse((list(node)[i + 1]), depth + 1) + ";\n" + (spaces*depth) + "}"
 
     return elseString
 
