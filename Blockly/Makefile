@@ -2,6 +2,7 @@ COPY = '-R'
 APPENGINE = appengine/
 DEST = $(APPENGINE)static/
 
+all:	main run
 main:
 	cp $(COPY) blocks/ $(DEST)
 	cp $(COPY) core/ $(DEST)
@@ -23,5 +24,6 @@ main:
 	cp $(COPY) GtronImage.png $(DEST)
 	cp $(COPY) index.html $(DEST)
 	cp $(COPY) Requests.js $(DEST)
+	cp $(COPY) ../BlocksToCpp $(APPENGINE)
 run:
 	make -C $(APPENGINE)

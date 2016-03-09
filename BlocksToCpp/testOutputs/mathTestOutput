@@ -148,33 +148,35 @@ Error: Block math_modulo is malformatted!
 
 --------------
 --- stderr ---Traceback (most recent call last):
-  File "blocklyTranslator.py", line 548, in <module>
+  File "blocklyTranslator.py", line 552, in <module>
+    run( inp )
+  File "blocklyTranslator.py", line 533, in run
     print(recurseParse(root,0))
-  File "blocklyTranslator.py", line 58, in recurseParse
+  File "blocklyTranslator.py", line 42, in recurseParse
     overallResult += ";\n" + recurseParse(child, depth)
-  File "blocklyTranslator.py", line 66, in recurseParse
+  File "blocklyTranslator.py", line 50, in recurseParse
     return getBlock(node,depth)
-  File "blocklyTranslator.py", line 125, in getBlock
+  File "blocklyTranslator.py", line 109, in getBlock
     lines += recurseParse( b, depth ) + ';\n'
-  File "blocklyTranslator.py", line 66, in recurseParse
+  File "blocklyTranslator.py", line 50, in recurseParse
     return getBlock(node,depth)
-  File "blocklyTranslator.py", line 101, in getBlock
+  File "blocklyTranslator.py", line 85, in getBlock
     return "void setup () {\n" + recurseParseCheck(list(node), depth + 1) + ";\n}\n"
-  File "blocklyTranslator.py", line 89, in recurseParseCheck
+  File "blocklyTranslator.py", line 73, in recurseParseCheck
     return recurseParse(nodeList[0], depth)
-  File "blocklyTranslator.py", line 66, in recurseParse
+  File "blocklyTranslator.py", line 50, in recurseParse
     return getBlock(node,depth)
-  File "blocklyTranslator.py", line 104, in getBlock
+  File "blocklyTranslator.py", line 88, in getBlock
     return funcCheckGet(blockType, node, depth) #funcGet[blockType](node,depth)
-  File "blocklyTranslator.py", line 517, in funcCheckGet
+  File "blocklyTranslator.py", line 501, in funcCheckGet
     return funcGet[blockType](node, depth)
-  File "blocklyTranslator.py", line 240, in setVar
+  File "blocklyTranslator.py", line 224, in setVar
     varValue = recurseParse(list(list(node)[1])[0], 0)
-  File "blocklyTranslator.py", line 66, in recurseParse
+  File "blocklyTranslator.py", line 50, in recurseParse
     return getBlock(node,depth)
-  File "blocklyTranslator.py", line 128, in getBlock
+  File "blocklyTranslator.py", line 112, in getBlock
     return genericBlockGet(node,depth)
-  File "blocklyTranslator.py", line 134, in genericBlockGet
+  File "blocklyTranslator.py", line 118, in genericBlockGet
     raise BlocklyError("Block " + blockType + " is malformatted!")
 __main__.BlocklyError
 
@@ -186,57 +188,59 @@ Error: Block math_modulo is malformatted!
 
 --------------
 --- stderr ---Traceback (most recent call last):
-  File "blocklyTranslator.py", line 548, in <module>
+  File "blocklyTranslator.py", line 552, in <module>
+    run( inp )
+  File "blocklyTranslator.py", line 533, in run
     print(recurseParse(root,0))
-  File "blocklyTranslator.py", line 58, in recurseParse
+  File "blocklyTranslator.py", line 42, in recurseParse
     overallResult += ";\n" + recurseParse(child, depth)
-  File "blocklyTranslator.py", line 66, in recurseParse
+  File "blocklyTranslator.py", line 50, in recurseParse
     return getBlock(node,depth)
-  File "blocklyTranslator.py", line 125, in getBlock
+  File "blocklyTranslator.py", line 109, in getBlock
     lines += recurseParse( b, depth ) + ';\n'
-  File "blocklyTranslator.py", line 66, in recurseParse
+  File "blocklyTranslator.py", line 50, in recurseParse
     return getBlock(node,depth)
-  File "blocklyTranslator.py", line 101, in getBlock
+  File "blocklyTranslator.py", line 85, in getBlock
     return "void setup () {\n" + recurseParseCheck(list(node), depth + 1) + ";\n}\n"
-  File "blocklyTranslator.py", line 89, in recurseParseCheck
+  File "blocklyTranslator.py", line 73, in recurseParseCheck
     return recurseParse(nodeList[0], depth)
-  File "blocklyTranslator.py", line 66, in recurseParse
+  File "blocklyTranslator.py", line 50, in recurseParse
     return getBlock(node,depth)
-  File "blocklyTranslator.py", line 104, in getBlock
+  File "blocklyTranslator.py", line 88, in getBlock
     return funcCheckGet(blockType, node, depth) #funcGet[blockType](node,depth)
-  File "blocklyTranslator.py", line 517, in funcCheckGet
+  File "blocklyTranslator.py", line 501, in funcCheckGet
     return funcGet[blockType](node, depth)
-  File "blocklyTranslator.py", line 245, in setVar
+  File "blocklyTranslator.py", line 229, in setVar
     return blockNext(node, depth, totString)
-  File "blocklyTranslator.py", line 154, in blockNext
+  File "blocklyTranslator.py", line 138, in blockNext
     return (spaces * depth) + nodeStr + recurseParse(list(node)[-1], depth)
-  File "blocklyTranslator.py", line 68, in recurseParse
+  File "blocklyTranslator.py", line 52, in recurseParse
     return ";\n" + recurseParse(list(node)[0], depth)
-  File "blocklyTranslator.py", line 66, in recurseParse
+  File "blocklyTranslator.py", line 50, in recurseParse
     return getBlock(node,depth)
-  File "blocklyTranslator.py", line 104, in getBlock
+  File "blocklyTranslator.py", line 88, in getBlock
     return funcCheckGet(blockType, node, depth) #funcGet[blockType](node,depth)
-  File "blocklyTranslator.py", line 517, in funcCheckGet
+  File "blocklyTranslator.py", line 501, in funcCheckGet
     return funcGet[blockType](node, depth)
-  File "blocklyTranslator.py", line 245, in setVar
+  File "blocklyTranslator.py", line 229, in setVar
     return blockNext(node, depth, totString)
-  File "blocklyTranslator.py", line 154, in blockNext
+  File "blocklyTranslator.py", line 138, in blockNext
     return (spaces * depth) + nodeStr + recurseParse(list(node)[-1], depth)
-  File "blocklyTranslator.py", line 68, in recurseParse
+  File "blocklyTranslator.py", line 52, in recurseParse
     return ";\n" + recurseParse(list(node)[0], depth)
-  File "blocklyTranslator.py", line 66, in recurseParse
+  File "blocklyTranslator.py", line 50, in recurseParse
     return getBlock(node,depth)
-  File "blocklyTranslator.py", line 104, in getBlock
+  File "blocklyTranslator.py", line 88, in getBlock
     return funcCheckGet(blockType, node, depth) #funcGet[blockType](node,depth)
-  File "blocklyTranslator.py", line 517, in funcCheckGet
+  File "blocklyTranslator.py", line 501, in funcCheckGet
     return funcGet[blockType](node, depth)
-  File "blocklyTranslator.py", line 240, in setVar
+  File "blocklyTranslator.py", line 224, in setVar
     varValue = recurseParse(list(list(node)[1])[0], 0)
-  File "blocklyTranslator.py", line 66, in recurseParse
+  File "blocklyTranslator.py", line 50, in recurseParse
     return getBlock(node,depth)
-  File "blocklyTranslator.py", line 128, in getBlock
+  File "blocklyTranslator.py", line 112, in getBlock
     return genericBlockGet(node,depth)
-  File "blocklyTranslator.py", line 134, in genericBlockGet
+  File "blocklyTranslator.py", line 118, in genericBlockGet
     raise BlocklyError("Block " + blockType + " is malformatted!")
 __main__.BlocklyError
 
@@ -296,33 +300,35 @@ Error: Block math_random_float is malformatted!
 
 --------------
 --- stderr ---Traceback (most recent call last):
-  File "blocklyTranslator.py", line 548, in <module>
+  File "blocklyTranslator.py", line 552, in <module>
+    run( inp )
+  File "blocklyTranslator.py", line 533, in run
     print(recurseParse(root,0))
-  File "blocklyTranslator.py", line 58, in recurseParse
+  File "blocklyTranslator.py", line 42, in recurseParse
     overallResult += ";\n" + recurseParse(child, depth)
-  File "blocklyTranslator.py", line 66, in recurseParse
+  File "blocklyTranslator.py", line 50, in recurseParse
     return getBlock(node,depth)
-  File "blocklyTranslator.py", line 125, in getBlock
+  File "blocklyTranslator.py", line 109, in getBlock
     lines += recurseParse( b, depth ) + ';\n'
-  File "blocklyTranslator.py", line 66, in recurseParse
+  File "blocklyTranslator.py", line 50, in recurseParse
     return getBlock(node,depth)
-  File "blocklyTranslator.py", line 101, in getBlock
+  File "blocklyTranslator.py", line 85, in getBlock
     return "void setup () {\n" + recurseParseCheck(list(node), depth + 1) + ";\n}\n"
-  File "blocklyTranslator.py", line 89, in recurseParseCheck
+  File "blocklyTranslator.py", line 73, in recurseParseCheck
     return recurseParse(nodeList[0], depth)
-  File "blocklyTranslator.py", line 66, in recurseParse
+  File "blocklyTranslator.py", line 50, in recurseParse
     return getBlock(node,depth)
-  File "blocklyTranslator.py", line 104, in getBlock
+  File "blocklyTranslator.py", line 88, in getBlock
     return funcCheckGet(blockType, node, depth) #funcGet[blockType](node,depth)
-  File "blocklyTranslator.py", line 517, in funcCheckGet
+  File "blocklyTranslator.py", line 501, in funcCheckGet
     return funcGet[blockType](node, depth)
-  File "blocklyTranslator.py", line 240, in setVar
+  File "blocklyTranslator.py", line 224, in setVar
     varValue = recurseParse(list(list(node)[1])[0], 0)
-  File "blocklyTranslator.py", line 66, in recurseParse
+  File "blocklyTranslator.py", line 50, in recurseParse
     return getBlock(node,depth)
-  File "blocklyTranslator.py", line 128, in getBlock
+  File "blocklyTranslator.py", line 112, in getBlock
     return genericBlockGet(node,depth)
-  File "blocklyTranslator.py", line 134, in genericBlockGet
+  File "blocklyTranslator.py", line 118, in genericBlockGet
     raise BlocklyError("Block " + blockType + " is malformatted!")
 __main__.BlocklyError
 
@@ -334,45 +340,47 @@ Error: Block math_random_int is malformatted!
 
 --------------
 --- stderr ---Traceback (most recent call last):
-  File "blocklyTranslator.py", line 548, in <module>
+  File "blocklyTranslator.py", line 552, in <module>
+    run( inp )
+  File "blocklyTranslator.py", line 533, in run
     print(recurseParse(root,0))
-  File "blocklyTranslator.py", line 58, in recurseParse
+  File "blocklyTranslator.py", line 42, in recurseParse
     overallResult += ";\n" + recurseParse(child, depth)
-  File "blocklyTranslator.py", line 66, in recurseParse
+  File "blocklyTranslator.py", line 50, in recurseParse
     return getBlock(node,depth)
-  File "blocklyTranslator.py", line 125, in getBlock
+  File "blocklyTranslator.py", line 109, in getBlock
     lines += recurseParse( b, depth ) + ';\n'
-  File "blocklyTranslator.py", line 66, in recurseParse
+  File "blocklyTranslator.py", line 50, in recurseParse
     return getBlock(node,depth)
-  File "blocklyTranslator.py", line 101, in getBlock
+  File "blocklyTranslator.py", line 85, in getBlock
     return "void setup () {\n" + recurseParseCheck(list(node), depth + 1) + ";\n}\n"
-  File "blocklyTranslator.py", line 89, in recurseParseCheck
+  File "blocklyTranslator.py", line 73, in recurseParseCheck
     return recurseParse(nodeList[0], depth)
-  File "blocklyTranslator.py", line 66, in recurseParse
+  File "blocklyTranslator.py", line 50, in recurseParse
     return getBlock(node,depth)
-  File "blocklyTranslator.py", line 104, in getBlock
+  File "blocklyTranslator.py", line 88, in getBlock
     return funcCheckGet(blockType, node, depth) #funcGet[blockType](node,depth)
-  File "blocklyTranslator.py", line 517, in funcCheckGet
+  File "blocklyTranslator.py", line 501, in funcCheckGet
     return funcGet[blockType](node, depth)
-  File "blocklyTranslator.py", line 245, in setVar
+  File "blocklyTranslator.py", line 229, in setVar
     return blockNext(node, depth, totString)
-  File "blocklyTranslator.py", line 154, in blockNext
+  File "blocklyTranslator.py", line 138, in blockNext
     return (spaces * depth) + nodeStr + recurseParse(list(node)[-1], depth)
-  File "blocklyTranslator.py", line 68, in recurseParse
+  File "blocklyTranslator.py", line 52, in recurseParse
     return ";\n" + recurseParse(list(node)[0], depth)
-  File "blocklyTranslator.py", line 66, in recurseParse
+  File "blocklyTranslator.py", line 50, in recurseParse
     return getBlock(node,depth)
-  File "blocklyTranslator.py", line 104, in getBlock
+  File "blocklyTranslator.py", line 88, in getBlock
     return funcCheckGet(blockType, node, depth) #funcGet[blockType](node,depth)
-  File "blocklyTranslator.py", line 517, in funcCheckGet
+  File "blocklyTranslator.py", line 501, in funcCheckGet
     return funcGet[blockType](node, depth)
-  File "blocklyTranslator.py", line 240, in setVar
+  File "blocklyTranslator.py", line 224, in setVar
     varValue = recurseParse(list(list(node)[1])[0], 0)
-  File "blocklyTranslator.py", line 66, in recurseParse
+  File "blocklyTranslator.py", line 50, in recurseParse
     return getBlock(node,depth)
-  File "blocklyTranslator.py", line 128, in getBlock
+  File "blocklyTranslator.py", line 112, in getBlock
     return genericBlockGet(node,depth)
-  File "blocklyTranslator.py", line 134, in genericBlockGet
+  File "blocklyTranslator.py", line 118, in genericBlockGet
     raise BlocklyError("Block " + blockType + " is malformatted!")
 __main__.BlocklyError
 
@@ -384,33 +392,35 @@ Error: Block math_random_int is malformatted!
 
 --------------
 --- stderr ---Traceback (most recent call last):
-  File "blocklyTranslator.py", line 548, in <module>
+  File "blocklyTranslator.py", line 552, in <module>
+    run( inp )
+  File "blocklyTranslator.py", line 533, in run
     print(recurseParse(root,0))
-  File "blocklyTranslator.py", line 58, in recurseParse
+  File "blocklyTranslator.py", line 42, in recurseParse
     overallResult += ";\n" + recurseParse(child, depth)
-  File "blocklyTranslator.py", line 66, in recurseParse
+  File "blocklyTranslator.py", line 50, in recurseParse
     return getBlock(node,depth)
-  File "blocklyTranslator.py", line 125, in getBlock
+  File "blocklyTranslator.py", line 109, in getBlock
     lines += recurseParse( b, depth ) + ';\n'
-  File "blocklyTranslator.py", line 66, in recurseParse
+  File "blocklyTranslator.py", line 50, in recurseParse
     return getBlock(node,depth)
-  File "blocklyTranslator.py", line 101, in getBlock
+  File "blocklyTranslator.py", line 85, in getBlock
     return "void setup () {\n" + recurseParseCheck(list(node), depth + 1) + ";\n}\n"
-  File "blocklyTranslator.py", line 89, in recurseParseCheck
+  File "blocklyTranslator.py", line 73, in recurseParseCheck
     return recurseParse(nodeList[0], depth)
-  File "blocklyTranslator.py", line 66, in recurseParse
+  File "blocklyTranslator.py", line 50, in recurseParse
     return getBlock(node,depth)
-  File "blocklyTranslator.py", line 104, in getBlock
+  File "blocklyTranslator.py", line 88, in getBlock
     return funcCheckGet(blockType, node, depth) #funcGet[blockType](node,depth)
-  File "blocklyTranslator.py", line 517, in funcCheckGet
+  File "blocklyTranslator.py", line 501, in funcCheckGet
     return funcGet[blockType](node, depth)
-  File "blocklyTranslator.py", line 240, in setVar
+  File "blocklyTranslator.py", line 224, in setVar
     varValue = recurseParse(list(list(node)[1])[0], 0)
-  File "blocklyTranslator.py", line 66, in recurseParse
+  File "blocklyTranslator.py", line 50, in recurseParse
     return getBlock(node,depth)
-  File "blocklyTranslator.py", line 128, in getBlock
+  File "blocklyTranslator.py", line 112, in getBlock
     return genericBlockGet(node,depth)
-  File "blocklyTranslator.py", line 134, in genericBlockGet
+  File "blocklyTranslator.py", line 118, in genericBlockGet
     raise BlocklyError("Block " + blockType + " is malformatted!")
 __main__.BlocklyError
 
@@ -422,57 +432,59 @@ Error: Block math_random_int is malformatted!
 
 --------------
 --- stderr ---Traceback (most recent call last):
-  File "blocklyTranslator.py", line 548, in <module>
+  File "blocklyTranslator.py", line 552, in <module>
+    run( inp )
+  File "blocklyTranslator.py", line 533, in run
     print(recurseParse(root,0))
-  File "blocklyTranslator.py", line 58, in recurseParse
+  File "blocklyTranslator.py", line 42, in recurseParse
     overallResult += ";\n" + recurseParse(child, depth)
-  File "blocklyTranslator.py", line 66, in recurseParse
+  File "blocklyTranslator.py", line 50, in recurseParse
     return getBlock(node,depth)
-  File "blocklyTranslator.py", line 125, in getBlock
+  File "blocklyTranslator.py", line 109, in getBlock
     lines += recurseParse( b, depth ) + ';\n'
-  File "blocklyTranslator.py", line 66, in recurseParse
+  File "blocklyTranslator.py", line 50, in recurseParse
     return getBlock(node,depth)
-  File "blocklyTranslator.py", line 101, in getBlock
+  File "blocklyTranslator.py", line 85, in getBlock
     return "void setup () {\n" + recurseParseCheck(list(node), depth + 1) + ";\n}\n"
-  File "blocklyTranslator.py", line 89, in recurseParseCheck
+  File "blocklyTranslator.py", line 73, in recurseParseCheck
     return recurseParse(nodeList[0], depth)
-  File "blocklyTranslator.py", line 66, in recurseParse
+  File "blocklyTranslator.py", line 50, in recurseParse
     return getBlock(node,depth)
-  File "blocklyTranslator.py", line 104, in getBlock
+  File "blocklyTranslator.py", line 88, in getBlock
     return funcCheckGet(blockType, node, depth) #funcGet[blockType](node,depth)
-  File "blocklyTranslator.py", line 517, in funcCheckGet
+  File "blocklyTranslator.py", line 501, in funcCheckGet
     return funcGet[blockType](node, depth)
-  File "blocklyTranslator.py", line 245, in setVar
+  File "blocklyTranslator.py", line 229, in setVar
     return blockNext(node, depth, totString)
-  File "blocklyTranslator.py", line 154, in blockNext
+  File "blocklyTranslator.py", line 138, in blockNext
     return (spaces * depth) + nodeStr + recurseParse(list(node)[-1], depth)
-  File "blocklyTranslator.py", line 68, in recurseParse
+  File "blocklyTranslator.py", line 52, in recurseParse
     return ";\n" + recurseParse(list(node)[0], depth)
-  File "blocklyTranslator.py", line 66, in recurseParse
+  File "blocklyTranslator.py", line 50, in recurseParse
     return getBlock(node,depth)
-  File "blocklyTranslator.py", line 104, in getBlock
+  File "blocklyTranslator.py", line 88, in getBlock
     return funcCheckGet(blockType, node, depth) #funcGet[blockType](node,depth)
-  File "blocklyTranslator.py", line 517, in funcCheckGet
+  File "blocklyTranslator.py", line 501, in funcCheckGet
     return funcGet[blockType](node, depth)
-  File "blocklyTranslator.py", line 245, in setVar
+  File "blocklyTranslator.py", line 229, in setVar
     return blockNext(node, depth, totString)
-  File "blocklyTranslator.py", line 154, in blockNext
+  File "blocklyTranslator.py", line 138, in blockNext
     return (spaces * depth) + nodeStr + recurseParse(list(node)[-1], depth)
-  File "blocklyTranslator.py", line 68, in recurseParse
+  File "blocklyTranslator.py", line 52, in recurseParse
     return ";\n" + recurseParse(list(node)[0], depth)
-  File "blocklyTranslator.py", line 66, in recurseParse
+  File "blocklyTranslator.py", line 50, in recurseParse
     return getBlock(node,depth)
-  File "blocklyTranslator.py", line 104, in getBlock
+  File "blocklyTranslator.py", line 88, in getBlock
     return funcCheckGet(blockType, node, depth) #funcGet[blockType](node,depth)
-  File "blocklyTranslator.py", line 517, in funcCheckGet
+  File "blocklyTranslator.py", line 501, in funcCheckGet
     return funcGet[blockType](node, depth)
-  File "blocklyTranslator.py", line 240, in setVar
+  File "blocklyTranslator.py", line 224, in setVar
     varValue = recurseParse(list(list(node)[1])[0], 0)
-  File "blocklyTranslator.py", line 66, in recurseParse
+  File "blocklyTranslator.py", line 50, in recurseParse
     return getBlock(node,depth)
-  File "blocklyTranslator.py", line 128, in getBlock
+  File "blocklyTranslator.py", line 112, in getBlock
     return genericBlockGet(node,depth)
-  File "blocklyTranslator.py", line 134, in genericBlockGet
+  File "blocklyTranslator.py", line 118, in genericBlockGet
     raise BlocklyError("Block " + blockType + " is malformatted!")
 __main__.BlocklyError
 

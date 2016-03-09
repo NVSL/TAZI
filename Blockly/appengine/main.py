@@ -1,6 +1,9 @@
 import wsgiref.simple_server
 import webapp2
 import StaticHandler
+from StringIO import StringIO
+from BlocksToCpp.blocklyTranslator import run as compile
+import xml.etree.ElementTree as ET
 
 INDEX = "static/index.html"
 
@@ -10,17 +13,34 @@ class IDERequestHandler(webapp2.RequestHandler):
         index = open(INDEX).read()
         self.response.write(index)
 
-class TestRequestHandler(webapp2.RequestHandler):
+class CompileRequestHandler(webapp2.RequestHandler):
     def post(self):
         request = dict(self.request.POST)
-        print "I got a test request!"
-	print request
-	self.response.write("hi")
+	xml = removeNSHack(request["xml"])
+        print "I got a compile request!"
+	cpp = compile(StringIO(xml))
+	print cpp
+	#strs = (cpp[1].split("\n"))
+	#print 
+	#print (cpp[1]) 
+	#for i in range(2, len(strs)-1): print strs[i]
+	self.response.write(cpp)
 class AspTestHandler(webapp2.RequestHandler):
     def post(self):
         request = dict(self.request.POST)
         print "I got an asp test request!"
 	print request
+
+def removeNSHack( xml ):
+    xIdx = xCnt = qIdx = qCnt = i = 0
+    for c in xml:
+        if c == "x": xCnt += 1
+        if c == '"': qCnt += 1
+	if c == "x" and xCnt == 2: xIdx = i 
+	if c == '"' and qCnt == 2: qIdx = i 
+	if qCnt >= 2 and xCnt >= 2: return xml[:xIdx] + xml[qIdx+1:]
+	#print c, xCnt, qCnt, i
+	i += 1
 
 def main (app):
     port = 8080
@@ -36,7 +56,7 @@ if __name__ == "__main__":
     STATIC, files = StaticHandler.parseStaticFiles( args.static_files )
     app = webapp2.WSGIApplication([ 
         ("/", IDERequestHandler),
-	("/swag", TestRequestHandler),
+	("/compile", CompileRequestHandler),
 	("/demo_test.asp", AspTestHandler),
 	] + [ StaticHandler.create_path_pair(f) for f in files ]  , debug=True)
     main(app)

@@ -2,7 +2,6 @@ __author__ = "Michael Gonzalez"
 __email__ = "mmg005@eng.ucsd.edu"
 
 import xml.etree.ElementTree as ET
-from lxml import etree as ET2
 import argparse
 import os
 import platform
