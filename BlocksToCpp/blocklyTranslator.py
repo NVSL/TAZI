@@ -8,8 +8,8 @@ DEBUG = 0
 
 
 spaces = "  "
-
 delimitter = ";"
+main_loop = []
 
 # There should be some degree of error checking
 class BlocklyError(Exception):
@@ -81,7 +81,10 @@ def getBlock(node,depth):
 
     if (blockType == "main_loop"):
         # Should be a "next" block
-        return "void loop () {" + recurseParseCheck(list(node), depth+1) + ";\n}"
+	loopStr = recurseParseCheck(list(node), depth+1)+";"
+	global main_loop
+	main_loop = loopStr.split("\n")
+        return "void loop () {" + loopStr + ";\n}"
 
     if (blockType == "variable_declarations"):
         return "void setup () {\n" + recurseParseCheck(list(node), depth + 1) + ";\n}\n"
@@ -544,6 +547,9 @@ def run( xml ):
     except BlocklyError as e:
         print("Error: " + e.value)
         raise
+def getLoop(): 
+    #global loop_body
+    return main_loop
 
 def getSplitDefinitions( xml ):
     import string
@@ -567,4 +573,6 @@ if __name__ == "__main__":
     if args.d:
         DEBUG = 1
     print run( inp )
+    print
+    print main_loop
 

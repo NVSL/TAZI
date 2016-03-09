@@ -3,9 +3,13 @@ import webapp2
 import StaticHandler
 from StringIO import StringIO
 from BlocksToCpp.blocklyTranslator import run as compile
+from BlocksToCpp.blocklyTranslator import getLoop as getLoop
+from InoGenerator import ClassGenerator as InoGenerator
 import xml.etree.ElementTree as ET
 
 INDEX = "static/index.html"
+api_gspec = "HotlineBling.api.gspec"
+out_file = "HotlineBling.ino"
 
 # Real Request Handlers
 class IDERequestHandler(webapp2.RequestHandler):
@@ -18,12 +22,14 @@ class CompileRequestHandler(webapp2.RequestHandler):
         request = dict(self.request.POST)
 	xml = removeNSHack(request["xml"])
         print "I got a compile request!"
-	cpp = compile(StringIO(xml))
+	compile(StringIO(xml))
+	api = ET.parse(api_gspec).getroot()
+	generator = InoGenerator(api)
+	generator.appendToLoop( getLoop() )
+	cpp = generator.getClass()
+	f = open(out_file, "w")
+	f.write(cpp)
 	print cpp
-	#strs = (cpp[1].split("\n"))
-	#print 
-	#print (cpp[1]) 
-	#for i in range(2, len(strs)-1): print strs[i]
 	self.response.write(cpp)
 class AspTestHandler(webapp2.RequestHandler):
     def post(self):
