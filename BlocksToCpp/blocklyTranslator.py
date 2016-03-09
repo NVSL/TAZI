@@ -179,9 +179,9 @@ def getType(node):
 
 def getField(node):
     if (node.attrib.get("name") != None and node.attrib["name"] == "BOOL"):
-        if (node.text == "TRUE")
+        if (node.text == "TRUE"):
             return "true"
-        if (node.text == "FALSE")
+        if (node.text == "FALSE"):
             return "false"
     return node.text
 
