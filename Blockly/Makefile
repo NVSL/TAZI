@@ -25,5 +25,6 @@ main:
 	cp $(COPY) index.html $(DEST)
 	cp $(COPY) Requests.js $(DEST)
 	cp $(COPY) ../BlocksToCpp $(APPENGINE)
+	cp $(COPY) ../GCGF/Ino*.py $(APPENGINE)
 run:
 	make -C $(APPENGINE)
