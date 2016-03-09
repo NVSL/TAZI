@@ -164,7 +164,8 @@ def getArgs(node, method="default"):
 # Typing dictionary
 typeDict = {
     "math_number": "double",
-    "text": "string"
+    "text": "string",
+    "logic_boolean": "boolean"
 }
 def getType(node):
     if ((node.attrib).get("type") != None and typeDict.get(node.attrib["type"]) != None):
@@ -177,6 +178,11 @@ def getType(node):
 
 
 def getField(node):
+    if (node.attrib.get("name") != None and node.attrib["name"] == "BOOL"):
+        if (node.text == "TRUE"):
+            return "true"
+        if (node.text == "FALSE"):
+            return "false"
     return node.text
 
 # Operator dictionary
