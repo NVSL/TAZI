@@ -9,7 +9,7 @@ import xml.etree.ElementTree as ET
 
 INDEX = "static/index.html"
 api_gspec = "HotlineBling.api.gspec"
-out_file = "HotlineBling.ino"
+out_file = "HotlineBling/HotlineBling.ino"
 
 # Real Request Handlers
 class IDERequestHandler(webapp2.RequestHandler):
