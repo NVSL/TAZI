@@ -119,6 +119,15 @@ class TestBlocklyTranslator(unittest.TestCase):
 		for randomFile in RandomFiles:
 			if re.match(r".*\.xml", randomFile):
 				self.helper(randomFile, "tests/randomTests/", "testOutputs/randomTestOutput", "cCode/randomFiles/")
+	
+	def test_customTests(self):
+		print("\n=== Running custom tests ===")
+		subprocess.call(["rm", "-f", "testOutputs/customTestOutput"])
+		subprocess.call(["mkdir", "cCode/customFiles/"])
+		CustomFiles = subprocess.Popen(["ls", "tests/customTests/"], stdout=subprocess.PIPE).communicate()[0].split("\n")
+		for customFile in CustomFiles:
+			if re.match(r".*\.xml", customFile):
+				self.helper(customFile, "tests/customTests/", "testOutputs/customTestOutput", "cCode/customFiles/")
 
 if __name__ == "__main__":
 	subprocess.call(["mkdir", "testOutputs"])
