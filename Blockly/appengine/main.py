@@ -16,7 +16,11 @@ class IDERequestHandler(webapp2.RequestHandler):
     def get(self):
         index = open(INDEX).read()
         self.response.write(index)
-
+class NewProgramHandler(webapp2.RequestHandler):
+    def post(self):
+        request = dict(self.request.POST)
+	print request["name"].encode('ascii', 'ignore')
+	self.response.write("1")
 class CompileRequestHandler(webapp2.RequestHandler):
     def post(self):
         request = dict(self.request.POST)
@@ -31,6 +35,7 @@ class CompileRequestHandler(webapp2.RequestHandler):
 	f.write(cpp)
 	print cpp
 	self.response.write(cpp)
+
 class AspTestHandler(webapp2.RequestHandler):
     def post(self):
         request = dict(self.request.POST)
@@ -63,6 +68,7 @@ if __name__ == "__main__":
     app = webapp2.WSGIApplication([ 
         ("/", IDERequestHandler),
 	("/compile", CompileRequestHandler),
+	("/newprogram", NewProgramHandler),
 	("/demo_test.asp", AspTestHandler),
 	] + [ StaticHandler.create_path_pair(f) for f in files ]  , debug=True)
     main(app)

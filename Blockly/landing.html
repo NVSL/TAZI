@@ -1,0 +1,21 @@
+<html ng-app="dialogDemo1">
+    <head>
+        <!-- Angular -->
+        <script src="angular/angular.js"></script>
+	<script src="angular-material/angular-material.min.js"></script>
+	<script src="angular-aria/angular-aria.min.js"></script>
+	<script src="angular-animate/angular-animate.min.js"></script>
+	<script src="angular/test.js"></script>
+	<link href="angular-material/angular-material.min.css" rel="stylesheet" />
+	<!-- JQuery -->
+	<script src="jquery-2.2.1.min.js"></script>
+    </head>
+    <body >
+        <div ng-controller="AppCtrl" id="popupContainer">
+            <md-button class="md-primary md-raised" ng-click="showNewProgramDialog($event)">
+	       Create a new Program
+	    </md-button>
+	</div>
+    </body>
+
+</html>

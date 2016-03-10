@@ -22,8 +22,10 @@ main:
 	cp $(COPY) custom_blocks.js $(DEST)
 	cp $(COPY) BlocksIO.js $(DEST)
 	cp $(COPY) GtronImage.png $(DEST)
+	cp $(COPY) landing.html $(DEST)
 	cp $(COPY) index.html $(DEST)
 	cp $(COPY) Requests.js $(DEST)
+	cp $(COPY) angular*/ $(DEST)
 	cp $(COPY) ../BlocksToCpp $(APPENGINE)
 	cp $(COPY) ../GCGF/Ino*.py $(APPENGINE)
 run:
