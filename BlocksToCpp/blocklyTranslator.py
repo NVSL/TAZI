@@ -3,27 +3,13 @@
 import xml.etree.ElementTree as ET
 import argparse
 
-#Can run with arguments for filename input OR requests filename input
-parser = argparse.ArgumentParser()
-parser.add_argument("-x", "--xml", required=False, help="Specify xml file through command line")
-parser.add_argument("-d", action="store_true", help="Debug mode")
-args = parser.parse_args()
-inp = None
-if args.xml is not None:
-    inp = args.xml
-else:
-    inp = raw_input("Filename: ")
-
 DEBUG = 0
-if args.d:
-    DEBUG = 1
-
-
-tree = ET.parse(inp)
-root = tree.getroot()
+#Can run with arguments for filename input OR requests filename input
 
 
 spaces = "  "
+delimitter = ";"
+main_loop = []
 
 # There should be some degree of error checking
 class BlocklyError(Exception):
@@ -42,7 +28,7 @@ def recurseParse(node, depth):
         tag = node.tag
 
     if DEBUG:
-        print("Current tag: " + tag)
+        print "Current tag: " + tag, "Attributes: " + str(node.attrib)
 
     if tag == "xml":
         overallResult = ""
@@ -55,7 +41,7 @@ def recurseParse(node, depth):
 
         for child in node:
             if ((child.attrib).get("type") != None and (child.attrib["type"] == "main")):
-                overallResult += ";\n" + recurseParse(child, depth)
+                overallResult += recurseParse(child, depth)
 
         if (("void loop ()" not in overallResult)):
             overallResult += "void loop () {\n}\n"
@@ -95,7 +81,10 @@ def getBlock(node,depth):
 
     if (blockType == "main_loop"):
         # Should be a "next" block
-        return "void loop () {" + recurseParseCheck(list(node), depth+1) + ";\n}"
+	loopStr = recurseParseCheck(list(node), depth+1)#+";"
+	global main_loop
+	main_loop = loopStr.split("\n")
+        return "void loop () {" + loopStr + "\n}"
 
     if (blockType == "variable_declarations"):
         return "void setup () {\n" + recurseParseCheck(list(node), depth + 1) + ";\n}\n"
@@ -121,8 +110,9 @@ def getBlock(node,depth):
 	    s.attrib["type"] = s.attrib["name"]
 	    return s
 	lines = ""
+	print node.tag
 	for b in map( refactorStatementToBlock, node.findall("statement" )):
-	    lines += recurseParse( b, depth ) + ';\n'
+	    lines += recurseParse( b, depth ) + delimitter+ '\n'
         return lines
 
     return genericBlockGet(node,depth)
@@ -174,7 +164,8 @@ def getArgs(node, method="default"):
 # Typing dictionary
 typeDict = {
     "math_number": "double",
-    "text": "string"
+    "text": "string",
+    "logic_boolean": "boolean"
 }
 def getType(node):
     if ((node.attrib).get("type") != None and typeDict.get(node.attrib["type"]) != None):
@@ -187,6 +178,11 @@ def getType(node):
 
 
 def getField(node):
+    if (node.attrib.get("name") != None and node.attrib["name"] == "BOOL"):
+        if (node.text == "TRUE"):
+            return "true"
+        if (node.text == "FALSE"):
+            return "false"
     return node.text
 
 # Operator dictionary
@@ -277,7 +273,7 @@ def ifBlock(node, depth):
         statementPart = recurseParse(list(node)[1], depth+1)
 
     # Second child is the statement part
-    returnStr = ";\n" + (spaces*depth) + "if(" + booleanPart + ") {;\n"
+    returnStr = ";\n" + (spaces*depth) + "if(" + booleanPart + ") {\n"
 
     totString = returnStr + statementPart + ";\n" + (spaces*depth) + "}"
 
@@ -285,26 +281,26 @@ def ifBlock(node, depth):
         totString += elseifBlock(node, numElsIfs, depth)
 
     if (numElses == 1):
-        totString += " else {;\n" + recurseParse(list(node)[-1], depth + 1) + ";\n" + (spaces*depth) + "}"
+        totString += " else {\n" + recurseParse(list(node)[-1], depth + 1) + ";\n" + (spaces*depth) + "}"
 
     return blockNext(node, depth, totString)
 
 #else if statements
 def elseifBlock(node, numTimes, depth):
-    elseifOpenString = ";\n" + (spaces*depth) + "else if("
+    elseifOpenString = "\n" + (spaces*depth) + "else if("
     elseString = ""
 
     for i in range(3, 3 + (numTimes * 2)):
         if (((list(node)[i]).attrib["name"])[:2] == "IF"):
             elseString += elseifOpenString
             booleanPart = getArgs(list(node)[i])
-            elseString += booleanPart + ") {;\n" + recurseParse((list(node)[i + 1]), depth + 1) + ";\n" + (spaces*depth) + "}"
+            elseString += booleanPart + ") {\n" + recurseParse((list(node)[i + 1]), depth + 1) + ";\n" + (spaces*depth) + "}"
 
     return elseString
 
 #else statement
 def elseBlock(node, depth):
-    elseString = "else {;\n" + (spaces*depth) + "}"
+    elseString = "else {\n" + (spaces*depth) + "}"
 
 #logic compare
 def compLog(node,depth):
@@ -392,11 +388,11 @@ def negate(node, depth):
 def repeatControl(node, depth):
     retString = ";\n" + (spaces*depth) + "for(int count = 0; i < "
     count = recurseParse(list(node)[0], 0)
-    retString += count + "; i++) {;\n"
+    retString += count + "; i++) {\n"
 
     statement = recurseParse(list(node)[1], depth+1)
 
-    retString += statement + ";\n" + (spaces*depth) + "};\n"
+    retString += statement + ";\n" + (spaces*depth) + "}\n"
 
     return blockNext(node, depth, retString)
 
@@ -416,11 +412,11 @@ def forloop(node, depth):
     #increment
     incr = getField(list(list(list(node)[3])[0])[0])
 
-    retString += "; " + val + "<= " + toVal + "; " + val + "+= " + incr + ") {;\n"
+    retString += "; " + val + "<= " + toVal + "; " + val + "+= " + incr + ") {\n"
 
     statement = recurseParse(list(node)[4], depth+1)
 
-    retString += statement + ";\n" + (spaces*depth) + "};\n"
+    retString += statement + ";\n" + (spaces*depth) + "}\n"
 
     return blockNext(node, depth, retString)
 
@@ -470,7 +466,7 @@ def funcCreation(node, depth):
             retType = getType(list(child)[0])
             funcRet = (spaces*(depth + 1)) + "return " + recurseParse(list(child)[0], 0) + ";;\n"
 
-    total = comment + retType + " " + funcName + "(" + params + ") {;\n" + funcBody + funcRet + (spaces*depth) + "};\n"
+    total = comment + retType + " " + funcName + "(" + params + ") {\n" + funcBody + funcRet + (spaces*depth) + "}\n"
 
     madeFuncNames[funcName] = paramNum
     return blockNext(node, depth, total)
@@ -506,7 +502,7 @@ def ifRet(node, depth):
     boolPart = getArgs(list(node)[1])
     funcRet = (spaces*(depth + 1)) + "return " + recurseParse(list(list(node)[2])[0], 0) + ";"
 
-    mainStr += boolPart + ") {;\n" + funcRet + ";\n" + (spaces*depth) + "};\n"
+    mainStr += boolPart + ") {\n" + funcRet + ";\n" + (spaces*depth) + "}\n"
 
     return blockNext(node, depth, mainStr)
 
@@ -541,12 +537,42 @@ funcGet = {
 madeFuncNames = {
 }
 
-# main
-try:
-    if DEBUG:
-        print("--- RUNNING IN DEBUG MODE ---")
-    print(recurseParse(root,0))
-except BlocklyError as e:
-    print("Error: " + e.value)
-    raise
+
+def run( xml ):
+    tree = ET.parse(xml)
+    root = tree.getroot()
+    try:
+        if DEBUG: print("--- RUNNING IN DEBUG MODE ---")
+        return (recurseParse(root,0))
+    except BlocklyError as e:
+        print("Error: " + e.value)
+        raise
+def getLoop(): 
+    #global loop_body
+    return main_loop
+
+def getSplitDefinitions( xml ):
+    import string
+    global delimitter
+    delimitter = "57"
+    xml_str = run(xml)
+    return string.split(xml_str, delimitter)
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-x", "--xml", required=False, help="Specify xml file through command line")
+    parser.add_argument("-d", action="store_true", help="Debug mode")
+    args = parser.parse_args()
+    inp = None
+    if args.xml is not None:
+        inp = args.xml
+    else:
+        inp = raw_input("Filename: ")
+
+    if args.d:
+        DEBUG = 1
+    print run( inp )
+    #print
+    #print main_loop
 

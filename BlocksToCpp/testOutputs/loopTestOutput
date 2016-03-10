@@ -63,27 +63,29 @@ void loop () {  ;
 
 --------------
 --- stderr ---Traceback (most recent call last):
-  File "blocklyTranslator.py", line 548, in <module>
+  File "blocklyTranslator.py", line 552, in <module>
+    run( inp )
+  File "blocklyTranslator.py", line 533, in run
     print(recurseParse(root,0))
-  File "blocklyTranslator.py", line 58, in recurseParse
+  File "blocklyTranslator.py", line 42, in recurseParse
     overallResult += ";\n" + recurseParse(child, depth)
-  File "blocklyTranslator.py", line 66, in recurseParse
+  File "blocklyTranslator.py", line 50, in recurseParse
     return getBlock(node,depth)
-  File "blocklyTranslator.py", line 125, in getBlock
+  File "blocklyTranslator.py", line 109, in getBlock
     lines += recurseParse( b, depth ) + ';\n'
-  File "blocklyTranslator.py", line 66, in recurseParse
+  File "blocklyTranslator.py", line 50, in recurseParse
     return getBlock(node,depth)
-  File "blocklyTranslator.py", line 98, in getBlock
+  File "blocklyTranslator.py", line 82, in getBlock
     return "void loop () {" + recurseParseCheck(list(node), depth+1) + ";\n}"
-  File "blocklyTranslator.py", line 89, in recurseParseCheck
+  File "blocklyTranslator.py", line 73, in recurseParseCheck
     return recurseParse(nodeList[0], depth)
-  File "blocklyTranslator.py", line 66, in recurseParse
+  File "blocklyTranslator.py", line 50, in recurseParse
     return getBlock(node,depth)
-  File "blocklyTranslator.py", line 104, in getBlock
+  File "blocklyTranslator.py", line 88, in getBlock
     return funcCheckGet(blockType, node, depth) #funcGet[blockType](node,depth)
-  File "blocklyTranslator.py", line 517, in funcCheckGet
+  File "blocklyTranslator.py", line 501, in funcCheckGet
     return funcGet[blockType](node, depth)
-  File "blocklyTranslator.py", line 378, in whileUnt
+  File "blocklyTranslator.py", line 362, in whileUnt
     statement = recurseParse(list(node)[2], depth + 1)
 IndexError: list index out of range
 
@@ -113,27 +115,29 @@ void loop () {  ;
 
 --------------
 --- stderr ---Traceback (most recent call last):
-  File "blocklyTranslator.py", line 548, in <module>
+  File "blocklyTranslator.py", line 552, in <module>
+    run( inp )
+  File "blocklyTranslator.py", line 533, in run
     print(recurseParse(root,0))
-  File "blocklyTranslator.py", line 58, in recurseParse
+  File "blocklyTranslator.py", line 42, in recurseParse
     overallResult += ";\n" + recurseParse(child, depth)
-  File "blocklyTranslator.py", line 66, in recurseParse
+  File "blocklyTranslator.py", line 50, in recurseParse
     return getBlock(node,depth)
-  File "blocklyTranslator.py", line 125, in getBlock
+  File "blocklyTranslator.py", line 109, in getBlock
     lines += recurseParse( b, depth ) + ';\n'
-  File "blocklyTranslator.py", line 66, in recurseParse
+  File "blocklyTranslator.py", line 50, in recurseParse
     return getBlock(node,depth)
-  File "blocklyTranslator.py", line 98, in getBlock
+  File "blocklyTranslator.py", line 82, in getBlock
     return "void loop () {" + recurseParseCheck(list(node), depth+1) + ";\n}"
-  File "blocklyTranslator.py", line 89, in recurseParseCheck
+  File "blocklyTranslator.py", line 73, in recurseParseCheck
     return recurseParse(nodeList[0], depth)
-  File "blocklyTranslator.py", line 66, in recurseParse
+  File "blocklyTranslator.py", line 50, in recurseParse
     return getBlock(node,depth)
-  File "blocklyTranslator.py", line 104, in getBlock
+  File "blocklyTranslator.py", line 88, in getBlock
     return funcCheckGet(blockType, node, depth) #funcGet[blockType](node,depth)
-  File "blocklyTranslator.py", line 517, in funcCheckGet
+  File "blocklyTranslator.py", line 501, in funcCheckGet
     return funcGet[blockType](node, depth)
-  File "blocklyTranslator.py", line 378, in whileUnt
+  File "blocklyTranslator.py", line 362, in whileUnt
     statement = recurseParse(list(node)[2], depth + 1)
 IndexError: list index out of range
 

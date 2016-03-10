@@ -16,5 +16,8 @@
 *gtron.log
 .\#*
 .egg-info
-attemptsatxmlparsing/testOutputs/
+BlocksToCpp/testOutputs/
 GCGF/Output/*/
+BlocksToCpp/cCode/*
+Blockly/BlocksToCpp/
+Blockly/appengine/BlocksToCpp/

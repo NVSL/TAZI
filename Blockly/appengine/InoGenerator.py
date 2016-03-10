@@ -24,12 +24,7 @@ class ClassGenerator:
     loopBody = []
     name = "" 
     def __init__( self, api):
-        self.objects = []
-        self.objInstances = []
-        self.libraries = []
-        self.loopBody = []
         self.parseApiGspec(api)
-	for c in CObj.countMap: CObj.countMap[c] = 0
     def getSetupFunction(self):
         def concatLines(acc, line): return acc + "   " + line + ".setup();\n"
 	return functools.reduce( concatLines, self.objInstances, "void setup() {\n" ) + "}"
