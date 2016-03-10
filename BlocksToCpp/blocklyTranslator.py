@@ -81,10 +81,10 @@ def getBlock(node,depth):
 
     if (blockType == "main_loop"):
         # Should be a "next" block
-	loopStr = recurseParseCheck(list(node), depth+1)+";"
+	loopStr = recurseParseCheck(list(node), depth+1)#+";"
 	global main_loop
 	main_loop = loopStr.split("\n")
-        return "void loop () {" + loopStr + ";\n}"
+        return "void loop () {" + loopStr + "\n}"
 
     if (blockType == "variable_declarations"):
         return "void setup () {\n" + recurseParseCheck(list(node), depth + 1) + ";\n}\n"
@@ -300,7 +300,7 @@ def elseifBlock(node, numTimes, depth):
 
 #else statement
 def elseBlock(node, depth):
-    elseString = "else {;\n" + (spaces*depth) + "}"
+    elseString = "else {\n" + (spaces*depth) + "}"
 
 #logic compare
 def compLog(node,depth):
@@ -388,11 +388,11 @@ def negate(node, depth):
 def repeatControl(node, depth):
     retString = ";\n" + (spaces*depth) + "for(int count = 0; i < "
     count = recurseParse(list(node)[0], 0)
-    retString += count + "; i++) {;\n"
+    retString += count + "; i++) {\n"
 
     statement = recurseParse(list(node)[1], depth+1)
 
-    retString += statement + ";\n" + (spaces*depth) + "};\n"
+    retString += statement + ";\n" + (spaces*depth) + "}\n"
 
     return blockNext(node, depth, retString)
 
@@ -412,11 +412,11 @@ def forloop(node, depth):
     #increment
     incr = getField(list(list(list(node)[3])[0])[0])
 
-    retString += "; " + val + "<= " + toVal + "; " + val + "+= " + incr + ") {;\n"
+    retString += "; " + val + "<= " + toVal + "; " + val + "+= " + incr + ") {\n"
 
     statement = recurseParse(list(node)[4], depth+1)
 
-    retString += statement + ";\n" + (spaces*depth) + "};\n"
+    retString += statement + ";\n" + (spaces*depth) + "}\n"
 
     return blockNext(node, depth, retString)
 
@@ -466,7 +466,7 @@ def funcCreation(node, depth):
             retType = getType(list(child)[0])
             funcRet = (spaces*(depth + 1)) + "return " + recurseParse(list(child)[0], 0) + ";;\n"
 
-    total = comment + retType + " " + funcName + "(" + params + ") {;\n" + funcBody + funcRet + (spaces*depth) + "};\n"
+    total = comment + retType + " " + funcName + "(" + params + ") {\n" + funcBody + funcRet + (spaces*depth) + "}\n"
 
     madeFuncNames[funcName] = paramNum
     return blockNext(node, depth, total)
@@ -502,7 +502,7 @@ def ifRet(node, depth):
     boolPart = getArgs(list(node)[1])
     funcRet = (spaces*(depth + 1)) + "return " + recurseParse(list(list(node)[2])[0], 0) + ";"
 
-    mainStr += boolPart + ") {;\n" + funcRet + ";\n" + (spaces*depth) + "};\n"
+    mainStr += boolPart + ") {\n" + funcRet + ";\n" + (spaces*depth) + "}\n"
 
     return blockNext(node, depth, mainStr)
 
@@ -573,6 +573,6 @@ if __name__ == "__main__":
     if args.d:
         DEBUG = 1
     print run( inp )
-    print
-    print main_loop
+    #print
+    #print main_loop
 

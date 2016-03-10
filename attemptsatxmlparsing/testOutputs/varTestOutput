@@ -1,0 +1,45 @@
+=== varTestNum.xml ===
+--- stdout ---
+;
+void setup () {
+  double item = 89;
+}
+;
+void loop () {
+}
+
+
+--------------
+--- stderr ---
+--------------
+
+=== varTestPi.xml ===
+--- stdout ---
+;
+void setup () {
+  int item = 3.14159265358979323846;
+}
+;
+void loop () {
+}
+
+
+--------------
+--- stderr ---
+--------------
+
+=== varTestString.xml ===
+--- stdout ---
+;
+void setup () {
+  string item = "Hello World";
+}
+;
+void loop () {
+}
+
+
+--------------
+--- stderr ---
+--------------
+

@@ -1,0 +1,256 @@
+=== allifelse.xml ===
+--- stdout ---
+;
+void setup () {;
+  int x = 4 + 5;
+  led1.turnOn();
+};
+;
+void loop () {  ;
+  if(distancesensor1.get_distance() == 3.14159265358979323846) {;
+    led1.toggle();
+  };
+  else if(led3.isBlinking()) {;
+    motor1.forward(25);
+  };
+  else if(distancesensor2.get_distance()) {;
+    led2.toggle();
+  } else {;
+    motor1.spinLeft();
+  };
+};
+
+
+--------------
+--- stderr ---
+--------------
+
+=== blah.xml ===
+--- stdout ---
+
+
+--------------
+--- stderr ---
+--------------
+
+=== distanceSensorTest.xml ===
+--- stdout ---
+
+
+--------------
+--- stderr ---
+--------------
+
+=== functions.xml ===
+--- stdout ---
+;
+void setup () {;
+  ah();
+};
+;
+void loop () {  ;
+  if(funcStuff(1 + 1, 5)) {;
+    led2.turnOn();
+    motor1.spinLeft();
+  };
+};
+
+
+--------------
+--- stderr ---
+--------------
+
+=== ifelseif.xml ===
+--- stdout ---
+;
+void setup () {;
+  int x = 4 + 5;
+  led1.turnOn();
+};
+;
+void loop () {  ;
+  if(distancesensor1.get_distance() == 3.14159265358979323846) {;
+    led1.toggle();
+  };
+  else if(led3.isBlinking()) {;
+    motor1.forward(25);
+  };
+};
+
+
+--------------
+--- stderr ---
+--------------
+
+=== ifelse.xml ===
+--- stdout ---
+
+
+--------------
+--- stderr ---
+--------------
+
+=== loops.xml ===
+--- stdout ---
+
+
+--------------
+--- stderr ---
+--------------
+
+=== manyParams.xml ===
+--- stdout ---
+
+
+--------------
+--- stderr ---
+--------------
+
+=== MichaelsTest.xml ===
+--- stdout ---
+
+
+--------------
+--- stderr ---
+--------------
+
+=== multiRetFuncs.xml ===
+--- stdout ---
+;
+void setup () {;
+  ah();
+};
+;
+void loop () {  ;
+  if(funcStuff(1 + 1, 5)) {;
+    led2.turnOn();
+    motor1.spinLeft();
+  };
+};
+
+
+--------------
+--- stderr ---
+--------------
+
+=== newBlocks.xml ===
+--- stdout ---
+
+
+--------------
+--- stderr ---
+--------------
+
+=== newFunc.xml ===
+--- stdout ---
+;
+void loop () {  ;
+  for(int count = 0; i < 10; i++) {;
+    while(dosomething2()) {
+      dosomething();
+    };
+  };
+;
+};
+
+
+--------------
+--- stderr ---
+--------------
+
+=== newMain.xml ===
+--- stdout ---
+;
+void setup () {;
+  string foo = "bar";
+};
+;
+void loop () {  ;
+  if(momentarybutton1.isPressed()) {;
+    ledarray1.clear();
+  };
+};
+
+
+--------------
+--- stderr ---
+--------------
+
+=== noRetFunc.xml ===
+--- stdout ---
+;
+void setup () {;
+  ah();
+};
+;
+void loop () {  ;
+  if(funcStuff(1 + 1, 5)) {;
+    led2.turnOn();
+    motor1.spinLeft();
+  };
+};
+
+
+--------------
+--- stderr ---
+--------------
+
+=== other.xml ===
+--- stdout ---
+
+
+--------------
+--- stderr ---
+--------------
+
+=== paramtest.xml ===
+--- stdout ---
+
+
+--------------
+--- stderr ---
+--------------
+
+=== retFunc.xml ===
+--- stdout ---
+;
+void setup () {;
+  ah();
+};
+;
+void loop () {  ;
+  if(funcStuff(1 + 1, 5)) {;
+    led2.turnOn();
+    motor1.spinLeft();
+  };
+};
+
+
+--------------
+--- stderr ---
+--------------
+
+=== testBlocks.xml ===
+--- stdout ---
+
+
+--------------
+--- stderr ---
+--------------
+
+=== until.xml ===
+--- stdout ---
+
+
+--------------
+--- stderr ---
+--------------
+
+=== whileLoops.xml ===
+--- stdout ---
+
+
+--------------
+--- stderr ---
+--------------
+
