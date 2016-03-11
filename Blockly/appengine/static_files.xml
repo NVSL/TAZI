@@ -1,18 +1,27 @@
 <static dir="static/" >
+    <!-- HTML-->
+    <file path="index.html" route="ide" />
+    <file path="landing.html" route="" />
+
+    <!-- CSS -->
+    <file path="angular-material/angular-material.min.css" />
+
+    <!-- JS -->
+    <!-- Blockly -->
     <file path="blockly_compressed.js" />
     <file path="blocks_compressed.js" />
-    <file path="Requests.js" />
-    <file path="jquery-2.2.1.min.js" />
-    <file path="custom_blocks.js" />
     <file path="msg/js/en.js" />
+    <!-- Custom Blockly Script -->
+    <file path="Requests.js" />
+    <file path="custom_blocks.js" />
+    <file path="jquery-2.2.1.min.js" />
     <file path="BlocksIO.js" />
     <file path="GtronImage.png" />
-    <file path="landing.html" />
+    <!-- Angular -->
     <file path="angular/test.js" />
     <file path="angular/dialog1.tmpl.html" />
     <file path="angular/angular.js" />
     <file path="angular-material/angular-material.min.js" />
-    <file path="angular-material/angular-material.min.css" />
     <file path="angular-aria/angular-aria.min.js" />
     <file path="angular-animate/angular-animate.min.js" />
 </static>

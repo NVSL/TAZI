@@ -12,10 +12,6 @@ api_gspec = "HotlineBling.api.gspec"
 out_file = "HotlineBling/HotlineBling.ino"
 
 # Real Request Handlers
-class IDERequestHandler(webapp2.RequestHandler):
-    def get(self):
-        index = open(INDEX).read()
-        self.response.write(index)
 class NewProgramHandler(webapp2.RequestHandler):
     def post(self):
         request = dict(self.request.POST)
@@ -66,7 +62,6 @@ if __name__ == "__main__":
     args = parser.parse_args()
     STATIC, files = StaticHandler.parseStaticFiles( args.static_files )
     app = webapp2.WSGIApplication([ 
-        ("/", IDERequestHandler),
 	("/compile", CompileRequestHandler),
 	("/newprogram", NewProgramHandler),
 	("/demo_test.asp", AspTestHandler),
