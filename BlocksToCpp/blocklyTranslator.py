@@ -106,12 +106,12 @@ def getBlock(node,depth):
 
     if (blockType == "main"): 
         def refactorStatementToBlock( s ):
-	    s.tag = "block"
-	    s.attrib["type"] = s.attrib["name"]
-	    return s
-	lines = ""
-	print node.tag
-	for b in map( refactorStatementToBlock, node.findall("statement" )):
+            s.tag = "block"
+            s.attrib["type"] = s.attrib["name"]
+            return s
+        lines = ""
+        # print node.tag
+        for b in map( refactorStatementToBlock, node.findall("statement" )):
 	    lines += recurseParse( b, depth ) + delimitter+ '\n'
         return lines
 
@@ -357,6 +357,13 @@ def mathSingle(node, depth):
 
     return blockNext(node, depth, (operator + valueOn))
 
+#math modulo
+def mathModulo(node, depth):
+    dividend = recurseParse(list(list(node)[0])[0], depth)
+    divisor = recurseParse(list(list(node)[1])[0], depth)
+
+    return blockNext(node, depth, dividend + " % " + divisor)
+
 #while loop
 def whileUnt(node, depth):
     retString = "while("
@@ -398,13 +405,17 @@ def repeatControl(node, depth):
 
 #for loop
 def forloop(node, depth):
-    retString = ";\n" + (spaces*depth) + "for("
+    
 
     #from
     val = getField(list(node)[0])
     fromVal = recurseParse(list(node)[1], 0)
 
-    retString += "int " + val + " = " + fromVal
+    # Moving this here so that val can be declared outside
+    retString = ";\n" + (spaces*depth) + "int " + val + ";\n"
+    retString += (spaces*depth) + "for("
+
+    retString += val + " = " + fromVal
 
     #to
     toVal = getField(list(list(list(node)[2])[0])[0])
@@ -520,6 +531,7 @@ funcGet = {
     "math_number_property": mathProp,
     "math_arithmetic": mathMetic,
     "math_single": mathSingle,
+    "math_modulo": mathModulo,
     "controls_whileUntil": whileUnt,
     "controls_repeat_ext": repeatControl,
     "controls_for": forloop,

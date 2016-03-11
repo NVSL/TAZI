@@ -1,5 +1,5 @@
 
 default:
-	rm -r testOutputs
+	rm -rf testOutputs
 	python runAndLogTests.py
 
