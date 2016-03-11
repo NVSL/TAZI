@@ -110,7 +110,6 @@ def getBlock(node,depth):
 	    s.attrib["type"] = s.attrib["name"]
 	    return s
 	lines = ""
-	print node.tag
 	for b in map( refactorStatementToBlock, node.findall("statement" )):
 	    lines += recurseParse( b, depth ) + delimitter+ '\n'
         return lines
