@@ -364,6 +364,17 @@ def mathModulo(node, depth):
 
     return blockNext(node, depth, dividend + " % " + divisor)
 
+#math random
+def mathRand(node, depth):
+    minNum = recurseParse(list(list(node)[0])[0], depth)
+    maxNum = recurseParse(list(list(node)[1])[0], depth)
+
+    return "rand() % (" + maxNum + " - " + minNum + ") + " + minNum
+
+#math random float
+def mathRandFloat(node, depth):
+    return "(float) rand() / RAND_MAX"
+
 #while loop
 def whileUnt(node, depth):
     retString = "while("
@@ -532,6 +543,8 @@ funcGet = {
     "math_arithmetic": mathMetic,
     "math_single": mathSingle,
     "math_modulo": mathModulo,
+    "math_random_int": mathRand,
+    "math_random_float": mathRandFloat,
     "controls_whileUntil": whileUnt,
     "controls_repeat_ext": repeatControl,
     "controls_for": forloop,
