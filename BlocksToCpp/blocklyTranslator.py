@@ -404,7 +404,8 @@ def negate(node, depth):
 
 #repeat for specified num of times
 def repeatControl(node, depth):
-    retString = ";\n" + (spaces*depth) + "for(int count = 0; i < "
+    retString = ";\n" + (spaces*depth) + "int i;\n"
+    retString += (spaces*depth) + "for(i = 0; i < "
     count = recurseParse(list(node)[0], 0)
     retString += count + "; i++) {\n"
 
