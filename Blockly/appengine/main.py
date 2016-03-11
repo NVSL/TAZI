@@ -32,12 +32,6 @@ class CompileRequestHandler(webapp2.RequestHandler):
 	print cpp
 	self.response.write(cpp)
 
-class AspTestHandler(webapp2.RequestHandler):
-    def post(self):
-        request = dict(self.request.POST)
-        print "I got an asp test request!"
-	print request
-
 def removeNSHack( xml ):
     xIdx = xCnt = qIdx = qCnt = i = 0
     for c in xml:
@@ -64,6 +58,5 @@ if __name__ == "__main__":
     app = webapp2.WSGIApplication([ 
 	("/compile", CompileRequestHandler),
 	("/newprogram", NewProgramHandler),
-	("/demo_test.asp", AspTestHandler),
 	] + [ StaticHandler.create_path_pair(f) for f in files ]  , debug=True)
     main(app)
