@@ -4,17 +4,9 @@ import subprocess
 import re
 import sys
 
-
-def setUp():
-	failedTests = []
-
-def tearDown():
-	# assertEqual([], failedTests)
-	print(failedTests)
-
-def helper(file, testDir, outputFile, cDir):
-	global total
-	total += 1
+### Translates the file from xml into C++ code using blocklyTranslator ###
+def translate(file, testDir, outputFile, cDir):
+	global failedTests
 	sys.stdout.write("Translating " + file + "...")
 	proc = subprocess.Popen(["python", "blocklyTranslator.py", "-x", testDir + file], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 	stdoutVal, stderrVal = proc.communicate()
@@ -28,86 +20,74 @@ def helper(file, testDir, outputFile, cDir):
 	# Check if there is any stderr output
 	if (stderrVal == ""):
 		print("ok")
+		# Write the output to the C file
+		filename = (file.split(".")) [0];
+		cfile = cDir + filename + "_cCode.c";
+		with open(cfile, "w") as outFile2:
+			outFile2.write(stdoutVal)
+			outFile2.close();
+		return True
 	else:
 		failedTests.append(file + " translated with error")
 		print("FAIL")
-		return
+		return False
 
+### Checks if the output conforms to C++ syntax ###
+def checkSyntax(file, testDir, outputFile, cDir):
+	global failedTests
 	filename = (file.split(".")) [0];
 	cfile = cDir + filename + "_cCode.c";
 	sys.stdout.write("Compiling " + cfile + "...")
-	with open(cfile, "w") as outFile2:
-		outFile2.write(stdoutVal)
-		outFile2.close();
-		exitCode = subprocess.call(["gcc", "-fsyntax-only", cfile])
-		# Check that exit code is 0
-		if (exitCode == 0):
-			print("ok")
-			global passed
-			passed += 1
-		else:
-			failedTests.append(file + " did not pass C++ syntax check")
-			print("FAIL")
+	exitCode = subprocess.call(["gcc", "-fsyntax-only", cfile])
+	# Check that exit code is 0
+	if (exitCode == 0):
+		print("ok")
+		return True
+	else:
+		failedTests.append(file + " did not pass C++ syntax check")
+		print("FAIL")
+		return False
 
-def test_varTests():
-	print("\n=== Running var tests ===")
-	subprocess.call(["rm", "-f", "testOutputs/varTestOutput"])
-	subprocess.call(["mkdir", "cCode/varFiles/"])
-	varFiles = subprocess.Popen(["ls", "tests/varTests/"], stdout=subprocess.PIPE).communicate()[0].split("\n")
-	for varFile in varFiles:
-		if re.match(r".*\.xml", varFile):
-			helper(varFile, "tests/varTests/", "testOutputs/varTestOutput", "cCode/varFiles/")
+def compileFailures(typeName, failedList):
+	result = "\n-----------------------------------------\n"
+	result += "        FAILED TESTS FOR " + typeName + "\n\n"
+	if (failedList == []):
+		result += "No failed tests.\n"
+	else:
+		for item in failedList:
+			result += item + "\n"
+	result += "\n-----------------------------------------\n"
+	return result
 
-def test_mathTests():
-	print("\n=== Running math tests ===")
-	subprocess.call(["rm", "-f", "testOutputs/mathTestOutput"])
-	subprocess.call(["mkdir", "cCode/mathFiles/"])
-	mathFiles = subprocess.Popen(["ls", "tests/MathTests/"], stdout=subprocess.PIPE).communicate()[0].split("\n")
-	for mathFile in mathFiles:
-		if re.match(r".*\.xml", mathFile):
-			helper(mathFile, "tests/MathTests/", "testOutputs/mathTestOutput", "cCode/mathFiles/")
+### Sets up and runs test according to the type name -- this means an entire folder ###
+def setupTest(typeName):
+	global total
+	global failedTranslate
+	global failedSyntax
+	global failedTests
+	failedTests = []
+
+	print("\n=== Running " + typeName + " tests ===")
+	subprocess.call(["rm", "-f", "testOutputs/" + typeName + "TestOutput"])
+	subprocess.call(["mkdir", "cCode/" + typeName + "Files/"])
+	testFiles = subprocess.Popen(["ls", "tests/" + typeName + "Tests/"], stdout=subprocess.PIPE).communicate()[0].split("\n")
+	for testFile in testFiles:
+		if re.match(r".*\.xml", testFile):
+			translateResult = translate(testFile, "tests/" + typeName + "Tests/", "testOutputs/" + typeName + "TestOutput", "cCode/" + typeName + "Files/")
+			total += 1
+			if (translateResult):
+				# Passed the translate test, now check C++ syntax
+				syntaxResult = checkSyntax(testFile, "tests/" + typeName + "Tests/", "testOutputs/" + typeName + "TestOutput", "cCode/" + typeName + "Files/")
+				if syntaxResult == False:
+					# Failed the syntax test
+					failedSyntax += 1
+			else:
+				# Failed the translate test
+				failedTranslate += 1
 
 
-def test_logicTests():
-	print("\n=== Running logic tests ===")
-	subprocess.call(["rm", "-f", "testOutputs/logicTestOutput"])
-	subprocess.call(["mkdir", "cCode/logicFiles/"])
-	LogicFiles = subprocess.Popen(["ls", "tests/LogicTests/"], stdout=subprocess.PIPE).communicate()[0].split("\n")
-	for logicFile in LogicFiles:
-		if re.match(r".*\.xml", logicFile):
-			helper(logicFile, "tests/LogicTests/", "testOutputs/logicTestOutput", "cCode/logicFiles/")
+	return compileFailures(typeName, failedTests)
 
-def test_loopTests():
-	print("\n=== Running loop tests ===")
-	subprocess.call(["rm", "-f", "testOutputs/loopTestOutput"])
-	subprocess.call(["mkdir", "cCode/loopFiles/"])
-	LoopFiles = subprocess.Popen(["ls", "tests/loopTests/"], stdout=subprocess.PIPE).communicate()[0].split("\n")
-	for loopFile in LoopFiles:
-		if re.match(r".*\.xml", loopFile):
-			helper(loopFile, "tests/loopTests/", "testOutputs/loopTestOutput", "cCode/loopFiles/")
-
-def test_randomTests():
-	print("\n=== Running random tests ===")
-	subprocess.call(["rm", "-f", "testOutputs/randomTestOutput"])
-	subprocess.call(["mkdir", "cCode/randomFiles/"])
-	RandomFiles = subprocess.Popen(["ls", "tests/randomTests/"], stdout=subprocess.PIPE).communicate()[0].split("\n")
-	for randomFile in RandomFiles:
-		if re.match(r".*\.xml", randomFile):
-			helper(randomFile, "tests/randomTests/", "testOutputs/randomTestOutput", "cCode/randomFiles/")
-
-def test_customTests():
-	print("\n=== Running custom tests ===")
-	subprocess.call(["rm", "-f", "testOutputs/customTestOutput"])
-	subprocess.call(["mkdir", "cCode/customFiles/"])
-	CustomFiles = subprocess.Popen(["ls", "tests/customTests/"], stdout=subprocess.PIPE).communicate()[0].split("\n")
-	for customFile in CustomFiles:
-		if re.match(r".*\.xml", customFile):
-			helper(customFile, "tests/customTests/", "testOutputs/customTestOutput", "cCode/customFiles/")
-
-def runTest(func):
-	setUp()
-	func()
-	tearDown()
 
 
 #########################################
@@ -120,22 +100,36 @@ subprocess.call(["rm", "-rf", "cCode"])
 subprocess.call(["mkdir", "cCode"])
 
 # All tests that will need to be run
-tests = [testClass.test_varTests, testClass.test_mathTests, testClass.test_logicTests, testClass.test_loopTests, testClass.test_randomTests, testClass.test_customTests]
+tests = ["var", "math", "logic", "loop", "random", "custom"]
+results = {}
 
-# 
+
+# Stuff to keep track
 global total
-global passed
+global failedTranslate
+global failedSyntax
 total = 0
-passed = 0
+failedTranslate = 0
+failedSyntax = 0
 
+# Actually run the tests and store the resulting failures in dict
+for testType in tests:
+	result = setupTest(testType)
+	results[testType] = result
 
-for testFunction in tests:
-	testClass.runTest(testFunction)
+# Print out the test type failures
+for testType in tests:
+	print(results[testType])
 
+# General final output
 print("\n>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n")
 print("Ran " + str(total) + " tests.\n")
-print(str(passed) + " tests passed.\n")
-print(str(total - passed) + " tests failed.")
-if (total - passed > 0):
+print(str(total - failedTranslate - failedSyntax) + " tests passed.\n")
+print(str(failedTranslate + failedSyntax) + " total tests failed.")
+if (failedTranslate + failedSyntax > 0):
+	print("\nOf failed tests:")
+	print("    " + str(failedTranslate) + " failed to translate")
+	print("    " + str(failedSyntax) + " failed to pass C++ syntax check")
 	print("FIX THEM, YOU LAZY BUM.")
+
 print("\n>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n")
