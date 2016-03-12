@@ -4,6 +4,7 @@ import subprocess
 import re
 import sys
 
+
 ### Translates the file from xml into C++ code using blocklyTranslator ###
 def translate(file, testDir, outputFile, cDir):
 	global failedTests
@@ -32,6 +33,7 @@ def translate(file, testDir, outputFile, cDir):
 		print("FAIL")
 		return False
 
+
 ### Checks if the output conforms to C++ syntax ###
 def checkSyntax(file, testDir, outputFile, cDir):
 	global failedTests
@@ -48,6 +50,8 @@ def checkSyntax(file, testDir, outputFile, cDir):
 		print("FAIL")
 		return False
 
+
+### Compiles the failure list into a string, to be printed later at the end of the test script ###
 def compileFailures(typeName, failedList):
 	result = "\n-----------------------------------------\n"
 	result += "        FAILED TESTS FOR " + typeName + "\n\n"
@@ -58,6 +62,7 @@ def compileFailures(typeName, failedList):
 			result += item + "\n"
 	result += "\n-----------------------------------------\n"
 	return result
+
 
 ### Sets up and runs test according to the type name -- this means an entire folder ###
 def setupTest(typeName):
@@ -84,7 +89,6 @@ def setupTest(typeName):
 			else:
 				# Failed the translate test
 				failedTranslate += 1
-
 
 	return compileFailures(typeName, failedTests)
 
