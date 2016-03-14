@@ -11,7 +11,8 @@ spaces = "  "
 delimitter = ";"
 main_loop = []
 use_c_lib = True
-c_lib = "#include <iostream>\n#include <cmath>\nusing namespace std;\n"
+c_lib = "#include <iostream>\n#include <cmath>"
+c_lib += "\n#include <stdlib.h>\nusing namespace std;\n"
 
 # There should be some degree of error checking
 class BlocklyError(Exception):
@@ -398,8 +399,9 @@ def mathSingle(node, depth):
 
 #math modulo
 def mathModulo(node, depth):
-    dividend = recurseParse(list(list(node)[0])[0], depth)
-    divisor = recurseParse(list(list(node)[1])[0], depth)
+    values = [ n for n in node if n.tag == "value" ]
+    dividend = getValue( values[0] )
+    divisor = getValue( values[1] )
 
     return blockNext(node, depth, dividend + " % " + divisor)
 
