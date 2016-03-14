@@ -5,3 +5,4 @@ run:
 clean:
 	rm -f $(PROG_NAME)
 	rm -f $(PROG_NAME).$(PROG_EXT)
+	rm -f *.pyc

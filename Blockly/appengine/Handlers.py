@@ -8,6 +8,7 @@ from StringIO import StringIO
 
 program_name = "testfile"
 out_file = program_name + ".cpp"
+STATIC = "static/"
 
 ############################# Helper Functions ############################# 
 
@@ -39,7 +40,7 @@ class NewProgramHandler(webapp2.RequestHandler):
 	
 class StaticFileHandler(webapp2.RequestHandler):
     def get(self, file_name):
-        self.response.write( StaticHandler.openStaticFile( file_name) )
+        self.response.write( openStaticFile( file_name) )
 
 class CompileCPPHandler(webapp2.RequestHandler):
     @compiles
@@ -58,4 +59,16 @@ class CompileInoHandler(webapp2.RequestHandler):
 	writeToOutfile( cpp )
 	print cpp
 	self.response.write(cpp)
+
+######################## Static Handler Functions  ######################## 
+
+def openStaticFile( fn ): return open(STATIC+fn).read()
+
+def createStaticHandler( static_file ):
+    class Handler(webapp2.RequestHandler):
+        def get(self):
+	    static_str = openStaticFile( static_file )
+	    self.response.write( static_str )
+    return Handler
+
 
