@@ -40,7 +40,7 @@ def checkSyntax(file, testDir, outputFile, cDir):
 	filename = (file.split(".")) [0];
 	cfile = cDir + filename + "_cCode.c";
 	sys.stdout.write("Compiling " + cfile + "...")
-	exitCode = subprocess.call(["gcc", "-fsyntax-only", cfile])
+	exitCode = subprocess.call(["g++", "-fsyntax-only", cfile])
 	# Check that exit code is 0
 	if (exitCode == 0):
 		print("ok")

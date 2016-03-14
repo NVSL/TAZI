@@ -48,6 +48,7 @@ def recurseParse(node, depth):
         for child in node:
             if ((child.attrib).get("type") != None and (child.attrib["type"] == "main")):
                 overallResult += recurseParse(child, depth)
+
 	# Handle the case for Blockly CPP
 	c_main = [ ns for ns in node.findall("block") if ns.attrib["type"] == "c_main" ]
 	if( len( c_main ) == 1): 
@@ -96,11 +97,11 @@ def getBlock(node,depth):
 	loopStr = recurseParseCheck(list(node), depth+1)#+";"
 	global main_loop
 	main_loop = loopStr.split("\n")
-        return "void loop () {" + loopStr + "\n}"
+        return "void loop () {\n" + loopStr + "\n}"
 
     if (blockType == "main_body"):
 	mainStr = "int main() {\n " 
-	mainStr += recurseParseCheck(list(node), depth+1) + "\n"
+	mainStr += recurseParseCheck(list(node), depth+1) + ";\n"
 	mainStr += spaces + " return 0;\n}"
 	if use_c_lib: mainStr = c_lib + mainStr
         return mainStr
@@ -109,7 +110,7 @@ def getBlock(node,depth):
         nextNode = node.find("value").find("block")
 	function = depth*spaces + "cout << ("
 	function += recurseParseCheck( [nextNode] , depth + 1, remove_white_space=True) 
-	return function + ") << endl;"
+	return function + ") << endl"
 
     if (blockType == "variable_declarations"):
         return "void setup () {\n" + recurseParseCheck(list(node), depth + 1) + ";\n}\n"
@@ -131,7 +132,6 @@ def getBlock(node,depth):
 
     if (blockType == "main"): 
         lines = ""
-        # print node.tag
         for b in map( refactorStatementToBlock, node.findall("statement" )):
 	    lines += recurseParse( b, depth ) + delimitter+ '\n'
         return lines
@@ -210,7 +210,7 @@ def getField(node):
 def getValue( val ):
     node = val.find("block")
     if node is None: node = val.find("shadow")
-    return getField( node.find("field") )
+    return recurseParse( node, 0 )
 
 # Operator dictionary
 opDict = {
@@ -452,8 +452,7 @@ def forloop(node, depth):
     fromVal = getValue( values[0] )
 
     # Moving this here so that val can be declared outside
-    retString = ";\n" + (spaces*depth) + "int " + val + ";\n"
-    retString += (spaces*depth) + "for("
+    retString = (spaces*(depth-1)) + "for(int "
 
     retString += val + " = " + fromVal
 
@@ -466,11 +465,11 @@ def forloop(node, depth):
     try: cond = "<=" if float(fromVal) <= float(toVal) else ">="
     except: cond = "<="
 
-    retString += "; " + val + cond + toVal + "; " + val + "+= " + incr + ") {\n"
+    retString += "; " + val + cond + "("+toVal+"); " + val + "+=(" + incr + ")) {\n"
 
     statement = recurseParse(list(node)[4], depth+1)
 
-    retString += statement + ";\n" + (spaces*depth) + "}\n"
+    retString += statement + ";\n " + (spaces*depth) + "}"
 
     return blockNext(node, depth, retString)
 
