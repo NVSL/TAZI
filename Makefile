@@ -9,7 +9,7 @@ default:
 	sudo cp -R $(BLOCKLY_PATH) /var/www/html
 
 test:
-	true
+	make -C BlocksToCpp
 
 clean:
 	make -C GCGF clean
