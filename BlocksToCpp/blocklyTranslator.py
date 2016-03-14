@@ -10,6 +10,8 @@ DEBUG = 0
 spaces = "  "
 delimitter = ";"
 main_loop = []
+use_c_lib = True
+c_lib = "#include <iostream>\nusing namespace std;\n"
 
 # There should be some degree of error checking
 class BlocklyError(Exception):
@@ -18,6 +20,10 @@ class BlocklyError(Exception):
     def __str__(self, value):
         return repr(self.value)
 
+def refactorStatementToBlock( s ):
+    s.tag = "block"
+    s.attrib["type"] = s.attrib["name"]
+    return s
 
 # Recurse through the xml to translate
 def recurseParse(node, depth):
@@ -42,6 +48,11 @@ def recurseParse(node, depth):
         for child in node:
             if ((child.attrib).get("type") != None and (child.attrib["type"] == "main")):
                 overallResult += recurseParse(child, depth)
+	# Handle the case for Blockly CPP
+	c_main = [ ns for ns in node.findall("block") if ns.attrib["type"] == "c_main" ]
+	if( len( c_main ) == 1): 
+	    main = refactorStatementToBlock(c_main[0].find("statement"))
+	    return recurseParse( main, 0 )
 
         if (("void loop ()" not in overallResult)):
             overallResult += "void loop () {\n}\n"
@@ -68,11 +79,13 @@ def recurseParse(node, depth):
 
 # Safety net for checking if there is a next block
 #shouldn't the if statement check if it's equal to 0?
-def recurseParseCheck(nodeList, depth):
+def recurseParseCheck(nodeList, depth, remove_white_space=False):
     if (len(nodeList) != 1):
         return ""
     else:
-        return recurseParse(nodeList[0], depth)
+        rv = recurseParse(nodeList[0], depth)
+	if remove_white_space: rv = rv.replace(" ","")
+	return rv
 
 # Sub functions
 
@@ -85,6 +98,19 @@ def getBlock(node,depth):
 	global main_loop
 	main_loop = loopStr.split("\n")
         return "void loop () {" + loopStr + "\n}"
+
+    if (blockType == "main_body"):
+	mainStr = "int main() {\n " 
+	mainStr += recurseParseCheck(list(node), depth+1) + "\n"
+	mainStr += spaces + " return 0;\n}"
+	if use_c_lib: mainStr = c_lib + mainStr
+        return mainStr
+
+    if (blockType == "text_print"):
+        nextNode = node.find("value").find("block")
+	function = depth*spaces + "cout << ("
+	function += recurseParseCheck( [nextNode] , depth + 1, remove_white_space=True) 
+	return function + ") << endl;"
 
     if (blockType == "variable_declarations"):
         return "void setup () {\n" + recurseParseCheck(list(node), depth + 1) + ";\n}\n"
@@ -105,10 +131,6 @@ def getBlock(node,depth):
         return "0"
 
     if (blockType == "main"): 
-        def refactorStatementToBlock( s ):
-            s.tag = "block"
-            s.attrib["type"] = s.attrib["name"]
-            return s
         lines = ""
         # print node.tag
         for b in map( refactorStatementToBlock, node.findall("statement" )):
@@ -121,6 +143,7 @@ def genericBlockGet(node,depth):
     blockType = node.attrib["type"]
     # Remainder block types that aren't built in, so it must be custom
     if (len(blockType.split("$")) < 3):
+        print blockType
         raise BlocklyError("Block " + blockType + " is malformatted!")
         return ""
 
