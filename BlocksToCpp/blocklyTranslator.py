@@ -207,6 +207,11 @@ def getField(node):
             return "false"
     return node.text
 
+def getValue( val ):
+    node = val.find("block")
+    if node is None: node = val.find("shadow")
+    return getField( node.find("field") )
+
 # Operator dictionary
 opDict = {
     "EQ": "==",
@@ -443,7 +448,9 @@ def forloop(node, depth):
 
     #from
     val = getField(list(node)[0])
-    fromVal = recurseParse(list(node)[1], 0)
+    values = node.findall("value")
+    print values[1].find("block")
+    fromVal = getValue( values[0] )
 
     # Moving this here so that val can be declared outside
     retString = ";\n" + (spaces*depth) + "int " + val + ";\n"
@@ -452,12 +459,14 @@ def forloop(node, depth):
     retString += val + " = " + fromVal
 
     #to
-    toVal = getField(list(list(list(node)[2])[0])[0])
+    toVal = getValue( values[1] )
 
     #increment
-    incr = getField(list(list(list(node)[3])[0])[0])
+    incr = getValue( values[2] )
 
-    retString += "; " + val + "<= " + toVal + "; " + val + "+= " + incr + ") {\n"
+    cond = "<=" if float(fromVal) <= float(toVal) else ">="
+
+    retString += "; " + val + cond + toVal + "; " + val + "+= " + incr + ") {\n"
 
     statement = recurseParse(list(node)[4], depth+1)
 
@@ -586,6 +595,7 @@ madeFuncNames = {
 }
 
 
+
 def run( xml ):
     tree = ET.parse(xml)
     root = tree.getroot()
@@ -621,6 +631,4 @@ if __name__ == "__main__":
     if args.d:
         DEBUG = 1
     print run( inp )
-    #print
-    #print main_loop
 
