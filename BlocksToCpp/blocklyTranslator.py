@@ -300,7 +300,7 @@ def ifBlock(node, depth):
         statementPart = recurseParse(list(node)[1], depth+1)
 
     # Second child is the statement part
-    returnStr = ";\n" + (spaces*depth) + "if(" + booleanPart + ") {\n"
+    returnStr = "if(" + booleanPart + ") {\n"
 
     totString = returnStr + statementPart + ";\n" + (spaces*depth) + "}"
 
@@ -308,7 +308,7 @@ def ifBlock(node, depth):
         totString += elseifBlock(node, numElsIfs, depth)
 
     if (numElses == 1):
-        totString += " else {\n" + recurseParse(list(node)[-1], depth + 1) + ";\n" + (spaces*depth) + "}"
+        totString += "\n" + (spaces*depth) + "else {\n" + recurseParse(list(node)[-1], depth + 1) + ";\n" + (spaces*depth) + "}"
 
     return blockNext(node, depth, totString)
 
