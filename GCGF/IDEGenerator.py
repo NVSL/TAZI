@@ -20,6 +20,7 @@ class IDEGenerator:
         self.JINJA_ENVIRONMENT = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
         self.jinja_vars = {"blocklist":[]}
 	self.jinja_vars["defaultBlocks"] = open(DefaultWorkspaceFile).read().replace("\n", "").replace('"', '\\"')
+	self.jinja_vars["resDir"] = "/static/"
         
     def setJinjaTemplate(self, template):
         self.template = self.JINJA_ENVIRONMENT.get_template(template)

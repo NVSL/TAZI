@@ -9,7 +9,7 @@ angular.module('dialogDemo1', ['ngMaterial'])
     var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
     $mdDialog.show({
       controller: DialogController,
-      templateUrl: 'angular/dialog1.tmpl.html',
+      templateUrl: 'static/angular/dialog1.tmpl.html',
       parent: angular.element(document.body),
       targetEvent: ev,
       clickOutsideToClose:true,

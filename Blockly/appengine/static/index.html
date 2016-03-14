@@ -1,11 +1,11 @@
 <head>
 	<title>TAZI - A blockly extention for Gadgetron</title>
-	<script src="blockly_compressed.js"></script>
-	<script src="blocks_compressed.js"></script>
-	<script src="custom_blocks.js"></script>
-	<script src="msg/js/en.js"></script>
-	<script src="jquery-2.2.1.min.js"></script>
-	<script src="Requests.js"></script>
+	<script src="/static/blockly_compressed.js"></script>
+	<script src="/static/blocks_compressed.js"></script>
+	<script src="/static/custom_blocks.js"></script>
+	<script src="/static/msg/js/en.js"></script>
+	<script src="/static/jquery-2.2.1.min.js"></script>
+	<script src="/static/Requests.js"></script>
 	<script type="text/javascript">
 	
 	
@@ -24,7 +24,7 @@
 	<div width="100%" height="100%">
 	
 	<div class = "outer", style="width:20%; height:10%; float:left;">
-		<img src="GtronImage.png" alt="Gtron Logo" style="width:auto;height:auto;">		
+		<img src="/static/GtronImage.png" alt="Gtron Logo" style="width:auto;height:auto;">		
 	</div>
 	
 	<div class = "outer", style = "margin-left:20%; width: 70%; height: 10%">
@@ -156,7 +156,7 @@
 	<!--button>Save Program</button-->
 	<button onclick="testPost()">Compile</button>
     <input type="file" id="xmlinput" />
-    <script src="BlocksIO.js"></script>
+    <script src="/static/BlocksIO.js"></script>
     <script>
         window.onload = function() { 
             var defaultBlocks = "<xml><block type=\"c_main\" x=\"255\" y=\"127\"></block></xml>";

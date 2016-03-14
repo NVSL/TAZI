@@ -13,6 +13,7 @@ api_gspec = "HotlineBling.api.gspec"
 #out_file = "HotlineBling/HotlineBling.ino"
 program_name = "testfile"
 out_file = program_name + ".cpp"
+STATIC = StaticHandler.STATIC
 
 def compileRequest( request, DebugMessage="I got a compile request!" ):
     print DebugMessage
@@ -27,6 +28,10 @@ class NewProgramHandler(webapp2.RequestHandler):
         request = dict(self.request.POST)
 	print request["name"].encode('ascii', 'ignore')
 	self.response.write("1")
+	
+class StaticFileHandler(webapp2.RequestHandler):
+    def get(self, file_name):
+        self.response.write( StaticHandler.openStaticFile( file_name) )
 
 class CompileCPPHandler(webapp2.RequestHandler):
     def post(self):
@@ -34,7 +39,6 @@ class CompileCPPHandler(webapp2.RequestHandler):
 	cpp = compileRequest( request, DebugMessage="I got a compile request!" )
 	writeToOutfile( cpp )
 	subprocess.check_call(["g++", "-o",  program_name, out_file])
-	#subprocess.check_call(["chmod", "0777", program_name])
 	subprocess.check_call(["sudo", "./"+program_name])
 class CompileRequestHandler(webapp2.RequestHandler):
     def post(self):
@@ -74,5 +78,8 @@ if __name__ == "__main__":
     app = webapp2.WSGIApplication([ 
 	("/compile", CompileCPPHandler),
 	("/newprogram", NewProgramHandler),
-	] + [ StaticHandler.create_path_pair(f) for f in files ]  , debug=True)
+	("/", StaticHandler.createHandler("landing.html")),
+	("/ide", StaticHandler.createHandler("index.html")),
+	(r'/static/(.+)', StaticFileHandler),
+	]    , debug=True)
     main(app)
