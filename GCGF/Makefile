@@ -8,7 +8,7 @@ APIGSPECS = $(wildcard Gspecs/*.api.gspec)
 INOS = $(APIGSPECS:Gspecs/%.api.gspec=%.ino)
 ARDUINO = arduino
 
-GSPEC_FILE = $(GSPEC_DIR)$(GSPEC).gspec
+#GSPEC_FILE = -g $(GSPEC_DIR)$(GSPEC).gspec
 APIGSPEC_FILE = $(GSPEC_DIR)$(APIGSPEC).api.gspec
 GADGET_DIR = $(OUTPUT)$(APIGSPEC)
 GADGET_INO = $(GADGET_DIR)/$(APIGSPEC).ino
@@ -25,7 +25,7 @@ INOGENERATOR = InoGenerator.py
 ide:
 	cp IDEGenerator.py IDEGenerator/
 	cp GspecParser.py IDEGenerator/
-	python IDEGenerator.py -j $(BLOCKSJSON) -g $(GSPEC_FILE) -c $(CATALOG) -d $(CATEGORIESXML) -x $(JINJAFILE) $(WORKSPACE) > ../Blockly/index.html
+	python IDEGenerator.py -j $(BLOCKSJSON) $(GSPEC_FILE) -c $(CATALOG) -d $(CATEGORIESXML) -x $(JINJAFILE) $(WORKSPACE) > ../Blockly/index.html
 json:
 	python BlockGenerator.py -l ComponentsLibrary.xml -b $(BLACKLIST) > $(BLOCKSJSON)
 testclang:

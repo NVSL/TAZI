@@ -36,6 +36,7 @@ class IDEGenerator:
         #Append each block to our template
         for block in default_block_root.getroot():
             self.categoriesXML.append( block )
+        self.jinja_vars["toolbox"] = str(ET.tostring( self.categoriesXML ))
     # Loads the block json into the object
     def loadBlockDefinitions( self, blockJson ):
         # Type checking
@@ -123,7 +124,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="IDEGenerator.py creates a Blockly IDE for Gadgetron. It uses Jinja to create the IDE")
     parser.add_argument("-j", "--json", required=False)
     parser.add_argument("-c", "--catalog", required=False)
-    parser.add_argument("-g", "--gspec", required=True)
+    parser.add_argument("-g", "--gspec", required=False)
     parser.add_argument("-d", "--default_blocks", required=False)
     parser.add_argument("-w", "--default_workspace", default="Resources/DefaultRobotWorkspace.xml" )
     parser.add_argument("-x", "--jinja", required=False)
@@ -141,6 +142,7 @@ if __name__ == "__main__":
     generator.setJinjaTemplate( jinjaFile )
     generator.loadBlockDefinitions( jsonFile )
     generator.loadDefaultBlocks( blocksXml )
-    generator.loadGspec( args.gspec, catalog )
-    generator.createBlockSubset()
+    if args.gspec is not None:
+        generator.loadGspec( args.gspec, catalog )
+        generator.createBlockSubset()
     print generator.renderIDE().encode('ascii','ignore')
