@@ -11,18 +11,25 @@ INDEX = "static/index.html"
 api_gspec = "HotlineBling.api.gspec"
 out_file = "HotlineBling/HotlineBling.ino"
 
+def compileRequest( request, DebugMessage="I got a compile request!" ):
+    print DebugMessage
+    xml = request["xml"]
+    return compile(StringIO(xml))
 # Real Request Handlers
 class NewProgramHandler(webapp2.RequestHandler):
     def post(self):
         request = dict(self.request.POST)
 	print request["name"].encode('ascii', 'ignore')
 	self.response.write("1")
+
+class CompileCPPHandler(webapp2.RequestHandler):
+    def post(self):
+        request = dict(self.request.POST)
+	print compileRequest( request, DebugMessage="I got a compile request!" )
 class CompileRequestHandler(webapp2.RequestHandler):
     def post(self):
         request = dict(self.request.POST)
-	xml = removeNSHack(request["xml"])
-        print "I got a compile request!"
-	compile(StringIO(xml))
+	compileRequest( request )
 	api = ET.parse(api_gspec).getroot()
 	generator = InoGenerator(api)
 	generator.appendToLoop( getLoop() )
@@ -56,7 +63,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
     STATIC, files = StaticHandler.parseStaticFiles( args.static_files )
     app = webapp2.WSGIApplication([ 
-	("/compile", CompileRequestHandler),
+	("/compile", CompileCPPHandler),
 	("/newprogram", NewProgramHandler),
 	] + [ StaticHandler.create_path_pair(f) for f in files ]  , debug=True)
     main(app)

@@ -42,7 +42,7 @@ Blockly.Blocks['main'] = {
     this.setColour(105);
     this.setTooltip('Make sure you put all your blocks in here!');
     this.setHelpUrl('http://www.gadgetron.build/');
-    this.setDeletable(false)
+    //this.setDeletable(false)
   }
 };
 
@@ -56,3 +56,15 @@ Blockly.Blocks['millis'] = {
     this.setHelpUrl('http://www.gadgetron.build/');
   }
 };
+
+
+Blockly.Blocks['c_main'] = {
+  init: function() {
+    this.appendStatementInput("main_body")
+        .appendField("C++ Main Function");
+    this.setColour(330);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
