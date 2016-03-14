@@ -2,8 +2,6 @@ import wsgiref.simple_server
 import webapp2
 from Handlers import *
 
-INDEX = "static/index.html"
-api_gspec = "HotlineBling.api.gspec"
 
 ############################# Main Functions ############################# 
 def main (app):

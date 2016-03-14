@@ -1,9 +1,11 @@
 COPY = '-R'
 APPENGINE = appengine/
 DEST = $(APPENGINE)static/
+B2CPP = BlocksToCpp
+INOGEN = InoGenerator
 
-all:	main run
-main:
+all:	copy run
+copy:
 	cp $(COPY) blocks/ $(DEST)
 	cp $(COPY) core/ $(DEST)
 	cp $(COPY) demos/ $(DEST)
@@ -26,7 +28,13 @@ main:
 	cp $(COPY) index.html $(DEST)
 	cp $(COPY) Requests.js $(DEST)
 	cp $(COPY) angular*/ $(DEST)
-	cp $(COPY) ../BlocksToCpp $(APPENGINE)
-	cp $(COPY) ../GCGF/Ino*.py $(APPENGINE)
+	cp $(COPY) ../$(B2CPP) $(APPENGINE)
+	make -C ../GCGF ino_package
+	cp $(COPY) ../GCGF/$(INOGEN) $(APPENGINE)
+clean:
+	rm -rf $(DEST)
+	rm -rf $(APPENGINE)$(B2CPP)
+	rm -rf $(APPENGINE)$(INOGEN)
+	make -C $(APPENGINE) clean_inner
 run:
 	make -C $(APPENGINE)

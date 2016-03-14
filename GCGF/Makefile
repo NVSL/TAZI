@@ -22,9 +22,14 @@ JINJAFILE = $(RESOURCES)/index.jinja
 INOGENERATOR = InoGenerator.py
 .PRECIOUS: $(GSPEC_DIR)%.api.gspec
 
-ide:
+packages: ide_package ino_package
+ide_package:
 	cp IDEGenerator.py IDEGenerator/
 	cp GspecParser.py IDEGenerator/
+ino_package:
+	cp $(INOGENERATOR) InoGenerator/
+	cp InoCommenter.py InoGenerator/
+ide:
 	python IDEGenerator.py -j $(BLOCKSJSON) $(GSPEC_FILE) -c $(CATALOG) -d $(CATEGORIESXML) -x $(JINJAFILE) $(WORKSPACE) > ../Blockly/index.html
 json:
 	python BlockGenerator.py -l ComponentsLibrary.xml -b $(BLACKLIST) > $(BLOCKSJSON)

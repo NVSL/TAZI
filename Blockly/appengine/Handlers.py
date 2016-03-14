@@ -2,12 +2,13 @@ import subprocess
 import wsgiref.simple_server
 import webapp2
 from BlocksToCpp import blocklyTranslator as Translator
-from InoGenerator import ClassGenerator as InoGenerator
+from InoGenerator.InoGenerator import ClassGenerator as InoGenerator
 import xml.etree.ElementTree as ET
 from StringIO import StringIO
 
 program_name = "testfile"
 out_file = program_name + ".cpp"
+api_gspec = "HotlineBling.api.gspec"
 STATIC = "static/"
 
 ############################# Helper Functions ############################# 
@@ -56,9 +57,9 @@ class CompileInoHandler(webapp2.RequestHandler):
 	generator = InoGenerator(api)
 	generator.appendToLoop( Translator.getLoop() )
 	ino = generator.getClass()
-	writeToOutfile( cpp )
-	print cpp
-	self.response.write(cpp)
+	writeToOutfile( ino)
+	print ino 
+	self.response.write(ino)
 
 ######################## Static Handler Functions  ######################## 
 

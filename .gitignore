@@ -22,3 +22,5 @@ BlocksToCpp/cCode/*
 BlocksToCpp/cCode.c
 Blockly/BlocksToCpp/
 Blockly/appengine/BlocksToCpp/
+Blockly/appengine/InoGenerator/
+Blockly/appengine/static/
