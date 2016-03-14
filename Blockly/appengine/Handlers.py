@@ -13,18 +13,6 @@ STATIC = "static/"
 
 ############################# Helper Functions ############################# 
 
-def writeToOutfile( contents ):
-    f = open(out_file, "w")
-    f.write(contents)
-
-def compiles( f ):
-    def decorated_function( self ):
-        request = dict(self.request.POST)
-	xml = request["xml"]
-	compiled = Translator.run( StringIO(xml) )
-	return f( self, compiled )
-    return decorated_function
-
 def setupOutput( name="testfile", ext="cpp"):
     global program_name
     program_name = name 
@@ -43,23 +31,33 @@ class StaticFileHandler(webapp2.RequestHandler):
     def get(self, file_name):
         self.response.write( openStaticFile( file_name) )
 
-class CompileCPPHandler(webapp2.RequestHandler):
-    @compiles
-    def post(self, cpp):
-	writeToOutfile( cpp )
+class CompileHandler(webapp2.RequestHandler):
+    def translateRequest(self):
+        request = dict(self.request.POST)
+	xml = request["xml"]
+	self.compiled = Translator.run( StringIO(xml) )
+    def writeToOutfile( self ):
+        f = open(out_file, "w")
+        f.write(self.compiled)
+
+class CompileCPPHandler(CompileHandler):
+    def post(self):
+        self.translateRequest()
+	self.writeToOutfile()
 	subprocess.check_call(["g++", "-o",  program_name, out_file])
 	proc = subprocess.Popen([ "./"+program_name], shell=True, stdout=subprocess.PIPE)
 	self.response.write( proc.stdout.read() )
-class CompileInoHandler(webapp2.RequestHandler):
-    @compiles
-    def post(self, ino):
+
+class CompileInoHandler(CompileHandler):
+    def post(self):
+        self.translateRequest()
 	api = ET.parse(api_gspec).getroot()
 	generator = InoGenerator(api)
 	generator.appendToLoop( Translator.getLoop() )
-	ino = generator.getClass()
-	writeToOutfile( ino)
-	print ino 
-	self.response.write(ino)
+	self.compiled = generator.getClass()
+	self.writeToOutfile()
+	print self.compiled
+	self.response.write(self.compiled)
 
 ######################## Static Handler Functions  ######################## 
 
