@@ -449,7 +449,6 @@ def forloop(node, depth):
     #from
     val = getField(list(node)[0])
     values = node.findall("value")
-    print values[1].find("block")
     fromVal = getValue( values[0] )
 
     # Moving this here so that val can be declared outside
@@ -464,7 +463,8 @@ def forloop(node, depth):
     #increment
     incr = getValue( values[2] )
 
-    cond = "<=" if float(fromVal) <= float(toVal) else ">="
+    try: cond = "<=" if float(fromVal) <= float(toVal) else ">="
+    except: cond = "<="
 
     retString += "; " + val + cond + toVal + "; " + val + "+= " + incr + ") {\n"
 
