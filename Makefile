@@ -1,7 +1,8 @@
 BLOCKLY_PATH = ./Blockly/*
 
 build:
-	true
+	make -C GCGF
+	make -C Blockly copy
 
 default:
 	git pull
@@ -11,4 +12,5 @@ test:
 	true
 
 clean:
-	true
+	make -C GCGF clean
+	make -C Blockly clean

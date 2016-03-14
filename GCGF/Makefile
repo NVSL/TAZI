@@ -41,7 +41,7 @@ class:
 	python $(INOGENERATOR) -g $(APIGSPEC_FILE) > $(GADGET_INO)
 	$(ARDUINO) --verify $(GADGET_INO)
 clean:
-	rm *.pyc
+	rm -f *.pyc
 	make -C $(OUTPUT) clean
 	make -C $(GSPEC_DIR) clean
 display:
