@@ -11,7 +11,7 @@ spaces = "  "
 delimitter = ";"
 main_loop = []
 use_c_lib = True
-c_lib = "#include <iostream>\nusing namespace std;\n"
+c_lib = "#include <iostream>\n#include <cmath>\nusing namespace std;\n"
 
 # There should be some degree of error checking
 class BlocklyError(Exception):
@@ -227,9 +227,11 @@ opDict = {
     "MINUS": "-",
     "MULTIPLY": "*",
     "DIVIDE": "/",
-    "POWER": "pow",
     "ROOT": "sqrt",
     "BREAK": "break;",
+    "ABS": "abs",
+    "NEG": "-1*",
+    "POWER": "pow",
     "CONTINUE": "continue;"
 }
 def getOp(node):
@@ -238,12 +240,17 @@ def getOp(node):
 #constant dictionary
 constDict = {
     "PI": "3.14159265358979323846",
+}
+
+mathDict = {
+    "ABS": "abs",
+    "POWER": "pow",
     "SQRT": "sqrt"
 }
 def getConst(node):
-    if ("SQRT" in getField(node)):
-        return "sqrt(" + getField(node)[4:] + ")"
-
+    for k in mathDict.keys():
+        if k in getField(node): 
+	    return mathDict[k] + "(" + getField(node[4:]) + ")"
     return constDict[getField(node)]
 
 # Function Get dictionary
@@ -378,8 +385,8 @@ def mathMetic(node,depth):
 def mathSingle(node, depth):
     operator = getOp(list(node)[0])
 
-    valueOn = recurseParse(list(list(node)[1])[0], depth)
-    if operator == "sqrt":
+    valueOn = getValue( node.find("value" ) )
+    if operator in ["sqrt", "abs", "-1*", "pow"]:
         return blockNext(node, depth, (operator + "(" + valueOn + ")"))
 
     return blockNext(node, depth, (operator + valueOn))
