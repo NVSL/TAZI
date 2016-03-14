@@ -83,9 +83,8 @@ def recurseParseCheck(nodeList, depth, remove_white_space=False):
     if (len(nodeList) != 1):
         return ""
     else:
-        rv = recurseParse(nodeList[0], depth)
-	if remove_white_space: rv = rv.replace(" ","")
-	return rv
+        return recurseParse(nodeList[0], depth)
+	
 
 # Sub functions
 

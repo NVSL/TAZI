@@ -1,6 +1,7 @@
 import wsgiref.simple_server
 import webapp2
 import StaticHandler
+import subprocess
 from StringIO import StringIO
 from BlocksToCpp.blocklyTranslator import run as compile
 from BlocksToCpp.blocklyTranslator import getLoop as getLoop
@@ -9,12 +10,17 @@ import xml.etree.ElementTree as ET
 
 INDEX = "static/index.html"
 api_gspec = "HotlineBling.api.gspec"
-out_file = "HotlineBling/HotlineBling.ino"
+#out_file = "HotlineBling/HotlineBling.ino"
+program_name = "testfile"
+out_file = program_name + ".cpp"
 
 def compileRequest( request, DebugMessage="I got a compile request!" ):
     print DebugMessage
     xml = request["xml"]
     return compile(StringIO(xml))
+def writeToOutfile( contents ):
+    f = open(out_file, "w")
+    f.write(contents)
 # Real Request Handlers
 class NewProgramHandler(webapp2.RequestHandler):
     def post(self):
@@ -25,7 +31,11 @@ class NewProgramHandler(webapp2.RequestHandler):
 class CompileCPPHandler(webapp2.RequestHandler):
     def post(self):
         request = dict(self.request.POST)
-	print compileRequest( request, DebugMessage="I got a compile request!" )
+	cpp = compileRequest( request, DebugMessage="I got a compile request!" )
+	writeToOutfile( cpp )
+	subprocess.check_call(["g++", "-o",  program_name, out_file])
+	#subprocess.check_call(["chmod", "0777", program_name])
+	subprocess.check_call(["sudo", "./"+program_name])
 class CompileRequestHandler(webapp2.RequestHandler):
     def post(self):
         request = dict(self.request.POST)
@@ -34,8 +44,7 @@ class CompileRequestHandler(webapp2.RequestHandler):
 	generator = InoGenerator(api)
 	generator.appendToLoop( getLoop() )
 	cpp = generator.getClass()
-	f = open(out_file, "w")
-	f.write(cpp)
+	writeToOutfile( cpp )
 	print cpp
 	self.response.write(cpp)
 
