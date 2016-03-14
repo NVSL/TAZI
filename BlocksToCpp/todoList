@@ -1,0 +1,6 @@
+move stuff out of the setup function to deal with declarations
+
+certain functions that we support need more C++ libraries, need to account for these somehow
+	example: pow() needs #include <math.h>
+
+change for loop i to use __i to avoid user possibly declaring an i variable. also check if there are other preused variables we have in translator

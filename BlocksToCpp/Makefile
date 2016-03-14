@@ -1,5 +1,3 @@
-
 default:
 	rm -rf testOutputs
-	python runAndLogTests.py
-
+	python customTest.py

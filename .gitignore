@@ -19,5 +19,6 @@
 BlocksToCpp/testOutputs/
 GCGF/Output/*/
 BlocksToCpp/cCode/*
+BlocksToCpp/cCode.c
 Blockly/BlocksToCpp/
 Blockly/appengine/BlocksToCpp/
