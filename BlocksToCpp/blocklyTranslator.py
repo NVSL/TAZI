@@ -231,7 +231,10 @@ opDict = {
     "BREAK": "break;",
     "ABS": "abs",
     "NEG": "-1*",
-    "POWER": "pow",
+    "POW10": "pow10",
+    "EXP": "exp",
+    "LN": "log",
+    "LOG10": "log10",
     "CONTINUE": "continue;"
 }
 def getOp(node):
@@ -386,8 +389,10 @@ def mathSingle(node, depth):
     operator = getOp(list(node)[0])
 
     valueOn = getValue( node.find("value" ) )
-    if operator in ["sqrt", "abs", "-1*", "pow"]:
+    if operator in ["sqrt", "abs", "-1*", "pow", "log", "log10", "exp"]:
         return blockNext(node, depth, (operator + "(" + valueOn + ")"))
+    if operator == "pow10": 
+        return blockNext(node, depth, ("pow(10," + valueOn + ")"))
 
     return blockNext(node, depth, (operator + valueOn))
 
