@@ -39,10 +39,6 @@ function loadXML( xmlstr ) {
 };
 
 
-window.onload = function() { 
-		var defaultBlocks = "<xml><block type=\"main\" x=\"88\" y=\"72\"></block></xml>";
-        loadXML( defaultBlocks );	
-};
 
 function readXMLFromFile(evt) {
     //Retrieve the first (and only!) File from the FileList object
@@ -94,5 +90,6 @@ document.getElementById('xmlinput').addEventListener('change', readXMLFromFile, 
 document.getElementById('savexml').addEventListener('change', writeXMLToFile, false);
 function getXML() {
     var xml = Blockly.Xml.workspaceToDom(Blockly.getMainWorkspace());
-    return Blockly.Xml.domToText(xml);
+    var xmlstr =  Blockly.Xml.domToText(xml);
+    return xmlstr.replace("xmlns=\"http://www.w3.org/1999/xhtml\"", "");
 }

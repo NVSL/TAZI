@@ -15,6 +15,7 @@ GADGET_INO = $(GADGET_DIR)/$(APIGSPEC).ino
 
 CATALOG = $(GADGETRON_CATALOG)/Components.xml
 CATEGORIESXML = $(RESOURCES)/DefaultCategories.xml
+WORKSPACE = -w $(RESOURCES)/CppDefault.xml
 BLACKLIST = $(RESOURCES)/BlackListedFunctions.xml
 BLOCKSJSON = $(RESOURCES)/Blocks.json
 JINJAFILE = $(RESOURCES)/index.jinja
@@ -24,7 +25,7 @@ INOGENERATOR = InoGenerator.py
 ide:
 	cp IDEGenerator.py IDEGenerator/
 	cp GspecParser.py IDEGenerator/
-	python IDEGenerator.py -j $(BLOCKSJSON) -g $(GSPEC_FILE) -c $(CATALOG) -d $(CATEGORIESXML) -x $(JINJAFILE) > ../Blockly/index.html
+	python IDEGenerator.py -j $(BLOCKSJSON) -g $(GSPEC_FILE) -c $(CATALOG) -d $(CATEGORIESXML) -x $(JINJAFILE) $(WORKSPACE) > ../Blockly/index.html
 json:
 	python BlockGenerator.py -l ComponentsLibrary.xml -b $(BLACKLIST) > $(BLOCKSJSON)
 testclang:

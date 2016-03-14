@@ -15,10 +15,11 @@ import jinja2
 
 class IDEGenerator:
     # Default constructor
-    def __init__(self):
+    def __init__(self, DefaultWorkspaceFile="Resources/DefaultRobotWorkspace.xml"):
         self.components = None
         self.JINJA_ENVIRONMENT = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
         self.jinja_vars = {"blocklist":[]}
+	self.jinja_vars["defaultBlocks"] = open(DefaultWorkspaceFile).read().replace("\n", "").replace('"', '\\"')
         
     def setJinjaTemplate(self, template):
         self.template = self.JINJA_ENVIRONMENT.get_template(template)
@@ -124,6 +125,7 @@ if __name__ == "__main__":
     parser.add_argument("-c", "--catalog", required=False)
     parser.add_argument("-g", "--gspec", required=True)
     parser.add_argument("-d", "--default_blocks", required=False)
+    parser.add_argument("-w", "--default_workspace", default="Resources/DefaultRobotWorkspace.xml" )
     parser.add_argument("-x", "--jinja", required=False)
     args = parser.parse_args()
     if args.jinja is not None:
@@ -135,13 +137,10 @@ if __name__ == "__main__":
     if args.catalog is not None:
         catalog = args.catalog
 
-    generator = IDEGenerator()
+    generator = IDEGenerator( args.default_workspace )
     generator.setJinjaTemplate( jinjaFile )
     generator.loadBlockDefinitions( jsonFile )
     generator.loadDefaultBlocks( blocksXml )
     generator.loadGspec( args.gspec, catalog )
     generator.createBlockSubset()
-    #for key in generator.blockCategories.keys():
-    #    print key, json.dumps(generator.blockCategories[key], indent=4)
-    #print ET.tostring(generator.categoriesXML )
     print generator.renderIDE().encode('ascii','ignore')

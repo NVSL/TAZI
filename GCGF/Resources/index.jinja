@@ -47,8 +47,14 @@
       		{toolbox: document.getElementById('toolbox')});
 	</script>
 	<button onclick="console.log(getXML())">Dump XML</button>
-	<button>Save Program</button>
+	<!--button>Save Program</button-->
 	<button onclick="testPost()">Compile</button>
     <input type="file" id="xmlinput" />
     <script src="{{resDir}}BlocksIO.js"></script>
+    <script>
+        window.onload = function() { 
+            var defaultBlocks = "{{defaultBlocks}}";
+            loadXML( defaultBlocks );	
+        };
+    </script>
 </body>

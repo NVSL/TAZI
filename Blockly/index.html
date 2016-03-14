@@ -540,67 +540,8 @@
     </category>
 
     <category colour="160" id="catText" name="Text">
-      <block type="text" />
-      <block type="text_join" />
-      <block type="text_append">
-        <value name="TEXT">
-          <shadow type="text" />
-        </value>
-      </block>
-      <block type="text_length">
-        <value name="VALUE">
-          <shadow type="text">
-            <field name="TEXT">abc</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="text_isEmpty">
-        <value name="VALUE">
-          <shadow type="text">
-            <field name="TEXT" />
-          </shadow>
-        </value>
-      </block>
-      <block type="text_indexOf">
-        <value name="VALUE">
-          <block type="variables_get">
-            <field name="VAR">text</field>
-          </block>
-        </value>
-        <value name="FIND">
-          <shadow type="text">
-            <field name="TEXT">abc</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="text_charAt">
-        <value name="VALUE">
-          <block type="variables_get">
-            <field name="VAR">text</field>
-          </block>
-        </value>
-      </block>
-      <block type="text_getSubstring">
-        <value name="STRING">
-          <block type="variables_get">
-            <field name="VAR">text</field>
-          </block>
-        </value>
-      </block>
-      <block type="text_changeCase">
-        <value name="TEXT">
-          <shadow type="text">
-            <field name="TEXT">abc</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="text_trim">
-        <value name="TEXT">
-          <shadow type="text">
-            <field name="TEXT">abc</field>
-          </shadow>
-        </value>
-      </block>
+      <block type="text"> </block>
+      
       <block type="text_print">
         <value name="TEXT">
           <shadow type="text">
@@ -608,13 +549,7 @@
           </shadow>
         </value>
       </block>
-      <block type="text_prompt_ext">
-        <value name="TEXT">
-          <shadow type="text">
-            <field name="TEXT">abc</field>
-          </shadow>
-        </value>
-      </block>
+      
     </category>
 
   
@@ -626,8 +561,14 @@
       		{toolbox: document.getElementById('toolbox')});
 	</script>
 	<button onclick="console.log(getXML())">Dump XML</button>
-	<button>Save Program</button>
+	<!--button>Save Program</button-->
 	<button onclick="testPost()">Compile</button>
     <input type="file" id="xmlinput" />
     <script src="BlocksIO.js"></script>
+    <script>
+        window.onload = function() { 
+            var defaultBlocks = "<xml><block type=\"c_main\" x=\"255\" y=\"127\"></block></xml>";
+            loadXML( defaultBlocks );	
+        };
+    </script>
 </body>
