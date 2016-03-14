@@ -39,7 +39,8 @@ class CompileCPPHandler(webapp2.RequestHandler):
 	cpp = compileRequest( request, DebugMessage="I got a compile request!" )
 	writeToOutfile( cpp )
 	subprocess.check_call(["g++", "-o",  program_name, out_file])
-	subprocess.check_call(["sudo", "./"+program_name])
+	proc = subprocess.Popen([ "./"+program_name], shell=True, stdout=subprocess.PIPE)
+	self.response.write( proc.stdout.read() )
 class CompileRequestHandler(webapp2.RequestHandler):
     def post(self):
         request = dict(self.request.POST)
