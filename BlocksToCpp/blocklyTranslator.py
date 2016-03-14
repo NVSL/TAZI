@@ -232,6 +232,7 @@ opDict = {
     "BREAK": "break;",
     "ABS": "abs",
     "NEG": "-1*",
+    "POWER": "pow",
     "POW10": "pow10",
     "EXP": "exp",
     "LN": "log",
