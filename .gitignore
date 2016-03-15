@@ -18,6 +18,8 @@
 .egg-info
 BlocksToCpp/testOutputs/
 GCGF/Output/*/
+GCGF/IDEGenerator/*
+GCGF/InoGenerator/*
 BlocksToCpp/cCode/*
 BlocksToCpp/cCode.c
 Blockly/BlocksToCpp/

@@ -26,6 +26,7 @@ packages: ide_package ino_package
 ide_package:
 	cp IDEGenerator.py IDEGenerator/
 	cp GspecParser.py IDEGenerator/
+	cp JinjaUtil.py IDEGenerator/
 ino_package:
 	cp $(INOGENERATOR) InoGenerator/
 	cp InoCommenter.py InoGenerator/

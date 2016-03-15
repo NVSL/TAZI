@@ -8,21 +8,17 @@ from GspecParser import GspecParser
 import os
 import copy
 from StringIO import StringIO
-import jinja2
+from JinjaUtil import *
 
 
 class IDEGenerator:
     # Default constructor
     def __init__(self, DefaultWorkspaceFile="Resources/DefaultRobotWorkspace.xml"):
         self.components = None
-        self.JINJA_ENVIRONMENT = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
         self.jinja_vars = {"blocklist":[]}
 	#self.jinja_vars["defaultBlocks"] = open(DefaultWorkspaceFile).read().replace("\n", "").replace('"', '\\"')
 	self.jinja_vars["defaultBlocks"] = "{{defaultBlocks}}"
 	self.jinja_vars["resDir"] = "/static/"
-        
-    def setJinjaTemplate(self, template):
-        self.template = self.JINJA_ENVIRONMENT.get_template(template)
         
     # Loads default blocks xml to build the Blockly toolbox
     def loadDefaultBlocks( self, blocksXml ):
@@ -109,8 +105,8 @@ class IDEGenerator:
         self.jinja_vars["toolbox"] = str(ET.tostring( self.categoriesXML ))
 	#print self.jinja_vars["toolbox"]
     
-    def renderIDE(self):
-        return self.template.render(self.jinja_vars)
+    def renderIDE(self, jinja_file):
+        return render_template(jinja_file, self.jinja_vars)
                 
 if __name__ == "__main__":
 
@@ -139,10 +135,9 @@ if __name__ == "__main__":
         catalog = args.catalog
 
     generator = IDEGenerator( args.default_workspace )
-    generator.setJinjaTemplate( jinjaFile )
     generator.loadBlockDefinitions( jsonFile )
     generator.loadDefaultBlocks( blocksXml )
     if args.gspec is not None:
         generator.loadGspec( args.gspec, catalog )
         generator.createBlockSubset()
-    print generator.renderIDE().encode('ascii','ignore')
+    print generator.renderIDE(jinjaFile).encode('ascii','ignore')
