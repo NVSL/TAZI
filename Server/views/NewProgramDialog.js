@@ -1,25 +1,31 @@
+function NewProgramDialogController($scope, $mdDialog) {
+    $scope.createNewProgram = function() {
+        name = $scope.project.programName.toString();
+        $.post("/newprogram", { "name" : name }, function(d) {
+            if (d === "1")
+                window.location = "/programs/" + name 
+        });
+        $mdDialog.hide();
+      };
+}
+
 angular.module('dialogNewProgram', ['ngMaterial'])
   .controller('AppCtrl', function($scope, $mdDialog, $mdMedia) {
   $scope.status = '  ';
   $scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
   $scope.createNewProgram = function() { 
-      console.log($scope.project.clientName); 
+      console.log($scope.project.programName); 
   };
   $scope.showNewProgramDialog = function(ev) {
     var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
     $mdDialog.show({
-      controller: DialogController,
-      templateUrl: 'static/Views/NewProgramDialog.html',
+      controller: NewProgramDialogController,
+      templateUrl: 'static/views/NewProgramDialog.html',
       parent: angular.element(document.body),
       targetEvent: ev,
       clickOutsideToClose:true,
       escapeToClose:true,
       fullscreen: useFullScreen
-    })
-    .then(function(answer) {
-      $scope.status = 'You said the information was "' + answer + '".';
-    }, function() {
-      $scope.status = 'You cancelled the dialog.';
     });
     $scope.$watch(function() {
       return $mdMedia('xs') || $mdMedia('sm');
@@ -28,20 +34,3 @@ angular.module('dialogNewProgram', ['ngMaterial'])
     });
   };
 });
-
-function DialogController($scope, $mdDialog) {
-  $scope.hide = function() {
-    $mdDialog.hide();
-  };
-  $scope.cancel = function() {
-    $mdDialog.cancel();
-  };
-  $scope.createNew = function() {
-    name = $scope.project.clientName.toString()
-    $.post("/newprogram", { "name" : name }, function(d) {
-        if (d === "1")
-            window.location = "/programs/" + name 
-    });
-    $mdDialog.hide(answer);
-  };
-}
