@@ -1,4 +1,4 @@
-angular.module('dialogDemo1', ['ngMaterial'])
+angular.module('dialogNewProgram', ['ngMaterial'])
   .controller('AppCtrl', function($scope, $mdDialog, $mdMedia) {
   $scope.status = '  ';
   $scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
@@ -9,7 +9,7 @@ angular.module('dialogDemo1', ['ngMaterial'])
     var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
     $mdDialog.show({
       controller: DialogController,
-      templateUrl: 'static/angular/dialog1.tmpl.html',
+      templateUrl: 'static/Views/NewProgramDialog.html',
       parent: angular.element(document.body),
       targetEvent: ev,
       clickOutsideToClose:true,
@@ -36,7 +36,7 @@ function DialogController($scope, $mdDialog) {
   $scope.cancel = function() {
     $mdDialog.cancel();
   };
-  $scope.answer = function(answer) {
+  $scope.createNew = function() {
     name = $scope.project.clientName.toString()
     $.post("/newprogram", { "name" : name }, function(d) {
         if (d === "1")

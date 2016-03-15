@@ -29,6 +29,7 @@ copy:
 	cp $(COPY) index.jinja $(APPENGINE)
 	cp $(COPY) Requests.js $(DEST)
 	cp $(COPY) angular*/ $(DEST)
+	cp $(COPY) Views/ $(DEST)
 	cp $(COPY) ../$(B2CPP) $(APPENGINE)
 	make -C ../GCGF ino_package
 	cp $(COPY) ../GCGF/$(INOGEN) $(APPENGINE)
