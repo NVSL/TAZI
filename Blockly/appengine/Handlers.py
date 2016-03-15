@@ -12,19 +12,23 @@ program_name = "testfile"
 compiled_name = "COMPILEDPROG"
 out_file = program_name + ".cpp"
 PROGRAM_PATH = "programs/"
-api_gspec = "HotlineBling.api.gspec"
+api_gspec = "SimpleLEDTest.api.gspec"
 STATIC = "static/"
+
+default_workspace = ""
 
 api = ET.parse(api_gspec).getroot()
 generator = InoGenerator(api)
 
 ############################# Helper Functions ############################# 
 
-def setupOutput( name="testfile", ext="cpp"):
+def setupOutput( name="testfile", ext="cpp", workspace="CppDefault.xml"):
     global program_name
     program_name = name 
     global out_file
     out_file = program_name + "." + ext 
+    global default_workspace
+    default_workspace = workspace
 
 ############################# Request Handlers ############################# 
 
@@ -49,7 +53,7 @@ class ProgramHandler(webapp2.RequestHandler):
 	program_name = prog_name
         xml_file = PROGRAM_PATH + prog_name + ".xml"
         if not os.path.exists( xml_file):
-	    xml_file = "CppDefault.xml" 
+	    xml_file = default_workspace
 	workspace = render_workspace( xml_file, "index.jinja" )
         self.response.write( workspace ) 
 	

@@ -1,7 +1,9 @@
-PROG_NAME = COMPILEDPROG
+PROG_NAME = SimpleLEDTest
 PROG_EXT = cpp
 run:
 	python main.py -n $(PROG_NAME) -e $(PROG_EXT)
+runino:
+	python main.py -n $(PROG_NAME) -e ino -t DefaultRobotWorkspace.xml
 all:	copy run
 copy:
 	make -C ../ copy
