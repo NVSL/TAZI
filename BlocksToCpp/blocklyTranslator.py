@@ -98,7 +98,7 @@ def getBlock(node,depth):
 	loopStr = recurseParseCheck(list(node), depth+1)#+";"
 	global main_loop
 	main_loop = loopStr.split("\n")
-        return "void loop () {\n" + loopStr + "\n}"
+        return "void loop () {\n" + loopStr + ";\n}"
 
     if (blockType == "main_body"):
 	mainStr = "int main() {\n " 

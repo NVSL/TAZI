@@ -11,15 +11,14 @@ from StringIO import StringIO
 import jinja2
 
 
-
-
 class IDEGenerator:
     # Default constructor
     def __init__(self, DefaultWorkspaceFile="Resources/DefaultRobotWorkspace.xml"):
         self.components = None
         self.JINJA_ENVIRONMENT = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
         self.jinja_vars = {"blocklist":[]}
-	self.jinja_vars["defaultBlocks"] = open(DefaultWorkspaceFile).read().replace("\n", "").replace('"', '\\"')
+	#self.jinja_vars["defaultBlocks"] = open(DefaultWorkspaceFile).read().replace("\n", "").replace('"', '\\"')
+	self.jinja_vars["defaultBlocks"] = "{{defaultBlocks}}"
 	self.jinja_vars["resDir"] = "/static/"
         
     def setJinjaTemplate(self, template):
