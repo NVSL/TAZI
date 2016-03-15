@@ -1,7 +1,8 @@
-PROG_NAME = testfile
+PROG_NAME = COMPILEDPROG
 PROG_EXT = cpp
 run:
 	python main.py -n $(PROG_NAME) -e $(PROG_EXT)
+all:	copy run
 copy:
 	make -C ../ copy
 clean: 

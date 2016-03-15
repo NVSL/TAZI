@@ -36,9 +36,10 @@ function DialogController($scope, $mdDialog) {
     $mdDialog.cancel();
   };
   $scope.answer = function(answer) {
-    $.post("/newprogram", { "name" : $scope.project.clientName.toString() }, function(d) {
+    name = $scope.project.clientName.toString()
+    $.post("/newprogram", { "name" : name }, function(d) {
         if (d === "1")
-            window.location = "/ide"
+            window.location = "/programs/" + name 
     });
     $mdDialog.hide(answer);
   };

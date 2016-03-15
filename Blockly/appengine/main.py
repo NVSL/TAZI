@@ -22,8 +22,8 @@ if __name__ == "__main__":
 	("/compile", CompileCPPHandler),
 	#("/compile", CompileInoHandler),
 	("/newprogram", NewProgramHandler),
+	(r'/programs/(.+)', ProgramHandler),
 	("/", createStaticHandler("landing.html")),
-	("/ide", createStaticHandler("index.html")),
 	(r'/static/(.+)', StaticFileHandler),
 	]    , debug=True)
     main(app)

@@ -3,6 +3,7 @@ APPENGINE = appengine/
 DEST = $(APPENGINE)static/
 B2CPP = BlocksToCpp
 INOGEN = InoGenerator
+WORKSPACE_RENDERER = WorkspaceRenderer.py
 
 all:	copy run
 copy:
@@ -25,16 +26,23 @@ copy:
 	cp $(COPY) BlocksIO.js $(DEST)
 	cp $(COPY) GtronImage.png $(DEST)
 	cp $(COPY) landing.html $(DEST)
-	cp $(COPY) index.html $(DEST)
+	#cp $(COPY) index.html $(DEST)
+	cp $(COPY) index.html $(APPENGINE)index.jinja
 	cp $(COPY) Requests.js $(DEST)
 	cp $(COPY) angular*/ $(DEST)
 	cp $(COPY) ../$(B2CPP) $(APPENGINE)
 	make -C ../GCGF ino_package
 	cp $(COPY) ../GCGF/$(INOGEN) $(APPENGINE)
+	cp $(COPY) ../GCGF/$(WORKSPACE_RENDERER) $(APPENGINE)
+	cp $(COPY) ../GCGF/Resources/DefaultRobotWorkspace.xml $(APPENGINE)
+	cp $(COPY) ../GCGF/Resources/CppDefault.xml $(APPENGINE)
 clean:
 	rm -rf $(DEST)
 	rm -rf $(APPENGINE)$(B2CPP)
 	rm -rf $(APPENGINE)$(INOGEN)
+	rm -f $(APPENGINE)$(WORKSPACE_RENDERER)
+	rm -rf $(APPENGINE)*.jinja
+	rm -rf $(APPENGINE)*.xml
 	make -C $(APPENGINE) clean_inner
 run:
 	make -C $(APPENGINE)

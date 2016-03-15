@@ -25,3 +25,8 @@ Blockly/appengine/BlocksToCpp/
 Blockly/appengine/InoGenerator/
 Blockly/appengine/static/
 Blockly/appengine/testfile*
+Blockly/appengine/programs*
+Blockly/appengine/COMPILEDPROG
+Blockly/appengine/*.xml
+Blockly/appengine/*.jinja
+Blockly/appengine/WorkspaceRenderer.py
