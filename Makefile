@@ -1,8 +1,8 @@
-BLOCKLY_PATH = ./Blockly/*
+BLOCKLY_PATH = ./Server/*
 
 build:
 	make -C GCGF
-	make -C Blockly copy
+	make -C Server copy
 
 default:
 	git pull

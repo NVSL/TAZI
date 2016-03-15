@@ -20,7 +20,8 @@ BLACKLIST = $(RESOURCES)/BlackListedFunctions.xml
 BLOCKSJSON = $(RESOURCES)/Blocks.json
 JINJAFILE = $(RESOURCES)/index.jinja
 INOGENERATOR = InoGenerator.py
-RESDIR = -r /static/
+RESDIR = -r "{{resDir}}"
+BLOCKLYDIR = -b "{{blockly}}"
 .PRECIOUS: $(GSPEC_DIR)%.api.gspec
 
 packages: ide_package ino_package
@@ -32,9 +33,9 @@ ino_package:
 	cp $(INOGENERATOR) InoGenerator/
 	cp InoCommenter.py InoGenerator/
 ide:
-	python IDEGenerator.py -j $(BLOCKSJSON) $(GSPEC_FILE) -c $(CATALOG) -d $(CATEGORIESXML) -x $(JINJAFILE) $(WORKSPACE) > ../Blockly/index.html
+	python IDEGenerator.py -j $(BLOCKSJSON) $(GSPEC_FILE) -c $(CATALOG) -d $(CATEGORIESXML) -x $(JINJAFILE) $(WORKSPACE) > ../Server/index.html
 idejinja:
-	python IDEGenerator.py -j $(BLOCKSJSON) $(GSPEC_FILE) -c $(CATALOG) -d $(CATEGORIESXML) -x $(JINJAFILE) $(WORKSPACE) $(RESDIR) > ../Blockly/index.jinja
+	python IDEGenerator.py -j $(BLOCKSJSON) $(GSPEC_FILE) -c $(CATALOG) -d $(CATEGORIESXML) -x $(JINJAFILE) $(WORKSPACE) $(RESDIR) $(BLOCKLYDIR)> ../Server/jinja_templates/ide.jinja
 json:
 	python BlockGenerator.py -l ComponentsLibrary.xml -b $(BLACKLIST) > $(BLOCKSJSON)
 testclang:
@@ -49,7 +50,7 @@ clean:
 	make -C $(OUTPUT) clean
 	make -C $(GSPEC_DIR) clean
 display:
-	google-chrome ../Blockly/index.html
+	google-chrome ../Server/index.html
 %.ino : $(GSPEC_DIR)%.api.gspec
 	mkdir -p $(OUTPUT)$*
 	python $(INOGENERATOR) -g $< > $(OUTPUT)$*/$@
