@@ -98,7 +98,7 @@ def getBlock(node,depth):
 	loopStr = recurseParseCheck(list(node), depth+1)#+";"
 	global main_loop
 	main_loop = loopStr.split("\n")
-        return "void loop () {\n" + loopStr + ";\n}"
+        return "void loop () {\n" + loopStr + "\n}"
 
     if (blockType == "main_body"):
 	mainStr = "int main() {\n " 
@@ -620,8 +620,9 @@ def run( xml ):
         print("Error: " + e.value)
         raise
 def getLoop(): 
-    #global loop_body
-    return main_loop
+    loop_body = main_loop[:]
+    if len(main_loop) > 0: loop_body[-1] = loop_body[-1]+";";
+    return loop_body
 
 def getSplitDefinitions( xml ):
     import string

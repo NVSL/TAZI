@@ -18,7 +18,6 @@ STATIC = "static/"
 default_workspace = ""
 
 api = ET.parse(api_gspec).getroot()
-generator = InoGenerator(api)
 global_jinja_vars = { "resDir" : "/static/", } 
 global_jinja_vars["lib"] = global_jinja_vars["resDir"] + "lib/"  
 global_jinja_vars["blockly"] = global_jinja_vars["resDir"] + "lib/blockly/"  
@@ -95,6 +94,7 @@ class CompileCPPHandler(CompileHandler):
 class CompileInoHandler(CompileHandler):
     def post(self):
         self.translateRequest()
+        generator = InoGenerator(api)
 	generator.appendToLoop( Translator.getLoop() )
 	self.compiled = generator.getClass()
 	self.writeToOutfile()
