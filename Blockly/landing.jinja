@@ -13,6 +13,13 @@
     </head>
     <body >
         <div ng-controller="AppCtrl" id="popupContainer">
+	    <ul>
+	        {% for prog in programs %}
+		    <a href="/programs/{{prog}}">
+		        <li>{{prog}}</li>
+		    </a>
+	        {% endfor %}
+	    </ul>
             <md-button class="md-primary md-raised" ng-click="showNewProgramDialog($event)">
 	       Create a new Program
 	    </md-button>

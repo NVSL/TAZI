@@ -3,7 +3,7 @@ APPENGINE = appengine/
 DEST = $(APPENGINE)static/
 B2CPP = BlocksToCpp
 INOGEN = InoGenerator
-WORKSPACE_RENDERER = WorkspaceRenderer.py
+WORKSPACE_RENDERER = JinjaUtil.py
 
 all:	copy run
 copy:
@@ -25,8 +25,7 @@ copy:
 	cp $(COPY) custom_blocks.js $(DEST)
 	cp $(COPY) BlocksIO.js $(DEST)
 	cp $(COPY) GtronImage.png $(DEST)
-	cp $(COPY) landing.html $(DEST)
-	#cp $(COPY) index.html $(DEST)
+	cp $(COPY) landing.jinja $(APPENGINE)
 	cp $(COPY) index.html $(APPENGINE)index.jinja
 	cp $(COPY) Requests.js $(DEST)
 	cp $(COPY) angular*/ $(DEST)

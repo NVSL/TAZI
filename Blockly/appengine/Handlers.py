@@ -2,7 +2,7 @@ import subprocess
 import wsgiref.simple_server
 import webapp2
 import os
-from WorkspaceRenderer import *
+from JinjaUtil import *
 from BlocksToCpp import blocklyTranslator as Translator
 from InoGenerator.InoGenerator import ClassGenerator as InoGenerator
 import xml.etree.ElementTree as ET
@@ -25,6 +25,12 @@ def setupOutput( name="testfile", ext="cpp"):
 
 ############################# Request Handlers ############################# 
 
+class LandingHandler(webapp2.RequestHandler):
+    def get(self):
+        progs = [ f.replace(".xml", "") for f in os.listdir(PROGRAM_PATH)]
+        jinja_vars = { "programs" : progs }
+	html = render_template( "landing.jinja", jinja_vars )
+	self.response.write(html)
 class NewProgramHandler(webapp2.RequestHandler):
     def post(self):
         request = dict(self.request.POST)

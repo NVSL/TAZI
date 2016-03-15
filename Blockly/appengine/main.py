@@ -19,12 +19,12 @@ if __name__ == "__main__":
     args = parser.parse_args()
     setupOutput( name=args.program_name, ext=args.program_ext )
     app = webapp2.WSGIApplication([ 
-	("/compile", CompileCPPHandler),
-	#("/compile", CompileInoHandler),
+	("/", LandingHandler),
 	("/newprogram", NewProgramHandler),
 	(r'/programs/(.+)', ProgramHandler),
-	("/", createStaticHandler("landing.html")),
 	(r'/static/(.+)', StaticFileHandler),
+	("/compile", CompileCPPHandler),
+	#("/compile", CompileInoHandler),
 	]    , debug=True)
     main(app)
 
