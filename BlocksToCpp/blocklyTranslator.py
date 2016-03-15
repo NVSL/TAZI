@@ -98,7 +98,7 @@ def getBlock(node,depth):
 	loopStr = recurseParseCheck(list(node), depth+1)#+";"
 	global main_loop
 	main_loop = loopStr.split("\n")
-        return "void loop () {\n" + loopStr + "\n}"
+        return "void loop () {\n" + loopStr + ";\n}"
 
     if (blockType == "main_body"):
         mainStr = "int main() {\n " 
@@ -111,7 +111,7 @@ def getBlock(node,depth):
         nextNode = node.find("value").find("block")
 	function = depth*spaces + "cout << ("
 	function += recurseParseCheck( [nextNode] , depth + 1, remove_white_space=True) 
-	return function + ") << endl"
+	return function + ") << endl;"
 
     if (blockType == "variable_declarations"):
         # return "void setup () {\n" + recurseParseCheck(list(node), depth + 1) + ";\n}\n"
@@ -631,9 +631,8 @@ def run( xml ):
         raise
 
 def getLoop(): 
-    loop_body = main_loop[:]
-    if len(main_loop) > 0: loop_body[-1] = loop_body[-1]+";";
-    return loop_body
+    #global loop_body
+    return main_loop
 
 def getSplitDefinitions( xml ):
     import string
