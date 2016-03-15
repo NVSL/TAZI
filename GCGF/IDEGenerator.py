@@ -13,12 +13,12 @@ from JinjaUtil import *
 
 class IDEGenerator:
     # Default constructor
-    def __init__(self, DefaultWorkspaceFile="Resources/DefaultRobotWorkspace.xml"):
+    def __init__(self, resDir, defaultWorkspaceFile):
         self.components = None
         self.jinja_vars = {"blocklist":[]}
-	#self.jinja_vars["defaultBlocks"] = open(DefaultWorkspaceFile).read().replace("\n", "").replace('"', '\\"')
+	#self.jinja_vars["defaultBlocks"] = open(defaultWorkspaceFile).read().replace("\n", "").replace('"', '\\"')
 	self.jinja_vars["defaultBlocks"] = "{{defaultBlocks}}"
-	self.jinja_vars["resDir"] = "/static/"
+	self.jinja_vars["resDir"] = resDir
         
     # Loads default blocks xml to build the Blockly toolbox
     def loadDefaultBlocks( self, blocksXml ):
@@ -121,6 +121,7 @@ if __name__ == "__main__":
     parser.add_argument("-j", "--json", required=False)
     parser.add_argument("-c", "--catalog", required=False)
     parser.add_argument("-g", "--gspec", required=False)
+    parser.add_argument("-r", "--resdir", required=False, default="")
     parser.add_argument("-d", "--default_blocks", required=False)
     parser.add_argument("-w", "--default_workspace", default="Resources/DefaultRobotWorkspace.xml" )
     parser.add_argument("-x", "--jinja", required=False)
@@ -134,7 +135,7 @@ if __name__ == "__main__":
     if args.catalog is not None:
         catalog = args.catalog
 
-    generator = IDEGenerator( args.default_workspace )
+    generator = IDEGenerator( args.resdir, args.default_workspace )
     generator.loadBlockDefinitions( jsonFile )
     generator.loadDefaultBlocks( blocksXml )
     if args.gspec is not None:

@@ -2,13 +2,13 @@ GSPEC_DIR = Gspecs/
 RESOURCES = Resources
 OUTPUT = Output/
 
-GSPEC = HotlineBling
-APIGSPEC = Chase
+GSPEC = SimpleLEDTest
+APIGSPEC = SimpleLEDTest
 APIGSPECS = $(wildcard Gspecs/*.api.gspec)
 INOS = $(APIGSPECS:Gspecs/%.api.gspec=%.ino)
 ARDUINO = arduino
 
-#GSPEC_FILE = -g $(GSPEC_DIR)$(GSPEC).gspec
+GSPEC_FILE = -g $(GSPEC_DIR)$(GSPEC).gspec
 APIGSPEC_FILE = $(GSPEC_DIR)$(APIGSPEC).api.gspec
 GADGET_DIR = $(OUTPUT)$(APIGSPEC)
 GADGET_INO = $(GADGET_DIR)/$(APIGSPEC).ino
@@ -20,6 +20,7 @@ BLACKLIST = $(RESOURCES)/BlackListedFunctions.xml
 BLOCKSJSON = $(RESOURCES)/Blocks.json
 JINJAFILE = $(RESOURCES)/index.jinja
 INOGENERATOR = InoGenerator.py
+RESDIR = -r /static/
 .PRECIOUS: $(GSPEC_DIR)%.api.gspec
 
 packages: ide_package ino_package
@@ -32,6 +33,8 @@ ino_package:
 	cp InoCommenter.py InoGenerator/
 ide:
 	python IDEGenerator.py -j $(BLOCKSJSON) $(GSPEC_FILE) -c $(CATALOG) -d $(CATEGORIESXML) -x $(JINJAFILE) $(WORKSPACE) > ../Blockly/index.html
+idejinja:
+	python IDEGenerator.py -j $(BLOCKSJSON) $(GSPEC_FILE) -c $(CATALOG) -d $(CATEGORIESXML) -x $(JINJAFILE) $(WORKSPACE) $(RESDIR) > ../Blockly/index.jinja
 json:
 	python BlockGenerator.py -l ComponentsLibrary.xml -b $(BLACKLIST) > $(BLOCKSJSON)
 testclang:
