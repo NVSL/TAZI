@@ -15,6 +15,9 @@ PROGRAM_PATH = "programs/"
 api_gspec = "HotlineBling.api.gspec"
 STATIC = "static/"
 
+api = ET.parse(api_gspec).getroot()
+generator = InoGenerator(api)
+
 ############################# Helper Functions ############################# 
 
 def setupOutput( name="testfile", ext="cpp"):
@@ -27,10 +30,13 @@ def setupOutput( name="testfile", ext="cpp"):
 
 class LandingHandler(webapp2.RequestHandler):
     def get(self):
-        progs = [ f.replace(".xml", "") for f in os.listdir(PROGRAM_PATH)]
-        jinja_vars = { "programs" : progs }
+        path = PROGRAM_PATH
+	progs = [ f for f in os.listdir(path) if os.path.isfile(path+f)]
+        progs = [ f.replace(".xml", "") for f in progs] 
+        jinja_vars = { "programs" : progs, "name" : generator.name }
 	html = render_template( "landing.jinja", jinja_vars )
 	self.response.write(html)
+
 class NewProgramHandler(webapp2.RequestHandler):
     def post(self):
         request = dict(self.request.POST)
@@ -79,8 +85,6 @@ class CompileCPPHandler(CompileHandler):
 class CompileInoHandler(CompileHandler):
     def post(self):
         self.translateRequest()
-	api = ET.parse(api_gspec).getroot()
-	generator = InoGenerator(api)
 	generator.appendToLoop( Translator.getLoop() )
 	self.compiled = generator.getClass()
 	self.writeToOutfile()

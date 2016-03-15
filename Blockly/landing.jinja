@@ -13,6 +13,7 @@
     </head>
     <body >
         <div ng-controller="AppCtrl" id="popupContainer">
+	    <h1>{{name}}'s Control Panel</h1>
 	    <ul>
 	        {% for prog in programs %}
 		    <a href="/programs/{{prog}}">

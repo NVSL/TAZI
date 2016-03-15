@@ -1,5 +1,5 @@
 <gadgetlayout version="1.1">
-   <name>1-800 Hotline Bling</name>
+   <name>Test Robot</name>
    <creator/>
    <board x="0" y="0" width="138" height="100"/>
    <option name="faceplate-color" value="clear-nocolor"/>
