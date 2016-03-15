@@ -26,7 +26,7 @@ clean:
 	rm -f $(APPENGINE)$(WORKSPACE_RENDERER)
 	rm -rf $(APPENGINE)$(JINJA_DIR)
 	rm -f $(APPENGINE)*.xml
-	rm index.html
+	rm -f index.html
 	make -C $(APPENGINE) clean_inner
 run:
 	make -C $(APPENGINE)
