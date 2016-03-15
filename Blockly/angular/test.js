@@ -13,6 +13,7 @@ angular.module('dialogDemo1', ['ngMaterial'])
       parent: angular.element(document.body),
       targetEvent: ev,
       clickOutsideToClose:true,
+      escapeToClose:true,
       fullscreen: useFullScreen
     })
     .then(function(answer) {

@@ -26,7 +26,7 @@ copy:
 	cp $(COPY) BlocksIO.js $(DEST)
 	cp $(COPY) GtronImage.png $(DEST)
 	cp $(COPY) landing.jinja $(APPENGINE)
-	cp $(COPY) index.html $(APPENGINE)index.jinja
+	cp $(COPY) index.jinja $(APPENGINE)
 	cp $(COPY) Requests.js $(DEST)
 	cp $(COPY) angular*/ $(DEST)
 	cp $(COPY) ../$(B2CPP) $(APPENGINE)
