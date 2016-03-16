@@ -193,7 +193,7 @@ def getArgs(node, method="default"):
 
 # Typing dictionary
 typeDict = {
-    "math_number": "double",
+    "math_number": "int",
     "text": "string",
     "logic_boolean": "bool"
 }
@@ -427,18 +427,26 @@ def mathRandFloat(node, depth):
 #while loop
 def whileUnt(node, depth):
     retString = "while("
+
+    if (len(list(node)) < 3):
+        raise BlocklyError("While-loop requires a condition and statements!")
+
     if (list(node)[0]).text == "UNTIL":
         retString += "!("
 
-    condit = getArgs(list(node)[1])
-    retString += condit
+    if ((list(node)[1]).attrib.get("name") != None and (list(node)[1]).attrib["name"] == "BOOL"):
+        condit = getArgs(list(node)[1])
+        retString += condit
 
     if (list(node)[0]).text == "UNTIL":
         retString += ")"
 
     retString += ") {\n"
 
-    statement = recurseParse(list(node)[2], depth + 1)
+    if (list(node)[2]).attrib.get("name") != None and (list(node)[2]).attrib["name"] == "DO":
+        statement = recurseParse(list(node)[2], depth + 1)
+    else:
+        statement = "\n";
 
     retString += statement + ";\n" + (spaces*depth) + "}"
 
@@ -466,8 +474,6 @@ def repeatControl(node, depth):
 
 #for loop
 def forloop(node, depth):
-    
-
     #from
     val = getField(list(node)[0])
     values = node.findall("value")
