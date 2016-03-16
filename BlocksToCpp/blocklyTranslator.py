@@ -95,10 +95,10 @@ def getBlock(node,depth):
 
     if (blockType == "main_loop"):
         # Should be a "next" block
-	loopStr = recurseParseCheck(list(node), depth+1)#+";"
+	loopStr = recurseParseCheck(list(node), depth+1)+";"
 	global main_loop
 	main_loop = loopStr.split("\n")
-        return "void loop () {\n" + loopStr + ";\n}"
+        return "void loop () {\n" + loopStr + "\n}"
 
     if (blockType == "main_body"):
         mainStr = "int main() {\n " 
@@ -111,7 +111,7 @@ def getBlock(node,depth):
         nextNode = node.find("value").find("block")
 	function = depth*spaces + "cout << ("
 	function += recurseParseCheck( [nextNode] , depth + 1, remove_white_space=True) 
-	return function + ") << endl;"
+	return function + ") << endl"
 
     if (blockType == "variable_declarations"):
         # return "void setup () {\n" + recurseParseCheck(list(node), depth + 1) + ";\n}\n"
@@ -461,10 +461,10 @@ def negate(node, depth):
 
 #repeat for specified num of times
 def repeatControl(node, depth):
-    retString = ";\n" + (spaces*depth) + "int i;\n"
-    retString += (spaces*depth) + "for(i = 0; i < "
+    retString = ";\n" + (spaces*depth) + "int __i;\n"
+    retString += (spaces*depth) + "for(__i = 0; __i < "
     count = recurseParse(list(node)[0], 0)
-    retString += count + "; i++) {\n"
+    retString += count + "; __i++) {\n"
 
     statement = recurseParse(list(node)[1], depth+1)
 
