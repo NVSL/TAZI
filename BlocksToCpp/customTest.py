@@ -104,7 +104,13 @@ subprocess.call(["rm", "-rf", "cCode"])
 subprocess.call(["mkdir", "cCode"])
 
 # All tests that will need to be run
-tests = ["var", "math", "logic", "loop", "random", "custom"]
+tests = ["var", 
+	"math", 
+	"logic", 
+	"loop", 
+	"random", 
+	"custom"
+	]
 results = {}
 
 

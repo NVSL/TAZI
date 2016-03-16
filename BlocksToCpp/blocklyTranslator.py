@@ -101,20 +101,21 @@ def getBlock(node,depth):
         return "void loop () {\n" + loopStr + ";\n}"
 
     if (blockType == "main_body"):
-	mainStr = "int main() {\n " 
-	mainStr += recurseParseCheck(list(node), depth+1) + ";\n"
-	mainStr += spaces + " return 0;\n}"
-	if use_c_lib: mainStr = c_lib + mainStr
+        mainStr = "int main() {\n " 
+        mainStr += recurseParseCheck(list(node), depth+1) + ";\n"
+        mainStr += spaces + " return 0;\n}"
+        
         return mainStr
 
     if (blockType == "text_print"):
         nextNode = node.find("value").find("block")
 	function = depth*spaces + "cout << ("
 	function += recurseParseCheck( [nextNode] , depth + 1, remove_white_space=True) 
-	return function + ") << endl"
+	return function + ") << endl;"
 
     if (blockType == "variable_declarations"):
-        return "void setup () {\n" + recurseParseCheck(list(node), depth + 1) + ";\n}\n"
+        # return "void setup () {\n" + recurseParseCheck(list(node), depth + 1) + ";\n}\n"
+        return recurseParseCheck(list(node), depth) + "\n"
 
     if blockType in funcGet.keys():
         return funcCheckGet(blockType, node, depth) #funcGet[blockType](node,depth)
@@ -130,6 +131,12 @@ def getBlock(node,depth):
 
     if (blockType == "logic_null"):
         return "0"
+
+    if (blockType == "logic_boolean"):
+        if list(node)[0].text == "TRUE":
+            return "true"
+        else:
+            return "false"
 
     if (blockType == "main"): 
         lines = ""
@@ -188,7 +195,7 @@ def getArgs(node, method="default"):
 typeDict = {
     "math_number": "double",
     "text": "string",
-    "logic_boolean": "boolean"
+    "logic_boolean": "bool"
 }
 def getType(node):
     if ((node.attrib).get("type") != None and typeDict.get(node.attrib["type"]) != None):
@@ -404,7 +411,7 @@ def mathModulo(node, depth):
     dividend = getValue( values[0] )
     divisor = getValue( values[1] )
 
-    return blockNext(node, depth, dividend + " % " + divisor)
+    return blockNext(node, depth, "(int)" + dividend + " % (int)" + divisor)
 
 #math random
 def mathRand(node, depth):
@@ -446,10 +453,10 @@ def negate(node, depth):
 
 #repeat for specified num of times
 def repeatControl(node, depth):
-    retString = ";\n" + (spaces*depth) + "int i;\n"
-    retString += (spaces*depth) + "for(i = 0; i < "
+    retString = ";\n" + (spaces*depth) + "int __i;\n"
+    retString += (spaces*depth) + "for(__i = 0; __i < "
     count = recurseParse(list(node)[0], 0)
-    retString += count + "; i++) {\n"
+    retString += count + "; __i++) {\n"
 
     statement = recurseParse(list(node)[1], depth+1)
 
@@ -615,10 +622,14 @@ def run( xml ):
     root = tree.getroot()
     try:
         if DEBUG: print("--- RUNNING IN DEBUG MODE ---")
-        return (recurseParse(root,0))
+        mainStr = (recurseParse(root,0))
+        if use_c_lib: 
+            mainStr = c_lib + mainStr
+        return mainStr
     except BlocklyError as e:
         print("Error: " + e.value)
         raise
+
 def getLoop(): 
     #global loop_body
     return main_loop

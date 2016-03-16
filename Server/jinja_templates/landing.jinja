@@ -1,0 +1,71 @@
+<html ng-app="dialogNewProgram">
+   <head>
+      <!-- Angular -->
+      <script src="{{lib}}angular/angular.min.js"></script>
+      <script src="{{lib}}angular-material/angular-material.min.js"></script>
+      <script src="{{lib}}angular-aria/angular-aria.min.js"></script>
+      <script src="{{lib}}angular-animate/angular-animate.min.js"></script>
+      <script src="{{resDir}}views/NewProgramDialog.js"></script>
+      <link href="{{lib}}angular-material/angular-material.min.css" rel="stylesheet" />
+      <!-- JQuery -->
+      <script src="{{lib}}/jquery-2.2.1.min.js"></script>
+   </head>
+   <body >
+      <div ng-controller="AppCtrl" id="popupContainer">
+         <!-- Page Header -->
+         <md-content flex layout-padding>
+            <md-toolbar>
+               <h1 class="md-display-3">{{name}}'s Control Panel</h1>
+            </md-toolbar>
+	    <h3>
+	    	Welcome to {{name}}'s Control Panel! 
+	    </h3>
+	    <h4>
+		From here, you can go ahead and do all sorts of wonderful things with
+		{{name}}. In the "Your Programs" panel, you can create a new program. After you start writing a ton of programs,
+		that panel will fill with all of your marvelous creations. If you're just getting started with programming {{name}},
+		then you might want to check out the "Gadgetron Learning Center" panel. It has tons of great resources and documentation to 
+		learn how to program the robot of your dreams. Have fun!
+	    </h4>
+         </md-content>
+         <div ng-cloak layout-gt-sm="row" layout="column" layout-padding>
+            <!-- Program Column-->
+	    <div flex-gt-sm="49" flex md-raised>
+            <md-content>
+               <md-toolbar layout="row">
+                  <div class="md-toolbar-tools">
+                     <h3 class="md-display-1">Your Programs</h3>
+                     <span flex> </span>
+                     <md-button class="md-primary md-raised" ng-click="showNewProgramDialog($event)">
+                        Create new 
+                     </md-button>
+                  </div>
+               </md-toolbar>
+               <md-list class="md-dense" flex layout-padding>
+                  {% for prog in programs %}
+                  <md-list-item class="md-1-line" background="#b9f6ca">
+                     <a href="/programs/{{prog}}">
+                        <h4>{{prog}}</h4>
+                     </a>
+		     <span flex> </span>
+		     <md-button>X</md-button>
+	             <md-divider></md-divider>
+                  </md-list-item>
+                  {% endfor %}
+               </md-list>
+            </md-content>
+	    </div>
+            <!-- Learning Center Column-->
+	    <div flex-gt-sm="49" flex>
+            <md-content>
+               <md-toolbar layout="row">
+                  <div class="md-toolbar-tools">
+                     <h3 class="md-display-1">Gadgetron Learning Center</h3>
+                  </div>
+               </md-toolbar>
+            </md-content>
+	    </div>
+          </div>
+      </div>
+   </body>
+</html>
