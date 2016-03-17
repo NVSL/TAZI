@@ -3,17 +3,18 @@ import wsgiref.simple_server
 import webapp2
 import os
 from JinjaUtil import *
+from ProgramStatus import *
 from BlocksToCpp import blocklyTranslator as Translator
 from InoGenerator.InoGenerator import ClassGenerator as InoGenerator
 import xml.etree.ElementTree as ET
 from StringIO import StringIO
 
-program_name = "testfile"
-compiled_name = "COMPILEDPROG"
-out_file = program_name + ".cpp"
+compiled_name = "program"
+out_file = compiled_name + ".cpp"
 PROGRAM_PATH = "programs/"
 api_gspec = "SimpleLEDTest.api.gspec"
 STATIC = "static/"
+program_status = ProgramStatus()
 
 default_workspace = ""
 api = ET.parse(api_gspec).getroot()
@@ -27,10 +28,8 @@ templates_dir = "jinja_templates/"
 ############################# Helper Functions ############################# 
 
 def setupOutput( name="testfile", ext="cpp", workspace="CppDefault.xml"):
-    global program_name
-    program_name = name 
     global out_file
-    out_file = program_name + "." + ext 
+    out_file = compiled_name + "." + ext 
     global default_workspace
     default_workspace = workspace
 
@@ -54,8 +53,8 @@ class NewProgramHandler(webapp2.RequestHandler):
 
 class ProgramHandler(webapp2.RequestHandler):
     def get(self, prog_name):
-	global program_name
-	program_name = prog_name
+	global program_status
+	program_status = ProgramStatus( name=prog_name, program="./"+compiled_name )
         xml_file = PROGRAM_PATH + prog_name + ".xml"
         if not os.path.exists( xml_file):
 	    xml_file = default_workspace
@@ -71,7 +70,7 @@ class SaveHandler(webapp2.RequestHandler):
     def saveProgram(self):
         request = dict(self.request.POST)
 	self.xml = request["xml"]
-        xml_file_path = PROGRAM_PATH + program_name + ".xml"
+        xml_file_path = PROGRAM_PATH + program_status.name + ".xml"
 	xml_file = open(xml_file_path, "w")
 	xml_file.write(self.xml)
 	xml_file.close()
@@ -89,8 +88,8 @@ class CompileCPPHandler(CompileHandler):
         self.translateRequest()
 	self.writeToOutfile()
 	subprocess.check_call(["g++", "-o",  compiled_name, out_file])
-	proc = subprocess.Popen([ "./"+compiled_name], shell=True, stdout=subprocess.PIPE)
-	self.response.write( proc.stdout.read() )
+	program_status.run()
+	self.response.write( program_status.read_stdout() )
 
 class CompileInoHandler(CompileHandler):
     def post(self):

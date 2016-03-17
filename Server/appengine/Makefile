@@ -1,4 +1,4 @@
-PROG_NAME = SimpleLEDTest
+PROG_NAME = program
 PROG_EXT = cpp
 run:
 	python main.py -n $(PROG_NAME) -e $(PROG_EXT)
