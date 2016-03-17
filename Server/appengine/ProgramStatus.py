@@ -11,7 +11,6 @@ class ProgramStatus:
     def run( self ):
         try: self.kill()
 	except: pass
-	#print "exec " + self.program
 	self.proc = subprocess.Popen("exec " + self.program, **popen_args)
 	print self.proc.__dict__
 
