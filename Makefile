@@ -13,4 +13,4 @@ test:
 
 clean:
 	make -C GCGF clean
-	make -C Blockly clean
+	make -C Server clean

@@ -32,3 +32,4 @@ Server/appengine/COMPILEDPROG
 Server/appengine/*.xml
 Server/appengine/*.jinja
 Server/appengine/WorkspaceRenderer.py
+Server/appengine/arduPi/*/
