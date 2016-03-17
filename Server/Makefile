@@ -12,6 +12,7 @@ copy:
 	cp $(COPY) $(JINJA_DIR) $(APPENGINE)
 	mkdir -p $(DEST)
 	cp $(COPY) views/ $(DEST)
+	cp $(COPY) controllers/ $(DEST)
 	cp $(COPY) lib/ $(DEST)
 	cp $(COPY) media/ $(DEST)
 	cp $(COPY) ../$(B2CPP) $(APPENGINE)

@@ -9,7 +9,7 @@ function NewProgramDialogController($scope, $mdDialog) {
       };
 }
 
-angular.module('dialogNewProgram', ['ngMaterial'])
+angular.module('Tazi', ['ngMaterial'])
   .controller('AppCtrl', function($scope, $mdDialog, $mdMedia) {
   $scope.status = '  ';
   $scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
