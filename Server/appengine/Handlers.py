@@ -99,7 +99,7 @@ class CompileCPPHandler(CompileHandler):
 class CompileInoHandler(CompileHandler):
     def post(self):
         self.translateRequest()
-        generator = InoGenerator(api)
+        generator = InoGenerator(api, include_str='""')
 	generator.appendToLoop( Translator.getLoop() )
 	self.compiled = generator.getClass()
 	self.writeToOutfile()

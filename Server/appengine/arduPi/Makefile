@@ -5,10 +5,10 @@ PROG = program
 
 default: $(PROG)
 $(PROG):
-	$(CC) $(FLAGS) -o ../ $(PROG) $(ARDUPI) $(PROG).cpp
+	$(CC) $(FLAGS) -o ../$(PROG) $(ARDUPI) $(PROG).cpp
 clean:
 	rm -f $(PROG)
 run: $(PROG)
-	sudo ./$(PROG)
+	sudo ../$(PROG)
 %: %.cpp
 	$(CC) $(FLAGS) -o $@ $(ARDUPI) $<
