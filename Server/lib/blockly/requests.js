@@ -5,3 +5,7 @@ function testPost() {
         alert(data);
     });
 }
+
+function sendKillSignal() {
+    $.post("/killprogram" ); 
+}

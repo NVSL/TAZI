@@ -66,6 +66,9 @@ class StaticFileHandler(webapp2.RequestHandler):
     def get(self, file_name):
         self.response.write( openStaticFile( file_name) )
 
+class KillProgramHandler(webapp2.RequestHandler):
+    def post(self): program_status.kill()
+
 class SaveHandler(webapp2.RequestHandler):
     def saveProgram(self):
         request = dict(self.request.POST)

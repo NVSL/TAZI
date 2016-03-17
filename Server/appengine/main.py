@@ -22,6 +22,7 @@ if __name__ == "__main__":
     app = webapp2.WSGIApplication([ 
 	("/", LandingHandler),
 	("/newprogram", NewProgramHandler),
+	("/killprogram", KillProgramHandler),
 	(r'/programs/(.+)', ProgramHandler),
 	(r'/static/(.+)', StaticFileHandler),
 	("/compile", CompilationHandler),
