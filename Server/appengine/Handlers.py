@@ -92,7 +92,7 @@ class CompileCPPHandler(CompileHandler):
 	self.writeToOutfile()
 	subprocess.check_call(["g++", "-o",  compiled_name, out_file])
 	program_status.run()
-	self.response.write( program_status.read_stdout() )
+	#self.response.write( program_status.read_stdout() )
 
 class CompileInoHandler(CompileHandler):
     def post(self):
