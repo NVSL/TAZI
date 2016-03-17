@@ -1,11 +1,11 @@
 CC = g++
 FLAGS = -lrt -lpthread
 ARDUPI = arduPi.cpp
-PROG = test
+PROG = program
 
 default: $(PROG)
 $(PROG):
-	$(CC) $(FLAGS) -o $(PROG) $(ARDUPI) $(PROG).cpp
+	$(CC) $(FLAGS) -o ../ $(PROG) $(ARDUPI) $(PROG).cpp
 clean:
 	rm -f $(PROG)
 run: $(PROG)

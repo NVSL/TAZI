@@ -19,6 +19,7 @@ program_status = ProgramStatus()
 default_workspace = ""
 api = ET.parse(api_gspec).getroot()
 generator = InoGenerator(api)
+arduPi = "arduPi/"
 
 global_jinja_vars = { "resDir" : "/static/", } 
 global_jinja_vars["lib"] = global_jinja_vars["resDir"] + "lib/"  
@@ -29,7 +30,7 @@ templates_dir = "jinja_templates/"
 
 def setupOutput( name="testfile", ext="cpp", workspace="CppDefault.xml"):
     global out_file
-    out_file = compiled_name + "." + ext 
+    out_file = name + "." + ext 
     global default_workspace
     default_workspace = workspace
 
@@ -92,6 +93,7 @@ class CompileCPPHandler(CompileHandler):
 	self.writeToOutfile()
 	subprocess.check_call(["g++", "-o",  compiled_name, out_file])
 	program_status.run()
+	self.response.write( "Running program!" )
 	#self.response.write( program_status.read_stdout() )
 
 class CompileInoHandler(CompileHandler):
@@ -101,8 +103,8 @@ class CompileInoHandler(CompileHandler):
 	generator.appendToLoop( Translator.getLoop() )
 	self.compiled = generator.getClass()
 	self.writeToOutfile()
+	subprocess.check_call(["mv",out_file, arduPi])
 	print self.compiled
-	self.response.write(self.compiled)
 
 ######################## Static Handler Functions  ######################## 
 
