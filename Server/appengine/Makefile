@@ -1,9 +1,9 @@
 PROG_NAME = program
 PROG_EXT = cpp
-runino:
-	python main.py -n $(PROG_NAME) -e ino -t DefaultRobotWorkspace.xml
 run:
 	python main.py -n $(PROG_NAME) -e $(PROG_EXT)
+runino:
+	python main.py -n $(PROG_NAME) -e ino -t DefaultRobotWorkspace.xml
 all:	copy run
 copy:
 	make -C ../ copy

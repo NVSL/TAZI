@@ -16,6 +16,14 @@ angular.module('Tazi', ['ngMaterial'])
   $scope.createNewProgram = function() { 
       console.log($scope.project.programName); 
   };
+  // Post Requests
+  $scope.sendCompilePost = function() { 
+      testPost();
+  };
+  $scope.sendKillPost = function() {
+      sendKillSignal();
+  };
+  // Dialogs
   $scope.showNewProgramDialog = function(ev) {
     var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
     $mdDialog.show({
