@@ -5,22 +5,22 @@
       <script src="{{lib}}angular-material/angular-material.min.js"></script>
       <script src="{{lib}}angular-aria/angular-aria.min.js"></script>
       <script src="{{lib}}angular-animate/angular-animate.min.js"></script>
-      <script src="{{resDir}}controllers/LandingPageController.js"></script>
       <link href="{{lib}}angular-material/angular-material.min.css" rel="stylesheet" />
+      <script src="{{resDir}}controllers/LandingPageController.js"></script>
       <!-- JQuery -->
       <script src="{{lib}}jquery-2.2.1.min.js"></script>
    </head>
    <body >
       <div ng-controller="AppCtrl" id="popupContainer">
          <!-- Page Header -->
-         <md-content flex layout-padding>
-            <md-toolbar>
+         <md-content flex>
+            <md-toolbar layout-padding>
                <h1 class="md-display-3">{{name}}'s Control Panel</h1>
             </md-toolbar>
-	    <h3>
+	    <h3 layout-padding>
 	    	Welcome to {{name}}'s Control Panel! 
 	    </h3>
-	    <h4>
+	    <h4 layout-padding>
 		From here, you can go ahead and do all sorts of wonderful things with
 		{{name}}. In the "Your Programs" panel, you can create a new program. After you start writing a ton of programs,
 		that panel will fill with all of your marvelous creations. If you're just getting started with programming {{name}},
@@ -28,19 +28,21 @@
 		learn how to program the robot of your dreams. Have fun!
 	    </h4>
          </md-content>
-         <div ng-cloak layout-gt-sm="row" layout="column" layout-padding>
+         <div ng-cloak layout-gt-sm="row" layout="column">
             <!-- Program Column-->
 	    <div flex-gt-sm="49" flex md-raised>
             <md-content>
+	       <!-- Header -->
                <md-toolbar layout="row">
                   <div class="md-toolbar-tools">
                      <h3 class="md-display-1">Your Programs</h3>
                      <span flex> </span>
-                     <md-button class="md-primary md-raised" ng-click="showNewProgramDialog($event)">
+                     <md-button class="md-raised" ng-click="showNewProgramDialog($event)">
                         Create new 
                      </md-button>
                   </div>
                </md-toolbar>
+	       <!-- Programs List -->
                <md-list class="md-dense" flex layout-padding>
                   {% for prog in programs %}
                   <md-list-item class="md-1-line" background="#b9f6ca">
@@ -48,7 +50,7 @@
                         <h4>{{prog}}</h4>
                      </a>
 		     <span flex> </span>
-		     <md-button>X</md-button>
+		     <md-button class="md-primary md-raised">X</md-button>
 	             <md-divider></md-divider>
                   </md-list-item>
                   {% endfor %}
@@ -57,6 +59,15 @@
 	    </div>
             <!-- Learning Center Column-->
 	    <div flex-gt-sm="49" flex>
+            <md-content>
+               <md-toolbar layout="row">
+                  <div class="md-toolbar-tools">
+                     <h3 class="md-display-1">{{name}}'s Status</h3>
+                  </div>
+               </md-toolbar>
+	       <h4>Program Loaded: Probably nothing!</h4>
+	       <h4>Program Status: Probably not running!</h4>
+            </md-content>
             <md-content>
                <md-toolbar layout="row">
                   <div class="md-toolbar-tools">
