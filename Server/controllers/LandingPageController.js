@@ -1,3 +1,4 @@
+var tazi = angular.module('Tazi', ['ngMaterial']);
 function NewProgramDialogController($scope, $mdDialog) {
     $scope.createNewProgram = function() {
         name = $scope.project.programName.toString();
@@ -9,16 +10,9 @@ function NewProgramDialogController($scope, $mdDialog) {
       };
 }
 
-angular.module('LandingPage', ['ngMaterial'])
-  .controller('AppCtrl', function($scope, $mdDialog, $mdMedia) {
+tazi.controller('DialogCtrl', function($scope, $mdDialog, $mdMedia) {
   $scope.status = '  ';
   $scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
-  $scope.createNewProgram = function() { 
-      console.log($scope.project.programName); 
-  };
-  $scope.runProgram = function() {
-      $.post("/runprogram");
-  };
   $scope.showNewProgramDialog = function(ev) {
     var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
     $mdDialog.show({

@@ -1,17 +1,19 @@
-<html ng-app="LandingPage">
+<html ng-app="Tazi">
    <head>
       <!-- Angular -->
-      <script src="{{lib}}angular/angular.min.js"></script>
+      <script src="{{lib}}angular/angular.js"></script>
       <script src="{{lib}}angular-material/angular-material.min.js"></script>
       <script src="{{lib}}angular-aria/angular-aria.min.js"></script>
       <script src="{{lib}}angular-animate/angular-animate.min.js"></script>
       <link href="{{lib}}angular-material/angular-material.min.css" rel="stylesheet" />
+      <script src="{{resDir}}controllers/ModuleWorkaround.js"></script>
+      <script src="{{resDir}}controllers/IDEController.js"></script>
       <script src="{{resDir}}controllers/LandingPageController.js"></script>
       <!-- JQuery -->
       <script src="{{lib}}jquery-2.2.1.min.js"></script>
    </head>
    <body >
-      <div ng-controller="AppCtrl" id="popupContainer">
+      <div id="popupContainer">
          <!-- Page Header -->
          <md-content flex>
             <md-toolbar layout-padding>
@@ -28,7 +30,7 @@
 		learn how to program the robot of your dreams. Have fun!
 	    </h4>
          </md-content>
-         <div ng-cloak layout-gt-sm="row" layout="column">
+         <div ng-controller="DialogCtrl" ng-cloak layout-gt-sm="row" layout="column">
             <!-- Program Column-->
 	    <div flex-gt-sm="49" flex md-raised>
             <md-content>
@@ -58,7 +60,7 @@
             </md-content>
 	    </div>
             <!-- Right Column-->
-	    <div flex-gt-sm="49" flex>
+	    <div ng-controller="AppCtrl" flex-gt-sm="49" flex>
             <!-- Program Status-->
             <md-content>
                <md-toolbar layout="row">

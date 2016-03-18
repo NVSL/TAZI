@@ -120,10 +120,10 @@ class CompileInoHandler(CompileHandler):
         generator = InoGenerator(api, include_str='""')
 	generator.appendToLoop( Translator.getLoop() )
 	self.compiled = generator.getClass()
-	#print self.compiled
+	print self.compiled
 	self.writeToOutfile()
 	subprocess.check_call(["mv",out_file, arduPi])
-	#subprocess.check_call(["make","-C", arduPi])
+	subprocess.check_call(["make","-C", arduPi])
 
 ######################## Static Handler Functions  ######################## 
 
