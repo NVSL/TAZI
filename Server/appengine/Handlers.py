@@ -75,21 +75,22 @@ class KillProgramHandler(webapp2.RequestHandler):
     def post(self): program_status.kill()
 
 class SaveHandler(webapp2.RequestHandler):
+    result_cached = False
+    cached_xml = ""
     def __init__( self, *args, **kwargs):
         webapp2.RequestHandler.__init__( self, *args, **kwargs)
-	self.xml = ""
-	self.result_cached = False
     def saveProgram(self):
         request = dict(self.request.POST)
 	xml = request["xml"]
-	if xml != self.xml:
+	if xml != SaveHandler.cached_xml:
 	    self.xml = xml
-	    self.result_cached = False
+	    SaveHandler.result_cached = False
             xml_file_path = PROGRAM_PATH + program_status.name + ".xml"
 	    xml_file = open(xml_file_path, "w")
 	    xml_file.write(self.xml)
 	    xml_file.close()
-	else: self.result_cached = True
+	else: SaveHandler.result_cached = True
+	SaveHandler.cached_xml = self.xml = xml
 	
 class CompileHandler(SaveHandler):
     def translateRequest(self):
@@ -110,10 +111,11 @@ class CompileCPPHandler(CompileHandler):
 
 class CompileInoHandler(CompileHandler):
     def post(self):
-	if not self.result_cached: self.compile()
+	if not SaveHandler.result_cached: self.compile()
 	program_status.run()
 	self.response.write( "Running program!" )
     def compile(self):
+        print "I'm really compiling!"
         self.translateRequest()
         generator = InoGenerator(api, include_str='""')
 	generator.appendToLoop( Translator.getLoop() )
@@ -121,7 +123,7 @@ class CompileInoHandler(CompileHandler):
 	#print self.compiled
 	self.writeToOutfile()
 	subprocess.check_call(["mv",out_file, arduPi])
-	subprocess.check_call(["make","-C", arduPi])
+	#subprocess.check_call(["make","-C", arduPi])
 
 ######################## Static Handler Functions  ######################## 
 

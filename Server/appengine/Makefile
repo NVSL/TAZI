@@ -3,7 +3,7 @@ PROG_EXT = cpp
 run:
 	python main.py -n $(PROG_NAME) -e $(PROG_EXT)
 runino:
-	python main.py -n $(PROG_NAME) -e ino -t DefaultRobotWorkspace.xml
+	sudo python main.py -n $(PROG_NAME) -e ino -t DefaultRobotWorkspace.xml
 all:	copy run
 copy:
 	make -C ../ copy
