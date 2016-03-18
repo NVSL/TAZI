@@ -57,17 +57,23 @@
                </md-list>
             </md-content>
 	    </div>
-            <!-- Learning Center Column-->
+            <!-- Right Column-->
 	    <div flex-gt-sm="49" flex>
+            <!-- Program Status-->
             <md-content>
                <md-toolbar layout="row">
                   <div class="md-toolbar-tools">
                      <h3 class="md-display-1">{{name}}'s Status</h3>
+		     <span flex> </span>
+                     <md-button class="md-raised" ng-click="runProgram()">
+		         Run
+                     </md-button>
                   </div>
                </md-toolbar>
-	       <h4>Program Loaded: Probably nothing!</h4>
-	       <h4>Program Status: Probably not running!</h4>
+	       <h4>Program Loaded: {{loadedProgram}}</h4>
+	       <h4>Program Status: {{programStatus}}</h4>
             </md-content>
+            <!-- Learning Center-->
             <md-content>
                <md-toolbar layout="row">
                   <div class="md-toolbar-tools">

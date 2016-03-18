@@ -16,6 +16,9 @@ angular.module('LandingPage', ['ngMaterial'])
   $scope.createNewProgram = function() { 
       console.log($scope.project.programName); 
   };
+  $scope.runProgram = function() {
+      $.post("/runprogram");
+  };
   $scope.showNewProgramDialog = function(ev) {
     var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
     $mdDialog.show({

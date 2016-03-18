@@ -41,7 +41,10 @@ class LandingHandler(webapp2.RequestHandler):
         path = PROGRAM_PATH
 	progs = [ f for f in os.listdir(path) if os.path.isfile(path+f)]
         progs = [ f.replace(".xml", "") for f in progs] 
-        jinja_vars = { "programs" : progs, "name" : generator.name }
+        jinja_vars = { "programs" : progs,
+	               "name" : generator.name,
+		       "loadedProgram" : program_status.name,
+		       "programStatus" : program_status.status }
 	file_path = templates_dir + "landing.jinja"
 	html = render_template( file_path, jinja_vars, additional_args=global_jinja_vars )
 	self.response.write(html)
@@ -49,7 +52,6 @@ class LandingHandler(webapp2.RequestHandler):
 class NewProgramHandler(webapp2.RequestHandler):
     def post(self):
         request = dict(self.request.POST)
-	print request["name"].encode('ascii', 'ignore')
 	self.response.write("1")
 
 class ProgramHandler(webapp2.RequestHandler):
@@ -67,6 +69,8 @@ class StaticFileHandler(webapp2.RequestHandler):
     def get(self, file_name):
         self.response.write( openStaticFile( file_name) )
 
+class RunProgramHandler(webapp2.RequestHandler):
+    def post(self): program_status.run()
 class KillProgramHandler(webapp2.RequestHandler):
     def post(self): program_status.kill()
 
@@ -114,7 +118,7 @@ class CompileInoHandler(CompileHandler):
         generator = InoGenerator(api, include_str='""')
 	generator.appendToLoop( Translator.getLoop() )
 	self.compiled = generator.getClass()
-	print self.compiled
+	#print self.compiled
 	self.writeToOutfile()
 	subprocess.check_call(["mv",out_file, arduPi])
 	subprocess.check_call(["make","-C", arduPi])
