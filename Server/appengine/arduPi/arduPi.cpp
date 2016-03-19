@@ -1191,6 +1191,11 @@ void pinMode(int pin, Pinmode mode){
 	}
 }
 
+void analogWrite(int pin, int value) {
+    auto digitalVal = value > 0 ? HIGH : LOW;
+    digitalWrite(pin, digitalVal);
+}
+
 // Write a HIGH or a LOW value to a digital pin
 void digitalWrite(int pin, int value){
 	pin = raspberryPinNumber(pin);

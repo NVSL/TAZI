@@ -373,6 +373,7 @@ class SPIPi{
 
 /* Some useful arduino functions */
 void pinMode(int pin, Pinmode mode);
+void analogWrite(int pin, int value);
 void digitalWrite(int pin, int value);
 void digitalWriteSoft(int pin, int value);
 void delay(long millis);
