@@ -20,5 +20,5 @@
    </component>
    <component progname="led" type="LED-5mm-bright-red">
       <placedpart refdes="LED1_2_led" x="1.999997615814209" y="20.000000715255737" rotation="0" mirrored="False"/>
-   <api class="LED" include="LED.h" link-as="LED-5mm-bright-red" path="lib" progname="led"><required_files/><arg analogliteral="None" arg="CONTROL" digitalliteral="7" order="None"/></api></component>
+   <api class="LED" include="LED.h" link-as="LED-5mm-bright-red" path="lib" progname="led"><required_files/><arg analogliteral="None" arg="CONTROL" digitalliteral="17" order="None"/></api></component>
 </gadgetlayout>

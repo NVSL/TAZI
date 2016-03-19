@@ -1,6 +1,6 @@
 CC = g++
 FLAGS = -lrt -lpthread
-ARDUPI = arduPi.cpp
+ARDUPI = arduPi.o
 PROG = program
 
 default: $(PROG)
@@ -10,5 +10,7 @@ clean:
 	rm -f $(PROG)
 run: $(PROG)
 	sudo ../$(PROG)
-%: %.cpp
+%: %.cpp arduPi.o
 	$(CC) $(FLAGS) -o $@ $(ARDUPI) $<
+%.o: %.cpp
+	$(CC) $(FLAGS) -c -o $@ $<
