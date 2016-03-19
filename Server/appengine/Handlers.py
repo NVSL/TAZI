@@ -12,7 +12,7 @@ from StringIO import StringIO
 compiled_name = "program"
 out_file = compiled_name + ".cpp"
 PROGRAM_PATH = "programs/"
-api_gspec = "SimpleLEDTest.api.gspec"
+api_gspec = "RaspberryPiTest2.api.gspec"
 STATIC = "static/"
 program_status = ProgramStatus()
 
