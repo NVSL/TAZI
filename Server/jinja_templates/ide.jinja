@@ -229,21 +229,21 @@
          
       </script>
    </head>
-   <body>
+   <body id="popupContainer">
       <div width="100%" height="100%" ng-controller="AppCtrl">
          <md-content>
 	    <md-toolbar layout="row" layout-padding>
                 <h1 class="md-display-1"> TAZI - A Blockly Programming Environment for Robots</h1>
 		<span flex> </span>
 		<a href="/">
-                <img src="{{resDir}}media/GtronImage.png" alt="Gtron Logo" style="width:auto;height:auto;">		
+                <img src="{{resDir}}media/GtronImage.png" alt="Gtron Logo" style="width:auto;height:auto;">
 		</a>
 	    </md-toolbar>
          </md-content>
          <div id="blocklyDiv" style="height: 75%; width: 100%;"></div>
 	 <!-- Buttons -->
 	 <div>
-             <md-button class="md-primary md-raised" ng-click="sendCompilePost()">Compile</md-button>
+             <md-button class="md-primary md-raised" ng-click="sendCompilePost($event)">Compile</md-button>
              <md-button class="md-primary md-raised" ng-click="sendKillPost()">Kill</md-button>
 	 </div>
          <xml id="toolbox" style="display: none"><category custom="VARIABLE" name="Variables"> </category>
