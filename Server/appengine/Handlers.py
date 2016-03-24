@@ -3,7 +3,7 @@ import wsgiref.simple_server
 import webapp2
 import os
 from JinjaUtil import *
-from ProgramStatus import *
+from ProgramManager import *
 from BlocksToCpp import blocklyTranslator as Translator
 from InoGenerator.InoGenerator import ClassGenerator as InoGenerator
 import xml.etree.ElementTree as ET
@@ -14,7 +14,7 @@ out_file = compiled_name + ".cpp"
 PROGRAM_PATH = "programs/"
 api_gspec = "RaspberryPiTest2.api.gspec"
 STATIC = "static/"
-program_status = ProgramStatus()
+program_status = ProgramManager()
 
 default_workspace = ""
 api = ET.parse(api_gspec).getroot()
@@ -57,7 +57,7 @@ class NewProgramHandler(webapp2.RequestHandler):
 class ProgramHandler(webapp2.RequestHandler):
     def get(self, prog_name):
 	global program_status
-	program_status = ProgramStatus( name=prog_name, program="./"+compiled_name )
+	program_status = ProgramManager( name=prog_name, program="./"+compiled_name )
         xml_file = PROGRAM_PATH + prog_name + ".xml"
         if not os.path.exists( xml_file):
 	    xml_file = default_workspace
