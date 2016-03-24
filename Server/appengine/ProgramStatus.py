@@ -3,8 +3,8 @@ from Decorators import *
 popen_args = { "shell" : True, "stdout" : subprocess.PIPE }
 running = "Running"
 not_running = "Not running"
+not_loaded = "No program loaded"
 class ProgramStatus:
-    not_loaded = "No program loaded"
     def __init__( self, name=not_loaded, program=None ):
         self.name = name
 	self.program = program 

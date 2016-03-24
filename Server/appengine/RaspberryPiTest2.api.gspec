@@ -18,15 +18,23 @@
    <component progname="battery" type="battery-9V-vertical" deletable="false">
       <placedpart refdes="BATT1_1_battery" x="33.04904365539551" y="-0.04" rotation="0" mirrored="False"/>
    </component>
-   <!--component progname="drive" type="dual-motor-kit-knobby">
+   <component progname="drive" type="dual-motor-kit-knobby">
       <placedpart refdes="L_2_drive" x="88.46050262451172" y="-34.52212142944336" rotation="0" mirrored="False"/>
       <placedpart refdes="R_2_drive" x="-85.52129364013672" y="-33.15927505493164" rotation="0" mirrored="False"/>
       <placedpart refdes="DRVR_2_drive" x="9.08021068572998" y="28.14148998260498" rotation="0" mirrored="False"/>
-   <api class="Motor" include="Motor.h" link-as="dual-motor-kit-knobby" path="lib" progname="drive"><required_files/><arg analogliteral="None" arg="PWMA" digitalliteral="3" order="None"/><arg analogliteral="None" arg="PWMB" digitalliteral="5" order="None"/><arg analogliteral="None" arg="STBY" digitalliteral="4" order="None"/><arg analogliteral="None" arg="AIN1" digitalliteral="6" order="None"/><arg analogliteral="None" arg="AIN2" digitalliteral="8" order="None"/><arg analogliteral="None" arg="BIN1" digitalliteral="9" order="None"/><arg analogliteral="None" arg="BIN2" digitalliteral="10" order="None"/></api></component-->
+   <api class="Motor" include="Motor.h" link-as="dual-motor-kit-knobby" path="lib" progname="drive"><required_files/>
+       <arg analogliteral="None" arg="STBY" digitalliteral="22" order="None"/>
+       <arg analogliteral="None" arg="PWMA" digitalliteral="25" order="None"/>
+       <arg analogliteral="None" arg="AIN1" digitalliteral="23" order="None"/>
+       <arg analogliteral="None" arg="AIN2" digitalliteral="24" order="None"/>
+       <arg analogliteral="None" arg="PWMB" digitalliteral="14" order="None"/>
+       <arg analogliteral="None" arg="BIN1" digitalliteral="9" order="None"/>
+       <arg analogliteral="None" arg="BIN2" digitalliteral="8" order="None"/></api>
+   </component>
    <component progname="led" type="LED-5mm-bright-red">
       <placedpart refdes="LED1_3_led" x="43.99999761581421" y="29.000000715255737" rotation="0" mirrored="False"/>
    <api class="LED" include="LED.h" link-as="LED-5mm-bright-red" path="lib" progname="led"><required_files/><arg analogliteral="None" arg="CONTROL" digitalliteral="17" order="None"/></api></component>
-   <!--component progname="button" type="tactile-button-round-gray">
+   <component progname="button" type="tactile-button-round-gray">
       <placedpart refdes="B1_4_button" x="-54.0092453956604" y="34.02377510070801" rotation="0" mirrored="False"/>
-   <api class="MomentaryButton" include="MomentaryButton.h" link-as="tactile-button-round-gray" path="lib" progname="button"><required_files><file name="PinChangeInt.h"/></required_files><arg analogliteral="None" arg="SENSE" digitalliteral="4" order="None"/></api></component-->
+   <api class="MomentaryButton" include="MomentaryButton.h" link-as="tactile-button-round-gray" path="lib" progname="button"><required_files/><arg analogliteral="None" arg="SENSE" digitalliteral="4" order="None"/></api></component>
 </gadgetlayout>
