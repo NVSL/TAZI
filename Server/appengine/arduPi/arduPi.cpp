@@ -21,6 +21,8 @@
 
 
 #include "arduPi.h"
+#include <iostream>
+using namespace std;
 
 struct bcm2835_peripheral gpio = {GPIO_BASE2};
 struct bcm2835_peripheral bsc_rev1 = {IOBASE + 0X205000};
@@ -1156,11 +1158,16 @@ void pinMode(int pin, Pinmode mode){
 	if(mode == OUTPUT){
 		switch(pin){
 			case 4:  GPFSEL0 &= ~(7 << 12); GPFSEL0 |= (1 << 12); break;
+			case 5:  GPFSEL0 &= ~(7 << 15); GPFSEL0 |= (1 << 15); break;
+			case 6:  GPFSEL0 &= ~(7 << 18); GPFSEL0 |= (1 << 18); break;
 			case 8:  GPFSEL0 &= ~(7 << 24); GPFSEL0 |= (1 << 24); break;
 			case 9:  GPFSEL0 &= ~(7 << 27); GPFSEL0 |= (1 << 27); break;
 			case 10: GPFSEL1 &= ~(7 << 0); 	GPFSEL1 |= (1 << 0);  break;
 			case 11: GPFSEL1 &= ~(7 << 3);  GPFSEL1 |= (1 << 3);  break;
+			case 12: GPFSEL1 &= ~(7 << 6);  GPFSEL1 |= (1 << 6);  break;
+			case 13: GPFSEL1 &= ~(7 << 9);  GPFSEL1 |= (1 << 9);  break;
 			case 14: GPFSEL1 &= ~(7 << 12); GPFSEL1 |= (1 << 12); break;
+			case 16: GPFSEL1 &= ~(7 << 18); GPFSEL1 |= (1 << 18); break;
 			case 17: GPFSEL1 &= ~(7 << 21); GPFSEL1 |= (1 << 21); break;
 			case 18: GPFSEL1 &= ~(7 << 24); GPFSEL1 |= (1 << 24); break;
 			case 21: GPFSEL2 &= ~(7 << 3);  GPFSEL2 |= (1 << 3);  break;
@@ -1169,17 +1176,23 @@ void pinMode(int pin, Pinmode mode){
 			case 23: GPFSEL2 &= ~(7 << 9);  GPFSEL2 |= (1 << 9);  break;
 			case 24: GPFSEL2 &= ~(7 << 12); GPFSEL2 |= (1 << 12); break;
 			case 25: GPFSEL2 &= ~(7 << 15); GPFSEL2 |= (1 << 15); break;
+			case 26: GPFSEL2 &= ~(7 << 18); GPFSEL2 |= (1 << 18); break;
 		}
 
 	}else if (mode == INPUT){
 		switch(pin){
 			case 4:  GPFSEL0 &= ~(7 << 12); break;
+			case 5:  GPFSEL0 &= ~(7 << 15); break;
+			case 6:  GPFSEL0 &= ~(7 << 18); break;
 			case 8:  GPFSEL0 &= ~(7 << 24); break;
 			case 9:  GPFSEL0 &= ~(7 << 27); break;
 			case 10: GPFSEL1 &= ~(7 << 0);  break;
 			case 11: GPFSEL1 &= ~(7 << 3);  break;	
+			case 12: GPFSEL1 &= ~(7 << 6);  break;	
+			case 13: GPFSEL1 &= ~(7 << 9);  break;	
 			case 14: GPFSEL1 &= ~(7 << 12);  break;	
-            case 17: GPFSEL1 &= ~(7 << 21); break;
+			case 16: GPFSEL1 &= ~(7 << 18);  break;	
+                        case 17: GPFSEL1 &= ~(7 << 21); break;
 			case 18: GPFSEL1 &= ~(7 << 24); break;
 			case 21: GPFSEL2 &= ~(7 << 3);  break;
 			case 27: GPFSEL2 &= ~(7 << 3);  break;
@@ -1187,6 +1200,7 @@ void pinMode(int pin, Pinmode mode){
 			case 23: GPFSEL2 &= ~(7 << 9);  break;
 			case 24: GPFSEL2 &= ~(7 << 12); break;
 			case 25: GPFSEL2 &= ~(7 << 15); break;
+			case 26: GPFSEL2 &= ~(7 << 18); break;
 		}
 	}
 }
@@ -1199,17 +1213,25 @@ void analogWrite(int pin, int value) {
 // Write a HIGH or a LOW value to a digital pin
 void digitalWrite(int pin, int value){
 	pin = raspberryPinNumber(pin);
+	cout << pin << endl;
 	if (value == HIGH){
 		switch(pin){
 			case  4:GPSET0 =  BIT_4;break;
+			case  5:GPSET0 =  BIT_5;break;
+			case  6:GPSET0 =  BIT_6;break;
 			case  8:GPSET0 =  BIT_8;break;
 			case  9:GPSET0 =  BIT_9;break;
 			case 10:GPSET0 = BIT_10;break;
 			case 11:GPSET0 = BIT_11;break;
+			case 12:GPSET0 = BIT_12;break;
+			case 13:GPSET0 = BIT_13;break;
 			case 14:GPSET0 = BIT_14;break;
+			case 16:GPSET0 = BIT_16;break;
 			case 17:GPSET0 = BIT_17;break;
 			case 18:GPSET0 = BIT_18;break;
+			case 19:GPSET0 = BIT_19;break;
 			case 21:GPSET0 = BIT_21;break;
+			case 26:GPSET0 = BIT_26;break;
 			case 27:GPSET0 = BIT_27;break;
 			case 22:GPSET0 = BIT_22;break;
 			case 23:GPSET0 = BIT_23;break;
@@ -1219,14 +1241,21 @@ void digitalWrite(int pin, int value){
 	}else if(value == LOW){
 		switch(pin){
 			case  4:GPCLR0 =  BIT_4;break;
+			case  5:GPCLR0 =  BIT_5;break;
+			case  6:GPCLR0 =  BIT_6;break;
 			case  8:GPCLR0 =  BIT_8;break;
 			case  9:GPCLR0 =  BIT_9;break;
 			case 10:GPCLR0 = BIT_10;break;
 			case 11:GPCLR0 = BIT_11;break;
+			case 12:GPCLR0 = BIT_12;break;
+			case 13:GPCLR0 = BIT_13;break;
 			case 14:GPCLR0 = BIT_14;break;
+			case 16:GPCLR0 = BIT_16;break;
 			case 17:GPCLR0 = BIT_17;break;
 			case 18:GPCLR0 = BIT_18;break;
+			case 19:GPCLR0 = BIT_19;break;
 			case 21:GPCLR0 = BIT_21;break;
+			case 26:GPCLR0 = BIT_26;break;
 			case 27:GPCLR0 = BIT_27;break;
 			case 22:GPCLR0 = BIT_22;break;
 			case 23:GPCLR0 = BIT_23;break;
@@ -1285,14 +1314,22 @@ int digitalRead(int pin){
 	pin = raspberryPinNumber(pin);
 	switch(pin){
 		case 4: if(GPLEV0 & BIT_4){value = HIGH;} else{value = LOW;};break;
+		case 5: if(GPLEV0 & BIT_5){value = HIGH;} else{value = LOW;};break;
+		case 6: if(GPLEV0 & BIT_6){value = HIGH;} else{value = LOW;};break;
 		case 8: if(GPLEV0 & BIT_8){value = HIGH;} else{value = LOW;};break;
 		case 9: if(GPLEV0 & BIT_9){value = HIGH;} else{value = LOW;};break;
 		case 10:if(GPLEV0 & BIT_10){value = HIGH;} else{value = LOW;};break;
 		case 11:if(GPLEV0 & BIT_11){value = HIGH;} else{value = LOW;};break;
+		case 12:if(GPLEV0 & BIT_12){value = HIGH;} else{value = LOW;};break;
+		case 13:if(GPLEV0 & BIT_13){value = HIGH;} else{value = LOW;};break;
+		case 14:if(GPLEV0 & BIT_14){value = HIGH;} else{value = LOW;};break;
+		case 16:if(GPLEV0 & BIT_16){value = HIGH;}else{value = LOW;};break;
 		case 17:if(GPLEV0 & BIT_17){value = HIGH;}else{value = LOW;};break;
 		case 18:if(GPLEV0 & BIT_18){value = HIGH;}else{value = LOW;};break;
+		case 19:if(GPLEV0 & BIT_19){value = HIGH;}else{value = LOW;};break;
 		case 21:if(GPLEV0 & BIT_21){value = HIGH;}else{value = LOW;};break;
 		case 27:if(GPLEV0 & BIT_27){value = HIGH;}else{value = LOW;};break;
+		case 26:if(GPLEV0 & BIT_26){value = HIGH;}else{value = LOW;};break;
 		case 22:if(GPLEV0 & BIT_22){value = HIGH;}else{value = LOW;};break;
 		case 23:if(GPLEV0 & BIT_23){value = HIGH;}else{value = LOW;};break;
 		case 24:if(GPLEV0 & BIT_24){value = HIGH;}else{value = LOW;};break;
