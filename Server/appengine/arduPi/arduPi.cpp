@@ -33,6 +33,8 @@ volatile uint32_t *bcm2835_bsc01;
 void *spi0 = MAP_FAILED;
 static  uint8_t *spi0Mem = NULL;
 
+pthread_t idThread0;
+pthread_t idThread1;
 pthread_t idThread2;
 pthread_t idThread3;
 pthread_t idThread4;
@@ -45,6 +47,20 @@ pthread_t idThread10;
 pthread_t idThread11;
 pthread_t idThread12;
 pthread_t idThread13;
+pthread_t idThread14;
+pthread_t idThread15;
+pthread_t idThread16;
+pthread_t idThread17;
+pthread_t idThread18;
+pthread_t idThread19;
+pthread_t idThread20;
+pthread_t idThread21;
+pthread_t idThread22;
+pthread_t idThread23;
+pthread_t idThread24;
+pthread_t idThread25;
+pthread_t idThread26;
+pthread_t idThread27;
 
 timeval start_program, end_point;
 
@@ -1157,6 +1173,10 @@ void pinMode(int pin, Pinmode mode){
 	pin = raspberryPinNumber(pin);
 	if(mode == OUTPUT){
 		switch(pin){
+			case 0:  GPFSEL0 &= ~(7 << 0); GPFSEL0 |= (1 << 0); break;
+			case 1:  GPFSEL0 &= ~(7 << 3); GPFSEL0 |= (1 << 3); break;
+			case 2:  GPFSEL0 &= ~(7 << 6); GPFSEL0 |= (1 << 6); break;
+			case 3:  GPFSEL0 &= ~(7 << 9); GPFSEL0 |= (1 << 9); break;
 			case 4:  GPFSEL0 &= ~(7 << 12); GPFSEL0 |= (1 << 12); break;
 			case 5:  GPFSEL0 &= ~(7 << 15); GPFSEL0 |= (1 << 15); break;
 			case 6:  GPFSEL0 &= ~(7 << 18); GPFSEL0 |= (1 << 18); break;
@@ -1167,20 +1187,27 @@ void pinMode(int pin, Pinmode mode){
 			case 12: GPFSEL1 &= ~(7 << 6);  GPFSEL1 |= (1 << 6);  break;
 			case 13: GPFSEL1 &= ~(7 << 9);  GPFSEL1 |= (1 << 9);  break;
 			case 14: GPFSEL1 &= ~(7 << 12); GPFSEL1 |= (1 << 12); break;
+			case 15: GPFSEL1 &= ~(7 << 15); GPFSEL1 |= (1 << 15); break;
 			case 16: GPFSEL1 &= ~(7 << 18); GPFSEL1 |= (1 << 18); break;
 			case 17: GPFSEL1 &= ~(7 << 21); GPFSEL1 |= (1 << 21); break;
 			case 18: GPFSEL1 &= ~(7 << 24); GPFSEL1 |= (1 << 24); break;
+			case 19: GPFSEL1 &= ~(7 << 27); GPFSEL1 |= (1 << 27); break;
+			case 20: GPFSEL2 &= ~(7 << 0);  GPFSEL2 |= (1 << 0);  break;
 			case 21: GPFSEL2 &= ~(7 << 3);  GPFSEL2 |= (1 << 3);  break;
-			case 27: GPFSEL2 &= ~(7 << 21); GPFSEL2 |= (1 << 21); break;
 			case 22: GPFSEL2 &= ~(7 << 6);  GPFSEL2 |= (1 << 6);  break;
 			case 23: GPFSEL2 &= ~(7 << 9);  GPFSEL2 |= (1 << 9);  break;
 			case 24: GPFSEL2 &= ~(7 << 12); GPFSEL2 |= (1 << 12); break;
 			case 25: GPFSEL2 &= ~(7 << 15); GPFSEL2 |= (1 << 15); break;
 			case 26: GPFSEL2 &= ~(7 << 18); GPFSEL2 |= (1 << 18); break;
+			case 27: GPFSEL2 &= ~(7 << 21); GPFSEL2 |= (1 << 21); break;
 		}
 
 	}else if (mode == INPUT){
 		switch(pin){
+			case 0:  GPFSEL0 &= ~(7 << 0); break;
+			case 1:  GPFSEL0 &= ~(7 << 3); break;
+			case 2:  GPFSEL0 &= ~(7 << 6); break;
+			case 3:  GPFSEL0 &= ~(7 << 9); break;
 			case 4:  GPFSEL0 &= ~(7 << 12); break;
 			case 5:  GPFSEL0 &= ~(7 << 15); break;
 			case 6:  GPFSEL0 &= ~(7 << 18); break;
@@ -1191,16 +1218,19 @@ void pinMode(int pin, Pinmode mode){
 			case 12: GPFSEL1 &= ~(7 << 6);  break;	
 			case 13: GPFSEL1 &= ~(7 << 9);  break;	
 			case 14: GPFSEL1 &= ~(7 << 12);  break;	
+			case 15: GPFSEL1 &= ~(7 << 15);  break;	
 			case 16: GPFSEL1 &= ~(7 << 18);  break;	
-                        case 17: GPFSEL1 &= ~(7 << 21); break;
+      case 17: GPFSEL1 &= ~(7 << 21); break;
 			case 18: GPFSEL1 &= ~(7 << 24); break;
+			case 19: GPFSEL1 &= ~(7 << 27); break;
+			case 20: GPFSEL2 &= ~(7 << 0);  break;
 			case 21: GPFSEL2 &= ~(7 << 3);  break;
-			case 27: GPFSEL2 &= ~(7 << 3);  break;
 			case 22: GPFSEL2 &= ~(7 << 6);  break;
 			case 23: GPFSEL2 &= ~(7 << 9);  break;
 			case 24: GPFSEL2 &= ~(7 << 12); break;
 			case 25: GPFSEL2 &= ~(7 << 15); break;
 			case 26: GPFSEL2 &= ~(7 << 18); break;
+			case 27: GPFSEL2 &= ~(7 << 3);  break;
 		}
 	}
 }
@@ -1216,6 +1246,10 @@ void digitalWrite(int pin, int value){
 	cout << pin << endl;
 	if (value == HIGH){
 		switch(pin){
+			case  0:GPSET0 =  BIT_0;break;
+			case  1:GPSET0 =  BIT_1;break;
+			case  2:GPSET0 =  BIT_2;break;
+			case  3:GPSET0 =  BIT_3;break;
 			case  4:GPSET0 =  BIT_4;break;
 			case  5:GPSET0 =  BIT_5;break;
 			case  6:GPSET0 =  BIT_6;break;
@@ -1226,20 +1260,26 @@ void digitalWrite(int pin, int value){
 			case 12:GPSET0 = BIT_12;break;
 			case 13:GPSET0 = BIT_13;break;
 			case 14:GPSET0 = BIT_14;break;
+			case 15:GPSET0 = BIT_15;break;
 			case 16:GPSET0 = BIT_16;break;
 			case 17:GPSET0 = BIT_17;break;
 			case 18:GPSET0 = BIT_18;break;
 			case 19:GPSET0 = BIT_19;break;
+			case 20:GPSET0 = BIT_20;break;
 			case 21:GPSET0 = BIT_21;break;
-			case 26:GPSET0 = BIT_26;break;
-			case 27:GPSET0 = BIT_27;break;
 			case 22:GPSET0 = BIT_22;break;
 			case 23:GPSET0 = BIT_23;break;
 			case 24:GPSET0 = BIT_24;break;
 			case 25:GPSET0 = BIT_25;break;
+			case 26:GPSET0 = BIT_26;break;
+			case 27:GPSET0 = BIT_27;break;
 		}
 	}else if(value == LOW){
 		switch(pin){
+			case  0:GPCLR0 =  BIT_0;break;
+			case  1:GPCLR0 =  BIT_1;break;
+			case  2:GPCLR0 =  BIT_2;break;
+			case  3:GPCLR0 =  BIT_3;break;
 			case  4:GPCLR0 =  BIT_4;break;
 			case  5:GPCLR0 =  BIT_5;break;
 			case  6:GPCLR0 =  BIT_6;break;
@@ -1250,17 +1290,19 @@ void digitalWrite(int pin, int value){
 			case 12:GPCLR0 = BIT_12;break;
 			case 13:GPCLR0 = BIT_13;break;
 			case 14:GPCLR0 = BIT_14;break;
+			case 15:GPCLR0 = BIT_15;break;
 			case 16:GPCLR0 = BIT_16;break;
 			case 17:GPCLR0 = BIT_17;break;
 			case 18:GPCLR0 = BIT_18;break;
 			case 19:GPCLR0 = BIT_19;break;
+			case 20:GPCLR0 = BIT_20;break;
 			case 21:GPCLR0 = BIT_21;break;
-			case 26:GPCLR0 = BIT_26;break;
-			case 27:GPCLR0 = BIT_27;break;
 			case 22:GPCLR0 = BIT_22;break;
 			case 23:GPCLR0 = BIT_23;break;
 			case 24:GPCLR0 = BIT_24;break;
 			case 25:GPCLR0 = BIT_25;break;
+			case 26:GPCLR0 = BIT_26;break;
+			case 27:GPCLR0 = BIT_27;break;
 		}
 	}
     
@@ -1313,6 +1355,10 @@ int digitalRead(int pin){
 	Digivalue value;
 	pin = raspberryPinNumber(pin);
 	switch(pin){
+		case 0: if(GPLEV0 & BIT_0){value = HIGH;} else{value = LOW;};break;
+		case 1: if(GPLEV0 & BIT_1){value = HIGH;} else{value = LOW;};break;
+		case 2: if(GPLEV0 & BIT_2){value = HIGH;} else{value = LOW;};break;
+		case 3: if(GPLEV0 & BIT_3){value = HIGH;} else{value = LOW;};break;
 		case 4: if(GPLEV0 & BIT_4){value = HIGH;} else{value = LOW;};break;
 		case 5: if(GPLEV0 & BIT_5){value = HIGH;} else{value = LOW;};break;
 		case 6: if(GPLEV0 & BIT_6){value = HIGH;} else{value = LOW;};break;
@@ -1323,17 +1369,19 @@ int digitalRead(int pin){
 		case 12:if(GPLEV0 & BIT_12){value = HIGH;} else{value = LOW;};break;
 		case 13:if(GPLEV0 & BIT_13){value = HIGH;} else{value = LOW;};break;
 		case 14:if(GPLEV0 & BIT_14){value = HIGH;} else{value = LOW;};break;
+		case 15:if(GPLEV0 & BIT_15){value = HIGH;} else{value = LOW;};break;
 		case 16:if(GPLEV0 & BIT_16){value = HIGH;}else{value = LOW;};break;
 		case 17:if(GPLEV0 & BIT_17){value = HIGH;}else{value = LOW;};break;
 		case 18:if(GPLEV0 & BIT_18){value = HIGH;}else{value = LOW;};break;
 		case 19:if(GPLEV0 & BIT_19){value = HIGH;}else{value = LOW;};break;
+		case 20:if(GPLEV0 & BIT_20){value = HIGH;}else{value = LOW;};break;
 		case 21:if(GPLEV0 & BIT_21){value = HIGH;}else{value = LOW;};break;
-		case 27:if(GPLEV0 & BIT_27){value = HIGH;}else{value = LOW;};break;
-		case 26:if(GPLEV0 & BIT_26){value = HIGH;}else{value = LOW;};break;
 		case 22:if(GPLEV0 & BIT_22){value = HIGH;}else{value = LOW;};break;
 		case 23:if(GPLEV0 & BIT_23){value = HIGH;}else{value = LOW;};break;
 		case 24:if(GPLEV0 & BIT_24){value = HIGH;}else{value = LOW;};break;
 		case 25:if(GPLEV0 & BIT_25){value = HIGH;}else{value = LOW;};break;
+		case 26:if(GPLEV0 & BIT_26){value = HIGH;}else{value = LOW;};break;
+		case 27:if(GPLEV0 & BIT_27){value = HIGH;}else{value = LOW;};break;
 	}
 	return value;
 }
@@ -1521,6 +1569,8 @@ void ch_gpio_fsel(uint8_t pin, uint8_t mode){
 
 pthread_t *getThreadIdFromPin(int pin){
 	switch(pin){
+		case 0: return &idThread0; break;
+		case 1: return &idThread1; break;
 		case 2: return &idThread2; break;
 		case 3: return &idThread3; break;
 		case 4: return &idThread4; break;
@@ -1533,6 +1583,20 @@ pthread_t *getThreadIdFromPin(int pin){
 		case 11: return &idThread11; break;
 		case 12: return &idThread12; break;
 		case 13: return &idThread13; break;
+		case 14: return &idThread14; break;
+		case 15: return &idThread15; break;
+		case 16: return &idThread16; break;
+		case 17: return &idThread17; break;
+		case 18: return &idThread18; break;
+		case 19: return &idThread19; break;
+		case 20: return &idThread20; break;
+		case 21: return &idThread21; break;
+		case 22: return &idThread22; break;
+		case 23: return &idThread23; break;
+		case 24: return &idThread24; break;
+		case 25: return &idThread25; break;
+		case 26: return &idThread26; break;
+		case 27: return &idThread27; break;
 	}
 }
 
