@@ -279,7 +279,7 @@ typedef enum{
 	RISING = 2,
 	FALLING = 3,
 	BOTH = 4
-}Digivalue;
+} Digivalue;
 
 typedef bool boolean;
 typedef unsigned char byte;

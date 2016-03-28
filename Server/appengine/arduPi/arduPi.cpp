@@ -21,6 +21,7 @@
 
 
 #include "arduPi.h"
+#include <bcm2835.h>
 #include <iostream>
 using namespace std;
 
@@ -1236,8 +1237,17 @@ void pinMode(int pin, Pinmode mode){
 }
 
 void analogWrite(int pin, int value) {
-    auto digitalVal = value > 0 ? HIGH : LOW;
-    digitalWrite(pin, digitalVal);
+    switch(pin) {
+        case 18:
+	    bcm2835_gpio_fsel(pin, BCM2835_GPIO_FSEL_ALT5);
+	    bcm2835_pwm_set_range(0,255);
+	    bcm2835_pwm_set_data(0, value);
+	    break;
+        default:
+            auto digitalVal = value > 0 ? HIGH : LOW;
+            digitalWrite(pin, digitalVal);
+	    break;
+    }
 }
 
 // Write a HIGH or a LOW value to a digital pin
