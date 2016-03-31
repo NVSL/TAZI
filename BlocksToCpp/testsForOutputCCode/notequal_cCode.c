@@ -3,7 +3,7 @@
 #include <stdlib.h>
 using namespace std;
 int main() {
-   double item = 64;
+   int item = 64;
   if(item != 54) {
     cout << ("NOTEQUAL") << endl;
   };

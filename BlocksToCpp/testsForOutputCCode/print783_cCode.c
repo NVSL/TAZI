@@ -3,7 +3,7 @@
 #include <stdlib.h>
 using namespace std;
 int main() {
-   double item = 783;
+   int item = 783;
   for(int i = 1; i<=(10); i+=(1)) {
     int item = item * 1;
    };
