@@ -9,7 +9,7 @@ class ProgramManager:
     def __init__( self, name=not_loaded, program=None ):
         self.name = name
 	self.program = program 
-	self.proc = None
+	self.proc = ProgramManager.process
 	self.status = not_running
 
     @ensureProgramExists("run")
@@ -22,13 +22,13 @@ class ProgramManager:
 	#print self.proc.__dict__
 
     @ensureProgramExists("kill")
-    @ensureProcessExists("kill")
+    #@ensureProcessExists("kill")
     def kill( self ):
         ProgramManager.process.kill()
 	self.status = not_running
 
     @ensureProgramExists("read from")
-    @ensureProcessExists("read from")
+    #@ensureProcessExists("read from")
     def read_stdout(self):
         return self.proc.stdout.read()
 
