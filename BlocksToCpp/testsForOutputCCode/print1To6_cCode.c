@@ -3,10 +3,10 @@
 #include <stdlib.h>
 using namespace std;
 int main() {
-   double item = 0;
+   int item = 0;
   ;
-  int i;
-  for(i = 0; i < 10; i++) {
+  int __i;
+  for(__i = 0; __i < 10; __i++) {
     int item = item + 1;
     cout << (item) << endl;
   }

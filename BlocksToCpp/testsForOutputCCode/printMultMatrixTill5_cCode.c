@@ -4,10 +4,10 @@
 using namespace std;
 int main() {
    for(int i = 1; i<=(5); i+=(1)) {
-    double item = 1;
+    int item = 1;
     ;
-    int i;
-    for(i = 0; i < 10; i++) {
+    int __i;
+    for(__i = 0; __i < 10; __i++) {
       cout << (        item * i) << endl;
     }
 ;
