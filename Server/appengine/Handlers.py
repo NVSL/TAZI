@@ -56,6 +56,9 @@ class NewProgramHandler(webapp2.RequestHandler):
 
 class ProgramHandler(webapp2.RequestHandler):
     def get(self, prog_name):
+        # We only want to save the program
+	# Return if we're trying to access anything else
+        if len(prog_name.split("/")) > 1: return
 	global program_status
 	program_status = ProgramManager( name=prog_name, program="./"+compiled_name )
         xml_file = PROGRAM_PATH + prog_name + ".xml"
