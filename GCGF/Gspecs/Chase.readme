@@ -1,0 +1,40 @@
+README for gadget: Chase
+
+Components:
+	brain:	Adafruit-Pro-Trinket-5V-battery-powered
+	battery:	battery-9V-vertical
+	drive:	dual-motor-kit-knobby
+	distanceSensor:	analog_distance_sensor
+	distanceSensor_2:	analog_distance_sensor
+	led:	LED-5mm-bright-red
+	led_2:	LED-5mm-bright-green
+	led_3:	LED-5mm-bright-blue
+	caster:	ball-caster-0.75in
+	button:	tactile-button-round-red
+	bump:	bump-switch-medium-right
+
+Connections:
+	(brain.D3_0_brain, drive.PWMA_2_drive)
+	(brain.D5_0_brain, drive.PWMB_2_drive)
+	(brain.D4_0_brain, drive.STBY_2_drive)
+	(brain.D6_0_brain, drive.AIN1_2_drive)
+	(brain.D8_0_brain, drive.AIN2_2_drive)
+	(brain.D9_0_brain, drive.BIN1_2_drive)
+	(brain.D10_0_brain, drive.BIN2_2_drive)
+	(brain.D11_0_brain, led.CONTROL_5_led)
+	(brain.D12_0_brain, led_2.CONTROL_6_led_2)
+	(brain.D13_0_brain, led_3.CONTROL_7_led_3)
+	(brain.A0_0_brain, button.SENSE_9_button)
+	(brain.A1_0_brain, bump.SENSE_10_bump)
+	(brain.A2_0_brain, distanceSensor.A_3_distanceSensor)
+	(brain.A3_0_brain, distanceSensor_2.A_4_distanceSensor_2)
+	[brain.+5V_0_brain, drive.VCC_2_drive, distanceSensor.VCC_3_distanceSensor, distanceSensor_2.VCC_4_distanceSensor_2]
+	[battery.POS_1_battery, brain.VBAT_0_brain, drive.VM_2_drive]
+	[brain.GND_0_brain, brain.GND1_0_brain, button.GND_9_button, brain.GND2_0_brain, led.GND_5_led, led_2.GND_6_led_2, bump.GND_10_bump, drive.GND_2_drive, led_3.GND_7_led_3, battery.NEG_1_battery, distanceSensor.GND_3_distanceSensor, distanceSensor_2.GND_4_distanceSensor_2, drive.GND2_2_drive]
+
+Power plan:
+	brain.+5V_out provides power to drive.VCC
+	brain.+5V_out provides power to distanceSensor.CONTROL
+	brain.+5V_out provides power to distanceSensor_2.CONTROL
+	battery.+9V_out provides power to brain.+VBat
+	battery.+9V_out provides power to drive.VM

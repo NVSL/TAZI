@@ -5,9 +5,12 @@ import xml.etree.ElementTree as ETree
 import functools
 from InoCommenter import *
 class Arg:
-    def __init__(self, value, name):
-        self.value = value
-	self.name = name
+    def __init__(self, etElem):
+	self.name = etElem.attrib["arg"]
+	digitalL = etElem.attrib["digitalliteral"] 
+	if digitalL != "None": self.value = digitalL
+	else: self.value = etElem.attrib["analogliteral"]
+	self.order = etElem.attrib["order"]
 class CObj:
     countMap = {}
     def __init__(self, objType):
@@ -16,7 +19,10 @@ class CObj:
         else: CObj.countMap[objType] += 1
 	self.name = str.lower(objType) + str(CObj.countMap[objType])
     def setArgs(self, args):
-        self.args = args
+        self.args = args[:]
+        if len(args) > 0 and args[0].order != "None":
+	    for i in range( len(args) ):
+	        self.args[i] = [ arg for arg in args if arg.order == str(i) ][0]
 class ClassGenerator:
     objects = []
     libraries = []
@@ -62,7 +68,7 @@ class ClassGenerator:
 		if argC is not 0:
 		    currStr = currStr + ", "
 	        currStr = currStr + str.upper(obj.name) + "_" + str( arg.name )
-		argC = argC + 1
+		argC += 1
 	    currStr = currStr + ");"
 	    retStrings.append(currStr)
         return retStrings
@@ -79,11 +85,7 @@ class ClassGenerator:
 		    self.loopBody.append( currentObj.name + ".poll();" )
 	        args = []
 		# Handle all the arguments for the object
-	        for arg in node.findall("arg"):
-	            currentArg = Arg( arg.attrib["digitalliteral"], arg.attrib["arg"] )
-		    if currentArg.value == "None": 
-		        currentArg.value = arg.attrib["analogliteral"] 
-		    args.append( currentArg )
+	        args = [ Arg(arg) for arg  in node.findall("arg") ]
 		# Handle all the extra required libraries
 		for lib in node.find("required_files").findall("file"):
 		    self.libraries.append( lib.attrib["name"] )

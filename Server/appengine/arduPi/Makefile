@@ -1,14 +1,18 @@
 CC = g++
-FLAGS = -lrt -lpthread
-ARDUPI = arduPi.cpp
-PROG = program
+FLAGS = -std=c++11 -lrt -lpthread -lbcm2835
+ARDUPI = arduPi.o
+PROG = blockly_executable
+OBJS = arduPi.o LED.o MomentaryButton.o Motor.o
 
 default: $(PROG)
-$(PROG):
-	$(CC) $(FLAGS) -o ../$(PROG) $(ARDUPI) $(PROG).cpp
+$(PROG): $(OBJS)
+	$(CC) -o ../$(PROG) $(OBJS) $(PROG).cpp $(FLAGS)
 clean:
 	rm -f $(PROG)
+	rm -f *.o
 run: $(PROG)
 	sudo ../$(PROG)
-%: %.cpp
-	$(CC) $(FLAGS) -o $@ $(ARDUPI) $<
+%: %.cpp $(ARDUPI)
+	$(CC) -o $@ $(ARDUPI) $< $(FLAGS)
+%.o: %.cpp
+	$(CC) -c -o $@ $< $(FLAGS)

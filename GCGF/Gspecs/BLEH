@@ -1,0 +1,1678 @@
+python ../../../EagleServer/make_gadget.py -k Chase -n Chase
+Making gadget
+Check: False
+init build
+finished init build
+I2CInterface: slave
+I2CInterface: slave
+I2CInterface: slave
+I2CInterface: slave
+I2CInterface: slave
+I2CInterface: slave
+No libdirectory for: Adafruit-8x8-1.2in-led-array-red
+I2CInterface: slave
+No libdirectory for: Adafruit-8x8-1.2in-led-array-white
+I2CInterface: slave
+No libdirectory for: Adafruit-8x8-1.2in-led-array-yellow
+I2CInterface: slave
+No libdirectory for: Adafruit-8x8-1.2in-led-array-green
+I2CInterface: slave
+No libdirectory for: Adafruit-8x8-1.2in-led-array-blue
+I2CInterface: slave
+I2CInterface: master
+I2CInterface: master
+I2CInterface: master
+I2CInterface: master
+I2CInterface: master
+I2CInterface: master
+I2CInterface: master
+I2CInterface: slave
+I2CInterface: slave
+Making EagleLibrary with (/home/michael/gtron_devel/Gadgets/Libraries/GadgetronPCBLibs/Eagle/Components.lbr, Components)
+Making EagleLibrary with (/home/michael/gtron_devel/Gadgets/Libraries/GadgetronPCBLibs/Eagle/BOBs.lbr, BOBs)
+Making EagleLibrary with (/home/michael/gtron_devel/Gadgets/Libraries/GadgetronPCBLibs/Eagle/supply1.lbr, supply1)
+Making EagleLibrary with (/home/michael/gtron_devel/Gadgets/Libraries/GadgetronPCBLibs/Eagle/NVSL-misc.lbr, NVSL-misc)
+Making EagleLibrary with (/home/michael/gtron_devel/Gadgets/Libraries/GadgetronPCBLibs/Eagle/frames.lbr, frames)
+Making EagleLibrary with (/home/michael/gtron_devel/Gadgets/Tools/Koala/Koala/PartLibrary/Eagle/KoalaBuild.lbr, KoalaBuild)
+Making EagleLibrary with (/home/michael/gtron_devel/Gadgets/Tools/Koala/Koala/PartLibrary/Eagle/KoalaDesign.lbr, KoalaDesign)
+Getting schematic:
+Component base: Adafruit-Pro-Trinket-5V
+Schematic name: eagle/Adafruit-Pro-Trinket-5V-battery-powered.device.auto.sch
+Full path: /home/michael/gtron_devel/Gadgets/Libraries/JetComponents/Adafruit-Pro-Trinket-5V/eagle/Adafruit-Pro-Trinket-5V-battery-powered.device.auto.sch
+Getting schematic:
+Component base: battery
+Schematic name: eagle/battery-9V-vertical.sch
+Full path: /home/michael/gtron_devel/Gadgets/Libraries/JetComponents/battery/eagle/battery-9V-vertical.sch
+Getting schematic:
+Component base: DualMotorKit
+Schematic name: eagle/DualMotorKitKnobby.sch
+Full path: /home/michael/gtron_devel/Gadgets/Libraries/JetComponents/DualMotorKit/eagle/DualMotorKitKnobby.sch
+Getting schematic:
+Component base: analog_distance_sensor
+Schematic name: eagle/analog_distance_sensor.device.auto.sch
+Full path: /home/michael/gtron_devel/Gadgets/Libraries/JetComponents/analog_distance_sensor/eagle/analog_distance_sensor.device.auto.sch
+Getting schematic:
+Component base: analog_distance_sensor
+Schematic name: eagle/analog_distance_sensor.device.auto.sch
+Full path: /home/michael/gtron_devel/Gadgets/Libraries/JetComponents/analog_distance_sensor/eagle/analog_distance_sensor.device.auto.sch
+Getting schematic:
+Component base: LED
+Schematic name: eagle/LED_5mm.sch
+Full path: /home/michael/gtron_devel/Gadgets/Libraries/JetComponents/LED/eagle/LED_5mm.sch
+Getting schematic:
+Component base: LED
+Schematic name: eagle/LED_5mm.sch
+Full path: /home/michael/gtron_devel/Gadgets/Libraries/JetComponents/LED/eagle/LED_5mm.sch
+Getting schematic:
+Component base: LED
+Schematic name: eagle/LED_5mm.sch
+Full path: /home/michael/gtron_devel/Gadgets/Libraries/JetComponents/LED/eagle/LED_5mm.sch
+Getting schematic:
+Component base: Caster
+Schematic name: eagle/ball-caster-0.75in.device.auto.sch
+Full path: /home/michael/gtron_devel/Gadgets/Libraries/JetComponents/Caster/eagle/ball-caster-0.75in.device.auto.sch
+Getting schematic:
+Component base: tactile-button
+Schematic name: eagle/round-tactile-button.sch
+Full path: /home/michael/gtron_devel/Gadgets/Libraries/JetComponents/tactile-button/eagle/round-tactile-button.sch
+Getting schematic:
+Component base: tactile-button
+Schematic name: eagle/medium-bump-switch-right.sch
+Full path: /home/michael/gtron_devel/Gadgets/Libraries/JetComponents/tactile-button/eagle/medium-bump-switch-right.sch
+Connecting PoweredSimpleInterface. Available: True True
+Making pins unavailable
+brain D3
+D3_d
+False
+D3_pwm
+False
+Making pins unavailable
+drive PWMA
+PWMA
+False
+CONTROLLER LITERAL_MAP START
+{'D14': <Component.Literal object at 0x2b6836f37750>, 'D15': <Component.Literal object at 0x2b6836f377d0>, 'D16': <Component.Literal object at 0x2b6836f37850>, 'D17': <Component.Literal object at 0x2b6836f378d0>, 'D10': <Component.Literal object at 0x2b6836f37950>, 'D11': <Component.Literal object at 0x2b6836f379d0>, 'D12': <Component.Literal object at 0x2b6836f37a50>, 'D13': <Component.Literal object at 0x2b6836f37ad0>, 'D18': <Component.Literal object at 0x2b6836f37b50>, 'D19': <Component.Literal object at 0x2b6836f37bd0>, 'A1': <Component.Literal object at 0x2b6836f37c50>, 'A0': <Component.Literal object at 0x2b6836f37cd0>, 'A3': <Component.Literal object at 0x2b6836f37d50>, 'A2': <Component.Literal object at 0x2b6836f37dd0>, 'A5': <Component.Literal object at 0x2b6836f37e50>, 'A4': <Component.Literal object at 0x2b6836f37ed0>, 'A7': <Component.Literal object at 0x2b6836f37f50>, 'A6': <Component.Literal object at 0x2b6836f37fd0>, 'TXD1': <Component.Literal object at 0x2b6836f3f090>, 'RXD1': <Component.Literal object at 0x2b6836f3f110>, 'D8': <Component.Literal object at 0x2b6836f3f190>, 'D9': <Component.Literal object at 0x2b6836f3f210>, 'D6': <Component.Literal object at 0x2b6836f3f290>, 'D7': <Component.Literal object at 0x2b6836f3f310>, 'D4': <Component.Literal object at 0x2b6836f3f390>, 'D5': <Component.Literal object at 0x2b6836f3f410>, 'D2': <Component.Literal object at 0x2b6836f3f490>, 'D3': <Component.Literal object at 0x2b6836f3f510>}
+CONTROLLER LITERAL_MAP END
+Connecting PoweredSimpleInterface. Available: True True
+Making pins unavailable
+brain D5
+D5_d
+False
+D5_pwm
+False
+Making pins unavailable
+drive PWMB
+PWMB
+False
+CONTROLLER LITERAL_MAP START
+{'D14': <Component.Literal object at 0x2b6836f37750>, 'D15': <Component.Literal object at 0x2b6836f377d0>, 'D16': <Component.Literal object at 0x2b6836f37850>, 'D17': <Component.Literal object at 0x2b6836f378d0>, 'D10': <Component.Literal object at 0x2b6836f37950>, 'D11': <Component.Literal object at 0x2b6836f379d0>, 'D12': <Component.Literal object at 0x2b6836f37a50>, 'D13': <Component.Literal object at 0x2b6836f37ad0>, 'D18': <Component.Literal object at 0x2b6836f37b50>, 'D19': <Component.Literal object at 0x2b6836f37bd0>, 'A1': <Component.Literal object at 0x2b6836f37c50>, 'A0': <Component.Literal object at 0x2b6836f37cd0>, 'A3': <Component.Literal object at 0x2b6836f37d50>, 'A2': <Component.Literal object at 0x2b6836f37dd0>, 'A5': <Component.Literal object at 0x2b6836f37e50>, 'A4': <Component.Literal object at 0x2b6836f37ed0>, 'A7': <Component.Literal object at 0x2b6836f37f50>, 'A6': <Component.Literal object at 0x2b6836f37fd0>, 'TXD1': <Component.Literal object at 0x2b6836f3f090>, 'RXD1': <Component.Literal object at 0x2b6836f3f110>, 'D8': <Component.Literal object at 0x2b6836f3f190>, 'D9': <Component.Literal object at 0x2b6836f3f210>, 'D6': <Component.Literal object at 0x2b6836f3f290>, 'D7': <Component.Literal object at 0x2b6836f3f310>, 'D4': <Component.Literal object at 0x2b6836f3f390>, 'D5': <Component.Literal object at 0x2b6836f3f410>, 'D2': <Component.Literal object at 0x2b6836f3f490>, 'D3': <Component.Literal object at 0x2b6836f3f510>}
+CONTROLLER LITERAL_MAP END
+Connecting PoweredSimpleInterface. Available: True True
+Making pins unavailable
+brain D4
+D4_d
+False
+Making pins unavailable
+drive STBY
+STBY
+False
+CONTROLLER LITERAL_MAP START
+{'D14': <Component.Literal object at 0x2b6836f37750>, 'D15': <Component.Literal object at 0x2b6836f377d0>, 'D16': <Component.Literal object at 0x2b6836f37850>, 'D17': <Component.Literal object at 0x2b6836f378d0>, 'D10': <Component.Literal object at 0x2b6836f37950>, 'D11': <Component.Literal object at 0x2b6836f379d0>, 'D12': <Component.Literal object at 0x2b6836f37a50>, 'D13': <Component.Literal object at 0x2b6836f37ad0>, 'D18': <Component.Literal object at 0x2b6836f37b50>, 'D19': <Component.Literal object at 0x2b6836f37bd0>, 'A1': <Component.Literal object at 0x2b6836f37c50>, 'A0': <Component.Literal object at 0x2b6836f37cd0>, 'A3': <Component.Literal object at 0x2b6836f37d50>, 'A2': <Component.Literal object at 0x2b6836f37dd0>, 'A5': <Component.Literal object at 0x2b6836f37e50>, 'A4': <Component.Literal object at 0x2b6836f37ed0>, 'A7': <Component.Literal object at 0x2b6836f37f50>, 'A6': <Component.Literal object at 0x2b6836f37fd0>, 'TXD1': <Component.Literal object at 0x2b6836f3f090>, 'RXD1': <Component.Literal object at 0x2b6836f3f110>, 'D8': <Component.Literal object at 0x2b6836f3f190>, 'D9': <Component.Literal object at 0x2b6836f3f210>, 'D6': <Component.Literal object at 0x2b6836f3f290>, 'D7': <Component.Literal object at 0x2b6836f3f310>, 'D4': <Component.Literal object at 0x2b6836f3f390>, 'D5': <Component.Literal object at 0x2b6836f3f410>, 'D2': <Component.Literal object at 0x2b6836f3f490>, 'D3': <Component.Literal object at 0x2b6836f3f510>}
+CONTROLLER LITERAL_MAP END
+Connecting PoweredSimpleInterface. Available: True True
+Making pins unavailable
+brain D6
+D6_d
+False
+D6_pwm
+False
+Making pins unavailable
+drive AIN1
+AIN1
+False
+CONTROLLER LITERAL_MAP START
+{'D14': <Component.Literal object at 0x2b6836f37750>, 'D15': <Component.Literal object at 0x2b6836f377d0>, 'D16': <Component.Literal object at 0x2b6836f37850>, 'D17': <Component.Literal object at 0x2b6836f378d0>, 'D10': <Component.Literal object at 0x2b6836f37950>, 'D11': <Component.Literal object at 0x2b6836f379d0>, 'D12': <Component.Literal object at 0x2b6836f37a50>, 'D13': <Component.Literal object at 0x2b6836f37ad0>, 'D18': <Component.Literal object at 0x2b6836f37b50>, 'D19': <Component.Literal object at 0x2b6836f37bd0>, 'A1': <Component.Literal object at 0x2b6836f37c50>, 'A0': <Component.Literal object at 0x2b6836f37cd0>, 'A3': <Component.Literal object at 0x2b6836f37d50>, 'A2': <Component.Literal object at 0x2b6836f37dd0>, 'A5': <Component.Literal object at 0x2b6836f37e50>, 'A4': <Component.Literal object at 0x2b6836f37ed0>, 'A7': <Component.Literal object at 0x2b6836f37f50>, 'A6': <Component.Literal object at 0x2b6836f37fd0>, 'TXD1': <Component.Literal object at 0x2b6836f3f090>, 'RXD1': <Component.Literal object at 0x2b6836f3f110>, 'D8': <Component.Literal object at 0x2b6836f3f190>, 'D9': <Component.Literal object at 0x2b6836f3f210>, 'D6': <Component.Literal object at 0x2b6836f3f290>, 'D7': <Component.Literal object at 0x2b6836f3f310>, 'D4': <Component.Literal object at 0x2b6836f3f390>, 'D5': <Component.Literal object at 0x2b6836f3f410>, 'D2': <Component.Literal object at 0x2b6836f3f490>, 'D3': <Component.Literal object at 0x2b6836f3f510>}
+CONTROLLER LITERAL_MAP END
+Connecting PoweredSimpleInterface. Available: True True
+Making pins unavailable
+brain D8
+D8_d
+False
+Making pins unavailable
+drive AIN2
+AIN2
+False
+CONTROLLER LITERAL_MAP START
+{'D14': <Component.Literal object at 0x2b6836f37750>, 'D15': <Component.Literal object at 0x2b6836f377d0>, 'D16': <Component.Literal object at 0x2b6836f37850>, 'D17': <Component.Literal object at 0x2b6836f378d0>, 'D10': <Component.Literal object at 0x2b6836f37950>, 'D11': <Component.Literal object at 0x2b6836f379d0>, 'D12': <Component.Literal object at 0x2b6836f37a50>, 'D13': <Component.Literal object at 0x2b6836f37ad0>, 'D18': <Component.Literal object at 0x2b6836f37b50>, 'D19': <Component.Literal object at 0x2b6836f37bd0>, 'A1': <Component.Literal object at 0x2b6836f37c50>, 'A0': <Component.Literal object at 0x2b6836f37cd0>, 'A3': <Component.Literal object at 0x2b6836f37d50>, 'A2': <Component.Literal object at 0x2b6836f37dd0>, 'A5': <Component.Literal object at 0x2b6836f37e50>, 'A4': <Component.Literal object at 0x2b6836f37ed0>, 'A7': <Component.Literal object at 0x2b6836f37f50>, 'A6': <Component.Literal object at 0x2b6836f37fd0>, 'TXD1': <Component.Literal object at 0x2b6836f3f090>, 'RXD1': <Component.Literal object at 0x2b6836f3f110>, 'D8': <Component.Literal object at 0x2b6836f3f190>, 'D9': <Component.Literal object at 0x2b6836f3f210>, 'D6': <Component.Literal object at 0x2b6836f3f290>, 'D7': <Component.Literal object at 0x2b6836f3f310>, 'D4': <Component.Literal object at 0x2b6836f3f390>, 'D5': <Component.Literal object at 0x2b6836f3f410>, 'D2': <Component.Literal object at 0x2b6836f3f490>, 'D3': <Component.Literal object at 0x2b6836f3f510>}
+CONTROLLER LITERAL_MAP END
+Connecting PoweredSimpleInterface. Available: True True
+Making pins unavailable
+brain D9
+D9_d
+False
+D9_pwm
+False
+Making pins unavailable
+drive BIN1
+BIN1
+False
+CONTROLLER LITERAL_MAP START
+{'D14': <Component.Literal object at 0x2b6836f37750>, 'D15': <Component.Literal object at 0x2b6836f377d0>, 'D16': <Component.Literal object at 0x2b6836f37850>, 'D17': <Component.Literal object at 0x2b6836f378d0>, 'D10': <Component.Literal object at 0x2b6836f37950>, 'D11': <Component.Literal object at 0x2b6836f379d0>, 'D12': <Component.Literal object at 0x2b6836f37a50>, 'D13': <Component.Literal object at 0x2b6836f37ad0>, 'D18': <Component.Literal object at 0x2b6836f37b50>, 'D19': <Component.Literal object at 0x2b6836f37bd0>, 'A1': <Component.Literal object at 0x2b6836f37c50>, 'A0': <Component.Literal object at 0x2b6836f37cd0>, 'A3': <Component.Literal object at 0x2b6836f37d50>, 'A2': <Component.Literal object at 0x2b6836f37dd0>, 'A5': <Component.Literal object at 0x2b6836f37e50>, 'A4': <Component.Literal object at 0x2b6836f37ed0>, 'A7': <Component.Literal object at 0x2b6836f37f50>, 'A6': <Component.Literal object at 0x2b6836f37fd0>, 'TXD1': <Component.Literal object at 0x2b6836f3f090>, 'RXD1': <Component.Literal object at 0x2b6836f3f110>, 'D8': <Component.Literal object at 0x2b6836f3f190>, 'D9': <Component.Literal object at 0x2b6836f3f210>, 'D6': <Component.Literal object at 0x2b6836f3f290>, 'D7': <Component.Literal object at 0x2b6836f3f310>, 'D4': <Component.Literal object at 0x2b6836f3f390>, 'D5': <Component.Literal object at 0x2b6836f3f410>, 'D2': <Component.Literal object at 0x2b6836f3f490>, 'D3': <Component.Literal object at 0x2b6836f3f510>}
+CONTROLLER LITERAL_MAP END
+Connecting PoweredSimpleInterface. Available: True True
+Making pins unavailable
+brain D10
+D10_d
+False
+D10_pwm
+False
+Making pins unavailable
+drive BIN2
+BIN2
+False
+CONTROLLER LITERAL_MAP START
+{'D14': <Component.Literal object at 0x2b6836f37750>, 'D15': <Component.Literal object at 0x2b6836f377d0>, 'D16': <Component.Literal object at 0x2b6836f37850>, 'D17': <Component.Literal object at 0x2b6836f378d0>, 'D10': <Component.Literal object at 0x2b6836f37950>, 'D11': <Component.Literal object at 0x2b6836f379d0>, 'D12': <Component.Literal object at 0x2b6836f37a50>, 'D13': <Component.Literal object at 0x2b6836f37ad0>, 'D18': <Component.Literal object at 0x2b6836f37b50>, 'D19': <Component.Literal object at 0x2b6836f37bd0>, 'A1': <Component.Literal object at 0x2b6836f37c50>, 'A0': <Component.Literal object at 0x2b6836f37cd0>, 'A3': <Component.Literal object at 0x2b6836f37d50>, 'A2': <Component.Literal object at 0x2b6836f37dd0>, 'A5': <Component.Literal object at 0x2b6836f37e50>, 'A4': <Component.Literal object at 0x2b6836f37ed0>, 'A7': <Component.Literal object at 0x2b6836f37f50>, 'A6': <Component.Literal object at 0x2b6836f37fd0>, 'TXD1': <Component.Literal object at 0x2b6836f3f090>, 'RXD1': <Component.Literal object at 0x2b6836f3f110>, 'D8': <Component.Literal object at 0x2b6836f3f190>, 'D9': <Component.Literal object at 0x2b6836f3f210>, 'D6': <Component.Literal object at 0x2b6836f3f290>, 'D7': <Component.Literal object at 0x2b6836f3f310>, 'D4': <Component.Literal object at 0x2b6836f3f390>, 'D5': <Component.Literal object at 0x2b6836f3f410>, 'D2': <Component.Literal object at 0x2b6836f3f490>, 'D3': <Component.Literal object at 0x2b6836f3f510>}
+CONTROLLER LITERAL_MAP END
+Connecting PoweredSimpleInterface. Available: True True
+Making pins unavailable
+brain D11
+D11_d
+False
+SPI_bus
+False
+Making pins unavailable
+led CONTROL
+CONTROL_d
+False
+CONTROLLER LITERAL_MAP START
+{'D14': <Component.Literal object at 0x2b6836f37750>, 'D15': <Component.Literal object at 0x2b6836f377d0>, 'D16': <Component.Literal object at 0x2b6836f37850>, 'D17': <Component.Literal object at 0x2b6836f378d0>, 'D10': <Component.Literal object at 0x2b6836f37950>, 'D11': <Component.Literal object at 0x2b6836f379d0>, 'D12': <Component.Literal object at 0x2b6836f37a50>, 'D13': <Component.Literal object at 0x2b6836f37ad0>, 'D18': <Component.Literal object at 0x2b6836f37b50>, 'D19': <Component.Literal object at 0x2b6836f37bd0>, 'A1': <Component.Literal object at 0x2b6836f37c50>, 'A0': <Component.Literal object at 0x2b6836f37cd0>, 'A3': <Component.Literal object at 0x2b6836f37d50>, 'A2': <Component.Literal object at 0x2b6836f37dd0>, 'A5': <Component.Literal object at 0x2b6836f37e50>, 'A4': <Component.Literal object at 0x2b6836f37ed0>, 'A7': <Component.Literal object at 0x2b6836f37f50>, 'A6': <Component.Literal object at 0x2b6836f37fd0>, 'TXD1': <Component.Literal object at 0x2b6836f3f090>, 'RXD1': <Component.Literal object at 0x2b6836f3f110>, 'D8': <Component.Literal object at 0x2b6836f3f190>, 'D9': <Component.Literal object at 0x2b6836f3f210>, 'D6': <Component.Literal object at 0x2b6836f3f290>, 'D7': <Component.Literal object at 0x2b6836f3f310>, 'D4': <Component.Literal object at 0x2b6836f3f390>, 'D5': <Component.Literal object at 0x2b6836f3f410>, 'D2': <Component.Literal object at 0x2b6836f3f490>, 'D3': <Component.Literal object at 0x2b6836f3f510>}
+CONTROLLER LITERAL_MAP END
+Connecting PoweredSimpleInterface. Available: True True
+Making pins unavailable
+brain D12
+D12_d
+False
+SPI_bus
+False
+Making pins unavailable
+led_2 CONTROL
+CONTROL_d
+False
+CONTROLLER LITERAL_MAP START
+{'D14': <Component.Literal object at 0x2b6836f37750>, 'D15': <Component.Literal object at 0x2b6836f377d0>, 'D16': <Component.Literal object at 0x2b6836f37850>, 'D17': <Component.Literal object at 0x2b6836f378d0>, 'D10': <Component.Literal object at 0x2b6836f37950>, 'D11': <Component.Literal object at 0x2b6836f379d0>, 'D12': <Component.Literal object at 0x2b6836f37a50>, 'D13': <Component.Literal object at 0x2b6836f37ad0>, 'D18': <Component.Literal object at 0x2b6836f37b50>, 'D19': <Component.Literal object at 0x2b6836f37bd0>, 'A1': <Component.Literal object at 0x2b6836f37c50>, 'A0': <Component.Literal object at 0x2b6836f37cd0>, 'A3': <Component.Literal object at 0x2b6836f37d50>, 'A2': <Component.Literal object at 0x2b6836f37dd0>, 'A5': <Component.Literal object at 0x2b6836f37e50>, 'A4': <Component.Literal object at 0x2b6836f37ed0>, 'A7': <Component.Literal object at 0x2b6836f37f50>, 'A6': <Component.Literal object at 0x2b6836f37fd0>, 'TXD1': <Component.Literal object at 0x2b6836f3f090>, 'RXD1': <Component.Literal object at 0x2b6836f3f110>, 'D8': <Component.Literal object at 0x2b6836f3f190>, 'D9': <Component.Literal object at 0x2b6836f3f210>, 'D6': <Component.Literal object at 0x2b6836f3f290>, 'D7': <Component.Literal object at 0x2b6836f3f310>, 'D4': <Component.Literal object at 0x2b6836f3f390>, 'D5': <Component.Literal object at 0x2b6836f3f410>, 'D2': <Component.Literal object at 0x2b6836f3f490>, 'D3': <Component.Literal object at 0x2b6836f3f510>}
+CONTROLLER LITERAL_MAP END
+Connecting PoweredSimpleInterface. Available: True True
+Making pins unavailable
+brain D13
+D13_d
+False
+SPI_bus
+False
+Making pins unavailable
+led_3 CONTROL
+CONTROL_d
+False
+CONTROLLER LITERAL_MAP START
+{'D14': <Component.Literal object at 0x2b6836f37750>, 'D15': <Component.Literal object at 0x2b6836f377d0>, 'D16': <Component.Literal object at 0x2b6836f37850>, 'D17': <Component.Literal object at 0x2b6836f378d0>, 'D10': <Component.Literal object at 0x2b6836f37950>, 'D11': <Component.Literal object at 0x2b6836f379d0>, 'D12': <Component.Literal object at 0x2b6836f37a50>, 'D13': <Component.Literal object at 0x2b6836f37ad0>, 'D18': <Component.Literal object at 0x2b6836f37b50>, 'D19': <Component.Literal object at 0x2b6836f37bd0>, 'A1': <Component.Literal object at 0x2b6836f37c50>, 'A0': <Component.Literal object at 0x2b6836f37cd0>, 'A3': <Component.Literal object at 0x2b6836f37d50>, 'A2': <Component.Literal object at 0x2b6836f37dd0>, 'A5': <Component.Literal object at 0x2b6836f37e50>, 'A4': <Component.Literal object at 0x2b6836f37ed0>, 'A7': <Component.Literal object at 0x2b6836f37f50>, 'A6': <Component.Literal object at 0x2b6836f37fd0>, 'TXD1': <Component.Literal object at 0x2b6836f3f090>, 'RXD1': <Component.Literal object at 0x2b6836f3f110>, 'D8': <Component.Literal object at 0x2b6836f3f190>, 'D9': <Component.Literal object at 0x2b6836f3f210>, 'D6': <Component.Literal object at 0x2b6836f3f290>, 'D7': <Component.Literal object at 0x2b6836f3f310>, 'D4': <Component.Literal object at 0x2b6836f3f390>, 'D5': <Component.Literal object at 0x2b6836f3f410>, 'D2': <Component.Literal object at 0x2b6836f3f490>, 'D3': <Component.Literal object at 0x2b6836f3f510>}
+CONTROLLER LITERAL_MAP END
+Connecting PoweredSimpleInterface. Available: True True
+Making pins unavailable
+brain A0
+D14_d
+False
+A0_a
+False
+Making pins unavailable
+button SENSE
+SENSE_d
+False
+CONTROLLER LITERAL_MAP START
+{'D14': <Component.Literal object at 0x2b6836f37750>, 'D15': <Component.Literal object at 0x2b6836f377d0>, 'D16': <Component.Literal object at 0x2b6836f37850>, 'D17': <Component.Literal object at 0x2b6836f378d0>, 'D10': <Component.Literal object at 0x2b6836f37950>, 'D11': <Component.Literal object at 0x2b6836f379d0>, 'D12': <Component.Literal object at 0x2b6836f37a50>, 'D13': <Component.Literal object at 0x2b6836f37ad0>, 'D18': <Component.Literal object at 0x2b6836f37b50>, 'D19': <Component.Literal object at 0x2b6836f37bd0>, 'A1': <Component.Literal object at 0x2b6836f37c50>, 'A0': <Component.Literal object at 0x2b6836f37cd0>, 'A3': <Component.Literal object at 0x2b6836f37d50>, 'A2': <Component.Literal object at 0x2b6836f37dd0>, 'A5': <Component.Literal object at 0x2b6836f37e50>, 'A4': <Component.Literal object at 0x2b6836f37ed0>, 'A7': <Component.Literal object at 0x2b6836f37f50>, 'A6': <Component.Literal object at 0x2b6836f37fd0>, 'TXD1': <Component.Literal object at 0x2b6836f3f090>, 'RXD1': <Component.Literal object at 0x2b6836f3f110>, 'D8': <Component.Literal object at 0x2b6836f3f190>, 'D9': <Component.Literal object at 0x2b6836f3f210>, 'D6': <Component.Literal object at 0x2b6836f3f290>, 'D7': <Component.Literal object at 0x2b6836f3f310>, 'D4': <Component.Literal object at 0x2b6836f3f390>, 'D5': <Component.Literal object at 0x2b6836f3f410>, 'D2': <Component.Literal object at 0x2b6836f3f490>, 'D3': <Component.Literal object at 0x2b6836f3f510>}
+CONTROLLER LITERAL_MAP END
+Connecting PoweredSimpleInterface. Available: True True
+Making pins unavailable
+brain A1
+D15_d
+False
+A1_a
+False
+Making pins unavailable
+bump SENSE
+SENSE_d
+False
+CONTROLLER LITERAL_MAP START
+{'D14': <Component.Literal object at 0x2b6836f37750>, 'D15': <Component.Literal object at 0x2b6836f377d0>, 'D16': <Component.Literal object at 0x2b6836f37850>, 'D17': <Component.Literal object at 0x2b6836f378d0>, 'D10': <Component.Literal object at 0x2b6836f37950>, 'D11': <Component.Literal object at 0x2b6836f379d0>, 'D12': <Component.Literal object at 0x2b6836f37a50>, 'D13': <Component.Literal object at 0x2b6836f37ad0>, 'D18': <Component.Literal object at 0x2b6836f37b50>, 'D19': <Component.Literal object at 0x2b6836f37bd0>, 'A1': <Component.Literal object at 0x2b6836f37c50>, 'A0': <Component.Literal object at 0x2b6836f37cd0>, 'A3': <Component.Literal object at 0x2b6836f37d50>, 'A2': <Component.Literal object at 0x2b6836f37dd0>, 'A5': <Component.Literal object at 0x2b6836f37e50>, 'A4': <Component.Literal object at 0x2b6836f37ed0>, 'A7': <Component.Literal object at 0x2b6836f37f50>, 'A6': <Component.Literal object at 0x2b6836f37fd0>, 'TXD1': <Component.Literal object at 0x2b6836f3f090>, 'RXD1': <Component.Literal object at 0x2b6836f3f110>, 'D8': <Component.Literal object at 0x2b6836f3f190>, 'D9': <Component.Literal object at 0x2b6836f3f210>, 'D6': <Component.Literal object at 0x2b6836f3f290>, 'D7': <Component.Literal object at 0x2b6836f3f310>, 'D4': <Component.Literal object at 0x2b6836f3f390>, 'D5': <Component.Literal object at 0x2b6836f3f410>, 'D2': <Component.Literal object at 0x2b6836f3f490>, 'D3': <Component.Literal object at 0x2b6836f3f510>}
+CONTROLLER LITERAL_MAP END
+Connecting SimpleWireInterface. Available: True True
+Making pins unavailable
+brain A2
+D16_d
+False
+A2_a
+False
+Making pins unavailable
+distanceSensor A
+A
+False
+CONTROLLER LITERAL_MAP START
+{'D14': <Component.Literal object at 0x2b6836f37750>, 'D15': <Component.Literal object at 0x2b6836f377d0>, 'D16': <Component.Literal object at 0x2b6836f37850>, 'D17': <Component.Literal object at 0x2b6836f378d0>, 'D10': <Component.Literal object at 0x2b6836f37950>, 'D11': <Component.Literal object at 0x2b6836f379d0>, 'D12': <Component.Literal object at 0x2b6836f37a50>, 'D13': <Component.Literal object at 0x2b6836f37ad0>, 'D18': <Component.Literal object at 0x2b6836f37b50>, 'D19': <Component.Literal object at 0x2b6836f37bd0>, 'A1': <Component.Literal object at 0x2b6836f37c50>, 'A0': <Component.Literal object at 0x2b6836f37cd0>, 'A3': <Component.Literal object at 0x2b6836f37d50>, 'A2': <Component.Literal object at 0x2b6836f37dd0>, 'A5': <Component.Literal object at 0x2b6836f37e50>, 'A4': <Component.Literal object at 0x2b6836f37ed0>, 'A7': <Component.Literal object at 0x2b6836f37f50>, 'A6': <Component.Literal object at 0x2b6836f37fd0>, 'TXD1': <Component.Literal object at 0x2b6836f3f090>, 'RXD1': <Component.Literal object at 0x2b6836f3f110>, 'D8': <Component.Literal object at 0x2b6836f3f190>, 'D9': <Component.Literal object at 0x2b6836f3f210>, 'D6': <Component.Literal object at 0x2b6836f3f290>, 'D7': <Component.Literal object at 0x2b6836f3f310>, 'D4': <Component.Literal object at 0x2b6836f3f390>, 'D5': <Component.Literal object at 0x2b6836f3f410>, 'D2': <Component.Literal object at 0x2b6836f3f490>, 'D3': <Component.Literal object at 0x2b6836f3f510>}
+CONTROLLER LITERAL_MAP END
+Connecting SimpleWireInterface. Available: True True
+Making pins unavailable
+brain A3
+D17_d
+False
+A3_a
+False
+Making pins unavailable
+distanceSensor_2 A
+A
+False
+CONTROLLER LITERAL_MAP START
+{'D14': <Component.Literal object at 0x2b6836f37750>, 'D15': <Component.Literal object at 0x2b6836f377d0>, 'D16': <Component.Literal object at 0x2b6836f37850>, 'D17': <Component.Literal object at 0x2b6836f378d0>, 'D10': <Component.Literal object at 0x2b6836f37950>, 'D11': <Component.Literal object at 0x2b6836f379d0>, 'D12': <Component.Literal object at 0x2b6836f37a50>, 'D13': <Component.Literal object at 0x2b6836f37ad0>, 'D18': <Component.Literal object at 0x2b6836f37b50>, 'D19': <Component.Literal object at 0x2b6836f37bd0>, 'A1': <Component.Literal object at 0x2b6836f37c50>, 'A0': <Component.Literal object at 0x2b6836f37cd0>, 'A3': <Component.Literal object at 0x2b6836f37d50>, 'A2': <Component.Literal object at 0x2b6836f37dd0>, 'A5': <Component.Literal object at 0x2b6836f37e50>, 'A4': <Component.Literal object at 0x2b6836f37ed0>, 'A7': <Component.Literal object at 0x2b6836f37f50>, 'A6': <Component.Literal object at 0x2b6836f37fd0>, 'TXD1': <Component.Literal object at 0x2b6836f3f090>, 'RXD1': <Component.Literal object at 0x2b6836f3f110>, 'D8': <Component.Literal object at 0x2b6836f3f190>, 'D9': <Component.Literal object at 0x2b6836f3f210>, 'D6': <Component.Literal object at 0x2b6836f3f290>, 'D7': <Component.Literal object at 0x2b6836f3f310>, 'D4': <Component.Literal object at 0x2b6836f3f390>, 'D5': <Component.Literal object at 0x2b6836f3f410>, 'D2': <Component.Literal object at 0x2b6836f3f490>, 'D3': <Component.Literal object at 0x2b6836f3f510>}
+CONTROLLER LITERAL_MAP END
+Parts: [<Element part at 0x2b6836f5b4d0>]
+['U1']
+Uniquify net names for: brain
+Connection:  (brain.D3, drive.PWMA)
+D3 is owned by me: True
+PWMA is owned by me: False
+New connection:  (brain.D3_0_brain, drive.PWMA)
+
+Connection:  (brain.D5, drive.PWMB)
+D5 is owned by me: True
+PWMB is owned by me: False
+New connection:  (brain.D5_0_brain, drive.PWMB)
+
+Connection:  (brain.D4, drive.STBY)
+D4 is owned by me: True
+STBY is owned by me: False
+New connection:  (brain.D4_0_brain, drive.STBY)
+
+Connection:  (brain.D6, drive.AIN1)
+D6 is owned by me: True
+AIN1 is owned by me: False
+New connection:  (brain.D6_0_brain, drive.AIN1)
+
+Connection:  (brain.D8, drive.AIN2)
+D8 is owned by me: True
+AIN2 is owned by me: False
+New connection:  (brain.D8_0_brain, drive.AIN2)
+
+Connection:  (brain.D9, drive.BIN1)
+D9 is owned by me: True
+BIN1 is owned by me: False
+New connection:  (brain.D9_0_brain, drive.BIN1)
+
+Connection:  (brain.D10, drive.BIN2)
+D10 is owned by me: True
+BIN2 is owned by me: False
+New connection:  (brain.D10_0_brain, drive.BIN2)
+
+Connection:  (brain.D11, led.CONTROL)
+D11 is owned by me: True
+CONTROL is owned by me: False
+New connection:  (brain.D11_0_brain, led.CONTROL)
+
+Connection:  (brain.D12, led_2.CONTROL)
+D12 is owned by me: True
+CONTROL is owned by me: False
+New connection:  (brain.D12_0_brain, led_2.CONTROL)
+
+Connection:  (brain.D13, led_3.CONTROL)
+D13 is owned by me: True
+CONTROL is owned by me: False
+New connection:  (brain.D13_0_brain, led_3.CONTROL)
+
+Connection:  (brain.A0, button.SENSE)
+A0 is owned by me: True
+SENSE is owned by me: False
+New connection:  (brain.A0_0_brain, button.SENSE)
+
+Connection:  (brain.A1, bump.SENSE)
+A1 is owned by me: True
+SENSE is owned by me: False
+New connection:  (brain.A1_0_brain, bump.SENSE)
+
+Connection:  (brain.A2, distanceSensor.A)
+A2 is owned by me: True
+A is owned by me: False
+New connection:  (brain.A2_0_brain, distanceSensor.A)
+
+Connection:  (brain.A3, distanceSensor_2.A)
+A3 is owned by me: True
+A is owned by me: False
+New connection:  (brain.A3_0_brain, distanceSensor_2.A)
+
+Connection:  [brain.+5V, drive.VCC, distanceSensor.VCC, distanceSensor_2.VCC]
++5V is owned by me: True
+VCC is owned by me: False
+VCC is owned by me: False
+VCC is owned by me: False
+New connection:  [brain.+5V_0_brain, drive.VCC, distanceSensor.VCC, distanceSensor_2.VCC]
+
+Connection:  [battery.POS, brain.VBAT, drive.VM]
+POS is owned by me: False
+VBAT is owned by me: True
+VM is owned by me: False
+New connection:  [battery.POS, brain.VBAT_0_brain, drive.VM]
+
+Connection:  [brain.GND, brain.GND1, button.GND, brain.GND2, led.GND, led_2.GND, bump.GND, drive.GND, led_3.GND, battery.NEG, distanceSensor.GND, distanceSensor_2.GND, drive.GND2]
+GND is owned by me: True
+GND1 is owned by me: True
+GND is owned by me: False
+GND2 is owned by me: True
+GND is owned by me: False
+GND is owned by me: False
+GND is owned by me: False
+GND is owned by me: False
+GND is owned by me: False
+NEG is owned by me: False
+GND is owned by me: False
+GND is owned by me: False
+GND2 is owned by me: False
+New connection:  [brain.GND_0_brain, brain.GND1_0_brain, button.GND, brain.GND2_0_brain, led.GND, led_2.GND, bump.GND, drive.GND, led_3.GND, battery.NEG, distanceSensor.GND, distanceSensor_2.GND, drive.GND2]
+
+All nets: ['+5V', 'A0', 'A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'AREF', 'D10', 'D11', 'D12', 'D13', 'D3', 'D4', 'D5', 'D6', 'D8', 'D9', 'DTR/RTS', 'GND', 'GND1', 'GND2', 'RESET', 'RXD', 'RXD1', 'TXD', 'TXD1', 'VBAT', 'VBUS', 'VBUS1']
+Renaming: +5V to +5V_0_brain
+Renaming: A0 to A0_0_brain
+Renaming: A1 to A1_0_brain
+Renaming: A2 to A2_0_brain
+Renaming: A3 to A3_0_brain
+Renaming: A4 to A4_0_brain
+Renaming: A5 to A5_0_brain
+Renaming: A6 to A6_0_brain
+Renaming: A7 to A7_0_brain
+Renaming: AREF to AREF_0_brain
+Renaming: D10 to D10_0_brain
+Renaming: D11 to D11_0_brain
+Renaming: D12 to D12_0_brain
+Renaming: D13 to D13_0_brain
+Renaming: D3 to D3_0_brain
+Renaming: D4 to D4_0_brain
+Renaming: D5 to D5_0_brain
+Renaming: D6 to D6_0_brain
+Renaming: D8 to D8_0_brain
+Renaming: D9 to D9_0_brain
+Renaming: DTR/RTS to DTR/RTS_0_brain
+Renaming: GND to GND_0_brain
+Renaming: GND1 to GND1_0_brain
+Renaming: GND2 to GND2_0_brain
+Renaming: RESET to RESET_0_brain
+Renaming: RXD to RXD_0_brain
+Renaming: RXD1 to RXD1_0_brain
+Renaming: TXD to TXD_0_brain
+Renaming: TXD1 to TXD1_0_brain
+Renaming: VBAT to VBAT_0_brain
+Renaming: VBUS to VBUS_0_brain
+Renaming: VBUS1 to VBUS1_0_brain
+Parts: [<Element part at 0x2b6836f64560>, <Element part at 0x2b6836f64518>]
+['BATT1', 'D1']
+Uniquify net names for: battery
+Connection:  (brain.D3_0_brain, drive.PWMA)
+D3_0_brain is owned by me: False
+PWMA is owned by me: False
+New connection:  (brain.D3_0_brain, drive.PWMA)
+
+Connection:  (brain.D5_0_brain, drive.PWMB)
+D5_0_brain is owned by me: False
+PWMB is owned by me: False
+New connection:  (brain.D5_0_brain, drive.PWMB)
+
+Connection:  (brain.D4_0_brain, drive.STBY)
+D4_0_brain is owned by me: False
+STBY is owned by me: False
+New connection:  (brain.D4_0_brain, drive.STBY)
+
+Connection:  (brain.D6_0_brain, drive.AIN1)
+D6_0_brain is owned by me: False
+AIN1 is owned by me: False
+New connection:  (brain.D6_0_brain, drive.AIN1)
+
+Connection:  (brain.D8_0_brain, drive.AIN2)
+D8_0_brain is owned by me: False
+AIN2 is owned by me: False
+New connection:  (brain.D8_0_brain, drive.AIN2)
+
+Connection:  (brain.D9_0_brain, drive.BIN1)
+D9_0_brain is owned by me: False
+BIN1 is owned by me: False
+New connection:  (brain.D9_0_brain, drive.BIN1)
+
+Connection:  (brain.D10_0_brain, drive.BIN2)
+D10_0_brain is owned by me: False
+BIN2 is owned by me: False
+New connection:  (brain.D10_0_brain, drive.BIN2)
+
+Connection:  (brain.D11_0_brain, led.CONTROL)
+D11_0_brain is owned by me: False
+CONTROL is owned by me: False
+New connection:  (brain.D11_0_brain, led.CONTROL)
+
+Connection:  (brain.D12_0_brain, led_2.CONTROL)
+D12_0_brain is owned by me: False
+CONTROL is owned by me: False
+New connection:  (brain.D12_0_brain, led_2.CONTROL)
+
+Connection:  (brain.D13_0_brain, led_3.CONTROL)
+D13_0_brain is owned by me: False
+CONTROL is owned by me: False
+New connection:  (brain.D13_0_brain, led_3.CONTROL)
+
+Connection:  (brain.A0_0_brain, button.SENSE)
+A0_0_brain is owned by me: False
+SENSE is owned by me: False
+New connection:  (brain.A0_0_brain, button.SENSE)
+
+Connection:  (brain.A1_0_brain, bump.SENSE)
+A1_0_brain is owned by me: False
+SENSE is owned by me: False
+New connection:  (brain.A1_0_brain, bump.SENSE)
+
+Connection:  (brain.A2_0_brain, distanceSensor.A)
+A2_0_brain is owned by me: False
+A is owned by me: False
+New connection:  (brain.A2_0_brain, distanceSensor.A)
+
+Connection:  (brain.A3_0_brain, distanceSensor_2.A)
+A3_0_brain is owned by me: False
+A is owned by me: False
+New connection:  (brain.A3_0_brain, distanceSensor_2.A)
+
+Connection:  [brain.+5V_0_brain, drive.VCC, distanceSensor.VCC, distanceSensor_2.VCC]
++5V_0_brain is owned by me: False
+VCC is owned by me: False
+VCC is owned by me: False
+VCC is owned by me: False
+New connection:  [brain.+5V_0_brain, drive.VCC, distanceSensor.VCC, distanceSensor_2.VCC]
+
+Connection:  [battery.POS, brain.VBAT_0_brain, drive.VM]
+POS is owned by me: True
+VBAT_0_brain is owned by me: False
+VM is owned by me: False
+New connection:  [battery.POS_1_battery, brain.VBAT_0_brain, drive.VM]
+
+Connection:  [brain.GND_0_brain, brain.GND1_0_brain, button.GND, brain.GND2_0_brain, led.GND, led_2.GND, bump.GND, drive.GND, led_3.GND, battery.NEG, distanceSensor.GND, distanceSensor_2.GND, drive.GND2]
+GND_0_brain is owned by me: False
+GND1_0_brain is owned by me: False
+GND is owned by me: False
+GND2_0_brain is owned by me: False
+GND is owned by me: False
+GND is owned by me: False
+GND is owned by me: False
+GND is owned by me: False
+GND is owned by me: False
+NEG is owned by me: True
+GND is owned by me: False
+GND is owned by me: False
+GND2 is owned by me: False
+New connection:  [brain.GND_0_brain, brain.GND1_0_brain, button.GND, brain.GND2_0_brain, led.GND, led_2.GND, bump.GND, drive.GND, led_3.GND, battery.NEG_1_battery, distanceSensor.GND, distanceSensor_2.GND, drive.GND2]
+
+All nets: ['N$1', 'NEG', 'POS']
+Renaming: N$1 to N$1_1_battery
+Renaming: NEG to NEG_1_battery
+Renaming: POS to POS_1_battery
+Parts: [<Element part at 0x2b6836f64560>, <Element part at 0x2b6836f64440>, <Element part at 0x2b6836f64518>]
+['DRVR', 'L', 'R']
+Uniquify net names for: drive
+Connection:  (brain.D3_0_brain, drive.PWMA)
+D3_0_brain is owned by me: False
+PWMA is owned by me: True
+New connection:  (brain.D3_0_brain, drive.PWMA_2_drive)
+
+Connection:  (brain.D5_0_brain, drive.PWMB)
+D5_0_brain is owned by me: False
+PWMB is owned by me: True
+New connection:  (brain.D5_0_brain, drive.PWMB_2_drive)
+
+Connection:  (brain.D4_0_brain, drive.STBY)
+D4_0_brain is owned by me: False
+STBY is owned by me: True
+New connection:  (brain.D4_0_brain, drive.STBY_2_drive)
+
+Connection:  (brain.D6_0_brain, drive.AIN1)
+D6_0_brain is owned by me: False
+AIN1 is owned by me: True
+New connection:  (brain.D6_0_brain, drive.AIN1_2_drive)
+
+Connection:  (brain.D8_0_brain, drive.AIN2)
+D8_0_brain is owned by me: False
+AIN2 is owned by me: True
+New connection:  (brain.D8_0_brain, drive.AIN2_2_drive)
+
+Connection:  (brain.D9_0_brain, drive.BIN1)
+D9_0_brain is owned by me: False
+BIN1 is owned by me: True
+New connection:  (brain.D9_0_brain, drive.BIN1_2_drive)
+
+Connection:  (brain.D10_0_brain, drive.BIN2)
+D10_0_brain is owned by me: False
+BIN2 is owned by me: True
+New connection:  (brain.D10_0_brain, drive.BIN2_2_drive)
+
+Connection:  (brain.D11_0_brain, led.CONTROL)
+D11_0_brain is owned by me: False
+CONTROL is owned by me: False
+New connection:  (brain.D11_0_brain, led.CONTROL)
+
+Connection:  (brain.D12_0_brain, led_2.CONTROL)
+D12_0_brain is owned by me: False
+CONTROL is owned by me: False
+New connection:  (brain.D12_0_brain, led_2.CONTROL)
+
+Connection:  (brain.D13_0_brain, led_3.CONTROL)
+D13_0_brain is owned by me: False
+CONTROL is owned by me: False
+New connection:  (brain.D13_0_brain, led_3.CONTROL)
+
+Connection:  (brain.A0_0_brain, button.SENSE)
+A0_0_brain is owned by me: False
+SENSE is owned by me: False
+New connection:  (brain.A0_0_brain, button.SENSE)
+
+Connection:  (brain.A1_0_brain, bump.SENSE)
+A1_0_brain is owned by me: False
+SENSE is owned by me: False
+New connection:  (brain.A1_0_brain, bump.SENSE)
+
+Connection:  (brain.A2_0_brain, distanceSensor.A)
+A2_0_brain is owned by me: False
+A is owned by me: False
+New connection:  (brain.A2_0_brain, distanceSensor.A)
+
+Connection:  (brain.A3_0_brain, distanceSensor_2.A)
+A3_0_brain is owned by me: False
+A is owned by me: False
+New connection:  (brain.A3_0_brain, distanceSensor_2.A)
+
+Connection:  [brain.+5V_0_brain, drive.VCC, distanceSensor.VCC, distanceSensor_2.VCC]
++5V_0_brain is owned by me: False
+VCC is owned by me: True
+VCC is owned by me: False
+VCC is owned by me: False
+New connection:  [brain.+5V_0_brain, drive.VCC_2_drive, distanceSensor.VCC, distanceSensor_2.VCC]
+
+Connection:  [battery.POS_1_battery, brain.VBAT_0_brain, drive.VM]
+POS_1_battery is owned by me: False
+VBAT_0_brain is owned by me: False
+VM is owned by me: True
+New connection:  [battery.POS_1_battery, brain.VBAT_0_brain, drive.VM_2_drive]
+
+Connection:  [brain.GND_0_brain, brain.GND1_0_brain, button.GND, brain.GND2_0_brain, led.GND, led_2.GND, bump.GND, drive.GND, led_3.GND, battery.NEG_1_battery, distanceSensor.GND, distanceSensor_2.GND, drive.GND2]
+GND_0_brain is owned by me: False
+GND1_0_brain is owned by me: False
+GND is owned by me: False
+GND2_0_brain is owned by me: False
+GND is owned by me: False
+GND is owned by me: False
+GND is owned by me: False
+GND is owned by me: True
+GND is owned by me: False
+NEG_1_battery is owned by me: False
+GND is owned by me: False
+GND is owned by me: False
+GND2 is owned by me: True
+New connection:  [brain.GND_0_brain, brain.GND1_0_brain, button.GND, brain.GND2_0_brain, led.GND, led_2.GND, bump.GND, drive.GND_2_drive, led_3.GND, battery.NEG_1_battery, distanceSensor.GND, distanceSensor_2.GND, drive.GND2_2_drive]
+
+All nets: ['A01', 'A02', 'B01', 'B02', 'A01', 'A02', 'AIN1', 'AIN2', 'B01', 'B02', 'BIN1', 'BIN2', 'GND', 'GND1', 'GND2', 'PWMA', 'PWMB', 'STBY', 'VCC', 'VM']
+Renaming: A01 to A01_2_drive
+Renaming: A02 to A02_2_drive
+Renaming: B01 to B01_2_drive
+Renaming: B02 to B02_2_drive
+Renaming: A01 to A01_2_drive
+Renaming: A02 to A02_2_drive
+Renaming: AIN1 to AIN1_2_drive
+Renaming: AIN2 to AIN2_2_drive
+Renaming: B01 to B01_2_drive
+Renaming: B02 to B02_2_drive
+Renaming: BIN1 to BIN1_2_drive
+Renaming: BIN2 to BIN2_2_drive
+Renaming: GND to GND_2_drive
+Renaming: GND1 to GND1_2_drive
+Renaming: GND2 to GND2_2_drive
+Renaming: PWMA to PWMA_2_drive
+Renaming: PWMB to PWMB_2_drive
+Renaming: STBY to STBY_2_drive
+Renaming: VCC to VCC_2_drive
+Renaming: VM to VM_2_drive
+Parts: [<Element part at 0x2b6836f648c0>]
+['dist1']
+Uniquify net names for: distanceSensor
+Connection:  (brain.D3_0_brain, drive.PWMA_2_drive)
+D3_0_brain is owned by me: False
+PWMA_2_drive is owned by me: False
+New connection:  (brain.D3_0_brain, drive.PWMA_2_drive)
+
+Connection:  (brain.D5_0_brain, drive.PWMB_2_drive)
+D5_0_brain is owned by me: False
+PWMB_2_drive is owned by me: False
+New connection:  (brain.D5_0_brain, drive.PWMB_2_drive)
+
+Connection:  (brain.D4_0_brain, drive.STBY_2_drive)
+D4_0_brain is owned by me: False
+STBY_2_drive is owned by me: False
+New connection:  (brain.D4_0_brain, drive.STBY_2_drive)
+
+Connection:  (brain.D6_0_brain, drive.AIN1_2_drive)
+D6_0_brain is owned by me: False
+AIN1_2_drive is owned by me: False
+New connection:  (brain.D6_0_brain, drive.AIN1_2_drive)
+
+Connection:  (brain.D8_0_brain, drive.AIN2_2_drive)
+D8_0_brain is owned by me: False
+AIN2_2_drive is owned by me: False
+New connection:  (brain.D8_0_brain, drive.AIN2_2_drive)
+
+Connection:  (brain.D9_0_brain, drive.BIN1_2_drive)
+D9_0_brain is owned by me: False
+BIN1_2_drive is owned by me: False
+New connection:  (brain.D9_0_brain, drive.BIN1_2_drive)
+
+Connection:  (brain.D10_0_brain, drive.BIN2_2_drive)
+D10_0_brain is owned by me: False
+BIN2_2_drive is owned by me: False
+New connection:  (brain.D10_0_brain, drive.BIN2_2_drive)
+
+Connection:  (brain.D11_0_brain, led.CONTROL)
+D11_0_brain is owned by me: False
+CONTROL is owned by me: False
+New connection:  (brain.D11_0_brain, led.CONTROL)
+
+Connection:  (brain.D12_0_brain, led_2.CONTROL)
+D12_0_brain is owned by me: False
+CONTROL is owned by me: False
+New connection:  (brain.D12_0_brain, led_2.CONTROL)
+
+Connection:  (brain.D13_0_brain, led_3.CONTROL)
+D13_0_brain is owned by me: False
+CONTROL is owned by me: False
+New connection:  (brain.D13_0_brain, led_3.CONTROL)
+
+Connection:  (brain.A0_0_brain, button.SENSE)
+A0_0_brain is owned by me: False
+SENSE is owned by me: False
+New connection:  (brain.A0_0_brain, button.SENSE)
+
+Connection:  (brain.A1_0_brain, bump.SENSE)
+A1_0_brain is owned by me: False
+SENSE is owned by me: False
+New connection:  (brain.A1_0_brain, bump.SENSE)
+
+Connection:  (brain.A2_0_brain, distanceSensor.A)
+A2_0_brain is owned by me: False
+A is owned by me: True
+New connection:  (brain.A2_0_brain, distanceSensor.A_3_distanceSensor)
+
+Connection:  (brain.A3_0_brain, distanceSensor_2.A)
+A3_0_brain is owned by me: False
+A is owned by me: False
+New connection:  (brain.A3_0_brain, distanceSensor_2.A)
+
+Connection:  [brain.+5V_0_brain, drive.VCC_2_drive, distanceSensor.VCC, distanceSensor_2.VCC]
++5V_0_brain is owned by me: False
+VCC_2_drive is owned by me: False
+VCC is owned by me: True
+VCC is owned by me: False
+New connection:  [brain.+5V_0_brain, drive.VCC_2_drive, distanceSensor.VCC_3_distanceSensor, distanceSensor_2.VCC]
+
+Connection:  [battery.POS_1_battery, brain.VBAT_0_brain, drive.VM_2_drive]
+POS_1_battery is owned by me: False
+VBAT_0_brain is owned by me: False
+VM_2_drive is owned by me: False
+New connection:  [battery.POS_1_battery, brain.VBAT_0_brain, drive.VM_2_drive]
+
+Connection:  [brain.GND_0_brain, brain.GND1_0_brain, button.GND, brain.GND2_0_brain, led.GND, led_2.GND, bump.GND, drive.GND_2_drive, led_3.GND, battery.NEG_1_battery, distanceSensor.GND, distanceSensor_2.GND, drive.GND2_2_drive]
+GND_0_brain is owned by me: False
+GND1_0_brain is owned by me: False
+GND is owned by me: False
+GND2_0_brain is owned by me: False
+GND is owned by me: False
+GND is owned by me: False
+GND is owned by me: False
+GND_2_drive is owned by me: False
+GND is owned by me: False
+NEG_1_battery is owned by me: False
+GND is owned by me: True
+GND is owned by me: False
+GND2_2_drive is owned by me: False
+New connection:  [brain.GND_0_brain, brain.GND1_0_brain, button.GND, brain.GND2_0_brain, led.GND, led_2.GND, bump.GND, drive.GND_2_drive, led_3.GND, battery.NEG_1_battery, distanceSensor.GND_3_distanceSensor, distanceSensor_2.GND, drive.GND2_2_drive]
+
+All nets: ['A', 'GND', 'VCC']
+Renaming: A to A_3_distanceSensor
+Renaming: GND to GND_3_distanceSensor
+Renaming: VCC to VCC_3_distanceSensor
+Parts: [<Element part at 0x2b6836f64518>]
+['dist1']
+Uniquify net names for: distanceSensor_2
+Connection:  (brain.D3_0_brain, drive.PWMA_2_drive)
+D3_0_brain is owned by me: False
+PWMA_2_drive is owned by me: False
+New connection:  (brain.D3_0_brain, drive.PWMA_2_drive)
+
+Connection:  (brain.D5_0_brain, drive.PWMB_2_drive)
+D5_0_brain is owned by me: False
+PWMB_2_drive is owned by me: False
+New connection:  (brain.D5_0_brain, drive.PWMB_2_drive)
+
+Connection:  (brain.D4_0_brain, drive.STBY_2_drive)
+D4_0_brain is owned by me: False
+STBY_2_drive is owned by me: False
+New connection:  (brain.D4_0_brain, drive.STBY_2_drive)
+
+Connection:  (brain.D6_0_brain, drive.AIN1_2_drive)
+D6_0_brain is owned by me: False
+AIN1_2_drive is owned by me: False
+New connection:  (brain.D6_0_brain, drive.AIN1_2_drive)
+
+Connection:  (brain.D8_0_brain, drive.AIN2_2_drive)
+D8_0_brain is owned by me: False
+AIN2_2_drive is owned by me: False
+New connection:  (brain.D8_0_brain, drive.AIN2_2_drive)
+
+Connection:  (brain.D9_0_brain, drive.BIN1_2_drive)
+D9_0_brain is owned by me: False
+BIN1_2_drive is owned by me: False
+New connection:  (brain.D9_0_brain, drive.BIN1_2_drive)
+
+Connection:  (brain.D10_0_brain, drive.BIN2_2_drive)
+D10_0_brain is owned by me: False
+BIN2_2_drive is owned by me: False
+New connection:  (brain.D10_0_brain, drive.BIN2_2_drive)
+
+Connection:  (brain.D11_0_brain, led.CONTROL)
+D11_0_brain is owned by me: False
+CONTROL is owned by me: False
+New connection:  (brain.D11_0_brain, led.CONTROL)
+
+Connection:  (brain.D12_0_brain, led_2.CONTROL)
+D12_0_brain is owned by me: False
+CONTROL is owned by me: False
+New connection:  (brain.D12_0_brain, led_2.CONTROL)
+
+Connection:  (brain.D13_0_brain, led_3.CONTROL)
+D13_0_brain is owned by me: False
+CONTROL is owned by me: False
+New connection:  (brain.D13_0_brain, led_3.CONTROL)
+
+Connection:  (brain.A0_0_brain, button.SENSE)
+A0_0_brain is owned by me: False
+SENSE is owned by me: False
+New connection:  (brain.A0_0_brain, button.SENSE)
+
+Connection:  (brain.A1_0_brain, bump.SENSE)
+A1_0_brain is owned by me: False
+SENSE is owned by me: False
+New connection:  (brain.A1_0_brain, bump.SENSE)
+
+Connection:  (brain.A2_0_brain, distanceSensor.A_3_distanceSensor)
+A2_0_brain is owned by me: False
+A_3_distanceSensor is owned by me: False
+New connection:  (brain.A2_0_brain, distanceSensor.A_3_distanceSensor)
+
+Connection:  (brain.A3_0_brain, distanceSensor_2.A)
+A3_0_brain is owned by me: False
+A is owned by me: True
+New connection:  (brain.A3_0_brain, distanceSensor_2.A_4_distanceSensor_2)
+
+Connection:  [brain.+5V_0_brain, drive.VCC_2_drive, distanceSensor.VCC_3_distanceSensor, distanceSensor_2.VCC]
++5V_0_brain is owned by me: False
+VCC_2_drive is owned by me: False
+VCC_3_distanceSensor is owned by me: False
+VCC is owned by me: True
+New connection:  [brain.+5V_0_brain, drive.VCC_2_drive, distanceSensor.VCC_3_distanceSensor, distanceSensor_2.VCC_4_distanceSensor_2]
+
+Connection:  [battery.POS_1_battery, brain.VBAT_0_brain, drive.VM_2_drive]
+POS_1_battery is owned by me: False
+VBAT_0_brain is owned by me: False
+VM_2_drive is owned by me: False
+New connection:  [battery.POS_1_battery, brain.VBAT_0_brain, drive.VM_2_drive]
+
+Connection:  [brain.GND_0_brain, brain.GND1_0_brain, button.GND, brain.GND2_0_brain, led.GND, led_2.GND, bump.GND, drive.GND_2_drive, led_3.GND, battery.NEG_1_battery, distanceSensor.GND_3_distanceSensor, distanceSensor_2.GND, drive.GND2_2_drive]
+GND_0_brain is owned by me: False
+GND1_0_brain is owned by me: False
+GND is owned by me: False
+GND2_0_brain is owned by me: False
+GND is owned by me: False
+GND is owned by me: False
+GND is owned by me: False
+GND_2_drive is owned by me: False
+GND is owned by me: False
+NEG_1_battery is owned by me: False
+GND_3_distanceSensor is owned by me: False
+GND is owned by me: True
+GND2_2_drive is owned by me: False
+New connection:  [brain.GND_0_brain, brain.GND1_0_brain, button.GND, brain.GND2_0_brain, led.GND, led_2.GND, bump.GND, drive.GND_2_drive, led_3.GND, battery.NEG_1_battery, distanceSensor.GND_3_distanceSensor, distanceSensor_2.GND_4_distanceSensor_2, drive.GND2_2_drive]
+
+All nets: ['A', 'GND', 'VCC']
+Renaming: A to A_4_distanceSensor_2
+Renaming: GND to GND_4_distanceSensor_2
+Renaming: VCC to VCC_4_distanceSensor_2
+Parts: [<Element part at 0x2b6836f64170>, <Element part at 0x2b6836f640e0>, <Element part at 0x2b6836f64518>]
+['GND1', 'LED1', 'R1']
+Uniquify net names for: led
+Connection:  (brain.D3_0_brain, drive.PWMA_2_drive)
+D3_0_brain is owned by me: False
+PWMA_2_drive is owned by me: False
+New connection:  (brain.D3_0_brain, drive.PWMA_2_drive)
+
+Connection:  (brain.D5_0_brain, drive.PWMB_2_drive)
+D5_0_brain is owned by me: False
+PWMB_2_drive is owned by me: False
+New connection:  (brain.D5_0_brain, drive.PWMB_2_drive)
+
+Connection:  (brain.D4_0_brain, drive.STBY_2_drive)
+D4_0_brain is owned by me: False
+STBY_2_drive is owned by me: False
+New connection:  (brain.D4_0_brain, drive.STBY_2_drive)
+
+Connection:  (brain.D6_0_brain, drive.AIN1_2_drive)
+D6_0_brain is owned by me: False
+AIN1_2_drive is owned by me: False
+New connection:  (brain.D6_0_brain, drive.AIN1_2_drive)
+
+Connection:  (brain.D8_0_brain, drive.AIN2_2_drive)
+D8_0_brain is owned by me: False
+AIN2_2_drive is owned by me: False
+New connection:  (brain.D8_0_brain, drive.AIN2_2_drive)
+
+Connection:  (brain.D9_0_brain, drive.BIN1_2_drive)
+D9_0_brain is owned by me: False
+BIN1_2_drive is owned by me: False
+New connection:  (brain.D9_0_brain, drive.BIN1_2_drive)
+
+Connection:  (brain.D10_0_brain, drive.BIN2_2_drive)
+D10_0_brain is owned by me: False
+BIN2_2_drive is owned by me: False
+New connection:  (brain.D10_0_brain, drive.BIN2_2_drive)
+
+Connection:  (brain.D11_0_brain, led.CONTROL)
+D11_0_brain is owned by me: False
+CONTROL is owned by me: True
+New connection:  (brain.D11_0_brain, led.CONTROL_5_led)
+
+Connection:  (brain.D12_0_brain, led_2.CONTROL)
+D12_0_brain is owned by me: False
+CONTROL is owned by me: False
+New connection:  (brain.D12_0_brain, led_2.CONTROL)
+
+Connection:  (brain.D13_0_brain, led_3.CONTROL)
+D13_0_brain is owned by me: False
+CONTROL is owned by me: False
+New connection:  (brain.D13_0_brain, led_3.CONTROL)
+
+Connection:  (brain.A0_0_brain, button.SENSE)
+A0_0_brain is owned by me: False
+SENSE is owned by me: False
+New connection:  (brain.A0_0_brain, button.SENSE)
+
+Connection:  (brain.A1_0_brain, bump.SENSE)
+A1_0_brain is owned by me: False
+SENSE is owned by me: False
+New connection:  (brain.A1_0_brain, bump.SENSE)
+
+Connection:  (brain.A2_0_brain, distanceSensor.A_3_distanceSensor)
+A2_0_brain is owned by me: False
+A_3_distanceSensor is owned by me: False
+New connection:  (brain.A2_0_brain, distanceSensor.A_3_distanceSensor)
+
+Connection:  (brain.A3_0_brain, distanceSensor_2.A_4_distanceSensor_2)
+A3_0_brain is owned by me: False
+A_4_distanceSensor_2 is owned by me: False
+New connection:  (brain.A3_0_brain, distanceSensor_2.A_4_distanceSensor_2)
+
+Connection:  [brain.+5V_0_brain, drive.VCC_2_drive, distanceSensor.VCC_3_distanceSensor, distanceSensor_2.VCC_4_distanceSensor_2]
++5V_0_brain is owned by me: False
+VCC_2_drive is owned by me: False
+VCC_3_distanceSensor is owned by me: False
+VCC_4_distanceSensor_2 is owned by me: False
+New connection:  [brain.+5V_0_brain, drive.VCC_2_drive, distanceSensor.VCC_3_distanceSensor, distanceSensor_2.VCC_4_distanceSensor_2]
+
+Connection:  [battery.POS_1_battery, brain.VBAT_0_brain, drive.VM_2_drive]
+POS_1_battery is owned by me: False
+VBAT_0_brain is owned by me: False
+VM_2_drive is owned by me: False
+New connection:  [battery.POS_1_battery, brain.VBAT_0_brain, drive.VM_2_drive]
+
+Connection:  [brain.GND_0_brain, brain.GND1_0_brain, button.GND, brain.GND2_0_brain, led.GND, led_2.GND, bump.GND, drive.GND_2_drive, led_3.GND, battery.NEG_1_battery, distanceSensor.GND_3_distanceSensor, distanceSensor_2.GND_4_distanceSensor_2, drive.GND2_2_drive]
+GND_0_brain is owned by me: False
+GND1_0_brain is owned by me: False
+GND is owned by me: False
+GND2_0_brain is owned by me: False
+GND is owned by me: True
+GND is owned by me: False
+GND is owned by me: False
+GND_2_drive is owned by me: False
+GND is owned by me: False
+NEG_1_battery is owned by me: False
+GND_3_distanceSensor is owned by me: False
+GND_4_distanceSensor_2 is owned by me: False
+GND2_2_drive is owned by me: False
+New connection:  [brain.GND_0_brain, brain.GND1_0_brain, button.GND, brain.GND2_0_brain, led.GND_5_led, led_2.GND, bump.GND, drive.GND_2_drive, led_3.GND, battery.NEG_1_battery, distanceSensor.GND_3_distanceSensor, distanceSensor_2.GND_4_distanceSensor_2, drive.GND2_2_drive]
+
+All nets: ['CONTROL', 'GND', 'N$1']
+Renaming: CONTROL to CONTROL_5_led
+Renaming: GND to GND_5_led
+Renaming: N$1 to N$1_5_led
+Parts: [<Element part at 0x2b6836f64098>, <Element part at 0x2b6836f643b0>, <Element part at 0x2b6836f64518>]
+['GND1', 'LED1', 'R1']
+Uniquify net names for: led_2
+Connection:  (brain.D3_0_brain, drive.PWMA_2_drive)
+D3_0_brain is owned by me: False
+PWMA_2_drive is owned by me: False
+New connection:  (brain.D3_0_brain, drive.PWMA_2_drive)
+
+Connection:  (brain.D5_0_brain, drive.PWMB_2_drive)
+D5_0_brain is owned by me: False
+PWMB_2_drive is owned by me: False
+New connection:  (brain.D5_0_brain, drive.PWMB_2_drive)
+
+Connection:  (brain.D4_0_brain, drive.STBY_2_drive)
+D4_0_brain is owned by me: False
+STBY_2_drive is owned by me: False
+New connection:  (brain.D4_0_brain, drive.STBY_2_drive)
+
+Connection:  (brain.D6_0_brain, drive.AIN1_2_drive)
+D6_0_brain is owned by me: False
+AIN1_2_drive is owned by me: False
+New connection:  (brain.D6_0_brain, drive.AIN1_2_drive)
+
+Connection:  (brain.D8_0_brain, drive.AIN2_2_drive)
+D8_0_brain is owned by me: False
+AIN2_2_drive is owned by me: False
+New connection:  (brain.D8_0_brain, drive.AIN2_2_drive)
+
+Connection:  (brain.D9_0_brain, drive.BIN1_2_drive)
+D9_0_brain is owned by me: False
+BIN1_2_drive is owned by me: False
+New connection:  (brain.D9_0_brain, drive.BIN1_2_drive)
+
+Connection:  (brain.D10_0_brain, drive.BIN2_2_drive)
+D10_0_brain is owned by me: False
+BIN2_2_drive is owned by me: False
+New connection:  (brain.D10_0_brain, drive.BIN2_2_drive)
+
+Connection:  (brain.D11_0_brain, led.CONTROL_5_led)
+D11_0_brain is owned by me: False
+CONTROL_5_led is owned by me: False
+New connection:  (brain.D11_0_brain, led.CONTROL_5_led)
+
+Connection:  (brain.D12_0_brain, led_2.CONTROL)
+D12_0_brain is owned by me: False
+CONTROL is owned by me: True
+New connection:  (brain.D12_0_brain, led_2.CONTROL_6_led_2)
+
+Connection:  (brain.D13_0_brain, led_3.CONTROL)
+D13_0_brain is owned by me: False
+CONTROL is owned by me: False
+New connection:  (brain.D13_0_brain, led_3.CONTROL)
+
+Connection:  (brain.A0_0_brain, button.SENSE)
+A0_0_brain is owned by me: False
+SENSE is owned by me: False
+New connection:  (brain.A0_0_brain, button.SENSE)
+
+Connection:  (brain.A1_0_brain, bump.SENSE)
+A1_0_brain is owned by me: False
+SENSE is owned by me: False
+New connection:  (brain.A1_0_brain, bump.SENSE)
+
+Connection:  (brain.A2_0_brain, distanceSensor.A_3_distanceSensor)
+A2_0_brain is owned by me: False
+A_3_distanceSensor is owned by me: False
+New connection:  (brain.A2_0_brain, distanceSensor.A_3_distanceSensor)
+
+Connection:  (brain.A3_0_brain, distanceSensor_2.A_4_distanceSensor_2)
+A3_0_brain is owned by me: False
+A_4_distanceSensor_2 is owned by me: False
+New connection:  (brain.A3_0_brain, distanceSensor_2.A_4_distanceSensor_2)
+
+Connection:  [brain.+5V_0_brain, drive.VCC_2_drive, distanceSensor.VCC_3_distanceSensor, distanceSensor_2.VCC_4_distanceSensor_2]
++5V_0_brain is owned by me: False
+VCC_2_drive is owned by me: False
+VCC_3_distanceSensor is owned by me: False
+VCC_4_distanceSensor_2 is owned by me: False
+New connection:  [brain.+5V_0_brain, drive.VCC_2_drive, distanceSensor.VCC_3_distanceSensor, distanceSensor_2.VCC_4_distanceSensor_2]
+
+Connection:  [battery.POS_1_battery, brain.VBAT_0_brain, drive.VM_2_drive]
+POS_1_battery is owned by me: False
+VBAT_0_brain is owned by me: False
+VM_2_drive is owned by me: False
+New connection:  [battery.POS_1_battery, brain.VBAT_0_brain, drive.VM_2_drive]
+
+Connection:  [brain.GND_0_brain, brain.GND1_0_brain, button.GND, brain.GND2_0_brain, led.GND_5_led, led_2.GND, bump.GND, drive.GND_2_drive, led_3.GND, battery.NEG_1_battery, distanceSensor.GND_3_distanceSensor, distanceSensor_2.GND_4_distanceSensor_2, drive.GND2_2_drive]
+GND_0_brain is owned by me: False
+GND1_0_brain is owned by me: False
+GND is owned by me: False
+GND2_0_brain is owned by me: False
+GND_5_led is owned by me: False
+GND is owned by me: True
+GND is owned by me: False
+GND_2_drive is owned by me: False
+GND is owned by me: False
+NEG_1_battery is owned by me: False
+GND_3_distanceSensor is owned by me: False
+GND_4_distanceSensor_2 is owned by me: False
+GND2_2_drive is owned by me: False
+New connection:  [brain.GND_0_brain, brain.GND1_0_brain, button.GND, brain.GND2_0_brain, led.GND_5_led, led_2.GND_6_led_2, bump.GND, drive.GND_2_drive, led_3.GND, battery.NEG_1_battery, distanceSensor.GND_3_distanceSensor, distanceSensor_2.GND_4_distanceSensor_2, drive.GND2_2_drive]
+
+All nets: ['CONTROL', 'GND', 'N$1']
+Renaming: CONTROL to CONTROL_6_led_2
+Renaming: GND to GND_6_led_2
+Renaming: N$1 to N$1_6_led_2
+Parts: [<Element part at 0x2b6836f640e0>, <Element part at 0x2b6836f64200>, <Element part at 0x2b6836f64518>]
+['GND1', 'LED1', 'R1']
+Uniquify net names for: led_3
+Connection:  (brain.D3_0_brain, drive.PWMA_2_drive)
+D3_0_brain is owned by me: False
+PWMA_2_drive is owned by me: False
+New connection:  (brain.D3_0_brain, drive.PWMA_2_drive)
+
+Connection:  (brain.D5_0_brain, drive.PWMB_2_drive)
+D5_0_brain is owned by me: False
+PWMB_2_drive is owned by me: False
+New connection:  (brain.D5_0_brain, drive.PWMB_2_drive)
+
+Connection:  (brain.D4_0_brain, drive.STBY_2_drive)
+D4_0_brain is owned by me: False
+STBY_2_drive is owned by me: False
+New connection:  (brain.D4_0_brain, drive.STBY_2_drive)
+
+Connection:  (brain.D6_0_brain, drive.AIN1_2_drive)
+D6_0_brain is owned by me: False
+AIN1_2_drive is owned by me: False
+New connection:  (brain.D6_0_brain, drive.AIN1_2_drive)
+
+Connection:  (brain.D8_0_brain, drive.AIN2_2_drive)
+D8_0_brain is owned by me: False
+AIN2_2_drive is owned by me: False
+New connection:  (brain.D8_0_brain, drive.AIN2_2_drive)
+
+Connection:  (brain.D9_0_brain, drive.BIN1_2_drive)
+D9_0_brain is owned by me: False
+BIN1_2_drive is owned by me: False
+New connection:  (brain.D9_0_brain, drive.BIN1_2_drive)
+
+Connection:  (brain.D10_0_brain, drive.BIN2_2_drive)
+D10_0_brain is owned by me: False
+BIN2_2_drive is owned by me: False
+New connection:  (brain.D10_0_brain, drive.BIN2_2_drive)
+
+Connection:  (brain.D11_0_brain, led.CONTROL_5_led)
+D11_0_brain is owned by me: False
+CONTROL_5_led is owned by me: False
+New connection:  (brain.D11_0_brain, led.CONTROL_5_led)
+
+Connection:  (brain.D12_0_brain, led_2.CONTROL_6_led_2)
+D12_0_brain is owned by me: False
+CONTROL_6_led_2 is owned by me: False
+New connection:  (brain.D12_0_brain, led_2.CONTROL_6_led_2)
+
+Connection:  (brain.D13_0_brain, led_3.CONTROL)
+D13_0_brain is owned by me: False
+CONTROL is owned by me: True
+New connection:  (brain.D13_0_brain, led_3.CONTROL_7_led_3)
+
+Connection:  (brain.A0_0_brain, button.SENSE)
+A0_0_brain is owned by me: False
+SENSE is owned by me: False
+New connection:  (brain.A0_0_brain, button.SENSE)
+
+Connection:  (brain.A1_0_brain, bump.SENSE)
+A1_0_brain is owned by me: False
+SENSE is owned by me: False
+New connection:  (brain.A1_0_brain, bump.SENSE)
+
+Connection:  (brain.A2_0_brain, distanceSensor.A_3_distanceSensor)
+A2_0_brain is owned by me: False
+A_3_distanceSensor is owned by me: False
+New connection:  (brain.A2_0_brain, distanceSensor.A_3_distanceSensor)
+
+Connection:  (brain.A3_0_brain, distanceSensor_2.A_4_distanceSensor_2)
+A3_0_brain is owned by me: False
+A_4_distanceSensor_2 is owned by me: False
+New connection:  (brain.A3_0_brain, distanceSensor_2.A_4_distanceSensor_2)
+
+Connection:  [brain.+5V_0_brain, drive.VCC_2_drive, distanceSensor.VCC_3_distanceSensor, distanceSensor_2.VCC_4_distanceSensor_2]
++5V_0_brain is owned by me: False
+VCC_2_drive is owned by me: False
+VCC_3_distanceSensor is owned by me: False
+VCC_4_distanceSensor_2 is owned by me: False
+New connection:  [brain.+5V_0_brain, drive.VCC_2_drive, distanceSensor.VCC_3_distanceSensor, distanceSensor_2.VCC_4_distanceSensor_2]
+
+Connection:  [battery.POS_1_battery, brain.VBAT_0_brain, drive.VM_2_drive]
+POS_1_battery is owned by me: False
+VBAT_0_brain is owned by me: False
+VM_2_drive is owned by me: False
+New connection:  [battery.POS_1_battery, brain.VBAT_0_brain, drive.VM_2_drive]
+
+Connection:  [brain.GND_0_brain, brain.GND1_0_brain, button.GND, brain.GND2_0_brain, led.GND_5_led, led_2.GND_6_led_2, bump.GND, drive.GND_2_drive, led_3.GND, battery.NEG_1_battery, distanceSensor.GND_3_distanceSensor, distanceSensor_2.GND_4_distanceSensor_2, drive.GND2_2_drive]
+GND_0_brain is owned by me: False
+GND1_0_brain is owned by me: False
+GND is owned by me: False
+GND2_0_brain is owned by me: False
+GND_5_led is owned by me: False
+GND_6_led_2 is owned by me: False
+GND is owned by me: False
+GND_2_drive is owned by me: False
+GND is owned by me: True
+NEG_1_battery is owned by me: False
+GND_3_distanceSensor is owned by me: False
+GND_4_distanceSensor_2 is owned by me: False
+GND2_2_drive is owned by me: False
+New connection:  [brain.GND_0_brain, brain.GND1_0_brain, button.GND, brain.GND2_0_brain, led.GND_5_led, led_2.GND_6_led_2, bump.GND, drive.GND_2_drive, led_3.GND_7_led_3, battery.NEG_1_battery, distanceSensor.GND_3_distanceSensor, distanceSensor_2.GND_4_distanceSensor_2, drive.GND2_2_drive]
+
+All nets: ['CONTROL', 'GND', 'N$1']
+Renaming: CONTROL to CONTROL_7_led_3
+Renaming: GND to GND_7_led_3
+Renaming: N$1 to N$1_7_led_3
+Parts: [<Element part at 0x2b6836f643b0>]
+['u1']
+Uniquify net names for: caster
+Connection:  (brain.D3_0_brain, drive.PWMA_2_drive)
+D3_0_brain is owned by me: False
+PWMA_2_drive is owned by me: False
+New connection:  (brain.D3_0_brain, drive.PWMA_2_drive)
+
+Connection:  (brain.D5_0_brain, drive.PWMB_2_drive)
+D5_0_brain is owned by me: False
+PWMB_2_drive is owned by me: False
+New connection:  (brain.D5_0_brain, drive.PWMB_2_drive)
+
+Connection:  (brain.D4_0_brain, drive.STBY_2_drive)
+D4_0_brain is owned by me: False
+STBY_2_drive is owned by me: False
+New connection:  (brain.D4_0_brain, drive.STBY_2_drive)
+
+Connection:  (brain.D6_0_brain, drive.AIN1_2_drive)
+D6_0_brain is owned by me: False
+AIN1_2_drive is owned by me: False
+New connection:  (brain.D6_0_brain, drive.AIN1_2_drive)
+
+Connection:  (brain.D8_0_brain, drive.AIN2_2_drive)
+D8_0_brain is owned by me: False
+AIN2_2_drive is owned by me: False
+New connection:  (brain.D8_0_brain, drive.AIN2_2_drive)
+
+Connection:  (brain.D9_0_brain, drive.BIN1_2_drive)
+D9_0_brain is owned by me: False
+BIN1_2_drive is owned by me: False
+New connection:  (brain.D9_0_brain, drive.BIN1_2_drive)
+
+Connection:  (brain.D10_0_brain, drive.BIN2_2_drive)
+D10_0_brain is owned by me: False
+BIN2_2_drive is owned by me: False
+New connection:  (brain.D10_0_brain, drive.BIN2_2_drive)
+
+Connection:  (brain.D11_0_brain, led.CONTROL_5_led)
+D11_0_brain is owned by me: False
+CONTROL_5_led is owned by me: False
+New connection:  (brain.D11_0_brain, led.CONTROL_5_led)
+
+Connection:  (brain.D12_0_brain, led_2.CONTROL_6_led_2)
+D12_0_brain is owned by me: False
+CONTROL_6_led_2 is owned by me: False
+New connection:  (brain.D12_0_brain, led_2.CONTROL_6_led_2)
+
+Connection:  (brain.D13_0_brain, led_3.CONTROL_7_led_3)
+D13_0_brain is owned by me: False
+CONTROL_7_led_3 is owned by me: False
+New connection:  (brain.D13_0_brain, led_3.CONTROL_7_led_3)
+
+Connection:  (brain.A0_0_brain, button.SENSE)
+A0_0_brain is owned by me: False
+SENSE is owned by me: False
+New connection:  (brain.A0_0_brain, button.SENSE)
+
+Connection:  (brain.A1_0_brain, bump.SENSE)
+A1_0_brain is owned by me: False
+SENSE is owned by me: False
+New connection:  (brain.A1_0_brain, bump.SENSE)
+
+Connection:  (brain.A2_0_brain, distanceSensor.A_3_distanceSensor)
+A2_0_brain is owned by me: False
+A_3_distanceSensor is owned by me: False
+New connection:  (brain.A2_0_brain, distanceSensor.A_3_distanceSensor)
+
+Connection:  (brain.A3_0_brain, distanceSensor_2.A_4_distanceSensor_2)
+A3_0_brain is owned by me: False
+A_4_distanceSensor_2 is owned by me: False
+New connection:  (brain.A3_0_brain, distanceSensor_2.A_4_distanceSensor_2)
+
+Connection:  [brain.+5V_0_brain, drive.VCC_2_drive, distanceSensor.VCC_3_distanceSensor, distanceSensor_2.VCC_4_distanceSensor_2]
++5V_0_brain is owned by me: False
+VCC_2_drive is owned by me: False
+VCC_3_distanceSensor is owned by me: False
+VCC_4_distanceSensor_2 is owned by me: False
+New connection:  [brain.+5V_0_brain, drive.VCC_2_drive, distanceSensor.VCC_3_distanceSensor, distanceSensor_2.VCC_4_distanceSensor_2]
+
+Connection:  [battery.POS_1_battery, brain.VBAT_0_brain, drive.VM_2_drive]
+POS_1_battery is owned by me: False
+VBAT_0_brain is owned by me: False
+VM_2_drive is owned by me: False
+New connection:  [battery.POS_1_battery, brain.VBAT_0_brain, drive.VM_2_drive]
+
+Connection:  [brain.GND_0_brain, brain.GND1_0_brain, button.GND, brain.GND2_0_brain, led.GND_5_led, led_2.GND_6_led_2, bump.GND, drive.GND_2_drive, led_3.GND_7_led_3, battery.NEG_1_battery, distanceSensor.GND_3_distanceSensor, distanceSensor_2.GND_4_distanceSensor_2, drive.GND2_2_drive]
+GND_0_brain is owned by me: False
+GND1_0_brain is owned by me: False
+GND is owned by me: False
+GND2_0_brain is owned by me: False
+GND_5_led is owned by me: False
+GND_6_led_2 is owned by me: False
+GND is owned by me: False
+GND_2_drive is owned by me: False
+GND_7_led_3 is owned by me: False
+NEG_1_battery is owned by me: False
+GND_3_distanceSensor is owned by me: False
+GND_4_distanceSensor_2 is owned by me: False
+GND2_2_drive is owned by me: False
+New connection:  [brain.GND_0_brain, brain.GND1_0_brain, button.GND, brain.GND2_0_brain, led.GND_5_led, led_2.GND_6_led_2, bump.GND, drive.GND_2_drive, led_3.GND_7_led_3, battery.NEG_1_battery, distanceSensor.GND_3_distanceSensor, distanceSensor_2.GND_4_distanceSensor_2, drive.GND2_2_drive]
+
+All nets: []
+Parts: [<Element part at 0x2b6836f64200>, <Element part at 0x2b6836f641b8>]
+['B1', 'GND1']
+Uniquify net names for: button
+Connection:  (brain.D3_0_brain, drive.PWMA_2_drive)
+D3_0_brain is owned by me: False
+PWMA_2_drive is owned by me: False
+New connection:  (brain.D3_0_brain, drive.PWMA_2_drive)
+
+Connection:  (brain.D5_0_brain, drive.PWMB_2_drive)
+D5_0_brain is owned by me: False
+PWMB_2_drive is owned by me: False
+New connection:  (brain.D5_0_brain, drive.PWMB_2_drive)
+
+Connection:  (brain.D4_0_brain, drive.STBY_2_drive)
+D4_0_brain is owned by me: False
+STBY_2_drive is owned by me: False
+New connection:  (brain.D4_0_brain, drive.STBY_2_drive)
+
+Connection:  (brain.D6_0_brain, drive.AIN1_2_drive)
+D6_0_brain is owned by me: False
+AIN1_2_drive is owned by me: False
+New connection:  (brain.D6_0_brain, drive.AIN1_2_drive)
+
+Connection:  (brain.D8_0_brain, drive.AIN2_2_drive)
+D8_0_brain is owned by me: False
+AIN2_2_drive is owned by me: False
+New connection:  (brain.D8_0_brain, drive.AIN2_2_drive)
+
+Connection:  (brain.D9_0_brain, drive.BIN1_2_drive)
+D9_0_brain is owned by me: False
+BIN1_2_drive is owned by me: False
+New connection:  (brain.D9_0_brain, drive.BIN1_2_drive)
+
+Connection:  (brain.D10_0_brain, drive.BIN2_2_drive)
+D10_0_brain is owned by me: False
+BIN2_2_drive is owned by me: False
+New connection:  (brain.D10_0_brain, drive.BIN2_2_drive)
+
+Connection:  (brain.D11_0_brain, led.CONTROL_5_led)
+D11_0_brain is owned by me: False
+CONTROL_5_led is owned by me: False
+New connection:  (brain.D11_0_brain, led.CONTROL_5_led)
+
+Connection:  (brain.D12_0_brain, led_2.CONTROL_6_led_2)
+D12_0_brain is owned by me: False
+CONTROL_6_led_2 is owned by me: False
+New connection:  (brain.D12_0_brain, led_2.CONTROL_6_led_2)
+
+Connection:  (brain.D13_0_brain, led_3.CONTROL_7_led_3)
+D13_0_brain is owned by me: False
+CONTROL_7_led_3 is owned by me: False
+New connection:  (brain.D13_0_brain, led_3.CONTROL_7_led_3)
+
+Connection:  (brain.A0_0_brain, button.SENSE)
+A0_0_brain is owned by me: False
+SENSE is owned by me: True
+New connection:  (brain.A0_0_brain, button.SENSE_9_button)
+
+Connection:  (brain.A1_0_brain, bump.SENSE)
+A1_0_brain is owned by me: False
+SENSE is owned by me: False
+New connection:  (brain.A1_0_brain, bump.SENSE)
+
+Connection:  (brain.A2_0_brain, distanceSensor.A_3_distanceSensor)
+A2_0_brain is owned by me: False
+A_3_distanceSensor is owned by me: False
+New connection:  (brain.A2_0_brain, distanceSensor.A_3_distanceSensor)
+
+Connection:  (brain.A3_0_brain, distanceSensor_2.A_4_distanceSensor_2)
+A3_0_brain is owned by me: False
+A_4_distanceSensor_2 is owned by me: False
+New connection:  (brain.A3_0_brain, distanceSensor_2.A_4_distanceSensor_2)
+
+Connection:  [brain.+5V_0_brain, drive.VCC_2_drive, distanceSensor.VCC_3_distanceSensor, distanceSensor_2.VCC_4_distanceSensor_2]
++5V_0_brain is owned by me: False
+VCC_2_drive is owned by me: False
+VCC_3_distanceSensor is owned by me: False
+VCC_4_distanceSensor_2 is owned by me: False
+New connection:  [brain.+5V_0_brain, drive.VCC_2_drive, distanceSensor.VCC_3_distanceSensor, distanceSensor_2.VCC_4_distanceSensor_2]
+
+Connection:  [battery.POS_1_battery, brain.VBAT_0_brain, drive.VM_2_drive]
+POS_1_battery is owned by me: False
+VBAT_0_brain is owned by me: False
+VM_2_drive is owned by me: False
+New connection:  [battery.POS_1_battery, brain.VBAT_0_brain, drive.VM_2_drive]
+
+Connection:  [brain.GND_0_brain, brain.GND1_0_brain, button.GND, brain.GND2_0_brain, led.GND_5_led, led_2.GND_6_led_2, bump.GND, drive.GND_2_drive, led_3.GND_7_led_3, battery.NEG_1_battery, distanceSensor.GND_3_distanceSensor, distanceSensor_2.GND_4_distanceSensor_2, drive.GND2_2_drive]
+GND_0_brain is owned by me: False
+GND1_0_brain is owned by me: False
+GND is owned by me: True
+GND2_0_brain is owned by me: False
+GND_5_led is owned by me: False
+GND_6_led_2 is owned by me: False
+GND is owned by me: False
+GND_2_drive is owned by me: False
+GND_7_led_3 is owned by me: False
+NEG_1_battery is owned by me: False
+GND_3_distanceSensor is owned by me: False
+GND_4_distanceSensor_2 is owned by me: False
+GND2_2_drive is owned by me: False
+New connection:  [brain.GND_0_brain, brain.GND1_0_brain, button.GND_9_button, brain.GND2_0_brain, led.GND_5_led, led_2.GND_6_led_2, bump.GND, drive.GND_2_drive, led_3.GND_7_led_3, battery.NEG_1_battery, distanceSensor.GND_3_distanceSensor, distanceSensor_2.GND_4_distanceSensor_2, drive.GND2_2_drive]
+
+All nets: ['GND', 'SENSE']
+Renaming: GND to GND_9_button
+Renaming: SENSE to SENSE_9_button
+Parts: [<Element part at 0x2b6836f64518>, <Element part at 0x2b6836f64368>]
+['GND1', 'U$2']
+Uniquify net names for: bump
+Connection:  (brain.D3_0_brain, drive.PWMA_2_drive)
+D3_0_brain is owned by me: False
+PWMA_2_drive is owned by me: False
+New connection:  (brain.D3_0_brain, drive.PWMA_2_drive)
+
+Connection:  (brain.D5_0_brain, drive.PWMB_2_drive)
+D5_0_brain is owned by me: False
+PWMB_2_drive is owned by me: False
+New connection:  (brain.D5_0_brain, drive.PWMB_2_drive)
+
+Connection:  (brain.D4_0_brain, drive.STBY_2_drive)
+D4_0_brain is owned by me: False
+STBY_2_drive is owned by me: False
+New connection:  (brain.D4_0_brain, drive.STBY_2_drive)
+
+Connection:  (brain.D6_0_brain, drive.AIN1_2_drive)
+D6_0_brain is owned by me: False
+AIN1_2_drive is owned by me: False
+New connection:  (brain.D6_0_brain, drive.AIN1_2_drive)
+
+Connection:  (brain.D8_0_brain, drive.AIN2_2_drive)
+D8_0_brain is owned by me: False
+AIN2_2_drive is owned by me: False
+New connection:  (brain.D8_0_brain, drive.AIN2_2_drive)
+
+Connection:  (brain.D9_0_brain, drive.BIN1_2_drive)
+D9_0_brain is owned by me: False
+BIN1_2_drive is owned by me: False
+New connection:  (brain.D9_0_brain, drive.BIN1_2_drive)
+
+Connection:  (brain.D10_0_brain, drive.BIN2_2_drive)
+D10_0_brain is owned by me: False
+BIN2_2_drive is owned by me: False
+New connection:  (brain.D10_0_brain, drive.BIN2_2_drive)
+
+Connection:  (brain.D11_0_brain, led.CONTROL_5_led)
+D11_0_brain is owned by me: False
+CONTROL_5_led is owned by me: False
+New connection:  (brain.D11_0_brain, led.CONTROL_5_led)
+
+Connection:  (brain.D12_0_brain, led_2.CONTROL_6_led_2)
+D12_0_brain is owned by me: False
+CONTROL_6_led_2 is owned by me: False
+New connection:  (brain.D12_0_brain, led_2.CONTROL_6_led_2)
+
+Connection:  (brain.D13_0_brain, led_3.CONTROL_7_led_3)
+D13_0_brain is owned by me: False
+CONTROL_7_led_3 is owned by me: False
+New connection:  (brain.D13_0_brain, led_3.CONTROL_7_led_3)
+
+Connection:  (brain.A0_0_brain, button.SENSE_9_button)
+A0_0_brain is owned by me: False
+SENSE_9_button is owned by me: False
+New connection:  (brain.A0_0_brain, button.SENSE_9_button)
+
+Connection:  (brain.A1_0_brain, bump.SENSE)
+A1_0_brain is owned by me: False
+SENSE is owned by me: True
+New connection:  (brain.A1_0_brain, bump.SENSE_10_bump)
+
+Connection:  (brain.A2_0_brain, distanceSensor.A_3_distanceSensor)
+A2_0_brain is owned by me: False
+A_3_distanceSensor is owned by me: False
+New connection:  (brain.A2_0_brain, distanceSensor.A_3_distanceSensor)
+
+Connection:  (brain.A3_0_brain, distanceSensor_2.A_4_distanceSensor_2)
+A3_0_brain is owned by me: False
+A_4_distanceSensor_2 is owned by me: False
+New connection:  (brain.A3_0_brain, distanceSensor_2.A_4_distanceSensor_2)
+
+Connection:  [brain.+5V_0_brain, drive.VCC_2_drive, distanceSensor.VCC_3_distanceSensor, distanceSensor_2.VCC_4_distanceSensor_2]
++5V_0_brain is owned by me: False
+VCC_2_drive is owned by me: False
+VCC_3_distanceSensor is owned by me: False
+VCC_4_distanceSensor_2 is owned by me: False
+New connection:  [brain.+5V_0_brain, drive.VCC_2_drive, distanceSensor.VCC_3_distanceSensor, distanceSensor_2.VCC_4_distanceSensor_2]
+
+Connection:  [battery.POS_1_battery, brain.VBAT_0_brain, drive.VM_2_drive]
+POS_1_battery is owned by me: False
+VBAT_0_brain is owned by me: False
+VM_2_drive is owned by me: False
+New connection:  [battery.POS_1_battery, brain.VBAT_0_brain, drive.VM_2_drive]
+
+Connection:  [brain.GND_0_brain, brain.GND1_0_brain, button.GND_9_button, brain.GND2_0_brain, led.GND_5_led, led_2.GND_6_led_2, bump.GND, drive.GND_2_drive, led_3.GND_7_led_3, battery.NEG_1_battery, distanceSensor.GND_3_distanceSensor, distanceSensor_2.GND_4_distanceSensor_2, drive.GND2_2_drive]
+GND_0_brain is owned by me: False
+GND1_0_brain is owned by me: False
+GND_9_button is owned by me: False
+GND2_0_brain is owned by me: False
+GND_5_led is owned by me: False
+GND_6_led_2 is owned by me: False
+GND is owned by me: True
+GND_2_drive is owned by me: False
+GND_7_led_3 is owned by me: False
+NEG_1_battery is owned by me: False
+GND_3_distanceSensor is owned by me: False
+GND_4_distanceSensor_2 is owned by me: False
+GND2_2_drive is owned by me: False
+New connection:  [brain.GND_0_brain, brain.GND1_0_brain, button.GND_9_button, brain.GND2_0_brain, led.GND_5_led, led_2.GND_6_led_2, bump.GND_10_bump, drive.GND_2_drive, led_3.GND_7_led_3, battery.NEG_1_battery, distanceSensor.GND_3_distanceSensor, distanceSensor_2.GND_4_distanceSensor_2, drive.GND2_2_drive]
+
+All nets: ['GND', 'SENSE']
+Renaming: GND to GND_10_bump
+Renaming: SENSE to SENSE_10_bump
+Component rename_net: D3_0_brain D3_0_brain
+Names: ['+5V_0_brain', 'A0_0_brain', 'A1_0_brain', 'A2_0_brain', 'A3_0_brain', 'A4_0_brain', 'A5_0_brain', 'A6_0_brain', 'A7_0_brain', 'AREF_0_brain', 'D10_0_brain', 'D11_0_brain', 'D12_0_brain', 'D13_0_brain', 'D3_0_brain', 'D4_0_brain', 'D5_0_brain', 'D6_0_brain', 'D8_0_brain', 'D9_0_brain', 'DTR/RTS_0_brain', 'GND_0_brain', 'GND1_0_brain', 'GND2_0_brain', 'RESET_0_brain', 'RXD_0_brain', 'RXD1_0_brain', 'TXD_0_brain', 'TXD1_0_brain', 'VBAT_0_brain', 'VBUS_0_brain', 'VBUS1_0_brain']
+Component rename_net: PWMA_2_drive D3_0_brain
+Names: ['A01_2_drive', 'A02_2_drive', 'B01_2_drive', 'B02_2_drive', 'A01_2_drive', 'A02_2_drive', 'AIN1_2_drive', 'AIN2_2_drive', 'B01_2_drive', 'B02_2_drive', 'BIN1_2_drive', 'BIN2_2_drive', 'GND_2_drive', 'GND1_2_drive', 'GND2_2_drive', 'D3_0_brain', 'PWMB_2_drive', 'STBY_2_drive', 'VCC_2_drive', 'VM_2_drive']
+Component rename_net: D5_0_brain D5_0_brain
+Names: ['+5V_0_brain', 'A0_0_brain', 'A1_0_brain', 'A2_0_brain', 'A3_0_brain', 'A4_0_brain', 'A5_0_brain', 'A6_0_brain', 'A7_0_brain', 'AREF_0_brain', 'D10_0_brain', 'D11_0_brain', 'D12_0_brain', 'D13_0_brain', 'D3_0_brain', 'D4_0_brain', 'D5_0_brain', 'D6_0_brain', 'D8_0_brain', 'D9_0_brain', 'DTR/RTS_0_brain', 'GND_0_brain', 'GND1_0_brain', 'GND2_0_brain', 'RESET_0_brain', 'RXD_0_brain', 'RXD1_0_brain', 'TXD_0_brain', 'TXD1_0_brain', 'VBAT_0_brain', 'VBUS_0_brain', 'VBUS1_0_brain']
+Component rename_net: PWMB_2_drive D5_0_brain
+Names: ['A01_2_drive', 'A02_2_drive', 'B01_2_drive', 'B02_2_drive', 'A01_2_drive', 'A02_2_drive', 'AIN1_2_drive', 'AIN2_2_drive', 'B01_2_drive', 'B02_2_drive', 'BIN1_2_drive', 'BIN2_2_drive', 'GND_2_drive', 'GND1_2_drive', 'GND2_2_drive', 'D3_0_brain', 'D5_0_brain', 'STBY_2_drive', 'VCC_2_drive', 'VM_2_drive']
+Component rename_net: D4_0_brain D4_0_brain
+Names: ['+5V_0_brain', 'A0_0_brain', 'A1_0_brain', 'A2_0_brain', 'A3_0_brain', 'A4_0_brain', 'A5_0_brain', 'A6_0_brain', 'A7_0_brain', 'AREF_0_brain', 'D10_0_brain', 'D11_0_brain', 'D12_0_brain', 'D13_0_brain', 'D3_0_brain', 'D4_0_brain', 'D5_0_brain', 'D6_0_brain', 'D8_0_brain', 'D9_0_brain', 'DTR/RTS_0_brain', 'GND_0_brain', 'GND1_0_brain', 'GND2_0_brain', 'RESET_0_brain', 'RXD_0_brain', 'RXD1_0_brain', 'TXD_0_brain', 'TXD1_0_brain', 'VBAT_0_brain', 'VBUS_0_brain', 'VBUS1_0_brain']
+Component rename_net: STBY_2_drive D4_0_brain
+Names: ['A01_2_drive', 'A02_2_drive', 'B01_2_drive', 'B02_2_drive', 'A01_2_drive', 'A02_2_drive', 'AIN1_2_drive', 'AIN2_2_drive', 'B01_2_drive', 'B02_2_drive', 'BIN1_2_drive', 'BIN2_2_drive', 'GND_2_drive', 'GND1_2_drive', 'GND2_2_drive', 'D3_0_brain', 'D5_0_brain', 'D4_0_brain', 'VCC_2_drive', 'VM_2_drive']
+Component rename_net: D6_0_brain D6_0_brain
+Names: ['+5V_0_brain', 'A0_0_brain', 'A1_0_brain', 'A2_0_brain', 'A3_0_brain', 'A4_0_brain', 'A5_0_brain', 'A6_0_brain', 'A7_0_brain', 'AREF_0_brain', 'D10_0_brain', 'D11_0_brain', 'D12_0_brain', 'D13_0_brain', 'D3_0_brain', 'D4_0_brain', 'D5_0_brain', 'D6_0_brain', 'D8_0_brain', 'D9_0_brain', 'DTR/RTS_0_brain', 'GND_0_brain', 'GND1_0_brain', 'GND2_0_brain', 'RESET_0_brain', 'RXD_0_brain', 'RXD1_0_brain', 'TXD_0_brain', 'TXD1_0_brain', 'VBAT_0_brain', 'VBUS_0_brain', 'VBUS1_0_brain']
+Component rename_net: AIN1_2_drive D6_0_brain
+Names: ['A01_2_drive', 'A02_2_drive', 'B01_2_drive', 'B02_2_drive', 'A01_2_drive', 'A02_2_drive', 'D6_0_brain', 'AIN2_2_drive', 'B01_2_drive', 'B02_2_drive', 'BIN1_2_drive', 'BIN2_2_drive', 'GND_2_drive', 'GND1_2_drive', 'GND2_2_drive', 'D3_0_brain', 'D5_0_brain', 'D4_0_brain', 'VCC_2_drive', 'VM_2_drive']
+Component rename_net: D8_0_brain D8_0_brain
+Names: ['+5V_0_brain', 'A0_0_brain', 'A1_0_brain', 'A2_0_brain', 'A3_0_brain', 'A4_0_brain', 'A5_0_brain', 'A6_0_brain', 'A7_0_brain', 'AREF_0_brain', 'D10_0_brain', 'D11_0_brain', 'D12_0_brain', 'D13_0_brain', 'D3_0_brain', 'D4_0_brain', 'D5_0_brain', 'D6_0_brain', 'D8_0_brain', 'D9_0_brain', 'DTR/RTS_0_brain', 'GND_0_brain', 'GND1_0_brain', 'GND2_0_brain', 'RESET_0_brain', 'RXD_0_brain', 'RXD1_0_brain', 'TXD_0_brain', 'TXD1_0_brain', 'VBAT_0_brain', 'VBUS_0_brain', 'VBUS1_0_brain']
+Component rename_net: AIN2_2_drive D8_0_brain
+Names: ['A01_2_drive', 'A02_2_drive', 'B01_2_drive', 'B02_2_drive', 'A01_2_drive', 'A02_2_drive', 'D6_0_brain', 'D8_0_brain', 'B01_2_drive', 'B02_2_drive', 'BIN1_2_drive', 'BIN2_2_drive', 'GND_2_drive', 'GND1_2_drive', 'GND2_2_drive', 'D3_0_brain', 'D5_0_brain', 'D4_0_brain', 'VCC_2_drive', 'VM_2_drive']
+Component rename_net: D9_0_brain D9_0_brain
+Names: ['+5V_0_brain', 'A0_0_brain', 'A1_0_brain', 'A2_0_brain', 'A3_0_brain', 'A4_0_brain', 'A5_0_brain', 'A6_0_brain', 'A7_0_brain', 'AREF_0_brain', 'D10_0_brain', 'D11_0_brain', 'D12_0_brain', 'D13_0_brain', 'D3_0_brain', 'D4_0_brain', 'D5_0_brain', 'D6_0_brain', 'D8_0_brain', 'D9_0_brain', 'DTR/RTS_0_brain', 'GND_0_brain', 'GND1_0_brain', 'GND2_0_brain', 'RESET_0_brain', 'RXD_0_brain', 'RXD1_0_brain', 'TXD_0_brain', 'TXD1_0_brain', 'VBAT_0_brain', 'VBUS_0_brain', 'VBUS1_0_brain']
+Component rename_net: BIN1_2_drive D9_0_brain
+Names: ['A01_2_drive', 'A02_2_drive', 'B01_2_drive', 'B02_2_drive', 'A01_2_drive', 'A02_2_drive', 'D6_0_brain', 'D8_0_brain', 'B01_2_drive', 'B02_2_drive', 'D9_0_brain', 'BIN2_2_drive', 'GND_2_drive', 'GND1_2_drive', 'GND2_2_drive', 'D3_0_brain', 'D5_0_brain', 'D4_0_brain', 'VCC_2_drive', 'VM_2_drive']
+Component rename_net: D10_0_brain D10_0_brain
+Names: ['+5V_0_brain', 'A0_0_brain', 'A1_0_brain', 'A2_0_brain', 'A3_0_brain', 'A4_0_brain', 'A5_0_brain', 'A6_0_brain', 'A7_0_brain', 'AREF_0_brain', 'D10_0_brain', 'D11_0_brain', 'D12_0_brain', 'D13_0_brain', 'D3_0_brain', 'D4_0_brain', 'D5_0_brain', 'D6_0_brain', 'D8_0_brain', 'D9_0_brain', 'DTR/RTS_0_brain', 'GND_0_brain', 'GND1_0_brain', 'GND2_0_brain', 'RESET_0_brain', 'RXD_0_brain', 'RXD1_0_brain', 'TXD_0_brain', 'TXD1_0_brain', 'VBAT_0_brain', 'VBUS_0_brain', 'VBUS1_0_brain']
+Component rename_net: BIN2_2_drive D10_0_brain
+Names: ['A01_2_drive', 'A02_2_drive', 'B01_2_drive', 'B02_2_drive', 'A01_2_drive', 'A02_2_drive', 'D6_0_brain', 'D8_0_brain', 'B01_2_drive', 'B02_2_drive', 'D9_0_brain', 'D10_0_brain', 'GND_2_drive', 'GND1_2_drive', 'GND2_2_drive', 'D3_0_brain', 'D5_0_brain', 'D4_0_brain', 'VCC_2_drive', 'VM_2_drive']
+Component rename_net: D11_0_brain D11_0_brain
+Names: ['+5V_0_brain', 'A0_0_brain', 'A1_0_brain', 'A2_0_brain', 'A3_0_brain', 'A4_0_brain', 'A5_0_brain', 'A6_0_brain', 'A7_0_brain', 'AREF_0_brain', 'D10_0_brain', 'D11_0_brain', 'D12_0_brain', 'D13_0_brain', 'D3_0_brain', 'D4_0_brain', 'D5_0_brain', 'D6_0_brain', 'D8_0_brain', 'D9_0_brain', 'DTR/RTS_0_brain', 'GND_0_brain', 'GND1_0_brain', 'GND2_0_brain', 'RESET_0_brain', 'RXD_0_brain', 'RXD1_0_brain', 'TXD_0_brain', 'TXD1_0_brain', 'VBAT_0_brain', 'VBUS_0_brain', 'VBUS1_0_brain']
+Component rename_net: CONTROL_5_led D11_0_brain
+Names: ['D11_0_brain', 'GND_5_led', 'N$1_5_led']
+Component rename_net: D12_0_brain D12_0_brain
+Names: ['+5V_0_brain', 'A0_0_brain', 'A1_0_brain', 'A2_0_brain', 'A3_0_brain', 'A4_0_brain', 'A5_0_brain', 'A6_0_brain', 'A7_0_brain', 'AREF_0_brain', 'D10_0_brain', 'D11_0_brain', 'D12_0_brain', 'D13_0_brain', 'D3_0_brain', 'D4_0_brain', 'D5_0_brain', 'D6_0_brain', 'D8_0_brain', 'D9_0_brain', 'DTR/RTS_0_brain', 'GND_0_brain', 'GND1_0_brain', 'GND2_0_brain', 'RESET_0_brain', 'RXD_0_brain', 'RXD1_0_brain', 'TXD_0_brain', 'TXD1_0_brain', 'VBAT_0_brain', 'VBUS_0_brain', 'VBUS1_0_brain']
+Component rename_net: CONTROL_6_led_2 D12_0_brain
+Names: ['D12_0_brain', 'GND_6_led_2', 'N$1_6_led_2']
+Component rename_net: D13_0_brain D13_0_brain
+Names: ['+5V_0_brain', 'A0_0_brain', 'A1_0_brain', 'A2_0_brain', 'A3_0_brain', 'A4_0_brain', 'A5_0_brain', 'A6_0_brain', 'A7_0_brain', 'AREF_0_brain', 'D10_0_brain', 'D11_0_brain', 'D12_0_brain', 'D13_0_brain', 'D3_0_brain', 'D4_0_brain', 'D5_0_brain', 'D6_0_brain', 'D8_0_brain', 'D9_0_brain', 'DTR/RTS_0_brain', 'GND_0_brain', 'GND1_0_brain', 'GND2_0_brain', 'RESET_0_brain', 'RXD_0_brain', 'RXD1_0_brain', 'TXD_0_brain', 'TXD1_0_brain', 'VBAT_0_brain', 'VBUS_0_brain', 'VBUS1_0_brain']
+Component rename_net: CONTROL_7_led_3 D13_0_brain
+Names: ['D13_0_brain', 'GND_7_led_3', 'N$1_7_led_3']
+Component rename_net: A0_0_brain A0_0_brain
+Names: ['+5V_0_brain', 'A0_0_brain', 'A1_0_brain', 'A2_0_brain', 'A3_0_brain', 'A4_0_brain', 'A5_0_brain', 'A6_0_brain', 'A7_0_brain', 'AREF_0_brain', 'D10_0_brain', 'D11_0_brain', 'D12_0_brain', 'D13_0_brain', 'D3_0_brain', 'D4_0_brain', 'D5_0_brain', 'D6_0_brain', 'D8_0_brain', 'D9_0_brain', 'DTR/RTS_0_brain', 'GND_0_brain', 'GND1_0_brain', 'GND2_0_brain', 'RESET_0_brain', 'RXD_0_brain', 'RXD1_0_brain', 'TXD_0_brain', 'TXD1_0_brain', 'VBAT_0_brain', 'VBUS_0_brain', 'VBUS1_0_brain']
+Component rename_net: SENSE_9_button A0_0_brain
+Names: ['GND_9_button', 'A0_0_brain']
+Component rename_net: A1_0_brain A1_0_brain
+Names: ['+5V_0_brain', 'A0_0_brain', 'A1_0_brain', 'A2_0_brain', 'A3_0_brain', 'A4_0_brain', 'A5_0_brain', 'A6_0_brain', 'A7_0_brain', 'AREF_0_brain', 'D10_0_brain', 'D11_0_brain', 'D12_0_brain', 'D13_0_brain', 'D3_0_brain', 'D4_0_brain', 'D5_0_brain', 'D6_0_brain', 'D8_0_brain', 'D9_0_brain', 'DTR/RTS_0_brain', 'GND_0_brain', 'GND1_0_brain', 'GND2_0_brain', 'RESET_0_brain', 'RXD_0_brain', 'RXD1_0_brain', 'TXD_0_brain', 'TXD1_0_brain', 'VBAT_0_brain', 'VBUS_0_brain', 'VBUS1_0_brain']
+Component rename_net: SENSE_10_bump A1_0_brain
+Names: ['GND_10_bump', 'A1_0_brain']
+Component rename_net: A2_0_brain A2_0_brain
+Names: ['+5V_0_brain', 'A0_0_brain', 'A1_0_brain', 'A2_0_brain', 'A3_0_brain', 'A4_0_brain', 'A5_0_brain', 'A6_0_brain', 'A7_0_brain', 'AREF_0_brain', 'D10_0_brain', 'D11_0_brain', 'D12_0_brain', 'D13_0_brain', 'D3_0_brain', 'D4_0_brain', 'D5_0_brain', 'D6_0_brain', 'D8_0_brain', 'D9_0_brain', 'DTR/RTS_0_brain', 'GND_0_brain', 'GND1_0_brain', 'GND2_0_brain', 'RESET_0_brain', 'RXD_0_brain', 'RXD1_0_brain', 'TXD_0_brain', 'TXD1_0_brain', 'VBAT_0_brain', 'VBUS_0_brain', 'VBUS1_0_brain']
+Component rename_net: A_3_distanceSensor A2_0_brain
+Names: ['A2_0_brain', 'GND_3_distanceSensor', 'VCC_3_distanceSensor']
+Component rename_net: A3_0_brain A3_0_brain
+Names: ['+5V_0_brain', 'A0_0_brain', 'A1_0_brain', 'A2_0_brain', 'A3_0_brain', 'A4_0_brain', 'A5_0_brain', 'A6_0_brain', 'A7_0_brain', 'AREF_0_brain', 'D10_0_brain', 'D11_0_brain', 'D12_0_brain', 'D13_0_brain', 'D3_0_brain', 'D4_0_brain', 'D5_0_brain', 'D6_0_brain', 'D8_0_brain', 'D9_0_brain', 'DTR/RTS_0_brain', 'GND_0_brain', 'GND1_0_brain', 'GND2_0_brain', 'RESET_0_brain', 'RXD_0_brain', 'RXD1_0_brain', 'TXD_0_brain', 'TXD1_0_brain', 'VBAT_0_brain', 'VBUS_0_brain', 'VBUS1_0_brain']
+Component rename_net: A_4_distanceSensor_2 A3_0_brain
+Names: ['A3_0_brain', 'GND_4_distanceSensor_2', 'VCC_4_distanceSensor_2']
+Component rename_net: +5V_0_brain +5V_0_brain
+Names: ['+5V_0_brain', 'A0_0_brain', 'A1_0_brain', 'A2_0_brain', 'A3_0_brain', 'A4_0_brain', 'A5_0_brain', 'A6_0_brain', 'A7_0_brain', 'AREF_0_brain', 'D10_0_brain', 'D11_0_brain', 'D12_0_brain', 'D13_0_brain', 'D3_0_brain', 'D4_0_brain', 'D5_0_brain', 'D6_0_brain', 'D8_0_brain', 'D9_0_brain', 'DTR/RTS_0_brain', 'GND_0_brain', 'GND1_0_brain', 'GND2_0_brain', 'RESET_0_brain', 'RXD_0_brain', 'RXD1_0_brain', 'TXD_0_brain', 'TXD1_0_brain', 'VBAT_0_brain', 'VBUS_0_brain', 'VBUS1_0_brain']
+Component rename_net: VCC_2_drive +5V_0_brain
+Names: ['A01_2_drive', 'A02_2_drive', 'B01_2_drive', 'B02_2_drive', 'A01_2_drive', 'A02_2_drive', 'D6_0_brain', 'D8_0_brain', 'B01_2_drive', 'B02_2_drive', 'D9_0_brain', 'D10_0_brain', 'GND_2_drive', 'GND1_2_drive', 'GND2_2_drive', 'D3_0_brain', 'D5_0_brain', 'D4_0_brain', '+5V_0_brain', 'VM_2_drive']
+Component rename_net: VCC_3_distanceSensor +5V_0_brain
+Names: ['A2_0_brain', 'GND_3_distanceSensor', '+5V_0_brain']
+Component rename_net: VCC_4_distanceSensor_2 +5V_0_brain
+Names: ['A3_0_brain', 'GND_4_distanceSensor_2', '+5V_0_brain']
+Component rename_net: POS_1_battery POS_1_battery
+Names: ['N$1_1_battery', 'NEG_1_battery', 'POS_1_battery']
+Component rename_net: VBAT_0_brain POS_1_battery
+Names: ['+5V_0_brain', 'A0_0_brain', 'A1_0_brain', 'A2_0_brain', 'A3_0_brain', 'A4_0_brain', 'A5_0_brain', 'A6_0_brain', 'A7_0_brain', 'AREF_0_brain', 'D10_0_brain', 'D11_0_brain', 'D12_0_brain', 'D13_0_brain', 'D3_0_brain', 'D4_0_brain', 'D5_0_brain', 'D6_0_brain', 'D8_0_brain', 'D9_0_brain', 'DTR/RTS_0_brain', 'GND_0_brain', 'GND1_0_brain', 'GND2_0_brain', 'RESET_0_brain', 'RXD_0_brain', 'RXD1_0_brain', 'TXD_0_brain', 'TXD1_0_brain', 'POS_1_battery', 'VBUS_0_brain', 'VBUS1_0_brain']
+Component rename_net: VM_2_drive POS_1_battery
+Names: ['A01_2_drive', 'A02_2_drive', 'B01_2_drive', 'B02_2_drive', 'A01_2_drive', 'A02_2_drive', 'D6_0_brain', 'D8_0_brain', 'B01_2_drive', 'B02_2_drive', 'D9_0_brain', 'D10_0_brain', 'GND_2_drive', 'GND1_2_drive', 'GND2_2_drive', 'D3_0_brain', 'D5_0_brain', 'D4_0_brain', '+5V_0_brain', 'POS_1_battery']
+Component rename_net: GND_0_brain GND_0_brain
+Names: ['+5V_0_brain', 'A0_0_brain', 'A1_0_brain', 'A2_0_brain', 'A3_0_brain', 'A4_0_brain', 'A5_0_brain', 'A6_0_brain', 'A7_0_brain', 'AREF_0_brain', 'D10_0_brain', 'D11_0_brain', 'D12_0_brain', 'D13_0_brain', 'D3_0_brain', 'D4_0_brain', 'D5_0_brain', 'D6_0_brain', 'D8_0_brain', 'D9_0_brain', 'DTR/RTS_0_brain', 'GND_0_brain', 'GND1_0_brain', 'GND2_0_brain', 'RESET_0_brain', 'RXD_0_brain', 'RXD1_0_brain', 'TXD_0_brain', 'TXD1_0_brain', 'POS_1_battery', 'VBUS_0_brain', 'VBUS1_0_brain']
+Component rename_net: GND1_0_brain GND_0_brain
+Names: ['+5V_0_brain', 'A0_0_brain', 'A1_0_brain', 'A2_0_brain', 'A3_0_brain', 'A4_0_brain', 'A5_0_brain', 'A6_0_brain', 'A7_0_brain', 'AREF_0_brain', 'D10_0_brain', 'D11_0_brain', 'D12_0_brain', 'D13_0_brain', 'D3_0_brain', 'D4_0_brain', 'D5_0_brain', 'D6_0_brain', 'D8_0_brain', 'D9_0_brain', 'DTR/RTS_0_brain', 'GND_0_brain', 'GND_0_brain', 'GND2_0_brain', 'RESET_0_brain', 'RXD_0_brain', 'RXD1_0_brain', 'TXD_0_brain', 'TXD1_0_brain', 'POS_1_battery', 'VBUS_0_brain', 'VBUS1_0_brain']
+Component rename_net: GND_9_button GND_0_brain
+Names: ['GND_0_brain', 'A0_0_brain']
+Component rename_net: GND2_0_brain GND_0_brain
+Names: ['+5V_0_brain', 'A0_0_brain', 'A1_0_brain', 'A2_0_brain', 'A3_0_brain', 'A4_0_brain', 'A5_0_brain', 'A6_0_brain', 'A7_0_brain', 'AREF_0_brain', 'D10_0_brain', 'D11_0_brain', 'D12_0_brain', 'D13_0_brain', 'D3_0_brain', 'D4_0_brain', 'D5_0_brain', 'D6_0_brain', 'D8_0_brain', 'D9_0_brain', 'DTR/RTS_0_brain', 'GND_0_brain', 'GND_0_brain', 'GND_0_brain', 'RESET_0_brain', 'RXD_0_brain', 'RXD1_0_brain', 'TXD_0_brain', 'TXD1_0_brain', 'POS_1_battery', 'VBUS_0_brain', 'VBUS1_0_brain']
+Component rename_net: GND_5_led GND_0_brain
+Names: ['D11_0_brain', 'GND_0_brain', 'N$1_5_led']
+Component rename_net: GND_6_led_2 GND_0_brain
+Names: ['D12_0_brain', 'GND_0_brain', 'N$1_6_led_2']
+Component rename_net: GND_10_bump GND_0_brain
+Names: ['GND_0_brain', 'A1_0_brain']
+Component rename_net: GND_2_drive GND_0_brain
+Names: ['A01_2_drive', 'A02_2_drive', 'B01_2_drive', 'B02_2_drive', 'A01_2_drive', 'A02_2_drive', 'D6_0_brain', 'D8_0_brain', 'B01_2_drive', 'B02_2_drive', 'D9_0_brain', 'D10_0_brain', 'GND_0_brain', 'GND1_2_drive', 'GND2_2_drive', 'D3_0_brain', 'D5_0_brain', 'D4_0_brain', '+5V_0_brain', 'POS_1_battery']
+Component rename_net: GND_7_led_3 GND_0_brain
+Names: ['D13_0_brain', 'GND_0_brain', 'N$1_7_led_3']
+Component rename_net: NEG_1_battery GND_0_brain
+Names: ['N$1_1_battery', 'GND_0_brain', 'POS_1_battery']
+Component rename_net: GND_3_distanceSensor GND_0_brain
+Names: ['A2_0_brain', 'GND_0_brain', '+5V_0_brain']
+Component rename_net: GND_4_distanceSensor_2 GND_0_brain
+Names: ['A3_0_brain', 'GND_0_brain', '+5V_0_brain']
+Component rename_net: GND2_2_drive GND_0_brain
+Names: ['A01_2_drive', 'A02_2_drive', 'B01_2_drive', 'B02_2_drive', 'A01_2_drive', 'A02_2_drive', 'D6_0_brain', 'D8_0_brain', 'B01_2_drive', 'B02_2_drive', 'D9_0_brain', 'D10_0_brain', 'GND_0_brain', 'GND1_2_drive', 'GND_0_brain', 'D3_0_brain', 'D5_0_brain', 'D4_0_brain', '+5V_0_brain', 'POS_1_battery']
+Component is brain
+Component is battery
+Component is drive
+Component is distanceSensor
+Component is distanceSensor_2
+Component is led
+Component is led_2
+Component is led_3
+Component is caster
+Component is button
+Component is bump
+
+Combining libraries...
+src: ['Components', 'KoalaDesign']
+dest: ['BOBs']
+
+Combining libraries...
+src: []
+dest: ['BOBs', 'Components', 'KoalaDesign']
+
+Combining libraries...
+src: ['BOBs', 'Components']
+dest: ['BOBs', 'Components', 'KoalaDesign']
+
+Combining libraries...
+src: ['BOBs', 'Components']
+dest: ['BOBs', 'Components', 'KoalaDesign']
+
+Combining libraries...
+src: ['Components']
+dest: ['BOBs', 'Components', 'KoalaDesign']
+
+Combining libraries...
+src: ['Components']
+dest: ['BOBs', 'Components', 'KoalaDesign']
+
+Combining libraries...
+src: ['Components']
+dest: ['BOBs', 'Components', 'KoalaDesign']
+
+Combining libraries...
+src: ['Components']
+dest: ['BOBs', 'Components', 'KoalaDesign']
+
+Combining libraries...
+src: ['Components', 'KoalaDesign', 'supply1']
+dest: ['BOBs', 'Components', 'KoalaDesign']
+
+Combining libraries...
+src: ['Components', 'KoalaDesign']
+dest: ['BOBs', 'Components', 'KoalaDesign', 'supply1']
+
+Combining libraries...
+src: ['Components', 'KoalaDesign', 'supply1']
+dest: ['BOBs', 'Components', 'KoalaDesign', 'supply1']
+
+Combining libraries...
+src: ['Components', 'KoalaDesign', 'supply1']
+dest: ['BOBs', 'Components', 'KoalaDesign', 'supply1']
+
+Combining libraries...
+src: ['Components', 'KoalaDesign', 'supply1']
+dest: ['BOBs', 'Components', 'KoalaDesign', 'supply1']
+
+Combining libraries...
+src: ['Components', 'KoalaDesign', 'supply1']
+dest: ['BOBs', 'Components', 'KoalaDesign', 'supply1']
+
+Combining libraries...
+src: ['Components']
+dest: ['BOBs', 'Components', 'KoalaDesign', 'supply1']
+
+Combining libraries...
+src: ['Components']
+dest: ['BOBs', 'Components', 'KoalaDesign', 'supply1']
+
+Combining libraries...
+src: ['Components', 'supply1']
+dest: ['BOBs', 'Components', 'KoalaDesign', 'supply1']
+
+Combining libraries...
+src: ['Components', 'supply1']
+dest: ['BOBs', 'Components', 'KoalaDesign', 'supply1']
+
+Combining libraries...
+src: ['Components', 'supply1']
+dest: ['BOBs', 'Components', 'KoalaDesign', 'supply1']
+
+Combining libraries...
+src: ['Components', 'supply1']
+dest: ['BOBs', 'Components', 'KoalaDesign', 'supply1']
+Placing part: B1_9_button
+Placing part: L_2_drive
+Placing part: BATT1_1_battery
+Placing part: u1_8_caster
+Placing part: U$2_10_bump
+Placing part: LED1_6_led_2
+Placing part: dist1_3_distanceSensor
+Placing part: LED1_7_led_3
+Placing part: dist1_4_distanceSensor_2
+Placing part: DRVR_2_drive
+No place info for: DRVR_2_drive

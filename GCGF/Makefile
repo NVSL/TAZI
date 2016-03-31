@@ -2,7 +2,7 @@ GSPEC_DIR = Gspecs/
 RESOURCES = Resources
 OUTPUT = Output/
 
-GSPEC = SimpleLEDTest
+GSPEC = RaspberryPiTest2
 APIGSPEC = SimpleLEDTest
 APIGSPECS = $(wildcard Gspecs/*.api.gspec)
 INOS = $(APIGSPECS:Gspecs/%.api.gspec=%.ino)

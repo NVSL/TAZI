@@ -3,6 +3,8 @@
 
 #ifdef ARDUINO
 #include "Arduino.h"
+#else
+#include "arduPi.h"
 #endif
 
 class LED {

@@ -109,7 +109,7 @@ tests = ["var",
 	"logic", 
 	"loop", 
 	"random", 
-	"custom"
+	"function"
 	]
 results = {}
 
