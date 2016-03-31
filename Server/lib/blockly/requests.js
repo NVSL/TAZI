@@ -1,3 +1,0 @@
-function sendKillSignal() {
-    $.post("/killprogram" ); 
-}

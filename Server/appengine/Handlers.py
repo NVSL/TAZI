@@ -80,6 +80,8 @@ class KillProgramHandler(webapp2.RequestHandler):
 class SaveHandler(webapp2.RequestHandler):
     result_cached = False
     cached_xml = ""
+    def post(self):
+        self.saveProgram()
     def __init__( self, *args, **kwargs):
         webapp2.RequestHandler.__init__( self, *args, **kwargs)
     def saveProgram(self):
