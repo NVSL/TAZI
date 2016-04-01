@@ -122,6 +122,7 @@ def getBlock(node,depth):
         
         return mainStr
 
+    #TODO PQ will move this to its own separate function later lol
     if (blockType == "text_print"):
         nextNode = (node.find("value").find("block"))
         function = depth*spaces + "cout << ("
