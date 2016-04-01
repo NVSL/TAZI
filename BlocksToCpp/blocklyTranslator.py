@@ -571,7 +571,7 @@ def funcCreation(node, depth):
 
     #paramNum, func
     global declaredFuncs
-    declaredFuncs.append(total.split("\n"))
+    declaredFuncs += total.split("\n")
 
     madeFuncNames[funcName] = paramNum
     return blockNext(node, depth, total)
