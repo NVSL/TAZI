@@ -558,7 +558,7 @@ def funcCreation(node, depth):
                 params += getType(arg) + " " + (arg.attrib["name"])
                 paramNum += 1
         if (child.tag == "comment"):
-            comment += child.text + ";\n" + (spaces*depth) + "*/\n"
+            comment += child.text + "\n" + (spaces*depth) + "*/\n"
         if (child.tag == "field"):
             funcName = str.replace(child.text, " ", "")
         if (child.tag == "statement"):
