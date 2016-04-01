@@ -11,6 +11,8 @@ spaces = "  "
 delimitter = ";"
 declaredVars = []
 main_loop = []
+declaredFuncs = []
+main_funcs = ""
 use_c_lib = True
 c_lib = "#include <iostream>\n#include <cmath>"
 c_lib += "\n#include <stdlib.h>\nusing namespace std;\n"
@@ -43,10 +45,20 @@ def recurseParse(node, depth):
         overallResult = ""
         funcsFirst = ""
         mainBod = ""
+        global main_funcs
         for child in node:
             if ((child.attrib).get("type") != None and ((child.attrib["type"] == "procedures_defnoreturn")
                 or (child.attrib["type"] == "procedures_defreturn"))):
                 funcsFirst += ";\n" + recurseParse(child, depth)
+                main_funcs += ";\n" + recurseParse(child, depth)
+
+        #loopStr = recurseParseCheck(list(node), depth+1)+";"
+	    #global main_loop
+	    #main_loop = loopStr.split("\n")
+
+        global declaredFuncs
+        for key in madeFuncNames.keys():
+            declaredFuncs.append(key);
 
         for child in node:
             if ((child.attrib).get("type") != None and (child.attrib["type"] == "main")):
@@ -56,12 +68,13 @@ def recurseParse(node, depth):
 	c_main = [ ns for ns in node.findall("block") if ns.attrib["type"] == "c_main" ]
 	if( len( c_main ) == 1): 
 	    main = refactorStatementToBlock(c_main[0].find("statement"))
-	    return recurseParse( main, 0 )
+	    overallResult += recurseParse(main, 0)
 
-        if (("void loop ()" not in overallResult)):
-            overallResult += "void loop () {\n}\n"
+        #Why do we need this?
+        #if (("void loop ()" not in overallResult)):
+            #overallResult += "void loop () {\n}\n"
 
-        return overallResult #funcsFirst + overallResult
+        return main_funcs + overallResult #funcsFirst + overallResult #overallResult
 
     elif tag == "block":
         return getBlock(node,depth)
@@ -97,9 +110,9 @@ def getBlock(node,depth):
 
     if (blockType == "main_loop"):
         # Should be a "next" block
-	loopStr = recurseParseCheck(list(node), depth+1)+";"
-	global main_loop
-	main_loop = loopStr.split("\n")
+        loopStr = recurseParseCheck(list(node), depth+1)+";"
+        global main_loop
+        main_loop = loopStr.split("\n")
         return "void loop () {\n" + loopStr + "\n}"
 
     if (blockType == "main_body"):
@@ -110,10 +123,11 @@ def getBlock(node,depth):
         return mainStr
 
     if (blockType == "text_print"):
-        nextNode = node.find("value").find("block")
-	function = depth*spaces + "cout << ("
-	function += recurseParseCheck( [nextNode] , depth + 1, remove_white_space=True) 
-	return function + ") << endl"
+        nextNode = (node.find("value").find("block"))
+        function = depth*spaces + "cout << ("
+        #function += recurseParse([nextNode], depth+1, remove_white_space=True)
+        function += recurseParse(nextNode, depth + 1)
+        return blockNext(node, depth, function + ") << endl")
 
     if (blockType == "variable_declarations"):
         # return "void setup () {\n" + recurseParseCheck(list(node), depth + 1) + ";\n}\n"
@@ -238,7 +252,7 @@ opDict = {
     "MULTIPLY": "*",
     "DIVIDE": "/",
     "ROOT": "sqrt",
-    "BREAK": "break;",
+    "BREAK": "break",
     "ABS": "abs",
     "NEG": "-1*",
     "POWER": "pow",
@@ -629,8 +643,6 @@ funcGet = {
 madeFuncNames = {
 }
 
-
-
 def run( xml ):
     tree = ET.parse(xml)
     root = tree.getroot()
@@ -647,6 +659,12 @@ def run( xml ):
 def getLoop(): 
     #global loop_body
     return main_loop
+
+def getVars():
+    return declaredVars
+
+def getFuncs():
+    return declaredFuncs
 
 def getSplitDefinitions( xml ):
     import string
