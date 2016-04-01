@@ -52,13 +52,9 @@ def recurseParse(node, depth):
                 funcsFirst += ";\n" + recurseParse(child, depth)
                 main_funcs += ";\n" + recurseParse(child, depth)
 
-        #loopStr = recurseParseCheck(list(node), depth+1)+";"
-	    #global main_loop
-	    #main_loop = loopStr.split("\n")
-
-        global declaredFuncs
-        for key in madeFuncNames.keys():
-            declaredFuncs.append(key);
+        #global declaredFuncs
+        #for key in madeFuncNames.keys():
+        #    declaredFuncs.append(key);
 
         for child in node:
             if ((child.attrib).get("type") != None and (child.attrib["type"] == "main")):
@@ -552,6 +548,7 @@ def funcCreation(node, depth):
     funcBody = ""
     retType = "void"
     funcRet = ""
+    totalinf = []
 
     for child in node:
         if (child.tag == "mutation"):
@@ -561,7 +558,7 @@ def funcCreation(node, depth):
                 params += getType(arg) + " " + (arg.attrib["name"])
                 paramNum += 1
         if (child.tag == "comment"):
-            comment += child.text + ";\n" + (spaces*depth) + "*/;\n"
+            comment += child.text + ";\n" + (spaces*depth) + "*/\n"
         if (child.tag == "field"):
             funcName = str.replace(child.text, " ", "")
         if (child.tag == "statement"):
@@ -571,6 +568,10 @@ def funcCreation(node, depth):
             funcRet = (spaces*(depth + 1)) + "return " + recurseParse(list(child)[0], 0) + ";;\n"
 
     total = comment + retType + " " + funcName + "(" + params + ") {\n" + funcBody + funcRet + (spaces*depth) + "}\n"
+
+    #paramNum, func
+    global declaredFuncs
+    declaredFuncs.append(total.split("\n"))
 
     madeFuncNames[funcName] = paramNum
     return blockNext(node, depth, total)
@@ -585,7 +586,7 @@ def callMethod(node, depth):
     call = methodName + "("
 
     #PQ TODO FIX THIS
-    if (madeFuncNames[methodName] > 0):
+    if ((madeFuncNames[methodName]) > 0):
         for arg in list(node)[0]:
             argNums += 1
 
