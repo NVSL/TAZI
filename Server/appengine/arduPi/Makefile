@@ -1,7 +1,7 @@
 CC = g++
 FLAGS = -std=c++11 -lrt -lpthread -lbcm2835
 ARDUPI = arduPi.o
-PROG = program
+PROG = blockly_executable
 OBJS = arduPi.o LED.o MomentaryButton.o Motor.o
 
 default: $(PROG)

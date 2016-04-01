@@ -30,6 +30,7 @@ if __name__ == "__main__":
 	("/newprogram", NewProgramHandler),
 	("/runprogram", RunProgramHandler),
 	("/killprogram", KillProgramHandler),
+	("/saveprogram", SaveHandler),
 	(r'/programs/(.+)', ProgramHandler),
 	(r'/static/(.+)', StaticFileHandler),
 	("/compile", CompilationHandler),

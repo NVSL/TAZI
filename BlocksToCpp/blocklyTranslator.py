@@ -9,10 +9,12 @@ DEBUG = 0
 
 spaces = "  "
 delimitter = ";"
+declaredVars = []
 main_loop = []
 use_c_lib = True
 c_lib = "#include <iostream>\n#include <cmath>"
 c_lib += "\n#include <stdlib.h>\nusing namespace std;\n"
+#c_lib += "\n#include \"Motor.h\"\n\n Motor motor1(1,2,3,4,5,6,7);\n\n"
 
 # There should be some degree of error checking
 class BlocklyError(Exception):
@@ -276,14 +278,20 @@ def setVar(node, depth):
         return ""
 
     #if((list(node)[1]).tag.split("}"))
-    varType = getType(list(list(node)[1])[0])
+    if varName in declaredVars:
+        # Already declared, we don't need to redo it
+        varType = " "
+    else:
+        # Not declared yet, put it in thing
+        varType = getType(list(list(node)[1])[0]) + " "
+        declaredVars.append(varName)
 
     if((list(list(node)[1])[0]).tag == "block"):
         varValue = recurseParse(list(list(node)[1])[0], 0)
     else:
         varValue = getField(list(list(list(node)[1])[0])[0])
 
-    totString = varType + " " + varName + " = " + varValue# + ";"
+    totString = varType + varName + " = " + varValue# + ";"
     return blockNext(node, depth, totString)
 
 #if statement

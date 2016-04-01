@@ -38,6 +38,7 @@ def translate(file):
 
 
 #Going through all the files
+subprocess.call(["mkdir", "testsForOutputCCode/"])
 files = subprocess.Popen(["ls", "testsForOutput/"], stdout=subprocess.PIPE).communicate()[0].split("\n")
 for f in files:
 	if re.match(r".*\.xml", f):
