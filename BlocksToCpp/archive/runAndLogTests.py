@@ -65,7 +65,7 @@ class TestBlocklyTranslator(unittest.TestCase):
 		with open(cfile, "w") as outFile2:
 			outFile2.write(stdoutVal)
 			outFile2.close();
-			exitCode = subprocess.call(["gcc", "-fsyntax-only", cfile])
+			exitCode = subprocess.call(["g++", "-fsyntax-only", cfile])
 			# Check that exit code is 0
 			try:
 				self.assertEqual(exitCode, 0)

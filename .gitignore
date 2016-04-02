@@ -22,6 +22,8 @@ GCGF/IDEGenerator/*
 GCGF/InoGenerator/*
 BlocksToCpp/cCode/*
 BlocksToCpp/cCode.c
+BlocksToCpp/a.out
+BlocksToCpp/testsForOutputCCode/
 Blockly/BlocksToCpp/
 Server/appengine/BlocksToCpp/
 Server/appengine/InoGenerator/

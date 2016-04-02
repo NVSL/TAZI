@@ -33,7 +33,7 @@
    </component>
    <component progname="led" type="LED-5mm-bright-red">
       <placedpart refdes="LED1_3_led" x="43.99999761581421" y="29.000000715255737" rotation="0" mirrored="False"/>
-   <api class="LED" include="LED.h" link-as="LED-5mm-bright-red" path="lib" progname="led"><required_files/><arg analogliteral="None" arg="CONTROL" digitalliteral="17" order="None"/></api></component>
+   <api class="LED" include="LED.h" link-as="LED-5mm-bright-red" path="lib" progname="led"><required_files/><arg analogliteral="None" arg="CONTROL" digitalliteral="16" order="None"/></api></component>
    <component progname="button" type="tactile-button-round-gray">
       <placedpart refdes="B1_4_button" x="-54.0092453956604" y="34.02377510070801" rotation="0" mirrored="False"/>
    <api class="MomentaryButton" include="MomentaryButton.h" link-as="tactile-button-round-gray" path="lib" progname="button"><required_files/><arg analogliteral="None" arg="SENSE" digitalliteral="4" order="None"/></api></component>

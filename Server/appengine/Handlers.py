@@ -9,7 +9,7 @@ from InoGenerator.InoGenerator import ClassGenerator as InoGenerator
 import xml.etree.ElementTree as ET
 from StringIO import StringIO
 
-compiled_name = "program"
+compiled_name = "blockly_executable"
 out_file = compiled_name + ".cpp"
 PROGRAM_PATH = "programs/"
 api_gspec = "RaspberryPiTest2.api.gspec"
@@ -116,12 +116,12 @@ class CompileCPPHandler(CompileHandler):
 
 class CompileInoHandler(CompileHandler):
     def post(self):
+        self.translateRequest()
 	if not SaveHandler.result_cached: self.compile()
 	program_status.run()
 	self.response.write( "Running program!" )
     def compile(self):
         print "I'm really compiling!"
-        self.translateRequest()
         generator = InoGenerator(api, include_str='""')
 	generator.appendToLoop( Translator.getLoop() )
 	self.compiled = generator.getClass()

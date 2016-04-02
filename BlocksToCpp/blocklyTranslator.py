@@ -9,10 +9,14 @@ DEBUG = 0
 
 spaces = "  "
 delimitter = ";"
+declaredVars = []
 main_loop = []
+declaredFuncs = []
+main_funcs = ""
 use_c_lib = True
 c_lib = "#include <iostream>\n#include <cmath>"
 c_lib += "\n#include <stdlib.h>\nusing namespace std;\n"
+#c_lib += "\n#include \"Motor.h\"\n\n Motor motor1(1,2,3,4,5,6,7);\n\n"
 
 # There should be some degree of error checking
 class BlocklyError(Exception):
@@ -41,10 +45,16 @@ def recurseParse(node, depth):
         overallResult = ""
         funcsFirst = ""
         mainBod = ""
+        global main_funcs
         for child in node:
             if ((child.attrib).get("type") != None and ((child.attrib["type"] == "procedures_defnoreturn")
                 or (child.attrib["type"] == "procedures_defreturn"))):
                 funcsFirst += ";\n" + recurseParse(child, depth)
+                main_funcs += ";\n" + recurseParse(child, depth)
+
+        #global declaredFuncs
+        #for key in madeFuncNames.keys():
+        #    declaredFuncs.append(key);
 
         for child in node:
             if ((child.attrib).get("type") != None and (child.attrib["type"] == "main")):
@@ -54,12 +64,13 @@ def recurseParse(node, depth):
 	c_main = [ ns for ns in node.findall("block") if ns.attrib["type"] == "c_main" ]
 	if( len( c_main ) == 1): 
 	    main = refactorStatementToBlock(c_main[0].find("statement"))
-	    return recurseParse( main, 0 )
+	    overallResult += recurseParse(main, 0)
 
-        if (("void loop ()" not in overallResult)):
-            overallResult += "void loop () {\n}\n"
+        #Why do we need this?
+        #if (("void loop ()" not in overallResult)):
+            #overallResult += "void loop () {\n}\n"
 
-        return overallResult #funcsFirst + overallResult
+        return main_funcs + overallResult #funcsFirst + overallResult #overallResult
 
     elif tag == "block":
         return getBlock(node,depth)
@@ -95,9 +106,9 @@ def getBlock(node,depth):
 
     if (blockType == "main_loop"):
         # Should be a "next" block
-	loopStr = recurseParseCheck(list(node), depth+1)+";"
-	global main_loop
-	main_loop = loopStr.split("\n")
+        loopStr = recurseParseCheck(list(node), depth+1)+";"
+        global main_loop
+        main_loop = loopStr.split("\n")
         return "void loop () {\n" + loopStr + "\n}"
 
     if (blockType == "main_body"):
@@ -107,11 +118,13 @@ def getBlock(node,depth):
         
         return mainStr
 
+    #TODO PQ will move this to its own separate function later lol
     if (blockType == "text_print"):
-        nextNode = node.find("value").find("block")
-	function = depth*spaces + "cout << ("
-	function += recurseParseCheck( [nextNode] , depth + 1, remove_white_space=True) 
-	return function + ") << endl"
+        nextNode = (node.find("value").find("block"))
+        function = depth*spaces + "cout << ("
+        #function += recurseParse([nextNode], depth+1, remove_white_space=True)
+        function += recurseParse(nextNode, depth + 1)
+        return blockNext(node, depth, function + ") << endl")
 
     if (blockType == "variable_declarations"):
         # return "void setup () {\n" + recurseParseCheck(list(node), depth + 1) + ";\n}\n"
@@ -236,7 +249,7 @@ opDict = {
     "MULTIPLY": "*",
     "DIVIDE": "/",
     "ROOT": "sqrt",
-    "BREAK": "break;",
+    "BREAK": "break",
     "ABS": "abs",
     "NEG": "-1*",
     "POWER": "pow",
@@ -276,14 +289,20 @@ def setVar(node, depth):
         return ""
 
     #if((list(node)[1]).tag.split("}"))
-    varType = getType(list(list(node)[1])[0])
+    if varName in declaredVars:
+        # Already declared, we don't need to redo it
+        varType = " "
+    else:
+        # Not declared yet, put it in thing
+        varType = getType(list(list(node)[1])[0]) + " "
+        declaredVars.append(varName)
 
     if((list(list(node)[1])[0]).tag == "block"):
         varValue = recurseParse(list(list(node)[1])[0], 0)
     else:
         varValue = getField(list(list(list(node)[1])[0])[0])
 
-    totString = varType + " " + varName + " = " + varValue# + ";"
+    totString = varType + varName + " = " + varValue# + ";"
     return blockNext(node, depth, totString)
 
 #if statement
@@ -529,6 +548,7 @@ def funcCreation(node, depth):
     funcBody = ""
     retType = "void"
     funcRet = ""
+    totalinf = []
 
     for child in node:
         if (child.tag == "mutation"):
@@ -538,7 +558,7 @@ def funcCreation(node, depth):
                 params += getType(arg) + " " + (arg.attrib["name"])
                 paramNum += 1
         if (child.tag == "comment"):
-            comment += child.text + ";\n" + (spaces*depth) + "*/;\n"
+            comment += child.text + "\n" + (spaces*depth) + "*/\n"
         if (child.tag == "field"):
             funcName = str.replace(child.text, " ", "")
         if (child.tag == "statement"):
@@ -548,6 +568,10 @@ def funcCreation(node, depth):
             funcRet = (spaces*(depth + 1)) + "return " + recurseParse(list(child)[0], 0) + ";;\n"
 
     total = comment + retType + " " + funcName + "(" + params + ") {\n" + funcBody + funcRet + (spaces*depth) + "}\n"
+
+    #paramNum, func
+    global declaredFuncs
+    declaredFuncs += total.split("\n")
 
     madeFuncNames[funcName] = paramNum
     return blockNext(node, depth, total)
@@ -562,7 +586,7 @@ def callMethod(node, depth):
     call = methodName + "("
 
     #PQ TODO FIX THIS
-    if (madeFuncNames[methodName] > 0):
+    if ((madeFuncNames[methodName]) > 0):
         for arg in list(node)[0]:
             argNums += 1
 
@@ -621,8 +645,6 @@ funcGet = {
 madeFuncNames = {
 }
 
-
-
 def run( xml ):
     tree = ET.parse(xml)
     root = tree.getroot()
@@ -639,6 +661,12 @@ def run( xml ):
 def getLoop(): 
     #global loop_body
     return main_loop
+
+def getVars():
+    return declaredVars
+
+def getFuncs():
+    return declaredFuncs
 
 def getSplitDefinitions( xml ):
     import string

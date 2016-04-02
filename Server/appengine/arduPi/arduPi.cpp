@@ -1240,7 +1240,6 @@ void analogWrite(int pin, int value) {
     switch(pin) {
         case 18:
 	    bcm2835_gpio_fsel(pin, BCM2835_GPIO_FSEL_ALT5);
-	    bcm2835_pwm_set_range(0,255);
 	    bcm2835_pwm_set_data(0, value);
 	    break;
         default:
