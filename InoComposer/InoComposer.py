@@ -15,7 +15,9 @@ class InoComposer:
         generator = ClassGenerator( self.gspec )
 	loop_str = Translator.getLoop() 
 	generator.appendToLoop( loop_str ) 
-        return generator.getClass()
+        ino = generator.getClass() + "\n"
+        for func in Translator.getFuncs(): ino += func + "\n"
+	return ino
     # Returns the translated cpp as a string
     def get_cpp(self):
         return Translator.run( StringIO(self.xml) )
@@ -38,3 +40,4 @@ if __name__ == "__main__":
     composer = InoComposer(api_gspec, xml)
     # Print the string representation of the ino
     print composer.get_ino()
+    print
