@@ -167,7 +167,8 @@
 #define BIT_26 (1 << 26)
 #define BIT_27 (1 << 27)
 
-
+#define PWM_CHANNEL_0 0
+#define PWM_CHANNEL_1 1
 
 
 #define PAGESIZE 4096
