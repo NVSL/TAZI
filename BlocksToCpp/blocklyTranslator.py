@@ -42,6 +42,8 @@ def recurseParse(node, depth):
         print "Current tag: " + tag, "Attributes: " + str(node.attrib)
 
     if tag == "xml":
+        global declaredFuncs
+	declaredFuncs = []
         overallResult = ""
         funcsFirst = ""
         mainBod = ""
