@@ -1,12 +1,18 @@
 import subprocess
 import re
 import sys
+from InoComposer.py import *
+import xml.etree.ElementTree as ETree
 
 def verifyOutput(testFile, outFile, gspecFile):
-	proc = subprocess.Popen(["python", "InoComposer.py", gspecFile, testFile], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-	stdoutVal, stderrVal = proc.communicate()
+	#proc = subprocess.Popen(["python", "InoComposer.py", "-g", gspecFile, "-x", testFile], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+	#stdoutVal, stderrVal = proc.communicate()
+	api_gspec = ETree.parse(args.gspec).getroot()
+	xml = open(testFile).read()
+	composer = InoComposer(api_gspec, xml)
+	fullInoFile = compose.get_ino();
 	with open(outFile, "w") as output:
-		output.write(stdoutVal)
+		output.write(fullInoFile)
 	result = subprocess.call(["arduino", "--verify", outFile])
 	if (result == 0):
 		print ("ok")
@@ -22,7 +28,6 @@ def runTest(test):
 		#run the composer if it is an xml file
 		if re.match(r".*\.xml", testFile):
 			verifyOutput(testFile, outFile, gspecFile)
-		
 
 
 
