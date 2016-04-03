@@ -4,8 +4,7 @@ import webapp2
 import os
 from JinjaUtil import *
 from ProgramManager import *
-from BlocksToCpp import blocklyTranslator as Translator
-from InoGenerator.InoGenerator import ClassGenerator as InoGenerator
+from InoComposer.InoComposer import *
 import xml.etree.ElementTree as ET
 from StringIO import StringIO
 
@@ -18,7 +17,6 @@ program_status = ProgramManager()
 
 default_workspace = ""
 api = ET.parse(api_gspec).getroot()
-generator = InoGenerator(api)
 arduPi = "arduPi/"
 
 global_jinja_vars = { "resDir" : "/static/", } 
@@ -42,7 +40,7 @@ class LandingHandler(webapp2.RequestHandler):
 	progs = [ f for f in os.listdir(path) if os.path.isfile(path+f)]
         progs = [ f.replace(".xml", "") for f in progs] 
         jinja_vars = { "programs" : progs,
-	               "name" : generator.name,
+	               "name" : resolve_robot_name(api),
 		       "loadedProgram" : program_status.name,
 		       "programStatus" : program_status.status }
 	file_path = templates_dir + "landing.jinja"
@@ -100,7 +98,7 @@ class SaveHandler(webapp2.RequestHandler):
 class CompileHandler(SaveHandler):
     def translateRequest(self):
         self.saveProgram()
-	self.compiled = Translator.run( StringIO(self.xml) )
+	self.composer = InoComposer( api, self.xml)
     def writeToOutfile( self ):
         f = open(out_file, "w")
         f.write(self.compiled)
@@ -108,6 +106,7 @@ class CompileHandler(SaveHandler):
 class CompileCPPHandler(CompileHandler):
     def post(self):
         self.translateRequest()
+	self.compiled = self.composer.get_cpp()
 	self.writeToOutfile()
 	subprocess.check_call(["g++", "-o",  compiled_name, out_file])
 	program_status.run()
@@ -122,9 +121,7 @@ class CompileInoHandler(CompileHandler):
 	self.response.write( "Running program!" )
     def compile(self):
         print "I'm really compiling!"
-        generator = InoGenerator(api, include_str='""')
-	generator.appendToLoop( Translator.getLoop() )
-	self.compiled = generator.getClass()
+	self.compiled = self.composer.get_ino()
 	print self.compiled
 	self.writeToOutfile()
 	subprocess.check_call(["mv",out_file, arduPi])
