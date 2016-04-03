@@ -4,7 +4,10 @@ import sys
 from InoComposer import *
 import xml.etree.ElementTree as ETree
 
+
 def verifyOutput(testFile, outFile, gspecFile):
+	global failedTests
+	global passedTests
 	#proc = subprocess.Popen(["python", "InoComposer.py", "-g", gspecFile, "-x", testFile], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 	#stdoutVal, stderrVal = proc.communicate()
 	api_gspec = ETree.parse(gspecFile).getroot()
@@ -15,8 +18,10 @@ def verifyOutput(testFile, outFile, gspecFile):
 		output.write(fullInoFile)
 	result = subprocess.call(["arduino", "--verify", outFile])
 	if (result == 0):
+		passedTests = passedTests + 1
 		print ("ok")
 	else:
+		failedTests = failedTests + 1
 		print ("FAIL")
 
 def runTest(test):
@@ -31,7 +36,13 @@ def runTest(test):
 
 
 
-###################MAIN#################################		
+###################MAIN#################################
+
+global failedTests
+global passedTests
+failedTests = 0
+passedTests = 0
+
 #list that houses all the robots with gspecs to be tested
 testList = ["Chase"]
  
@@ -39,4 +50,13 @@ testList = ["Chase"]
 for test in testList:
 	print("RUNNING TEST FOR " + test) 
 	runTest(test)
+
+print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+print ("RESULTS: ")
+total = failedTests + passedTests
+print ("Total Tests: " + str(total))
+print ("Passed Tests: " + str(passedTests))
+print ("Failed Tessts: " + str(failedTests))
+print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+
 
