@@ -54,8 +54,6 @@ def recurseParse(node, depth):
                 funcsFirst += ";\n" + recurseParse(child, depth)
                 main_funcs += ";\n" + recurseParse(child, depth)
 
-        #for key in madeFuncNames.keys():
-
         for child in node:
             if ((child.attrib).get("type") != None and (child.attrib["type"] == "main")):
                 overallResult += recurseParse(child, depth)
@@ -70,7 +68,7 @@ def recurseParse(node, depth):
         #if (("void loop ()" not in overallResult)):
             #overallResult += "void loop () {\n}\n"
 
-        return main_funcs + overallResult #funcsFirst + overallResult #overallResult
+        return main_funcs + overallResult
 
     elif tag == "block":
         return getBlock(node,depth)
@@ -216,7 +214,7 @@ def getType(node):
     #else if (node.tag == "block"):
         #
     else:
-        #edit this later to actually get the correct type for a block
+        #default int
         return "int"
 
 
@@ -548,7 +546,6 @@ def funcCreation(node, depth):
     funcBody = ""
     retType = "void"
     funcRet = ""
-    totalinf = []
 
     for child in node:
         if (child.tag == "mutation"):
