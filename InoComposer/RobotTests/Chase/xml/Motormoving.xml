@@ -1,0 +1,1 @@
+<xml ><block type="main" x="36" y="3"><statement name="main_loop"><block type="controls_if"><value name="IF0"><block type="$motor1$isMoving$14"></block></value><statement name="DO0"><block type="$led1$turnOn$1"><next><block type="$led2$turnOn$1"><next><block type="$led3$turnOn$1"></block></next></block></next></block></statement></block></statement></block></xml>
