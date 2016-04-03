@@ -7,7 +7,7 @@ RM = rm -rf
 # Program Files
 TESTDIR = RobotTests/
 GSPECNAME = Chase
-PROG = RightLeft
+PROG = NestedIf
 
 # Program flags
 GSPEC_FLAG = -g $(TESTDIR)$(GSPECNAME)/$(GSPECNAME).api.gspec
