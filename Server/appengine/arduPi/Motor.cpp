@@ -79,10 +79,10 @@ void Motor::swapDirections() {
 void Motor::stop() {
   if(_disable)
     return;
-  _isMoving = false;
   digitalWrite(STBY,LOW);
   move( A, 0, polarity);
   move( B, 0, polarity);
+  _isMoving = false;
 }
 
 void Motor::forward()
