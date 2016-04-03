@@ -29,6 +29,7 @@ class ClassGenerator:
     objInstances = []
     loopBody = []
     name = "" 
+    funcs = ""
     def __init__( self, api, include_str="<>"):
         self.objects = []
         self.objInstances = []
@@ -50,6 +51,8 @@ class ClassGenerator:
 	return functools.reduce( concatLib, set(self.libraries), "" )
     def appendToLoop(self, lines):
         self.loopBody += lines
+    def defineFunctions(self, funcs):
+        for f in funcs: self.funcs += f + "\n"
     def getConstants(self):
         retStrings = []
 	for obj in self.objects:
@@ -103,6 +106,9 @@ class ClassGenerator:
         rv += a(createSectionHeader("Object Declarations"))
         for string in self.getObjectDeclarations():
             rv += a(string)
+	if self.funcs != "":
+            rv += a(createSectionHeader("User Functions"))
+	    rv += self.funcs
         rv += a(createSectionHeader("Setup Function", description="The setup() function runs --ONCE-- when the Arduino boots up. As the name implies, it's useful to add code that 'sets up' your Gadget to run correctly."))
         rv += a(self.getSetupFunction())
         rv += a(createSectionHeader("Loop Function", description="The loop() function runs continuously after the setup() function finishes and while the Arduino is running. In other words, this function is called repeatly over and over again when it reaches the end of the function. This function is where the majority of your program's logic should go."  ))
