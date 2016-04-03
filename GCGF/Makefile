@@ -2,7 +2,7 @@ GSPEC_DIR = Gspecs/
 RESOURCES = Resources
 OUTPUT = Output/
 
-GSPEC = RaspberryPiTest2
+GSPEC = Chase
 APIGSPEC = SimpleLEDTest
 APIGSPECS = $(wildcard Gspecs/*.api.gspec)
 INOS = $(APIGSPECS:Gspecs/%.api.gspec=%.ino)
@@ -15,7 +15,7 @@ GADGET_INO = $(GADGET_DIR)/$(APIGSPEC).ino
 
 CATALOG = $(GADGETRON_CATALOG)/Components.xml
 CATEGORIESXML = $(RESOURCES)/DefaultCategories.xml
-WORKSPACE = -w $(RESOURCES)/CppDefault.xml
+WORKSPACE = -w $(RESOURCES)/DefaultRobotWorkspace.xml
 BLACKLIST = $(RESOURCES)/BlackListedFunctions.xml
 BLOCKSJSON = $(RESOURCES)/Blocks.json
 JINJAFILE = $(RESOURCES)/index.jinja
