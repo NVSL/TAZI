@@ -63,11 +63,11 @@ void Motor::brake() {
   if(_disable)
     return;
   // stop();
-  _isMoving = false;
   digitalWrite(AIN1, LOW);
   digitalWrite(AIN2, LOW);
   digitalWrite(BIN1, LOW);
   digitalWrite(BIN2, LOW);
+  _isMoving = false;
 }
 
 
