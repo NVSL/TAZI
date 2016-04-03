@@ -11,11 +11,18 @@ class InoComposer:
 	self.xml = xml
     # Returns the ino as a string
     def get_ino(self):
+	self.get_cpp()
         generator = ClassGenerator( self.gspec )
-        Translator.run( StringIO(self.xml) )
 	loop_str = Translator.getLoop() 
 	generator.appendToLoop( loop_str ) 
         return generator.getClass()
+    # Returns the translated cpp as a string
+    def get_cpp(self):
+        return Translator.run( StringIO(self.xml) )
+
+def resolve_robot_name( gspec ):
+    generator = ClassGenerator( gspec )
+    return generator.name
 
 if __name__ == "__main__":
     # Setting up argparse

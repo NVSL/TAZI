@@ -18,8 +18,8 @@ run: $(INOGEN)/ $(B2CPP)/
 $(INO_PATH): run
 verify: $(INO_PATH)
 	arduino --verify $(INO_PATH)
-$(INOGEN): copy
-$(B2CPP): copy
+$(INOGEN)/: copy
+$(B2CPP)/: copy
 copy:
 	make -C ../GCGF ino_package
 	$(CP) ../GCGF/$(INOGEN) .

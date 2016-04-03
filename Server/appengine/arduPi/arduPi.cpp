@@ -1237,10 +1237,25 @@ void pinMode(int pin, Pinmode mode){
 }
 
 void analogWrite(int pin, int value) {
+    // bcm2835_gpio_fsel selects the proper function for the pin to write pwm
+    // The second parameter to bcm2835_pwm_set_data is the pwm channel for that
+    // pin
     switch(pin) {
+        case 12:
+	    bcm2835_gpio_fsel(pin, BCM2835_GPIO_FSEL_ALT0);
+	    bcm2835_pwm_set_data(PWM_CHANNEL_0, value);
+	    break;
+        case 13:
+	    bcm2835_gpio_fsel(pin, BCM2835_GPIO_FSEL_ALT0);
+	    bcm2835_pwm_set_data(PWM_CHANNEL_1, value);
+	    break;
         case 18:
 	    bcm2835_gpio_fsel(pin, BCM2835_GPIO_FSEL_ALT5);
-	    bcm2835_pwm_set_data(0, value);
+	    bcm2835_pwm_set_data(PWM_CHANNEL_0, value);
+	    break;
+        case 19:
+	    bcm2835_gpio_fsel(pin, BCM2835_GPIO_FSEL_ALT5);
+	    bcm2835_pwm_set_data(PWM_CHANNEL_1, value);
 	    break;
         default:
             auto digitalVal = value > 0 ? HIGH : LOW;
