@@ -43,7 +43,7 @@ def recurseParse(node, depth):
 
     if tag == "xml":
         global declaredFuncs
-	declaredFuncs = []
+        declaredFuncs = []
         overallResult = ""
         funcsFirst = ""
         mainBod = ""
@@ -54,9 +54,7 @@ def recurseParse(node, depth):
                 funcsFirst += ";\n" + recurseParse(child, depth)
                 main_funcs += ";\n" + recurseParse(child, depth)
 
-        #global declaredFuncs
         #for key in madeFuncNames.keys():
-        #    declaredFuncs.append(key);
 
         for child in node:
             if ((child.attrib).get("type") != None and (child.attrib["type"] == "main")):
@@ -573,7 +571,8 @@ def funcCreation(node, depth):
 
     #paramNum, func
     global declaredFuncs
-    declaredFuncs += total.split("\n")
+    if (madeFuncNames.get(funcName) == None):
+        declaredFuncs += total.split("\n")
 
     madeFuncNames[funcName] = paramNum
     return blockNext(node, depth, total)
