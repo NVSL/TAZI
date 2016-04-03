@@ -1,0 +1,1 @@
+<xml ><block type="main" x="88" y="72"><statement name="main_loop"><block type="controls_if"><mutation else="1"></mutation><value name="IF0"><block type="$momentarybutton1$isPressed$1"></block></value><statement name="DO0"><block type="$led1$turnOn$1"></block></statement><statement name="ELSE"><block type="$led1$turnOff$2"></block></statement></block></statement></block></xml>

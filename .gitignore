@@ -37,3 +37,5 @@ Server/appengine/WorkspaceRenderer.py
 Server/appengine/arduPi/*/
 Server/appengine/arduPi/*.ino
 Server/appengine/arduPi/*.o
+InoComposer/InoGenerator/
+InoComposer/BlocksToCpp/
