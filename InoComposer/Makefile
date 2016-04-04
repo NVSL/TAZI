@@ -7,14 +7,16 @@ RM = rm -rf
 # Program Files
 TESTDIR = RobotTests/
 GSPECNAME = Chase
-PROG = LEDOnWhilePressed
+PROG = NestedIf
 
 # Program flags
 GSPEC_FLAG = -g $(TESTDIR)$(GSPECNAME)/$(GSPECNAME).api.gspec
 XML_FLAG = -x $(TESTDIR)$(GSPECNAME)/xml/$(PROG).xml
 INO_PATH = $(TESTDIR)$(GSPECNAME)/$(GSPECNAME).ino
+test: $(INOGEN)/ $(B2CPP)/
+	python runAll.py
 run: $(INOGEN)/ $(B2CPP)/
-	python InoComposer.py $(GSPEC_FLAG) $(XML_FLAG) >> $(INO_PATH)
+	python InoComposer.py $(GSPEC_FLAG) $(XML_FLAG) 
 $(INO_PATH): run
 verify: $(INO_PATH)
 	arduino --verify $(INO_PATH)

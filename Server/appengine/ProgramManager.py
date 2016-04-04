@@ -1,6 +1,6 @@
 import subprocess
 from Decorators import *
-popen_args = { "shell" : True, "stdout" : subprocess.PIPE }
+popen_args = { "shell" : True }
 running = "Running"
 not_running = "Not running"
 not_loaded = "No program loaded"

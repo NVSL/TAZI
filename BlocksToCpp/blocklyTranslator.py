@@ -42,6 +42,8 @@ def recurseParse(node, depth):
         print "Current tag: " + tag, "Attributes: " + str(node.attrib)
 
     if tag == "xml":
+        global declaredFuncs
+        declaredFuncs = []
         overallResult = ""
         funcsFirst = ""
         mainBod = ""
@@ -51,10 +53,6 @@ def recurseParse(node, depth):
                 or (child.attrib["type"] == "procedures_defreturn"))):
                 funcsFirst += ";\n" + recurseParse(child, depth)
                 main_funcs += ";\n" + recurseParse(child, depth)
-
-        #global declaredFuncs
-        #for key in madeFuncNames.keys():
-        #    declaredFuncs.append(key);
 
         for child in node:
             if ((child.attrib).get("type") != None and (child.attrib["type"] == "main")):
@@ -70,7 +68,7 @@ def recurseParse(node, depth):
         #if (("void loop ()" not in overallResult)):
             #overallResult += "void loop () {\n}\n"
 
-        return main_funcs + overallResult #funcsFirst + overallResult #overallResult
+        return main_funcs + overallResult
 
     elif tag == "block":
         return getBlock(node,depth)
@@ -216,7 +214,7 @@ def getType(node):
     #else if (node.tag == "block"):
         #
     else:
-        #edit this later to actually get the correct type for a block
+        #default int
         return "int"
 
 
@@ -346,7 +344,9 @@ def ifBlock(node, depth):
         totString += elseifBlock(node, numElsIfs, depth)
 
     if (numElses == 1):
-        totString += "\n" + (spaces*depth) + "else {\n" + recurseParse(list(node)[-1], depth + 1) + ";\n" + (spaces*depth) + "}"
+	stmtList = [ s for s in list(node) if s.tag == "statement" ]
+	stmt = recurseParse( stmtList[-1], depth + 1) 
+        totString += "\n" + (spaces*depth) + "else {\n" + stmt + ";\n" + (spaces*depth) + "}"
 
     return blockNext(node, depth, totString)
 
@@ -548,7 +548,6 @@ def funcCreation(node, depth):
     funcBody = ""
     retType = "void"
     funcRet = ""
-    totalinf = []
 
     for child in node:
         if (child.tag == "mutation"):
@@ -571,7 +570,8 @@ def funcCreation(node, depth):
 
     #paramNum, func
     global declaredFuncs
-    declaredFuncs += total.split("\n")
+    if (madeFuncNames.get(funcName) == None):
+        declaredFuncs += total.split("\n")
 
     madeFuncNames[funcName] = paramNum
     return blockNext(node, depth, total)

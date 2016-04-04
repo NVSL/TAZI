@@ -1267,7 +1267,6 @@ void analogWrite(int pin, int value) {
 // Write a HIGH or a LOW value to a digital pin
 void digitalWrite(int pin, int value){
 	pin = raspberryPinNumber(pin);
-	cout << pin << endl;
 	if (value == HIGH){
 		switch(pin){
 			case  0:GPSET0 =  BIT_0;break;

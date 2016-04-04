@@ -63,11 +63,11 @@ void Motor::brake() {
   if(_disable)
     return;
   // stop();
-  _isMoving = false;
   digitalWrite(AIN1, LOW);
   digitalWrite(AIN2, LOW);
   digitalWrite(BIN1, LOW);
   digitalWrite(BIN2, LOW);
+  _isMoving = false;
 }
 
 
@@ -79,10 +79,10 @@ void Motor::swapDirections() {
 void Motor::stop() {
   if(_disable)
     return;
-  _isMoving = false;
   digitalWrite(STBY,LOW);
   move( A, 0, polarity);
   move( B, 0, polarity);
+  _isMoving = false;
 }
 
 void Motor::forward()
