@@ -198,11 +198,14 @@ def hasNext(node):
 
 def getArgs(node, method="default"):
     arguments = ""
-
-    for i in range(len(list(node)) - hasNext(node)):
+    argList = filter(lambda n: n.tag == "block", (list(node)))
+    if len( argList ) == 0:
+        argList = filter(lambda n: n.tag == "shadow", (list(node)))
+    print argList
+    for i in range(len(argList) - hasNext(node)):
         if(arguments != ""):
             arguments += ", "
-        arguments += recurseParse(list(node)[i], 0)
+        arguments += recurseParse(argList[i], 0)
 
     return arguments
 
@@ -527,11 +530,15 @@ def forloop(node, depth):
 #delay
 def delay(node,depth):
     retString = "delay("
-
     varValue = getArgs(list(node)[0])
-
     retString += varValue + ")"
+    return blockNext(node, depth, retString)
 
+#delaySeconds
+def delaySeconds(node,depth):
+    retString = "delay( (int) ( 1000 * ("
+    varValue = getArgs(list(node)[0])
+    retString += varValue + ")))"
     return blockNext(node, depth, retString)
 
 #millis
@@ -649,6 +656,7 @@ funcGet = {
     "controls_repeat_ext": repeatControl,
     "controls_for": forloop,
     "delay": delay,
+    "delaySeconds": delaySeconds,
     "millis": millis,
     "logic_negate": negate,
     "controls_flow_statements": flowcontrols,

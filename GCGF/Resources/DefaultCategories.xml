@@ -7,8 +7,21 @@
       <block type="main_loop"> </block>
       <block type="variable_declarations"> </block>
   </category-->
-  <category id="arduino" colour="210" name="Time Control">
-      <block type="delay"> </block>
+  <category id="arduino" colour="17" name="Time Control">
+      <block type="delay">
+          <value name="NAME">
+	      <shadow type="math_number">
+	          <field name="NUM">1000</field>
+	      </shadow>
+	  </value>
+      </block>
+      <block type="delaySeconds">
+          <value name="NAME">
+	      <shadow type="math_number">
+	          <field name="NUM">1</field>
+	      </shadow>
+	  </value>
+      </block>
       <block type="millis"> </block>
       <block type="c_main"> </block>
   </category>

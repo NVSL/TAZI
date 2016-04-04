@@ -27,7 +27,22 @@ Blockly.Blocks['delay'] = {
         .appendField("milliseconds");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-    this.setColour(210);
+    this.setColour(17);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.gadgetron.build/');
+  }
+};
+
+Blockly.Blocks['delaySeconds'] = {
+  init: function() {
+    this.appendValueInput("NAME")
+		.setCheck("Number")
+        .appendField("Pause for ");
+    this.appendDummyInput()
+        .appendField("seconds");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setColour(17);
     this.setTooltip('');
     this.setHelpUrl('http://www.gadgetron.build/');
   }
@@ -46,12 +61,14 @@ Blockly.Blocks['main'] = {
   }
 };
 
+
+
 Blockly.Blocks['millis'] = {
   init: function() {
     this.appendDummyInput()
         .appendField("Time in milliseconds");
     this.setOutput(true, "Number");
-    this.setColour(210);
+    this.setColour(17);
     this.setTooltip('The length of time since the program has started in milliseconds');
     this.setHelpUrl('http://www.gadgetron.build/');
   }
