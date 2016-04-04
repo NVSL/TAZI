@@ -100,7 +100,6 @@ def recurseParseCheck(nodeList, depth, remove_white_space=False):
         return ""
     else:
         return recurseParse(nodeList[0], depth)
-	
 
 # Sub functions
 
@@ -553,8 +552,6 @@ def funcCreation(node, depth):
     retType = "void"
     funcRet = ""
 
-    #func should be known
-
     for child in node:
         if (child.tag == "mutation"):
             for arg in child:
@@ -574,6 +571,7 @@ def funcCreation(node, depth):
     total = comment + retType + " " + funcName + "(" + params + ") {\n" + funcBody + funcRet + (spaces*depth) + "}\n"
 
     #paramNum, func
+    global declaredFuncs
     global definedFuncs
     if (checkFuncDefs.get(funcName) == None):
         definedFuncs += total.split("\n")
