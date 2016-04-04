@@ -11,6 +11,7 @@ spaces = "  "
 delimitter = ";"
 declaredVars = []
 main_loop = []
+definedFuncs = []
 declaredFuncs = []
 main_funcs = ""
 use_c_lib = True
@@ -42,17 +43,22 @@ def recurseParse(node, depth):
         print "Current tag: " + tag, "Attributes: " + str(node.attrib)
 
     if tag == "xml":
-        global declaredFuncs
-        declaredFuncs = []
+        global definedFuncs
+        definedFuncs = []
         overallResult = ""
-        funcsFirst = ""
         mainBod = ""
         global main_funcs
+        for child in node.iter('block'):
+            if ((child.attrib).get("type") != None and ((child.attrib["type"] == "procedures_defnoreturn")
+                or (child.attrib["type"] == "procedures_defreturn"))):
+                findDefine(child)
+
         for child in node:
             if ((child.attrib).get("type") != None and ((child.attrib["type"] == "procedures_defnoreturn")
                 or (child.attrib["type"] == "procedures_defreturn"))):
-                funcsFirst += ";\n" + recurseParse(child, depth)
                 main_funcs += ";\n" + recurseParse(child, depth)
+
+        overallResult = main_funcs;
 
         for child in node:
             if ((child.attrib).get("type") != None and (child.attrib["type"] == "main")):
@@ -86,7 +92,6 @@ def recurseParse(node, depth):
         return getField(node)
     else:
         return ""
-
 
 # Safety net for checking if there is a next block
 #shouldn't the if statement check if it's equal to 0?
@@ -542,12 +547,13 @@ def flowcontrols(node, depth):
 #Function creation
 def funcCreation(node, depth):
     params = ""
-    paramNum = 0
     comment = "/* "
     funcName = ""
     funcBody = ""
     retType = "void"
     funcRet = ""
+
+    #func should be known
 
     for child in node:
         if (child.tag == "mutation"):
@@ -555,7 +561,6 @@ def funcCreation(node, depth):
                 if(params != ""):
                     params += ", "
                 params += getType(arg) + " " + (arg.attrib["name"])
-                paramNum += 1
         if (child.tag == "comment"):
             comment += child.text + "\n" + (spaces*depth) + "*/\n"
         if (child.tag == "field"):
@@ -569,12 +574,25 @@ def funcCreation(node, depth):
     total = comment + retType + " " + funcName + "(" + params + ") {\n" + funcBody + funcRet + (spaces*depth) + "}\n"
 
     #paramNum, func
-    global declaredFuncs
-    if (madeFuncNames.get(funcName) == None):
-        declaredFuncs += total.split("\n")
+    global definedFuncs
+    if (checkFuncDefs.get(funcName) == None):
+        definedFuncs += total.split("\n")
+        checkFuncDefs[funcName] = True
+
+    return blockNext(node, depth, total)
+
+def findDefine(node):
+    paramNum = 0;
+    funcName = ""
+
+    for child in node:
+        if(child.tag == "mutation"):
+            for arg in child:
+                paramNum += 1
+        if(child.tag == "field"):
+            funcName = str.replace(child.text, " ", "")
 
     madeFuncNames[funcName] = paramNum
-    return blockNext(node, depth, total)
 
 #call the method with correct arguments as stored by function dictionary
 def callMethod(node, depth):
@@ -645,6 +663,18 @@ funcGet = {
 madeFuncNames = {
 }
 
+checkFuncDefs = {
+}
+
+def findFuncDefs(node):
+    for child in node:
+        if(child.tag == "field"):
+            funcName = str.replace(child.text, " ", "")
+
+    if(madeFuncNames[funcName] != None):
+        return True
+    return False
+
 def run( xml ):
     tree = ET.parse(xml)
     root = tree.getroot()
@@ -665,7 +695,10 @@ def getLoop():
 def getVars():
     return declaredVars
 
-def getFuncs():
+def getFuncDefs():
+    return definedFuncs
+
+def getFuncDecs():
     return declaredFuncs
 
 def getSplitDefinitions( xml ):
