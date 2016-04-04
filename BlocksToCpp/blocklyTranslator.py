@@ -44,7 +44,10 @@ def recurseParse(node, depth):
 
     if tag == "xml":
         global definedFuncs
+        global declaredFuncs
+        global declaredVars
         definedFuncs = []
+        declaredFuncs = []
         overallResult = ""
         mainBod = ""
         global main_funcs
@@ -296,18 +299,17 @@ def setVar(node, depth):
     #if((list(node)[1]).tag.split("}"))
     if varName in declaredVars:
         # Already declared, we don't need to redo it
-        varType = " "
     else:
         # Not declared yet, put it in thing
         varType = getType(list(list(node)[1])[0]) + " "
-        declaredVars.append(varName)
+        declaredVars.append(varType + varName + ";")
 
     if((list(list(node)[1])[0]).tag == "block"):
         varValue = recurseParse(list(list(node)[1])[0], 0)
     else:
         varValue = getField(list(list(list(node)[1])[0])[0])
 
-    totString = varType + varName + " = " + varValue# + ";"
+    totString = varName + " = " + varValue# + ";"
     return blockNext(node, depth, totString)
 
 #if statement
@@ -582,7 +584,7 @@ def funcCreation(node, depth):
     global definedFuncs
     if (checkFuncDefs.get(funcName) == None):
         definedFuncs += total.split("\n")
-        declaredFuncs.append(comment + retType + " " + funcName + "(" + params + ");")
+        declaredFuncs.append(retType + " " + funcName + "(" + params + ");")
         checkFuncDefs[funcName] = True
 
     return blockNext(node, depth, total)
@@ -685,6 +687,8 @@ def findFuncDefs(node):
 def run( xml ):
     tree = ET.parse(xml)
     root = tree.getroot()
+    madeFuncNames.clear()
+    checkFuncDefs.clear()
     try:
         if DEBUG: print("--- RUNNING IN DEBUG MODE ---")
         mainStr = (recurseParse(root,0))
