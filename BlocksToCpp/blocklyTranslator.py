@@ -575,7 +575,7 @@ def funcCreation(node, depth):
     global definedFuncs
     if (checkFuncDefs.get(funcName) == None):
         definedFuncs += total.split("\n")
-        declaredFuncs.append(comment + retType + " " + funcName + "(" + params + ");")
+        declaredFuncs.append(retType + " " + funcName + "(" + params + ");")
         checkFuncDefs[funcName] = True
 
     return blockNext(node, depth, total)
