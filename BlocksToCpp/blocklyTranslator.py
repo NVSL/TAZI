@@ -677,6 +677,8 @@ def findFuncDefs(node):
 def run( xml ):
     tree = ET.parse(xml)
     root = tree.getroot()
+    madeFuncNames.clear()
+    checkFuncDefs.clear()
     try:
         if DEBUG: print("--- RUNNING IN DEBUG MODE ---")
         mainStr = (recurseParse(root,0))
