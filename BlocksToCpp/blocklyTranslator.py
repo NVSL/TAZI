@@ -44,7 +44,9 @@ def recurseParse(node, depth):
 
     if tag == "xml":
         global definedFuncs
+        global declaredFuncs
         definedFuncs = []
+        declaredFuncs = []
         overallResult = ""
         mainBod = ""
         global main_funcs
