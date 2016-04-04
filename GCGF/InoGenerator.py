@@ -30,6 +30,7 @@ class ClassGenerator:
     loopBody = []
     name = "" 
     funcs = ""
+    functionDeclarations = ""
     def __init__( self, api, include_str="<>"):
         self.objects = []
         self.objInstances = []
@@ -53,6 +54,8 @@ class ClassGenerator:
         self.loopBody += lines
     def defineFunctions(self, funcs):
         for f in funcs: self.funcs += f + "\n"
+    def declareFunctions(self, funcs):
+        for f in funcs: self.functionDeclarations += f + "\n"
     def getConstants(self):
         retStrings = []
 	for obj in self.objects:
@@ -107,7 +110,9 @@ class ClassGenerator:
         for string in self.getObjectDeclarations():
             rv += a(string)
 	if self.funcs != "":
-            rv += a(createSectionHeader("User Functions"))
+            rv += a(createSectionHeader("User Functions Declarations"))
+	    rv += self.functionDeclarations
+            rv += a(createSectionHeader("User Functions Definitions"))
 	    rv += self.funcs
         rv += a(createSectionHeader("Setup Function", description="The setup() function runs --ONCE-- when the Arduino boots up. As the name implies, it's useful to add code that 'sets up' your Gadget to run correctly."))
         rv += a(self.getSetupFunction())

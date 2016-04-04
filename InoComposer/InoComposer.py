@@ -15,7 +15,8 @@ class InoComposer:
         generator = ClassGenerator( self.gspec )
 	loop_str = Translator.getLoop() 
 	generator.appendToLoop( loop_str ) 
-	generator.defineFunctions( Translator.getFuncs() )
+	generator.defineFunctions( Translator.getFuncDefs() )
+	generator.declareFunctions( Translator.getFuncDecs() )
         ino = generator.getClass() + "\n"
 	return ino
     # Returns the translated cpp as a string
