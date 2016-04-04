@@ -45,6 +45,7 @@ def recurseParse(node, depth):
     if tag == "xml":
         global definedFuncs
         global declaredFuncs
+        global declaredVars
         definedFuncs = []
         declaredFuncs = []
         overallResult = ""
@@ -295,18 +296,17 @@ def setVar(node, depth):
     #if((list(node)[1]).tag.split("}"))
     if varName in declaredVars:
         # Already declared, we don't need to redo it
-        varType = " "
     else:
         # Not declared yet, put it in thing
         varType = getType(list(list(node)[1])[0]) + " "
-        declaredVars.append(varName)
+        declaredVars.append(varType + varName + ";")
 
     if((list(list(node)[1])[0]).tag == "block"):
         varValue = recurseParse(list(list(node)[1])[0], 0)
     else:
         varValue = getField(list(list(list(node)[1])[0])[0])
 
-    totString = varType + varName + " = " + varValue# + ";"
+    totString = varName + " = " + varValue# + ";"
     return blockNext(node, depth, totString)
 
 #if statement
