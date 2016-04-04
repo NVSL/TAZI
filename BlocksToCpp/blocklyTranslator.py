@@ -344,7 +344,9 @@ def ifBlock(node, depth):
         totString += elseifBlock(node, numElsIfs, depth)
 
     if (numElses == 1):
-        totString += "\n" + (spaces*depth) + "else {\n" + recurseParse(list(node)[-1], depth + 1) + ";\n" + (spaces*depth) + "}"
+	stmtList = [ s for s in list(node) if s.tag == "statement" ]
+	stmt = recurseParse( stmtList[-1], depth + 1) 
+        totString += "\n" + (spaces*depth) + "else {\n" + stmt + ";\n" + (spaces*depth) + "}"
 
     return blockNext(node, depth, totString)
 
