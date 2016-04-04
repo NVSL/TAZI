@@ -100,6 +100,17 @@ class IDEGenerator:
                     blockNode = ET.SubElement(categoryNode, "block")
                     blockNode.attrib["type"] = id + "$" + str(uid)
                     blockNode.text = " "
+		    # Add the shadow arguments to the block
+		    for arg in block["args0"]:
+		        if "name" in arg:
+		            valueNode = ET.SubElement( blockNode, "value" )
+			    shadowNode = ET.SubElement( valueNode, "shadow")
+			    fieldNode = ET.SubElement( valueNode, "field")
+			    valueNode.attrib["name"] = arg["name"]
+			    if arg["check"] == "Number":
+			        shadowNode.attrib["type"] = "math_number"
+				fieldNode.attrib["name"] = "NUM"
+				fieldNode.text = "0"
                     localBlocks[ block["id"] ] = block
                     self.jinja_vars["blocklist"].append( [ id + "$" + str(uid), str(json.dumps(block)) ] )
                     uid += 1

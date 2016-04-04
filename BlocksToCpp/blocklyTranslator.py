@@ -201,14 +201,15 @@ def hasNext(node):
 
 def getArgs(node, method="default"):
     arguments = ""
-    argList = filter(lambda n: n.tag == "block", (list(node)))
+    argList = filter(lambda n: n.tag == "block" or n.tag == "value", (list(node)))
     if len( argList ) == 0:
         argList = filter(lambda n: n.tag == "shadow", (list(node)))
-    print argList
     for i in range(len(argList) - hasNext(node)):
+        curr = argList[i]
         if(arguments != ""):
             arguments += ", "
-        arguments += recurseParse(argList[i], 0)
+	if curr.tag == "value": arguments += getValue( curr )
+        else: arguments += recurseParse(argList[i], 0)
 
     return arguments
 
@@ -298,6 +299,7 @@ def setVar(node, depth):
 
     #if((list(node)[1]).tag.split("}"))
     if varName in declaredVars:
+	pass
         # Already declared, we don't need to redo it
     else:
         # Not declared yet, put it in thing
