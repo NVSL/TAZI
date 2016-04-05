@@ -31,6 +31,7 @@ class ClassGenerator:
     name = "" 
     funcs = ""
     functionDeclarations = ""
+    variableDeclarations = ""
     def __init__( self, api, include_str="<>"):
         self.objects = []
         self.objInstances = []
@@ -56,6 +57,8 @@ class ClassGenerator:
         for f in funcs: self.funcs += f + "\n"
     def declareFunctions(self, funcs):
         for f in funcs: self.functionDeclarations += f + "\n"
+    def declareVariables(self, vars):
+        for v in vars: self.variableDeclarations += v + "\n"
     def getConstants(self):
         retStrings = []
 	for obj in self.objects:
@@ -109,6 +112,9 @@ class ClassGenerator:
         rv += a(createSectionHeader("Object Declarations"))
         for string in self.getObjectDeclarations():
             rv += a(string)
+	if self.variableDeclarations != "":
+            rv += a(createSectionHeader("User VariableDeclarations"))
+	    rv += self.variableDeclarations
 	if self.funcs != "":
             rv += a(createSectionHeader("User Functions Declarations"))
 	    rv += self.functionDeclarations

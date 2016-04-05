@@ -14,9 +14,10 @@ class InoComposer:
 	self.get_cpp()
         generator = ClassGenerator( self.gspec )
 	loop_str = Translator.getLoop() 
-	generator.appendToLoop( loop_str ) 
 	generator.defineFunctions( Translator.getFuncDefs() )
 	generator.declareFunctions( Translator.getFuncDecs() )
+        generator.declareVariables( Translator.getVars())
+	generator.appendToLoop( loop_str ) 
         ino = generator.getClass() + "\n"
 	return ino
     # Returns the translated cpp as a string
@@ -41,6 +42,4 @@ if __name__ == "__main__":
     composer = InoComposer(api_gspec, xml)
     # Print the string representation of the ino
     print composer.get_ino()
-    print
-    my_vars = Translator.getVars()
-    print type(my_vars), my_vars
+    #print
