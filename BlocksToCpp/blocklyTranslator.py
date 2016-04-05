@@ -206,7 +206,7 @@ def getArgs(node, method="default"):
     argList = filter(lambda n: n.tag == "block" or n.tag == "value", (list(node)))
     if len( argList ) == 0:
         argList = filter(lambda n: n.tag == "shadow", (list(node)))
-    for i in range(len(argList) - hasNext(node)):
+    for i in range(len(argList)):
         curr = argList[i]
         if(arguments != ""):
             arguments += ", "
