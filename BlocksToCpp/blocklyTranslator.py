@@ -46,8 +46,10 @@ def recurseParse(node, depth):
         global definedFuncs
         global declaredFuncs
         global declaredVars
+        global main_loop 
         definedFuncs = []
         declaredFuncs = []
+	main_loop = []
         overallResult = ""
         mainBod = ""
         global main_funcs
