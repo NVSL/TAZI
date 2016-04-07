@@ -13,8 +13,10 @@ declaredVars = []
 main_loop = []
 definedFuncs = []
 declaredFuncs = []
+main_setup = []
 main_funcs = ""
 use_c_lib = True
+isCpp = False
 c_lib = "#include <iostream>\n#include <cmath>"
 c_lib += "\n#include <stdlib.h>\nusing namespace std;\n"
 #c_lib += "\n#include \"Motor.h\"\n\n Motor motor1(1,2,3,4,5,6,7);\n\n"
@@ -47,9 +49,11 @@ def recurseParse(node, depth):
         global declaredFuncs
         global declaredVars
         global main_loop 
+        global main_setup
         definedFuncs = []
         declaredFuncs = []
-	main_loop = []
+        main_loop = []
+        main_setup = []
         overallResult = ""
         mainBod = ""
         global main_funcs
@@ -62,8 +66,6 @@ def recurseParse(node, depth):
             if ((child.attrib).get("type") != None and ((child.attrib["type"] == "procedures_defnoreturn")
                 or (child.attrib["type"] == "procedures_defreturn"))):
                 main_funcs += ";\n" + recurseParse(child, depth)
-
-        overallResult = main_funcs;
 
         for child in node:
             if ((child.attrib).get("type") != None and (child.attrib["type"] == "main")):
@@ -122,6 +124,8 @@ def getBlock(node,depth):
         mainStr = "int main() {\n " 
         mainStr += recurseParseCheck(list(node), depth+1) + ";\n"
         mainStr += spaces + " return 0;\n}"
+	global isCpp
+	isCpp = True
         
         return mainStr
 
@@ -134,8 +138,10 @@ def getBlock(node,depth):
         return blockNext(node, depth, function + ") << endl")
 
     if (blockType == "variable_declarations"):
-        # return "void setup () {\n" + recurseParseCheck(list(node), depth + 1) + ";\n}\n"
-        return recurseParseCheck(list(node), depth) + "\n"
+        setupStr = recurseParseCheck(list(node), depth + 1) + ";"
+        global main_setup
+        main_setup = setupStr.split("\n")
+        return "void setup () {\n" + recurseParseCheck(list(node), depth + 1) + ";\n}\n"
 
     if blockType in funcGet.keys():
         return funcCheckGet(blockType, node, depth) #funcGet[blockType](node,depth)
@@ -696,8 +702,9 @@ def run( xml ):
     try:
         if DEBUG: print("--- RUNNING IN DEBUG MODE ---")
         mainStr = (recurseParse(root,0))
+	for v in getVars(): mainStr = v + "\n" +  mainStr
         if use_c_lib: 
-            mainStr = c_lib + mainStr
+            mainStr = c_lib + mainStr 
         return mainStr
     except BlocklyError as e:
         print("Error: " + e.value)
@@ -708,13 +715,16 @@ def getLoop():
     return main_loop
 
 def getVars():
-    return declaredVars
+    return set(declaredVars)
 
 def getFuncDefs():
     return definedFuncs
 
 def getFuncDecs():
     return declaredFuncs
+
+def getSetup():
+    return main_setup
 
 def getSplitDefinitions( xml ):
     import string
