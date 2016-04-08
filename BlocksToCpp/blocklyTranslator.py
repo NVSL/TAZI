@@ -13,6 +13,7 @@ declaredVars = []
 main_loop = []
 definedFuncs = []
 declaredFuncs = []
+main_setup = []
 main_funcs = ""
 use_c_lib = True
 isCpp = False
@@ -48,9 +49,11 @@ def recurseParse(node, depth):
         global declaredFuncs
         global declaredVars
         global main_loop 
+        global main_setup
         definedFuncs = []
         declaredFuncs = []
-	main_loop = []
+        main_loop = []
+        main_setup = []
         overallResult = ""
         mainBod = ""
         global main_funcs
@@ -63,8 +66,6 @@ def recurseParse(node, depth):
             if ((child.attrib).get("type") != None and ((child.attrib["type"] == "procedures_defnoreturn")
                 or (child.attrib["type"] == "procedures_defreturn"))):
                 main_funcs += ";\n" + recurseParse(child, depth)
-
-        #overallResult = main_funcs;
 
         for child in node:
             if ((child.attrib).get("type") != None and (child.attrib["type"] == "main")):
@@ -137,8 +138,10 @@ def getBlock(node,depth):
         return blockNext(node, depth, function + ") << endl")
 
     if (blockType == "variable_declarations"):
-         return "void setup () {\n" + recurseParseCheck(list(node), depth + 1) + ";\n}\n"
-        #return recurseParseCheck(list(node), depth) + "\n"
+        setupStr = recurseParseCheck(list(node), depth + 1) + ";"
+        global main_setup
+        main_setup = setupStr.split("\n")
+        return "void setup () {\n" + recurseParseCheck(list(node), depth + 1) + ";\n}\n"
 
     if blockType in funcGet.keys():
         return funcCheckGet(blockType, node, depth) #funcGet[blockType](node,depth)
@@ -719,6 +722,9 @@ def getFuncDefs():
 
 def getFuncDecs():
     return declaredFuncs
+
+def getSetup():
+    return main_setup
 
 def getSplitDefinitions( xml ):
     import string

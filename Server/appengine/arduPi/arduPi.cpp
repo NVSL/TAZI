@@ -1181,6 +1181,7 @@ void pinMode(int pin, Pinmode mode){
 			case 4:  GPFSEL0 &= ~(7 << 12); GPFSEL0 |= (1 << 12); break;
 			case 5:  GPFSEL0 &= ~(7 << 15); GPFSEL0 |= (1 << 15); break;
 			case 6:  GPFSEL0 &= ~(7 << 18); GPFSEL0 |= (1 << 18); break;
+			case 7:  GPFSEL0 &= ~(7 << 21); GPFSEL0 |= (1 << 21); break;
 			case 8:  GPFSEL0 &= ~(7 << 24); GPFSEL0 |= (1 << 24); break;
 			case 9:  GPFSEL0 &= ~(7 << 27); GPFSEL0 |= (1 << 27); break;
 			case 10: GPFSEL1 &= ~(7 << 0); 	GPFSEL1 |= (1 << 0);  break;
@@ -1212,6 +1213,7 @@ void pinMode(int pin, Pinmode mode){
 			case 4:  GPFSEL0 &= ~(7 << 12); break;
 			case 5:  GPFSEL0 &= ~(7 << 15); break;
 			case 6:  GPFSEL0 &= ~(7 << 18); break;
+			case 7:  GPFSEL0 &= ~(7 << 21); break;
 			case 8:  GPFSEL0 &= ~(7 << 24); break;
 			case 9:  GPFSEL0 &= ~(7 << 27); break;
 			case 10: GPFSEL1 &= ~(7 << 0);  break;
@@ -1276,6 +1278,7 @@ void digitalWrite(int pin, int value){
 			case  4:GPSET0 =  BIT_4;break;
 			case  5:GPSET0 =  BIT_5;break;
 			case  6:GPSET0 =  BIT_6;break;
+			case  7:GPSET0 =  BIT_7;break;
 			case  8:GPSET0 =  BIT_8;break;
 			case  9:GPSET0 =  BIT_9;break;
 			case 10:GPSET0 = BIT_10;break;
@@ -1306,6 +1309,7 @@ void digitalWrite(int pin, int value){
 			case  4:GPCLR0 =  BIT_4;break;
 			case  5:GPCLR0 =  BIT_5;break;
 			case  6:GPCLR0 =  BIT_6;break;
+			case  7:GPCLR0 =  BIT_7;break;
 			case  8:GPCLR0 =  BIT_8;break;
 			case  9:GPCLR0 =  BIT_9;break;
 			case 10:GPCLR0 = BIT_10;break;
@@ -1385,6 +1389,7 @@ int digitalRead(int pin){
 		case 4: if(GPLEV0 & BIT_4){value = HIGH;} else{value = LOW;};break;
 		case 5: if(GPLEV0 & BIT_5){value = HIGH;} else{value = LOW;};break;
 		case 6: if(GPLEV0 & BIT_6){value = HIGH;} else{value = LOW;};break;
+		case 7: if(GPLEV0 & BIT_7){value = HIGH;} else{value = LOW;};break;
 		case 8: if(GPLEV0 & BIT_8){value = HIGH;} else{value = LOW;};break;
 		case 9: if(GPLEV0 & BIT_9){value = HIGH;} else{value = LOW;};break;
 		case 10:if(GPLEV0 & BIT_10){value = HIGH;} else{value = LOW;};break;

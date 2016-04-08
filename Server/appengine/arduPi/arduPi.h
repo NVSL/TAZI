@@ -146,6 +146,7 @@
 #define BIT_4 (1 << 4)
 #define BIT_5 (1 << 5)
 #define BIT_6 (1 << 6)
+#define BIT_7 (1 << 7)
 #define BIT_8 (1 << 8)
 #define BIT_9 (1 << 9)
 #define BIT_10 (1 << 10)
