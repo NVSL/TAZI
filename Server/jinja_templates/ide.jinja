@@ -699,7 +699,13 @@
       </div>
       <script>
          var workspace = Blockly.inject('blocklyDiv',
-           		{toolbox: document.getElementById('toolbox')});
+           		{toolbox: document.getElementById('toolbox'),
+			 zoom: {
+			   controls: true,
+			   wheel: true,
+			   maxScale: 1
+			 }
+			});
       </script>
          <!--md-button class="md-primary md-raised">Test Button</md-button-->
          <!--button onclick="console.log(getXML())">Dump XML</button-->
