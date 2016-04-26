@@ -1,6 +1,6 @@
 import subprocess
 from Decorators import *
-from PinController import *
+#from PinController import *
 popen_args = { "shell" : True }
 running = "Running"
 not_running = "Not running"
@@ -26,7 +26,7 @@ class ProgramManager:
     #@ensureProcessExists("kill")
     def kill( self ):
         ProgramManager.process.kill()
-	resetPins()
+	#resetPins()
 	self.status = not_running
 
     @ensureProgramExists("read from")

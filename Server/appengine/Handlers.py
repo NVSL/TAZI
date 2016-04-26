@@ -11,7 +11,7 @@ from StringIO import StringIO
 compiled_name = "blockly_executable"
 out_file = compiled_name + ".cpp"
 PROGRAM_PATH = "programs/"
-api_gspec = "RaspberryPiTest2.api.gspec"
+api_gspec = "grabber-sensor.api.gspec"
 STATIC = "static/"
 program_status = ProgramManager()
 
@@ -24,11 +24,16 @@ global_jinja_vars["lib"] = global_jinja_vars["resDir"] + "lib/"
 global_jinja_vars["blockly"] = global_jinja_vars["resDir"] + "lib/blockly/"  
 templates_dir = "jinja_templates/"
 
+run_as_arduino = True 
+
 ############################# Helper Functions ############################# 
 
 def setupOutput( name="testfile", ext="cpp", workspace="CppDefault.xml"):
     global out_file
-    out_file = name + "." + ext 
+    out_file = name 
+    if run_as_arduino:
+        out_file += "/" + out_file
+    out_file += "." + ext 
     global default_workspace
     default_workspace = workspace
 
@@ -71,9 +76,11 @@ class StaticFileHandler(webapp2.RequestHandler):
         self.response.write( openStaticFile( file_name) )
 
 class RunProgramHandler(webapp2.RequestHandler):
-    def post(self): program_status.run()
+    def post(self): 
+	if not run_as_arduino: program_status.run()
 class KillProgramHandler(webapp2.RequestHandler):
-    def post(self): program_status.kill()
+    def post(self): 
+	if not run_as_arduino: program_status.kill()
 
 class SaveHandler(webapp2.RequestHandler):
     result_cached = False
@@ -85,7 +92,7 @@ class SaveHandler(webapp2.RequestHandler):
     def saveProgram(self):
         request = dict(self.request.POST)
 	xml = request["xml"]
-	if xml != SaveHandler.cached_xml:
+	if xml != SaveHandler.cached_xml or run_as_arduino:
 	    self.xml = xml
 	    SaveHandler.result_cached = False
             xml_file_path = PROGRAM_PATH + program_status.name + ".xml"
@@ -124,8 +131,11 @@ class CompileInoHandler(CompileHandler):
 	self.compiled = self.composer.get_ino()
 	print self.compiled
 	self.writeToOutfile()
-	subprocess.check_call(["mv",out_file, arduPi])
-	subprocess.check_call(["make","-C", arduPi])
+	if run_as_arduino:
+	    subprocess.check_call(["arduino", "--upload", out_file])
+	else:
+	    subprocess.check_call(["mv",out_file, arduPi])
+	    subprocess.check_call(["make","-C", arduPi])
 
 ######################## Static Handler Functions  ######################## 
 

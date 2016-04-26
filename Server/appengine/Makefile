@@ -1,7 +1,7 @@
 PROG_NAME = blockly_executable
 PROG_EXT = cpp
 runino:
-	sudo python main.py -n $(PROG_NAME) -e ino -t DefaultRobotWorkspace.xml
+	python main.py -n $(PROG_NAME) -e ino -t DefaultRobotWorkspace.xml
 run:
 	python main.py -n $(PROG_NAME) -e $(PROG_EXT)
 all:	copy run
