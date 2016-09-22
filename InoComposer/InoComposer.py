@@ -13,10 +13,12 @@ class InoComposer:
     def get_ino(self):
 	self.get_cpp()
         generator = ClassGenerator( self.gspec )
+	setup_str = Translator.getSetup()
 	loop_str = Translator.getLoop() 
 	generator.defineFunctions( Translator.getFuncDefs() )
 	generator.declareFunctions( Translator.getFuncDecs() )
         generator.declareVariables( Translator.getVars())
+	generator.appendToSetup( setup_str ) 
 	generator.appendToLoop( loop_str ) 
         ino = generator.getClass() + "\n"
 	return ino

@@ -2,8 +2,8 @@
 INOGEN = InoGenerator
 B2CPP = BlocksToCpp
 # Shell commands
-CP = cp -R
-RM = rm -rf
+CP = ln -s # Creates symbolic links 
+RM = rm -f
 # Program Files
 TESTDIR = RobotTests/
 GSPECNAME = Chase
@@ -22,8 +22,8 @@ verify: $(INO_PATH)
 	arduino --verify $(INO_PATH)
 $(INOGEN)/: copy
 $(B2CPP)/: copy
-copy:
-	make -C ../GCGF ino_package
+copy: clean
+	make -C ../GCGF
 	$(CP) ../GCGF/$(INOGEN) .
 	$(CP) ../$(B2CPP) .
 clean:

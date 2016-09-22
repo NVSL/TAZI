@@ -2,8 +2,8 @@ GSPEC_DIR = Gspecs/
 RESOURCES = Resources
 OUTPUT = Output/
 
-GSPEC = Chase
-APIGSPEC = SimpleLEDTest
+GSPEC = PiMobile
+APIGSPEC = Swagatron
 APIGSPECS = $(wildcard Gspecs/*.api.gspec)
 INOS = $(APIGSPECS:Gspecs/%.api.gspec=%.ino)
 ARDUINO = arduino
@@ -24,14 +24,18 @@ RESDIR = -r "{{resDir}}"
 BLOCKLYDIR = -b "{{blockly}}"
 .PRECIOUS: $(GSPEC_DIR)%.api.gspec
 
-packages: ide_package ino_package
+packages: clean ide_package ino_package
 ide_package:
-	cp IDEGenerator.py IDEGenerator/
-	cp GspecParser.py IDEGenerator/
-	cp JinjaUtil.py IDEGenerator/
+	mkdir -p IDEGenerator
+	cat .blank > IDEGenerator/__init__.py
+	ln -s ../IDEGenerator.py IDEGenerator/
+	ln -s ../GspecParser.py IDEGenerator/
+	ln -s ../JinjaUtil.py IDEGenerator/
 ino_package:
-	cp $(INOGENERATOR) InoGenerator/
-	cp InoCommenter.py InoGenerator/
+	mkdir -p InoGenerator
+	cat .blank > InoGenerator/__init__.py
+	ln -s ../$(INOGENERATOR) InoGenerator/
+	ln -s ../InoCommenter.py InoGenerator/
 ide:
 	python IDEGenerator.py -j $(BLOCKSJSON) $(GSPEC_FILE) -c $(CATALOG) -d $(CATEGORIESXML) -x $(JINJAFILE) $(WORKSPACE) > ../Server/index.html
 idejinja:
@@ -49,6 +53,8 @@ clean:
 	rm -f *.pyc
 	make -C $(OUTPUT) clean
 	make -C $(GSPEC_DIR) clean
+	rm -rf IDEGenerator/
+	rm -rf InoGenerator/
 display:
 	google-chrome ../Server/index.html
 %.ino : $(GSPEC_DIR)%.api.gspec

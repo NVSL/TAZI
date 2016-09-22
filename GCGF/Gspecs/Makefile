@@ -7,6 +7,6 @@ CLEAN = rm -f *.brd;rm -f *.readme;rm -f *.status;\
 all: $(APIS) 
 %.api.gspec : %.gspec 
 	$(MAKEGADGET) -k $* -n $*
-	$(CLEAN)
+	#$(CLEAN)
 clean:
 	$(CLEAN)

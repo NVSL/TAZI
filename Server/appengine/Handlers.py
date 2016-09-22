@@ -9,9 +9,9 @@ import xml.etree.ElementTree as ET
 from StringIO import StringIO
 
 compiled_name = "blockly_executable"
-out_file = compiled_name + ".cpp"
+out_file = compiled_name + ".ino"
 PROGRAM_PATH = "programs/"
-api_gspec = "grabber-sensor.api.gspec"
+api_gspec = "Swagatron.api.gspec"
 STATIC = "static/"
 program_status = ProgramManager()
 
@@ -25,15 +25,16 @@ global_jinja_vars["blockly"] = global_jinja_vars["resDir"] + "lib/blockly/"
 templates_dir = "jinja_templates/"
 
 run_as_arduino = True 
+arduino_flags = "--upload"
 
 ############################# Helper Functions ############################# 
 
-def setupOutput( name="testfile", ext="cpp", workspace="CppDefault.xml"):
+def setupOutput( name="testfile", ext="ino", workspace="CppDefault.xml"):
     global out_file
     out_file = name 
     if run_as_arduino:
         out_file += "/" + out_file
-    out_file += "." + ext 
+    out_file += "." + "ino" 
     global default_workspace
     default_workspace = workspace
 
@@ -132,7 +133,7 @@ class CompileInoHandler(CompileHandler):
 	print self.compiled
 	self.writeToOutfile()
 	if run_as_arduino:
-	    subprocess.check_call(["arduino", "--upload", out_file])
+	    subprocess.check_call(["arduino", arduino_flags , out_file])
 	else:
 	    subprocess.check_call(["mv",out_file, arduPi])
 	    subprocess.check_call(["make","-C", arduPi])

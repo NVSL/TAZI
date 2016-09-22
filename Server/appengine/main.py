@@ -7,7 +7,7 @@ from ProgramManager import not_loaded
 
 ############################# Main Functions ############################# 
 def main (app):
-    port = 8080
+    port = 8081
     httpd = wsgiref.simple_server.make_server('', port, app)
     print "Serving HTTP on port "+str(port)+"..."
     httpd.serve_forever()

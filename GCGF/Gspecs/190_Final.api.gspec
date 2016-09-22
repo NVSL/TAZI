@@ -1,0 +1,50 @@
+<gadgetlayout version="1.1">
+   <name>Gadget Name</name>
+   <creator/>
+   <board x="-80" y="-50" width="160" height="100"/>
+   <option name="faceplate-color" value="clear-nocolor"/>
+   <option name="backplate-color" value="clear-nocolor"/>
+   <option name="faceplate-etch" value="etch-front"/>
+   <option name="backplate-etch" value="etch-back"/>
+   <option name="front-standoff-height" value="8"/>
+   <option name="back-standoff-height" value="8"/>
+   <option name="pcb-thickness" value="1.57"/>
+   <option name="faceplate-thickness" value="3.175"/>
+   <option name="backplate-thickness" value="3.175"/>
+   <option name="cam-target" value="4PCB"/>
+   <component progname="brain" type="Adafruit-Pro-Trinket-5V-battery-powered" deletable="false">
+      <placedpart refdes="U1_0_brain" x="-19.360719680786133" y="35.00471591949463" rotation="90" mirrored="False"/>
+   </component>
+   <component progname="battery" type="battery-9V-vertical" deletable="false">
+      <placedpart refdes="BATT1_1_battery" x="66" y="-40" rotation="0" mirrored="False"/>
+   </component>
+   <component progname="drive" type="dual-motor-kit-narrow-fast">
+      <placedpart refdes="L_2_drive" x="-0.5899543762207017" y="70.71" rotation="90" mirrored="False"/>
+      <placedpart refdes="R_2_drive" x="-0.5078010559082046" y="-70.86" rotation="90" mirrored="False"/>
+      <placedpart refdes="DRVR_2_drive" x="59" y="35" rotation="0" mirrored="False"/>
+   <api class="Motor" include="Motor.h" link-as="dual-motor-kit-narrow-fast" path="lib" progname="drive"><required_files><file name="GadgetManager.h"/></required_files><arg analogliteral="None" arg="PWMA" digitalliteral="3" order="1"/><arg analogliteral="None" arg="PWMB" digitalliteral="5" order="4"/><arg analogliteral="None" arg="STBY" digitalliteral="4" order="0"/><arg analogliteral="None" arg="AIN1" digitalliteral="6" order="2"/><arg analogliteral="None" arg="AIN2" digitalliteral="8" order="3"/><arg analogliteral="None" arg="BIN1" digitalliteral="9" order="5"/><arg analogliteral="None" arg="BIN2" digitalliteral="10" order="6"/></api></component>
+   <component progname="distanceSensor" type="analog_distance_sensor">
+      <placedpart refdes="D1_3_distanceSensor" x="-66.52" y="21.393244743347168" rotation="90" mirrored="False"/>
+   <api class="DistanceSensor" include="DistanceSensor.h" link-as="analog_distance_sensor" path="lib" progname="distanceSensor"><required_files/><arg analogliteral="A0" arg="A" digitalliteral="None" order="None"/></api></component>
+   <component progname="distanceSensor_2" type="analog_distance_sensor">
+      <placedpart refdes="D1_4_distanceSensor_2" x="-66.52448844909668" y="-44.60675525665283" rotation="90" mirrored="False"/>
+   <api class="DistanceSensor" include="DistanceSensor.h" link-as="analog_distance_sensor" path="lib" progname="distanceSensor_2"><required_files/><arg analogliteral="A1" arg="A" digitalliteral="None" order="None"/></api></component>
+   <component progname="distanceSensor_3" type="analog_distance_sensor">
+      <placedpart refdes="D1_5_distanceSensor_3" x="-66.52" y="-10.606755256652832" rotation="90" mirrored="False"/>
+   <api class="DistanceSensor" include="DistanceSensor.h" link-as="analog_distance_sensor" path="lib" progname="distanceSensor_3"><required_files/><arg analogliteral="A2" arg="A" digitalliteral="None" order="None"/></api></component>
+   <component progname="caster" type="ball-caster-0.75in">
+      <placedpart refdes="u1_6_caster" x="-59" y="0" rotation="90" mirrored="False"/>
+   </component>
+   <component progname="caster_2" type="ball-caster-0.75in">
+      <placedpart refdes="u1_7_caster_2" x="59" y="0" rotation="90" mirrored="False"/>
+   </component>
+   <component progname="led" type="LED-5mm-bright-green">
+      <placedpart refdes="LED1_8_led" x="-45.419594287872314" y="-38" rotation="0" mirrored="False"/>
+   <api class="LED" include="LED.h" link-as="LED-5mm-bright-green" path="lib" progname="led"><required_files/><arg analogliteral="None" arg="CONTROL" digitalliteral="11" order="None"/></api></component>
+   <component progname="led_2" type="LED-5mm-bright-red">
+      <placedpart refdes="LED1_9_led_2" x="-33.419594287872314" y="-38" rotation="0" mirrored="False"/>
+   <api class="LED" include="LED.h" link-as="LED-5mm-bright-red" path="lib" progname="led_2"><required_files/><arg analogliteral="None" arg="CONTROL" digitalliteral="12" order="None"/></api></component>
+   <component progname="button" type="tactile-button-round-red">
+      <placedpart refdes="B1_10_button" x="-20" y="-37.17" rotation="0" mirrored="False"/>
+   <api class="MomentaryButton" include="MomentaryButton.h" link-as="tactile-button-round-red" path="lib" progname="button"><required_files><file name="PinChangeInt.h"/></required_files><arg analogliteral="None" arg="SENSE" digitalliteral="13" order="None"/></api></component>
+</gadgetlayout>

@@ -19,6 +19,9 @@
    <component progname="battery" type="battery-9V-vertical" deletable="false">
       <placedpart refdes="BATT1" x="93" y="53" rotation="0" mirrored="False" />
    </component>
+   <component progname="button" type="tactile-button-round-red">
+      <placedpart refdes="B1" x="93" y="70" rotation="0" mirrored="False" />
+   </component>
    <component progname="drive" type="dual-motor-kit-knobby">
       <placedpart refdes="L" x="168" y="79" rotation="0" mirrored="False" />
       <placedpart refdes="R" x="-18" y="79" rotation="0" mirrored="False" />
@@ -40,9 +43,6 @@
    </component>
    <component progname="caster" type="ball-caster-0.75in">
       <placedpart refdes="u1" x="75" y="12" rotation="0" mirrored="False" />
-   </component>
-   <component progname="button" type="tactile-button-round-red">
-      <placedpart refdes="B1" x="93" y="70" rotation="0" mirrored="False" />
    </component>
    <component progname="bump" type="bump-switch-medium-right">
       <placedpart refdes="U$2" x="26" y="90" rotation="0" mirrored="False" />

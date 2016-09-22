@@ -541,7 +541,7 @@ def forloop(node, depth):
 
 #delay
 def delay(node,depth):
-    retString = "delay("
+    retString = "delay((int)"
     varValue = getArgs(list(node)[0])
     retString += varValue + ")"
     return blockNext(node, depth, retString)

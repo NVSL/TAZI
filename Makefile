@@ -2,6 +2,7 @@ BLOCKLY_PATH = ./Server/*
 
 build:
 	make -C GCGF
+	make -C InoComposer copy 
 	make -C Server copy
 
 default:
