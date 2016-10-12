@@ -16,3 +16,5 @@ clean:
 	make -C GCGF clean
 	make -C Server clean
 	make -C InoComposer clean
+run:
+	make -C Server run

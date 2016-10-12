@@ -24,7 +24,7 @@ if __name__ == "__main__":
     if not os.path.exists( PROGRAM_PATH ): 
         os.mkdir( PROGRAM_PATH )
     if not os.path.exists( PROGRAM_PATH+"/"+compiled_name ): 
-        os.mkdir( compiled_name+"/"+compiled_name )
+        os.mkdir( PROGRAM_PATH+"/"+compiled_name )
     # Cleanup bad file names
     subprocess.check_call(["rm", "-f", PROGRAM_PATH+not_loaded+".xml"])
     # Define the compilation handler
