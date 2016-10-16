@@ -10,8 +10,9 @@ sequence_node = "sequence_node"
 selector_node = "selector_node"
 action_node = "action_node"
 condition_node = "condition_node"
+parallel_node = "parallel_node"
 root_node = "root_node"
-star_nodes  = [ sequence_node, selector_node ]
+star_nodes  = [ sequence_node, selector_node, parallel_node ]
 value_nodes = [ action_node, condition_node ]
 
 class BehaviorNode:
