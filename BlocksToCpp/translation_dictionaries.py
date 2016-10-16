@@ -1,3 +1,4 @@
+def getOp( o ): return opDict[o.text]
 # Operator dictionary
 opDict = {
     "EQ": "==",
