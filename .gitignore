@@ -36,6 +36,6 @@ Server/appengine/*.jinja
 Server/appengine/WorkspaceRenderer.py
 Server/appengine/arduPi/*/
 Server/appengine/arduPi/*.ino
-Server/appengine/arduPi/*.o
+*.o
 InoComposer/InoGenerator/
 InoComposer/BlocksToCpp/

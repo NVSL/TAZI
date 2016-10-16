@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 
+from translation_dictionaries import *
+from behavior_parser import *
+
 import xml.etree.ElementTree as ET
 import argparse
 
@@ -21,6 +24,8 @@ c_lib = "#include <iostream>\n#include <cmath>"
 c_lib += "\n#include <stdlib.h>\nusing namespace std;\n"
 #c_lib += "\n#include \"Motor.h\"\n\n Motor motor1(1,2,3,4,5,6,7);\n\n"
 
+behavior_parser = BehaviorParser() 
+
 # There should be some degree of error checking
 class BlocklyError(Exception):
     def __init__(self, value):
@@ -33,8 +38,12 @@ def refactorStatementToBlock( s ):
     s.attrib["type"] = s.attrib["name"]
     return s
 
+def is_node_of_type( node, type_name ):
+    atb = (node.attrib).get("type")
+    return atb != None and atb == type_name
+
 # Recurse through the xml to translate
-def recurseParse(node, depth):
+def parseBlocksRecursively(node, depth):
     tag = node.tag.split("}")
     if (len(tag) > 1):
         tag = tag[1]
@@ -58,24 +67,22 @@ def recurseParse(node, depth):
         mainBod = ""
         global main_funcs
         for child in node.iter('block'):
-            if ((child.attrib).get("type") != None and ((child.attrib["type"] == "procedures_defnoreturn")
-                or (child.attrib["type"] == "procedures_defreturn"))):
+            if is_node_of_type(child, "procedures_defnoreturn") or is_node_of_type(child, "procedures_defreturn"):
                 findDefine(child)
 
         for child in node:
-            if ((child.attrib).get("type") != None and ((child.attrib["type"] == "procedures_defnoreturn")
-                or (child.attrib["type"] == "procedures_defreturn"))):
-                main_funcs += ";\n" + recurseParse(child, depth)
+            if is_node_of_type(child, "procedures_defnoreturn") or is_node_of_type(child, "procedures_defreturn"):
+                main_funcs += ";\n" + parseBlocksRecursively(child, depth)
 
         for child in node:
-            if ((child.attrib).get("type") != None and (child.attrib["type"] == "main")):
-                overallResult += recurseParse(child, depth)
+            if is_node_of_type(child, "main") or is_node_of_type(child, "root_node"):
+                overallResult += parseBlocksRecursively(child, depth)
 
 	# Handle the case for Blockly CPP
 	c_main = [ ns for ns in node.findall("block") if ns.attrib["type"] == "c_main" ]
 	if( len( c_main ) == 1): 
 	    main = refactorStatementToBlock(c_main[0].find("statement"))
-	    overallResult += recurseParse(main, 0)
+	    overallResult += parseBlocksRecursively(main, 0)
 
         #Why do we need this?
         #if (("void loop ()" not in overallResult)):
@@ -86,14 +93,14 @@ def recurseParse(node, depth):
     elif tag == "block":
         return getBlock(node,depth)
     elif tag == "next":
-        return ";\n" + recurseParse(list(node)[0], depth)
+        return ";\n" + parseBlocksRecursively(list(node)[0], depth)
     elif tag == "statement":
-        return recurseParse(list(node)[0], depth)
+        return parseBlocksRecursively(list(node)[0], depth)
     elif tag == "shadow":
-        return recurseParse(list(node)[0], depth)
+        return parseBlocksRecursively(list(node)[0], depth)
         #return getField(list(node)[0])
     elif tag == "value":
-        return recurseParse(list(node)[0], depth)
+        return parseBlocksRecursively(list(node)[0], depth)
         #return getBlock(list(node)[0], depth)
     elif tag == "field":
         return getField(node)
@@ -106,7 +113,7 @@ def recurseParseCheck(nodeList, depth, remove_white_space=False):
     if (len(nodeList) != 1):
         return ""
     else:
-        return recurseParse(nodeList[0], depth)
+        return parseBlocksRecursively(nodeList[0], depth)
 
 # Sub functions
 
@@ -134,7 +141,7 @@ def getBlock(node,depth):
         nextNode = (node.find("value").find("block"))
         function = depth*spaces + "cout << ("
         #function += recurseParse([nextNode], depth+1, remove_white_space=True)
-        function += recurseParse(nextNode, depth + 1)
+        function += parseBlocksRecursively(nextNode, depth + 1)
         return blockNext(node, depth, function + ") << endl")
 
     if (blockType == "variable_declarations"):
@@ -163,12 +170,14 @@ def getBlock(node,depth):
             return "true"
         else:
             return "false"
-
     if (blockType == "main"): 
         lines = ""
         for b in map( refactorStatementToBlock, node.findall("statement" )):
-	    lines += recurseParse( b, depth ) + delimitter+ '\n'
+	    lines += parseBlocksRecursively( b, depth ) + delimitter+ '\n'
         return lines
+    if blockType == "root_node": 
+        behavior_parser.parse_node( node )
+        return ""
 
     return genericBlockGet(node,depth)
    
@@ -197,7 +206,7 @@ def blockNext(node, depth, nodeStr):
     if (thisNex == 0):
         return (spaces * depth) + nodeStr
     else:
-        return (spaces * depth) + nodeStr + recurseParse(list(node)[-1], depth)
+        return (spaces * depth) + nodeStr + parseBlocksRecursively(list(node)[-1], depth)
 
 #iterate through the children; may have a "next"
 def hasNext(node):
@@ -217,7 +226,7 @@ def getArgs(node, method="default"):
         if(arguments != ""):
             arguments += ", "
 	if curr.tag == "value": arguments += getValue( curr )
-        else: arguments += recurseParse(argList[i], 0)
+        else: arguments += parseBlocksRecursively(argList[i], 0)
 
     return arguments
 
@@ -248,47 +257,11 @@ def getField(node):
 def getValue( val ):
     node = val.find("block")
     if node is None: node = val.find("shadow")
-    return recurseParse( node, 0 )
+    return parseBlocksRecursively( node, 0 )
 
-# Operator dictionary
-opDict = {
-    "EQ": "==",
-    "NEQ": "!=",
-    "LT": "<",
-    "LTE": "<=",
-    "GT": ">",
-    "GTE": ">=",
-    "AND": "&&",
-    "OR": "||",
-    "PLUS": "+",
-    "ADD": "+",
-    "MINUS": "-",
-    "MULTIPLY": "*",
-    "DIVIDE": "/",
-    "ROOT": "sqrt",
-    "BREAK": "break",
-    "ABS": "abs",
-    "NEG": "-1*",
-    "POWER": "pow",
-    "POW10": "pow10",
-    "EXP": "exp",
-    "LN": "log",
-    "LOG10": "log10",
-    "CONTINUE": "continue;"
-}
-def getOp(node):
     return opDict[node.text]
 
-#constant dictionary
-constDict = {
-    "PI": "3.14159265358979323846",
-}
 
-mathDict = {
-    "ABS": "abs",
-    "POWER": "pow",
-    "SQRT": "sqrt"
-}
 def getConst(node):
     for k in mathDict.keys():
         if k in getField(node): 
@@ -315,7 +288,7 @@ def setVar(node, depth):
         declaredVars.append(varType + varName + ";")
 
     if((list(list(node)[1])[0]).tag == "block"):
-        varValue = recurseParse(list(list(node)[1])[0], 0)
+        varValue = parseBlocksRecursively(list(list(node)[1])[0], 0)
     else:
         varValue = getField(list(list(list(node)[1])[0])[0])
 
@@ -346,13 +319,13 @@ def ifBlock(node, depth):
             raise BlocklyError("If-Statement requires a condition and statements!")
 
         booleanPart = getArgs(list(node)[1])
-        statementPart = recurseParse(list(node)[2], depth+1)
+        statementPart = parseBlocksRecursively(list(node)[2], depth+1)
     else:
         if (ifBChild < 2):
             raise BlocklyError("If-Statement requires a condition and statements!")
 
         booleanPart = getArgs(list(node)[0])
-        statementPart = recurseParse(list(node)[1], depth+1)
+        statementPart = parseBlocksRecursively(list(node)[1], depth+1)
 
     # Second child is the statement part
     returnStr = "if(" + booleanPart + ") {\n"
@@ -364,7 +337,7 @@ def ifBlock(node, depth):
 
     if (numElses == 1):
 	stmtList = [ s for s in list(node) if s.tag == "statement" ]
-	stmt = recurseParse( stmtList[-1], depth + 1) 
+	stmt = parseBlocksRecursively( stmtList[-1], depth + 1) 
         totString += "\n" + (spaces*depth) + "else {\n" + stmt + ";\n" + (spaces*depth) + "}"
 
     return blockNext(node, depth, totString)
@@ -378,7 +351,7 @@ def elseifBlock(node, numTimes, depth):
         if (((list(node)[i]).attrib["name"])[:2] == "IF"):
             elseString += elseifOpenString
             booleanPart = getArgs(list(node)[i])
-            elseString += booleanPart + ") {\n" + recurseParse((list(node)[i + 1]), depth + 1) + ";\n" + (spaces*depth) + "}"
+            elseString += booleanPart + ") {\n" + parseBlocksRecursively((list(node)[i + 1]), depth + 1) + ";\n" + (spaces*depth) + "}"
 
     return elseString
 
@@ -393,8 +366,8 @@ def compLog(node,depth):
     if (len(list(node)) != 3):
         raise BlocklyError("Logic compare with operator '" + operator + "' requires 2 values to compare!")
         return ""
-    valueA = recurseParse(list(list(node)[1])[0],depth)
-    valueB = recurseParse(list(list(node)[2])[0],depth)
+    valueA = parseBlocksRecursively(list(list(node)[1])[0],depth)
+    valueB = parseBlocksRecursively(list(list(node)[2])[0],depth)
 
     return blockNext(node, depth, (valueA + " " + operator + " " + valueB))
 
@@ -402,11 +375,9 @@ def compLog(node,depth):
 def mathProp(node, depth):
     test = list(node)[1].text
 
-    numToCheck = recurseParse(list(node)[2], 0)
-    if (test == "EVEN"):
-        modNum = 0
-    else:
-        modNum = 1
+    numToCheck = parseBlocksRecursively(list(node)[2], 0)
+    if (test == "EVEN"): modNum = 0
+    else: modNum = 1
     #even, odd, prime, whole, positive, negative, divisible by
 
     total = numToCheck + "%2 == " + str(modNum)
@@ -423,8 +394,8 @@ def mathMetic(node,depth):
     #valueA = recurseParse(list(list(node)[1])[-1],depth)
     #valueB = recurseParse(list(list(node)[2])[-1],depth)
 
-    valueA = recurseParse(list(list(node)[1])[-1],depth)
-    valueB = recurseParse(list(list(node)[2])[-1],depth)
+    valueA = parseBlocksRecursively(list(list(node)[1])[-1],depth)
+    valueB = parseBlocksRecursively(list(list(node)[2])[-1],depth)
 
     if (operator == "pow"):
         return blockNext(node, depth, ("pow(" + valueA + ", " + valueB + ")"))
@@ -453,8 +424,8 @@ def mathModulo(node, depth):
 
 #math random
 def mathRand(node, depth):
-    minNum = recurseParse(list(list(node)[0])[0], depth)
-    maxNum = recurseParse(list(list(node)[1])[0], depth)
+    minNum = parseBlocksRecursively(list(list(node)[0])[0], depth)
+    maxNum = parseBlocksRecursively(list(list(node)[1])[0], depth)
 
     return "rand() % (" + maxNum + " - " + minNum + ") + " + minNum
 
@@ -482,7 +453,7 @@ def whileUnt(node, depth):
     retString += ") {\n"
 
     if (list(node)[2]).attrib.get("name") != None and (list(node)[2]).attrib["name"] == "DO":
-        statement = recurseParse(list(node)[2], depth + 1)
+        statement = parseBlocksRecursively(list(node)[2], depth + 1)
     else:
         statement = "\n";
 
@@ -494,17 +465,17 @@ def whileUnt(node, depth):
 def negate(node, depth):
     retString = "!("
 
-    inner = recurseParse(list(list(node)[0])[0], 0)
+    inner = parseBlocksRecursively(list(list(node)[0])[0], 0)
     return blockNext(node, depth, (retString + inner + ")"))
 
 #repeat for specified num of times
 def repeatControl(node, depth):
     retString = ";\n" + (spaces*depth) + "int __i;\n"
     retString += (spaces*depth) + "for(__i = 0; __i < "
-    count = recurseParse(list(node)[0], 0)
+    count = parseBlocksRecursively(list(node)[0], 0)
     retString += count + "; __i++) {\n"
 
-    statement = recurseParse(list(node)[1], depth+1)
+    statement = parseBlocksRecursively(list(node)[1], depth+1)
 
     retString += statement + ";\n" + (spaces*depth) + "}\n"
 
@@ -533,7 +504,7 @@ def forloop(node, depth):
 
     retString += "; " + val + cond + "("+toVal+"); " + val + "+=(" + incr + ")) {\n"
 
-    statement = recurseParse(list(node)[4], depth+1)
+    statement = parseBlocksRecursively(list(node)[4], depth+1)
 
     retString += statement + ";\n " + (spaces*depth) + "}"
 
@@ -582,10 +553,10 @@ def funcCreation(node, depth):
         if (child.tag == "field"):
             funcName = str.replace(child.text, " ", "")
         if (child.tag == "statement"):
-            funcBody = recurseParse(list(child)[0], depth + 1) + ";\n"
+            funcBody = parseBlocksRecursively(list(child)[0], depth + 1) + ";\n"
         if (child.tag == "value"):
             retType = getType(list(child)[0])
-            funcRet = (spaces*(depth + 1)) + "return " + recurseParse(list(child)[0], 0) + ";;\n"
+            funcRet = (spaces*(depth + 1)) + "return " + parseBlocksRecursively(list(child)[0], 0) + ";;\n"
 
     total = comment + retType + " " + funcName + "(" + params + ") {\n" + funcBody + funcRet + (spaces*depth) + "}\n"
 
@@ -602,7 +573,6 @@ def funcCreation(node, depth):
 def findDefine(node):
     paramNum = 0;
     funcName = ""
-
     for child in node:
         if(child.tag == "mutation"):
             for arg in child:
@@ -630,7 +600,7 @@ def callMethod(node, depth):
             if (child.tag == "value"):
                 if(arguments != ""):
                     arguments += ", "
-                arguments += recurseParse(child, 0)
+                arguments += parseBlocksRecursively(child, 0)
         
         call += arguments
 
@@ -641,7 +611,7 @@ def ifRet(node, depth):
     mainStr = ";\n" + (spaces*depth) + "if("
 
     boolPart = getArgs(list(node)[1])
-    funcRet = (spaces*(depth + 1)) + "return " + recurseParse(list(list(node)[2])[0], 0) + ";"
+    funcRet = (spaces*(depth + 1)) + "return " + parseBlocksRecursively(list(list(node)[2])[0], 0) + ";"
 
     mainStr += boolPart + ") {\n" + funcRet + ";\n" + (spaces*depth) + "}\n"
 
@@ -653,6 +623,11 @@ def funcCheckGet(blockType, node, depth):
     
     return funcGet[blockType](node, depth)
 
+madeFuncNames = {
+}
+
+checkFuncDefs = {
+}
 funcGet = {
     "variables_set": setVar,
     "controls_if": ifBlock,
@@ -679,12 +654,6 @@ funcGet = {
     "procedures_callnoreturn": callMethod
 }
 
-madeFuncNames = {
-}
-
-checkFuncDefs = {
-}
-
 def findFuncDefs(node):
     for child in node:
         if(child.tag == "field"):
@@ -701,7 +670,7 @@ def run( xml ):
     checkFuncDefs.clear()
     try:
         if DEBUG: print("--- RUNNING IN DEBUG MODE ---")
-        mainStr = (recurseParse(root,0))
+        mainStr = (parseBlocksRecursively(root,0))
 	for v in getVars(): mainStr = v + "\n" +  mainStr
         if use_c_lib: 
             mainStr = c_lib + mainStr 
@@ -711,7 +680,6 @@ def run( xml ):
         raise
 
 def getLoop(): 
-    #global loop_body
     return main_loop
 
 def getVars():

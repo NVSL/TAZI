@@ -1,0 +1,299 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{c43e0b26-c95a-46da-81d4-09b067b7a7cb}</ProjectGuid>
+    <ProjectHome />
+    <StartupFile>BlocksToCpp\blocklyTranslator.py</StartupFile>
+    <SearchPath />
+    <WorkingDirectory>BlocksToCpp\</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <InterpreterId />
+    <InterpreterVersion />
+    <IsWindowsApplication>False</IsWindowsApplication>
+    <CommandLineArguments>-x tests/behavior_tree/behavior_tree.xml -d</CommandLineArguments>
+    <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
+    <PtvsTargetsFile>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets</PtvsTargetsFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="BlocksToCpp\bugsList.txt" />
+    <Content Include="BlocksToCpp\testsList.txt" />
+    <Content Include="BlocksToCpp\tests\testsList.txt" />
+    <Content Include="Proposal\Gadget Compiler - New Page.png" />
+    <Content Include="Server\appengine\favicon.ico" />
+    <Content Include="Server\appengine\robots.txt" />
+    <Content Include="Server\controllers\IDEController.js" />
+    <Content Include="Server\controllers\LandingPageController.js" />
+    <Content Include="Server\controllers\ModuleWorkaround.js" />
+    <Content Include="Server\lib\angular-animate\angular-animate.js" />
+    <Content Include="Server\lib\angular-animate\angular-animate.min.js" />
+    <Content Include="Server\lib\angular-animate\index.js" />
+    <Content Include="Server\lib\angular-aria\angular-aria.js" />
+    <Content Include="Server\lib\angular-aria\angular-aria.min.js" />
+    <Content Include="Server\lib\angular-aria\index.js" />
+    <Content Include="Server\lib\angular-material\angular-material-mocks.js" />
+    <Content Include="Server\lib\angular-material\angular-material.css" />
+    <Content Include="Server\lib\angular-material\angular-material.js" />
+    <Content Include="Server\lib\angular-material\angular-material.layouts.css" />
+    <Content Include="Server\lib\angular-material\angular-material.layouts.min.css" />
+    <Content Include="Server\lib\angular-material\angular-material.min.css" />
+    <Content Include="Server\lib\angular-material\angular-material.min.js" />
+    <Content Include="Server\lib\angular-material\index.js" />
+    <Content Include="Server\lib\angular\angular-csp.css" />
+    <Content Include="Server\lib\angular\angular.js" />
+    <Content Include="Server\lib\angular\angular.min.js" />
+    <Content Include="Server\lib\angular\index.js" />
+    <Content Include="Server\lib\blockly\blockly_compressed.js" />
+    <Content Include="Server\lib\blockly\blockly_uncompressed.js" />
+    <Content Include="Server\lib\blockly\blocksIO.js" />
+    <Content Include="Server\lib\blockly\blocks\blocks_compressed.js" />
+    <Content Include="Server\lib\blockly\blocks\colour.js" />
+    <Content Include="Server\lib\blockly\blocks\custom_blocks.js" />
+    <Content Include="Server\lib\blockly\blocks\lists.js" />
+    <Content Include="Server\lib\blockly\blocks\logic.js" />
+    <Content Include="Server\lib\blockly\blocks\loops.js" />
+    <Content Include="Server\lib\blockly\blocks\math.js" />
+    <Content Include="Server\lib\blockly\blocks\procedures.js" />
+    <Content Include="Server\lib\blockly\blocks\text.js" />
+    <Content Include="Server\lib\blockly\blocks\variables.js" />
+    <Content Include="Server\lib\blockly\core\block.js" />
+    <Content Include="Server\lib\blockly\core\blockly.js" />
+    <Content Include="Server\lib\blockly\core\blocks.js" />
+    <Content Include="Server\lib\blockly\core\block_svg.js" />
+    <Content Include="Server\lib\blockly\core\bubble.js" />
+    <Content Include="Server\lib\blockly\core\comment.js" />
+    <Content Include="Server\lib\blockly\core\connection.js" />
+    <Content Include="Server\lib\blockly\core\contextmenu.js" />
+    <Content Include="Server\lib\blockly\core\css.js" />
+    <Content Include="Server\lib\blockly\core\field.js" />
+    <Content Include="Server\lib\blockly\core\field_angle.js" />
+    <Content Include="Server\lib\blockly\core\field_checkbox.js" />
+    <Content Include="Server\lib\blockly\core\field_colour.js" />
+    <Content Include="Server\lib\blockly\core\field_date.js" />
+    <Content Include="Server\lib\blockly\core\field_dropdown.js" />
+    <Content Include="Server\lib\blockly\core\field_image.js" />
+    <Content Include="Server\lib\blockly\core\field_label.js" />
+    <Content Include="Server\lib\blockly\core\field_textinput.js" />
+    <Content Include="Server\lib\blockly\core\field_variable.js" />
+    <Content Include="Server\lib\blockly\core\flyout.js" />
+    <Content Include="Server\lib\blockly\core\generator.js" />
+    <Content Include="Server\lib\blockly\core\icon.js" />
+    <Content Include="Server\lib\blockly\core\inject.js" />
+    <Content Include="Server\lib\blockly\core\input.js" />
+    <Content Include="Server\lib\blockly\core\msg.js" />
+    <Content Include="Server\lib\blockly\core\mutator.js" />
+    <Content Include="Server\lib\blockly\core\names.js" />
+    <Content Include="Server\lib\blockly\core\procedures.js" />
+    <Content Include="Server\lib\blockly\core\scrollbar.js" />
+    <Content Include="Server\lib\blockly\core\toolbox.js" />
+    <Content Include="Server\lib\blockly\core\tooltip.js" />
+    <Content Include="Server\lib\blockly\core\trashcan.js" />
+    <Content Include="Server\lib\blockly\core\utils.js" />
+    <Content Include="Server\lib\blockly\core\variables.js" />
+    <Content Include="Server\lib\blockly\core\warning.js" />
+    <Content Include="Server\lib\blockly\core\widgetdiv.js" />
+    <Content Include="Server\lib\blockly\core\workspace.js" />
+    <Content Include="Server\lib\blockly\core\workspace_svg.js" />
+    <Content Include="Server\lib\blockly\core\xml.js" />
+    <Content Include="Server\lib\blockly\core\zoom_controls.js" />
+    <Content Include="Server\lib\blockly\generators\dart.js" />
+    <Content Include="Server\lib\blockly\generators\dart\colour.js" />
+    <Content Include="Server\lib\blockly\generators\dart\lists.js" />
+    <Content Include="Server\lib\blockly\generators\dart\logic.js" />
+    <Content Include="Server\lib\blockly\generators\dart\loops.js" />
+    <Content Include="Server\lib\blockly\generators\dart\math.js" />
+    <Content Include="Server\lib\blockly\generators\dart\procedures.js" />
+    <Content Include="Server\lib\blockly\generators\dart\text.js" />
+    <Content Include="Server\lib\blockly\generators\dart\variables.js" />
+    <Content Include="Server\lib\blockly\generators\javascript.js" />
+    <Content Include="Server\lib\blockly\generators\javascript\colour.js" />
+    <Content Include="Server\lib\blockly\generators\javascript\lists.js" />
+    <Content Include="Server\lib\blockly\generators\javascript\logic.js" />
+    <Content Include="Server\lib\blockly\generators\javascript\loops.js" />
+    <Content Include="Server\lib\blockly\generators\javascript\math.js" />
+    <Content Include="Server\lib\blockly\generators\javascript\procedures.js" />
+    <Content Include="Server\lib\blockly\generators\javascript\text.js" />
+    <Content Include="Server\lib\blockly\generators\javascript\variables.js" />
+    <Content Include="Server\lib\blockly\generators\php.js" />
+    <Content Include="Server\lib\blockly\generators\php\colour.js" />
+    <Content Include="Server\lib\blockly\generators\php\lists.js" />
+    <Content Include="Server\lib\blockly\generators\php\logic.js" />
+    <Content Include="Server\lib\blockly\generators\php\loops.js" />
+    <Content Include="Server\lib\blockly\generators\php\math.js" />
+    <Content Include="Server\lib\blockly\generators\php\procedures.js" />
+    <Content Include="Server\lib\blockly\generators\php\text.js" />
+    <Content Include="Server\lib\blockly\generators\php\variables.js" />
+    <Content Include="Server\lib\blockly\generators\python.js" />
+    <Content Include="Server\lib\blockly\generators\python\colour.js" />
+    <Content Include="Server\lib\blockly\generators\python\lists.js" />
+    <Content Include="Server\lib\blockly\generators\python\logic.js" />
+    <Content Include="Server\lib\blockly\generators\python\loops.js" />
+    <Content Include="Server\lib\blockly\generators\python\math.js" />
+    <Content Include="Server\lib\blockly\generators\python\procedures.js" />
+    <Content Include="Server\lib\blockly\generators\python\text.js" />
+    <Content Include="Server\lib\blockly\generators\python\variables.js" />
+    <Content Include="Server\lib\blockly\msg\js\ar.js" />
+    <Content Include="Server\lib\blockly\msg\js\az.js" />
+    <Content Include="Server\lib\blockly\msg\js\bcc.js" />
+    <Content Include="Server\lib\blockly\msg\js\be-tarask.js" />
+    <Content Include="Server\lib\blockly\msg\js\bg.js" />
+    <Content Include="Server\lib\blockly\msg\js\bn.js" />
+    <Content Include="Server\lib\blockly\msg\js\br.js" />
+    <Content Include="Server\lib\blockly\msg\js\ca.js" />
+    <Content Include="Server\lib\blockly\msg\js\cs.js" />
+    <Content Include="Server\lib\blockly\msg\js\da.js" />
+    <Content Include="Server\lib\blockly\msg\js\de.js" />
+    <Content Include="Server\lib\blockly\msg\js\el.js" />
+    <Content Include="Server\lib\blockly\msg\js\en.js" />
+    <Content Include="Server\lib\blockly\msg\js\es.js" />
+    <Content Include="Server\lib\blockly\msg\js\fa.js" />
+    <Content Include="Server\lib\blockly\msg\js\fi.js" />
+    <Content Include="Server\lib\blockly\msg\js\fr.js" />
+    <Content Include="Server\lib\blockly\msg\js\he.js" />
+    <Content Include="Server\lib\blockly\msg\js\hi.js" />
+    <Content Include="Server\lib\blockly\msg\js\hrx.js" />
+    <Content Include="Server\lib\blockly\msg\js\hu.js" />
+    <Content Include="Server\lib\blockly\msg\js\ia.js" />
+    <Content Include="Server\lib\blockly\msg\js\id.js" />
+    <Content Include="Server\lib\blockly\msg\js\is.js" />
+    <Content Include="Server\lib\blockly\msg\js\it.js" />
+    <Content Include="Server\lib\blockly\msg\js\ja.js" />
+    <Content Include="Server\lib\blockly\msg\js\ko.js" />
+    <Content Include="Server\lib\blockly\msg\js\lb.js" />
+    <Content Include="Server\lib\blockly\msg\js\lki.js" />
+    <Content Include="Server\lib\blockly\msg\js\lrc.js" />
+    <Content Include="Server\lib\blockly\msg\js\lt.js" />
+    <Content Include="Server\lib\blockly\msg\js\mk.js" />
+    <Content Include="Server\lib\blockly\msg\js\ms.js" />
+    <Content Include="Server\lib\blockly\msg\js\nb.js" />
+    <Content Include="Server\lib\blockly\msg\js\nl.js" />
+    <Content Include="Server\lib\blockly\msg\js\oc.js" />
+    <Content Include="Server\lib\blockly\msg\js\pl.js" />
+    <Content Include="Server\lib\blockly\msg\js\pms.js" />
+    <Content Include="Server\lib\blockly\msg\js\pt-br.js" />
+    <Content Include="Server\lib\blockly\msg\js\pt.js" />
+    <Content Include="Server\lib\blockly\msg\js\ro.js" />
+    <Content Include="Server\lib\blockly\msg\js\ru.js" />
+    <Content Include="Server\lib\blockly\msg\js\sc.js" />
+    <Content Include="Server\lib\blockly\msg\js\shn.js" />
+    <Content Include="Server\lib\blockly\msg\js\sk.js" />
+    <Content Include="Server\lib\blockly\msg\js\sq.js" />
+    <Content Include="Server\lib\blockly\msg\js\sr.js" />
+    <Content Include="Server\lib\blockly\msg\js\sv.js" />
+    <Content Include="Server\lib\blockly\msg\js\ta.js" />
+    <Content Include="Server\lib\blockly\msg\js\tcy.js" />
+    <Content Include="Server\lib\blockly\msg\js\th.js" />
+    <Content Include="Server\lib\blockly\msg\js\tl.js" />
+    <Content Include="Server\lib\blockly\msg\js\tlh.js" />
+    <Content Include="Server\lib\blockly\msg\js\tr.js" />
+    <Content Include="Server\lib\blockly\msg\js\uk.js" />
+    <Content Include="Server\lib\blockly\msg\js\vi.js" />
+    <Content Include="Server\lib\blockly\msg\js\zh-hans.js" />
+    <Content Include="Server\lib\blockly\msg\js\zh-hant.js" />
+    <Content Include="Server\lib\blockly\msg\messages.js" />
+    <Content Include="Server\lib\blockly\python_compressed.js" />
+    <Content Include="Server\lib\blockly\requests.js" />
+    <Content Include="Server\lib\blockly\storage.js" />
+    <Content Include="Server\lib\jquery-2.2.1.min.js" />
+    <Content Include="Server\media\1x1.gif" />
+    <Content Include="Server\media\GtronImage.png" />
+    <Content Include="Server\media\quote0.png" />
+    <Content Include="Server\media\quote1.png" />
+    <Content Include="Server\media\sprites.png" />
+    <Content Include="Server\media\sprites.svg" />
+    <Content Include="Server\views\CompilingDialog.html" />
+    <Content Include="Server\views\NewProgramDialog.html" />
+    <Content Include="VERSION.txt" />
+    <Content Include="wiki_imgs\how_to_connect_to_rpi.png" />
+    <Content Include="wiki_imgs\how_to_connect_to_rpi_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BlocksToCpp\archive\blockread.py" />
+    <Compile Include="BlocksToCpp\archive\dict.py" />
+    <Compile Include="BlocksToCpp\archive\hcparse.py" />
+    <Compile Include="BlocksToCpp\archive\moreparse.py" />
+    <Compile Include="BlocksToCpp\archive\parsexml.py" />
+    <Compile Include="BlocksToCpp\archive\recurse.py" />
+    <Compile Include="BlocksToCpp\archive\runAndLogTests.py" />
+    <Compile Include="BlocksToCpp\behavior_parser.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BlocksToCpp\blocklyTranslator.py" />
+    <Compile Include="BlocksToCpp\customBlockTest.py" />
+    <Compile Include="BlocksToCpp\customTest.py" />
+    <Compile Include="BlocksToCpp\runAndCompileTests.py" />
+    <Compile Include="BlocksToCpp\runTests.py" />
+    <Compile Include="BlocksToCpp\StatementTest.py" />
+    <Compile Include="BlocksToCpp\translation_dictionaries.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BlocksToCpp\__init__.py" />
+    <Compile Include="GCGF\BlockGenerator.py" />
+    <Compile Include="GCGF\ClangBindings.py" />
+    <Compile Include="GCGF\GspecParser.py" />
+    <Compile Include="GCGF\IDEGenerator.py" />
+    <Compile Include="GCGF\IDEGenerator\__init__.py" />
+    <Compile Include="GCGF\InoCommenter.py" />
+    <Compile Include="GCGF\InoGenerator.py" />
+    <Compile Include="GCGF\InoGenerator\__init__.py" />
+    <Compile Include="GCGF\JinjaUtil.py" />
+    <Compile Include="InoComposer\InoComposer.py" />
+    <Compile Include="InoComposer\runAll.py" />
+    <Compile Include="InoComposer\__init__.py" />
+    <Compile Include="INOMaker.py" />
+    <Compile Include="Server\appengine\Decorators.py" />
+    <Compile Include="Server\appengine\Handlers.py" />
+    <Compile Include="Server\appengine\main.py" />
+    <Compile Include="Server\appengine\PinController.py" />
+    <Compile Include="Server\appengine\ProgramManager.py" />
+    <Compile Include="Server\lib\blockly\i18n\common.py" />
+    <Compile Include="Server\lib\blockly\i18n\create_messages.py" />
+    <Compile Include="Server\lib\blockly\i18n\dedup_json.py" />
+    <Compile Include="Server\lib\blockly\i18n\json_to_js.py" />
+    <Compile Include="Server\lib\blockly\i18n\js_to_json.py" />
+    <Compile Include="Server\lib\blockly\i18n\tests.py" />
+    <Compile Include="Server\lib\blockly\i18n\xliff_to_json.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BlocksToCpp" />
+    <Folder Include="BlocksToCpp\archive" />
+    <Folder Include="BlocksToCpp\tests" />
+    <Folder Include="GCGF" />
+    <Folder Include="GCGF\IDEGenerator" />
+    <Folder Include="GCGF\InoGenerator" />
+    <Folder Include="InoComposer" />
+    <Folder Include="Proposal" />
+    <Folder Include="Server\" />
+    <Folder Include="Server\appengine" />
+    <Folder Include="Server\controllers" />
+    <Folder Include="Server\lib" />
+    <Folder Include="Server\lib\angular" />
+    <Folder Include="Server\lib\angular-animate" />
+    <Folder Include="Server\lib\angular-aria" />
+    <Folder Include="Server\lib\angular-material" />
+    <Folder Include="Server\lib\blockly" />
+    <Folder Include="Server\lib\blockly\blocks" />
+    <Folder Include="Server\lib\blockly\core" />
+    <Folder Include="Server\lib\blockly\generators" />
+    <Folder Include="Server\lib\blockly\generators\dart" />
+    <Folder Include="Server\lib\blockly\generators\javascript" />
+    <Folder Include="Server\lib\blockly\generators\php" />
+    <Folder Include="Server\lib\blockly\generators\python" />
+    <Folder Include="Server\lib\blockly\i18n" />
+    <Folder Include="Server\lib\blockly\msg" />
+    <Folder Include="Server\lib\blockly\msg\js" />
+    <Folder Include="Server\media" />
+    <Folder Include="Server\views" />
+    <Folder Include="wiki_imgs" />
+  </ItemGroup>
+  <Import Project="$(PtvsTargetsFile)" Condition="Exists($(PtvsTargetsFile))" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="!Exists($(PtvsTargetsFile))" />
+</Project>
