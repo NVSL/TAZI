@@ -24,6 +24,7 @@
     <PtvsTargetsFile>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets</PtvsTargetsFile>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="BlocksToCpp\behavior.jinja" />
     <Content Include="BlocksToCpp\bugsList.txt" />
     <Content Include="BlocksToCpp\testsList.txt" />
     <Content Include="BlocksToCpp\tests\testsList.txt" />

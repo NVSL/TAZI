@@ -1,0 +1,51 @@
+%- macro class_name(n)
+%- if n.node_type == "selector_node": 
+SelectorNode  
+%- elif n.node_type == "sequence_node": 
+SequenceNode	
+%- elif n.node_type == "action_node": 
+ActionNode
+%- elif n.node_type == "condition_node": 
+ConditionNode
+%- elif n.node_type == "root_node": 
+RootNode
+%- endif
+%- endmacro
+
+
+%- macro constructor_input(n)
+%- if n.function and (n.node_type == "action_node" or n.node_type == "condition_node")
+{{n.function}}
+%- elif n.children_array
+new BehaviorNode[] {
+%- endif
+{{n.children}}
+%- if n.children_array
+}
+%- endif
+%- endmacro
+
+public abstract class NewBehaviorTree : BehaviorTree
+{
+
+	% for n in nodes 
+	%if n.node_type != "root_node"
+	{{class_name(n)}} {{n.name}};
+	% endif
+	% endfor
+
+	% for n in nodes if n.node_type == "action_node"
+	protected abstract BehaviorNode.State {{n.function}}();
+	% endfor
+
+	% for n in nodes if n.node_type == "condition_node"
+	protected abstract bool {{n.function}}();
+	% endfor
+
+	protected virtual void Start()
+	{
+	% for n in nodes
+		{{ n.name}} = new {{ class_name(n)}} ({{ constructor_input(n)}});
+	% endfor
+	}
+}
