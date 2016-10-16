@@ -24,7 +24,6 @@ c_lib = "#include <iostream>\n#include <cmath>"
 c_lib += "\n#include <stdlib.h>\nusing namespace std;\n"
 #c_lib += "\n#include \"Motor.h\"\n\n Motor motor1(1,2,3,4,5,6,7);\n\n"
 
-behavior_parser = BehaviorParser() 
 
 # There should be some degree of error checking
 class BlocklyError(Exception):
@@ -703,6 +702,7 @@ def getSplitDefinitions( xml ):
 
 
 if __name__ == "__main__":
+    behavior_parser = BehaviorParser() 
     parser = argparse.ArgumentParser()
     parser.add_argument("-x", "--xml", required=False, help="Specify xml file through command line")
     parser.add_argument("-d", action="store_true", help="Debug mode")
