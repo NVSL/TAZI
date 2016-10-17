@@ -18,7 +18,7 @@ RootNode
 %- macro constructor_input(n)
 %- if n.function and (n.node_type == "action_node" or n.node_type == "condition_node")
 {{n.function}}
-%- elif n.children_array
+%- else
 new BehaviorNode[] {
 %- endif
 {{n.children}}
@@ -26,13 +26,14 @@ new BehaviorNode[] {
 }
 %- endif
 %- endmacro
+using UnityEngine;
 
 public abstract class NewBehaviorTree : BehaviorTree
 {
-
+	[Header("Nodes within Tree")]
 	% for n in nodes 
 	%if n.node_type != "root_node"
-	{{class_name(n)}} {{n.name}};
+	protected {{class_name(n)}} {{n.name}};
 	% endif
 	% endfor
 
@@ -44,10 +45,11 @@ public abstract class NewBehaviorTree : BehaviorTree
 	protected abstract bool {{n.function}}();
 	% endfor
 
-	protected virtual void Start()
+	protected override void OnEnable()
 	{
 	% for n in nodes
 		{{ n.name}} = new {{ class_name(n)}} ({{ constructor_input(n)}});
 	% endfor
+		base.OnEnable();
 	}
 }

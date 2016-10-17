@@ -20,10 +20,9 @@ class BehaviorNode:
         self.name = name if node_type != root_node else "root"
         self.node_type = node_type
         self.children = children
-        self.children_array = node_type in star_nodes
+        self.children_array = node_type in star_nodes + [ root_node ]
         self.function = None
         if self.children_array: self.children = ", ".join( children )
-        if node_type == root_node: self.children = self.children[0]
         if node_type in value_nodes: self.children = "" 
 class BehaviorParser:
     def __init__(self):

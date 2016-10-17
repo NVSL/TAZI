@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{c43e0b26-c95a-46da-81d4-09b067b7a7cb}</ProjectGuid>
     <ProjectHome />
-    <StartupFile>BlocksToCpp\blocklyTranslator.py</StartupFile>
+    <StartupFile>BlocksToCpp\customTest.py</StartupFile>
     <SearchPath />
     <WorkingDirectory>BlocksToCpp\</WorkingDirectory>
     <OutputPath>.</OutputPath>

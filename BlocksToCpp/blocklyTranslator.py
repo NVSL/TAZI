@@ -22,8 +22,6 @@ use_c_lib = True
 isCpp = False
 c_lib = "#include <iostream>\n#include <cmath>"
 c_lib += "\n#include <stdlib.h>\nusing namespace std;\n"
-#c_lib += "\n#include \"Motor.h\"\n\n Motor motor1(1,2,3,4,5,6,7);\n\n"
-
 
 # There should be some degree of error checking
 class BlocklyError(Exception):
