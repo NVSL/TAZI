@@ -42,10 +42,7 @@ def is_node_of_type( node, type_name ):
 # Recurse through the xml to translate
 def parseBlocksRecursively(node, depth):
     tag = node.tag.split("}")
-    if (len(tag) > 1):
-        tag = tag[1]
-    else:
-        tag = node.tag
+    tag = tag[1] if (len(tag) > 1) else node.tag
 
     if DEBUG:
         print "Current tag: " + tag, "Attributes: " + str(node.attrib)
@@ -75,11 +72,11 @@ def parseBlocksRecursively(node, depth):
             if is_node_of_type(child, "main") or is_node_of_type(child, "root_node"):
                 overallResult += parseBlocksRecursively(child, depth)
 
-	# Handle the case for Blockly CPP
-	c_main = [ ns for ns in node.findall("block") if ns.attrib["type"] == "c_main" ]
-	if( len( c_main ) == 1): 
-	    main = refactorStatementToBlock(c_main[0].find("statement"))
-	    overallResult += parseBlocksRecursively(main, 0)
+    # Handle the case for Blockly CPP
+    c_main = [ ns for ns in node.findall("block") if ns.attrib["type"] == "c_main" ]
+    if( len( c_main ) == 1): 
+        main = refactorStatementToBlock(c_main[0].find("statement"))
+        overallResult += parseBlocksRecursively(main, 0)
 
         #Why do we need this?
         #if (("void loop ()" not in overallResult)):
@@ -128,9 +125,8 @@ def getBlock(node,depth):
         mainStr = "int main() {\n " 
         mainStr += recurseParseCheck(list(node), depth+1) + ";\n"
         mainStr += spaces + " return 0;\n}"
-	global isCpp
-	isCpp = True
-        
+        global isCpp
+        isCpp = True
         return mainStr
 
     #TODO PQ will move this to its own separate function later lol
@@ -139,7 +135,7 @@ def getBlock(node,depth):
         function = depth*spaces + "cout << ("
         #function += recurseParse([nextNode], depth+1, remove_white_space=True)
         function += parseBlocksRecursively(nextNode, depth + 1)
-        return blockNext(node, depth, function + ") << endl")
+        return parseNextBlock(node, depth, function + ") << endl")
 
     if (blockType == "variable_declarations"):
         setupStr = recurseParseCheck(list(node), depth + 1) + ";"
@@ -170,7 +166,7 @@ def getBlock(node,depth):
     if (blockType == "main"): 
         lines = ""
         for b in map( refactorStatementToBlock, node.findall("statement" )):
-	    lines += parseBlocksRecursively( b, depth ) + delimitter+ '\n'
+            lines += parseBlocksRecursively( b, depth ) + delimitter+ '\n'
         return lines
     if blockType == "root_node": 
         behavior_parser.parse_node( node )
@@ -186,34 +182,30 @@ def genericBlockGet(node,depth):
         raise BlocklyError("Block " + blockType + " is malformatted!")
         return ""
 
-    instance = blockType.split("$")[1]
-    method = blockType.split("$")[2]
+    object_instance = blockType.split("$")[1]
+    method_name = blockType.split("$")[2]
 
     if (len(list(node)) == 0):
-        return blockNext(node, depth, instance + "." + method + "()")
+        return parseNextBlock(node, depth, object_instance + "." + method_name + "()")
 
-    arguments = getArgs(node, method)
+    arguments = getArgs(node)
 
-    blockSt = instance + "." + method + "(" + arguments + ")"
-    return blockNext(node, depth, blockSt)
+    block_code_value = object_instance + "." + method_name + "(" + arguments + ")"
+    return parseNextBlock(node, depth, block_code_value)
 
-def blockNext(node, depth, nodeStr):
-    thisNex = hasNext(node)
-
-    if (thisNex == 0):
-        return (spaces * depth) + nodeStr
-    else:
-        return (spaces * depth) + nodeStr + parseBlocksRecursively(list(node)[-1], depth)
+def parseNextBlock(node, depth, nodeStr):
+    if not hasNext(node): return (spaces * depth) + nodeStr
+    else: return (spaces * depth) + nodeStr + parseBlocksRecursively(list(node)[-1], depth)
 
 #iterate through the children; may have a "next"
 def hasNext(node):
     if len(list(node)) == 0:
-        return 0
+        return False
     if (list(node)[-1].tag == "next"):
-        return 1
-    return 0
+        return True
+    return False
 
-def getArgs(node, method="default"):
+def getArgs(node ):
     arguments = ""
     argList = filter(lambda n: n.tag == "block" or n.tag == "value", (list(node)))
     if len( argList ) == 0:
@@ -222,8 +214,8 @@ def getArgs(node, method="default"):
         curr = argList[i]
         if(arguments != ""):
             arguments += ", "
-	if curr.tag == "value": arguments += getValue( curr )
-        else: arguments += parseBlocksRecursively(argList[i], 0)
+    if curr.tag == "value": arguments += getValue( curr )
+    else: arguments += parseBlocksRecursively(argList[i], 0)
 
     return arguments
 
@@ -261,8 +253,7 @@ def getValue( val ):
 
 def getConst(node):
     for k in mathDict.keys():
-        if k in getField(node): 
-	    return mathDict[k] + "(" + getField(node[4:]) + ")"
+        if k in getField(node): return mathDict[k] + "(" + getField(node[4:]) + ")"
     return constDict[getField(node)]
 
 # Function Get dictionary
@@ -276,8 +267,7 @@ def setVar(node, depth):
         return ""
 
     #if((list(node)[1]).tag.split("}"))
-    if varName in declaredVars:
-	pass
+    if varName in declaredVars: pass
         # Already declared, we don't need to redo it
     else:
         # Not declared yet, put it in thing
@@ -290,7 +280,7 @@ def setVar(node, depth):
         varValue = getField(list(list(list(node)[1])[0])[0])
 
     totString = varName + " = " + varValue# + ";"
-    return blockNext(node, depth, totString)
+    return parseNextBlock(node, depth, totString)
 
 #if statement
 def ifBlock(node, depth):
@@ -333,11 +323,11 @@ def ifBlock(node, depth):
         totString += elseifBlock(node, numElsIfs, depth)
 
     if (numElses == 1):
-	stmtList = [ s for s in list(node) if s.tag == "statement" ]
-	stmt = parseBlocksRecursively( stmtList[-1], depth + 1) 
+        stmtList = [ s for s in list(node) if s.tag == "statement" ]
+        stmt = parseBlocksRecursively( stmtList[-1], depth + 1) 
         totString += "\n" + (spaces*depth) + "else {\n" + stmt + ";\n" + (spaces*depth) + "}"
 
-    return blockNext(node, depth, totString)
+    return parseNextBlock(node, depth, totString)
 
 #else if statements
 def elseifBlock(node, numTimes, depth):
@@ -366,7 +356,7 @@ def compLog(node,depth):
     valueA = parseBlocksRecursively(list(list(node)[1])[0],depth)
     valueB = parseBlocksRecursively(list(list(node)[2])[0],depth)
 
-    return blockNext(node, depth, (valueA + " " + operator + " " + valueB))
+    return parseNextBlock(node, depth, (valueA + " " + operator + " " + valueB))
 
 #math property
 def mathProp(node, depth):
@@ -379,7 +369,7 @@ def mathProp(node, depth):
 
     total = numToCheck + "%2 == " + str(modNum)
 
-    return blockNext(node, depth, total)
+    return parseNextBlock(node, depth, total)
 
 #math arithmetic
 def mathMetic(node,depth):
@@ -395,9 +385,9 @@ def mathMetic(node,depth):
     valueB = parseBlocksRecursively(list(list(node)[2])[-1],depth)
 
     if (operator == "pow"):
-        return blockNext(node, depth, ("pow(" + valueA + ", " + valueB + ")"))
+        return parseNextBlock(node, depth, ("pow(" + valueA + ", " + valueB + ")"))
 
-    return blockNext(node, depth, (valueA + " " + operator + " " + valueB))
+    return parseNextBlock(node, depth, (valueA + " " + operator + " " + valueB))
 
 #math single
 def mathSingle(node, depth):
@@ -405,11 +395,11 @@ def mathSingle(node, depth):
 
     valueOn = getValue( node.find("value" ) )
     if operator in ["sqrt", "abs", "-1*", "pow", "log", "log10", "exp"]:
-        return blockNext(node, depth, (operator + "(" + valueOn + ")"))
+        return parseNextBlock(node, depth, (operator + "(" + valueOn + ")"))
     if operator == "pow10": 
-        return blockNext(node, depth, ("pow(10," + valueOn + ")"))
+        return parseNextBlock(node, depth, ("pow(10," + valueOn + ")"))
 
-    return blockNext(node, depth, (operator + valueOn))
+    return parseNextBlock(node, depth, (operator + valueOn))
 
 #math modulo
 def mathModulo(node, depth):
@@ -417,7 +407,7 @@ def mathModulo(node, depth):
     dividend = getValue( values[0] )
     divisor = getValue( values[1] )
 
-    return blockNext(node, depth, "(int)" + dividend + " % (int)" + divisor)
+    return parseNextBlock(node, depth, "(int)" + dividend + " % (int)" + divisor)
 
 #math random
 def mathRand(node, depth):
@@ -456,14 +446,14 @@ def whileUnt(node, depth):
 
     retString += statement + ";\n" + (spaces*depth) + "}"
 
-    return blockNext(node, depth, retString)
+    return parseNextBlock(node, depth, retString)
 
 #negate
 def negate(node, depth):
     retString = "!("
 
     inner = parseBlocksRecursively(list(list(node)[0])[0], 0)
-    return blockNext(node, depth, (retString + inner + ")"))
+    return parseNextBlock(node, depth, (retString + inner + ")"))
 
 #repeat for specified num of times
 def repeatControl(node, depth):
@@ -476,7 +466,7 @@ def repeatControl(node, depth):
 
     retString += statement + ";\n" + (spaces*depth) + "}\n"
 
-    return blockNext(node, depth, retString)
+    return parseNextBlock(node, depth, retString)
 
 #for loop
 def forloop(node, depth):
@@ -505,30 +495,30 @@ def forloop(node, depth):
 
     retString += statement + ";\n " + (spaces*depth) + "}"
 
-    return blockNext(node, depth, retString)
+    return parseNextBlock(node, depth, retString)
 
 #delay
 def delay(node,depth):
     retString = "delay((int)"
     varValue = getArgs(list(node)[0])
     retString += varValue + ")"
-    return blockNext(node, depth, retString)
+    return parseNextBlock(node, depth, retString)
 
 #delaySeconds
 def delaySeconds(node,depth):
     retString = "delay( (int) ( 1000 * ("
     varValue = getArgs(list(node)[0])
     retString += varValue + ")))"
-    return blockNext(node, depth, retString)
+    return parseNextBlock(node, depth, retString)
 
 #millis
 def millis(node, depth):
-    return blockNext(node, depth, "millis()")
+    return parseNextBlock(node, depth, "millis()")
 
 #controls_flow_statements
 def flowcontrols(node, depth):
     flow = getOp(list(node)[0])
-    return blockNext(node, depth, flow)
+    return parseNextBlock(node, depth, flow)
 
 #Function creation
 def funcCreation(node, depth):
@@ -565,7 +555,7 @@ def funcCreation(node, depth):
         declaredFuncs.append(retType + " " + funcName + "(" + params + ");")
         checkFuncDefs[funcName] = True
 
-    return blockNext(node, depth, total)
+    return parseNextBlock(node, depth, total)
 
 def findDefine(node):
     paramNum = 0;
@@ -601,7 +591,7 @@ def callMethod(node, depth):
         
         call += arguments
 
-    return blockNext(node, depth, call + ")")
+    return parseNextBlock(node, depth, call + ")")
 
 #make an if-return for function creation
 def ifRet(node, depth):
@@ -612,11 +602,11 @@ def ifRet(node, depth):
 
     mainStr += boolPart + ") {\n" + funcRet + ";\n" + (spaces*depth) + "}\n"
 
-    return blockNext(node, depth, mainStr)
+    return parseNextBlock(node, depth, mainStr)
 
 def funcCheckGet(blockType, node, depth):
     if (len(list(node)) > 0 and (list(node)[0]).tag == "next"):
-        return blockNext(node, depth, "")
+        return parseNextBlock(node, depth, "")
     
     return funcGet[blockType](node, depth)
 
@@ -668,28 +658,20 @@ def run( xml ):
     try:
         if DEBUG: print("--- RUNNING IN DEBUG MODE ---")
         mainStr = (parseBlocksRecursively(root,0))
-	for v in getVars(): mainStr = v + "\n" +  mainStr
-        if use_c_lib: 
-            mainStr = c_lib + mainStr 
+        mainStr = "\n".join( [ a for a in getVars() ] ) + "\n" + mainStr 
+
+        # Jinja would be better
+        if use_c_lib: mainStr = c_lib + mainStr 
         return mainStr
     except BlocklyError as e:
         print("Error: " + e.value)
         raise
 
-def getLoop(): 
-    return main_loop
-
-def getVars():
-    return set(declaredVars)
-
-def getFuncDefs():
-    return definedFuncs
-
-def getFuncDecs():
-    return declaredFuncs
-
-def getSetup():
-    return main_setup
+def getLoop(): return main_loop
+def getVars(): return set(declaredVars)
+def getFuncDefs(): return definedFuncs
+def getFuncDecs(): return declaredFuncs
+def getSetup(): return main_setup
 
 def getSplitDefinitions( xml ):
     import string
