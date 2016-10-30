@@ -243,8 +243,8 @@
     <Compile Include="GCGF\ClangBindings.py" />
     <Compile Include="GCGF\GspecParser.py" />
     <Compile Include="GCGF\IDEGenerator.py" />
-    <Compile Include="GCGF\InoCommenter.py" />
-    <Compile Include="GCGF\InoGenerator.py" />
+    <Compile Include="InoComposer\InoCommenter.py" />
+    <Compile Include="InoComposer\InoGenerator.py" />
     <Compile Include="GCGF\JinjaUtil.py" />
     <Compile Include="GCGF\__init__.py">
       <SubType>Code</SubType>

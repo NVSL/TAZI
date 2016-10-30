@@ -1,5 +1,5 @@
 import BlocksToCpp.blocklyTranslator as Translator
-from GCGF.InoGenerator import *
+from InoGenerator import *
 from StringIO import StringIO
 import xml.etree.ElementTree as ETree
 
@@ -8,20 +8,20 @@ class InoComposer:
     # It expects the xml to be a string
     def __init__(self, api_gspec, xml):
         self.gspec = api_gspec
-	self.xml = xml
+        self.xml = xml
     # Returns the ino as a string
     def get_ino(self):
-	self.get_cpp()
+        self.get_cpp()
         generator = ClassGenerator( self.gspec )
-	setup_str = Translator.getSetup()
-	loop_str = Translator.getLoop() 
-	generator.defineFunctions( Translator.getFuncDefs() )
-	generator.declareFunctions( Translator.getFuncDecs() )
+        setup_str = Translator.getSetup()
+        loop_str = Translator.getLoop() 
+        generator.defineFunctions( Translator.getFuncDefs() )
+        generator.declareFunctions( Translator.getFuncDecs() )
         generator.declareVariables( Translator.getVars())
-	generator.appendToSetup( setup_str ) 
-	generator.appendToLoop( loop_str ) 
+        generator.appendToSetup( setup_str ) 
+        generator.appendToLoop( loop_str ) 
         ino = generator.getClass() + "\n"
-	return ino
+        return ino
     # Returns the translated cpp as a string
     def get_cpp(self):
         return Translator.run( StringIO(self.xml) )

@@ -10,6 +10,7 @@ DEBUG = 0
 #Can run with arguments for filename input OR requests filename input
 
 
+behavior_parser = BehaviorParser() 
 spaces = "  "
 delimitter = ";"
 declaredVars = []
@@ -682,7 +683,6 @@ def getSplitDefinitions( xml ):
 
 
 if __name__ == "__main__":
-    behavior_parser = BehaviorParser() 
     parser = argparse.ArgumentParser()
     parser.add_argument("-x", "--xml", required=False, help="Specify xml file through command line")
     parser.add_argument("-d", action="store_true", help="Debug mode")

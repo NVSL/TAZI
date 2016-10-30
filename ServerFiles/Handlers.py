@@ -30,7 +30,7 @@ global_jinja_vars["lib"] = global_jinja_vars["resDir"] + "lib/"
 global_jinja_vars["blockly"] = global_jinja_vars["resDir"] + "lib/blockly/"  
 templates_dir = slashes.join( static_dir, "jinja_templates")
 
-run_as_arduino = True 
+run_as_arduino = False
 arduino_flags = "--upload"
 
 ############################# Helper Functions ############################# 
@@ -118,7 +118,7 @@ class CompileHandler(SaveHandler):
         self.composer = InoComposer( api, self.xml)
     def writeToOutfile( self ):
         f = open(out_file, "w")
-        f.write(self.compiled)
+        #f.write(self.compiled)
 
 class CompileCPPHandler(CompileHandler):
     def post(self):
@@ -141,6 +141,7 @@ class CompileInoHandler(CompileHandler):
         self.compiled = self.composer.get_ino()
         print self.compiled
         self.writeToOutfile()
+        return
         if run_as_arduino:
             subprocess.check_call(["arduino", arduino_flags , out_file])
         else:

@@ -1,8 +1,9 @@
 import xml.etree.ElementTree as ET
 import jinja2
-from blocklyTranslator import *
+import blocklyTranslator
+import os
 
-jinja_env = jinja2.Environment(loader=jinja2.FileSystemLoader( "." ))
+jinja_env = jinja2.Environment(loader=jinja2.FileSystemLoader( os.path.dirname( __file__ ) ))
 jinja_env.line_comment_prefix = "#//"
 jinja_env.line_statement_prefix = "%"
 
@@ -67,7 +68,7 @@ class BehaviorParser:
         # If a node is one of the following types, then it should contain some 
         # function like object
         if node_type in value_nodes:
-            vs = [ getArgs(c)[1:-1] for c in node if len(c) > 0 ]
+            vs = [ blocklyTranslator.getArgs(c)[1:-1] for c in node if len(c) > 0 ]
             if len(vs):
                 internal_representation.function = vs[0]
                 print vs[0]
@@ -79,6 +80,7 @@ class BehaviorParser:
         jinja_vars = { "nodes" : self.nodes }
         template = jinja_env.get_template("behavior.jinja")
         code = template.render(jinja_vars).encode('ascii', 'ignore')
+        print code
         code_file = open("test.cs", "w")
         code_file.write(code)
         code_file.close()
