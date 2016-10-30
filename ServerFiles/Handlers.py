@@ -10,19 +10,21 @@ import xml.etree.ElementTree as ET
 from StringIO import StringIO
 
 slashes = os.path 
+gcgf = "GCGF"
 compiled_name = "blockly_executable"
 out_file = compiled_name + ".ino"
-PROGRAM_PATH = slashes.join( "programs", "")  
-STATIC = os.path.join( "WebStatic" )
-api_gspec = slashes.join("GCGF", "Gspecs","Swag.api.gspec")
-program_status = ProgramManager()
-static_dir = slashes.join("WebStatic")
+program_path = slashes.join( "programs", "")  
+static_file_dir = os.path.join( "WebStatic" )
+api_gspec = slashes.join(gcgf, "Gspecs","Swag.api.gspec")
+default_workspace = os.path.join( gcgf, "Resources" )
+static_dir = "WebStatic"
 landing_file = "landing.jinja"
-
-default_workspace = os.path.join( "GCGF", "Resources" )
-api = ET.parse(api_gspec).getroot()
 arduPi = "arduPi/" 
 
+program_status = ProgramManager()
+api = ET.parse(api_gspec).getroot()
+
+# Jinja Variables
 global_jinja_vars = { "resDir" : "/static/", } 
 global_jinja_vars["lib"] = global_jinja_vars["resDir"] + "lib/"  
 global_jinja_vars["blockly"] = global_jinja_vars["resDir"] + "lib/blockly/"  
@@ -46,7 +48,7 @@ def setupOutput( name="testfile", ext="ino", workspace="CppDefault.xml"):
 
 class LandingHandler(webapp2.RequestHandler):
     def get(self):
-        path = PROGRAM_PATH
+        path = program_path
         progs = [ f for f in os.listdir(path) if os.path.isfile(path+f)]
         progs = [ f.replace(".xml", "") for f in progs] 
         jinja_vars = { "programs" : progs,
@@ -72,7 +74,7 @@ class ProgramHandler(webapp2.RequestHandler):
         if len(prog_name.split("/")) > 1: return
         global program_status
         program_status = ProgramManager( name=prog_name, program="./"+compiled_name )
-        xml_file = PROGRAM_PATH + prog_name + ".xml"
+        xml_file = program_path + prog_name + ".xml"
         if not os.path.exists( xml_file): xml_file = default_workspace
         file_path =  "ide.jinja"
         env = get_jina_env()
@@ -103,7 +105,7 @@ class SaveHandler(webapp2.RequestHandler):
         if xml != SaveHandler.cached_xml or run_as_arduino:
             self.xml = xml
             SaveHandler.result_cached = False
-            xml_file_path = PROGRAM_PATH + program_status.name + ".xml"
+            xml_file_path = program_path + program_status.name + ".xml"
             xml_file = open(xml_file_path, "w")
             xml_file.write(self.xml)
             xml_file.close()
@@ -147,7 +149,7 @@ class CompileInoHandler(CompileHandler):
 
 ######################## Static Handler Functions  ######################## 
 
-def openStaticFile( fn ): return open(slashes.join(STATIC,fn)).read()
+def openStaticFile( fn ): return open(slashes.join(static_file_dir,fn)).read()
 
 def createStaticHandler( static_file ):
     class Handler(webapp2.RequestHandler):
