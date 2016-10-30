@@ -16,11 +16,11 @@ class IDEGenerator:
     def __init__(self, resDir, defaultWorkspaceFile, blocklyDir):
         self.components = None
         self.jinja_vars = {"blocklist":[]}
-	#self.jinja_vars["defaultBlocks"] = open(defaultWorkspaceFile).read().replace("\n", "").replace('"', '\\"')
-	self.jinja_vars["defaultBlocks"] = "{{defaultBlocks}}"
-	self.jinja_vars["resDir"] = resDir
-	self.jinja_vars["lib"] = resDir + "lib/"
-	self.jinja_vars["blockly"] = blocklyDir
+        #self.jinja_vars["defaultBlocks"] = open(defaultWorkspaceFile).read().replace("\n", "").replace('"', '\\"')
+        self.jinja_vars["defaultBlocks"] = "{{defaultBlocks}}"
+        self.jinja_vars["resDir"] = resDir
+        self.jinja_vars["lib"] = resDir + "lib/"
+        self.jinja_vars["blockly"] = blocklyDir
         
     # Loads default blocks xml to build the Blockly toolbox
     def loadDefaultBlocks( self, blocksXml ):
@@ -29,8 +29,8 @@ class IDEGenerator:
         self.categoriesXML.attrib["style"] = "display: none"
         # Grab the default categories
         default_block_root = ET.parse(blocksXml)
-	if type(blocksXml) is unicode: 
-	    default_block_root = ET.fromstring(blocksXml)
+        if type(blocksXml) is unicode: 
+            default_block_root = ET.fromstring(blocksXml)
         #Append each block to our template
         for block in default_block_root.getroot():
             self.categoriesXML.append( block )
@@ -88,11 +88,11 @@ class IDEGenerator:
                 jsonElem = copy.deepcopy(self.blocks[component])
                 uid = 0
                 for block in jsonElem:
-		    # Set the name that will be displayed on this block
-		    # to have the same number as this component instance
-		    message0 = block["message0"].split(' ')
-		    message0[0] += " #"+str(i)
-		    block["message0"] = " ".join(message0)
+                    # Set the name that will be displayed on this block
+                    # to have the same number as this component instance
+                    message0 = block["message0"].split(' ')
+                    message0[0] += " #"+str(i)
+                    block["message0"] = " ".join(message0)
                     block["id"] = "$" + component.lower() + str(i) + "$" + block["id"]
                     id = block["id"].encode('ascii', 'ignore')
                     block["colour"] = color
@@ -100,26 +100,28 @@ class IDEGenerator:
                     blockNode = ET.SubElement(categoryNode, "block")
                     blockNode.attrib["type"] = id + "$" + str(uid)
                     blockNode.text = " "
-		    # Add the shadow arguments to the block
-		    for arg in block["args0"]:
-		        if "name" in arg:
-		            valueNode = ET.SubElement( blockNode, "value" )
-			    shadowNode = ET.SubElement( valueNode, "shadow")
-			    fieldNode = ET.SubElement( valueNode, "field")
-			    valueNode.attrib["name"] = arg["name"]
-			    if arg["check"] == "Number":
-			        shadowNode.attrib["type"] = "math_number"
-				fieldNode.attrib["name"] = "NUM"
-				fieldNode.text = "0"
+                    # Add the shadow arguments to the block
+                    for arg in block["args0"]:
+                        if "name" in arg:
+                            valueNode = ET.SubElement( blockNode, "value" )
+                            shadowNode = ET.SubElement( valueNode, "shadow")
+                            fieldNode = ET.SubElement( valueNode, "field")
+                            valueNode.attrib["name"] = arg["name"]
+                            if arg["check"] == "Number":
+                                shadowNode.attrib["type"] = "math_number"
+                                fieldNode.attrib["name"] = "NUM"
+                                fieldNode.text = "0"
                     localBlocks[ block["id"] ] = block
                     self.jinja_vars["blocklist"].append( [ id + "$" + str(uid), str(json.dumps(block)) ] )
                     uid += 1
                 self.blockCategories[ name ] = localBlocks
         self.jinja_vars["toolbox"] = str(ET.tostring( self.categoriesXML ))
-	#print self.jinja_vars["toolbox"]
+        #print self.jinja_vars["toolbox"]
     
     def renderIDE(self, jinja_file):
-        return render_template(jinja_file, self.jinja_vars)
+        jinja_path = os.path.join(os.path.dirname(__file__), "Resources")
+        JINJA_ENVIRONMENT = jinja2.Environment(loader=jinja2.FileSystemLoader(jinja_path))
+        return render_template(jinja_file, self.jinja_vars, jinja_env=JINJA_ENVIRONMENT)
                 
 if __name__ == "__main__":
 
