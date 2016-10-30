@@ -3,20 +3,20 @@ import wsgiref.simple_server
 import webapp2
 import os
 import __main__
-from GCGF.JinjaUtil import *
+from BlockGenerator.JinjaUtil import *
 from ProgramManager import *
 from InoComposer.InoComposer import *
 import xml.etree.ElementTree as ET
 from StringIO import StringIO
 
 slashes = os.path 
-gcgf = "GCGF"
+block_generator = "BlockGenerator"
 compiled_name = "blockly_executable"
 out_file = compiled_name + ".ino"
 program_path = slashes.join( "programs", "")  
 static_file_dir = os.path.join( "WebStatic" )
-api_gspec = slashes.join(gcgf, "Gspecs","Swag.api.gspec")
-default_workspace = os.path.join( gcgf, "Resources" )
+api_gspec = slashes.join(block_generator, "Gspecs","Swag.api.gspec")
+default_workspace = os.path.join( block_generator, "Resources" )
 static_dir = "WebStatic"
 landing_file = "landing.jinja"
 arduPi = "arduPi/" 
@@ -30,16 +30,17 @@ global_jinja_vars["lib"] = global_jinja_vars["resDir"] + "lib/"
 global_jinja_vars["blockly"] = global_jinja_vars["resDir"] + "lib/blockly/"  
 templates_dir = slashes.join( static_dir, "jinja_templates")
 
-run_as_arduino = False
+run_as_arduino = True 
 arduino_flags = "--upload"
+arduino_args = ["cmd", "/C" "arduino.exe"] if os.name == "nt" else ["arduino"]
 
 ############################# Helper Functions ############################# 
 
 def setupOutput( name="testfile", ext="ino", workspace="CppDefault.xml"):
     global out_file
     out_file = name 
-    if run_as_arduino:
-        out_file += "/" + out_file
+    if run_as_arduino: 
+        out_file = ("\\" if os.name =="nt" else "/").join( [ program_path, out_file, out_file ] )
     out_file += "." + "ino" 
     global default_workspace
     default_workspace = os.path.join(default_workspace, workspace)
@@ -117,8 +118,9 @@ class CompileHandler(SaveHandler):
         self.saveProgram()
         self.composer = InoComposer( api, self.xml)
     def writeToOutfile( self ):
-        f = open(out_file, "w")
-        #f.write(self.compiled)
+        print out_file
+        f = open(out_file, "w+")
+        f.write(self.compiled)
 
 class CompileCPPHandler(CompileHandler):
     def post(self):
@@ -141,11 +143,12 @@ class CompileInoHandler(CompileHandler):
         self.compiled = self.composer.get_ino()
         print self.compiled
         self.writeToOutfile()
-        return
+        abs_path = os.path.abspath(out_file)
         if run_as_arduino:
-            subprocess.check_call(["arduino", arduino_flags , out_file])
+            flags = [ arduino_flags , abs_path]
+            subprocess.call(arduino_args + flags, shell=True)
         else:
-            subprocess.check_call(["mv",out_file, arduPi])
+            subprocess.check_call(["mv",abs_path, arduPi])
             subprocess.check_call(["make","-C", arduPi])
 
 ######################## Static Handler Functions  ######################## 

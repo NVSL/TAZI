@@ -7,7 +7,8 @@
     <ProjectHome />
     <StartupFile>main.py</StartupFile>
     <SearchPath />
-    <WorkingDirectory>.</WorkingDirectory>
+    <WorkingDirectory>
+    </WorkingDirectory>
     <OutputPath>.</OutputPath>
     <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
@@ -239,14 +240,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="BlocksToCpp\__init__.py" />
-    <Compile Include="GCGF\BlockGenerator.py" />
-    <Compile Include="GCGF\ClangBindings.py" />
-    <Compile Include="GCGF\GspecParser.py" />
-    <Compile Include="GCGF\IDEGenerator.py" />
+    <Compile Include="BlockGenerator\BlockGenerator.py" />
+    <Compile Include="BlockGenerator\ClangBindings.py" />
+    <Compile Include="BlockGenerator\GspecParser.py" />
+    <Compile Include="BlockGenerator\IDEGenerator.py" />
     <Compile Include="InoComposer\InoCommenter.py" />
     <Compile Include="InoComposer\InoGenerator.py" />
-    <Compile Include="GCGF\JinjaUtil.py" />
-    <Compile Include="GCGF\__init__.py">
+    <Compile Include="BlockGenerator\JinjaUtil.py" />
+    <Compile Include="BlockGenerator\__init__.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="InoComposer\InoComposer.py" />
@@ -276,7 +277,7 @@
     <Folder Include="BlocksToCpp" />
     <Folder Include="BlocksToCpp\archive" />
     <Folder Include="BlocksToCpp\tests" />
-    <Folder Include="GCGF" />
+    <Folder Include="BlockGenerator\" />
     <Folder Include="InoComposer" />
     <Folder Include="Proposal" />
     <Folder Include="WebStatic\" />

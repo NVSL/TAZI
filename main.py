@@ -26,7 +26,7 @@ if __name__ == "__main__":
     if not os.path.exists( program_path+"/"+compiled_name ): 
         os.mkdir( program_path+"/"+compiled_name )
     # Cleanup bad file names
-    subprocess.check_call(["rm", "-f", program_path+not_loaded+".xml"])
+    # subprocess.check_call(["rm", "-f", program_path+not_loaded+".xml"])
     # Define the compilation handler
     CompilationHandler = CompileInoHandler if args.program_ext == "ino" else CompileCPPHandler
     setupOutput( name=args.program_name, ext=args.program_ext, workspace=args.type)
