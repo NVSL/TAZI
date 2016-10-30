@@ -19,7 +19,7 @@ program_status = ProgramManager()
 static_dir = slashes.join("WebStatic")
 landing_file = "landing.jinja"
 
-default_workspace = ""
+default_workspace = os.path.join( "GCGF", "Resources" )
 api = ET.parse(api_gspec).getroot()
 arduPi = "arduPi/" 
 
@@ -40,7 +40,7 @@ def setupOutput( name="testfile", ext="ino", workspace="CppDefault.xml"):
         out_file += "/" + out_file
     out_file += "." + "ino" 
     global default_workspace
-    default_workspace = workspace
+    default_workspace = os.path.join(default_workspace, workspace)
 
 ############################# Request Handlers ############################# 
 
@@ -56,10 +56,7 @@ class LandingHandler(webapp2.RequestHandler):
                        "lib" : "static/"
                        }
         jinja_vars.update(global_jinja_vars)
-        dirr = os.path.join(os.path.dirname(__main__.__file__), templates_dir )
-        f = open( os.path.join( dirr, landing_file) )
-        JINJA_ENVIRONMENT = jinja2.Environment(loader=jinja2.FileSystemLoader(dirr))
-        template = JINJA_ENVIRONMENT.get_template(landing_file)
+        template = get_jina_env().get_template(landing_file)
         html = template.render(jinja_vars).encode('ascii', 'ignore')
         self.response.write(html)
 
@@ -76,10 +73,10 @@ class ProgramHandler(webapp2.RequestHandler):
         global program_status
         program_status = ProgramManager( name=prog_name, program="./"+compiled_name )
         xml_file = PROGRAM_PATH + prog_name + ".xml"
-        if not os.path.exists( xml_file):
-            xml_file = default_workspace
-        file_path = os.path.join(templates_dir , "ide.jinja")
-        workspace = render_workspace( xml_file, file_path, additional_args=global_jinja_vars )
+        if not os.path.exists( xml_file): xml_file = default_workspace
+        file_path =  "ide.jinja"
+        env = get_jina_env()
+        workspace = render_workspace( xml_file, file_path, additional_args=global_jinja_vars, jinja_env=env )
         self.response.write( workspace ) 
         
 class StaticFileHandler(webapp2.RequestHandler):
@@ -159,4 +156,8 @@ def createStaticHandler( static_file ):
             self.response.write( static_str )
     return Handler
 
-
+def get_jina_env():
+    # Get the exact directory where we'll be working
+    dirr = os.path.join(os.path.dirname(__main__.__file__), templates_dir )
+    JINJA_ENVIRONMENT = jinja2.Environment(loader=jinja2.FileSystemLoader(dirr))
+    return JINJA_ENVIRONMENT
