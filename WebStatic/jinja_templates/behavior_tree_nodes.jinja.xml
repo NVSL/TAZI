@@ -1,0 +1,8 @@
+<category name="Behavior Tree" colour="178">
+                <block type="root_node"></block>
+                <block type="selector_node"></block>
+                <block type="sequence_node"></block>
+                <block type="parallel_node"></block>
+                <block type="action_node"></block>
+                <block type="condition_node"></block>
+</category>
