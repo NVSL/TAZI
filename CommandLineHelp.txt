@@ -1,0 +1,2 @@
+Runs main server
+-n blockly_executable -e ino -t DefaultRobotWorkspace.xml

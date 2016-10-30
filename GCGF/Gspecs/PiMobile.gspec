@@ -1,1 +1,68 @@
-<gadgetlayout version="1.1"><name>PiMobile</name><creator></creator><board x="-62.5" y="-62.5" width="125" height="125"></board><option name="faceplate-color" value="clear-nocolor"></option><option name="backplate-color" value="clear-nocolor"></option><option name="faceplate-etch" value="etch-front"></option><option name="backplate-etch" value="etch-back"></option><option name="front-standoff-height" value="8"></option><option name="back-standoff-height" value="8"></option><option name="pcb-thickness" value="1.57"></option><option name="faceplate-thickness" value="3.175"></option><option name="backplate-thickness" value="3.175"></option><option name="cam-target" value="LPKF"></option><component progname="brain" type="raspberrypy-zero"><placedpart refdes="U1" x="3.08" y="13.497259616851807" rotation="180" mirrored="False"></placedpart></component><component progname="battery" type="battery-9V-vertical"><placedpart refdes="BATT1" x="1.05" y="-54.042015075683594" rotation="0" mirrored="False"></placedpart></component><component progname="drive" type="dual-motor-kit-narrow-fast"><placedpart refdes="L" x="78.71" y="-14.410045623779297" rotation="0" mirrored="False"></placedpart><placedpart refdes="R" x="-78.86" y="-14.492198944091797" rotation="0" mirrored="False"></placedpart><placedpart refdes="DRVR" x="0.08" y="29" rotation="0" mirrored="False"></placedpart></component><component progname="bump" type="bump-switch-medium-left"><placedpart refdes="U$2" x="54.925912857055664" y="62.49000000000001" rotation="0" mirrored="False"></placedpart></component><component progname="bump_2" type="bump-switch-medium-right"><placedpart refdes="U$2" x="-54.81" y="62.677114486694336" rotation="0" mirrored="False"></placedpart></component><component progname="caster" type="ball-caster-0.75in"><placedpart refdes="u1" x="0" y="50" rotation="0" mirrored="False"></placedpart></component><component progname="led" type="LED-5mm-bright-red"><placedpart refdes="LED1" x="-50" y="30.000000715255737" rotation="0" mirrored="False"></placedpart></component><component progname="led_2" type="LED-5mm-bright-green"><placedpart refdes="LED1" x="-45" y="40.00000071525574" rotation="0" mirrored="False"></placedpart></component><component progname="bump_3" type="bump-switch-medium-left"><placedpart refdes="U$2" x="-54.93" y="-62.489925384521484" rotation="180" mirrored="False"></placedpart></component><component progname="bump_4" type="bump-switch-medium-right"><placedpart refdes="U$2" x="54.815083083319024" y="-62.669814108672185" rotation="180" mirrored="False"></placedpart></component><component progname="penholder" type="pen-holder"><placedpart refdes="u1" x="0.49" y="-27.861295700073242" rotation="0" mirrored="False"></placedpart></component><component progname="button" type="tactile-button-round-yellow"><placedpart refdes="B1" x="-30" y="27.83" rotation="0" mirrored="False"></placedpart></component><component progname="button_2" type="tactile-button-round-gray"><placedpart refdes="B1" x="30" y="27.826409339904785" rotation="0" mirrored="False"></placedpart></component><component progname="led_3" type="LED-5mm-bright-blue"><placedpart refdes="LED1" x="-35.00000238418579" y="47" rotation="0" mirrored="False"></placedpart></component><component progname="led_4" type="LED-5mm-bright-red"><placedpart refdes="LED1" x="50" y="30.000000715255737" rotation="0" mirrored="False"></placedpart></component><component progname="led_5" type="LED-5mm-bright-green"><placedpart refdes="LED1" x="45" y="40.00000071525574" rotation="0" mirrored="False"></placedpart></component><component progname="led_6" type="LED-5mm-bright-blue"><placedpart refdes="LED1" x="35" y="47.00000071525574" rotation="0" mirrored="False"></placedpart></component></gadgetlayout>
+<gadgetlayout version="1.1">
+   <name>PiMobile</name>
+   <creator />
+   <board x="-62.5" y="-62.5" width="125" height="125" />
+   <option name="faceplate-color" value="clear-nocolor" />
+   <option name="backplate-color" value="clear-nocolor" />
+   <option name="faceplate-etch" value="etch-front" />
+   <option name="backplate-etch" value="etch-back" />
+   <option name="front-standoff-height" value="8" />
+   <option name="back-standoff-height" value="8" />
+   <option name="pcb-thickness" value="1.57" />
+   <option name="faceplate-thickness" value="3.175" />
+   <option name="backplate-thickness" value="3.175" />
+   <option name="cam-target" value="LPKF" />
+   <component progname="brain" type="raspberrypy-zero">
+      <placedpart refdes="U1" x="3.08" y="13.497259616851807" rotation="180" mirrored="False" />
+   </component>
+   <component progname="battery" type="battery-9V-vertical">
+      <placedpart refdes="BATT1" x="1.05" y="-54.042015075683594" rotation="0" mirrored="False" />
+   </component>
+   <component progname="drive" type="dual-motor-kit-narrow-fast">
+      <placedpart refdes="L" x="78.71" y="-14.410045623779297" rotation="0" mirrored="False" />
+      <placedpart refdes="R" x="-78.86" y="-14.492198944091797" rotation="0" mirrored="False" />
+      <placedpart refdes="DRVR" x="0.08" y="29" rotation="0" mirrored="False" />
+   </component>
+   <component progname="bump" type="bump-switch-medium-left">
+      <placedpart refdes="U$2" x="54.925912857055664" y="62.49000000000001" rotation="0" mirrored="False" />
+   </component>
+   <component progname="bump_2" type="bump-switch-medium-right">
+      <placedpart refdes="U$2" x="-54.81" y="62.677114486694336" rotation="0" mirrored="False" />
+   </component>
+   <component progname="caster" type="ball-caster-0.75in">
+      <placedpart refdes="u1" x="0" y="50" rotation="0" mirrored="False" />
+   </component>
+   <component progname="led" type="LED-5mm-bright-red">
+      <placedpart refdes="LED1" x="-50" y="30.000000715255737" rotation="0" mirrored="False" />
+   </component>
+   <component progname="led_2" type="LED-5mm-bright-green">
+      <placedpart refdes="LED1" x="-45" y="40.00000071525574" rotation="0" mirrored="False" />
+   </component>
+   <component progname="bump_3" type="bump-switch-medium-left">
+      <placedpart refdes="U$2" x="-54.93" y="-62.489925384521484" rotation="180" mirrored="False" />
+   </component>
+   <component progname="bump_4" type="bump-switch-medium-right">
+      <placedpart refdes="U$2" x="54.815083083319024" y="-62.669814108672185" rotation="180" mirrored="False" />
+   </component>
+   <component progname="penholder" type="pen-holder">
+      <placedpart refdes="u1" x="0.49" y="-27.861295700073242" rotation="0" mirrored="False" />
+   </component>
+   <component progname="button" type="tactile-button-round-yellow">
+      <placedpart refdes="B1" x="-30" y="27.83" rotation="0" mirrored="False" />
+   </component>
+   <component progname="button_2" type="tactile-button-round-gray">
+      <placedpart refdes="B1" x="30" y="27.826409339904785" rotation="0" mirrored="False" />
+   </component>
+   <component progname="led_3" type="LED-5mm-bright-blue">
+      <placedpart refdes="LED1" x="-35.00000238418579" y="47" rotation="0" mirrored="False" />
+   </component>
+   <component progname="led_4" type="LED-5mm-bright-red">
+      <placedpart refdes="LED1" x="50" y="30.000000715255737" rotation="0" mirrored="False" />
+   </component>
+   <component progname="led_5" type="LED-5mm-bright-green">
+      <placedpart refdes="LED1" x="45" y="40.00000071525574" rotation="0" mirrored="False" />
+   </component>
+   <component progname="led_6" type="LED-5mm-bright-blue">
+      <placedpart refdes="LED1" x="35" y="47.00000071525574" rotation="0" mirrored="False" />
+   </component>
+</gadgetlayout>
