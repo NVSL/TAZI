@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<xml>
+<xml id="toolbox" style="display: none">
    <category name="Variables" custom="VARIABLE"> </category>
    <category name="Functions" custom="PROCEDURE"> </category>
 
@@ -24,8 +23,6 @@
       </block>
       <block type="millis"> </block>
       <block type="c_main"> </block>
-  </category>
-  <category id="swag" name="Swag">
   </category>
    <category id="catLogic" colour="210" name="Logic">
       <block type="controls_if"> </block>
@@ -128,23 +125,6 @@
           </shadow>
         </value>
       </block>
-      <!--block type="math_constrain">
-        <value name="VALUE">
-          <shadow type="math_number">
-            <field name="NUM">50</field>
-          </shadow>
-        </value>
-        <value name="LOW">
-          <shadow type="math_number">
-            <field name="NUM">1</field>
-          </shadow>
-        </value>
-        <value name="HIGH">
-          <shadow type="math_number">
-            <field name="NUM">100</field>
-          </shadow>
-        </value>
-      </block-->
       <block type="math_random_int">
         <value name="FROM">
           <shadow type="math_number">
@@ -162,66 +142,6 @@
 
     <category id="catText" colour="160" name="Text">
       <block type="text"> </block>
-      <!--block type="text_join"></block>
-      <block type="text_append">
-        <value name="TEXT">
-          <shadow type="text"></shadow>
-        </value>
-      </block>
-      <block type="text_length">
-        <value name="VALUE">
-          <shadow type="text">
-            <field name="TEXT">abc</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="text_isEmpty">
-        <value name="VALUE">
-          <shadow type="text">
-            <field name="TEXT"></field>
-          </shadow>
-        </value>
-      </block>
-      <block type="text_indexOf">
-        <value name="VALUE">
-          <block type="variables_get">
-            <field name="VAR">text</field>
-          </block>
-        </value>
-        <value name="FIND">
-          <shadow type="text">
-            <field name="TEXT">abc</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="text_charAt">
-        <value name="VALUE">
-          <block type="variables_get">
-            <field name="VAR">text</field>
-          </block>
-        </value>
-      </block>
-      <block type="text_getSubstring">
-        <value name="STRING">
-          <block type="variables_get">
-            <field name="VAR">text</field>
-          </block>
-        </value>
-      </block>
-      <block type="text_changeCase">
-        <value name="TEXT">
-          <shadow type="text">
-            <field name="TEXT">abc</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="text_trim">
-        <value name="TEXT">
-          <shadow type="text">
-            <field name="TEXT">abc</field>
-          </shadow>
-        </value>
-      </block -->
       <block type="text_print">
         <value name="TEXT">
           <shadow type="text">
@@ -229,15 +149,7 @@
           </shadow>
         </value>
       </block>
-      <!--block type="text_prompt_ext">
-        <value name="TEXT">
-          <shadow type="text">
-            <field name="TEXT">abc</field>
-          </shadow>
-        </value>
-      </block-->
     </category>
-
-  
   <sep> </sep>
+  {% include 'extra_categories.jinja.xml' %}
 </xml>

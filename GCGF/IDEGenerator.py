@@ -10,6 +10,12 @@ import copy
 from StringIO import StringIO
 from JinjaUtil import *
 
+resources_dir = "Resources"
+extra_categories_file = "extra_categories.jinja.xml"
+js_template = "Javascript_Template.jinja.js"
+js_definitions = "javascript_block_definitions.js"
+output_dir = os.path.join("..", "WebStatic", "jinja_templates" )
+
 
 class IDEGenerator:
     # Default constructor
@@ -63,6 +69,7 @@ class IDEGenerator:
         
     def createBlockSubset(self):
         self.blockCategories = {}
+        extra_categories = []
         totalNumberOfCategories = 0
         componentIdx = 1.0
         for k in self.components.keys():
@@ -80,7 +87,7 @@ class IDEGenerator:
                 localBlocks = {}
                 
                 # Create the categoriesXML node
-                categoryNode = ET.SubElement(self.categoriesXML, "category" )
+                categoryNode = ET.Element("category" )
                 categoryNode.attrib["name"] = name
                 categoryNode.attrib["colour"] = color
                 
@@ -115,11 +122,17 @@ class IDEGenerator:
                     self.jinja_vars["blocklist"].append( [ id + "$" + str(uid), str(json.dumps(block)) ] )
                     uid += 1
                 self.blockCategories[ name ] = localBlocks
-        self.jinja_vars["toolbox"] = str(ET.tostring( self.categoriesXML ))
+                if len(categoryNode): extra_categories.append(ET.tostring(categoryNode))
+        #self.jinja_vars["toolbox"] = str(ET.tostring( self.categoriesXML ))
         #print self.jinja_vars["toolbox"]
+        # Find the file to place all extra files
+        out_file = open(os.path.join( output_dir, extra_categories_file ), "w+")
+        out_file.write("\n".join(extra_categories))
+        out_file.close()
+
     
     def renderIDE(self, jinja_file):
-        jinja_path = os.path.join(os.path.dirname(__file__), "Resources")
+        jinja_path = os.path.join(os.path.dirname(__file__), resources_dir)
         JINJA_ENVIRONMENT = jinja2.Environment(loader=jinja2.FileSystemLoader(jinja_path))
         return render_template(jinja_file, self.jinja_vars, jinja_env=JINJA_ENVIRONMENT)
                 
@@ -139,7 +152,7 @@ if __name__ == "__main__":
     parser.add_argument("-r", "--resdir", required=False, default="")
     parser.add_argument("-b", "--blocklydir", required=False, default="lib/blockly/")
     parser.add_argument("-d", "--default_blocks", required=False)
-    parser.add_argument("-w", "--default_workspace", default="Resources/DefaultRobotWorkspace.xml" )
+    parser.add_argument("-w", "--default_workspace", default=os.path.join(resources_dir, "DefaultRobotWorkspace.xml") )
     parser.add_argument("-x", "--jinja", required=False)
     args = parser.parse_args()
     if args.jinja is not None:
@@ -153,8 +166,12 @@ if __name__ == "__main__":
 
     generator = IDEGenerator( args.resdir, args.default_workspace, args.blocklydir )
     generator.loadBlockDefinitions( jsonFile )
-    generator.loadDefaultBlocks( blocksXml )
+    #generator.loadDefaultBlocks( blocksXml )
     if args.gspec is not None:
         generator.loadGspec( args.gspec, catalog )
         generator.createBlockSubset()
-    print generator.renderIDE(jinjaFile).encode('ascii','ignore')
+    #print "\n".join([ str(w) for w in generator.jinja_vars["blocklist"]])
+    js_output = open(os.path.join( output_dir, js_definitions ), "w+")
+    js_output.write( generator.renderIDE(js_template).encode('ascii','ignore'))
+    js_output.close()
+    #print generator.renderIDE(jinjaFile).encode('ascii','ignore')
