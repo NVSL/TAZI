@@ -1,7 +1,7 @@
 import jinja2
 import os
-
-JINJA_ENVIRONMENT = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
+slashes = "\\" if os.name == "nt" else "/"
+JINJA_ENVIRONMENT = jinja2.Environment(loader=jinja2.FileSystemLoader(slashes.join(["..",os.path.dirname(__file__)])))
 def render_workspace( xmlpath, jinja_file, additional_args={}):
     xml_str = open(xmlpath).read().replace("\n", "").replace('"', '\\"')
     jinja_vars = {"defaultBlocks" : xml_str }

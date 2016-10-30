@@ -1,5 +1,5 @@
-from BlocksToCpp import blocklyTranslator as Translator
-from InoGenerator.InoGenerator import *
+import BlocksToCpp.blocklyTranslator as Translator
+from GCGF.InoGenerator import *
 from StringIO import StringIO
 import xml.etree.ElementTree as ETree
 

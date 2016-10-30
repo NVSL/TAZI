@@ -1,8 +1,8 @@
 import wsgiref.simple_server
 import webapp2
 import subprocess
-from Handlers import *
-from ProgramManager import not_loaded
+from ServerFiles.Handlers import *
+from ServerFiles.ProgramManager import not_loaded
 
 
 ############################# Main Functions ############################# 
