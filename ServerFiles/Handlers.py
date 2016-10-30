@@ -13,6 +13,7 @@ slashes = os.path
 compiled_name = "blockly_executable"
 out_file = compiled_name + ".ino"
 PROGRAM_PATH = slashes.join( "programs", "")  
+STATIC = os.path.join( "WebStatic" )
 api_gspec = slashes.join("GCGF", "Gspecs","Swag.api.gspec")
 program_status = ProgramManager()
 static_dir = slashes.join("WebStatic")
@@ -51,12 +52,14 @@ class LandingHandler(webapp2.RequestHandler):
         jinja_vars = { "programs" : progs,
                        "name" : resolve_robot_name(api),
                        "loadedProgram" : program_status.name,
-                       "programStatus" : program_status.status }
+                       "programStatus" : program_status.status,
+                       "lib" : "static/"
+                       }
+        jinja_vars.update(global_jinja_vars)
         dirr = os.path.join(os.path.dirname(__main__.__file__), templates_dir )
-        f = open( os.path.join( dirr, "landing.jinja") )
-        print f.read()
+        f = open( os.path.join( dirr, landing_file) )
         JINJA_ENVIRONMENT = jinja2.Environment(loader=jinja2.FileSystemLoader(dirr))
-        template = JINJA_ENVIRONMENT.get_template()
+        template = JINJA_ENVIRONMENT.get_template(landing_file)
         html = template.render(jinja_vars).encode('ascii', 'ignore')
         self.response.write(html)
 
