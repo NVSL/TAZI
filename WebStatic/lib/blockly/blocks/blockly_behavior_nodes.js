@@ -7,6 +7,7 @@ var help_url = "http://robots.gadgetron.build/TAZI/help.html"
 // blocks/logic.js
 
 var mutator_child = "Child"
+var mutator_label = ""
 
 var mutator = function(name, prev, next) {
 return {
@@ -45,7 +46,7 @@ return {
             .appendField(name);
         this.appendStatementInput("Child0")
             .setCheck(["selector_node", node_types])
-            .appendField(mutator_child);
+            .appendField(mutator_label);
         this.setPreviousStatement(true, node_types);
         this.setColour(color);
         this.setHelpUrl(help_url);
@@ -127,7 +128,7 @@ return {
     // Rebuild block.
     for (var i = 1; i <= this.children_count; i++) {
       this.appendStatementInput(mutator_child + i)
-          .appendField(mutator_child);
+          .appendField(mutator_label);
     }
   }
     }
