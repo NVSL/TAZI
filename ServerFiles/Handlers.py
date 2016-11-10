@@ -49,7 +49,7 @@ def setupOutput( name="testfile", ext="ino", workspace="CppDefault.xml"):
 
 class LandingHandler(webapp2.RequestHandler):
     def get(self):
-        path = program_path
+        path = os.path.join(program_path,"")
         progs = [ f for f in os.listdir(path) if os.path.isfile(path+f)]
         progs = [ f.replace(".xml", "") for f in progs] 
         jinja_vars = { "programs" : progs,
@@ -75,7 +75,7 @@ class ProgramHandler(webapp2.RequestHandler):
         if len(prog_name.split("/")) > 1: return
         global program_status
         program_status = ProgramManager( name=prog_name, program="./"+compiled_name )
-        xml_file = program_path + prog_name + ".xml"
+        xml_file = os.path.join(program_path, prog_name + ".xml")
         if not os.path.exists( xml_file): xml_file = default_workspace
         file_path =  "ide.jinja"
         env = get_jina_env()
@@ -106,7 +106,7 @@ class SaveHandler(webapp2.RequestHandler):
         if xml != SaveHandler.cached_xml or run_as_arduino:
             self.xml = xml
             SaveHandler.result_cached = False
-            xml_file_path = program_path + program_status.name + ".xml"
+            xml_file_path = os.path.join(program_path, program_status.name + ".xml")
             xml_file = open(xml_file_path, "w")
             xml_file.write(self.xml)
             xml_file.close()
