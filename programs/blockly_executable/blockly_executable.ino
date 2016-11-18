@@ -75,7 +75,9 @@ void setup() {
 \** ======================================================================= **/
 
 void loop() {
-     if(motor1.isMoving()) {
-       led1.turnOn();
+     if(bump.isPressed()) {
+       led.turnOn();
+       led_2.turnOn();
+       led_3.turnOn();
      };
 }

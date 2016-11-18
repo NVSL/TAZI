@@ -215,8 +215,8 @@ def getArgs(node ):
         curr = argList[i]
         if(arguments != ""):
             arguments += ", "
-    if curr.tag == "value": arguments += getValue( curr )
-    else: arguments += parseBlocksRecursively(argList[i], 0)
+        if curr.tag == "value": arguments += getValue( curr )
+        else: arguments += parseBlocksRecursively(argList[i], 0)
 
     return arguments
 

@@ -73,11 +73,13 @@ class IDEGenerator:
         totalNumberOfCategories = 0
         componentIdx = 1.0
         for k in self.components.keys():
-            totalNumberOfCategories = totalNumberOfCategories + self.components[k]
-        for component in self.components.keys():
-            for i in range( 1, self.components[component] + 1 ):
+            totalNumberOfCategories = totalNumberOfCategories + len(self.components[k])
+        for key in self.components.keys():
+            i = 0
+            for instance in self.components[key]:
+                i += 1
                 # Some useful aliases
-                name = component + " #" + str(i)
+                name = key + " #" + str(i)
                 
                 # We want a new colour for this subset
                 color = str(int((componentIdx / totalNumberOfCategories) * 360))
@@ -92,7 +94,7 @@ class IDEGenerator:
                 categoryNode.attrib["colour"] = color
                 
                 # Iterate over each block in our copy so we can make a unique instance
-                jsonElem = copy.deepcopy(self.blocks[component])
+                jsonElem = copy.deepcopy(self.blocks[key])
                 uid = 0
                 for block in jsonElem:
                     # Set the name that will be displayed on this block
@@ -100,7 +102,7 @@ class IDEGenerator:
                     message0 = block["message0"].split(' ')
                     message0[0] += " #"+str(i)
                     block["message0"] = " ".join(message0)
-                    block["id"] = "$" + component.lower() + str(i) + "$" + block["id"]
+                    block["id"] = "$" + instance + "$" + block["id"]
                     id = block["id"].encode('ascii', 'ignore')
                     block["colour"] = color
                     # Add the new block to its proper category

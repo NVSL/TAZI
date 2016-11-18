@@ -50,14 +50,16 @@ class GspecParser:
       for node in gspec:
          if node.tag == "component":
             attribStr = node.attrib["type"]
+            name = node.attrib["progname"]
             if attribStr in componentsDict.keys():
                 instanceName = componentsDict[ attribStr]
                 if instanceName in finalDict:
-                    finalDict[instanceName] = finalDict[instanceName] + 1
+                    finalDict[instanceName].append(name) 
                 else:
-	                finalDict[instanceName] = 1
+	                finalDict[instanceName] = [ name ]
 	                finallist.append(attribStr)
       self.components = finalDict
+      print finalDict
       return finalDict
 
    def getClassETs( self, gspec=None ):
