@@ -75,7 +75,7 @@ void setup() {
 \** ======================================================================= **/
 
 void loop() {
-     if(motor1.isMoving()) {
-       led1.turnOn();
-     };
+     momentarybutton6.waitUntilPressed();
+     momentarybutton6.waitUntilPressed();
+     momentarybutton4.waitUntilPressed();
 }

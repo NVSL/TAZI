@@ -15,6 +15,7 @@ class InoComposer:
         generator = ClassGenerator( self.gspec )
         setup_str = Translator.getSetup()
         loop_str = Translator.getLoop() 
+        print Translator.declaredObjs
         generator.defineFunctions( Translator.getFuncDefs() )
         generator.declareFunctions( Translator.getFuncDecs() )
         generator.declareVariables( Translator.getVars())

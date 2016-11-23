@@ -3,6 +3,7 @@
 import subprocess
 import re
 import sys
+import os
 
 #global testsDone
 #global testsPassed
@@ -17,7 +18,7 @@ def translate(file):
 	
 	outputFile = (file.split(".")) [0]
 	outputFile = outputFile + "_cCode.c"
-	outputFile = "testsForOutputCCode/" + outputFile
+	outputFile = os.path.join("testsForOutputCCode",  outputFile)
 	with open(outputFile, "w") as outFile:
 		outFile.write(stdoutVal);
 		outFile.close();
