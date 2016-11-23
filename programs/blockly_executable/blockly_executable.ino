@@ -26,8 +26,8 @@
 \** ======================================================================= **/
 
 void setup() {
-   momentarybutton1.setup();
-   motor1.setup();
+   button.setup();
+   drive.setup();
 }
 
 /** ======================================================================= **\
@@ -43,7 +43,7 @@ void setup() {
 \** ======================================================================= **/
 
 void loop() {
-     if(momentarybutton1.isPressed()) {
-       motor1.forward();
+     if(button.isPressed()) {
+       drive.forward();
      };
 }

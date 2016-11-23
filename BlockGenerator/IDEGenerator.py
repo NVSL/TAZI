@@ -10,6 +10,13 @@ import copy
 from StringIO import StringIO
 from JinjaUtil import *
 
+# Open config
+json_file = open(os.path.join("..", "config", "config.json"))
+config = json.load(json_file)
+json_file.close()
+
+gspec = str(os.path.join( "..", config["gspec_file"] ))
+
 resources_dir = "Resources"
 extra_categories_file = "extra_categories.jinja.xml"
 js_template = "Javascript_Template.jinja.js"
@@ -169,9 +176,8 @@ if __name__ == "__main__":
     generator = IDEGenerator( args.resdir, args.default_workspace, args.blocklydir )
     generator.loadBlockDefinitions( jsonFile )
     #generator.loadDefaultBlocks( blocksXml )
-    if args.gspec is not None:
-        generator.loadGspec( args.gspec, catalog )
-        generator.createBlockSubset()
+    generator.loadGspec( gspec, catalog )
+    generator.createBlockSubset()
     #print "\n".join([ str(w) for w in generator.jinja_vars["blocklist"]])
     js_output = open(os.path.join( output_dir, js_definitions ), "w+")
     js_output.write( generator.renderIDE(js_template).encode('ascii','ignore'))
