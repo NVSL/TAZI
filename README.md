@@ -5,7 +5,9 @@ A visual based programming environment for Gadgetron
 
 ### Server
 
+```
 python main.py
+```
 
 ### Building the IDE
 
@@ -28,7 +30,9 @@ The python package manager
 
 pip https://pypi.python.org/pypi/pip
 
+```
 pip install webapp2 webob jinja2
+```
 
 ## Structure
 
