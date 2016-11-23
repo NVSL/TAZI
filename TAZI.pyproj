@@ -5,16 +5,16 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{c43e0b26-c95a-46da-81d4-09b067b7a7cb}</ProjectGuid>
     <ProjectHome />
-    <StartupFile>main.py</StartupFile>
+    <StartupFile>BlockGenerator\IDEGenerator.py</StartupFile>
     <SearchPath />
-    <WorkingDirectory>.</WorkingDirectory>
+    <WorkingDirectory>BlockGenerator</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
     <InterpreterId />
     <InterpreterVersion />
     <IsWindowsApplication>False</IsWindowsApplication>
-    <CommandLineArguments>-n blockly_executable -e ino -t DefaultRobotWorkspace.xml</CommandLineArguments>
+    <CommandLineArguments>-j Resources\Blocks.json -g ..\config\Mangy-Moose.gspec -c ..\..\Components.xml -d Resources\DefaultCategories.xml -x index.jinja -w Resources\DefaultRobotWorkspace.xml</CommandLineArguments>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
