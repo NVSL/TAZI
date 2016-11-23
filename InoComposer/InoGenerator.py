@@ -32,23 +32,27 @@ class ClassGenerator:
     funcs = ""
     functionDeclarations = ""
     variableDeclarations = ""
+    def declare_objects(self, objs):
+        self.objInstances = objs
     def __init__( self, api, include_str="<>"):
         self.objects = []
         self.objInstances = []
         self.libraries = ['GadgetManager.h']
-	self.setupBody = []
+        self.setupBody = []
         self.loopBody = []
         self.parseApiGspec(api)
-	self.include_str = include_str
-	for c in CObj.countMap: CObj.countMap[c] = 0
+        self.include_str = include_str
+        for c in CObj.countMap: CObj.countMap[c] = 0
+
     def getSetupFunction(self):
-	setup_str = "void setup() {\n" 
+        setup_str = "void setup() {\n" 
         tail_str = ".setup();\n"
         def concatLines(acc, line): return acc + "   " + line + tail_str
-	setup_str += functools.reduce( concatLines, self.objInstances, "" ) 
-	tail_str = "\n"
-	setup_str += functools.reduce( concatLines, self.setupBody, "")  
-	return setup_str + "}" 
+        setup_str += functools.reduce( concatLines, self.objInstances, "" ) 
+        tail_str = "\n"
+        setup_str += functools.reduce( concatLines, self.setupBody, "")  
+        return setup_str + "}" 
+
     def getLoopFunction(self):
         def concatLines(acc, line): return acc + "   " + line + "\n"
 	return functools.reduce( concatLines, self.loopBody, "void loop() {\n" ) + "}"
@@ -61,11 +65,11 @@ class ClassGenerator:
         self.setupBody += lines
     def appendToLoop(self, lines):
         self.loopBody += lines
-    def defineFunctions(self, funcs):
+    def define_functions(self, funcs):
         for f in funcs: self.funcs += f + "\n"
-    def declareFunctions(self, funcs):
+    def declare_functions(self, funcs):
         for f in funcs: self.functionDeclarations += f + "\n"
-    def declareVariables(self, vars):
+    def declare_variables(self, vars):
         for v in vars: self.variableDeclarations += v + "\n"
     def getConstants(self):
         retStrings = []
@@ -74,21 +78,24 @@ class ClassGenerator:
 	        currStr = "#define " + str.upper(obj.name) + "_" + arg.name + " " + str(arg.value)
 	        retStrings.append(currStr)
 	return retStrings
+
     def getObjectDeclarations(self):
         retStrings = []
-	for obj in self.objects:
-	    argC = 0
-	    instanceName = str.lower(obj.name)
-	    self.objInstances.append(instanceName)
-	    currStr = obj.objType + " " + instanceName + "("
-	    for arg in obj.args :
-		if argC is not 0:
-		    currStr = currStr + ", "
-	        currStr = currStr + str.upper(obj.name) + "_" + str( arg.name )
-		argC += 1
-	    currStr = currStr + ");"
-	    retStrings.append(currStr)
+        return []
+        for obj in self.objects:
+            argC = 0
+            instanceName = str.lower(obj.name)
+            self.objInstances.append(instanceName)
+            currStr = obj.objType + " " + instanceName + "("
+            for arg in obj.args :
+                if argC is not 0:
+                    currStr = currStr + ", "
+                currStr = currStr + str.upper(obj.name) + "_" + str( arg.name )
+                argC += 1
+            currStr = currStr + ");"
+            retStrings.append(currStr)
         return retStrings
+
     def parseApiGspec(self, root):
         for component in root:
 	    if component.tag == "name": self.name = component.text

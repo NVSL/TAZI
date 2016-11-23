@@ -40,10 +40,6 @@
 |** ------------------------- Object Declarations ------------------------- **|
 \** ======================================================================= **/
 
-Motor motor1(MOTOR1_PWMA, MOTOR1_PWMB, MOTOR1_STBY, MOTOR1_AIN1, MOTOR1_AIN2, MOTOR1_BIN1, MOTOR1_BIN2);
-MomentaryButton momentarybutton1(MOMENTARYBUTTON1_SENSE);
-MomentaryButton momentarybutton2(MOMENTARYBUTTON2_SENSE);
-RGBLED rgbled1(RGBLED1_CONTROL_RED, RGBLED1_CONTROL_GREEN, RGBLED1_CONTROL_BLUE);
 
 /** ======================================================================= **\
 |** --------------------------- Setup Function ---------------------------- **|
@@ -56,10 +52,8 @@ RGBLED rgbled1(RGBLED1_CONTROL_RED, RGBLED1_CONTROL_GREEN, RGBLED1_CONTROL_BLUE)
 \** ======================================================================= **/
 
 void setup() {
-   motor1.setup();
-   momentarybutton1.setup();
-   momentarybutton2.setup();
-   rgbled1.setup();
+   momentarybutton6.setup();
+   momentarybutton4.setup();
 }
 
 /** ======================================================================= **\
