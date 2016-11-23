@@ -7,22 +7,29 @@ from BlockGenerator.JinjaUtil import *
 from ProgramManager import *
 from InoComposer.InoComposer import *
 import xml.etree.ElementTree as ET
+import json
 from StringIO import StringIO
 
 slashes = os.path 
-block_generator = "BlockGenerator"
-compiled_name = "blockly_executable"
+
+### Load the configuration details
+j_file = open(os.path.join("config", "config.json"))
+config = json.load( j_file )
+j_file.close()
+gspec_file = config["gspec_file"]
+compiled_name = config["output_name"]
+
+block_generator_path = "BlockGenerator"
 out_file = compiled_name + ".ino"
 program_path = slashes.join( "programs") 
 static_file_dir = os.path.join( "WebStatic" )
-api_gspec = slashes.join(block_generator, "Gspecs","Swag.api.gspec")
-default_workspace = os.path.join( block_generator, "Resources" )
+default_workspace = os.path.join( block_generator_path, "Resources" )
 static_dir = "WebStatic"
 landing_file = "landing.jinja"
 arduPi = "arduPi/" 
 
 program_status = ProgramManager()
-api = ET.parse(api_gspec).getroot()
+api = ET.parse(gspec_file).getroot()
 
 # Jinja Variables
 global_jinja_vars = { "resDir" : "/static/", } 
