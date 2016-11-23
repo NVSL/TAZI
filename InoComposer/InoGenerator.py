@@ -37,7 +37,6 @@ class ClassGenerator:
     def __init__( self, api, include_str="<>"):
         self.objects = []
         self.objInstances = []
-        self.libraries = ['GadgetManager.h']
         self.setupBody = []
         self.loopBody = []
         self.parseApiGspec(api)
@@ -55,14 +54,17 @@ class ClassGenerator:
 
     def getLoopFunction(self):
         def concatLines(acc, line): return acc + "   " + line + "\n"
-	return functools.reduce( concatLines, self.loopBody, "void loop() {\n" ) + "}"
+        return functools.reduce( concatLines, self.loopBody, "void loop() {\n" ) + "}"
+
     def getLibraries(self):
-	l = self.include_str[0]
-	r = self.include_str[1]
+        l = self.include_str[0]
+        r = self.include_str[1]
         def concatLib( acc, elem): return acc + '#include "' + elem + '"\n'
-	return functools.reduce( concatLib, set(self.libraries), "" )
+        return functools.reduce( concatLib, set(self.libraries), "" )
+
     def appendToSetup(self, lines):
         self.setupBody += lines
+
     def appendToLoop(self, lines):
         self.loopBody += lines
     def define_functions(self, funcs):
@@ -71,13 +73,14 @@ class ClassGenerator:
         for f in funcs: self.functionDeclarations += f + "\n"
     def declare_variables(self, vars):
         for v in vars: self.variableDeclarations += v + "\n"
+
     def getConstants(self):
         retStrings = []
-	for obj in self.objects:
-	    for arg in obj.args:
-	        currStr = "#define " + str.upper(obj.name) + "_" + arg.name + " " + str(arg.value)
-	        retStrings.append(currStr)
-	return retStrings
+        for obj in self.objects:
+            for arg in obj.args:
+                currStr = "#define " + str.upper(obj.name) + "_" + arg.name + " " + str(arg.value)
+                retStrings.append(currStr)
+        return retStrings
 
     def getObjectDeclarations(self):
         retStrings = []
@@ -98,12 +101,13 @@ class ClassGenerator:
 
     def parseApiGspec(self, root):
         for component in root:
-	    if component.tag == "name": self.name = component.text
-	    if component.tag != "component":
-	        continue
-	    for node in component:
-	        if node.tag != "api":
-		    continue
+            if component.tag == "name": self.name = component.text
+            """
+            if component.tag != "component":
+                continue
+            for node in component:
+                if node.tag != "api":
+                    continue
                 currentObj = CObj( node.attrib["class"] )
 		if "polls" in node.attrib.keys():
 		    self.loopBody.append( currentObj.name + ".poll();" )
@@ -116,17 +120,21 @@ class ClassGenerator:
 	        currentObj.setArgs( args )
 	        self.objects.append( currentObj )
 	        self.libraries.append( node.attrib["include"])
+            """
     def getClass(self):
         rv = createRobotHeader( self.name )
         rv += nl * 2
+        self.libraries = [self.name.replace(" ", "-") + '.h']
         rv += a(createSectionHeader("Libraries"))
         rv += a(self.getLibraries())
+        """
         rv += a(createSectionHeader("Pin Constants"))
         for string in self.getConstants():
             rv += a(string)
         rv += a(createSectionHeader("Object Declarations"))
         for string in self.getObjectDeclarations():
             rv += a(string)
+        """
 	if self.variableDeclarations != "":
             rv += a(createSectionHeader("User VariableDeclarations"))
 	    rv += self.variableDeclarations
