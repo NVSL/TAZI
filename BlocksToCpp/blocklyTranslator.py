@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 from translation_dictionaries import *
-from behavior_parser import *
 
 import xml.etree.ElementTree as ET
 import argparse
@@ -10,12 +9,12 @@ DEBUG = 0
 #Can run with arguments for filename input OR requests filename input
 
 
-behavior_parser = BehaviorParser() 
 spaces = "  "
 delimitter = ";"
 declaredVars = []
 main_loop = []
 definedFuncs = []
+declaredObjs = set()
 declaredFuncs = []
 main_setup = []
 main_funcs = ""
@@ -170,6 +169,8 @@ def getBlock(node,depth):
             lines += parseBlocksRecursively( b, depth ) + delimitter+ '\n'
         return lines
     if blockType == "root_node": 
+        from behavior_parser import BehaviorParser
+        behavior_parser = BehaviorParser() 
         behavior_parser.parse_node( node )
         return ""
 
@@ -184,6 +185,8 @@ def genericBlockGet(node,depth):
         return ""
 
     object_instance = blockType.split("$")[1]
+    global declaredObjs
+    declaredObjs.add(object_instance)
     method_name = blockType.split("$")[2]
 
     if (len(list(node)) == 0):

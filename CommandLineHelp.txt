@@ -3,4 +3,4 @@ Runs main server
 
 
 Runs GCGF
--j Resources\Blocks.json -g Gspecs\PiMobile.gspec -c ..\Components.xml -d Resources\DefaultCategories.xml -x index.jinja -w Resources\DefaultRobotWorkspace.xml
+-j Resources\Blocks.json -g ..\config\Mangy-Moose.gspec -c ..\..\Components.xml -d Resources\DefaultCategories.xml -x index.jinja -w Resources\DefaultRobotWorkspace.xml
