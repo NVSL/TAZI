@@ -4,50 +4,31 @@ __email__ = "mmg005@eng.ucsd.edu"
 import xml.etree.ElementTree as ETree
 import functools
 from InoCommenter import *
-class Arg:
-    def __init__(self, etElem):
-	self.name = etElem.attrib["arg"]
-	digitalL = etElem.attrib["digitalliteral"] 
-	if digitalL != "None": self.value = digitalL
-	else: self.value = etElem.attrib["analogliteral"]
-	self.order = etElem.attrib["order"]
-class CObj:
-    countMap = {}
-    def __init__(self, objType):
-        self.objType = objType
-        if objType not in CObj.countMap: CObj.countMap[objType] = 1
-        else: CObj.countMap[objType] += 1
-	self.name = str.lower(objType) + str(CObj.countMap[objType])
-    def setArgs(self, args):
-        self.args = args[:]
-        if len(args) > 0 and args[0].order != "None":
-	    for i in range( len(args) ):
-	        self.args[i] = [ arg for arg in args if arg.order == str(i) ][0]
 class ClassGenerator:
-    objects = []
     libraries = []
-    objInstances = []
+    objects = []
     loopBody = []
     name = "" 
     funcs = ""
     functionDeclarations = ""
     variableDeclarations = ""
+
     def declare_objects(self, objs):
-        self.objInstances = objs
+        self.objects = objs
+
     def __init__( self, api, include_str="<>"):
         self.objects = []
         self.objInstances = []
         self.setupBody = []
         self.loopBody = []
-        self.parseApiGspec(api)
+        self.find_name(api)
         self.include_str = include_str
-        for c in CObj.countMap: CObj.countMap[c] = 0
 
     def getSetupFunction(self):
         setup_str = "void setup() {\n" 
         tail_str = ".setup();\n"
         def concatLines(acc, line): return acc + "   " + line + tail_str
-        setup_str += functools.reduce( concatLines, self.objInstances, "" ) 
+        setup_str += functools.reduce( concatLines, self.objects, "" ) 
         tail_str = "\n"
         setup_str += functools.reduce( concatLines, self.setupBody, "")  
         return setup_str + "}" 
@@ -67,87 +48,42 @@ class ClassGenerator:
 
     def appendToLoop(self, lines):
         self.loopBody += lines
+
     def define_functions(self, funcs):
         for f in funcs: self.funcs += f + "\n"
+
     def declare_functions(self, funcs):
         for f in funcs: self.functionDeclarations += f + "\n"
+
     def declare_variables(self, vars):
         for v in vars: self.variableDeclarations += v + "\n"
 
-    def getConstants(self):
-        retStrings = []
-        for obj in self.objects:
-            for arg in obj.args:
-                currStr = "#define " + str.upper(obj.name) + "_" + arg.name + " " + str(arg.value)
-                retStrings.append(currStr)
-        return retStrings
 
-    def getObjectDeclarations(self):
-        retStrings = []
-        return []
-        for obj in self.objects:
-            argC = 0
-            instanceName = str.lower(obj.name)
-            self.objInstances.append(instanceName)
-            currStr = obj.objType + " " + instanceName + "("
-            for arg in obj.args :
-                if argC is not 0:
-                    currStr = currStr + ", "
-                currStr = currStr + str.upper(obj.name) + "_" + str( arg.name )
-                argC += 1
-            currStr = currStr + ");"
-            retStrings.append(currStr)
-        return retStrings
-
-    def parseApiGspec(self, root):
+    def find_name(self, root):
         for component in root:
             if component.tag == "name": self.name = component.text
-            """
-            if component.tag != "component":
-                continue
-            for node in component:
-                if node.tag != "api":
-                    continue
-                currentObj = CObj( node.attrib["class"] )
-		if "polls" in node.attrib.keys():
-		    self.loopBody.append( currentObj.name + ".poll();" )
-	        args = []
-		# Handle all the arguments for the object
-	        args = [ Arg(arg) for arg  in node.findall("arg") ]
-		# Handle all the extra required libraries
-		for lib in node.find("required_files").findall("file"):
-		    self.libraries.append( lib.attrib["name"] )
-	        currentObj.setArgs( args )
-	        self.objects.append( currentObj )
-	        self.libraries.append( node.attrib["include"])
-            """
+    """
+    TODO: Make this into a jinjna file"
+    """
     def getClass(self):
         rv = createRobotHeader( self.name )
         rv += nl * 2
         self.libraries = [self.name.replace(" ", "-") + '.h']
         rv += a(createSectionHeader("Libraries"))
         rv += a(self.getLibraries())
-        """
-        rv += a(createSectionHeader("Pin Constants"))
-        for string in self.getConstants():
-            rv += a(string)
-        rv += a(createSectionHeader("Object Declarations"))
-        for string in self.getObjectDeclarations():
-            rv += a(string)
-        """
-	if self.variableDeclarations != "":
+        if self.variableDeclarations != "":
             rv += a(createSectionHeader("User VariableDeclarations"))
-	    rv += self.variableDeclarations
-	if self.funcs != "":
+            rv += self.variableDeclarations
+        if self.funcs != "":
             rv += a(createSectionHeader("User Functions Declarations"))
-	    rv += self.functionDeclarations
+            rv += self.functionDeclarations
             rv += a(createSectionHeader("User Functions Definitions"))
-	    rv += self.funcs
+            rv += self.funcs
         rv += a(createSectionHeader("Setup Function", description="The setup() function runs --ONCE-- when the Arduino boots up. As the name implies, it's useful to add code that 'sets up' your Gadget to run correctly."))
         rv += a(self.getSetupFunction())
         rv += a(createSectionHeader("Loop Function", description="The loop() function runs continuously after the setup() function finishes and while the Arduino is running. In other words, this function is called repeatly over and over again when it reaches the end of the function. This function is where the majority of your program's logic should go."  ))
         rv += a(self.getLoopFunction())
-	return rv
+        return rv
 
 if __name__ == "__main__":
     import argparse
