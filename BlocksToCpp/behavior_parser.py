@@ -26,27 +26,36 @@ class BehaviorNode:
         if self.children_array: self.children = ", ".join( children )
         if node_type in value_nodes: self.children = "" 
 class BehaviorParser:
-    def __init__(self):
+    def __init__(self, program_name):
         self.count_action = 0
         self.count_sequence = 0
         self.count_selector = 0
         self.count_condition = 0
         self.nodes = []
+        self.program_name = program_name
 
     # Determines a unique name for node
     # Keeps track of how many nodes of each type we have
     def assign_node_name( self, node, node_type):
         name = node_type  
+        # Sequence Nodes
         if node_type == sequence_node: 
             self.count_sequence += 1
             name += str(self.count_sequence)
+        # Selector Nodes
         if node_type == selector_node: 
             self.count_selector += 1
             name += str(self.count_selector)
+        # Action Nodes
         if node_type == action_node: 
             self.count_action += 1
             name += str(self.count_action)
+        # Condition Nodes
         if node_type == condition_node: 
+            self.count_condition += 1
+            name += str(self.count_condition)
+        # Paralell Nodes
+        if node_type == parallel_node: 
             self.count_condition += 1
             name += str(self.count_condition)
         return name
@@ -77,10 +86,11 @@ class BehaviorParser:
         return name
 
     def render( self ):
-        jinja_vars = { "nodes" : self.nodes }
+        jinja_vars = { "nodes" : self.nodes,
+                       "name"  : self.program_name }
         template = jinja_env.get_template("behavior.jinja")
         code = template.render(jinja_vars).encode('ascii', 'ignore')
         print code
-        code_file = open("test.cs", "w")
+        code_file = open("foo.cs", "w")
         code_file.write(code)
         code_file.close()

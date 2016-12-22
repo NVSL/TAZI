@@ -123,7 +123,7 @@ class SaveHandler(webapp2.RequestHandler):
 class CompileHandler(SaveHandler):
     def translateRequest(self):
         self.saveProgram()
-        self.composer = InoComposer( api, self.xml)
+        self.composer = InoComposer( api, self.xml, program_status.name)
     def writeToOutfile( self ):
         print out_file
         f = open(out_file, "w+")

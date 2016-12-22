@@ -6,9 +6,10 @@ import xml.etree.ElementTree as ETree
 class InoComposer:
     # An InoComposer object expects the api_gspec to be an ET element
     # It expects the xml to be a string
-    def __init__(self, api_gspec, xml):
+    def __init__(self, api_gspec, xml, program_name):
         self.gspec = api_gspec
         self.xml = xml
+        self.program_name = program_name
     # Returns the ino as a string
     def get_ino(self):
         self.get_cpp()
@@ -25,6 +26,7 @@ class InoComposer:
         return ino
     # Returns the translated cpp as a string
     def get_cpp(self):
+        Translator.program_name = self.program_name.replace(" ", "_")
         return Translator.run( StringIO(self.xml) )
 
 def resolve_robot_name( gspec ):

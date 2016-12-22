@@ -22,6 +22,7 @@ use_c_lib = True
 isCpp = False
 c_lib = "#include <iostream>\n#include <cmath>"
 c_lib += "\n#include <stdlib.h>\nusing namespace std;\n"
+program_name = "Prog"
 
 # There should be some degree of error checking
 class BlocklyError(Exception):
@@ -170,7 +171,7 @@ def getBlock(node,depth):
         return lines
     if blockType == "root_node": 
         from behavior_parser import BehaviorParser
-        behavior_parser = BehaviorParser() 
+        behavior_parser = BehaviorParser(program_name) 
         behavior_parser.parse_node( node )
         return ""
 
