@@ -133,6 +133,7 @@ return {
   }
     }
 };
+
 Blockly.Blocks['root_node'] = {
   init: function() {
     this.appendDummyInput()
@@ -140,6 +141,19 @@ Blockly.Blocks['root_node'] = {
     this.appendStatementInput("Children")
         .setCheck(node_types);
     this.setColour(60);
+    this.setNextStatement(true);
+    this.setPreviousStatement(true);
+  }
+};
+
+
+Blockly.Blocks['inverter'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("! Inverter Node");
+    this.appendStatementInput("Children")
+        .setCheck(node_types);
+    this.setColour(76);
     this.setNextStatement(true);
     this.setPreviousStatement(true);
   }

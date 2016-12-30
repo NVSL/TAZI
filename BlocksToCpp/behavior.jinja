@@ -9,6 +9,8 @@ ParallelNode
 ActionNode
 %- elif n.node_type == "condition_node": 
 ConditionNode
+%- elif n.node_type == "inverter": 
+Inverter
 %- elif n.node_type == "root_node": 
 RootNode
 %- endif
@@ -28,7 +30,13 @@ new BehaviorNode[] {
 %- endmacro
 using UnityEngine;
 
-public abstract class {{name}}BehaviorTree : BehaviorTree
+/**
+ * Digraph Code
+ *
+% include "behavior.dot.jinja"
+ *
+ */
+public abstract class {{name}}BehaviorTree : SwordWielder
 {
 	[Header("Nodes within Tree")]
 	% for n in nodes 

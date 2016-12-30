@@ -5,4 +5,5 @@
                 <block type="parallel_node"></block>
                 <block type="action_node"></block>
                 <block type="condition_node"></block>
+                <block type="inverter"></block>
 </category>
