@@ -38,6 +38,8 @@
              <md-button class="md-primary md-raised" ng-click="sendCompilePost()">Run</md-button>
              <md-button class="md-primary md-raised" ng-click="sendKillPost()">Stop</md-button>
              <md-button class="md-primary md-raised" ng-click="sendSavePost()">Save</md-button>
+             <md-button class="md-primary md-raised" ng-click="sendSavePost()">Load</md-button>
+              <input type='file' accept='xml' onchange='openFile(event)'><br>
 	 </div>
      {% include 'DefaultCategories.xml' %}
       </div>
@@ -57,7 +59,6 @@
          <!--button>Save Program</button-->
          <!--button onclick="testPost()">Compile</button>
             <button onclick="sendKillSignal()">Kill</button-->
-      <!--input type="file" id="xmlinput" /-->
       <script src="{{blockly}}blocksIO.js"></script>
       <script>
          window.onload = function() { 
@@ -65,5 +66,18 @@
              loadXML( defaultBlocks );	
          };
       </script>
+      <script>
+      var openFile = function(event) {
+        var input = event.target;
+
+        var reader = new FileReader();
+        reader.onload = function(){
+          var text = reader.result;
+          console.log(reader.result.substring(0, 200));
+          loadXML(text);
+        };
+        reader.readAsText(input.files[0]);
+      };
+    </script>
    </body>
 </html>

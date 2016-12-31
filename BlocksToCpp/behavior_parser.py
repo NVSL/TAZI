@@ -28,18 +28,21 @@ labels = {
 star_nodes  = [ sequence_node, selector_node, parallel_node ]
 value_nodes = [ action_node, condition_node ]
 decorators = [ inverter ]
+internal_nodes = star_nodes + decorators + [ root_node ]
+all_nodes = internal_nodes + value_nodes
 
 class BehaviorNode:
-    def __init__( self, name, node_type, children):
+    def __init__( self, name, node_type, children, id):
         self.name = name if node_type != root_node else "root"
         self.node_type = node_type
         self.children = children
         self.real_children = children
-        self.children_array = node_type in star_nodes + [ root_node ] + decorators
+        self.children_array = node_type in internal_nodes
         self.function = None
         if self.children_array: self.children = ", ".join( children )
         if node_type in value_nodes: self.children = "" 
         self.label = self.function
+        self.id = id
         if node_type in labels: self.label = labels[node_type]
     def get_edges( self ):
         if self.children and self.children is not None: 
@@ -57,22 +60,23 @@ class BehaviorParser:
         name = node_type  
         if name not in self.counts: self.counts[name] = 0
         self.counts[name] += 1
-        name += str(self.counts[name])
-        return name
+        id = self.counts[name]
+        name += str(id)
+        return name, id
 
     def parse_node( self, node):
         node_type = node.attrib["type"]
         # Determine a unique name for the node
-        name = self.assign_node_name( node, node_type )
+        name, id= self.assign_node_name( node, node_type )
         children = []
 
         # If the node is one of these types, then it will have children.
         # Find them and parse them
-        if  node_type in [  root_node ] + star_nodes + decorators: 
+        if  node_type in internal_nodes:
             children = [ self.parse_node(c[0]) for c in node if len(c) > 0 ] # Indexing at zero takes the block out of its wrapping statement
 
         # Make an internatl representation to use for code generation
-        internal_representation = BehaviorNode( name, node_type, children )
+        internal_representation = BehaviorNode( name, node_type, children, id)
 
         # If a node is one of the following types, then it should contain some 
         # function like object
@@ -84,12 +88,29 @@ class BehaviorParser:
         self.nodes.append( internal_representation)
         if node_type == root_node: self.render()
         return name
+    def get_leaves( self, type ):
+        return set( [ node.function for node in self.nodes if node.node_type == type ] )
+    def get_nodes( self, node_class ):
+        if type(node_class) is list: filter_f = lambda node: node in node_class
+        if type(node_class) is str: filter_f = lambda node: node == node_class
+        rv = list(set( [ node for node in self.nodes if filter_f(node.node_type) ] )) 
+        rv.sort(key=lambda n: n.id)
+        return rv
 
+    def get_tuple( self, node_type ):
+        return (node_type , self.get_nodes( node_type ))
+    
     def render( self ):
         edges = reduce( add, [ n.get_edges() for n in self.nodes], [] )
-        jinja_vars = { "nodes" : self.nodes,
+        sorted_nodes = [ self.get_tuple( node_type ) for node_type in all_nodes ]
+        jinja_vars = { 
+                       "nodes" : self.nodes,
+                       "condition_functions" : self.get_leaves(condition_node) ,
+                       "action_functions"    : self.get_leaves(action_node), 
+                       "sorted_nodes" : sorted_nodes,
                        "name"  : self.program_name, 
-                       "edges" : edges }
+                       "edges" : edges 
+                     }
         self.save_to_file( "out_behavior.dot", "behavior.dot.jinja", jinja_vars )
                        
     def save_to_file( self, file_name, template, jinja_vars ):

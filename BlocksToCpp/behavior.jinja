@@ -1,17 +1,17 @@
-%- macro class_name(n)
-%- if n.node_type == "selector_node": 
+%- macro class_name(node_type)
+%- if node_type == "selector_node": 
 SelectorNode  
-%- elif n.node_type == "sequence_node": 
+%- elif node_type == "sequence_node": 
 SequenceNode	
-%- elif n.node_type == "parallel_node": 
+%- elif node_type == "parallel_node": 
 ParallelNode
-%- elif n.node_type == "action_node": 
+%- elif node_type == "action_node": 
 ActionNode
-%- elif n.node_type == "condition_node": 
+%- elif node_type == "condition_node": 
 ConditionNode
-%- elif n.node_type == "inverter": 
+%- elif node_type == "inverter": 
 Inverter
-%- elif n.node_type == "root_node": 
+%- elif node_type == "root_node": 
 RootNode
 %- endif
 %- endmacro
@@ -29,35 +29,42 @@ new BehaviorNode[] {
 %- endif
 %- endmacro
 using UnityEngine;
-
-/**
- * Digraph Code
- *
-% include "behavior.dot.jinja"
- *
- */
 public abstract class {{name}}BehaviorTree : SwordWielder
 {
-	[Header("Nodes within Tree")]
-	% for n in nodes 
-	%if n.node_type != "root_node"
-	protected {{class_name(n)}} {{n.name}};
-	% endif
+    // Internal Nodes
+	[Header("Nodes")]
+	% for node_class, _nodes in sorted_nodes if node_class != "root_node"
+	[Header("{{class_name(node_class)}}s")]
+        % for node in _nodes
+	public {{class_name(node.node_type)}} {{node.name}}; // id: {{node.id}}
+        % endfor
+	% endfor
+	
+
+    // Action Node Functions
+	% for n in action_functions
+	protected abstract BehaviorNode.State {{n}}();
 	% endfor
 
-	% for n in nodes if n.node_type == "action_node"
-	protected abstract BehaviorNode.State {{n.function}}();
+    // Condition Node Functions
+	% for n in condition_functions
+	protected abstract bool {{n}}();
 	% endfor
-
-	% for n in nodes if n.node_type == "condition_node"
-	protected abstract bool {{n.function}}();
-	% endfor
-
+    
+    
 	protected override void OnEnable()
 	{
 	% for n in nodes
-		{{ n.name}} = new {{ class_name(n)}} ({{ constructor_input(n)}});
+		{{ n.name}}.AssignChildren({{ constructor_input(n)}});
 	% endfor
 		base.OnEnable();
 	}
 }
+
+
+/**
+ * Digraph Code
+ *
+ include "behavior.dot.jinja"
+ *
+ */
