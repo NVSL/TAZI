@@ -5,6 +5,8 @@
  Editor:	http://www.visualmicro.com
 */
 
+#include "ParallelNode.h"
+#include "SequenceNode.h"
 #include "RootNode.h"
 #include "SelectorNode.h"
 #include "InternalNode.h"

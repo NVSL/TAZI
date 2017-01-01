@@ -37,6 +37,12 @@
     <ClCompile Include="ConditionNode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SequenceNode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ParallelNode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\_micro-api\libraries\BehaviorTreeLib\src\BehaviorTreeLib.h">
@@ -58,6 +64,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ConditionNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SequenceNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ParallelNode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
