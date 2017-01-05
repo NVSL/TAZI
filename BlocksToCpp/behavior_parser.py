@@ -32,11 +32,12 @@ internal_nodes = star_nodes + decorators + [ root_node ]
 all_nodes = internal_nodes + value_nodes
 
 class BehaviorNode:
-    def __init__( self, name, node_type, children, id):
+    def __init__( self, name, node_type, children, id, holds_state):
         self.name = name if node_type != root_node else "root"
         self.node_type = node_type
         self.children = children
         self.real_children = children
+        self.holds_state = holds_state
         self.children_array = node_type in internal_nodes
         self.function = None
         if self.children_array: self.children = ", ".join( children )
@@ -69,14 +70,16 @@ class BehaviorParser:
         # Determine a unique name for the node
         name, id= self.assign_node_name( node, node_type )
         children = []
-
+        holds_state = False
+        if node_type in star_nodes:
+            holds_state = node.find("field").text == "TRUE"
         # If the node is one of these types, then it will have children.
         # Find them and parse them
         if  node_type in internal_nodes:
             children = [ self.parse_node(c[0]) for c in node if len(c) > 0 ] # Indexing at zero takes the block out of its wrapping statement
 
         # Make an internatl representation to use for code generation
-        internal_representation = BehaviorNode( name, node_type, children, id)
+        internal_representation = BehaviorNode( name, node_type, children, id, holds_state)
 
         # If a node is one of the following types, then it should contain some 
         # function like object
@@ -84,7 +87,7 @@ class BehaviorParser:
             vs = [ blocklyTranslator.getArgs(c)[1:-1] for c in node if len(c) > 0 ]
             if len(vs):
                 internal_representation.function = vs[0]
-                print vs[0]
+                #print vs[0]
         self.nodes.append( internal_representation)
         if node_type == root_node: self.render()
         return name
@@ -116,7 +119,7 @@ class BehaviorParser:
     def save_to_file( self, file_name, template, jinja_vars ):
         template = jinja_env.get_template(template)
         code = template.render(jinja_vars).encode('ascii', 'ignore')
-        print code
+        #print code
         #print edges
         code_file = open(file_name, "w")
         code_file.write(code)

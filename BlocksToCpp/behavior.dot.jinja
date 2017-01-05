@@ -8,8 +8,10 @@ digraph G {
     {{node.name}} [shape="polygon", sides=4, fillcolor="green", style="filled", label="{{node.function}}"];
     % elif node.node_type == "condition_node"
     {{node.name}} [fillcolor="yellow", style="filled", label="{{node.function}}"];
-    % else
-    {{node.name}} [shape="polygon",sides=4,label="{{node.label}}"];
+    % elif node.holds_state
+    {{node.name}} [shape="polygon",sides=4,label="{{node.label}} * ({{node.id}})"];
+	% else
+	{{node.name}} [shape="polygon",sides=4,label="{{node.label}} ({{node.id}})"];
     % endif
  % endfor
  }

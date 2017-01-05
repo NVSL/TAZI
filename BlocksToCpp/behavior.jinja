@@ -56,6 +56,10 @@ public abstract class {{name}}BehaviorTree : SwordWielder
 	{
 	% for n in nodes
 		{{ n.name}}.AssignChildren({{ constructor_input(n)}});
+		{{ n.name}}.id = {{ n.id}};
+		% if n.holds_state:
+		{{ n.name}}.starred = true;
+		% endif
 	% endfor
 		base.OnEnable();
 	}

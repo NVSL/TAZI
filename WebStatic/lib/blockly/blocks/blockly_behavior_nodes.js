@@ -43,7 +43,8 @@ var MultiBehaviorNode = function ( name, color )  {
 return {
     init : function() {
         this.appendDummyInput()
-            .appendField(name);
+            .appendField(name)
+			.appendField(new Blockly.FieldCheckbox("FALSE"), "MAINTAIN_STATE");;
         this.appendStatementInput("Child0")
             .setCheck(["selector_node", node_types])
             .appendField(mutator_label);
