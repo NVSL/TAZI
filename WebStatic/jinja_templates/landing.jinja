@@ -1,5 +1,6 @@
 <html ng-app="Tazi">
    <head>
+      <base href="/">
       <!-- Angular -->
       <script src="{{lib}}angular/angular.min.js"></script>
       <script src="{{lib}}angular-material/angular-material.min.js"></script>
@@ -11,6 +12,7 @@
       <script src="{{resDir}}controllers/LandingPageController.js"></script>
       <!-- JQuery -->
       <script src="{{lib}}jquery-2.2.1.min.js"></script>
+      <link rel="stylesheet" type="text/css" ng-href="{{resDir}}css/style.css"/>
    </head>
    <body >
       <div id="popupContainer">
@@ -19,20 +21,22 @@
             <md-toolbar layout-padding>
                <h1 class="md-display-3">{{name}}'s Control Panel</h1>
             </md-toolbar>
-	    <h3 layout-padding>
-	    	Welcome to {{name}}'s Control Panel! 
-	    </h3>
-	    <h4 layout-padding>
-		From here, you can go ahead and do all sorts of wonderful things with
-		{{name}}. In the "Your Programs" panel, you can create a new program. After you start writing a ton of programs,
-		that panel will fill with all of your marvelous creations. If you're just getting started with programming {{name}},
-		then you might want to check out the "Gadgetron Learning Center" panel. It has tons of great resources and documentation to 
-		learn how to program the robot of your dreams. Have fun!
-	    </h4>
+            <div id="IntroBlurb" class="bordered">
+            <h3 layout-padding>
+                Welcome to {{name}}'s Control Panel! 
+            </h3>
+            <p layout-padding>
+                From here, you can go ahead and do all sorts of wonderful things with
+                {{name}}. In the "Your Programs" panel, you can create a new program. After you start writing a ton of programs,
+                that panel will fill with all of your marvelous creations. If you're just getting started with programming {{name}},
+                then you might want to check out the "Gadgetron Learning Center" panel. It has tons of great resources and documentation to 
+                learn how to program the robot of your dreams. Have fun!
+            </p>
+            </div>
          </md-content>
-         <div ng-controller="DialogCtrl" ng-cloak layout-gt-sm="row" layout="column">
+         <div id="ControlPanel" ng-controller="DialogCtrl" ng-cloak layout-gt-sm="row" layout="column">
             <!-- Program Column-->
-	    <div flex-gt-sm="49" flex md-raised>
+	    <div class="bordered" flex-gt-sm="49" flex md-raised>
             <md-content>
 	       <!-- Header -->
                <md-toolbar layout="row">
@@ -46,21 +50,23 @@
                </md-toolbar>
 	       <!-- Programs List -->
                <md-list class="md-dense" flex layout-padding>
-                  {% for prog in programs %}
+                  {% for prog in programs if prog != "No program loaded" %}
                   <md-list-item class="md-1-line" background="#b9f6ca">
                      <a href="/programs/{{prog}}">
-                        <h4>{{prog}}</h4>
+                        <div class="prog-link">
+                            {{prog}}
+                        </div>
                      </a>
-		     <span flex> </span>
-		     <md-button class="md-primary md-raised">X</md-button>
-	             <md-divider></md-divider>
+                    <span flex> </span>
+                    <md-button class="md-primary md-raised">X</md-button>
+                    <md-divider></md-divider>
                   </md-list-item>
                   {% endfor %}
                </md-list>
             </md-content>
 	    </div>
             <!-- Right Column-->
-	    <div ng-controller="AppCtrl" flex-gt-sm="49" flex>
+	    <div class="bordered" ng-controller="AppCtrl" flex-gt-sm="49" flex>
             <!-- Program Status-->
             <md-content>
                <md-toolbar layout="row">
@@ -72,8 +78,11 @@
                      </md-button>
                   </div>
                </md-toolbar>
-	       <h4>Program Loaded: {{loadedProgram}}</h4>
-	       <h4>Program Status: {{programStatus}}</h4>
+
+               <div id="status-panel">
+                    <h4>Program Loaded: {{loadedProgram}}</h4>
+                    <h4>Program Status: {{programStatus}}</h4>
+               </div>
             </md-content>
             <!-- Learning Center-->
             <md-content>

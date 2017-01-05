@@ -1,0 +1,30 @@
+#ControlPanel {
+    margin: 0 10%;
+}
+#status-panel{
+    padding: 2%;
+}
+
+#IntroBlurb{
+    margin: 1% 10%;
+    background-color : #F0F0F0;
+    font-size: 1.3em;
+}
+
+.prog-link{
+    font-size: 1.25em;
+}
+.bordered {
+    border-style: solid; 
+    border-width: 1px;
+    margin: 0 1%;
+}
+
+a:visited, a {
+    color: #777;
+}
+
+a:hover {
+    color: #099;
+}
+
