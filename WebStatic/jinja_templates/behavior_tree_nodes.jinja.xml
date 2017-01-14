@@ -6,4 +6,6 @@
                 <block type="action_node"></block>
                 <block type="condition_node"></block>
                 <block type="inverter"></block>
+                <block type="subtree"></block>
+                <block type="subtree_root"></block>
 </category>

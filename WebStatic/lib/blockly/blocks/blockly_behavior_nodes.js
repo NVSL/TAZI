@@ -1,5 +1,5 @@
 var node_types = ["selector_node", "sequence_node", "inverter_node"];
-var help_url = "http://robots.gadgetron.build/TAZI/help.html"
+var help_url = "http://robots.gadgetron.build/"
 // Look into mutators
 // https://developers.google.com/blockly/guides/create-custom-blocks/mutators
 
@@ -9,6 +9,8 @@ var help_url = "http://robots.gadgetron.build/TAZI/help.html"
 var mutator_child = "Child"
 var mutator_label = ""
 
+var behavior_node_start = "behavior_node_start";
+var behavior_node_extra = "behavior_node_extra";
 var mutator = function(name, prev, next) {
 return {
   /**
@@ -25,8 +27,22 @@ return {
     }
   }
 };
-
-var BehaviorNode = function (name, color ) {
+var InternalNode = function (name, color)
+{
+    return {
+        init: function () {
+            this.appendDummyInput()
+                .appendField(name);
+            this.appendStatementInput("Children")
+                .setCheck(node_types);
+            this.setPreviousStatement(true, node_types);
+            this.setColour(color);
+            this.setHelpUrl(help_url);
+            this.setTooltip('');
+        },
+    }
+};
+var LeafNode = function (name, color ) {
     return {
         init: function() {
         this.appendDummyInput()
@@ -52,7 +68,7 @@ return {
         this.setColour(color);
         this.setHelpUrl(help_url);
         this.setTooltip('');
-        this.setMutator(new Blockly.Mutator(['behavior_node_extra']));
+        this.setMutator(new Blockly.Mutator([behavior_node_extra]));
         this.children_count = 0;
     },
     mutationToDom: function() {
@@ -67,11 +83,11 @@ return {
         this.updateShape_();
     },
     decompose: function(workspace) {
-        var containerBlock = workspace.newBlock('behavior_node_start');
+        var containerBlock = workspace.newBlock(behavior_node_start);
         containerBlock.initSvg();
         var connection = containerBlock.nextConnection;
         for (var i = 1; i <= this.children_count; i++) {
-            var childBlock= workspace.newBlock('behavior_node_extra');
+            var childBlock= workspace.newBlock(behavior_node_extra);
             childBlock.initSvg();
             connection.connect(childBlock.previousConnection);
             connection = childBlock.nextConnection;
@@ -86,7 +102,7 @@ return {
     var statementConnections = [null];
     while (clauseBlock) {
       switch (clauseBlock.type) {
-        case 'behavior_node_extra':
+        case behavior_node_extra:
           this.children_count++;
           statementConnections.push(clauseBlock.statementConnection_);
           break;
@@ -106,7 +122,7 @@ return {
     var i = 1;
     while (clauseBlock) {
       switch (clauseBlock.type) {
-        case 'behavior_node_extra':
+        case behavior_node_extra:
           var inputDo = this.getInput(mutator_child + i);
             clauseBlock.statementConnection_ =
             inputDo && inputDo.connection.targetConnection;
@@ -135,36 +151,20 @@ return {
     }
 };
 
-Blockly.Blocks['root_node'] = {
-  init: function() {
-    this.appendDummyInput()
-        .appendField("[ ] Root Node");
-    this.appendStatementInput("Children")
-        .setCheck(node_types);
-    this.setColour(60);
-    this.setNextStatement(true);
-    this.setPreviousStatement(true);
-  }
-};
 
 
-Blockly.Blocks['inverter'] = {
-  init: function() {
-    this.appendDummyInput()
-        .appendField("! Inverter Node");
-    this.appendStatementInput("Children")
-        .setCheck(node_types);
-    this.setColour(76);
-    this.setNextStatement(true);
-    this.setPreviousStatement(true);
-  }
-};
+Blockly.Blocks['root_node'] = InternalNode( "[ ] Root Node", 60);
+Blockly.Blocks['subtree_root'] = InternalNode( "[^] Subtree Root", 65);
+Blockly.Blocks['inverter'] = InternalNode( "! Inverter Node", 76);
 
 Blockly.Blocks['selector_node'] = new MultiBehaviorNode("(?) Selector Node", 120);
 Blockly.Blocks['sequence_node'] = new MultiBehaviorNode("(->) Sequence Node", 180);
 Blockly.Blocks['parallel_node'] = new MultiBehaviorNode("(=>) Parallel Node", 200);
-Blockly.Blocks['action_node'] = BehaviorNode( "Action Node", 330 );
-Blockly.Blocks['condition_node'] = BehaviorNode( "Condition Node", 220 );
-Blockly.Blocks['behavior_node_start'] = mutator( "Number of Child Behaviors", false, true ) ;
-Blockly.Blocks['behavior_node_extra'] = mutator( "Extra Behavior", true, true ) ;
+
+Blockly.Blocks['action_node'] = LeafNode( "Action Node", 330 );
+Blockly.Blocks['condition_node'] = LeafNode( "Condition Node", 220 );
+Blockly.Blocks['subtree'] = LeafNode( "Subtree", 230 );
+
+Blockly.Blocks[behavior_node_start] = mutator( "Number of Child Behaviors", false, true ) ;
+Blockly.Blocks[behavior_node_extra] = mutator( "Extra Behavior", true, true ) ;
 

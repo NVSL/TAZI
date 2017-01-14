@@ -77,5 +77,8 @@ tazi.controller('AppCtrl', function($scope, $mdDialog, $mdMedia, $mdToast) {
   $scope.runProgram = function() {
       $.post("/runprogram");
   };
+  $scope.loadFunc = function() {
+      $('#hidden_button').click();
+  };
 });
 

@@ -1,6 +1,7 @@
 #ControlPanel {
     margin: 0 10%;
 }
+
 #status-panel{
     padding: 2%;
 }
@@ -28,3 +29,9 @@ a:hover {
     color: #099;
 }
 
+#hidden_button {
+    display:none;
+}
+body {
+    background-color : #fafafa;
+}

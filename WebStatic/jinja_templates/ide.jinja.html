@@ -18,6 +18,7 @@
       <link href="{{resDir}}lib/angular-material/angular-material.min.css" rel="stylesheet" />
       {% include 'javascript_block_definitions.js' %}
       <script src="{{resDir}}controllers/IDEController.js"></script>
+      <link rel="stylesheet" type="text/css" ng-href="{{resDir}}css/style.css"/>
       
    </head>
    <body>
@@ -38,8 +39,8 @@
              <md-button class="md-primary md-raised" ng-click="sendCompilePost()">Run</md-button>
              <md-button class="md-primary md-raised" ng-click="sendKillPost()">Stop</md-button>
              <md-button class="md-primary md-raised" ng-click="sendSavePost()">Save</md-button>
-             <md-button class="md-primary md-raised" ng-click="sendSavePost()">Load</md-button>
-              <input type='file' accept='xml' onchange='openFile(event)'><br>
+             <md-button class="md-primary md-raised" ng-click="loadFunc()">Load</md-button>
+             <input id="hidden_button" type='file'  accept='xml' onchange='openFile(event)'><br>
 	 </div>
      {% include 'DefaultCategories.xml' %}
       </div>
@@ -65,9 +66,7 @@
              var defaultBlocks = "{{defaultBlocks}}";
              loadXML( defaultBlocks );	
          };
-      </script>
-      <script>
-      var openFile = function(event) {
+        var openFile = function(event) {
         var input = event.target;
 
         var reader = new FileReader();
