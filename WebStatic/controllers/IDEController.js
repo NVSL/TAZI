@@ -80,5 +80,23 @@ tazi.controller('AppCtrl', function($scope, $mdDialog, $mdMedia, $mdToast) {
   $scope.loadFunc = function() {
       $('#hidden_button').click();
   };
+  
+  $(window).bind('keydown', function(event) {
+    if (event.ctrlKey || event.metaKey) {
+        switch (String.fromCharCode(event.which).toLowerCase()) {
+        case 's':
+            event.preventDefault();
+            $scope.sendSavePost();
+            break;
+        case 'r':
+            event.preventDefault();
+            $scope.sendCompilePost();
+            break;
+        case 'g':
+            event.preventDefault();
+            alert('ctrl-g');
+            break;
+        }
+    }
 });
-
+});
