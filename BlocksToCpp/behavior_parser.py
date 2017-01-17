@@ -83,11 +83,15 @@ class BehaviorParser:
 
         # If a node is one of the following types, then it should contain some 
         # function like object
-        if node_type in value_nodes:
+        if node_type == condition_node:
             vs = [ blocklyTranslator.getArgs(c)[1:-1] for c in node if len(c) > 0 ]
             if len(vs):
                 internal_representation.function = vs[0]
                 #print vs[0]
+        if node_type == action_node:
+            w = blocklyTranslator.parseBlocksRecursively( node[0], 0 )
+            w = w.split(";\n")
+            print(w)
         self.nodes.append( internal_representation)
         if node_type == root_node: self.render()
         return name

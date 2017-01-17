@@ -28,14 +28,19 @@ return {
     }
   }
 };
-var InternalNode = function (name, color, type_in)
+var InternalNode = function (name, color, type_in, type_restriction)
 {
     return {
         init: function () {
             this.appendDummyInput()
                 .appendField(name);
-            this.appendStatementInput("Children")
-                .setCheck([type_info]);
+            if(type_restriction !== null)
+            {
+                this.appendStatementInput("Children")
+                    .setCheck([type_restriction]);
+            }
+            else
+                this.appendStatementInput("Children")
             this.setPreviousStatement(true, type_in);
             this.setColour(color);
             this.setHelpUrl(help_url);
@@ -44,7 +49,7 @@ var InternalNode = function (name, color, type_in)
     }
 };
 var _InternalNode = function (name, color) {
-    return InternalNode(name, color, type_info);
+    return InternalNode(name, color, type_info, type_info);
 }
 var LeafNode = function (name, color ) {
     return {
@@ -157,7 +162,7 @@ return {
 
 
 
-Blockly.Blocks['root_node'] = InternalNode( "[ ] Root Node", 60, "root_node");
+Blockly.Blocks['root_node'] = InternalNode( "[ ] Root Node", 60, "root_node", type_info);
 Blockly.Blocks['subtree_root'] = _InternalNode( "[^] Subtree Root", 65);
 Blockly.Blocks['inverter'] = _InternalNode( "! Inverter Node", 76);
 
@@ -165,7 +170,7 @@ Blockly.Blocks['selector_node'] = new MultiBehaviorNode("(?) Selector Node", 120
 Blockly.Blocks['sequence_node'] = new MultiBehaviorNode("(->) Sequence Node", 180);
 Blockly.Blocks['parallel_node'] = new MultiBehaviorNode("(=>) Parallel Node", 200);
 
-Blockly.Blocks['action_node'] = LeafNode( "Action Node", 330 );
+Blockly.Blocks['action_node'] = InternalNode( "Action Node", 330, type_info, null);
 Blockly.Blocks['condition_node'] = LeafNode( "Condition Node", 220 );
 Blockly.Blocks['subtree'] = LeafNode( "Subtree", 230 );
 

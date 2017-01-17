@@ -1,0 +1,10 @@
+digraph G {
+    ordering=out;
+    inverter1 -> action_node1;
+    selector_node1 -> inverter1;
+    root -> selector_node1;
+    action_node1 [shape="polygon", sides=4, fillcolor="green", style="filled", label="None"];
+	inverter1 [shape="polygon",sides=4,label="! (1)"];
+	selector_node1 [shape="polygon",sides=4,label="? (1)"];
+	root [shape="polygon",sides=4,label="o (1)"];
+ }
