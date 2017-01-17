@@ -11,6 +11,7 @@ var mutator_label = ""
 
 var behavior_node_start = "behavior_node_start";
 var behavior_node_extra = "behavior_node_extra";
+var type_info = "behavior_node"
 var mutator = function(name, prev, next) {
 return {
   /**
@@ -27,21 +28,24 @@ return {
     }
   }
 };
-var InternalNode = function (name, color)
+var InternalNode = function (name, color, type_in)
 {
     return {
         init: function () {
             this.appendDummyInput()
                 .appendField(name);
             this.appendStatementInput("Children")
-                .setCheck(node_types);
-            this.setPreviousStatement(true, node_types);
+                .setCheck([type_info]);
+            this.setPreviousStatement(true, type_in);
             this.setColour(color);
             this.setHelpUrl(help_url);
             this.setTooltip('');
         },
     }
 };
+var _InternalNode = function (name, color) {
+    return InternalNode(name, color, type_info);
+}
 var LeafNode = function (name, color ) {
     return {
         init: function() {
@@ -49,7 +53,7 @@ var LeafNode = function (name, color ) {
             .appendField(name);
         this.appendValueInput("NAME");
         this.setInputsInline(true);
-        this.setPreviousStatement(true, null);
+        this.setPreviousStatement(true, type_info );
         this.setColour(color);
     }
     }
@@ -62,9 +66,9 @@ return {
             .appendField(name)
 			.appendField(new Blockly.FieldCheckbox("FALSE"), "MAINTAIN_STATE");;
         this.appendStatementInput("Child0")
-            .setCheck(["selector_node", node_types])
+            .setCheck( [ type_info ])
             .appendField(mutator_label);
-        this.setPreviousStatement(true, node_types);
+        this.setPreviousStatement(true, type_info);
         this.setColour(color);
         this.setHelpUrl(help_url);
         this.setTooltip('');
@@ -153,9 +157,9 @@ return {
 
 
 
-Blockly.Blocks['root_node'] = InternalNode( "[ ] Root Node", 60);
-Blockly.Blocks['subtree_root'] = InternalNode( "[^] Subtree Root", 65);
-Blockly.Blocks['inverter'] = InternalNode( "! Inverter Node", 76);
+Blockly.Blocks['root_node'] = InternalNode( "[ ] Root Node", 60, "root_node");
+Blockly.Blocks['subtree_root'] = _InternalNode( "[^] Subtree Root", 65);
+Blockly.Blocks['inverter'] = _InternalNode( "! Inverter Node", 76);
 
 Blockly.Blocks['selector_node'] = new MultiBehaviorNode("(?) Selector Node", 120);
 Blockly.Blocks['sequence_node'] = new MultiBehaviorNode("(->) Sequence Node", 180);

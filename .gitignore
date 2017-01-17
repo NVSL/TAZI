@@ -40,3 +40,5 @@ Server/appengine/arduPi/*.ino
 *.cs
 InoComposer/InoGenerator/
 InoComposer/BlocksToCpp/
+
+TAZI_ENV/*
