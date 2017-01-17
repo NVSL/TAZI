@@ -37,7 +37,7 @@ global_jinja_vars["lib"] = global_jinja_vars["resDir"] + "lib/"
 global_jinja_vars["blockly"] = global_jinja_vars["resDir"] + "lib/blockly/"  
 templates_dir = slashes.join( static_dir, "jinja_templates")
 
-run_as_arduino = True 
+run_as_arduino = True
 arduino_flags = "--upload"
 arduino_args = ["cmd", "/C" "arduino.exe"] if os.name == "nt" else ["arduino"]
 

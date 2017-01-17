@@ -119,6 +119,7 @@ class BehaviorParser:
                        "edges" : edges 
                      }
         self.save_to_file( "out_behavior.dot", "behavior.dot.jinja", jinja_vars )
+        self.save_to_file( "out_behavior.ino", "behavior.jinja.ino", jinja_vars )
                        
     def save_to_file( self, file_name, template, jinja_vars ):
         template = jinja_env.get_template(template)

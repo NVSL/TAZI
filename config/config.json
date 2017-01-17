@@ -1,5 +1,5 @@
 {
-    "gspec_file" : "config\\Default.gspec",
+    "gspec_file" : "config/Default.gspec",
     "output_name" : "blockly_executable",
 	"landing_file" :  "landing.jinja.html"
 }
