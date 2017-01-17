@@ -89,9 +89,9 @@ class BehaviorParser:
                 internal_representation.function = vs[0]
                 #print vs[0]
         if node_type == action_node:
-            w = blocklyTranslator.parseBlocksRecursively( node[0], 0 )
-            w = w.split(";\n")
-            print(w)
+            stmts  = blocklyTranslator.parseBlocksRecursively( node[0], 0 )
+            stmts  = w.split(";\n")
+            internal_representation.stmts = stmts
         self.nodes.append( internal_representation)
         if node_type == root_node: self.render()
         return name

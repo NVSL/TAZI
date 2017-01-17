@@ -27,11 +27,13 @@ RootNode
 	
 
 // Action Node Functions
-/**
 % for n in action_functions
-{{n}}();
+void _action_function_{{n.id}}() {
+	% for stmt in n.stmts:
+	{{stmt}};
+	% endfor
+}
 % endfor
-*/
 // Condition Node Functions
 % for n in condition_functions
 bool {{n}}();

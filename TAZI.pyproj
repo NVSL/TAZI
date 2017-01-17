@@ -12,8 +12,10 @@
     <OutputPath>.</OutputPath>
     <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <InterpreterId>{8a403a0c-17de-43b9-879b-935f248355aa}</InterpreterId>
-    <InterpreterVersion>2.7</InterpreterVersion>
+    <InterpreterId>
+    </InterpreterId>
+    <InterpreterVersion>
+    </InterpreterVersion>
     <IsWindowsApplication>False</IsWindowsApplication>
     <CommandLineArguments>
     </CommandLineArguments>
@@ -27,6 +29,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="BlocksToCpp\behavior.jinja" />
+    <Content Include="BlocksToCpp\behavior.jinja.ino" />
     <Content Include="BlocksToCpp\bugsList.txt" />
     <Content Include="BlocksToCpp\testsList.txt" />
     <Content Include="BlocksToCpp\tests\testsList.txt" />
@@ -304,19 +307,6 @@
     <Folder Include="WebStatic\media\" />
     <Folder Include="WebStatic\views\" />
     <Folder Include="wiki_imgs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Interpreter Include="TAZI_Env\">
-      <Id>{8a403a0c-17de-43b9-879b-935f248355aa}</Id>
-      <BaseInterpreter>{2af0f10d-7135-4994-9156-5d01c9c11b7e}</BaseInterpreter>
-      <Version>2.7</Version>
-      <Description>TAZI_Env (Python 2.7)</Description>
-      <InterpreterPath>Scripts\python.exe</InterpreterPath>
-      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
-      <LibraryPath>Lib\</LibraryPath>
-      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
-      <Architecture>X86</Architecture>
-    </Interpreter>
   </ItemGroup>
   <Import Project="$(PtvsTargetsFile)" Condition="Exists($(PtvsTargetsFile))" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="!Exists($(PtvsTargetsFile))" />
