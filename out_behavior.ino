@@ -6,9 +6,15 @@ SelectorNode * selector_node2; // id: 2
 SelectorNode * selector_node1; // id: 1
 RootNode * root; // id: 1
 // Action Node Functions
-/**
-None();
-*/
+void _action_function_1() {
+	drive.forward(255);
+	delay( (int) ( 1000 * (1)));
+	drive.backward();
+}
+void _action_function_2() {
+	drive.backward();
+	delay( (int) ( 1000 * (1)));
+}
 // Condition Node Functions
 void setup() {
         action_node1 = new ActionNode ( _action_function_1);

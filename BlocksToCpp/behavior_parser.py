@@ -1,6 +1,5 @@
 import xml.etree.ElementTree as ET
 import jinja2
-import blocklyTranslator
 import os
 from functools import reduce
 from operator import add
@@ -50,10 +49,11 @@ class BehaviorNode:
             return [ self.name + " -> " + child for child in self.real_children]
         return []
 class BehaviorParser:
-    def __init__(self, program_name):
+    def __init__(self, program_name, translator):
         self.counts = {}
         self.nodes = []
         self.program_name = program_name
+        self.translator = translator
 
     # Determines a unique name for node
     # Keeps track of how many nodes of each type we have
@@ -84,13 +84,13 @@ class BehaviorParser:
         # If a node is one of the following types, then it should contain some 
         # function like object
         if node_type == condition_node:
-            vs = [ blocklyTranslator.getArgs(c)[1:-1] for c in node if len(c) > 0 ]
+            vs = [ self.translator.get_args(c)[1:-1] for c in node if len(c) > 0 ]
             if len(vs):
                 internal_representation.function = vs[0]
                 #print vs[0]
         if node_type == action_node:
-            stmts  = blocklyTranslator.parseBlocksRecursively( node[0], 0 )
-            stmts  = w.split(";\n")
+            stmts  = self.translator.parse_blocks_recursively( node[0], 0 )
+            stmts  = stmts.split(";\n")
             internal_representation.stmts = stmts
         self.nodes.append( internal_representation)
         if node_type == root_node: self.render()
@@ -110,6 +110,15 @@ class BehaviorParser:
     def render( self ):
         edges = reduce( add, [ n.get_edges() for n in self.nodes], [] )
         sorted_nodes = [ self.get_tuple( node_type ) for node_type in all_nodes ]
+        action_funcs = self.get_nodes( action_node )
+        action_decs = [ "void _action_node_" + str(n.id) + "()" for n in action_funcs  ]
+        action_defs = []
+        for dec, node in zip(action_decs, action_funcs ):
+            _def = dec + "{"
+            _def += ";\n".join(node.stmts) + "\n}"
+            action_defs.append( _def )
+        self.translator.declaredFuncs += action_decs 
+        self.translator.definedFuncs += action_defs 
         jinja_vars = { 
                        "nodes" : self.nodes,
                        "condition_functions" : self.get_leaves(condition_node) ,

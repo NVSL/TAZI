@@ -27,7 +27,7 @@ RootNode
 	
 
 // Action Node Functions
-% for n in action_functions
+% for n in nodes if n.node_type == "action_node"
 void _action_function_{{n.id}}() {
 	% for stmt in n.stmts:
 	{{stmt}};

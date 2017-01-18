@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 from translation_dictionaries import *
+from behavior_parser import BehaviorParser
 
 import xml.etree.ElementTree as ET
 import argparse
@@ -88,10 +89,6 @@ class BlocklyTranslator:
             print "Current tag: " + tag, "Attributes: " + str(node.attrib)
     
         if tag == "xml":
-            self.definedFuncs = []
-            self.declaredFuncs = []
-            self.main_loop = []
-            self.main_setup = []
             overallResult = ""
             mainBod = ""
             for child in node.iter('block'):
@@ -194,8 +191,7 @@ class BlocklyTranslator:
                 lines += self.parse_blocks_recursively( b, depth ) + delimitter+ '\n'
             return lines
         if blockType == "root_node": 
-            from behavior_parser import BehaviorParser
-            behavior_parser = BehaviorParser(program_name) 
+            behavior_parser = BehaviorParser(self.program_name, self) 
             behavior_parser.parse_node( node )
             return ""
     
