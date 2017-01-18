@@ -7,15 +7,12 @@
     <ProjectHome />
     <StartupFile>main.py</StartupFile>
     <SearchPath />
-    <WorkingDirectory>
-    </WorkingDirectory>
+    <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <InterpreterId>
-    </InterpreterId>
-    <InterpreterVersion>
-    </InterpreterVersion>
+    <InterpreterId>{2af0f10d-7135-4994-9156-5d01c9c11b7e}</InterpreterId>
+    <InterpreterVersion>2.7</InterpreterVersion>
     <IsWindowsApplication>False</IsWindowsApplication>
     <CommandLineArguments>
     </CommandLineArguments>
@@ -33,6 +30,7 @@
     <Content Include="BlocksToCpp\bugsList.txt" />
     <Content Include="BlocksToCpp\testsList.txt" />
     <Content Include="BlocksToCpp\tests\testsList.txt" />
+    <Content Include="InoComposer\ino_template.jinja.ino" />
     <Content Include="Proposal\Gadget Compiler - New Page.png" />
     <Content Include="ServerFiles\favicon.ico" />
     <Content Include="ServerFiles\robots.txt" />
@@ -307,6 +305,9 @@
     <Folder Include="WebStatic\media\" />
     <Folder Include="WebStatic\views\" />
     <Folder Include="wiki_imgs" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterpreterReference Include="{2af0f10d-7135-4994-9156-5d01c9c11b7e}\2.7" />
   </ItemGroup>
   <Import Project="$(PtvsTargetsFile)" Condition="Exists($(PtvsTargetsFile))" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="!Exists($(PtvsTargetsFile))" />

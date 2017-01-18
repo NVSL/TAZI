@@ -47,7 +47,8 @@ if __name__ == "__main__":
     # We need the xml as a string
     xml = open(args.xml).read()
     # Make a composer object
-    composer = InoComposer(api_gspec, xml)
+    composer = InoComposer(api_gspec, xml, "foobar")
     # Print the string representation of the ino
     print composer.get_ino()
+    #composer.get_ino()
     #print
