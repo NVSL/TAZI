@@ -5,29 +5,21 @@
  Editor:	http://www.visualmicro.com
 */
 
-#include "ActionNode.h"
-#include "ParallelNode.h"
-#include "SequenceNode.h"
-#include "RootNode.h"
-#include "SelectorNode.h"
-#include "InternalNode.h"
-#include "BehaviorNode.h"
-#include "ConditionNode.h"
-#include <Gadgetron_Libraries/utility/MomentaryButton.h>
+#include "BehaviorTree.h"
 
 NodeList selectionList; 
 SelectorNode * firstSelector; 
 RootNode * root;
-MomentaryButton button(9);
 // the setup function runs once when you press reset or power the board
 const int status_led = 13;
 void setup() {
+	auto f = []() -> int { return 42;  };
+	auto n = new ConditionNode([]() -> bool { return true;  });
 	selectionList = 
-	MAKE_NODE_LIST(3) //new BehaviorNode*[3]
+	MAKE_NODE_LIST(2) //new BehaviorNode*[3]
 	{ 
-		new ConditionNode<BehaviorNode>(foo),
-		new ConditionNode<MomentaryButton>(&MomentaryButton::isPressed, button),
-		new ConditionNode<BehaviorNode>(bar) 
+		new ConditionNode(foo),
+		new ConditionNode(bar) 
 	};
 	firstSelector = new SelectorNode(selectionList, 3);
 	root = new RootNode(firstSelector);

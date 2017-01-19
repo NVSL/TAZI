@@ -13,38 +13,12 @@
 
 #include "TAZI_Stress_Board.h"
 #include <Gadgetron.h>
-/** ======================================================================= **\
-|** --------------------- User Functions Declarations --------------------- **|
-\** ======================================================================= **/
-
-void inch_forward();
-void blink_lights();
-void stall();
-/** ======================================================================= **\
-|** --------------------- User Functions Definitions ---------------------- **|
-\** ======================================================================= **/
-
-/* Describe this function...
-*/
-void inch_forward() {
-  drive.forward();
-  delay( (int) ( 1000 * (1)));
-}
-
-/* Describe this function...
-*/
-void blink_lights() {
-  led.turnOn();
-  led_2.turnOn();
-}
-
-/* Describe this function...
-*/
-void stall() {
-  drive.stop();
-  delay( (int) ( 1000 * (1)));
-}
-
+#include <BehaviorTree.h>
+ActionNode *action_node1; // id: 1
+ActionNode *action_node2; // id: 2
+SelectorNode *selector_node2; // id: 2
+SelectorNode *selector_node1; // id: 1
+RootNode *root; // id: 1
 /** ======================================================================= **\
 |** --------------------------- Setup Function ---------------------------- **|
 |** %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% **|
@@ -56,10 +30,28 @@ void stall() {
 \** ======================================================================= **/
 
 void setup () {
-    led_2.setup();
-    button.setup();
-    led.setup();
     drive.setup();
+    action_node1 = new ActionNode (		[]() -> void {
+			drive.forward(255);
+			delay( (int) ( 1000 * (1)));
+			drive.backward();
+		});
+
+    action_node2 = new ActionNode (		[]() -> void {
+			drive.backward();
+			delay( (int) ( 1000 * (1)));
+		});
+
+    selector_node2 = new SelectorNode ( new BehaviorNode*[1] {
+			action_node2
+	  } , 1);
+
+    selector_node1 = new SelectorNode ( new BehaviorNode*[2] {
+			action_node1, selector_node2
+	  } , 2);
+
+    root = new RootNode (			selector_node1);
+
 }
 
 /** ======================================================================= **\
@@ -75,13 +67,6 @@ void setup () {
 \** ======================================================================= **/
 
 void loop () {
-  if(button.isPressed()) {
-    blink_lights();
-  }
-  else if(!(drive.isMoving())) {
-    inch_forward();
-  }
-  else {
-    stall();
-  };
+	root->tick();
+;
 }

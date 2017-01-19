@@ -39,6 +39,7 @@ class BlocklyTranslator:
         self.declaredFuncs = []
         self.main_setup = []
         self.main_funcs = ""
+        self.behavior_parser = None
         # User Defined Function Names
         self.madeFuncNames = {}
         self.checkFuncDefs = {}
@@ -191,8 +192,8 @@ class BlocklyTranslator:
                 lines += self.parse_blocks_recursively( b, depth ) + delimitter+ '\n'
             return lines
         if blockType == "root_node": 
-            behavior_parser = BehaviorParser(self.program_name, self) 
-            behavior_parser.parse_node( node )
+            self.behavior_parser = BehaviorParser(self.program_name, self) 
+            self.behavior_parser.parse_node( node )
             return ""
     
         return self.genericBlockGet(node,depth)

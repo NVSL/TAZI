@@ -1,3 +1,21 @@
+%- macro class_name(node_type)
+%- if node_type == "selector_node":
+SelectorNode
+%- elif node_type == "sequence_node" :
+SequenceNode
+%- elif node_type == "parallel_node" :
+ParallelNode
+%- elif node_type == "action_node" :
+ActionNode
+%- elif node_type == "condition_node" :
+ConditionNode
+%- elif node_type == "inverter" :
+Inverter
+%- elif node_type == "root_node" :
+RootNode
+%- endif
+%- endmacro
+
 {{header}}
 
 
@@ -7,6 +25,9 @@
 
 #include "{{custom_header_file}}"
 #include <Gadgetron.h>
+% if bt
+#include <BehaviorTree.h>
+% endif
 % for v in variable_declarations:
 % if loop.first
 
@@ -18,6 +39,8 @@
 % for f in function_declarations:
 % if loop.first
 
+
+
 /** ======================================================================= **\
 |** --------------------- User Functions Declarations --------------------- **|
 \** ======================================================================= **/
@@ -26,6 +49,9 @@
 {{f}}
 % endfor
 
+% for node in bt.nodes
+{{ class_name(node.node_type) }} *{{node.name}}; // id: {{node.id}}
+% endfor
 
 % for f in function_definitions:
 % if loop.first
@@ -52,6 +78,29 @@
 void setup () {
 % for o in gadgetron_objs:
     {{o}}.setup();
+	% for n in bt.nodes
+    {{n.name}} = new {{class_name(n.node_type)}} ( 
+    %- if n.node_type == "action_node"
+		[]() -> void {
+		% for stmt in n.stmts:
+			{{stmt}};
+		% endfor
+		}
+    %- elif n.node_type == "condition_node"
+		[]() -> bool {; }
+    %- elif n.node_type == "root_node"
+			{{n.children}} 
+    %- else
+ new BehaviorNode*[{{ n.real_children | length }}] {
+			{{n.children}}
+	  } , {{ n.real_children | length }}
+        %- endif 
+);
+
+		% if n.holds_state:
+		{{ n.name}}.starred = true;
+		% endif
+	% endfor
 % endfor
 }
 
@@ -68,7 +117,10 @@ void setup () {
 \** ======================================================================= **/
 
 void loop () {
-% for l in loop_body:
+	% if bt:
+	root->tick();
+	% endif
+	% for l in loop_body:
 {{l}}
-% endfor
+	% endfor
 }

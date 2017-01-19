@@ -110,15 +110,6 @@ class BehaviorParser:
     def render( self ):
         edges = reduce( add, [ n.get_edges() for n in self.nodes], [] )
         sorted_nodes = [ self.get_tuple( node_type ) for node_type in all_nodes ]
-        action_funcs = self.get_nodes( action_node )
-        action_decs = [ "void _action_node_" + str(n.id) + "()" for n in action_funcs  ]
-        action_defs = []
-        for dec, node in zip(action_decs, action_funcs ):
-            _def = dec + "{"
-            _def += ";\n".join(node.stmts) + "\n}"
-            action_defs.append( _def )
-        self.translator.declaredFuncs += action_decs 
-        self.translator.definedFuncs += action_defs 
         jinja_vars = { 
                        "nodes" : self.nodes,
                        "condition_functions" : self.get_leaves(condition_node) ,

@@ -23,6 +23,7 @@ class InoComposer:
         generator.declare_functions( translator.get_func_decs() )
         generator.declare_variables( translator.get_variables() )
         generator.declare_objects( [ v for v in translator.declaredObjs ])
+        generator.behavior_tree = self.translator.behavior_parser
         generator.appendToSetup( setup_str ) 
         generator.appendToLoop( loop_str ) 
         ino = generator.getClass() + "\n"

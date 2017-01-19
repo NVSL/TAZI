@@ -32,6 +32,7 @@ class ClassGenerator:
         self.loopBody = []
         self.find_name(api)
         self.include_str = include_str
+        self.behavior_tree = None
 
     def appendToSetup(self, lines):
         self.setupBody += lines
@@ -64,6 +65,7 @@ class ClassGenerator:
             "name"                  : self.name,
             "custom_header_file"    : self.name.replace(" ", "-") + '.h',
             "header" : createRobotHeader( self.name ),
+            "bt"     : self.behavior_tree,
         }
 
         template = self.jinja_env.get_template(self.jinja_file)

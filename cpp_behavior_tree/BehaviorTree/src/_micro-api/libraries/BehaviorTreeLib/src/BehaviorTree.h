@@ -12,7 +12,14 @@
 #else
 	#include "WProgram.h"
 #endif
-
+#include "ActionNode.h"
+#include "ParallelNode.h"
+#include "SequenceNode.h"
+#include "RootNode.h"
+#include "SelectorNode.h"
+#include "InternalNode.h"
+#include "BehaviorNode.h"
+#include "ConditionNode.h"
 
 #endif
 
