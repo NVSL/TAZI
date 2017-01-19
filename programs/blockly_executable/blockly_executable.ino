@@ -15,6 +15,7 @@
 #include <Gadgetron.h>
 #include <BehaviorTree.h>
 ActionNode *action_node1; // id: 1
+ConditionNode *condition_node1; // id: 1
 ActionNode *action_node2; // id: 2
 SelectorNode *selector_node2; // id: 2
 SelectorNode *selector_node1; // id: 1
@@ -30,14 +31,17 @@ RootNode *root; // id: 1
 \** ======================================================================= **/
 
 void setup () {
+    button.setup();
     drive.setup();
-    action_node1 = new ActionNode (		[]() -> void {
+    action_node1 = new ActionNode ([]() -> void {
 			drive.forward(255);
 			delay( (int) ( 1000 * (1)));
 			drive.backward();
 		});
 
-    action_node2 = new ActionNode (		[]() -> void {
+    condition_node1 = new ConditionNode ([]() -> bool { return !(button.isPressed()); });
+
+    action_node2 = new ActionNode ([]() -> void {
 			drive.backward();
 			delay( (int) ( 1000 * (1)));
 		});
@@ -46,9 +50,9 @@ void setup () {
 			action_node2
 	  } , 1);
 
-    selector_node1 = new SelectorNode ( new BehaviorNode*[2] {
-			action_node1, selector_node2
-	  } , 2);
+    selector_node1 = new SelectorNode ( new BehaviorNode*[3] {
+			action_node1, condition_node1, selector_node2
+	  } , 3);
 
     root = new RootNode (			selector_node1);
 

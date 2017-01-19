@@ -78,16 +78,17 @@ RootNode
 void setup () {
 % for o in gadgetron_objs:
     {{o}}.setup();
-	% for n in bt.nodes
+% endfor
+% for n in bt.nodes
     {{n.name}} = new {{class_name(n.node_type)}} ( 
     %- if n.node_type == "action_node"
-		[]() -> void {
+[]() -> void {
 		% for stmt in n.stmts:
 			{{stmt}};
 		% endfor
 		}
     %- elif n.node_type == "condition_node"
-		[]() -> bool {; }
+[]() -> bool { return {{n.stmts}}; }
     %- elif n.node_type == "root_node"
 			{{n.children}} 
     %- else
@@ -100,7 +101,6 @@ void setup () {
 		% if n.holds_state:
 		{{ n.name}}.starred = true;
 		% endif
-	% endfor
 % endfor
 }
 

@@ -6,6 +6,7 @@ void _action_function_1() {
 void _action_function_2() {
 }
 // Condition Node Functions
+bool None();
 void setup() {
 	
 	}
