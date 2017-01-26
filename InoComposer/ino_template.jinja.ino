@@ -79,6 +79,9 @@ void setup () {
 % for o in gadgetron_objs:
     {{o}}.setup();
 % endfor
+% for line in setup_body:
+	{{line}}
+%endfor
 % for n in bt.nodes
     {{n.name}} = new {{class_name(n.node_type)}} ( 
     %- if n.node_type == "action_node"

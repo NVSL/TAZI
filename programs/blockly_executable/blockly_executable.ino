@@ -17,6 +17,7 @@
 /** Variable Declarations **/
 
 int pause_time;
+int motor_speed;
 ActionNode *action_node1; // id: 1
 ConditionNode *condition_node1; // id: 1
 ActionNode *action_node2; // id: 2
@@ -36,8 +37,10 @@ RootNode *root; // id: 1
 void setup () {
     button.setup();
     drive.setup();
+	  pause_time = 1;
+	  motor_speed = 255;
     action_node1 = new ActionNode ([]() -> void {
-			drive.forward(255);
+			drive.forward(motor_speed);
 			delay( (int) ( 1000 * (pause_time)));
 			drive.backward();
 		});
