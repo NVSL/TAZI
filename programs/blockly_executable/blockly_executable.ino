@@ -14,6 +14,9 @@
 #include "TAZI_Stress_Board.h"
 #include <Gadgetron.h>
 #include <BehaviorTree.h>
+/** Variable Declarations **/
+
+int pause_time;
 ActionNode *action_node1; // id: 1
 ConditionNode *condition_node1; // id: 1
 ActionNode *action_node2; // id: 2
@@ -35,7 +38,7 @@ void setup () {
     drive.setup();
     action_node1 = new ActionNode ([]() -> void {
 			drive.forward(255);
-			delay( (int) ( 1000 * (1)));
+			delay( (int) ( 1000 * (pause_time)));
 			drive.backward();
 		});
 
@@ -43,7 +46,7 @@ void setup () {
 
     action_node2 = new ActionNode ([]() -> void {
 			drive.backward();
-			delay( (int) ( 1000 * (1)));
+			delay( (int) ( 1000 * (pause_time)));
 		});
 
     selector_node2 = new SelectorNode ( new BehaviorNode*[1] {
