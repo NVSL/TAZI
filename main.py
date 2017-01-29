@@ -9,7 +9,7 @@ from ServerFiles.ProgramManager import not_loaded
 def main (app):
     port = 8081
     httpd = wsgiref.simple_server.make_server('', port, app)
-    print "Serving HTTP on port "+str(port)+"..."
+    print ("Serving HTTP on port "+str(port)+"...")
     httpd.serve_forever()
 
 if __name__ == "__main__":

@@ -671,6 +671,13 @@ def run( xml ):
     except BlocklyError as e:
         print("Error: " + e.value)
         raise
+		
+#############################################################################
+#def stateBlock ( xml ):
+
+#def transitionBlock (xml):
+
+#############################################################################		
 
 def getLoop(): return main_loop
 def getVars(): return set(declaredVars)

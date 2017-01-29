@@ -153,5 +153,7 @@
   <sep> </sep>
   {% include 'behavior_tree_nodes.jinja.xml' %}
   <sep> </sep>
+  {% include 'state_machine_nodes.jinja.xml' %}
+  <sep> </sep>
   {% include 'extra_categories.jinja.xml' %}
 </xml>
