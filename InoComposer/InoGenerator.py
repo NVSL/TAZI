@@ -3,45 +3,36 @@ __email__ = "mmg005@eng.ucsd.edu"
 
 import xml.etree.ElementTree as ETree
 import functools
+import jinja2
+import os
 from InoCommenter import *
 class ClassGenerator:
     libraries = []
-    objects = []
+    gadgetron_components = []
     loopBody = []
     name = "" 
     funcs = ""
     functionDeclarations = ""
+ 
+    jinja_env = jinja2.Environment(loader=jinja2.FileSystemLoader( os.path.dirname( __file__ ) ))
+    jinja_env.line_comment_prefix = "#//"
+    jinja_env.line_statement_prefix = "%"
     variableDeclarations = ""
+    jinja_file = "ino_template.jinja.ino"
 
     def declare_objects(self, objs):
-        self.objects = objs
+        self.gadgetron_components = objs
 
     def __init__( self, api, include_str="<>"):
-        self.objects = []
+        self.gadgetron_components = []
         self.objInstances = []
         self.setupBody = []
+        self.variableDeclarations = []
+        self.functionDeclarations = []
         self.loopBody = []
         self.find_name(api)
         self.include_str = include_str
-
-    def getSetupFunction(self):
-        setup_str = "void setup() {\n" 
-        tail_str = ".setup();\n"
-        def concatLines(acc, line): return acc + "   " + line + tail_str
-        setup_str += functools.reduce( concatLines, self.objects, "" ) 
-        tail_str = "\n"
-        setup_str += functools.reduce( concatLines, self.setupBody, "")  
-        return setup_str + "}" 
-
-    def getLoopFunction(self):
-        def concatLines(acc, line): return acc + "   " + line + "\n"
-        return functools.reduce( concatLines, self.loopBody, "void loop() {\n" ) + "}"
-
-    def getLibraries(self):
-        l = self.include_str[0]
-        r = self.include_str[1]
-        def concatLib( acc, elem): return acc + '#include "' + elem + '"\n'
-        return functools.reduce( concatLib, set(self.libraries), "" )
+        self.behavior_tree = None
 
     def appendToSetup(self, lines):
         self.setupBody += lines
@@ -50,40 +41,36 @@ class ClassGenerator:
         self.loopBody += lines
 
     def define_functions(self, funcs):
-        for f in funcs: self.funcs += f + "\n"
+        self.function_definitions = funcs 
 
     def declare_functions(self, funcs):
-        for f in funcs: self.functionDeclarations += f + "\n"
+        self.functionDeclarations = funcs
 
     def declare_variables(self, vars):
-        for v in vars: self.variableDeclarations += v + "\n"
+        self.variableDeclarations = vars 
 
 
     def find_name(self, root):
         for component in root:
             if component.tag == "name": self.name = component.text
-    """
-    TODO: Make this into a jinjna file"
-    """
+
     def getClass(self):
-        rv = createRobotHeader( self.name )
-        rv += nl * 2
-        self.libraries = [self.name.replace(" ", "-") + '.h']
-        rv += a(createSectionHeader("Libraries"))
-        rv += a(self.getLibraries())
-        if self.variableDeclarations != "":
-            rv += a(createSectionHeader("User VariableDeclarations"))
-            rv += self.variableDeclarations
-        if self.funcs != "":
-            rv += a(createSectionHeader("User Functions Declarations"))
-            rv += self.functionDeclarations
-            rv += a(createSectionHeader("User Functions Definitions"))
-            rv += self.funcs
-        rv += a(createSectionHeader("Setup Function", description="The setup() function runs --ONCE-- when the Arduino boots up. As the name implies, it's useful to add code that 'sets up' your Gadget to run correctly."))
-        rv += a(self.getSetupFunction())
-        rv += a(createSectionHeader("Loop Function", description="The loop() function runs continuously after the setup() function finishes and while the Arduino is running. In other words, this function is called repeatly over and over again when it reaches the end of the function. This function is where the majority of your program's logic should go."  ))
-        rv += a(self.getLoopFunction())
-        return rv
+        jinja_vars = {
+            "gadgetron_objs"        : self.gadgetron_components,
+            "variable_declarations" : self.variableDeclarations,
+            "function_declarations" : self.functionDeclarations,
+            "function_definitions"  : self.function_definitions,
+            "setup_body"            : self.setupBody,
+            "loop_body"             : self.loopBody,
+            "name"                  : self.name,
+            "custom_header_file"    : self.name.replace(" ", "-") + '.h',
+            "header" : createRobotHeader( self.name ),
+            "bt"     : self.behavior_tree,
+        }
+
+        template = self.jinja_env.get_template(self.jinja_file)
+        code = template.render( jinja_vars )
+        return code
 
 if __name__ == "__main__":
     import argparse
@@ -92,6 +79,6 @@ if __name__ == "__main__":
     args = argparser.parse_args()
     api = ETree.parse(args.gspec).getroot()
     generator = ClassGenerator(api)
-    print generator.getClass()
+    generator.getClass()
 
     

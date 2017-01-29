@@ -1,4 +1,4 @@
-import BlocksToCpp.blocklyTranslator as Translator
+from BlocksToCpp.blocklyTranslator import *
 from InoGenerator import *
 from StringIO import StringIO
 import xml.etree.ElementTree as ETree
@@ -10,24 +10,28 @@ class InoComposer:
         self.gspec = api_gspec
         self.xml = xml
         self.program_name = program_name
+        self.translator = BlocklyTranslator()
+
     # Returns the ino as a string
     def get_ino(self):
         self.get_cpp()
         generator = ClassGenerator( self.gspec )
-        setup_str = Translator.getSetup()
-        loop_str = Translator.getLoop() 
-        generator.define_functions( Translator.getFuncDefs() )
-        generator.declare_functions( Translator.getFuncDecs() )
-        generator.declare_variables( Translator.getVars())
-        generator.declare_objects( [ v for v in Translator.declaredObjs ])
+        translator = self.translator
+        setup_str = translator.get_setup()
+        loop_str = self.translator.get_loop() 
+        generator.define_functions(  translator.get_func_defs() )
+        generator.declare_functions( translator.get_func_decs() )
+        generator.declare_variables( translator.get_variables() )
+        generator.declare_objects( [ v for v in translator.declaredObjs ])
+        generator.behavior_tree = self.translator.behavior_parser
         generator.appendToSetup( setup_str ) 
         generator.appendToLoop( loop_str ) 
         ino = generator.getClass() + "\n"
         return ino
     # Returns the translated cpp as a string
     def get_cpp(self):
-        Translator.program_name = self.program_name.replace(" ", "_")
-        return Translator.run( StringIO(self.xml) )
+        self.translator.program_name = self.program_name.replace(" ", "_")
+        return self.translator.run( StringIO(self.xml) )
 
 def resolve_robot_name( gspec ):
     generator = ClassGenerator( gspec )
@@ -44,7 +48,8 @@ if __name__ == "__main__":
     # We need the xml as a string
     xml = open(args.xml).read()
     # Make a composer object
-    composer = InoComposer(api_gspec, xml)
+    composer = InoComposer(api_gspec, xml, "foobar")
     # Print the string representation of the ino
     print composer.get_ino()
+    #composer.get_ino()
     #print

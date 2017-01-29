@@ -18,6 +18,7 @@ config = json.load( j_file )
 j_file.close()
 gspec_file = config["gspec_file"]
 compiled_name = config["output_name"]
+landing_file = config["landing_file"] 
 
 block_generator_path = "BlockGenerator"
 out_file = compiled_name + ".ino"
@@ -25,7 +26,6 @@ program_path = slashes.join( "programs")
 static_file_dir = os.path.join( "WebStatic" )
 default_workspace = os.path.join( block_generator_path, "Resources" )
 static_dir = "WebStatic"
-landing_file = "landing.jinja"
 arduPi = "arduPi/" 
 
 program_status = ProgramManager()
@@ -37,7 +37,7 @@ global_jinja_vars["lib"] = global_jinja_vars["resDir"] + "lib/"
 global_jinja_vars["blockly"] = global_jinja_vars["resDir"] + "lib/blockly/"  
 templates_dir = slashes.join( static_dir, "jinja_templates")
 
-run_as_arduino = True 
+run_as_arduino = True
 arduino_flags = "--upload"
 arduino_args = ["cmd", "/C" "arduino.exe"] if os.name == "nt" else ["arduino"]
 
@@ -84,7 +84,7 @@ class ProgramHandler(webapp2.RequestHandler):
         program_status = ProgramManager( name=prog_name, program="./"+compiled_name )
         xml_file = os.path.join(program_path, prog_name + ".xml")
         if not os.path.exists( xml_file): xml_file = default_workspace
-        file_path =  "ide.jinja"
+        file_path =  "ide.jinja.html"
         env = get_jina_env()
         workspace = render_workspace( xml_file, file_path, additional_args=global_jinja_vars, jinja_env=env )
         self.response.write( workspace ) 
@@ -125,7 +125,7 @@ class CompileHandler(SaveHandler):
         self.saveProgram()
         self.composer = InoComposer( api, self.xml, program_status.name)
     def writeToOutfile( self ):
-        print out_file
+        #print out_file
         f = open(out_file, "w+")
         f.write(self.compiled)
 
@@ -146,9 +146,9 @@ class CompileInoHandler(CompileHandler):
         program_status.run()
         self.response.write( "Running program!" )
     def compile(self):
-        print "I'm really compiling!"
+        print ("Compiling program!")
         self.compiled = self.composer.get_ino()
-        print self.compiled
+        #print self.compiled
         self.writeToOutfile()
         abs_path = os.path.abspath(out_file)
         if run_as_arduino:

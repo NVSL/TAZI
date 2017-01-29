@@ -1,6 +1,5 @@
 import xml.etree.ElementTree as ET
 import jinja2
-import blocklyTranslator
 import os
 from functools import reduce
 from operator import add
@@ -50,10 +49,11 @@ class BehaviorNode:
             return [ self.name + " -> " + child for child in self.real_children]
         return []
 class BehaviorParser:
-    def __init__(self, program_name):
+    def __init__(self, program_name, translator):
         self.counts = {}
         self.nodes = []
         self.program_name = program_name
+        self.translator = translator
 
     # Determines a unique name for node
     # Keeps track of how many nodes of each type we have
@@ -83,11 +83,18 @@ class BehaviorParser:
 
         # If a node is one of the following types, then it should contain some 
         # function like object
-        if node_type in value_nodes:
-            vs = [ blocklyTranslator.getArgs(c)[1:-1] for c in node if len(c) > 0 ]
+        """
+        if node_type == condition_node:
+            vs = [ self.translator.get_args(c)[1:-1] for c in node if len(c) > 0 ]
             if len(vs):
                 internal_representation.function = vs[0]
                 #print vs[0]
+                """
+        if node_type in value_nodes:
+            stmts  = self.translator.parse_blocks_recursively( node[0], 0 )
+            if node_type == action_node:
+                stmts  = stmts.split(";\n")
+            internal_representation.stmts = stmts
         self.nodes.append( internal_representation)
         if node_type == root_node: self.render()
         return name
@@ -115,6 +122,7 @@ class BehaviorParser:
                        "edges" : edges 
                      }
         self.save_to_file( "out_behavior.dot", "behavior.dot.jinja", jinja_vars )
+        self.save_to_file( "out_behavior.ino", "behavior.jinja.ino", jinja_vars )
                        
     def save_to_file( self, file_name, template, jinja_vars ):
         template = jinja_env.get_template(template)

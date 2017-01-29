@@ -7,13 +7,12 @@
     <ProjectHome />
     <StartupFile>main.py</StartupFile>
     <SearchPath />
-    <WorkingDirectory>
-    </WorkingDirectory>
+    <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <InterpreterId />
-    <InterpreterVersion />
+    <InterpreterId>{9a7a9026-48c1-4688-9d5d-e5699d47d074}</InterpreterId>
+    <InterpreterVersion>2.7</InterpreterVersion>
     <IsWindowsApplication>False</IsWindowsApplication>
     <CommandLineArguments>
     </CommandLineArguments>
@@ -27,9 +26,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="BlocksToCpp\behavior.jinja" />
+    <Content Include="BlocksToCpp\behavior.jinja.ino" />
     <Content Include="BlocksToCpp\bugsList.txt" />
     <Content Include="BlocksToCpp\testsList.txt" />
     <Content Include="BlocksToCpp\tests\testsList.txt" />
+    <Content Include="InoComposer\ino_template.jinja.ino" />
     <Content Include="Proposal\Gadget Compiler - New Page.png" />
     <Content Include="ServerFiles\favicon.ico" />
     <Content Include="ServerFiles\robots.txt" />
@@ -59,6 +60,7 @@
     <Content Include="WebStatic\lib\blockly\blockly_compressed.js" />
     <Content Include="WebStatic\lib\blockly\blockly_uncompressed.js" />
     <Content Include="WebStatic\lib\blockly\blocksIO.js" />
+    <Content Include="WebStatic\lib\blockly\blocks\blockly_behavior_nodes.js" />
     <Content Include="WebStatic\lib\blockly\blocks\blocks_compressed.js" />
     <Content Include="WebStatic\lib\blockly\blocks\colour.js" />
     <Content Include="WebStatic\lib\blockly\blocks\custom_blocks.js" />
@@ -303,6 +305,9 @@
     <Folder Include="WebStatic\media\" />
     <Folder Include="WebStatic\views\" />
     <Folder Include="wiki_imgs" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterpreterReference Include="{9a7a9026-48c1-4688-9d5d-e5699d47d074}\2.7" />
   </ItemGroup>
   <Import Project="$(PtvsTargetsFile)" Condition="Exists($(PtvsTargetsFile))" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="!Exists($(PtvsTargetsFile))" />

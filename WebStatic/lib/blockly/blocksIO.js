@@ -86,8 +86,8 @@ function writeXMLToFile(fs) {
 
 window.requestFileSystem(window.TEMPORARY, 1024*1024, writeXMLToFile, errorHandler);
 
-document.getElementById('xmlinput').addEventListener('change', readXMLFromFile, false);
-document.getElementById('savexml').addEventListener('change', writeXMLToFile, false);
+//document.getElementById('xmlinput').addEventListener('change', readXMLFromFile, false);
+//document.getElementById('savexml').addEventListener('change', writeXMLToFile, false);
 function getXML() {
     var xml = Blockly.Xml.workspaceToDom(Blockly.getMainWorkspace());
     var xmlstr =  Blockly.Xml.domToText(xml);

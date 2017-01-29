@@ -1,10 +1,12 @@
+var help_url = 'http://www.gadgetron.build/';
+var arduino_statement = "arduino_stmt";
 Blockly.Blocks['variable_declarations'] = {
   init: function() {
     this.appendDummyInput()
         .appendField("Put variable definitions here");
-    this.setNextStatement(true);
+    this.setNextStatement(true, arduino_statement);
     this.setTooltip('');
-    this.setHelpUrl('http://www.gadgetron.build/');
+    this.setHelpUrl(help_url);
   }
 };
 
@@ -12,9 +14,9 @@ Blockly.Blocks['main_loop'] = {
   init: function() {
     this.appendDummyInput()
         .appendField("Put your repeating code here");
-    this.setNextStatement(true);
+    this.setNextStatement(true, arduino_statement);
     this.setTooltip('');
-    this.setHelpUrl('http://www.gadgetron.build/');
+    this.setHelpUrl(help_url);
   }
 };
 
@@ -25,11 +27,11 @@ Blockly.Blocks['delay'] = {
         .appendField("Pause for ");
     this.appendDummyInput()
         .appendField("milliseconds");
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
+    this.setPreviousStatement(true, arduino_statement);
+    this.setNextStatement(true, arduino_statement);
     this.setColour(17);
     this.setTooltip('');
-    this.setHelpUrl('http://www.gadgetron.build/');
+    this.setHelpUrl(help_url);
   }
 };
 
@@ -40,11 +42,11 @@ Blockly.Blocks['delaySeconds'] = {
         .appendField("Pause for ");
     this.appendDummyInput()
         .appendField("seconds");
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
+    this.setPreviousStatement(true, arduino_statement);
+    this.setNextStatement(true, arduino_statement);
     this.setColour(17);
     this.setTooltip('');
-    this.setHelpUrl('http://www.gadgetron.build/');
+    this.setHelpUrl(help_url);
   }
 };
 
@@ -56,7 +58,7 @@ Blockly.Blocks['main'] = {
         .appendField("Loop forever and ever");
     this.setColour(105);
     this.setTooltip('Make sure you put all your blocks in here!');
-    this.setHelpUrl('http://www.gadgetron.build/');
+    this.setHelpUrl(help_url);
     //this.setDeletable(false)
   }
 };
@@ -70,7 +72,7 @@ Blockly.Blocks['millis'] = {
     this.setOutput(true, "Number");
     this.setColour(17);
     this.setTooltip('The length of time since the program has started in milliseconds');
-    this.setHelpUrl('http://www.gadgetron.build/');
+    this.setHelpUrl(help_url);
   }
 };
 
@@ -81,7 +83,7 @@ Blockly.Blocks['c_main'] = {
         .appendField("C++ Main Function");
     this.setColour(330);
     this.setTooltip('');
-    this.setHelpUrl('http://www.example.com/');
+    this.setHelpUrl(help_url);
   }
 };
 
