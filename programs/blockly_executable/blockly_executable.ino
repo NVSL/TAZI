@@ -1,29 +1,18 @@
 /** ############################# Robot Name ############################## **\
-|** ~~~~~~~~~~~~~~~~~~~~~~~~~~~*****************~~~~~~~~~~~~~~~~~~~~~~~~~~~ **|
-|** ~~~~~~~~~~~~~~~~~~~~~~~~~~/                 \~~~~~~~~~~~~~~~~~~~~~~~~~~ **|
-|** ========================={ TAZI_Stress_Board }========================= **|
-|** ~~~~~~~~~~~~~~~~~~~~~~~~~~\                 /~~~~~~~~~~~~~~~~~~~~~~~~~~ **|
-|** ~~~~~~~~~~~~~~~~~~~~~~~~~~~*****************~~~~~~~~~~~~~~~~~~~~~~~~~~~ **|
-\** ##########################[[[[[[[[^_^]]]]]]]]########################## **/
+|** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~**************~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ **|
+|** ~~~~~~~~~~~~~~~~~~~~~~~~~~~/              \~~~~~~~~~~~~~~~~~~~~~~~~~~~~ **|
+|** =========================={ grabber sensor }=========================== **|
+|** ~~~~~~~~~~~~~~~~~~~~~~~~~~~\              /~~~~~~~~~~~~~~~~~~~~~~~~~~~~ **|
+|** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~**************~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ **|
+\** ###########################[[[[[[[^_^]]]]]]]########################### **/
 
 
 /** ======================================================================= **\
 |** ------------------------------ Libraries ------------------------------ **|
 \** ======================================================================= **/
 
-#include "TAZI_Stress_Board.h"
+#include "grabber-sensor.h"
 #include <Gadgetron.h>
-#include <BehaviorTree.h>
-/** Variable Declarations **/
-
-int pause_time;
-int motor_speed;
-ActionNode *action_node1; // id: 1
-ConditionNode *condition_node1; // id: 1
-ActionNode *action_node2; // id: 2
-SelectorNode *selector_node2; // id: 2
-SelectorNode *selector_node1; // id: 1
-RootNode *root; // id: 1
 /** ======================================================================= **\
 |** --------------------------- Setup Function ---------------------------- **|
 |** %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% **|
@@ -35,33 +24,8 @@ RootNode *root; // id: 1
 \** ======================================================================= **/
 
 void setup () {
-    button.setup();
+    distanceSensor.setup();
     drive.setup();
-	  pause_time = 1;
-	  motor_speed = 255;
-    action_node1 = new ActionNode ([]() -> void {
-			drive.forward(motor_speed);
-			delay( (int) ( 1000 * (pause_time)));
-			drive.backward();
-		});
-
-    condition_node1 = new ConditionNode ([]() -> bool { return !(button.isPressed()); });
-
-    action_node2 = new ActionNode ([]() -> void {
-			drive.backward();
-			delay( (int) ( 1000 * (pause_time)));
-		});
-
-    selector_node2 = new SelectorNode ( new BehaviorNode*[1] {
-			action_node2
-	  } , 1);
-
-    selector_node1 = new SelectorNode ( new BehaviorNode*[3] {
-			action_node1, condition_node1, selector_node2
-	  } , 3);
-
-    root = new RootNode (			selector_node1);
-
 }
 
 /** ======================================================================= **\
@@ -77,6 +41,36 @@ void setup () {
 \** ======================================================================= **/
 
 void loop () {
-	root->tick();
+  ;
+  int __index_0;
+  for(__index_0 = 0; __index_0 < 10; __index_0) {
+    if(distanceSensor.get_distance() < 5) {
+      drive.stop();
+    };
+    ;
+    int __index_1;
+    for(__index_1 = 0; __index_1 < 10; __index_1) {
+      if(distanceSensor.get_distance() < 5) {
+        drive.stop();
+      };
+    }
+;
+  }
+;
+  ;
+  int __index_2;
+  for(__index_2 = 0; __index_2 < 10; __index_2) {
+    if(distanceSensor.get_distance() < 5) {
+      drive.stop();
+    };
+  }
+;
+  ;
+  int __index_3;
+  for(__index_3 = 0; __index_3 < 10; __index_3) {
+    if(distanceSensor.get_distance() < 5) {
+      drive.stop();
+    };
+  }
 ;
 }

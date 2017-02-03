@@ -46,6 +46,7 @@ class BlocklyTranslator:
         self.program_name = "Prog"
         self.isCpp = False
         self.setup_func_dict()
+        self.index_name_mangling = 0
     def setup_func_dict(self): 
         self.get_func = {
             "variables_set": self.set_variable,
@@ -476,10 +477,12 @@ class BlocklyTranslator:
     
     #repeat for specified num of times
     def repeat_control(self,node, depth):
-        retString = ";\n" + (spaces*depth) + "int __i;\n"
-        retString += (spaces*depth) + "for(__i = 0; __i < "
+        idx = "__index_" + str(self.index_name_mangling)
+        self.index_name_mangling += 1
+        retString = ";\n" + (spaces*depth) + "int " + idx + ";\n"
+        retString += (spaces*depth) + "for(" + idx + " = 0; " + idx + " < "
         count = self.parse_blocks_recursively(list(node)[0], 0)
-        retString += count + "; __i++) {\n"
+        retString += count + "; " + idx + ") {\n"
     
         statement = self.parse_blocks_recursively(list(node)[1], depth+1)
     

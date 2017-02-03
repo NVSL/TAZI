@@ -1,5 +1,5 @@
 {
-    "gspec_file" : "config/TAZI_Stress_Board.gspec",
+    "gspec_file" : "config/grabber-sensor.gspec",
     "output_name" : "blockly_executable",
 	"landing_file" :  "landing.jinja.html"
 }

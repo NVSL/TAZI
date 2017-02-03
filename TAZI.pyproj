@@ -5,17 +5,16 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{c43e0b26-c95a-46da-81d4-09b067b7a7cb}</ProjectGuid>
     <ProjectHome />
-    <StartupFile>main.py</StartupFile>
+    <StartupFile>BlockGenerator\IDEGenerator.py</StartupFile>
     <SearchPath />
-    <WorkingDirectory>.</WorkingDirectory>
+    <WorkingDirectory>BlockGenerator\</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
     <InterpreterId>{9a7a9026-48c1-4688-9d5d-e5699d47d074}</InterpreterId>
     <InterpreterVersion>2.7</InterpreterVersion>
     <IsWindowsApplication>False</IsWindowsApplication>
-    <CommandLineArguments>
-    </CommandLineArguments>
+    <CommandLineArguments>-j Resources\Blocks.json -g ..\config\grabber-sensor.gspec -c ..\..\Components.xml -d Resources\DefaultCategories.xml -x index.jinja -w Resources\DefaultRobotWorkspace.xml</CommandLineArguments>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
@@ -37,8 +36,6 @@
     <Content Include="WebStatic\controllers\IDEController.js" />
     <Content Include="WebStatic\controllers\LandingPageController.js" />
     <Content Include="WebStatic\controllers\ModuleWorkaround.js" />
-    <Content Include="WebStatic\ide.jinja" />
-    <Content Include="WebStatic\landing.jinja" />
     <Content Include="WebStatic\lib\angular-animate\angular-animate.js" />
     <Content Include="WebStatic\lib\angular-animate\angular-animate.min.js" />
     <Content Include="WebStatic\lib\angular-animate\index.js" />
