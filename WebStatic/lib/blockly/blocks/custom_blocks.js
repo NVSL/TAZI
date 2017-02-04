@@ -30,7 +30,7 @@ Blockly.Blocks['delay'] = {
     this.setPreviousStatement(true, arduino_statement);
     this.setNextStatement(true, arduino_statement);
     this.setColour(17);
-    this.setTooltip('');
+    this.setTooltip('Stops the program for executing for X milliseconds');
     this.setHelpUrl(help_url);
   }
 };
@@ -45,7 +45,7 @@ Blockly.Blocks['delaySeconds'] = {
     this.setPreviousStatement(true, arduino_statement);
     this.setNextStatement(true, arduino_statement);
     this.setColour(17);
-    this.setTooltip('');
+    this.setTooltip('Stops the program for executing for X seconds');
     this.setHelpUrl(help_url);
   }
 };

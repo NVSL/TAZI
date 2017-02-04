@@ -482,7 +482,7 @@ class BlocklyTranslator:
         retString = ";\n" + (spaces*depth) + "int " + idx + ";\n"
         retString += (spaces*depth) + "for(" + idx + " = 0; " + idx + " < "
         count = self.parse_blocks_recursively(list(node)[0], 0)
-        retString += count + "; " + idx + ") {\n"
+        retString += count + "; " + idx + "++) {\n"
     
         statement = self.parse_blocks_recursively(list(node)[1], depth+1)
     
