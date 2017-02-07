@@ -155,7 +155,10 @@ class CompileInoHandler(CompileHandler):
         abs_path = os.path.abspath(out_file)
         if run_as_arduino:
             flags = [ arduino_flags , abs_path]
-            subprocess.call(arduino_args + flags, shell=True)
+            if os.name == "nt":
+                os.system( " ".join(arduino_args + flags) )
+            else:
+                subprocess.call(arduino_args + flags, shell=True)
         else:
             subprocess.check_call(["mv",abs_path, arduPi])
             subprocess.check_call(["make","-C", arduPi])
