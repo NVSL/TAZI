@@ -41,7 +41,7 @@ ide:
 idejinja:
 	python IDEGenerator.py -j $(BLOCKSJSON) $(GSPEC_FILE) -c $(CATALOG) -d $(CATEGORIESXML) -x $(JINJAFILE) $(WORKSPACE) $(RESDIR) $(BLOCKLYDIR)> ../Server/jinja_templates/ide.jinja
 json:
-	python BlockGenerator.py -l ComponentsLibrary.xml -b $(BLACKLIST) > $(BLOCKSJSON)
+	python BlockGenerator.py -l ../../Components.xml -b $(BLACKLIST) #> $(BLOCKSJSON)
 testclang:
 	python ClangBindings.py clangtest.h 
 inos: $(INOS)

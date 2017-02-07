@@ -7,6 +7,7 @@ Blockly.Blocks['variable_declarations'] = {
     this.setNextStatement(true, arduino_statement);
     this.setTooltip('');
     this.setHelpUrl(help_url);
+    this.setDeletable(false);
   }
 };
 
@@ -17,6 +18,7 @@ Blockly.Blocks['main_loop'] = {
     this.setNextStatement(true, arduino_statement);
     this.setTooltip('');
     this.setHelpUrl(help_url);
+    this.setDeletable(false);
   }
 };
 
@@ -58,6 +60,7 @@ Blockly.Blocks['main'] = {
         .appendField("Loop forever and ever");
     this.setColour(105);
     this.setTooltip('Make sure you put all your blocks in here!');
+    this.setDeletable(false);
     this.setHelpUrl(help_url);
     //this.setDeletable(false)
   }
