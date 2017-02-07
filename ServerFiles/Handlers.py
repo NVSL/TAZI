@@ -57,6 +57,8 @@ def setupOutput( name="testfile", ext="ino", workspace="CppDefault.xml"):
 class LandingHandler(webapp2.RequestHandler):
     def get(self):
         path = os.path.join(program_path,"")
+        if not os.path.isdir(path):
+            os.mkdirs(path) 
         progs = [ f for f in os.listdir(path) if os.path.isfile(path+f)]
         progs = [ f.replace(".xml", "") for f in progs] 
         jinja_vars = { "programs" : progs,
