@@ -1,1 +1,0 @@
-<xml ><block type="main" id="pi3B})^yDCx*i4a(i*/w" x="88" y="72"><statement name="main_loop"><block type="controls_if" id="NjBKJHSh(*cMA#/c1}ku"><value name="IF0"><block type="$button$isPressed$1" id="E0J7/4CK|h/NI#fadrY0"></block></value><statement name="DO0"><block type="$drive$forward$0" id="REcc4GLz3*+P-PB:IB~z"></block></statement></block></statement></block></xml>
