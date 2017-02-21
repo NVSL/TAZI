@@ -109,7 +109,6 @@ for lib, gcom_dir in zip(libs, lib_paths):
 
     # Iterate over all classes
     for aClass in classes:
-        
         for f in aClass.functions:
             print f
         #raw_input()

@@ -40,6 +40,7 @@ class BlocklyTranslator:
         self.main_setup = []
         self.main_funcs = ""
         self.behavior_parser = None
+        self.in_behavior_tree = 0
         # User Defined Function Names
         self.madeFuncNames = {}
         self.checkFuncDefs = {}
@@ -47,6 +48,7 @@ class BlocklyTranslator:
         self.isCpp = False
         self.setup_func_dict()
         self.index_name_mangling = 0
+        self.number_of_delay_objects = 0
     def setup_func_dict(self): 
         self.get_func = {
             "variables_set": self.set_variable,
@@ -193,8 +195,10 @@ class BlocklyTranslator:
                 lines += self.parse_blocks_recursively( b, depth ) + delimitter+ '\n'
             return lines
         if blockType == "root_node": 
+            self.in_behavior_tree += 1
             self.behavior_parser = BehaviorParser(self.program_name, self) 
             self.behavior_parser.parse_node( node )
+            self.in_behavior_tree -= 1
             return ""
     
         return self.genericBlockGet(node,depth)
@@ -252,7 +256,7 @@ class BlocklyTranslator:
             #
         else:
             #default int
-            return "int"
+            return "float"
     
     
     def get_field(self,node):
@@ -405,9 +409,10 @@ class BlocklyTranslator:
         valueB = self.parse_blocks_recursively(list(list(node)[2])[-1],depth)
     
         if (operator == "pow"):
-            return self.parse_next_block(node, depth, ("pow(" + valueA + ", " + valueB + ")"))
-    
-        return self.parse_next_block(node, depth, (valueA + " " + operator + " " + valueB))
+            expr = "pow(" + valueA + ", " + valueB + ")"
+        else:
+            expr = valueA + " " + operator + " " + valueB
+        return self.parse_next_block(node, depth, ( "(" + expr + ")" ) )
     
     #math single
     def math_single(self,node, depth):
@@ -521,16 +526,21 @@ class BlocklyTranslator:
     
     #delay
     def delay(self,node,depth):
-        retString = "delay((int)"
-        varValue = self.get_args(list(node)[0])
-        retString += varValue + ")"
-        return self.parse_next_block(node, depth, retString)
-    
+        return self._delay(node, depth, "1")
     #delaySeconds
     def delaySeconds(self,node,depth):
-        retString = "delay( (int) ( 1000 * ("
-        varValue = self.get_args(list(node)[0])
-        retString += varValue + ")))"
+        return self._delay(node, depth, "1000")
+    def _delay( self, node, depth, k ):
+        retString = ""
+        wait_amt = "(int)( " + k + "* ("
+        wait_amt += self.get_args(list(node)[0])
+        wait_amt += "))"
+        if self.in_behavior_tree > 0:
+            delay_obj = "delay_" + str(self.number_of_delay_objects)
+            self.number_of_delay_objects += 1
+            self.declaredVars.append("DelayObject " + delay_obj + "(" + wait_amt + ")")
+            retString = delay_obj + ".delay()"
+        else: retString += "delay(" + wait_amt + ")"
         return self.parse_next_block(node, depth, retString)
     
     #millis
