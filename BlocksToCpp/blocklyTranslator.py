@@ -716,7 +716,7 @@ class ContextAwareParser(BlocklyTranslator):
         delay_obj = "delay_" + str(self.number_of_delay_objects)
         self.number_of_delay_objects += 1
         case = str(self.state)
-        self.declaredVars.append("DelayObject " + delay_obj + "(" + wait_amt + ");")
+        self.declaredVars.append("DelayTimer " + delay_obj + "(" + wait_amt + ");")
         retString = "case " + case + ":\n" 
         retString += (depth+3)*"\t" + "if ( !" + delay_obj + ".delay() ) return " + case
         self.state += 1

@@ -87,6 +87,7 @@ void setup () {
     %- if n.node_type == "action_node"
 [](uint8_t state) -> uint8_t {
             switch(state) {
+            case 0:
 		% for stmt in n.stmts:
 			{{stmt}};
 		% endfor

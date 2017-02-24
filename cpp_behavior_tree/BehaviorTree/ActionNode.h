@@ -15,6 +15,7 @@ public:
 	ActionNode(void(*func)());
 	uint8_t tick();
 private:
+	uint8_t state;
 	void (*c_like_func)();
 };
 
