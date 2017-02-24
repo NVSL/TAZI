@@ -26,7 +26,7 @@ Blockly.Blocks['delay'] = {
   init: function() {
     this.appendValueInput("NAME")
 		.setCheck("Number")
-        .appendField("Pause for ");
+        .appendField("Wait for ");
     this.appendDummyInput()
         .appendField("milliseconds");
     this.setPreviousStatement(true, arduino_statement);
@@ -41,7 +41,7 @@ Blockly.Blocks['delaySeconds'] = {
   init: function() {
     this.appendValueInput("NAME")
 		.setCheck("Number")
-        .appendField("Pause for ");
+        .appendField("Wait for ");
     this.appendDummyInput()
         .appendField("seconds");
     this.setPreviousStatement(true, arduino_statement);
