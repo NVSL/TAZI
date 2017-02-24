@@ -130,6 +130,7 @@ class CompileHandler(SaveHandler):
         #print out_file
         f = open(out_file, "w+")
         f.write(self.compiled)
+        f.close()
 
 class CompileCPPHandler(CompileHandler):
     def post(self):

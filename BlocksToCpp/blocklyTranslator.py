@@ -195,10 +195,9 @@ class BlocklyTranslator:
                 lines += self.parse_blocks_recursively( b, depth ) + delimitter+ '\n'
             return lines
         if blockType == "root_node": 
-            self.in_behavior_tree += 1
-            self.behavior_parser = BehaviorParser(self.program_name, self) 
+            context_sensitive_parser = ContextAwareParser( self )
+            self.behavior_parser = BehaviorParser(self.program_name, context_sensitive_parser) 
             self.behavior_parser.parse_node( node )
-            self.in_behavior_tree -= 1
             return ""
     
         return self.genericBlockGet(node,depth)
@@ -531,17 +530,14 @@ class BlocklyTranslator:
     def delaySeconds(self,node,depth):
         return self._delay(node, depth, "1000")
     def _delay( self, node, depth, k ):
-        retString = ""
+        wait_amt = self.get_delay_amt(node,k)
+        retString = "delay(" + wait_amt + ")"
+        return self.parse_next_block(node, depth, retString)
+    def get_delay_amt( self, node, k ):
         wait_amt = "(int)( " + k + "* ("
         wait_amt += self.get_args(list(node)[0])
         wait_amt += "))"
-        if self.in_behavior_tree > 0:
-            delay_obj = "delay_" + str(self.number_of_delay_objects)
-            self.number_of_delay_objects += 1
-            self.declaredVars.append("DelayObject " + delay_obj + "(" + wait_amt + ")")
-            retString = delay_obj + ".delay()"
-        else: retString += "delay(" + wait_amt + ")"
-        return self.parse_next_block(node, depth, retString)
+        return wait_amt
     
     #millis
     def millis(self,node, depth):
@@ -693,3 +689,35 @@ if __name__ == "__main__":
     if args.d:
         DEBUG = 1
     print translator.run( inp )
+
+class ContextAwareParser(BlocklyTranslator):
+    def __init__(self, parent):
+        self.parent = parent
+        self.declaredVars = parent.declaredVars 
+        self.main_loop = parent.main_loop  
+        self.definedFuncs = parent.definedFuncs  
+        self.declaredObjs = parent.declaredObjs  
+        self.declaredFuncs = parent.declaredFuncs 
+        self.main_setup = parent.main_setup  
+        self.main_funcs = parent.main_funcs  
+        # User Defined Function Names
+        self.madeFuncNames = parent.madeFuncNames  
+        self.checkFuncDefs = parent.checkFuncDefs  
+        self.program_name =  parent.program_name 
+        self.index_name_mangling = parent.index_name_mangling 
+        self.number_of_delay_objects = parent.number_of_delay_objects 
+        self.setup_func_dict()
+        self.reset_state()
+    def reset_state(self):
+        self.state = 1
+    def _delay(self, node, depth, k):
+        #return super(ContextAwareParser, self)._delay(node, depth, k)
+        wait_amt = self.get_delay_amt(node,k)
+        delay_obj = "delay_" + str(self.number_of_delay_objects)
+        self.number_of_delay_objects += 1
+        case = str(self.state)
+        self.declaredVars.append("DelayObject " + delay_obj + "(" + wait_amt + ");")
+        retString = "case " + case + ":\n" 
+        retString += (depth+3)*"\t" + "if ( !" + delay_obj + ".delay() ) return " + case
+        self.state += 1
+        return self.parse_next_block(node, depth, retString)

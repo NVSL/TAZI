@@ -5,16 +5,18 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{c43e0b26-c95a-46da-81d4-09b067b7a7cb}</ProjectGuid>
     <ProjectHome />
-    <StartupFile>BlockGenerator\IDEGenerator.py</StartupFile>
+    <StartupFile>main.py</StartupFile>
     <SearchPath />
-    <WorkingDirectory>BlockGenerator\</WorkingDirectory>
+    <WorkingDirectory>
+    </WorkingDirectory>
     <OutputPath>.</OutputPath>
     <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
     <InterpreterId>{9a7a9026-48c1-4688-9d5d-e5699d47d074}</InterpreterId>
     <InterpreterVersion>2.7</InterpreterVersion>
     <IsWindowsApplication>False</IsWindowsApplication>
-    <CommandLineArguments>-j Resources\Blocks.json -g ..\config\Mangy-Moose.gspec -c ..\..\Components.xml -d Resources\DefaultCategories.xml -x index.jinja -w Resources\DefaultRobotWorkspace.xml</CommandLineArguments>
+    <CommandLineArguments>
+    </CommandLineArguments>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
@@ -231,6 +233,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="BlocksToCpp\blocklyTranslator.py" />
+    <Compile Include="BlocksToCpp\ContextAwareParser.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BlocksToCpp\customBlockTest.py" />
     <Compile Include="BlocksToCpp\customTest.py" />
     <Compile Include="BlocksToCpp\runAndCompileTests.py" />
