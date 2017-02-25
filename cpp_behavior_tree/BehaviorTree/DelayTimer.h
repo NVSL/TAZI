@@ -9,6 +9,7 @@
 	#include "WProgram.h"
 #endif
 
+#include "RootNode.h"
 class DelayTimer {
 public:
 	DelayTimer(long delay_time);

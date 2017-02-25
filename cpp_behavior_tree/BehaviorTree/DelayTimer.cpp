@@ -4,6 +4,7 @@
 
 #include "DelayTimer.h"
 
+
 DelayTimer::DelayTimer(long delay_time)
 {
 	this->delay_time = delay_time;
@@ -13,10 +14,10 @@ DelayTimer::DelayTimer(long delay_time)
 bool DelayTimer::delay()
 {
 	if (start_time < 0) {
-		start_time = millis();
+		start_time = (RootNode::current_time / delay_time) * delay_time;
 		return false;
 	}
-	if (millis() - start_time > delay_time) {
+	if (RootNode::current_time - start_time > delay_time) {
 		start_time = -1;
 		return true;
 	}

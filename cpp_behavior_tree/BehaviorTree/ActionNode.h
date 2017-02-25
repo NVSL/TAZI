@@ -12,11 +12,11 @@
 
 class ActionNode : public BehaviorNode {
 public:
-	ActionNode(void(*func)());
+	ActionNode(uint8_t(*func)(uint8_t state));
 	uint8_t tick();
 private:
+	uint8_t (*c_like_func)(uint8_t);
 	uint8_t state;
-	void (*c_like_func)();
 };
 
 
