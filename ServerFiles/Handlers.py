@@ -57,6 +57,8 @@ def setupOutput( name="testfile", ext="ino", workspace="CppDefault.xml"):
 class LandingHandler(webapp2.RequestHandler):
     def get(self):
         path = os.path.join(program_path,"")
+        if not os.path.isdir(path):
+            os.mkdirs(path) 
         progs = [ f for f in os.listdir(path) if os.path.isfile(path+f)]
         progs = [ f.replace(".xml", "") for f in progs] 
         jinja_vars = { "programs" : progs,
@@ -128,6 +130,7 @@ class CompileHandler(SaveHandler):
         #print out_file
         f = open(out_file, "w+")
         f.write(self.compiled)
+        f.close()
 
 class CompileCPPHandler(CompileHandler):
     def post(self):
@@ -153,7 +156,10 @@ class CompileInoHandler(CompileHandler):
         abs_path = os.path.abspath(out_file)
         if run_as_arduino:
             flags = [ arduino_flags , abs_path]
-            subprocess.call(arduino_args + flags, shell=True)
+            if os.name == "nt":
+                os.system( " ".join(arduino_args + flags) )
+            else:
+                subprocess.call(arduino_args + flags, shell=True)
         else:
             subprocess.check_call(["mv",abs_path, arduPi])
             subprocess.check_call(["make","-C", arduPi])

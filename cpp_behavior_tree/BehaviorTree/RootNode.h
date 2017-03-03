@@ -13,6 +13,7 @@
 
 class RootNode : BehaviorNode {
 public:
+    static long current_time;
 	RootNode(BehaviorNode * child);
 	uint8_t tick();
 private:

@@ -2,7 +2,7 @@
 *.pdf
 *.log
 *.aux
-*.swp
+*.sw*
 *.pyc
 *~
 *.pyc
@@ -40,5 +40,6 @@ Server/appengine/arduPi/*.ino
 *.cs
 InoComposer/InoGenerator/
 InoComposer/BlocksToCpp/
+programs/*
 
 TAZI_ENV/*

@@ -7,7 +7,7 @@ class Function(object):
         self.name = cursor.spelling
         self.params = []
         self.get_params(cursor)
-	self.returnType = cursor.type.spelling.split(' ')[0]
+        self.returnType = cursor.type.spelling.split(' ')[0]
 
     def __str__(self):
         return self.returnType + " " + self.name + str(self.params)
@@ -15,9 +15,14 @@ class Function(object):
     def get_params(self, cursor):
         i = 0
         for node in cursor.get_children():
-	    if( node.spelling != None ):
-	        currentParam = [node.spelling, node.type.spelling]
-	        self.params.append(currentParam) 
+            if( node.spelling != None ):
+                currentParam = [node.spelling, node.type.spelling]
+                self.params.append(currentParam) 
+                """
+        for key, value in cursor.type.argument_types().__dict__.items():
+            print key,value
+        raw_input()
+                """
         for t in cursor.type.argument_types():
 	    #print t.spelling()
             canonical = t.get_canonical()
@@ -67,9 +72,9 @@ def build_classes(cursor, file_name):
     result = []
 
     for c in cursor.get_children():
-	#print c
-        #print "file name = " + c.location.file.name
-        if (c.kind == clang.cindex.CursorKind.CLASS_DECL and
+        #print c
+        print "file name = " + c.location.file.name, c.kind
+        if ( (c.kind == clang.cindex.CursorKind.CLASS_DECL or c.kind == clang.cindex.CursorKind.CLASS_TEMPLATE) and
             c.location.file.name == FILE_NAME):
             a_class = Class(c)
             result.append(a_class)

@@ -3,6 +3,7 @@
 // 
 
 #include "RootNode.h"
+long RootNode::current_time = 0;
 
 RootNode::RootNode(BehaviorNode * child)
 {
@@ -11,5 +12,6 @@ RootNode::RootNode(BehaviorNode * child)
 
 uint8_t RootNode::tick()
 {
+    current_time = millis();
 	return this->child->tick();
 }

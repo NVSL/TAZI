@@ -7,6 +7,7 @@ Blockly.Blocks['variable_declarations'] = {
     this.setNextStatement(true, arduino_statement);
     this.setTooltip('');
     this.setHelpUrl(help_url);
+    this.setDeletable(false);
   }
 };
 
@@ -17,6 +18,7 @@ Blockly.Blocks['main_loop'] = {
     this.setNextStatement(true, arduino_statement);
     this.setTooltip('');
     this.setHelpUrl(help_url);
+    this.setDeletable(false);
   }
 };
 
@@ -24,13 +26,13 @@ Blockly.Blocks['delay'] = {
   init: function() {
     this.appendValueInput("NAME")
 		.setCheck("Number")
-        .appendField("Pause for ");
+        .appendField("Wait for ");
     this.appendDummyInput()
         .appendField("milliseconds");
     this.setPreviousStatement(true, arduino_statement);
     this.setNextStatement(true, arduino_statement);
     this.setColour(17);
-    this.setTooltip('');
+    this.setTooltip('Stops the program for executing for X milliseconds');
     this.setHelpUrl(help_url);
   }
 };
@@ -39,13 +41,13 @@ Blockly.Blocks['delaySeconds'] = {
   init: function() {
     this.appendValueInput("NAME")
 		.setCheck("Number")
-        .appendField("Pause for ");
+        .appendField("Wait for ");
     this.appendDummyInput()
         .appendField("seconds");
     this.setPreviousStatement(true, arduino_statement);
     this.setNextStatement(true, arduino_statement);
     this.setColour(17);
-    this.setTooltip('');
+    this.setTooltip('Stops the program for executing for X seconds');
     this.setHelpUrl(help_url);
   }
 };
@@ -58,6 +60,7 @@ Blockly.Blocks['main'] = {
         .appendField("Loop forever and ever");
     this.setColour(105);
     this.setTooltip('Make sure you put all your blocks in here!');
+    this.setDeletable(false);
     this.setHelpUrl(help_url);
     //this.setDeletable(false)
   }

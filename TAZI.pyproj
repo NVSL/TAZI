@@ -7,7 +7,8 @@
     <ProjectHome />
     <StartupFile>main.py</StartupFile>
     <SearchPath />
-    <WorkingDirectory>.</WorkingDirectory>
+    <WorkingDirectory>
+    </WorkingDirectory>
     <OutputPath>.</OutputPath>
     <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
@@ -37,8 +38,6 @@
     <Content Include="WebStatic\controllers\IDEController.js" />
     <Content Include="WebStatic\controllers\LandingPageController.js" />
     <Content Include="WebStatic\controllers\ModuleWorkaround.js" />
-    <Content Include="WebStatic\ide.jinja" />
-    <Content Include="WebStatic\landing.jinja" />
     <Content Include="WebStatic\lib\angular-animate\angular-animate.js" />
     <Content Include="WebStatic\lib\angular-animate\angular-animate.min.js" />
     <Content Include="WebStatic\lib\angular-animate\index.js" />
@@ -234,6 +233,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="BlocksToCpp\blocklyTranslator.py" />
+    <Compile Include="BlocksToCpp\ContextAwareParser.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BlocksToCpp\customBlockTest.py" />
     <Compile Include="BlocksToCpp\customTest.py" />
     <Compile Include="BlocksToCpp\runAndCompileTests.py" />

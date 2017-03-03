@@ -85,10 +85,14 @@ void setup () {
 % for n in bt.nodes
     {{n.name}} = new {{class_name(n.node_type)}} ( 
     %- if n.node_type == "action_node"
-[]() -> void {
+[](uint8_t state) -> uint8_t {
+            switch(state) {
+            case 0:
 		% for stmt in n.stmts:
 			{{stmt}};
 		% endfor
+            }
+            return 0;
 		}
     %- elif n.node_type == "condition_node"
 []() -> bool { return {{n.stmts}}; }
