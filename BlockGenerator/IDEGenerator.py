@@ -149,7 +149,8 @@ if __name__ == "__main__":
 
     # Default file locations
     jsonFile = "Blocks.json"
-    catalog = "Components.xms"
+    jsonFile = os.path.join(resources_dir, jsonFile)
+    catalog = os.path.join("..", "..", "Components.xml")
     jinjaFile = "index.jinja"
     blocksXml = "DefaultCategories.xml"
     # Arg parse stuff
