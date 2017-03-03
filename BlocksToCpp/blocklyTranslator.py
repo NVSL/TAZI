@@ -49,9 +49,8 @@ class BlocklyTranslator:
         self.isCpp = False
         self.setup_func_dict()
         self.stateCount = 0
-		self.index_name_mangling = 0
+        self.index_name_mangling = 0
         self.number_of_delay_objects = 0
-		
     def setup_func_dict(self): 
         self.get_func = {
             "variables_set": self.set_variable,
@@ -94,17 +93,14 @@ class BlocklyTranslator:
         # Dealing with it if it's a start state
         if (isStart=="TRUE"):
             self.definedFuncs = [("short currState = " + upperName + ";\n")] + self.definedFuncs;
-		
         # Adding the state to the definitions at top
         self.declaredFuncs = ["#define " + upperName + " " + str(self.stateCount) + "\n"] + self.declaredFuncs
         self.stateCount+=1;
-		
         # Adding the method corresponding to the state
         bodyNode = child[2][0]
         bodyStr = self.get_block(bodyNode,1)
         self.declaredFuncs.append("void " + name + "();\n")
         self.definedFuncs.append("void " + name + "() {\n" + bodyStr + ";\n}\n")
-		
         #Adding to the first switch statement (which does the appropriate action for state)
         if(self.switch1==""):
             self.switch1 += (spaces + "switch (currState) {\n")
@@ -116,7 +112,6 @@ class BlocklyTranslator:
         self.switch2 += (spaces + "case " + upperName + ": \n")
         tempStr = self.parse_next_block(child,2,"");
         self.switch2 += (tempStr[6:] + "\n" + spaces*2 + "break;\n")
-		
     # Recurse through the xml to translate
     def parse_blocks_recursively(self,node, depth):
         tag = node.tag.split("}")
@@ -141,20 +136,19 @@ class BlocklyTranslator:
                 if self.is_node_of_type(child, "main") or self.is_node_of_type(child, "root_node"):
                     overallResult += self.parse_blocks_recursively(child, depth)
                 if self.is_node_of_type(child,"state"):
-					isStateCode = True
-					self.parse_state_block(child);
-					self.declaredFuncs.append("void update_state();\n") 
-					self.definedFuncs.append("void update_state(){\n" + self.switch1 + spaces + "}\n\n" + self.switch2 + spaces + "}\n" + "}\n"); 
-					overallResult = "update_state();"
-					print "declared:\n"
-					for f in self.declaredFuncs:
-						print f
-					print "defined:\n"
-					for f in self.definedFuncs:
-						print f			   
-		if (isStateCode == True):
-			return overallResult
-	
+                    isStateCode = True
+                    self.parse_state_block(child);
+                    self.declaredFuncs.append("void update_state();\n") 
+                    self.definedFuncs.append("void update_state(){\n" + self.switch1 + spaces + "}\n\n" + self.switch2 + spaces + "}\n" + "}\n"); 
+                    overallResult = "update_state();"
+                    print "declared:\n"
+                    for f in self.declaredFuncs:
+                        print f
+                    print "defined:\n"
+                    for f in self.definedFuncs:
+                        print f			   
+        if (isStateCode == True):
+            return overallResult
         # Handle the case for Blockly CPP
         c_main = [ ns for ns in node.findall("block") if ns.attrib["type"] == "c_main" ]
         if( len( c_main ) == 1): 
@@ -190,7 +184,6 @@ class BlocklyTranslator:
     
     def get_block(self,node,depth):
         blockType = node.attrib["type"]
-	
         if (blockType == "main_loop"):
             # Should be a "next" block
             loopStr = self.recurse_parse_check(list(node), depth+1)+";"
@@ -247,14 +240,14 @@ class BlocklyTranslator:
             self.behavior_parser.parse_node( node )
             return ""
         if blockType == "transition":
-			tempStr = (spaces*depth) + "if("
-			tempStr += self.get_block(node[0][0],depth)
-			tempStr += ") {\n"
-			tempStr += (spaces*(depth+1) + "currState = " + node[1][0][0].text.upper() + ";\n")
-			tempStr += (spaces*depth) + "}"
-			if self.hasNext(node):
-				tempStr += self.parse_blocks_recursively(list(node)[-1], depth);
-			return tempStr
+            tempStr = (spaces*depth) + "if("
+            tempStr += self.get_block(node[0][0],depth)
+            tempStr += ") {\n"
+            tempStr += (spaces*(depth+1) + "currState = " + node[1][0][0].text.upper() + ";\n")
+            tempStr += (spaces*depth) + "}"
+            if self.hasNext(node):
+                tempStr += self.parse_blocks_recursively(list(node)[-1], depth);
+            return tempStr
         return self.genericBlockGet(node,depth)
        
     def genericBlockGet(self,node,depth):
@@ -536,7 +529,7 @@ class BlocklyTranslator:
     
     #repeat for specified num of times
     def repeat_control(self,node, depth):
-		idx = "__index_" + str(self.index_name_mangling)
+        idx = "__index_" + str(self.index_name_mangling)
         self.index_name_mangling += 1
         retString = ";\n" + (spaces*depth) + "int __i;\n"
         retString += (spaces*depth) + "for(__i = 0; __i < "
@@ -577,14 +570,13 @@ class BlocklyTranslator:
         retString += statement + ";\n " + (spaces*depth) + "}"
     
         return self.parse_next_block(node, depth, retString)
-    	
     #delay
     def delay(self,node,depth):
-	   return self._delay(node, depth, "1")
+        return self._delay(node, depth, "1")
     #delaySeconds
     def delaySeconds(self,node,depth):
-	    return self._delay(node, depth, "1000")
-	def _delay( self, node, depth, k ):
+        return self._delay(node, depth, "1000")
+    def _delay( self, node, depth, k ):
         wait_amt = self.get_delay_amt(node,k)
         retString = "delay(" + wait_amt + ")"
         return self.parse_next_block(node, depth, retString)
@@ -593,7 +585,6 @@ class BlocklyTranslator:
         wait_amt += self.get_args(list(node)[0])
         wait_amt += "))"
         return wait_amt
-		
     #millis
     def millis(self,node, depth):
         return self.parse_next_block(node, depth, "millis()")
@@ -700,9 +691,8 @@ class BlocklyTranslator:
             return True
         return False
     
-	def parse_state_block(self):
-		return "hello"
-	
+    def parse_state_block(self):
+        return "hello"
     def run( self,xml ):
         tree = ET.parse(xml)
         root = tree.getroot()
@@ -714,7 +704,7 @@ class BlocklyTranslator:
             mainStr = "\n".join( [ a for a in self.get_variables() ] ) + "\n" + mainStr 
             # Jinja would be better
             if use_c_lib: 
-				mainStr = c_lib + mainStr 
+                mainStr = c_lib + mainStr 
             return mainStr
         except BlocklyError as e:
             print("Error: " + e.value)
@@ -743,9 +733,7 @@ if __name__ == "__main__":
         inp = args.xml
     else:
         inp = raw_input("Filename: ")
-
-    if args.d:
-        DEBUG = 1
+    if args.d: DEBUG = 1
     print translator.run( inp )
 
 class ContextAwareParser(BlocklyTranslator):
