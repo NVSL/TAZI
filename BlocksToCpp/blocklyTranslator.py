@@ -40,12 +40,16 @@ class BlocklyTranslator:
         self.main_setup = []
         self.main_funcs = ""
         self.behavior_parser = None
+        self.switch1 = "";
+        self.switch2 = "";
         # User Defined Function Names
         self.madeFuncNames = {}
         self.checkFuncDefs = {}
         self.program_name = "Prog"
         self.isCpp = False
         self.setup_func_dict()
+        self.stateCount = 0
+		
     def setup_func_dict(self): 
         self.get_func = {
             "variables_set": self.set_variable,
@@ -81,6 +85,36 @@ class BlocklyTranslator:
         atb = (node.attrib).get("type")
         return atb != None and atb == type_name
     
+    def parse_state_block(self, child):
+        name = child[0].text
+        upperName = name.upper()
+        isStart = child[1].text
+        # Dealing with it if it's a start state
+        if (isStart=="TRUE"):
+            self.definedFuncs = [("short currState = " + upperName + ";\n")] + self.definedFuncs;
+		
+        # Adding the state to the definitions at top
+        self.declaredFuncs = ["#define " + upperName + " " + str(self.stateCount) + "\n"] + self.declaredFuncs
+        self.stateCount+=1;
+		
+        # Adding the method corresponding to the state
+        bodyNode = child[2][0]
+        bodyStr = self.get_block(bodyNode,1)
+        self.declaredFuncs.append("void " + name + "();\n")
+        self.definedFuncs.append("void " + name + "() {\n" + bodyStr + ";\n}\n")
+		
+        #Adding to the first switch statement (which does the appropriate action for state)
+        if(self.switch1==""):
+            self.switch1 += (spaces + "switch (currState) {\n")
+        self.switch1 += (spaces + "case " + upperName + ": \n" + spaces*2 + name + "();\n" + spaces*2 + "break;\n")
+
+        #Adding to the second switch statement (which handles the transitions)
+        if(self.switch2==""):
+            self.switch2 += ( spaces + "switch (currState) {\n")	
+        self.switch2 += (spaces + "case " + upperName + ": \n")
+        tempStr = self.parse_next_block(child,2,"");
+        self.switch2 += (tempStr[6:] + "\n" + spaces*2 + "break;\n")
+		
     # Recurse through the xml to translate
     def parse_blocks_recursively(self,node, depth):
         tag = node.tag.split("}")
@@ -92,6 +126,7 @@ class BlocklyTranslator:
         if tag == "xml":
             overallResult = ""
             mainBod = ""
+            isStateCode = False;
             for child in node.iter('block'):
                 if self.is_node_of_type(child, "procedures_defnoreturn") or self.is_node_of_type(child, "procedures_defreturn"):
                     self.find_define(child)
@@ -103,7 +138,21 @@ class BlocklyTranslator:
             for child in node:
                 if self.is_node_of_type(child, "main") or self.is_node_of_type(child, "root_node"):
                     overallResult += self.parse_blocks_recursively(child, depth)
-    
+                if self.is_node_of_type(child,"state"):
+					isStateCode = True
+					self.parse_state_block(child);
+					self.declaredFuncs.append("void update_state();\n") 
+					self.definedFuncs.append("void update_state(){\n" + self.switch1 + spaces + "}\n\n" + self.switch2 + spaces + "}\n" + "}\n"); 
+					overallResult = "update_state();"
+					print "declared:\n"
+					for f in self.declaredFuncs:
+						print f
+					print "defined:\n"
+					for f in self.definedFuncs:
+						print f			   
+		if (isStateCode == True):
+			return overallResult
+	
         # Handle the case for Blockly CPP
         c_main = [ ns for ns in node.findall("block") if ns.attrib["type"] == "c_main" ]
         if( len( c_main ) == 1): 
@@ -139,7 +188,7 @@ class BlocklyTranslator:
     
     def get_block(self,node,depth):
         blockType = node.attrib["type"]
-    
+	
         if (blockType == "main_loop"):
             # Should be a "next" block
             loopStr = self.recurse_parse_check(list(node), depth+1)+";"
@@ -195,7 +244,15 @@ class BlocklyTranslator:
             self.behavior_parser = BehaviorParser(self.program_name, self) 
             self.behavior_parser.parse_node( node )
             return ""
-    
+        if blockType == "transition":
+			tempStr = (spaces*depth) + "if("
+			tempStr += self.get_block(node[0][0],depth)
+			tempStr += ") {\n"
+			tempStr += (spaces*(depth+1) + "currState = " + node[1][0][0].text.upper() + ";\n")
+			tempStr += (spaces*depth) + "}"
+			if self.hasNext(node):
+				tempStr += self.parse_blocks_recursively(list(node)[-1], depth);
+			return tempStr
         return self.genericBlockGet(node,depth)
        
     def genericBlockGet(self,node,depth):
@@ -515,7 +572,7 @@ class BlocklyTranslator:
         retString += statement + ";\n " + (spaces*depth) + "}"
     
         return self.parse_next_block(node, depth, retString)
-    
+    	
     #delay
     def delay(self,node,depth):
         retString = "delay((int)"
@@ -614,6 +671,7 @@ class BlocklyTranslator:
         mainStr = ";\n" + (spaces*depth) + "if("
     
         boolPart = self.get_args(list(node)[1])
+        boolPart = self.get_args(list(node)[1])
         funcRet = (spaces*(depth + 1)) + "return " + self.parse_blocks_recursively(list(list(node)[2])[0], 0) + ";"
     
         mainStr += boolPart + ") {\n" + funcRet + ";\n" + (spaces*depth) + "}\n"
@@ -636,6 +694,9 @@ class BlocklyTranslator:
             return True
         return False
     
+	def parse_state_block(self):
+		return "hello"
+	
     def run( self,xml ):
         tree = ET.parse(xml)
         root = tree.getroot()
@@ -643,11 +704,11 @@ class BlocklyTranslator:
         self.checkFuncDefs.clear()
         try:
             if DEBUG: print("--- RUNNING IN DEBUG MODE ---")
-            mainStr = (self.parse_blocks_recursively(root,0))
+            mainStr = (self.parse_blocks_recursively(root,0)) 
             mainStr = "\n".join( [ a for a in self.get_variables() ] ) + "\n" + mainStr 
-    
             # Jinja would be better
-            if use_c_lib: mainStr = c_lib + mainStr 
+            if use_c_lib: 
+				mainStr = c_lib + mainStr 
             return mainStr
         except BlocklyError as e:
             print("Error: " + e.value)

@@ -1,0 +1,4 @@
+<category name="State Machine" colour="260">
+                <block type="state"></block>
+				<block type="transition"></block>
+</category>
