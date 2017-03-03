@@ -11,7 +11,9 @@ python main.py
 
 ### Building the IDE
 
-Coming soon...
+1) Place the gspec (downloaded from robots.gadgetron.build) into the config directory
+2) Set the key for "gspec_file" in the config.json file to the path of the gspec
+3) Run IDEGenerator.py inside of the BlockGenerator directory
 
 ## Dependencies
 
@@ -38,12 +40,12 @@ pip install webapp2 webob jinja2
 
 | Folder | Description | To-Do
 | --- | --- | ---
-| BlocksToCpp|  Contains scripts required to translate Blockly blocks to Arduino code | Needs refactoring
+| BlocksToCpp|  Contains scripts required to translate Blockly blocks to Arduino code | -
 | BlockGenerator| Contains scripts to generate Blockly IDE, and Block definitions | Needs refactoring
 | ServerFiles | Contains scripts to run the TAZI web server | Needs refactoring
-| WebStatic | Contains static files such as html, css, and js. Also includes templates | Move templates? 
-| InoComposer | This directory contains the scripts to generate valid Ino files | Make Jinja Templates 
-| Proposal | Contains our LaTeX files that we used to propose this project | :D
+| WebStatic | Contains static files such as html, css, and js. Also includes templates | -
+| InoComposer | This directory contains the scripts to generate valid Ino files | Make integration tests
+| Proposal | Contains our LaTeX files that we used to propose this project | -
 | config | Configuration details for server | Move floating parameters violating DRY here
 | programs | Stores xml representation of blockly programs as well as compiled code | Rename?
 
