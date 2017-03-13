@@ -51,6 +51,8 @@ class BlocklyTranslator:
         self.stateCount = 0
         self.index_name_mangling = 0
         self.number_of_delay_objects = 0
+        self.declaredVars = []
+		
     def setup_func_dict(self): 
         self.get_func = {
             "variables_set": self.set_variable,
@@ -113,6 +115,7 @@ class BlocklyTranslator:
         tempStr = self.parse_next_block(child,2,"");
         self.switch2 += (tempStr[6:] + "\n" + spaces*2 + "break;\n")
     # Recurse through the xml to translate
+	
     def parse_blocks_recursively(self,node, depth):
         tag = node.tag.split("}")
         tag = tag[1] if (len(tag) > 1) else node.tag
@@ -120,10 +123,10 @@ class BlocklyTranslator:
         if DEBUG:
             print "Current tag: " + tag, "Attributes: " + str(node.attrib)
     
+        isStateCode = False;
         if tag == "xml":
             overallResult = ""
             mainBod = ""
-            isStateCode = False;
             for child in node.iter('block'):
                 if self.is_node_of_type(child, "procedures_defnoreturn") or self.is_node_of_type(child, "procedures_defreturn"):
                     self.find_define(child)
@@ -140,13 +143,7 @@ class BlocklyTranslator:
                     self.parse_state_block(child);
                     self.declaredFuncs.append("void update_state();\n") 
                     self.definedFuncs.append("void update_state(){\n" + self.switch1 + spaces + "}\n\n" + self.switch2 + spaces + "}\n" + "}\n"); 
-                    overallResult = "update_state();"
-                    print "declared:\n"
-                    for f in self.declaredFuncs:
-                        print f
-                    print "defined:\n"
-                    for f in self.definedFuncs:
-                        print f			   
+                    overallResult = "update_state();"		   
         if (isStateCode == True):
             return overallResult
         # Handle the case for Blockly CPP
@@ -690,9 +687,7 @@ class BlocklyTranslator:
         if(self.madeFuncNames[funcName] != None):
             return True
         return False
-    
-    def parse_state_block(self):
-        return "hello"
+
     def run( self,xml ):
         tree = ET.parse(xml)
         root = tree.getroot()
