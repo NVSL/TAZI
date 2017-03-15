@@ -18,7 +18,10 @@ black_listed_functions_file = os.path.join(resources_dir, "BlackListedFunctions.
 
 black_listed_classes_fd = open(black_listed_classes_file)
 black_listed_classes = black_listed_classes_fd.read().split("\n")
+black_listed_classes = [ w.split("\r")[0] for w in black_listed_classes if len(w) ]
 black_listed_classes_fd.close()
+print black_listed_classes
+raw_input()
 
 def cleanFunctionName( func ):
     acc = [] 
