@@ -52,7 +52,6 @@ class BlocklyTranslator:
         self.index_name_mangling = 0
         self.number_of_delay_objects = 0
         self.declaredVars = []
-		
     def setup_func_dict(self): 
         self.get_func = {
             "variables_set": self.set_variable,
@@ -115,7 +114,6 @@ class BlocklyTranslator:
         tempStr = self.parse_next_block(child,2,"");
         self.switch2 += (tempStr[6:] + "\n" + spaces*2 + "break;\n")
     # Recurse through the xml to translate
-	
     def parse_blocks_recursively(self,node, depth):
         tag = node.tag.split("}")
         tag = tag[1] if (len(tag) > 1) else node.tag
@@ -233,7 +231,8 @@ class BlocklyTranslator:
                 lines += self.parse_blocks_recursively( b, depth ) + delimitter+ '\n'
             return lines
         if blockType == "root_node": 
-            self.behavior_parser = BehaviorParser(self.program_name, self) 
+            parser = ContextAwareParser(self) 
+            self.behavior_parser = BehaviorParser(self.program_name, parser) 
             self.behavior_parser.parse_node( node )
             return ""
         if blockType == "transition":
