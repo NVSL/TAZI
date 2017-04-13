@@ -1,20 +1,25 @@
 import json
 import os
 
-blocks_file = os.path.join( "Resources", "_Blocks.json" )
-blocks_out_file = os.path.join( "Resources", "Blocks.json" )
+resource_dir = "Resources"
+
+blocks_file = os.path.join( resource_dir, "_Blocks.json" )
+blocks_out_file = os.path.join( resource_dir, "Blocks.json" )
 
 
 
-# Opened the file
-blocks_fd = open(blocks_file ) # File Descriptor
+# Open the file
+blocks_fd = open(blocks_file) # File Descriptor
 blocks = json.load(blocks_fd)
+
 # Close the file so we can write to it later
 blocks_fd.close()
 print type(blocks)
 
-for key,value in blocks.items():
-    print key
+
+#for key,value in blocks.items():
+#    print key
+
 for element in blocks["DistanceSensor"]:
     print element.keys()
     element["message0"] += " (cm) " 
