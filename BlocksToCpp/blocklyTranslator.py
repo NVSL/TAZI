@@ -20,7 +20,11 @@ c_lib += "\n#include <stdlib.h>\nusing namespace std;\n"
 typeDict = {
     "math_number": "int",
     "text": "string",
-    "logic_boolean": "bool"
+    "logic_boolean": "bool",
+    "math_arithmetic": "int",
+    "math_single": "float",
+    "math_modulo": "int",
+    "math_random_int": "int",
 }
 
 # There should be some degree of error checking
@@ -157,7 +161,7 @@ class BlocklyTranslator:
         elif tag == "next":
             return ";\n" + self.parse_blocks_recursively(list(node)[0], depth)
         elif tag == "statement":
-            return self.parse_blocks_recursively(list(node)[0], depth)
+            return "{\n" + self.parse_blocks_recursively(list(node)[0], depth) + ";\n}"
         elif tag == "shadow":
             return self.parse_blocks_recursively(list(node)[0], depth)
         elif tag == "value":
@@ -293,13 +297,14 @@ class BlocklyTranslator:
         return arguments
     
     def get_type(self,node):
-        if ((node.attrib).get("type") != None and typeDict.get(node.attrib["type"]) != None):
-            return typeDict[node.attrib["type"]]
+        type_name = (node.attrib).get("type")
+        if ( type_name != None and type_name in typeDict):
+            return typeDict[type_name]
         #else if (node.tag == "block"):
             #
         else:
             #default int
-            return "int"
+            return "int /** Unknown type: " + str(type_name) + "**/ " 
     
     
     def get_field(self,node):
@@ -360,7 +365,6 @@ class BlocklyTranslator:
         for child in node:
             if(child.tag == "statement" or child.tag == "value"):
                 ifBChild += 1
-    
         # First child is either boolean or contains extra piece info
         fchildNode = list(node)[0]
         if (fchildNode.tag == "mutation"):
@@ -382,9 +386,9 @@ class BlocklyTranslator:
             statementPart = self.parse_blocks_recursively(list(node)[1], depth+1)
     
         # Second child is the statement part
-        returnStr = "if(" + booleanPart + ") {\n"
+        returnStr = "if(" + booleanPart + ")"
     
-        totString = returnStr + statementPart + ";\n" + (spaces*depth) + "}"
+        totString = returnStr + statementPart + "\n" + (spaces*depth)
     
         if (numElsIfs >= 1):
             totString += self.else_if_block(node, numElsIfs, depth)
@@ -392,7 +396,7 @@ class BlocklyTranslator:
         if (numElses == 1):
             stmtList = [ s for s in list(node) if s.tag == "statement" ]
             stmt = self.parse_blocks_recursively( stmtList[-1], depth + 1) 
-            totString += "\n" + (spaces*depth) + "else {\n" + stmt + ";\n" + (spaces*depth) + "}"
+            totString += "\n" + (spaces*depth) + "else" + stmt + ";\n" + (spaces*depth)
     
         return self.parse_next_block(node, depth, totString)
     
@@ -405,13 +409,10 @@ class BlocklyTranslator:
             if (((list(node)[i]).attrib["name"])[:2] == "IF"):
                 elseString += elseifOpenString
                 booleanPart = self.get_args(list(node)[i])
-                elseString += booleanPart + ") {\n" + self.parse_blocks_recursively((list(node)[i + 1]), depth + 1) + ";\n" + (spaces*depth) + "}"
+                elseString += booleanPart + ")" + self.parse_blocks_recursively((list(node)[i + 1]), depth + 1) + ";\n" + (spaces*depth)
     
         return elseString
     
-    #else statement
-    def elseBlock(self,node, depth):
-        elseString = "else {\n" + (spaces*depth) + "}"
     
     #logic compare
     def logical_compare(self,node,depth):
@@ -445,12 +446,8 @@ class BlocklyTranslator:
         if (len(list(node)) != 3):
             raise BlocklyError("Math block with operator '" + operator + "' requires 2 values to compute!")
             return ""
-        #valueA = recurseParse(list(list(node)[1])[-1],depth)
-        #valueB = recurseParse(list(list(node)[2])[-1],depth)
-    
         valueA = self.parse_blocks_recursively(list(list(node)[1])[-1],depth)
         valueB = self.parse_blocks_recursively(list(list(node)[2])[-1],depth)
-    
         if (operator == "pow"):
             return self.parse_next_block(node, depth, ("pow(" + valueA + ", " + valueB + ")"))
         else:
@@ -530,11 +527,10 @@ class BlocklyTranslator:
         retString = ";\n" + (spaces*depth) + "int __i;\n"
         retString += (spaces*depth) + "for(__i = 0; __i < "
         count = self.parse_blocks_recursively(list(node)[0], 0)
-        retString += count + "; __i++) {\n"
+        retString += count + "; __i++)"
     
         statement = self.parse_blocks_recursively(list(node)[1], depth+1)
-    
-        retString += statement + ";\n" + (spaces*depth) + "}\n"
+        retString += statement + ";\n" + (spaces*depth)
     
         return self.parse_next_block(node, depth, retString)
     
@@ -547,23 +543,18 @@ class BlocklyTranslator:
     
         # Moving this here so that val can be declared outside
         retString = (spaces*(depth-1)) + "for(int "
-    
         retString += val + " = " + fromVal
-    
         #to
         toVal = self.get_value( values[1] )
-    
         #increment
         incr = self.get_value( values[2] )
     
         try: cond = "<=" if float(fromVal) <= float(toVal) else ">="
         except: cond = "<="
     
-        retString += "; " + val + cond + "("+toVal+"); " + val + "+=(" + incr + ")) {\n"
-    
+        retString += "; " + val + cond + "("+toVal+"); " + val + "+=(" + incr + "))"
         statement = self.parse_blocks_recursively(list(node)[4], depth+1)
-    
-        retString += statement + ";\n " + (spaces*depth) + "}"
+        retString += statement + ";\n " + (spaces*depth) 
     
         return self.parse_next_block(node, depth, retString)
     #delay
@@ -617,7 +608,7 @@ class BlocklyTranslator:
     
         total = comment + retType + " " + funcName + "(" + params + ") {\n" + funcBody + funcRet + (spaces*depth) + "}\n"
     
-        if (self.checkFuncDefs.get(funcName) == None):
+        if (funcName not in self.checkFuncDefs):
             self.definedFuncs += total.split("\n")
             self.declaredFuncs.append(retType + " " + funcName + "(" + params + ");")
             self.checkFuncDefs[funcName] = True
