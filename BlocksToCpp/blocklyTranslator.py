@@ -124,7 +124,7 @@ class BlocklyTranslator:
         tag = tag[1] if (len(tag) > 1) else node.tag
     
         if DEBUG:
-            print "Current tag: " + tag, "Attributes: " + str(node.attrib)
+            print ("Current tag: " + tag, "Attributes: " + str(node.attrib))
     
         isStateCode = False;
         if tag == "xml":
@@ -255,7 +255,7 @@ class BlocklyTranslator:
         blockType = node.attrib["type"]
         # Remainder block types that aren't built in, so it must be custom
         if (len(blockType.split("$")) < 3):
-            print blockType
+            print (blockType)
             raise BlocklyError("Block " + blockType + " is malformatted! At depth" + str(depth))
             return ""
     
@@ -597,7 +597,7 @@ class BlocklyTranslator:
                     if(params != ""):
                         params += ", "
                     params += self.get_type(arg) + " " + (arg.attrib["name"])
-            if( block_is_type(child, comment) ):
+            if( block_is_type(child, t_comment) ):
                 comment += child.text + "\n" + (spaces*depth) + "*/\n"
             if( block_is_type(child, field) ):
                 funcName = str.replace(child.text, " ", "")
@@ -720,7 +720,7 @@ if __name__ == "__main__":
     else:
         inp = raw_input("Filename: ")
     if args.d: DEBUG = 1
-    print translator.run( inp )
+    print (translator.run( inp ))
 
 class ContextAwareParser(BlocklyTranslator):
     def __init__(self, parent):

@@ -13,10 +13,10 @@ LEDArray display;
 #define DRIVE_PWMB 6        
 #define DRIVE_BIN1 11        
 #define DRIVE_BIN2 12        
-Motor drive(DRIVE_STBY,DRIVE_PWMA,DRIVE_AIN1,DRIVE_AIN2,DRIVE_PWMB,DRIVE_BIN1,DRIVE_BIN2);
+Motor motor1(DRIVE_STBY,DRIVE_PWMA,DRIVE_AIN1,DRIVE_AIN2,DRIVE_PWMB,DRIVE_BIN1,DRIVE_BIN2);
 
 #define BUTTON_SENSE 13        
-MomentaryButton button(BUTTON_SENSE);
+MomentaryButton momentarybutton1(BUTTON_SENSE);
 
 #define LED_CONTROL A0        
 LED led1(LED_CONTROL);

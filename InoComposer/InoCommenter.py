@@ -15,12 +15,12 @@ def createSectionHeader( comment, description=None ):
     if description is not None:
         rv += a(createComment("", l="|", r="|", dash="%"))
         rv += a(createComment(" Description ", l="|", r="|", dash="."))
-	acc = ""
-	for w in description.split(" "):
-	    if len( w + acc ) > 70:
-                rv += a(createComment(acc, l="|", r="|", dash=" ", leftCentered=True))
-		acc = ""
-	    acc += w + " "
+    acc = ""
+    for w in description.split(" "):
+        if len( w + acc ) > 70:
+            rv += a(createComment(acc, l="|", r="|", dash=" ", leftCentered=True))
+            acc = ""
+        acc += w + " "
         rv += a(createComment(acc, l="|", r="|", dash=" ", leftCentered=True))
         rv += a(createComment("", l="|", r="|", dash="%"))
     rv += a(createComment("", dash="=", l="\\"))

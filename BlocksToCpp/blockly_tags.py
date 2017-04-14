@@ -3,7 +3,7 @@ shadow = "shadow"
 statement = "statement"
 value = "value"
 mutation = "mutation"
-comment = "comment"
+t_comment = "comment"
 field = "field"
 
 def block_is_type( block, type_name ):

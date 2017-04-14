@@ -50,6 +50,6 @@ if __name__ == "__main__":
     # Make a composer object
     composer = InoComposer(api_gspec, xml, "foobar")
     # Print the string representation of the ino
-    print composer.get_ino()
+    print (composer.get_ino())
     #composer.get_ino()
     #print

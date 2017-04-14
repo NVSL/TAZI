@@ -10,14 +10,14 @@ def verifyOutput(testFile, outFile, gspecFile):
     #proc = subprocess.Popen(["python", "InoComposer.py", "-g", gspecFile, "-x", testFile], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     #stdoutVal, stderrVal = proc.communicate()
     api_gspec = ETree.parse(gspecFile).getroot()
-    print "Testing: ", testFile
+    print( "Testing: ", testFile)
     xml = open(testFile).read()
     composer = InoComposer(api_gspec, xml,"test")
     fullInoFile = composer.get_ino();
     with open(outFile, "w+") as output:
         output.write(fullInoFile)
-        print fullInoFile
-        proc = subprocess.call("arduino_debug.exe --verify " + outFile, shell=True)
+        print (fullInoFile)
+        result = subprocess.call("arduino_debug.exe --verify --verbose-build .\\" + outFile )
     if (result == 0):
         passedTests = passedTests + 1
         print ("ok")
