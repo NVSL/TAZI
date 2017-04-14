@@ -2,6 +2,7 @@
 
 from translation_dictionaries import *
 from behavior_parser import BehaviorParser
+from blockly_tags import *
 
 import xml.etree.ElementTree as ET
 import argparse
@@ -316,8 +317,8 @@ class BlocklyTranslator:
         return node.text
     
     def get_value(self, val ):
-        node = val.find("block")
-        if node is None: node = val.find("shadow")
+        node = val.find(block)
+        if node is None: node = val.find(shadow)
         return self.parse_blocks_recursively( node, 0 )
     
         return opDict[node.text]
@@ -346,7 +347,7 @@ class BlocklyTranslator:
             varType = self.get_type(list(list(node)[1])[0]) + " "
             self.declaredVars.append(varType + varName + ";")
     
-        if((list(list(node)[1])[0]).tag == "block"):
+        if((list(list(node)[1])[0]).tag == block):
             varValue = self.parse_blocks_recursively(list(list(node)[1])[0], 0)
         else:
             varValue = self.get_field(list(list(list(node)[1])[0])[0])
@@ -363,11 +364,11 @@ class BlocklyTranslator:
         ifBChild = 0
     
         for child in node:
-            if(child.tag == "statement" or child.tag == "value"):
+            if( block_is_type(child, [statement, value] )):
                 ifBChild += 1
         # First child is either boolean or contains extra piece info
         fchildNode = list(node)[0]
-        if (fchildNode.tag == "mutation"):
+        if (block_is_type(fchildNode,mutation)):
             if (fchildNode.attrib.get("elseif") != None):
                 numElsIfs = int(fchildNode.attrib["elseif"])
             if (fchildNode.attrib.get("else") != None):
@@ -591,20 +592,20 @@ class BlocklyTranslator:
         funcRet = ""
     
         for child in node:
-            if (child.tag == "mutation"):
+            if( block_is_type(child, mutation ) ):
                 for arg in child:
                     if(params != ""):
                         params += ", "
                     params += self.get_type(arg) + " " + (arg.attrib["name"])
-            if (child.tag == "comment"):
+            if( block_is_type(child, comment) ):
                 comment += child.text + "\n" + (spaces*depth) + "*/\n"
-            if (child.tag == "field"):
+            if( block_is_type(child, field) ):
                 funcName = str.replace(child.text, " ", "")
-            if (child.tag == "statement"):
+            if( block_is_type(child, statement) ):
                 funcBody = self.parse_blocks_recursively(list(child)[0], depth + 1) + ";\n"
-            if (child.tag == "value"):
+            if( block_is_type(child, value) ):
                 retType = self.get_type(list(child)[0])
-                funcRet = (spaces*(depth + 1)) + "return " + self.parse_blocks_recursively(list(child)[0], 0) + ";;\n"
+                funcRet = (spaces*(depth + 1)) + "return " + self.parse_blocks_recursively(list(child)[0], 0) + ";\n"
     
         total = comment + retType + " " + funcName + "(" + params + ") {\n" + funcBody + funcRet + (spaces*depth) + "}\n"
     
@@ -619,10 +620,10 @@ class BlocklyTranslator:
         paramNum = 0;
         funcName = ""
         for child in node:
-            if(child.tag == "mutation"):
+            if( block_is_type(child, mutation) ):
                 for arg in child:
                     paramNum += 1
-            if(child.tag == "field"):
+            if( block_is_type(child, field) ):
                 funcName = str.replace(child.text, " ", "")
     
         self.madeFuncNames[funcName] = paramNum
@@ -642,7 +643,7 @@ class BlocklyTranslator:
                 argNums += 1
     
             for child in node:
-                if (child.tag == "value"):
+                if( block_is_type(child, value) ):
                     if(arguments != ""):
                         arguments += ", "
                     arguments += self.parse_blocks_recursively(child, 0)
