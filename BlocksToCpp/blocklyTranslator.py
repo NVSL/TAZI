@@ -12,7 +12,7 @@ DEBUG = 0
 
 
 spaces = "  "
-delimitter = ";"
+
 use_c_lib = True
 c_lib = "#include <iostream>\n#include <cmath>"
 c_lib += "\n#include <stdlib.h>\nusing namespace std;\n"
@@ -157,17 +157,17 @@ class BlocklyTranslator:
     
             return self.main_funcs + overallResult
     
-        elif tag == "block":
+        elif tag == t_block:
             return self.get_block(node,depth)
-        elif tag == "next":
+        elif tag == t_next:
             return ";\n" + self.parse_blocks_recursively(list(node)[0], depth)
-        elif tag == "statement":
+        elif tag == t_statement:
             return "{\n" + self.parse_blocks_recursively(list(node)[0], depth) + ";\n}"
-        elif tag == "shadow":
+        elif tag == t_shadow:
             return self.parse_blocks_recursively(list(node)[0], depth)
-        elif tag == "value":
+        elif tag == t_value:
             return self.parse_blocks_recursively(list(node)[0], depth)
-        elif tag == "field":
+        elif tag == t_field:
             return self.get_field(node)
         else:
             return ""
@@ -230,10 +230,11 @@ class BlocklyTranslator:
                 return "true"
             else:
                 return "false"
+
         if (blockType == "main"): 
             lines = ""
-            for b in map( self.refactor_statement_to_block, node.findall("statement" )):
-                lines += self.parse_blocks_recursively( b, depth ) + delimitter+ '\n'
+            for b in map( self.refactor_statement_to_block, node.findall(t_statement)):
+                lines += self.parse_blocks_recursively( b, depth ) + c_delimitter 
             return lines
         if blockType == "root_node": 
             parser = ContextAwareParser(self) 
@@ -253,8 +254,9 @@ class BlocklyTranslator:
        
     def genericBlockGet(self,node,depth):
         blockType = node.attrib["type"]
+        formal_arguments = blockType.split( tazi_delimitter )
         # Remainder block types that aren't built in, so it must be custom
-        if (len(blockType.split("$")) < 3):
+        if (len( formal_arguments )< 3):
             print (blockType)
             raise BlocklyError("Block " + blockType + " is malformatted! At depth" + str(depth))
             return ""
@@ -301,8 +303,6 @@ class BlocklyTranslator:
         type_name = (node.attrib).get("type")
         if ( type_name != None and type_name in typeDict):
             return typeDict[type_name]
-        #else if (node.tag == "block"):
-            #
         else:
             #default int
             return "int /** Unknown type: " + str(type_name) + "**/ " 
@@ -317,8 +317,8 @@ class BlocklyTranslator:
         return node.text
     
     def get_value(self, val ):
-        node = val.find(block)
-        if node is None: node = val.find(shadow)
+        node = val.find(t_block)
+        if node is None: node = val.find(t_shadowow)
         return self.parse_blocks_recursively( node, 0 )
     
         return opDict[node.text]
@@ -339,15 +339,12 @@ class BlocklyTranslator:
             raise BlocklyError("Field " + varName + " does not have a value!")
             return ""
     
-        #if((list(node)[1]).tag.split("}"))
-        if varName in self.declaredVars: pass
-            # Already declared, we don't need to redo it
-        else:
+        if not varName in self.declaredVars: 
             # Not declared yet, put it in thing
             varType = self.get_type(list(list(node)[1])[0]) + " "
             self.declaredVars.append(varType + varName + ";")
     
-        if((list(list(node)[1])[0]).tag == block):
+        if((list(list(node)[1])[0]).tag == t_block):
             varValue = self.parse_blocks_recursively(list(list(node)[1])[0], 0)
         else:
             varValue = self.get_field(list(list(list(node)[1])[0])[0])
@@ -364,11 +361,11 @@ class BlocklyTranslator:
         ifBChild = 0
     
         for child in node:
-            if( block_is_type(child, [statement, value] )):
+            if( block_is_type(child, [t_statementt_valueue] )):
                 ifBChild += 1
         # First child is either boolean or contains extra piece info
         fchildNode = list(node)[0]
-        if (block_is_type(fchildNode,mutation)):
+        if (block_is_type(fchildNode,t_mutation)):
             if (fchildNode.attrib.get("elseif") != None):
                 numElsIfs = int(fchildNode.attrib["elseif"])
             if (fchildNode.attrib.get("else") != None):
@@ -592,18 +589,18 @@ class BlocklyTranslator:
         funcRet = ""
     
         for child in node:
-            if( block_is_type(child, mutation ) ):
+            if( block_is_type(child, t_mutation ) ):
                 for arg in child:
                     if(params != ""):
                         params += ", "
                     params += self.get_type(arg) + " " + (arg.attrib["name"])
             if( block_is_type(child, t_comment) ):
                 comment += child.text + "\n" + (spaces*depth) + "*/\n"
-            if( block_is_type(child, field) ):
+            if( block_is_type(child, t_field) ):
                 funcName = str.replace(child.text, " ", "")
-            if( block_is_type(child, statement) ):
+            if( block_is_type(child, t_statement) ):
                 funcBody = self.parse_blocks_recursively(list(child)[0], depth + 1) + ";\n"
-            if( block_is_type(child, value) ):
+            if( block_is_type(child, t_value) ):
                 retType = self.get_type(list(child)[0])
                 funcRet = (spaces*(depth + 1)) + "return " + self.parse_blocks_recursively(list(child)[0], 0) + ";\n"
     
@@ -620,10 +617,10 @@ class BlocklyTranslator:
         paramNum = 0;
         funcName = ""
         for child in node:
-            if( block_is_type(child, mutation) ):
+            if( block_is_type(child, t_mutation) ):
                 for arg in child:
                     paramNum += 1
-            if( block_is_type(child, field) ):
+            if( block_is_type(child, t_field) ):
                 funcName = str.replace(child.text, " ", "")
     
         self.madeFuncNames[funcName] = paramNum
@@ -643,7 +640,7 @@ class BlocklyTranslator:
                 argNums += 1
     
             for child in node:
-                if( block_is_type(child, value) ):
+                if( block_is_type(child, t_value) ):
                     if(arguments != ""):
                         arguments += ", "
                     arguments += self.parse_blocks_recursively(child, 0)

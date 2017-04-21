@@ -1,10 +1,13 @@
-block = "block"
-shadow = "shadow"
-statement = "statement"
-value = "value"
-mutation = "mutation"
+t_block = "block"
+t_shadow = "shadow"
+t_statement = "statement"
+t_value = "value"
+t_mutation = "mutation"
 t_comment = "comment"
-field = "field"
+t_field = "field"
+t_next = "next"
+tazi_delimitter = '$'
+c_delimitter = ";\n"
 
 def block_is_type( block, type_name ):
     if( type(type_name) == list):
