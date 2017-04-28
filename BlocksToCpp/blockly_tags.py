@@ -6,6 +6,10 @@ t_mutation = "mutation"
 t_comment = "comment"
 t_field = "field"
 t_next = "next"
+
+a_name = "name"
+n_else = "ELSE"
+
 tazi_delimitter = '$'
 c_delimitter = ";\n"
 
