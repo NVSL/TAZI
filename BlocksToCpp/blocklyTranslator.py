@@ -538,7 +538,7 @@ class BlocklyTranslator:
         retString = "delay(%s)" % wait_amt
         return self.parse_next_block(node, depth, retString)
     def get_delay_amt( self, node, k ):
-        wait_amt = "(int)( %s * ( %s ))" %  self.get_args(list(node)[0])
+        wait_amt = "(int)( %s * ( %s ))" %  (k, self.get_args(list(node)[0]))
         return wait_amt
     #millis
     def millis(self,node, depth):
