@@ -17,16 +17,6 @@ use_c_lib = True
 c_lib = "#include <iostream>\n#include <cmath>"
 c_lib += "\n#include <stdlib.h>\nusing namespace std;\n"
    
-# Typing dictionary
-typeDict = {
-    "math_number": "int",
-    "text": "string",
-    "logic_boolean": "bool",
-    "math_arithmetic": "int",
-    "math_single": "float",
-    "math_modulo": "int",
-    "math_random_int": "int",
-}
 
 # There should be some degree of error checking
 class BlocklyError(Exception):
@@ -358,13 +348,6 @@ class BlocklyTranslator:
         varValue = self.get_value( value_node ) 
         rv = "%s = %s" % (varName, varValue)# + ";"
         return rv
-    def parse_node( self, node, depth, tag_name ):
-        rv = ""
-        child = node.find( tag_name )
-        if child:
-            return self.parse_blocks_recursively( child, depth )
-        else:
-            return rv
     #if statement
     def if_block(self,node, depth):
         rv = []
@@ -389,7 +372,10 @@ class BlocklyTranslator:
             else:
                 rv.append("else if(%s) %s" % ( cond, stmt)) 
         if else_stmt:
+            if rv:
                 rv.append("else %s" % ( else_stmt)) 
+            else:
+                rv.append( else_stmt )
         return "\n".join(rv)
     
 
@@ -466,31 +452,15 @@ class BlocklyTranslator:
 
     #while loop
     def while_until(self,node, depth):
-        retString = "while("
-    
-        if (len(list(node)) < 3):
-            raise BlocklyError("While-loop requires a condition and statements!")
-    
-        if (list(node)[0]).text == "UNTIL":
-            retString += "!("
-    
-        if ((list(node)[1]).attrib.get("name") != None and (list(node)[1]).attrib["name"] == "BOOL"):
-            condit = self.get_args(list(node)[1])
-            retString += condit
-    
-        if (list(node)[0]).text == "UNTIL":
-            retString += ")"
-    
-        retString += ") {\n"
-    
-        if (list(node)[2]).attrib.get("name") != None and (list(node)[2]).attrib["name"] == "DO":
-            statement = self.parse_blocks_recursively(list(node)[2], depth + 1)
+        value_node = node.find(t_value)
+        statement_node = node.find(t_statement)
+        cond_expr = self.get_value(value_node)
+        if statement_node:
+            body = self.parse_blocks_recursively( statement_node, depth + 1) 
         else:
-            statement = "\n";
-    
-        retString += statement + ";\n" + (spaces*depth) + "}"
-    
-        return self.parse_next_block(node, depth, retString)
+            body = empty_statement
+        rv = "while(%s) %s" % (cond_expr, body)
+        return self.parse_next_block(node, depth, rv)
     
    
     
@@ -626,11 +596,14 @@ class BlocklyTranslator:
     
     #make an if-return for function creation
     def if_return(self,node, depth):
-        mainStr = ";\n" + (spaces*depth) + "if("
-        boolPart = self.get_args(list(node)[1])
-        funcRet = (spaces*(depth + 1)) + "return " + self.parse_blocks_recursively(list(list(node)[2])[0], 0) + ";"
-        mainStr += boolPart + ") {\n" + funcRet + ";\n" + (spaces*depth) + "}\n"
-        return self.parse_next_block(node, depth, mainStr)
+        value_nodes = node.findall( t_value )
+        if len(value_nodes) != 2: 
+            rv = ""
+        else:
+            cond_expr = self.get_value( value_nodes[0] )
+            ret_expr  = self.get_value( value_nodes[1] ) 
+            rv = "if( %s ) return %s" % (cond_expr, ret_expr) 
+        return self.parse_next_block(node, depth, rv)
     
     def func_check_get(self,blockType, node, depth):
         if (len(list(node)) > 0 and (list(node)[0]).tag == "next"):

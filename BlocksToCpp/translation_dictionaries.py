@@ -36,3 +36,13 @@ mathDict = {
     "SQRT": "sqrt"
 }
 
+# Typing dictionary
+typeDict = {
+    "math_number": "int",
+    "text": "string",
+    "logic_boolean": "bool",
+    "math_arithmetic": "int",
+    "math_single": "float",
+    "math_modulo": "int",
+    "math_random_int": "int",
+}
