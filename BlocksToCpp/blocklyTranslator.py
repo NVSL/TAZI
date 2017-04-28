@@ -80,6 +80,7 @@ class BlocklyTranslator:
             "controls_whileUntil": self.while_until,
             "controls_repeat_ext": self.repeat_control,
             "controls_for": self.for_loop,
+            "controls_for_dec": self.for_loop_dec,
             "delay": self.delay,
             "delaySeconds": self.delaySeconds,
             "millis": self.millis,
@@ -174,7 +175,7 @@ class BlocklyTranslator:
         elif tag in [t_next, t_statement, t_shadow, t_value]: 
             expr = self.recurse_parse_check(children, depth)
             if tag == t_next:
-                return ";" + expr 
+                return c_delimitter + expr 
             elif tag == t_statement:
                 return "{\n %s;\n}" % expr 
             return expr
@@ -320,14 +321,15 @@ class BlocklyTranslator:
                 return "true"
             if (node.text == "FALSE"):
                 return "false"
-        return node.text
+        rv = node.text
+        # Did we just encounter a variable?
+        
+        return rv
     
     def get_value(self, val ):
         node = val.find(t_block)
         if node is None: node = val.find(t_shadow )
         return self.parse_blocks_recursively( node, 0 )
-    
-        return opDict[node.text]
     
     
     def get_constant(self,node):
@@ -341,25 +343,21 @@ class BlocklyTranslator:
     #set variable
     def set_variable(self,node, depth):
         # First child is the field, contains name of the variable
-        varName = self.get_field(list(node)[0])
-        if (len(list(node)) < 2):
+        rv = self.__set_variable__(node)
+        return self.parse_next_block(node, depth, rv)
+    def __set_variable__(self, node ):
+        field_node = node.find(t_field)
+        value_node = node.find(t_value)
+        varName = self.get_field(field_node)
+        if not value_node:
             raise BlocklyError("Field " + varName + " does not have a value!")
             return ""
-    
-        if not varName in self.declaredVars: 
-            # Not declared yet, put it in thing
-            varType = self.get_type(list(list(node)[1])[0]) + " "
-            self.declaredVars.append(varType + varName + ";")
-    
-        children = list(node)
-        if((list(children[1])[0]).tag == t_block):
-            varValue = self.parse_blocks_recursively(list(list(node)[1])[0], 0)
-        else:
-            varValue = self.get_field(list(list(list(node)[1])[0])[0])
-    
-        totString = varName + " = " + varValue# + ";"
-        return self.parse_next_block(node, depth, totString)
-    
+        if value_node and not varName in self.declaredVars: 
+            varType = self.get_type(list(value_node)[0])
+            self.declaredVars.append( "%s %s;" % (varType, varName)) 
+        varValue = self.get_value( value_node ) 
+        rv = "%s = %s" % (varName, varValue)# + ";"
+        return rv
     def parse_node( self, node, depth, tag_name ):
         rv = ""
         child = node.find( tag_name )
@@ -369,7 +367,7 @@ class BlocklyTranslator:
             return rv
     #if statement
     def if_block(self,node, depth):
-        rv = ""
+        rv = []
         else_stmt = ""
         prefix_length = 2 # IF/DO names on value/statement tags have size of 2
         values = node.findall( t_value )
@@ -387,12 +385,12 @@ class BlocklyTranslator:
                 else_stmt = self.parse_blocks_recursively(stmt, depth+1)
         for cond, stmt in id_to_if_pairs.values():
             if not rv:
-                rv = "if(%s) %s" % ( cond, stmt) 
+                rv.append("if(%s) %s" % ( cond, stmt)) 
             else:
-                rv += "else if(%s) %s" % ( cond, stmt) 
+                rv.append("else if(%s) %s" % ( cond, stmt)) 
         if else_stmt:
-                rv += "else %s" % ( else_stmt) 
-        return rv
+                rv.append("else %s" % ( else_stmt)) 
+        return "\n".join(rv)
     
 
     
@@ -510,28 +508,30 @@ class BlocklyTranslator:
         return self.parse_next_block(node, depth, rv)
     
     #for loop
+    def for_loop_dec(self,node, depth):
+        return self.__for_loop__(node,depth,-1)
     def for_loop(self,node, depth):
-        #from
-        val = self.get_field(list(node)[0])
-        values = node.findall("value")
-        fromVal = self.get_value( values[0] )
+        return self.__for_loop__(node,depth,1)
+    def __for_loop__(self,node, depth, direction):
+        cond_op = "<=" if direction == 1 else ">="
+        step_op = "+=" if direction == 1 else "-="
+        values = node.findall( t_value )
+        index_node = node.find( t_field )
+        stmt_node = node.find( t_statement )
+
+        index = self.get_field(index_node)
+        to_expr = self.get_value( values[1] )
+        step_expr = self.get_value( values[2] )
     
-        # Moving this here so that val can be declared outside
-        retString = (spaces*(depth-1)) + "for(int "
-        retString += val + " = " + fromVal
-        #to
-        toVal = self.get_value( values[1] )
-        #increment
-        incr = self.get_value( values[2] )
-    
-        try: cond = "<=" if float(fromVal) <= float(toVal) else ">="
-        except: cond = "<="
-    
-        retString += "; " + val + cond + "("+toVal+"); " + val + "+=(" + incr + "))"
-        statement = self.parse_blocks_recursively(list(node)[4], depth+1)
-        retString += statement + ";\n " + (spaces*depth) 
-    
-        return self.parse_next_block(node, depth, retString)
+        if stmt_node:
+            statement = self.parse_blocks_recursively(stmt_node, depth+1)
+        else:
+            body = empty_statement
+        assignment_stmt = self.__set_variable__( node ) 
+        cond_stmt = "%s %s %s" % (index, cond_op, to_expr)
+        step_stmt = "%s %s %s" % (index, step_expr, step_op)
+        rv = "for( %s; %s; %s )\n %s" % (assignment_stmt, cond_stmt, step_stmt, body )
+        return self.parse_next_block(node, depth, rv)
     #delay
     def delay(self,node,depth):
         return self._delay(node, depth, "1")
