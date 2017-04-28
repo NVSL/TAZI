@@ -149,26 +149,27 @@ class BlocklyTranslator:
                     overallResult = "update_state();"		   
         if (isStateCode == True):
             return overallResult
+        children = list( node )
         # Handle the case for Blockly CPP
+        # this is horrible
         c_main = [ ns for ns in node.findall("block") if ns.attrib["type"] == "c_main" ]
         if( len( c_main ) == 1): 
-            main = self.refactor_statement_to_block(c_main[0].find("statement"))
+            main = self.refactor_statement_to_block(c_main[0].find(t_statement))
             overallResult += self.parse_blocks_recursively(main, 0)
     
             return self.main_funcs + overallResult
     
-        elif tag == t_block:
-            return self.get_block(node,depth)
-        elif tag == t_next:
-            return ";\n" + self.parse_blocks_recursively(list(node)[0], depth)
-        elif tag == t_statement:
-            return "{\n" + self.parse_blocks_recursively(list(node)[0], depth) + ";\n}"
-        elif tag == t_shadow:
-            return self.parse_blocks_recursively(list(node)[0], depth)
-        elif tag == t_value:
-            return self.parse_blocks_recursively(list(node)[0], depth)
         elif tag == t_field:
             return self.get_field(node)
+        elif tag == t_block:
+            return self.get_block(node,depth)
+        elif tag in [t_next, t_statement, t_shadow, t_value]: 
+            expr = self.recurse_parse_check(children, depth)
+            if tag == t_next:
+                return ";" + expr 
+            elif tag == t_statement:
+                return "{\n %s;\n}" % expr 
+            return expr
         else:
             return ""
     
@@ -318,7 +319,7 @@ class BlocklyTranslator:
     
     def get_value(self, val ):
         node = val.find(t_block)
-        if node is None: node = val.find(t_shadowow)
+        if node is None: node = val.find(t_shadow )
         return self.parse_blocks_recursively( node, 0 )
     
         return opDict[node.text]
@@ -326,7 +327,8 @@ class BlocklyTranslator:
     
     def get_constant(self,node):
         for k in mathDict.keys():
-            if k in self.get_field(node): return mathDict[k] + "(" + self.get_field(node[4:]) + ")"
+            if k in self.get_field(node): 
+                return "%s(%s)" % (mathDict[k], self.get_field(node[4:]) )
         return constDict[self.get_field(node)]
     
     # Function Get dictionary
@@ -344,7 +346,8 @@ class BlocklyTranslator:
             varType = self.get_type(list(list(node)[1])[0]) + " "
             self.declaredVars.append(varType + varName + ";")
     
-        if((list(list(node)[1])[0]).tag == t_block):
+        children = list(node)
+        if((list(children[1])[0]).tag == t_block):
             varValue = self.parse_blocks_recursively(list(list(node)[1])[0], 0)
         else:
             varValue = self.get_field(list(list(list(node)[1])[0])[0])
@@ -356,37 +359,38 @@ class BlocklyTranslator:
     def if_block(self,node, depth):
         numElsIfs = 0
         numElses = 0
-        booleanPart = ""
-        statementPart = ""
+        if_cond = ""
+        if_stmt = ""
         ifBChild = 0
+        children = list(node)
     
-        for child in node:
-            if( block_is_type(child, [t_statementt_valueue] )):
+        for child in children:
+            if( block_is_type(child, [t_statement, t_value] )):
                 ifBChild += 1
         # First child is either boolean or contains extra piece info
-        fchildNode = list(node)[0]
-        if (block_is_type(fchildNode,t_mutation)):
-            if (fchildNode.attrib.get("elseif") != None):
-                numElsIfs = int(fchildNode.attrib["elseif"])
-            if (fchildNode.attrib.get("else") != None):
+        first_child = children[0]
+        if (block_is_type(first_child,t_mutation)):
+            if (first_child.attrib.get("elseif")):
+                numElsIfs = int(first_child.attrib["elseif"])
+            if (first_child.attrib.get("else")):
                 numElses = 1
     
             if (ifBChild < (2*(1 + numElsIfs) + numElses)):
                 raise BlocklyError("If-Statement requires a condition and statements!")
-    
-            booleanPart = self.get_args(list(node)[1])
-            statementPart = self.parse_blocks_recursively(list(node)[2], depth+1)
+                # No it doesn't
+            if_cond = self.get_args(list(node)[1])
+            if_stmt = self.parse_blocks_recursively(list(node)[2], depth+1)
         else:
             if (ifBChild < 2):
                 raise BlocklyError("If-Statement requires a condition and statements!")
+                # No it doesn't
     
-            booleanPart = self.get_args(list(node)[0])
-            statementPart = self.parse_blocks_recursively(list(node)[1], depth+1)
+            if_cond = self.get_args(list(node)[0])
+            if_stmt = self.parse_blocks_recursively(list(node)[1], depth+1)
     
         # Second child is the statement part
-        returnStr = "if(" + booleanPart + ")"
-    
-        totString = returnStr + statementPart + "\n" + (spaces*depth)
+        returnStr = "if(%s) %s" % ( if_cond, if_stmt ) 
+        totString = returnStr 
     
         if (numElsIfs >= 1):
             totString += self.else_if_block(node, numElsIfs, depth)
@@ -394,47 +398,46 @@ class BlocklyTranslator:
         if (numElses == 1):
             stmtList = [ s for s in list(node) if s.tag == "statement" ]
             stmt = self.parse_blocks_recursively( stmtList[-1], depth + 1) 
-            totString += "\n" + (spaces*depth) + "else" + stmt + ";\n" + (spaces*depth)
+            totString += "\nelse %s \n" % stmt
     
         return self.parse_next_block(node, depth, totString)
     
     #else if statements
     def else_if_block(self,node, numTimes, depth):
-        elseifOpenString = "\n" + (spaces*depth) + "else if("
-        elseString = ""
     
+        # FIX
         for i in range(3, 3 + (numTimes * 2)):
             if (((list(node)[i]).attrib["name"])[:2] == "IF"):
-                elseString += elseifOpenString
-                booleanPart = self.get_args(list(node)[i])
-                elseString += booleanPart + ")" + self.parse_blocks_recursively((list(node)[i + 1]), depth + 1) + ";\n" + (spaces*depth)
+                cond_expr = self.get_args(list(node)[i])
+                statement = self.parse_blocks_recursively((list(node)[i + 1]), depth + 1)
+                rv = "else if( %s ) %s" % ( cond_expr, statement)
     
-        return elseString
+        return rv 
     
+    def binop( self, node, depth, op ):
+        # 3 children: operator, value A, value B
+        valueA = self.parse_blocks_recursively(list(list(node)[1])[0],depth)
+        valueB = self.parse_blocks_recursively(list(list(node)[2])[0],depth)
+        expr = "(%s) %s (%s)" % (valueA, op, valueB)
+        return self.parse_next_block(node, depth, expr)
+
     
     #logic compare
-    def logical_compare(self,node,depth):
-        # 3 children: operator, value A, value B
+    def logical_compare(self,node,depth): 
         operator = getOp(list(node)[0])
         if (len(list(node)) != 3):
             raise BlocklyError("Logic compare with operator '" + operator + "' requires 2 values to compare!")
             return ""
-        valueA = self.parse_blocks_recursively(list(list(node)[1])[0],depth)
-        valueB = self.parse_blocks_recursively(list(list(node)[2])[0],depth)
-    
-        return self.parse_next_block(node, depth, (valueA + " " + operator + " " + valueB))
+        return self.binop( node, depth, operator)
     
     #math property
     def math_property(self,node, depth):
         test = list(node)[1].text
-    
         numToCheck = self.parse_blocks_recursively(list(node)[2], 0)
         if (test == "EVEN"): modNum = 0
         else: modNum = 1
         #even, odd, prime, whole, positive, negative, divisible by
-    
         total = numToCheck + "%2 == " + str(modNum)
-    
         return self.parse_next_block(node, depth, total)
     
     #math arithmetic
@@ -444,13 +447,13 @@ class BlocklyTranslator:
         if (len(list(node)) != 3):
             raise BlocklyError("Math block with operator '" + operator + "' requires 2 values to compute!")
             return ""
+        # why is pow in two places
         valueA = self.parse_blocks_recursively(list(list(node)[1])[-1],depth)
         valueB = self.parse_blocks_recursively(list(list(node)[2])[-1],depth)
         if (operator == "pow"):
             return self.parse_next_block(node, depth, ("pow(" + valueA + ", " + valueB + ")"))
         else:
-            expr = valueA + " " + operator + " " + valueB
-        return self.parse_next_block(node, depth, (valueA + " " + operator + " " + valueB))
+            return self.binop(node,depth, operator)
     
     #math single
     def math_single(self,node, depth):
@@ -466,18 +469,14 @@ class BlocklyTranslator:
     
     #math modulo
     def math_modulo(self,node, depth):
-        values = [ n for n in node if n.tag == "value" ]
-        dividend = self.get_value( values[0] )
-        divisor = self.get_value( values[1] )
-    
-        return self.parse_next_block(node, depth, "(int)" + dividend + " % (int)" + divisor)
+        return self.binop(node,depth, "%")
     
     #math random
     def random_int(self,node, depth):
         minNum = self.parse_blocks_recursively(list(list(node)[0])[0], depth)
         maxNum = self.parse_blocks_recursively(list(list(node)[1])[0], depth)
     
-        return "rand() % (" + maxNum + " - " + minNum + ") + " + minNum
+        return "rand() % (%s - %s) + %s" % (maxNum,minNum,minNum)
     
     #math random float
     def random_float(self,node, depth):
@@ -566,9 +565,7 @@ class BlocklyTranslator:
         retString = "delay(" + wait_amt + ")"
         return self.parse_next_block(node, depth, retString)
     def get_delay_amt( self, node, k ):
-        wait_amt = "(int)( " + k + "* ("
-        wait_amt += self.get_args(list(node)[0])
-        wait_amt += "))"
+        wait_amt = "(int)( %s * ( %s ))" %  self.get_args(list(node)[0])
         return wait_amt
     #millis
     def millis(self,node, depth):
@@ -652,12 +649,9 @@ class BlocklyTranslator:
     #make an if-return for function creation
     def if_return(self,node, depth):
         mainStr = ";\n" + (spaces*depth) + "if("
-    
         boolPart = self.get_args(list(node)[1])
         funcRet = (spaces*(depth + 1)) + "return " + self.parse_blocks_recursively(list(list(node)[2])[0], 0) + ";"
-    
         mainStr += boolPart + ") {\n" + funcRet + ";\n" + (spaces*depth) + "}\n"
-    
         return self.parse_next_block(node, depth, mainStr)
     
     def func_check_get(self,blockType, node, depth):
