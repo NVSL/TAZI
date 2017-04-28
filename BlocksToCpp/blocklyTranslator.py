@@ -191,9 +191,7 @@ class BlocklyTranslator:
             return "void loop () {\n" + loopStr + "\n}"
     
         if (blockType == "main_body"):
-            mainStr = "int main() {\n " 
-            mainStr += self.recurse_parse_check(list(node), depth+1) + ";\n"
-            mainStr += spaces + " return 0;\n}"
+            mainStr = self.recurse_parse_check(list(node), depth+1) + ";\n"
             self.isCpp = True
             return mainStr
     
@@ -339,10 +337,10 @@ class BlocklyTranslator:
         field_node = node.find(t_field)
         value_node = node.find(t_value)
         varName = self.get_field(field_node)
-        if not value_node:
+        if not len(value_node):
             raise BlocklyError("Field " + varName + " does not have a value!")
             return ""
-        if value_node and not varName in self.declaredVars: 
+        if len(value_node) and not len(varName) in self.declaredVars: 
             varType = self.get_type(list(value_node)[0])
             self.declaredVars.append( "%s %s;" % (varType, varName)) 
         varValue = self.get_value( value_node ) 
@@ -455,7 +453,7 @@ class BlocklyTranslator:
         value_node = node.find(t_value)
         statement_node = node.find(t_statement)
         cond_expr = self.get_value(value_node)
-        if statement_node:
+        if statement_node is not None:
             body = self.parse_blocks_recursively( statement_node, depth + 1) 
         else:
             body = empty_statement
@@ -470,7 +468,7 @@ class BlocklyTranslator:
         value_node = node.find(t_value)
         stmt_node = node.find(t_statement)
         n = self.get_value(value_node)
-        if stmt_node:
+        if stmt_node is not None:
             statement = self.parse_blocks_recursively(stmt_node, depth+1)
         else:
             statement = empty_statement
@@ -493,14 +491,14 @@ class BlocklyTranslator:
         to_expr = self.get_value( values[1] )
         step_expr = self.get_value( values[2] )
     
-        if stmt_node:
-            statement = self.parse_blocks_recursively(stmt_node, depth+1)
+        if stmt_node is not None:
+            body = self.parse_blocks_recursively(stmt_node, depth+1)
         else:
             body = empty_statement
-        assignment_stmt = self.__set_variable__( node ) 
-        cond_stmt = "%s %s %s" % (index, cond_op, to_expr)
-        step_stmt = "%s %s %s" % (index, step_expr, step_op)
-        rv = "for( %s; %s; %s )\n %s" % (assignment_stmt, cond_stmt, step_stmt, body )
+        assignment_expr = self.__set_variable__( node ) 
+        cond_expr = "%s %s %s" % (index, cond_op, to_expr)
+        step_expr = "%s %s %s" % (index, step_expr, step_op)
+        rv = "for( %s; %s; %s )\n %s" % (assignment_expr, cond_expr, step_expr, body )
         return self.parse_next_block(node, depth, rv)
     #delay
     def delay(self,node,depth):
@@ -629,7 +627,7 @@ class BlocklyTranslator:
         try:
             if DEBUG: print("--- RUNNING IN DEBUG MODE ---")
             mainStr = (self.parse_blocks_recursively(root,0)) 
-            mainStr = "\n".join( [ a for a in self.get_variables() ] ) + "\n" + mainStr 
+            #mainStr = "\n".join( [ a for a in self.get_variables() ] ) + "\n" + mainStr 
             # Jinja would be better
             if use_c_lib: 
                 mainStr = c_lib + mainStr 
@@ -662,7 +660,11 @@ if __name__ == "__main__":
     else:
         inp = raw_input("Filename: ")
     if args.d: DEBUG = 1
-    print (translator.run( inp ))
+    libs = translator.run( inp )
+    main = "int main() {\n%s\n}" % "\n".join( translator.get_setup() + translator.get_loop() )
+    decs = list(translator.get_variables()) + translator.get_func_decs() + translator.get_func_defs()
+    prog = "\n".join( [libs] + decs + [ main] )
+    print prog
 
 class ContextAwareParser(BlocklyTranslator):
     def __init__(self, parent):

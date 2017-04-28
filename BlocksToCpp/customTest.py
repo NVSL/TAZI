@@ -9,11 +9,12 @@ import os
 ### Translates the file from xml into C++ code using blocklyTranslator ###
 def translate(file, testDir, outputFile, cDir):
     global failedTests
+    #print testDir+file, "exists: ", os.path.exists( testDir+file)
     sys.stdout.write("Translating " + file + "...")
-    proc = subprocess.Popen(["python", "blocklyTranslator.py", "-x", testDir + file], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    proc = subprocess.Popen(("./blocklyTranslator.py -x %s" %  (testDir + file)), stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     stdoutVal, stderrVal = proc.communicate()
 
-    with open(outputFile, "a") as outFile:
+    with open(outputFile, "a+") as outFile:
         outFile.write("=== " + file + " ===\n--- stdout ---\n")
         outFile.write(stdoutVal + "\n--------------")
         outFile.write("\n--- stderr ---")
@@ -26,13 +27,13 @@ def translate(file, testDir, outputFile, cDir):
         if not os.path.exists( cDir ): os.makedirs( cDir )
         filename = (file.split(".")) [0];
         cfile = cDir + filename + "_cCode.c";
-        with open(cfile, "w") as outFile2:
+        with open(cfile, "w+") as outFile2:
             outFile2.write(stdoutVal)
             outFile2.close();
         return True
     else:
         failedTests.append(file + " translated with error")
-        print("FAIL")
+        print("FAIL - error: %s" % stderrVal)
         return False
 
 
@@ -42,14 +43,14 @@ def checkSyntax(file, testDir, outputFile, cDir):
     filename = (file.split(".")) [0];
     cfile = cDir + filename + "_cCode.c";
     sys.stdout.write("Compiling " + cfile + "...")
-    exitCode = subprocess.call(["g++", "-fsyntax-only", cfile])
+    exitCode = subprocess.call("g++ -fsyntax-only %s" % cfile, shell=True)
     # Check that exit code is 0
     if (exitCode == 0):
         print("ok")
         return True
     else:
         failedTests.append(file + " did not pass C++ syntax check")
-        print("FAIL")
+        print("FAIL with exit code: %d" % exitCode)
         return False
 
 
@@ -79,7 +80,8 @@ def setupTest(typeName):
     output_dir = slashes.join([ "testOutputs", typeName + "TestOutput"])  
     c_dir = slashes.join( [ "cCode" , typeName + "Files" ]) + slashes
     subprocess.call(["rm", "-f", output_dir ]) 
-    subprocess.call(["mkdir", c_dir]) 
+    if not os.path.exists(c_dir):
+        os.makedirs(c_dir)
     testFiles = subprocess.Popen(["ls", test_dir], stdout=subprocess.PIPE).communicate()[0].split("\n")
     for testFile in testFiles:
         if re.match(r".*\.xml", testFile):
