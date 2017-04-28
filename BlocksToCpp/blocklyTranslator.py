@@ -57,6 +57,14 @@ class BlocklyTranslator:
         self.index_name_mangling = 0
         self.number_of_delay_objects = 0
         self.declaredVars = []
+        self.uids = {}
+    def generate_uid( self, id ):
+        _id = str(id)
+        if _id not in self.uids:
+            self.uids[_id] = 0
+        rv = "%s_%d" % (_id, self.uids[_id])
+        self.uids[_id] += 1
+        return rv
     def setup_func_dict(self): 
         self.get_func = {
             "variables_set": self.set_variable,
@@ -227,10 +235,7 @@ class BlocklyTranslator:
             return "0"
     
         if (blockType == "logic_boolean"):
-            if list(node)[0].text == "TRUE":
-                return "true"
-            else:
-                return "false"
+            return "true" if list(node)[0].text == "TRUE" else "false"
 
         if (blockType == "main"): 
             lines = ""
@@ -287,18 +292,18 @@ class BlocklyTranslator:
         return False
     
     def get_args(self,node ):
-        arguments = ""
-        argList = filter(lambda n: n.tag == "block" or n.tag == "value", (list(node)))
-        if len( argList ) == 0:
-            argList = filter(lambda n: n.tag == "shadow", (list(node)))
-        for i in range(len(argList)):
-            curr = argList[i]
-            if(arguments != ""):
-                arguments += ", "
-            if curr.tag == "value": arguments += self.get_value( curr )
-            else: arguments += self.parse_blocks_recursively(argList[i], 0)
+        arguments = []
+        args = node.findall(t_block) + node.findall( t_value)
+        # This may be very wrong
+        if not args:
+            args = node.findall(t_shadow)
+        for arg in args:
+            if block_is_type( arg, t_value ): 
+                arguments.append(self.get_value( arg ))
+            else: 
+                arguments.append(self.parse_blocks_recursively(arg, 0))
     
-        return arguments
+        return ",".join(arguments)
     
     def get_type(self,node):
         type_name = (node.attrib).get("type")
@@ -372,7 +377,7 @@ class BlocklyTranslator:
         id_to_if_pairs = {}
         for val in values:
             value_ID = val.attrib[a_name][prefix_length:]
-            id_to_if_pairs[value_ID] = [ self.get_args( val ), "" ] # Mutable tuple
+            id_to_if_pairs[value_ID] = [ self.get_args( val ), empty_statement ] # Mutable tuple
         for stmt in statements:
             full_stmt_ID = stmt.attrib[a_name]
             stmt_ID = full_stmt_ID[prefix_length:]
@@ -399,7 +404,7 @@ class BlocklyTranslator:
         if (op == "pow"):
             expr = "pow( %s, %s)" % ( valueA, valueB)
         else:
-            expr = "(%s) %s (%s)" % (valueA, op, valueB)
+            expr = "(%s %s %s)" % (valueA, op, valueB)
         return self.parse_next_block(node, depth, expr)
 
     
@@ -448,13 +453,14 @@ class BlocklyTranslator:
     
     #math random
     def random_int(self,node, depth):
-        minNum = self.parse_blocks_recursively(list(list(node)[0])[0], depth)
-        maxNum = self.parse_blocks_recursively(list(list(node)[1])[0], depth)
-        return "rand() % (%s - %s) + %s" % (maxNum,minNum,minNum)
+        values = node.findall( t_value )
+        minNum = self.get_value(values[0]) 
+        maxNum = self.get_value(values[1]) 
+        return "(rand() %% (%s - %s) + %s)" % (maxNum,minNum,minNum)
     
     #math random float
     def random_float(self,node, depth):
-        return "(float) rand() / RAND_MAX"
+        return "((float) rand() / RAND_MAX)"
      #negate
     def negate(self,node, depth):
         expression = self.get_value(node.find(t_value))
@@ -492,17 +498,16 @@ class BlocklyTranslator:
     
     #repeat for specified num of times
     def repeat_control(self,node, depth):
-        idx = "__index_" + str(self.index_name_mangling)
-        self.index_name_mangling += 1
-        retString = ";\n" + (spaces*depth) + "int __i;\n"
-        retString += (spaces*depth) + "for(__i = 0; __i < "
-        count = self.parse_blocks_recursively(list(node)[0], 0)
-        retString += count + "; __i++)"
-    
-        statement = self.parse_blocks_recursively(list(node)[1], depth+1)
-        retString += statement + ";\n" + (spaces*depth)
-    
-        return self.parse_next_block(node, depth, retString)
+        idx = self.generate_uid( "__repeat_index")
+        value_node = node.find(t_value)
+        stmt_node = node.find(t_statement)
+        n = self.get_value(value_node)
+        if stmt_node:
+            statement = self.parse_blocks_recursively(stmt_node, depth+1)
+        else:
+            statement = empty_statement
+        rv = "for( int %s = 0; %s < %s; %s++)\n%s" % ( idx, idx, n, idx, statement)
+        return self.parse_next_block(node, depth, rv)
     
     #for loop
     def for_loop(self,node, depth):

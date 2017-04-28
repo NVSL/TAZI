@@ -12,6 +12,7 @@ n_else = "ELSE"
 
 tazi_delimitter = '$'
 c_delimitter = ";\n"
+empty_statement = "{}"
 
 def block_is_type( block, type_name ):
     if( type(type_name) == list):
